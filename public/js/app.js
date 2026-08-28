@@ -1,4 +1,30 @@
 
+    function normalizeText(str) {
+        if (!str) return '';
+        return str
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .toLowerCase()
+            .replace(/[^a-z0-9]/g, '');
+    }
+
+    function checkMatch(track, query) {
+        if (!query) return true;
+        const normQuery = normalizeText(query);
+        if (!normQuery) return true;
+
+        const normArtist = normalizeText(track.artist);
+        const normTitle = normalizeText(track.title);
+        const normRawTitle = normalizeText(track.rawTitle);
+        const normAlbum = normalizeText(track.album);
+
+        return normArtist.includes(normQuery) || 
+               normTitle.includes(normQuery) || 
+               normRawTitle.includes(normQuery) || 
+               normAlbum.includes(normQuery);
+    }
+
+
     function formatBriefDate(releaseDate, releaseYear) {
         const months = ['Ene.', 'Feb.', 'Mar.', 'Abr.', 'May.', 'Jun.', 'Jul.', 'Ago.', 'Sep.', 'Oct.', 'Nov.', 'Dic.'];
         if (releaseDate && typeof releaseDate === 'string') {
@@ -128,10 +154,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderSongs() {
         const tracks = allPlaylists[currentTab] || [];
         let filtered = tracks.filter(t => {
-            const qGlobal = searchQuery.toLowerCase();
-            const qQuick = quickFilterQuery.toLowerCase();
-            const matchGlobal = !qGlobal || (t.artist || '').toLowerCase().includes(qGlobal) || (t.title || '').toLowerCase().includes(qGlobal) || (t.album || '').toLowerCase().includes(qGlobal);
-            const matchQuick = !qQuick || (t.artist || '').toLowerCase().includes(qQuick) || (t.title || '').toLowerCase().includes(qQuick) || (t.album || '').toLowerCase().includes(qQuick);
+            const matchGlobal = checkMatch(t, searchQuery);
+            const matchQuick = checkMatch(t, quickFilterQuery);
             return matchGlobal && matchQuick;
         });
 
