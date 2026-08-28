@@ -941,6 +941,7 @@ video {
   text-overflow: ellipsis;
 }
 
+
 /* --- Tarjetas de Canción: Meta Pills & Action Icons --- */
 .meta-pills-col {
   display: flex;
@@ -989,54 +990,67 @@ video {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-style: italic;
 }
 
 .card-action-icons {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
+  width: 100%;
   margin-top: auto;
   padding-top: 8px;
 }
 
 .btn-card-action {
-  width: 32px;
-  height: 32px;
+  height: 38px;
+  width: 100%;
   border-radius: 8px;
-  border: 1px solid var(--border-glass);
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-muted);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
 }
 
 .btn-card-action:hover {
-  transform: translateY(-2px) scale(1.06);
+  transform: translateY(-2px);
+  filter: brightness(1.2);
 }
 
-.btn-act-credits:hover {
+/* Colores fijos permanentes en reposo (Créditos = Cyan, Letra = Púrpura, Análisis = Ámbar) */
+.btn-act-credits {
   color: #38bdf8;
-  background: rgba(56, 189, 248, 0.15);
-  border-color: rgba(56, 189, 248, 0.4);
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+}
+.btn-act-credits:hover {
+  background: rgba(56, 189, 248, 0.25);
+  border-color: rgba(56, 189, 248, 0.55);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
 }
 
-.btn-act-lyrics:hover {
+.btn-act-lyrics {
   color: #c084fc;
-  background: rgba(192, 132, 252, 0.15);
-  border-color: rgba(192, 132, 252, 0.4);
-  box-shadow: 0 0 12px rgba(192, 132, 252, 0.25);
+  background: rgba(192, 132, 252, 0.12);
+  border: 1px solid rgba(192, 132, 252, 0.28);
+}
+.btn-act-lyrics:hover {
+  background: rgba(192, 132, 252, 0.25);
+  border-color: rgba(192, 132, 252, 0.55);
+  box-shadow: 0 0 14px rgba(192, 132, 252, 0.35);
 }
 
-.btn-act-analysis:hover {
+.btn-act-analysis {
   color: #fbbf24;
-  background: rgba(251, 191, 36, 0.15);
-  border-color: rgba(251, 191, 36, 0.4);
-  box-shadow: 0 0 12px rgba(251, 191, 36, 0.25);
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.28);
+}
+.btn-act-analysis:hover {
+  background: rgba(251, 191, 36, 0.25);
+  border-color: rgba(251, 191, 36, 0.55);
+  box-shadow: 0 0 14px rgba(251, 191, 36, 0.35);
 }

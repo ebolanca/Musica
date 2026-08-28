@@ -2,17 +2,20 @@
     function formatBriefDate(releaseDate, releaseYear) {
         const months = ['Ene.', 'Feb.', 'Mar.', 'Abr.', 'May.', 'Jun.', 'Jul.', 'Ago.', 'Sep.', 'Oct.', 'Nov.', 'Dic.'];
         if (releaseDate && typeof releaseDate === 'string') {
-            const parts = releaseDate.split('-');
+            const cleanD = releaseDate.split('T')[0];
+            const parts = cleanD.split('-');
             if (parts.length >= 2) {
                 const year = parts[0];
                 const monthNum = parseInt(parts[1], 10);
                 if (monthNum >= 1 && monthNum <= 12) {
                     return `${months[monthNum - 1]} ${year}`;
                 }
+            } else if (parts.length === 1 && parts[0].length === 4) {
+                return parts[0];
             }
         }
         if (releaseYear && releaseYear !== '2000') return `${releaseYear}`;
-        return releaseYear || '2000';
+        return releaseYear || '';
     }
 
     function switchModalTab(targetTabId) {
@@ -188,17 +191,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <div class="song-album-name" title="Álbum: ${song.album || 'Desconocido'}">${song.album || 'Álbum Desconocido'}</div>
                         <div class="card-action-icons">
-                            <button class="btn-card-action btn-act-credits" title="Ver Créditos" data-action="credits">
+                            <button class="btn-card-action btn-act-credits" title="Ver Créditos y Detalles" data-action="credits">
                                 <i class="fa-solid fa-circle-info"></i>
                             </button>
-                            ${song.hasLyrics ? `
-                            <button class="btn-card-action btn-act-lyrics" title="Ver Letra de la canción" data-action="lyrics">
+                            <button class="btn-card-action btn-act-lyrics" title="Ver Letra Sincronizada" data-action="lyrics">
                                 <i class="fa-solid fa-microphone"></i>
-                            </button>` : ''}
-                            ${song.hasAnalysis ? `
-                            <button class="btn-card-action btn-act-analysis" title="Ver Análisis Sónico" data-action="analysis">
+                            </button>
+                            <button class="btn-card-action btn-act-analysis" title="Ver Análisis Sónico Modular" data-action="analysis">
                                 <i class="fa-solid fa-microscope"></i>
-                            </button>` : ''}
+                            </button>
                         </div>
                     </div>
                 `;
@@ -222,18 +223,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="song-year-info" style="width: 85px;">
                             <span class="badge-pill badge-duration"><i class="fa-regular fa-clock"></i> ${song.durationFmt || '03:30'}</span>
                         </div>
-                        <div class="card-action-icons" style="margin-top: 0; padding-top: 0;">
+                        <div class="card-action-icons" style="margin-top: 0; padding-top: 0; display: flex; width: auto; gap: 8px;">
                             <button class="btn-card-action btn-act-credits" title="Ver Créditos" data-action="credits">
                                 <i class="fa-solid fa-circle-info"></i>
                             </button>
-                            ${song.hasLyrics ? `
                             <button class="btn-card-action btn-act-lyrics" title="Ver Letra" data-action="lyrics">
                                 <i class="fa-solid fa-microphone"></i>
-                            </button>` : ''}
-                            ${song.hasAnalysis ? `
+                            </button>
                             <button class="btn-card-action btn-act-analysis" title="Ver Análisis Sónico" data-action="analysis">
                                 <i class="fa-solid fa-microscope"></i>
-                            </button>` : ''}
+                            </button>
                         </div>
                     </div>
                 `;

@@ -387,6 +387,19 @@ app.get('/api/playlists', (req, res) => {
 
             const cleanTitle = cleanTrackTitle(title);
             const meta = getTrackMetadata(artist, title);
+            const analysis = findAnalysisForTrack(artist, title);
+
+            let releaseYear = meta.releaseYear || '2000';
+            let releaseDate = meta.releaseDate || `${releaseYear}-01-01`;
+
+            if (analysis && analysis.year && analysis.year !== '2000') {
+                const aYr = parseInt(analysis.year, 10);
+                const mYr = parseInt(releaseYear, 10) || 0;
+                if (mYr > aYr || mYr > 2024 || mYr === 2000) {
+                    releaseYear = analysis.year;
+                    releaseDate = `${analysis.year}-01-01`;
+                }
+            }
 
             return {
                 artist: artist,
@@ -394,16 +407,16 @@ app.get('/api/playlists', (req, res) => {
                 rawTitle: title,
                 album: cleanAlbumTitle(meta.album),
                 coverUrl: meta.coverUrl || null,
-                releaseDate: meta.releaseDate || '2000-01-01',
-                releaseYear: meta.releaseYear || '2000',
+                releaseDate: releaseDate,
+                releaseYear: releaseYear,
                 durationMs: meta.durationMs || 210000,
                 durationFmt: meta.durationFmt || '03:30',
                 hasVideo: !!(videoInfo && videoInfo.mp4),
-                hasLyrics: !!(videoInfo && (videoInfo.srt || videoInfo.lrc)),
+                hasLyrics: true,
                 videoPath: videoInfo && videoInfo.mp4 ? `/media-videos/${videoInfo.mp4.replace(/\\/g, '/')}` : null,
                 srtPath: videoInfo && videoInfo.srt ? `/media-videos/${videoInfo.srt.replace(/\\/g, '/')}` : null,
                 lrcPath: videoInfo && videoInfo.lrc ? `/media-videos/${videoInfo.lrc.replace(/\\/g, '/')}` : null,
-                hasAnalysis: !!findAnalysisForTrack(artist, title)
+                hasAnalysis: !!analysis
             };
         });
     }
