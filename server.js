@@ -1,3 +1,59 @@
+const express = require('express');
+const cors = require('cors');
+const fs = require('fs');
+const path = require('path');
+const http = require('http');
+
+
+const LYRICS_CACHE_FILE = path.join(__dirname, 'data', 'lyrics_cache.json');
+let lyricsTransCache = {};
+if (fs.existsSync(LYRICS_CACHE_FILE)) {
+    try { lyricsTransCache = JSON.parse(fs.readFileSync(LYRICS_CACHE_FILE, 'utf8')); } catch(e){}
+}
+
+async function translateLyricsBatch(lines) {
+    if (!lines || lines.length === 0) return lines;
+    
+    // Check if song is already largely in Spanish
+    const fullSample = lines.slice(0, 15).map(l => l.text).join(' ').toLowerCase();
+    const spanishWords = fullSample.match(/\b(que|para|estoy|corazón|noche|nada|amor|vida|todo|cuando|tiempo|quiero|tengo|hacer|siento)\b/gi) || [];
+    if (spanishWords.length >= 3) {
+        return lines;
+    }
+
+    let changed = false;
+    for (let item of lines) {
+        const txt = (item.text || '').trim();
+        if (!txt || txt.length < 2) continue;
+        
+        if (lyricsTransCache[txt]) {
+            item.translation = lyricsTransCache[txt];
+        } else {
+            try {
+                const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(txt)}&langpair=en|es`;
+                const res = await fetch(url, { signal: AbortSignal.timeout(2000) });
+                if (res.ok) {
+                    const data = await res.json();
+                    const trans = data.responseData?.translatedText;
+                    if (trans && !trans.startsWith("MYMEMORY WARNING")) {
+                        item.translation = trans;
+                        lyricsTransCache[txt] = trans;
+                        changed = true;
+                    }
+                }
+            } catch(e) {}
+        }
+    }
+
+    if (changed) {
+        try {
+            fs.writeFileSync(LYRICS_CACHE_FILE, JSON.stringify(lyricsTransCache, null, 2), 'utf8');
+        } catch(e){}
+    }
+
+    return lines;
+}
+
 
 async function fetchWikiSummary(artist, title) {
     try {
@@ -204,11 +260,7 @@ function getTrackMetadata(artist, title) {
     return {};
 }
 
-const express = require('express');
-const cors = require('cors');
-const fs = require('fs');
-const path = require('path');
-const http = require('http');
+
 
 let metadataCache = {};
 function loadMetadataCache() {
@@ -586,18 +638,37 @@ app.get('/api/track/detail', async (req, res) => {
         }
     }
 
+    if (parsedLyrics && parsedLyrics.length > 0) {
+        try {
+            parsedLyrics = await translateLyricsBatch(parsedLyrics);
+        } catch(e) {
+            console.error('Error traduciendo letra:', e.message);
+        }
+    }
+
     const meta = getTrackMetadata(artist, title);
+
+    let finalYear = meta.releaseYear || '2000';
+    let finalDate = meta.releaseDate || `${finalYear}-01-01`;
+    if (analysis && analysis.year && analysis.year !== '2000') {
+        const aYr = parseInt(analysis.year, 10);
+        const mYr = parseInt(finalYear, 10) || 0;
+        if (mYr > aYr || mYr > 2024 || mYr === 2000) {
+            finalYear = analysis.year;
+            finalDate = `${analysis.year}-01-01`;
+        }
+    }
 
     res.json({
         artist: artist,
         title: meta.displayTitle || cleanTrackTitle(title),
         album: cleanAlbumTitle(meta.album),
-        releaseDate: meta.releaseDate || '2000-01-01',
-        releaseYear: meta.releaseYear || '2000',
+        releaseDate: finalDate,
+        releaseYear: finalYear,
         durationFmt: meta.durationFmt || '03:30',
-        label: 'Sello Discográfico Principal',
-        genre: 'Pop / Rock / Dance',
-        composers: artist,
+        label: meta.label || 'Sello Discográfico Principal',
+        genre: meta.genre || 'Pop / Rock / Dance',
+        composers: meta.composers || artist,
         lyrics: parsedLyrics || [],
         analysis: analysis
     });
