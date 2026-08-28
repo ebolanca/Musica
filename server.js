@@ -1,6 +1,10 @@
 function cleanTrackTitle(rawTitle) {
     if (!rawTitle) return '';
-    return rawTitle
+    let clean = rawTitle
+        .replace(/^\s*\.\.\.\s*/, '')
+        .replace(/\s*-\s*Mono.*/i, '')
+        .replace(/\s*-\s*Stereo.*/i, '')
+        .replace(/\s*-\s*From\s+".*?".*/i, '')
         .replace(/\s*-\s*\d{4}\s*Remaster.*/i, '')
         .replace(/\s*-\s*Remastered.*/i, '')
         .replace(/\s*-\s*Remaster.*/i, '')
@@ -9,8 +13,11 @@ function cleanTrackTitle(rawTitle) {
         .replace(/\s*\(.*radio edit.*\)/i, '')
         .replace(/\s*-\s*Single Version.*/i, '')
         .replace(/\s*\(.*deluxe.*\)/i, '')
-        .replace(/\s*-\s*Version \d{4}.*/i, '')
+        .replace(/\s*-\s*Original.*/i, '')
         .trim();
+
+    clean = clean.replace(/^[(\[]+([^)]+)[)\]]\s*/, '$1 ');
+    return clean.replace(/\s+/g, ' ').trim();
 }
 
 const express = require('express');

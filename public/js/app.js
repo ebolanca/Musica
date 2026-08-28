@@ -57,14 +57,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function getSortKey(str) {
+        if (!str) return '';
+        return str.replace(/^[(\[\s.'"…-]+/, '').toLowerCase();
+    }
+
     function sortTracks(tracks) {
         if (sortBy === 'default') return tracks;
         const sorted = [...tracks];
         sorted.sort((a, b) => {
             let valA, valB;
             if (sortBy === 'title') {
-                valA = (a.title || '').toLowerCase();
-                valB = (b.title || '').toLowerCase();
+                valA = getSortKey(a.title);
+                valB = getSortKey(b.title);
             } else if (sortBy === 'artist') {
                 valA = (a.artist || '').toLowerCase();
                 valB = (b.artist || '').toLowerCase();

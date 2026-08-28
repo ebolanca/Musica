@@ -8,13 +8,14 @@ if (!fs.existsSync(DATA_DIR)) {
 
 const METADATA_CACHE_FILE = path.join(DATA_DIR, 'metadata_cache.json');
 let metadataCache = {};
-if (fs.existsSync(METADATA_CACHE_FILE)) {
-    try { metadataCache = JSON.parse(fs.readFileSync(METADATA_CACHE_FILE, 'utf8')); } catch(e){}
-}
 
 function cleanTrackTitle(rawTitle) {
     if (!rawTitle) return '';
-    return rawTitle
+    let clean = rawTitle
+        .replace(/^\s*\.\.\.\s*/, '')
+        .replace(/\s*-\s*Mono.*/i, '')
+        .replace(/\s*-\s*Stereo.*/i, '')
+        .replace(/\s*-\s*From\s+".*?".*/i, '')
         .replace(/\s*-\s*\d{4}\s*Remaster.*/i, '')
         .replace(/\s*-\s*Remastered.*/i, '')
         .replace(/\s*-\s*Remaster.*/i, '')
@@ -23,8 +24,11 @@ function cleanTrackTitle(rawTitle) {
         .replace(/\s*\(.*radio edit.*\)/i, '')
         .replace(/\s*-\s*Single Version.*/i, '')
         .replace(/\s*\(.*deluxe.*\)/i, '')
-        .replace(/\s*-\s*Version \d{4}.*/i, '')
+        .replace(/\s*-\s*Original.*/i, '')
         .trim();
+
+    clean = clean.replace(/^[(\[]+([^)]+)[)\]]\s*/, '$1 ');
+    return clean.replace(/\s+/g, ' ').trim();
 }
 
 const SPOTDL_CACHE_PATH = "\\\\100.95.217.45\\omen D\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json";
@@ -33,7 +37,7 @@ if (fs.existsSync(SPOTDL_CACHE_PATH)) {
     playlistsData = JSON.parse(fs.readFileSync(SPOTDL_CACHE_PATH, 'utf8'));
 } else {
     playlistsData = {
-        "Música viejuna": [["Queen", "Bohemian Rhapsody - 2011 Remaster"], ["Michael Jackson", "Beat It"], ["Guns N' Roses", "Sweet Child O' Mine"]],
+        "Música viejuna": [["Queen", "Bohemian Rhapsody - 2011 Remaster"], ["Michael Jackson", "Beat It"], ["Bryan Adams", "(Everything I Do) I Do It For You"]],
         "Siglo XXI": [["Coldplay", "Yellow"], ["The Killers", "Mr. Brightside"], ["OneRepublic", "Counting Stars"]],
         "Dance": [["Gala", "Freed from Desire"], ["Corona", "The Rhythm of the Night"], ["Gigi D'Agostino", "L'Amour Toujours"]],
         "Española": [["Fito & Fitipaldis", "Soldadito Marinero"], ["El Canto del Loco", "Zapatillas"], ["Amaral", "Sin Ti No Soy Nada"]],
@@ -42,7 +46,7 @@ if (fs.existsSync(SPOTDL_CACHE_PATH)) {
 }
 
 async function run() {
-    console.log("Generando portadas HD Deezer/iTunes...");
+    console.log("Generando portadas HD Deezer/iTunes y álbumes...");
     let count = 0;
     for (const [listName, tracks] of Object.entries(playlistsData)) {
         for (const item of tracks) {
@@ -52,43 +56,41 @@ async function run() {
             const keyRaw = `${artist} - ${rawTitle}`.toLowerCase();
             const keyClean = `${artist} - ${displayTitle}`.toLowerCase();
 
-            if (!metadataCache[keyRaw] && !metadataCache[keyClean]) {
-                try {
-                    const query = encodeURIComponent(`artist:"${artist}" track:"${displayTitle}"`);
-                    const res = await fetch(`https://api.deezer.com/search?q=${query}`);
-                    const data = await res.json();
-                    
-                    if (data.data && data.data.length > 0) {
-                        const track = data.data[0];
-                        const coverUrl = track.album.cover_xl || track.album.cover_big;
-                        const durationSec = track.duration || 210;
-                        const m = Math.floor(durationSec / 60);
-                        const s = durationSec % 60;
-                        const durationFmt = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+            try {
+                const query = encodeURIComponent(`${artist} ${displayTitle}`);
+                const res = await fetch(`https://api.deezer.com/search?q=${query}`);
+                const data = await res.json();
+                
+                if (data.data && data.data.length > 0) {
+                    const track = data.data[0];
+                    const coverUrl = track.album.cover_xl || track.album.cover_big;
+                    const durationSec = track.duration || 210;
+                    const m = Math.floor(durationSec / 60);
+                    const s = durationSec % 60;
+                    const durationFmt = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
 
-                        const metaObj = {
-                            displayTitle: displayTitle,
-                            album: track.album.title || 'Álbum Desconocido',
-                            coverUrl: coverUrl,
-                            releaseDate: '1990-01-01',
-                            releaseYear: '1990',
-                            durationMs: durationSec * 1000,
-                            durationFmt: durationFmt
-                        };
-                        metadataCache[keyRaw] = metaObj;
-                        metadataCache[keyClean] = metaObj;
-                        count++;
-                        console.log(`[${count}] Portada OK: ${artist} - ${displayTitle} -> ${track.album.title}`);
-                    }
-                } catch (e) {
-                    console.error(`Error para ${keyClean}:`, e.message);
+                    const metaObj = {
+                        displayTitle: displayTitle,
+                        album: track.album.title || 'Álbum Desconocido',
+                        coverUrl: coverUrl,
+                        releaseDate: '1990-01-01',
+                        releaseYear: '1990',
+                        durationMs: durationSec * 1000,
+                        durationFmt: durationFmt
+                    };
+                    metadataCache[keyRaw] = metaObj;
+                    metadataCache[keyClean] = metaObj;
+                    count++;
+                    console.log(`[${count}] OK: ${artist} - ${displayTitle} -> Álbum: ${track.album.title}`);
                 }
-                await new Promise(r => setTimeout(r, 40));
+            } catch (e) {
+                console.error(`Error para ${keyClean}:`, e.message);
             }
+            await new Promise(r => setTimeout(r, 30));
         }
     }
     fs.writeFileSync(METADATA_CACHE_FILE, JSON.stringify(metadataCache, null, 2), 'utf8');
-    console.log(`¡Portadas HD guardadas en data/metadata_cache.json! Total: ${Object.keys(metadataCache).length}`);
+    console.log(`¡Portadas y Álbumes guardados! Total: ${Object.keys(metadataCache).length}`);
 }
 
 run();
