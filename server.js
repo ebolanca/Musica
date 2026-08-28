@@ -1,3 +1,22 @@
+function parseLrc(lrcText) {
+    if (!lrcText) return null;
+    const lines = lrcText.split(/\r?\n/);
+    const result = [];
+    const lrcRegex = /\[(\d{2}):(\d{2})[\.:](\d{2,3})\](.*)/;
+    for (let line of lines) {
+        const match = line.match(lrcRegex);
+        if (match) {
+            const m = match[1];
+            const s = match[2];
+            const text = match[4].trim();
+            if (text) {
+                result.push({ time: m + ':' + s, text: text });
+            }
+        }
+    }
+    return result.length > 0 ? result : null;
+}
+
 function getTrackMetadata(artist, title) {
     if (!metadataCache || Object.keys(metadataCache).length === 0) {
         loadMetadataCache();
@@ -266,7 +285,7 @@ function parseLyricsFile(filePath) {
 }
 
 // API: Obtener detalle completo de una canción (Créditos, Letras, Análisis 4 Puntos)
-app.get('/api/track/detail', (req, res) => {
+app.get('/api/track/detail', async (req, res) => {
     const { artist, title } = req.query;
     if (!artist || !title) {
         return res.status(400).json({ error: 'Se requieren los parámetros artist y title' });
@@ -275,7 +294,11 @@ app.get('/api/track/detail', (req, res) => {
     const key = `${artist} - ${title}`;
     let analysis = cachedAnalyses[key];
 
-    // Buscar coincidencia parcial si no es exacta
+        if (analysis && !analysis.section5_text) {
+        const cleanT = cleanTrackTitle(title);
+        analysis.section5_text = `💡 **Curiosidades & Hitos**: "${cleanT}" acumula múltiples anécdotas de producción. Su beat y arreglos de grabación marcaron un hito en los estudios de sonido, acumulando reconocimientos clave e inspirando la cultura pop contemporánea.`;
+    }
+
     if (!analysis) {
         const cleanKey = key.toLowerCase().replace(/[^a-z0-9]/g, '');
         for (const [k, v] of Object.entries(cachedAnalyses)) {
@@ -286,96 +309,75 @@ app.get('/api/track/detail', (req, res) => {
         }
     }
 
-    // Generador dinámico enriquecido de análisis si no existe un análisis pre-creado
     if (!analysis) {
+        const cleanT = cleanTrackTitle(title);
         analysis = {
-            title: title,
+            title: cleanT,
             artist: artist,
-            year: "Clásico de Radio",
-            album: "Colección Éxitos",
-            label: "Sello Discográfico Principal",
-            composers: [artist],
-            producers: ["Productor de Radio"],
-            synopsis: `Análisis sónico e histórico de "${title}", uno de los himnos indispensables de ${artist} en la historia de la radiofórmula española.`,
-            origin_story: `"${title}" representa un punto de inflexión en la trayectoria musical de ${artist}. Compuesta con una visión de gran calado sonoro y grabada bajo estándares de producción de primer nivel, la canción logró una rotación masiva en emisoras como Los 40 Principales, Cadena 100 y Kiss FM, convirtiéndose en un referente sonoro de su época.\n\nAnalizamos esta pieza clave a través de nuestro microscopio sónico de cuatro puntos.`,
-            section1_title: "1. La Anatomía Musical: Arquitectura e Instrumental",
-            section1_text: `La producción de "${title}" destaca por una instrumentación equilibrada y hooks melódicos memorables:`,
-            section1_points: [
-                {
-                    name: "Base Rítmica y Grooves",
-                    desc: `El tema se apoya en una sección rítmica sólida que marca la pulsación del sonido característico de ${artist}, combinando baterías acústicas o electrónicas con líneas de bajo envolventes.`
-                },
-                {
-                    name: "Arreglos y Capas de Producción",
-                    desc: "La mezcla mantiene las frecuencias limpias permitiendo que las guitarras, sintetizadores y arreglos de viento o cuerdas destaquen sin saturar el espectro."
-                }
-            ],
-            section2_title: "2. El Análisis Lírico: Significado Profundo, Metáforas y Desglose",
-            section2_text: `La letra de "${title}" explora emociones profundas y vivencias personales que conectan de forma directa con el oyente:`,
-            section2_points: [
-                {
-                    name: "Estrofas Principales: El conflicto y la narrativa",
-                    quote: `Texto original de "${title}"`,
-                    analysis: `En el desarrollo lírico, ${artist} utiliza metáforas sobre la superación, las relaciones humanas o las vivencias de la calle, construyendo una atmósfera lírica íntima y directa.`
-                },
-                {
-                    name: "El Estribillo: El clímax emocional",
-                    vocab: "Expresiones clave y recursos poéticos del tema.",
-                    analysis: "El estribillo funciona como la resolución del conflicto, reforzando la idea central del tema con una melodía vocal expansiva y memorable."
-                }
-            ],
-            section3_title: "3. El Videoclip: Narrativa Visual y Dirección Artística",
-            section3_text: `La producción audiovisual de "${title}" complementa la carga emocional de la canción:`,
-            section3_points: [
-                {
-                    name: "Estética y Rodaje",
-                    desc: "El tratamiento de color, la iluminación y los planos cinematográficos refuerzan el concepto del tema, convirtiendo el videoclip en una pieza emblemática de la televisión musical."
-                }
-            ],
-            section4_title: "4. El Impacto Cultural: Recepción y Legado en Radios",
-            section4_text: `"${title}" se consolidó como un éxito duradero en la memoria musical colectiva:`,
-            section4_points: [
-                {
-                    name: "Resonancia Radiofónica",
-                    desc: "La canción alcanzó los puestos más altos en las listas de éxitos de España y mantiene una presencia constante en programaciones de clásicos e himnos generacionales."
-                }
-            ]
+            synopsis: `Análisis sónico, lírico e historia de "${cleanT}", uno de los temas más destacados en la trayectoria de ${artist}.`,
+            section1_text: `La producción musical de "${cleanT}" destaca por una base rítmica sólida, arreglos de guitarra y sintetizadores envolventes y una estructura sonora sumamente adictiva.`,
+            section2_text: `Líricamente, "${cleanT}" aborda temáticas emotivas y pasajes autobiográficos que conectan de forma directa e inmediata con el público.`,
+            section3_text: `El apartado visual de "${cleanT}" destaca por una cuidada dirección de arte, un tratamiento del color cinematográfico y una icónica presencia en televisión.`,
+            section4_text: `Con un éxito rotundo en listas de radio y plataformas digitales, "${cleanT}" se consolida como un himno atemporal dentro del catálogo de ${artist}.`,
+            section5_text: `💡 **Curiosidades & Hitos**: "${cleanT}" acumula múltiples anécdotas de producción. Su beat y arreglos de grabación marcaron un hito en los estudios, recibiendo distinciones destacadas e inspirando a numerosos artistas posteriores.`
         };
     }
 
-    // Buscar letra sincronizada real si existe en el sistema
     let parsedLyrics = null;
     const videoMap = scanVideoFiles();
     const cleanKey = key.toLowerCase().replace(/[^a-z0-9]/g, '');
     const videoInfo = videoMap.get(cleanKey);
-
     if (videoInfo) {
-        if (videoInfo.srt) {
-            parsedLyrics = parseLyricsFile(path.join(OMEN_VIDEOS_DIR, videoInfo.srt));
-        } else if (videoInfo.lrc) {
-            parsedLyrics = parseLyricsFile(path.join(OMEN_VIDEOS_DIR, videoInfo.lrc));
-        }
+        if (videoInfo.srt) parsedLyrics = parseLyricsFile(path.join(VIDEOS_DIR, videoInfo.srt));
+        else if (videoInfo.lrc) parsedLyrics = parseLyricsFile(path.join(VIDEOS_DIR, videoInfo.lrc));
     }
 
     if (!parsedLyrics) {
-        parsedLyrics = [
-            { time: "00:05", text: `Letra de ${title} por ${artist}` },
-            { time: "00:15", text: "Escuchando música y disfrutando de los videoclips..." },
-            { time: "00:30", text: "Para añadir las letras sincronizadas (.srt/.lrc), usa el botón de refresco." }
-        ];
+        try {
+            const cleanT = cleanTrackTitle(title);
+            const lrcurl = `https://lrclib.net/api/get?artist_name=${encodeURIComponent(artist)}&track_name=${encodeURIComponent(cleanT)}`;
+            const lrcres = await fetch(lrcurl);
+            if (lrcres.ok) {
+                const lrcdata = await lrcres.json();
+                if (lrcdata.syncedLyrics) {
+                    parsedLyrics = parseLrc(lrcdata.syncedLyrics);
+                } else if (lrcdata.plainLyrics) {
+                    parsedLyrics = lrcdata.plainLyrics.split('\n').filter(l => l.trim()).map(l => ({ text: l.trim() }));
+                }
+            } else {
+                const searchurl = `https://lrclib.net/api/search?q=${encodeURIComponent(artist + ' ' + cleanT)}`;
+                const sres = await fetch(searchurl);
+                if (sres.ok) {
+                    const sdata = await sres.json();
+                    if (sdata && sdata.length > 0) {
+                        const item = sdata[0];
+                        if (item.syncedLyrics) {
+                            parsedLyrics = parseLrc(item.syncedLyrics);
+                        } else if (item.plainLyrics) {
+                            parsedLyrics = item.plainLyrics.split('\n').filter(l => l.trim()).map(l => ({ text: l.trim() }));
+                        }
+                    }
+                }
+            }
+        } catch(e) {
+            console.error('Error buscando letra en LRCLIB:', e.message);
+        }
     }
+
+    const meta = getTrackMetadata(artist, title);
 
     res.json({
         artist: artist,
-        title: title,
-        year: analysis.year || 2000,
-        album: analysis.album || "Álbum de Éxitos",
-        label: analysis.label || "Discográfica",
-        composers: analysis.composers || [artist],
-        producers: analysis.producers || ["Productor"],
-        analysis: analysis,
-        lyrics: parsedLyrics,
-        videoUrl: videoInfo && videoInfo.mp4 ? `/media-videos/${videoInfo.mp4.replace(/\\/g, '/')}` : null
+        title: meta.displayTitle || cleanTrackTitle(title),
+        album: meta.album || 'Álbum Desconocido',
+        releaseDate: meta.releaseDate || '2000-01-01',
+        releaseYear: meta.releaseYear || '2000',
+        durationFmt: meta.durationFmt || '03:30',
+        label: 'Sello Discográfico Principal',
+        genre: 'Pop / Rock / Dance',
+        composers: artist,
+        lyrics: parsedLyrics || [],
+        analysis: analysis
     });
 });
 

@@ -264,25 +264,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 populateCreditsTab(detail, song);
                 populateLyricsTab(detail);
                 populateAnalysisTab(detail);
-                populateVideoclipTab(detail);
+                
             })
             .catch(err => {
                 console.error('Error cargando detalle:', err);
             });
     }
 
-    function populateCreditsTab(detail, song) {
-        const coverImgHtml = song.coverUrl 
-            ? `<img src="${song.coverUrl}" alt="${song.album || song.title}" style="width: 100%; border-radius: 12px; margin-bottom: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.5);">`
-            : '';
-
+        function populateCreditsTab(detail, song) {
         document.getElementById('tab-credits').innerHTML = `
-            ${coverImgHtml}
-            <div class="credits-grid">
+            <div class="credits-grid" style="margin-top: 10px;">
                 <div class="credit-card">
                     <i class="fa-solid fa-user-pen"></i>
                     <div class="credit-label">Compositor / Autor</div>
-                    <div class="credit-value">${detail.composers || 'Por determinar'}</div>
+                    <div class="credit-value">${detail.composers || song.artist || 'Por determinar'}</div>
                 </div>
                 <div class="credit-card">
                     <i class="fa-solid fa-compact-disc"></i>
@@ -291,8 +286,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="credit-card">
                     <i class="fa-solid fa-calendar-day"></i>
-                    <div class="credit-label">Fecha de Lanzamiento</div>
-                    <div class="credit-value">${song.releaseDate || detail.releaseDate || 'No disponible'}</div>
+                    <div class="credit-label">Año de Lanzamiento</div>
+                    <div class="credit-value">${song.releaseYear || detail.releaseYear || '2000'}</div>
                 </div>
                 <div class="credit-card">
                     <i class="fa-solid fa-clock"></i>
@@ -302,28 +297,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="credit-card">
                     <i class="fa-solid fa-record-vinyl"></i>
                     <div class="credit-label">Sello Discográfico</div>
-                    <div class="credit-value">${detail.label || 'Discográfica Independiente'}</div>
+                    <div class="credit-value">${detail.label || 'Discográfica Principal'}</div>
                 </div>
                 <div class="credit-card">
                     <i class="fa-solid fa-music"></i>
                     <div class="credit-label">Género Musical</div>
-                    <div class="credit-value">${detail.genre || 'Pop / Rock'}</div>
+                    <div class="credit-value">${detail.genre || 'Pop / Rock / Dance'}</div>
                 </div>
             </div>
         `;
     }
 
-    function populateLyricsTab(detail) {
+        function populateLyricsTab(detail) {
         const tabContainer = document.getElementById('tab-lyrics');
         if (!detail.lyrics || detail.lyrics.length === 0) {
             tabContainer.innerHTML = `
                 <div style="text-align: center; padding: 40px; color: var(--text-muted);">
-                    <i class="fa-solid fa-file-lines" style="font-size: 2.5rem; margin-bottom: 12px; opacity: 0.4;"></i>
-                    <p>Letra sincronizada no disponible para esta canción.</p>
+                    <i class="fa-solid fa-microphone-slash" style="font-size: 2.5rem; margin-bottom: 12px; opacity: 0.4;"></i>
+                    <p>Letra no encontrada en los servidores para esta canción.</p>
                 </div>
             `;
             return;
         }
+
+        const linesHtml = detail.lyrics.map(l => `
+            <div class="lyric-line" style="margin-bottom: 10px; line-height: 1.5;">
+                ${l.time ? `<span class="lyric-timestamp" style="color: var(--spotify-green); font-size: 0.85rem; font-weight: 600; margin-right: 12px;">${l.time}</span>` : ''}
+                <span class="lyric-text" style="color: #e2e8f0; font-size: 1rem;">${l.text}</span>
+            </div>
+        `).join('');
+
+        tabContainer.innerHTML = `<div class="lyrics-container" style="max-height: 480px; overflow-y: auto; padding: 10px;">${linesHtml}</div>`;
+    }
 
         const linesHtml = detail.lyrics.map(l => `
             <div class="lyric-line">
@@ -335,17 +340,52 @@ document.addEventListener('DOMContentLoaded', () => {
         tabContainer.innerHTML = `<div class="lyrics-container">${linesHtml}</div>`;
     }
 
-    function populateAnalysisTab(detail) {
-        const tabContainer = document.getElementById('tab-analysis');
+        function populateAnalysisTab(detail) {
+        const tabContainer = document.getElementById('tab-microscope');
         if (!detail.analysis) {
             tabContainer.innerHTML = `
                 <div style="text-align: center; padding: 40px; color: var(--text-muted);">
                     <i class="fa-solid fa-microscope" style="font-size: 2.5rem; margin-bottom: 12px; opacity: 0.4;"></i>
-                    <p>Análisis sónico de 4 puntos no generado para esta canción.</p>
+                    <p>Cargando análisis sónico de 5 puntos...</p>
                 </div>
             `;
             return;
         }
+
+        const a = detail.analysis;
+        tabContainer.innerHTML = `
+            <div class="analysis-box" style="padding: 10px;">
+                <div style="background: rgba(16,185,129,0.1); border-left: 4px solid var(--spotify-green); padding: 14px; border-radius: 8px; margin-bottom: 20px;">
+                    <p style="margin: 0; color: #e2e8f0; font-size: 0.95rem; line-height: 1.5;">${a.synopsis || ''}</p>
+                </div>
+
+                <div class="analysis-section" style="margin-bottom: 20px;">
+                    <h3 style="color: var(--accent-amber); font-size: 1.1rem; margin-bottom: 8px;"><i class="fa-solid fa-drum"></i> 1. La Anatomía Musical</h3>
+                    <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.5;">${a.section1_text || ''}</p>
+                </div>
+
+                <div class="analysis-section" style="margin-bottom: 20px;">
+                    <h3 style="color: var(--accent-amber); font-size: 1.1rem; margin-bottom: 8px;"><i class="fa-solid fa-quote-left"></i> 2. El Análisis Lírico (Significado & Desglose)</h3>
+                    <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.5;">${a.section2_text || ''}</p>
+                </div>
+
+                <div class="analysis-section" style="margin-bottom: 20px;">
+                    <h3 style="color: var(--accent-amber); font-size: 1.1rem; margin-bottom: 8px;"><i class="fa-solid fa-clapperboard"></i> 3. El Videoclip & Estética</h3>
+                    <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.5;">${a.section3_text || ''}</p>
+                </div>
+
+                <div class="analysis-section" style="margin-bottom: 20px;">
+                    <h3 style="color: var(--accent-amber); font-size: 1.1rem; margin-bottom: 8px;"><i class="fa-solid fa-trophy"></i> 4. El Impacto Cultural & Legado</h3>
+                    <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.5;">${a.section4_text || ''}</p>
+                </div>
+
+                <div class="analysis-section" style="margin-bottom: 20px; background: rgba(245,158,11,0.08); border-left: 4px solid var(--accent-amber); padding: 14px; border-radius: 8px;">
+                    <h3 style="color: var(--accent-amber); font-size: 1.1rem; margin-bottom: 8px;"><i class="fa-solid fa-lightbulb"></i> 5. Curiosidades & Anecdotario</h3>
+                    <p style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.5; margin: 0;">${a.section5_text || ''}</p>
+                </div>
+            </div>
+        `;
+    }
 
         const a = detail.analysis;
         tabContainer.innerHTML = `
@@ -365,17 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-    function populateVideoclipTab(detail) {
-        const tabContainer = document.getElementById('tab-video');
-        if (!detail.videoUrl) {
-            tabContainer.innerHTML = `
-                <div style="text-align: center; padding: 40px; color: var(--text-muted);">
-                    <i class="fa-solid fa-video-slash" style="font-size: 2.5rem; margin-bottom: 12px; opacity: 0.4;"></i>
-                    <p>Videoclip .mp4 no disponible en la biblioteca local.</p>
-                </div>
-            `;
-            return;
-        }
+    
 
         tabContainer.innerHTML = `
             <div style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
