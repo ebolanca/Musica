@@ -131,9 +131,23 @@ app.get('/api/playlists', (req, res) => {
                 }
             }
 
+            const METADATA_CACHE_FILE = require('path').join(__dirname, 'data', 'metadata_cache.json');
+            let metadataCache = {};
+            if (fs.existsSync(METADATA_CACHE_FILE)) {
+                try { metadataCache = JSON.parse(fs.readFileSync(METADATA_CACHE_FILE, 'utf8')); } catch(e){}
+            }
+            const metaKey = `${artist} - ${title}`.toLowerCase();
+            const meta = metadataCache[metaKey] || {};
+
             return {
                 artist: artist,
                 title: title,
+                album: meta.album || 'Álbum Desconocido',
+                coverUrl: meta.coverUrl || null,
+                releaseDate: meta.releaseDate || '2000-01-01',
+                releaseYear: meta.releaseYear || '2000',
+                durationMs: meta.durationMs || 210000,
+                durationFmt: meta.durationFmt || '03:30',
                 hasVideo: !!(videoInfo && videoInfo.mp4),
                 hasLyrics: !!(videoInfo && (videoInfo.srt || videoInfo.lrc)),
                 videoPath: videoInfo && videoInfo.mp4 ? `/media-videos/${videoInfo.mp4.replace(/\\/g, '/')}` : null,

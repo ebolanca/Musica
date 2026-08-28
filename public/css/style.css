@@ -685,3 +685,185 @@ video {
     font-size: 0.8rem;
   }
 }
+
+/* --- Controls Bar (Ordering & View Modes) --- */
+.controls-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 18px;
+  margin-bottom: 24px;
+  padding: 12px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(10px);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.sort-controls, .view-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sort-controls label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.sort-dropdown {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-glass);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.sort-dropdown option {
+  background: #121824;
+  color: #fff;
+}
+
+.sort-dropdown:hover, .sort-dropdown:focus {
+  border-color: var(--spotify-green);
+  background: rgba(29, 185, 84, 0.15);
+}
+
+.btn-control-icon, .btn-view-mode {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.btn-control-icon:hover, .btn-view-mode:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-view-mode.active {
+  background: var(--spotify-green);
+  color: #000;
+  border-color: var(--spotify-green);
+  box-shadow: 0 0 12px var(--spotify-glow);
+}
+
+.view-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* Cover Image Styling */
+.card-cover img.cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  transition: transform 0.4s ease;
+}
+
+.song-card:hover .card-cover img.cover-img {
+  transform: scale(1.06);
+}
+
+.badge-duration {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: auto;
+}
+
+.song-album-name {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+/* --- List View Mode --- */
+.songs-grid.view-list-mode {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.songs-grid.view-list-mode .song-card {
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 18px;
+  gap: 16px;
+}
+
+.songs-grid.view-list-mode .card-cover {
+  width: 52px;
+  height: 52px;
+  aspect-ratio: 1;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.songs-grid.view-list-mode .card-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+.songs-grid.view-list-mode .song-info-primary {
+  flex: 2;
+  min-width: 0;
+}
+
+.songs-grid.view-list-mode .song-album-info {
+  flex: 1.5;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.songs-grid.view-list-mode .song-year-info {
+  width: 70px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.songs-grid.view-list-mode .song-badges-list {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}

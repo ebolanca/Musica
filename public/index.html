@@ -59,6 +59,35 @@
             </button>
         </nav>
 
+        <!-- Controls Bar: Ordering & View Mode Toggle -->
+        <div class="controls-bar">
+            <div class="sort-controls">
+                <label for="sort-select"><i class="fa-solid fa-arrow-down-short-wide"></i> Ordenar por:</label>
+                <div class="select-wrapper">
+                    <select id="sort-select" class="sort-dropdown">
+                        <option value="default">Por defecto</option>
+                        <option value="title">Título</option>
+                        <option value="artist">Artista</option>
+                        <option value="releaseDate">Fecha de publicación</option>
+                        <option value="duration">Duración</option>
+                    </select>
+                </div>
+                <button id="btn-sort-dir" class="btn-control-icon" title="Invertir orden (Ascendente / Descendente)">
+                    <i class="fa-solid fa-arrow-down-a-z" id="sort-dir-icon"></i>
+                </button>
+            </div>
+
+            <div class="view-controls">
+                <span class="view-label">Vista:</span>
+                <button id="btn-view-grid" class="btn-view-mode active" title="Vista en Cuadrícula">
+                    <i class="fa-solid fa-border-all"></i>
+                </button>
+                <button id="btn-view-list" class="btn-view-mode" title="Vista en Lista">
+                    <i class="fa-solid fa-list-ul"></i>
+                </button>
+            </div>
+        </div>
+
         <!-- Section Title Bar -->
         <div class="section-bar">
             <h2 class="section-title" id="current-section-title">
