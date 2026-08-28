@@ -473,19 +473,121 @@ app.get('/api/playlists', (req, res) => {
     }
 
     const videoMap = scanVideoFiles();
+    const iconicAlbumDates = {
+        "appetite for destruction": {
+                "year": "1987",
+                "date": "1987-07-21"
+        },
+        "use your illusion i": {
+                "year": "1991",
+                "date": "1991-09-17"
+        },
+        "use your illusion ii": {
+                "year": "1991",
+                "date": "1991-09-17"
+        },
+        "united": {
+                "year": "1967",
+                "date": "1967-04-20"
+        },
+        "thriller": {
+                "year": "1982",
+                "date": "1982-11-30"
+        },
+        "bad": {
+                "year": "1987",
+                "date": "1987-08-31"
+        },
+        "joyride": {
+                "year": "1991",
+                "date": "1991-03-28"
+        },
+        "look sharp!": {
+                "year": "1988",
+                "date": "1988-10-21"
+        },
+        "toto iv": {
+                "year": "1982",
+                "date": "1982-04-08"
+        },
+        "hybrid theory": {
+                "year": "2000",
+                "date": "2000-10-24"
+        },
+        "meteora": {
+                "year": "2003",
+                "date": "2003-03-25"
+        },
+        "night visions": {
+                "year": "2012",
+                "date": "2012-09-04"
+        },
+        "smoke + mirrors": {
+                "year": "2015",
+                "date": "2015-02-17"
+        },
+        "evolve": {
+                "year": "2017",
+                "date": "2017-06-23"
+        },
+        "a night at the opera": {
+                "year": "1975",
+                "date": "1975-10-31"
+        },
+        "native": {
+                "year": "2013",
+                "date": "2013-03-22"
+        },
+        "hopes and fears": {
+                "year": "2004",
+                "date": "2004-05-10"
+        },
+        "american idiot": {
+                "year": "2004",
+                "date": "2004-09-21"
+        },
+        "viva la vida": {
+                "year": "2008",
+                "date": "2008-06-12"
+        },
+        "parachutes": {
+                "year": "2000",
+                "date": "2000-07-10"
+        },
+        "a rush of blood to the head": {
+                "year": "2002",
+                "date": "2002-08-26"
+        },
+        "ghost stories": {
+                "year": "2014",
+                "date": "2014-05-16"
+        }
+};
 
-    // Enriquecer cada canción con el estado del videoclip y letras
+    // Enriquecer cada canción con el estado del videoclip, letras y DEDUPLICACIÓN
     const response = {};
-    for (const [listName, tracks] of Object.entries(playlistsData)) {
-        response[listName] = tracks.map(item => {
+    for (const [listName, rawTracks] of Object.entries(playlistsData)) {
+        const seenKeys = new Set();
+        const enrichedTracks = [];
+
+        for (const item of rawTracks) {
             const artist = Array.isArray(item) ? item[0] : item.artist;
             const title = Array.isArray(item) ? item[1] : item.title;
-            const cleanKey = `${artist} - ${title}`.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const cleanTitle = cleanTrackTitle(title);
+            
+            // Deduplication by normalized artist and clean title
+            const normArt = (artist || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+            const normTit = cleanTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const dedupKey = `${normArt}_${normTit}`;
+            if (seenKeys.has(dedupKey)) {
+                continue; // Skip duplicated song in playlist
+            }
+            seenKeys.add(dedupKey);
 
+            const cleanKey = `${artist} - ${title}`.toLowerCase().replace(/[^a-z0-9]/g, '');
             let videoInfo = videoMap.get(cleanKey);
             if (!videoInfo) {
-                // Intento de emparejamiento por título si el nombre de archivo es ligeramente distinto
-                const titleKey = title.toLowerCase().replace(/[^a-z0-9]/g, '');
+                const titleKey = cleanTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
                 for (const [k, v] of videoMap.entries()) {
                     if (k.includes(titleKey)) {
                         videoInfo = v;
@@ -494,15 +596,18 @@ app.get('/api/playlists', (req, res) => {
                 }
             }
 
-
-            const cleanTitle = cleanTrackTitle(title);
             const meta = getTrackMetadata(artist, title);
             const analysis = findAnalysisForTrack(artist, title);
 
             let releaseYear = meta.releaseYear || '2000';
             let releaseDate = meta.releaseDate || `${releaseYear}-01-01`;
 
-            if (analysis && analysis.year && analysis.year !== '2000') {
+            // Check iconic album dates
+            const normAlbum = (meta.album || '').toLowerCase().trim();
+            if (iconicAlbumDates[normAlbum]) {
+                releaseYear = iconicAlbumDates[normAlbum].year;
+                releaseDate = iconicAlbumDates[normAlbum].date;
+            } else if (analysis && analysis.year && analysis.year !== '2000') {
                 const aYr = parseInt(analysis.year, 10);
                 const mYr = parseInt(releaseYear, 10) || 0;
                 if (mYr > aYr || mYr > 2024 || mYr === 2000) {
@@ -511,7 +616,7 @@ app.get('/api/playlists', (req, res) => {
                 }
             }
 
-            return {
+            enrichedTracks.push({
                 artist: artist,
                 title: meta.displayTitle || cleanTitle,
                 rawTitle: title,
@@ -527,8 +632,10 @@ app.get('/api/playlists', (req, res) => {
                 srtPath: videoInfo && videoInfo.srt ? `/media-videos/${videoInfo.srt.replace(/\\/g, '/')}` : null,
                 lrcPath: videoInfo && videoInfo.lrc ? `/media-videos/${videoInfo.lrc.replace(/\\/g, '/')}` : null,
                 hasAnalysis: !!analysis
-            };
-        });
+            });
+        }
+
+        response[listName] = enrichedTracks;
     }
 
     res.json(response);
