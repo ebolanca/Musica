@@ -1,3 +1,9 @@
+const express = require('express');
+const cors = require('cors');
+const fs = require('fs');
+const path = require('path');
+const http = require('http');
+
 let metadataCache = {};
 function loadMetadataCache() {
     const METADATA_CACHE_FILE = path.join(__dirname, 'data', 'metadata_cache.json');
@@ -11,6 +17,14 @@ function cleanTrackTitle(rawTitle) {
     if (!rawTitle) return '';
     let clean = rawTitle
         .replace(/^\s*\.\.\.\s*/, '')
+        .replace(/\s*-\s*Club Mix.*/i, '')
+        .replace(/\s*-\s*Extended Mix.*/i, '')
+        .replace(/\s*-\s*Mix.*/i, '')
+        .replace(/\s*-\s*Club Edit.*/i, '')
+        .replace(/\s*-\s*Remix.*/i, '')
+        .replace(/\s*\(.*remix.*\)/i, '')
+        .replace(/\s*-\s*Extended.*/i, '')
+        .replace(/\s*-\s*Radio Mix.*/i, '')
         .replace(/\s*-\s*Mono.*/i, '')
         .replace(/\s*-\s*Stereo.*/i, '')
         .replace(/\s*-\s*From\s+".*?".*/i, '')
@@ -29,11 +43,7 @@ function cleanTrackTitle(rawTitle) {
     return clean.replace(/\s+/g, ' ').trim();
 }
 
-const express = require('express');
-const cors = require('cors');
-const fs = require('fs');
-const path = require('path');
-const http = require('http');
+
 
 const app = express();
 app.use(cors());

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentTab = 'Música viejuna';
     let searchQuery = '';
     let quickFilterQuery = '';
-    let sortBy = 'default';
+    let sortBy = 'title';
     let sortAsc = true;
     let viewMode = 'grid';
 
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function sortTracks(tracks) {
-        if (sortBy === 'default') return tracks;
+        
         const sorted = [...tracks];
         sorted.sort((a, b) => {
             let valA, valB;
