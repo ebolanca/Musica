@@ -1526,3 +1526,85 @@ video {
   accent-color: var(--spotify-green);
   cursor: pointer;
 }
+
+/* ==========================================================================
+   Quick Filter Pills (Decades, Genres, Features)
+   ========================================================================== */
+.quick-pills-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 2px 14px 2px;
+  margin-bottom: 12px;
+  scrollbar-width: none;
+}
+
+.quick-pills-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.pill-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+
+.pill-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.pill-btn.active {
+  background: var(--spotify-green);
+  color: #000;
+  border-color: var(--spotify-green);
+  font-weight: 800;
+  box-shadow: 0 4px 15px rgba(29, 185, 84, 0.35);
+}
+
+.pill-btn.pill-feature.active {
+  background: #38bdf8;
+  color: #000;
+  border-color: #38bdf8;
+  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.35);
+}
+
+.pill-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 0 4px;
+  flex-shrink: 0;
+}
+
+.radio-now-playing-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(29, 185, 84, 0.12);
+  border: 1px solid rgba(29, 185, 84, 0.3);
+  color: #4ade80;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  margin-top: 4px;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

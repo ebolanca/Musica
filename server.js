@@ -908,6 +908,102 @@ app.post('/api/jellyfin/refresh', (req, res) => {
     jReq.end();
 });
 
+
+// ==========================================================================
+// API: Ahora suena en la radio (Extracción de metadatos ICY en tiempo real)
+// ==========================================================================
+const httpsLib = require('https');
+const radioNowPlayingCache = new Map();
+
+function fetchIcyMetadata(streamUrl) {
+    return new Promise((resolve) => {
+        try {
+            const parsed = new URL(streamUrl);
+            const lib = parsed.protocol === 'https:' ? httpsLib : http;
+            const req = lib.get(streamUrl, {
+                headers: {
+                    'Icy-MetaData': '1',
+                    'User-Agent': 'VLC/3.0.18 LibVLC/3.0.18'
+                }
+            }, (res) => {
+                if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+                    return resolve(fetchIcyMetadata(res.headers.location));
+                }
+                const icyMetaInt = parseInt(res.headers['icy-metaint'], 10);
+                if (!icyMetaInt || isNaN(icyMetaInt)) {
+                    res.destroy();
+                    return resolve(null);
+                }
+                let byteCount = 0;
+                let metaLength = 0;
+                let metaBuffer = Buffer.alloc(0);
+                let readingMeta = false;
+
+                res.on('data', (chunk) => {
+                    if (!readingMeta) {
+                        byteCount += chunk.length;
+                        if (byteCount >= icyMetaInt) {
+                            readingMeta = true;
+                            const metaLenIndex = chunk.length - (byteCount - icyMetaInt);
+                            if (metaLenIndex < chunk.length) {
+                                metaLength = chunk[metaLenIndex] * 16;
+                                if (metaLength > 0) {
+                                    metaBuffer = Buffer.concat([metaBuffer, chunk.slice(metaLenIndex + 1)]);
+                                } else {
+                                    res.destroy();
+                                    return resolve(null);
+                                }
+                            }
+                        }
+                    } else {
+                        metaBuffer = Buffer.concat([metaBuffer, chunk]);
+                    }
+
+                    if (readingMeta && metaBuffer.length >= metaLength) {
+                        res.destroy();
+                        const metaStr = metaBuffer.slice(0, metaLength).toString('utf8');
+                        const match = metaStr.match(/StreamTitle='([^']*)'/i);
+                        const title = match ? match[1].trim() : null;
+                        return resolve(title);
+                    }
+                });
+
+                res.on('error', () => { res.destroy(); resolve(null); });
+                setTimeout(() => { res.destroy(); resolve(null); }, 3500);
+            });
+            req.on('error', () => resolve(null));
+            req.setTimeout(3500, () => { req.destroy(); resolve(null); });
+        } catch(e) {
+            resolve(null);
+        }
+    });
+}
+
+app.get('/api/radio/now-playing', async (req, res) => {
+    const { streamUrl, id } = req.query;
+    if (!streamUrl && !id) {
+        return res.status(400).json({ error: 'Falta streamUrl o id' });
+    }
+
+    const cacheKey = id || streamUrl;
+    const cached = radioNowPlayingCache.get(cacheKey);
+    if (cached && (Date.now() - cached.timestamp < 15000)) {
+        return res.json({ nowPlaying: cached.title, cached: true });
+    }
+
+    let title = null;
+    if (streamUrl) {
+        title = await fetchIcyMetadata(streamUrl);
+    }
+    
+    if (title) {
+        title = title.replace(/\s*-\s*$/, '').trim();
+    }
+
+    radioNowPlayingCache.set(cacheKey, { title, timestamp: Date.now() });
+    res.json({ nowPlaying: title, cached: false });
+});
+
 const PORT = 8087;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Servidor de Música corriendo en http://localhost:${PORT}`);

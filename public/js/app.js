@@ -377,6 +377,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (radioBarDial) radioBarDial.textContent = station.slogan;
         if (radioBarLogo) radioBarLogo.innerHTML = `<img src="${station.logoUrl}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">`;
 
+        
+        if (nowPlayingPollInterval) clearInterval(nowPlayingPollInterval);
+        nowPlayingPollInterval = setInterval(updateLiveRadioMetadata, 15000);
+        updateLiveRadioMetadata();
         renderRadioStations();
     }
 
@@ -433,13 +437,135 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function renderRadioStations() {
+    
+    let activeQuickPill = 'all';
+    const quickPillsBar = document.getElementById('quick-pills-bar');
+
+    function renderQuickPills() {
+        if (!quickPillsBar) return;
+        quickPillsBar.innerHTML = '';
+
+        if (currentTab === 'Radio') {
+            const radioPills = [
+                { id: 'all', label: 'Todas las emisoras', icon: 'fa-layer-group' },
+                { id: 'pop', label: 'Pop & Top Hits', icon: 'fa-fire' },
+                { id: 'dance', label: 'Dance & Electrónica', icon: 'fa-headphones' },
+                { id: 'rock', label: 'Rock', icon: 'fa-guitar' },
+                { id: 'spanish', label: 'Música en Español', icon: 'fa-earth-europe' }
+            ];
+
+            radioPills.forEach(p => {
+                const btn = document.createElement('button');
+                btn.className = activeQuickPill === p.id ? 'pill-btn active' : 'pill-btn';
+                btn.innerHTML = `<i class="fa-solid ${p.icon}"></i> ${p.label}`;
+                btn.addEventListener('click', () => {
+                    activeQuickPill = p.id;
+                    renderQuickPills();
+                    renderRadioStations();
+                });
+                quickPillsBar.appendChild(btn);
+            });
+            return;
+        }
+
+        // Playlist Pills (Decades & Features)
+        const playlistPills = [
+            { id: 'all', label: 'Todas', icon: 'fa-layer-group' },
+            { id: '60s-70s', label: '60s & 70s' },
+            { id: '80s', label: '80s' },
+            { id: '90s', label: '90s' },
+            { id: '2000s', label: '2000s' },
+            { id: '2010s', label: '2010s+' }
+        ];
+
+        playlistPills.forEach(p => {
+            const btn = document.createElement('button');
+            btn.className = activeQuickPill === p.id ? 'pill-btn active' : 'pill-btn';
+            btn.innerHTML = p.icon ? `<i class="fa-solid ${p.icon}"></i> ${p.label}` : p.label;
+            btn.addEventListener('click', () => {
+                activeQuickPill = p.id;
+                renderQuickPills();
+                renderSongs();
+            });
+            quickPillsBar.appendChild(btn);
+        });
+
+        const divider = document.createElement('div');
+        divider.className = 'pill-divider';
+        quickPillsBar.appendChild(divider);
+
+        const featurePills = [
+            { id: 'video', label: 'Con Videoclip', icon: 'fa-clapperboard' },
+            { id: 'analysis', label: 'Con Análisis', icon: 'fa-microscope' },
+            { id: 'lyrics', label: 'Con Letra', icon: 'fa-microphone' }
+        ];
+
+        featurePills.forEach(p => {
+            const btn = document.createElement('button');
+            btn.className = activeQuickPill === p.id ? 'pill-btn pill-feature active' : 'pill-btn pill-feature';
+            btn.innerHTML = `<i class="fa-solid ${p.icon}"></i> ${p.label}`;
+            btn.addEventListener('click', () => {
+                activeQuickPill = p.id;
+                renderQuickPills();
+                renderSongs();
+            });
+            quickPillsBar.appendChild(btn);
+        });
+    }
+
+    function matchQuickPill(track) {
+        if (activeQuickPill === 'all') return true;
+        if (activeQuickPill === 'video') return track.hasVideo === true;
+        if (activeQuickPill === 'analysis') return track.hasAnalysis === true;
+        if (activeQuickPill === 'lyrics') return track.hasLyrics === true;
+
+        let yr = null;
+        if (track.releaseYear) yr = parseInt(track.releaseYear, 10);
+        else if (track.releaseDate) {
+            const p = track.releaseDate.split('-');
+            yr = parseInt(p[0], 10);
+        }
+
+        if (!yr || isNaN(yr)) return false;
+
+        if (activeQuickPill === '60s-70s') return yr >= 1950 && yr < 1980;
+        if (activeQuickPill === '80s') return yr >= 1980 && yr < 1990;
+        if (activeQuickPill === '90s') return yr >= 1990 && yr < 2000;
+        if (activeQuickPill === '2000s') return yr >= 2000 && yr < 2010;
+        if (activeQuickPill === '2010s') return yr >= 2010;
+
+        return true;
+    }
+
+
+    let nowPlayingPollInterval = null;
+
+    async function updateLiveRadioMetadata() {
+        if (!currentPlayingRadio || !liveRadioAudio || liveRadioAudio.paused) return;
+        try {
+            const res = await fetch(`/api/radio/now-playing?id=${encodeURIComponent(currentPlayingRadio.id)}&streamUrl=${encodeURIComponent(currentPlayingRadio.streamUrl)}`);
+            if (res.ok) {
+                const data = await res.json();
+                if (data.nowPlaying && radioBarDial) {
+                    radioBarDial.innerHTML = `<i class="fa-solid fa-music" style="color:var(--spotify-green);"></i> ${data.nowPlaying}`;
+                }
+            }
+        } catch(e) {}
+    }
+
+function renderRadioStations() {
         currentSectionTitle.innerHTML = `<i class="fa-solid fa-tower-broadcast" style="color: var(--spotify-green);"></i> Radio en Directo - Emisoras de España`;
         
         let filtered = radioStations;
+        if (activeQuickPill !== 'all') {
+            if (activeQuickPill === 'pop') filtered = filtered.filter(st => st.genre.toLowerCase().includes('pop') || st.genre.toLowerCase().includes('hits'));
+            else if (activeQuickPill === 'dance') filtered = filtered.filter(st => st.genre.toLowerCase().includes('dance') || st.genre.toLowerCase().includes('edm') || st.genre.toLowerCase().includes('house') || st.genre.toLowerCase().includes('club'));
+            else if (activeQuickPill === 'rock') filtered = filtered.filter(st => st.genre.toLowerCase().includes('rock'));
+            else if (activeQuickPill === 'spanish') filtered = filtered.filter(st => st.genre.toLowerCase().includes('español') || st.genre.toLowerCase().includes('flamenco') || st.genre.toLowerCase().includes('català'));
+        }
         const q = (quickFilterQuery || searchQuery || '').trim().toLowerCase();
         if (q) {
-            filtered = radioStations.filter(st => 
+            filtered = filtered.filter(st => 
                 st.name.toLowerCase().includes(q) || 
                 st.genre.toLowerCase().includes(q) || 
                 st.slogan.toLowerCase().includes(q)
@@ -539,7 +665,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let filtered = tracksToFilter.filter(t => {
             const matchGlobal = isGlobalSearch ? checkMatch(t, searchQuery) : true;
             const matchQuick = checkMatch(t, quickFilterQuery);
-            return matchGlobal && matchQuick;
+            const matchPill = matchQuickPill(t);
+            return matchGlobal && matchQuick && matchPill;
         });
 
         filtered = sortTracks(filtered);
@@ -712,7 +839,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            currentTab = btn.getAttribute('data-tab'); quickFilterQuery = ''; if(quickFilterInput) quickFilterInput.value = '';
+            currentTab = btn.getAttribute('data-tab'); activeQuickPill = 'all'; quickFilterQuery = ''; if(quickFilterInput) quickFilterInput.value = ''; renderQuickPills();
             renderSongs();
         });
     });
