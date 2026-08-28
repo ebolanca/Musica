@@ -5,6 +5,38 @@ const path = require('path');
 const http = require('http');
 
 
+const LYRICS_DB_PATH = path.join(__dirname, 'data', 'lyrics_db.json');
+let cachedLyricsDb = {};
+function loadLyricsDb() {
+    if (fs.existsSync(LYRICS_DB_PATH)) {
+        try { cachedLyricsDb = JSON.parse(fs.readFileSync(LYRICS_DB_PATH, 'utf8')); } catch(e){}
+    }
+}
+loadLyricsDb();
+
+function findLyricsForTrack(artist, title) {
+    if (!cachedLyricsDb || Object.keys(cachedLyricsDb).length === 0) {
+        loadLyricsDb();
+    }
+    const cleanT = cleanTrackTitle(title);
+    if (cachedLyricsDb[`${artist} - ${title}`]) return cachedLyricsDb[`${artist} - ${title}`];
+    if (cachedLyricsDb[`${artist} - ${cleanT}`]) return cachedLyricsDb[`${artist} - ${cleanT}`];
+    if (cachedLyricsDb[cleanT]) return cachedLyricsDb[cleanT];
+    if (cachedLyricsDb[title]) return cachedLyricsDb[title];
+
+    const normTarget = `${artist}${cleanT}`.toLowerCase().replace(/[^a-z0-9]/g, '');
+    for (const [k, v] of Object.entries(cachedLyricsDb)) {
+        const normK = k.toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (normK === normTarget || (normK.length > 5 && (normK.includes(normTarget) || normTarget.includes(normK)))) {
+            return v;
+        }
+    }
+    return null;
+}
+
+
+
+
 const LYRICS_CACHE_FILE = path.join(__dirname, 'data', 'lyrics_cache.json');
 let lyricsTransCache = {};
 if (fs.existsSync(LYRICS_CACHE_FILE)) {
@@ -610,44 +642,61 @@ app.get('/api/track/detail', async (req, res) => {
         }
     }
 
-    let parsedLyrics = null;
+    let parsedLyrics = findLyricsForTrack(artist, title);
     const videoMap = scanVideoFiles();
     const cleanKey = `${artist} - ${title}`.toLowerCase().replace(/[^a-z0-9]/g, '');
     const videoInfo = videoMap.get(cleanKey);
-    if (videoInfo) {
-        if (videoInfo.srt) parsedLyrics = parseLyricsFile(path.join(OMEN_VIDEOS_DIR, videoInfo.srt));
-        else if (videoInfo.lrc) parsedLyrics = parseLyricsFile(path.join(OMEN_VIDEOS_DIR, videoInfo.lrc));
-    }
 
     if (!parsedLyrics) {
-        try {
-            const cleanT = cleanTrackTitle(title);
-            const lrcurl = `https://lrclib.net/api/get?artist_name=${encodeURIComponent(artist)}&track_name=${encodeURIComponent(cleanT)}`;
-            const lrcres = await fetch(lrcurl, { signal: AbortSignal.timeout(3000) });
-            if (lrcres.ok) {
-                const lrcdata = await lrcres.json();
-                if (lrcdata.syncedLyrics) {
-                    parsedLyrics = parseLrc(lrcdata.syncedLyrics);
-                } else if (lrcdata.plainLyrics) {
-                    parsedLyrics = lrcdata.plainLyrics.split('\n').filter(l => l.trim()).map(l => ({ text: l.trim() }));
-                }
-            } else {
-                const searchurl = `https://lrclib.net/api/search?q=${encodeURIComponent(artist + ' ' + cleanT)}`;
-                const sres = await fetch(searchurl, { signal: AbortSignal.timeout(3000) });
-                if (sres.ok) {
-                    const sdata = await sres.json();
-                    if (sdata && sdata.length > 0) {
-                        const item = sdata[0];
-                        if (item.syncedLyrics) {
-                            parsedLyrics = parseLrc(item.syncedLyrics);
-                        } else if (item.plainLyrics) {
-                            parsedLyrics = item.plainLyrics.split('\n').filter(l => l.trim()).map(l => ({ text: l.trim() }));
+        if (videoInfo) {
+            if (videoInfo.srt) parsedLyrics = parseLyricsFile(path.join(OMEN_VIDEOS_DIR, videoInfo.srt));
+            else if (videoInfo.lrc) parsedLyrics = parseLyricsFile(path.join(OMEN_VIDEOS_DIR, videoInfo.lrc));
+        }
+
+        if (!parsedLyrics) {
+            try {
+                const cleanT = cleanTrackTitle(title);
+                const lrcurl = `https://lrclib.net/api/get?artist_name=${encodeURIComponent(artist)}&track_name=${encodeURIComponent(cleanT)}`;
+                const lrcres = await fetch(lrcurl, { signal: AbortSignal.timeout(3000) });
+                if (lrcres.ok) {
+                    const lrcdata = await lrcres.json();
+                    if (lrcdata.syncedLyrics) {
+                        parsedLyrics = parseLrc(lrcdata.syncedLyrics);
+                    } else if (lrcdata.plainLyrics) {
+                        parsedLyrics = lrcdata.plainLyrics.split('\n').filter(l => l.trim()).map(l => ({ text: l.trim() }));
+                    }
+                } else {
+                    const searchurl = `https://lrclib.net/api/search?q=${encodeURIComponent(artist + ' ' + cleanT)}`;
+                    const sres = await fetch(searchurl, { signal: AbortSignal.timeout(3000) });
+                    if (sres.ok) {
+                        const sdata = await sres.json();
+                        if (sdata && sdata.length > 0) {
+                            const item = sdata[0];
+                            if (item.syncedLyrics) {
+                                parsedLyrics = parseLrc(item.syncedLyrics);
+                            } else if (item.plainLyrics) {
+                                parsedLyrics = item.plainLyrics.split('\n').filter(l => l.trim()).map(l => ({ text: l.trim() }));
+                            }
                         }
                     }
                 }
+            } catch(e) {
+                console.error('Error buscando letra en LRCLIB:', e.message);
             }
-        } catch(e) {
-            console.error('Error buscando letra en LRCLIB:', e.message);
+        }
+
+        // Si se acaba de obtener, traducir en paralelo y guardar permanentemente en lyrics_db.json
+        if (parsedLyrics && parsedLyrics.length > 0) {
+            try {
+                parsedLyrics = await translateLyricsBatch(parsedLyrics);
+                const cleanT = cleanTrackTitle(title);
+                cachedLyricsDb[`${artist} - ${title}`] = parsedLyrics;
+                cachedLyricsDb[`${artist} - ${cleanT}`] = parsedLyrics;
+                cachedLyricsDb[cleanT] = parsedLyrics;
+                try {
+                    fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
+                } catch(e){}
+            } catch(e) {}
         }
     }
 
