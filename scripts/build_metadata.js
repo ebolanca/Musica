@@ -31,6 +31,8 @@ function cleanTrackTitle(rawTitle) {
     return clean.replace(/\s+/g, ' ').trim();
 }
 
+const isCompilation = (title) => /greatest hits|best of|essential|compilation|singles|collection|top hits|remix|recopilatorio|exitos|various artists|hit parade|los nº1|remember/i.test(title);
+
 const SPOTDL_CACHE_PATH = "\\\\100.95.217.45\\omen D\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json";
 let playlistsData = {};
 if (fs.existsSync(SPOTDL_CACHE_PATH)) {
@@ -46,7 +48,7 @@ if (fs.existsSync(SPOTDL_CACHE_PATH)) {
 }
 
 async function run() {
-    console.log("Generando portadas HD Deezer/iTunes y álbumes...");
+    console.log("Iniciando escaneo de álbumes de estudio originales...");
     let count = 0;
     for (const [listName, tracks] of Object.entries(playlistsData)) {
         for (const item of tracks) {
@@ -62,7 +64,9 @@ async function run() {
                 const data = await res.json();
                 
                 if (data.data && data.data.length > 0) {
-                    const track = data.data[0];
+                    let track = data.data.find(t => t.album && t.album.title && !isCompilation(t.album.title));
+                    if (!track) track = data.data[0];
+
                     const coverUrl = track.album.cover_xl || track.album.cover_big;
                     const durationSec = track.duration || 210;
                     const m = Math.floor(durationSec / 60);
@@ -81,7 +85,7 @@ async function run() {
                     metadataCache[keyRaw] = metaObj;
                     metadataCache[keyClean] = metaObj;
                     count++;
-                    console.log(`[${count}] OK: ${artist} - ${displayTitle} -> Álbum: ${track.album.title}`);
+                    console.log(`[${count}] Álbum Estudio OK: ${artist} - ${displayTitle} -> ${track.album.title}`);
                 }
             } catch (e) {
                 console.error(`Error para ${keyClean}:`, e.message);
@@ -90,7 +94,7 @@ async function run() {
         }
     }
     fs.writeFileSync(METADATA_CACHE_FILE, JSON.stringify(metadataCache, null, 2), 'utf8');
-    console.log(`¡Portadas y Álbumes guardados! Total: ${Object.keys(metadataCache).length}`);
+    console.log(`¡Portadas y Álbumes de estudio guardados con éxito! Total: ${Object.keys(metadataCache).length}`);
 }
 
 run();

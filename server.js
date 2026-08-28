@@ -1,3 +1,12 @@
+let metadataCache = {};
+function loadMetadataCache() {
+    const METADATA_CACHE_FILE = path.join(__dirname, 'data', 'metadata_cache.json');
+    if (fs.existsSync(METADATA_CACHE_FILE)) {
+        try { metadataCache = JSON.parse(fs.readFileSync(METADATA_CACHE_FILE, 'utf8')); } catch(e){}
+    }
+}
+loadMetadataCache();
+
 function cleanTrackTitle(rawTitle) {
     if (!rawTitle) return '';
     let clean = rawTitle
@@ -153,11 +162,7 @@ app.get('/api/playlists', (req, res) => {
                 }
             }
 
-            const METADATA_CACHE_FILE = require('path').join(__dirname, 'data', 'metadata_cache.json');
-            let metadataCache = {};
-            if (fs.existsSync(METADATA_CACHE_FILE)) {
-                try { metadataCache = JSON.parse(fs.readFileSync(METADATA_CACHE_FILE, 'utf8')); } catch(e){}
-            }
+
             const cleanTitle = cleanTrackTitle(title);
             const metaKey = `${artist} - ${title}`.toLowerCase();
             const meta = metadataCache[metaKey] || metadataCache[`${artist} - ${cleanTitle}`.toLowerCase()] || {};
