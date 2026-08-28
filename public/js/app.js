@@ -342,51 +342,117 @@ document.addEventListener('DOMContentLoaded', () => {
         tabContainer.innerHTML = `<div class="lyrics-container" style="max-height: 480px; overflow-y: auto; padding: 10px;">${linesHtml}</div>`;
     }
 
+    function escapeHtml(text) {
+        if (!text) return '';
+        return String(text)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+    }
+
+    function renderPointsList(points) {
+        if (!Array.isArray(points) || points.length === 0) return '';
+        let out = '<div class="analysis-points-list" style="display: flex; flex-direction: column; gap: 12px; margin-top: 14px;">';
+        for (const p of points) {
+            if (!p.name && !p.desc && !p.quote && !p.analysis) continue;
+            out += `
+                <div class="analysis-point-card" style="background: rgba(255,255,255,0.03); border-left: 3px solid var(--accent-amber); padding: 14px 16px; border-radius: 8px;">
+                    ${p.name ? `<div style="font-weight: 700; color: #f8fafc; margin-bottom: 6px; font-size: 0.98rem;"><i class="fa-solid fa-angle-right" style="color: var(--accent-amber); font-size: 0.85rem; margin-right: 6px;"></i>${escapeHtml(p.name)}</div>` : ''}
+                    ${p.quote ? `<div style="font-style: italic; color: #93c5fd; margin-bottom: 8px; font-size: 0.92rem; background: rgba(0,0,0,0.25); padding: 8px 12px; border-radius: 6px;">"${escapeHtml(p.quote)}"</div>` : ''}
+                    ${p.vocab ? `<div style="color: #fbbf24; font-size: 0.88rem; margin-bottom: 6px; font-weight: 500;">💡 ${escapeHtml(p.vocab)}</div>` : ''}
+                    ${p.analysis ? `<div style="color: #cbd5e1; font-size: 0.93rem; line-height: 1.6;">${escapeHtml(p.analysis)}</div>` : ''}
+                    ${p.desc ? `<div style="color: #cbd5e1; font-size: 0.93rem; line-height: 1.6;">${escapeHtml(p.desc)}</div>` : ''}
+                </div>
+            `;
+        }
+        out += '</div>';
+        return out;
+    }
+
     function populateAnalysisTab(detail) {
         const tabContainer = document.getElementById('tab-microscope');
         if (!detail.analysis) {
             tabContainer.innerHTML = `
                 <div style="text-align: center; padding: 40px; color: var(--text-muted);">
                     <i class="fa-solid fa-microscope" style="font-size: 2.5rem; margin-bottom: 12px; opacity: 0.4;"></i>
-                    <p>Cargando análisis sónico de 5 puntos...</p>
+                    <p>Análisis sónico no disponible para este tema.</p>
                 </div>
             `;
             return;
         }
 
         const a = detail.analysis;
-        tabContainer.innerHTML = `
-            <div class="analysis-box" style="padding: 10px;">
-                <div style="background: rgba(16,185,129,0.1); border-left: 4px solid var(--spotify-green); padding: 14px; border-radius: 8px; margin-bottom: 20px;">
-                    <p style="margin: 0; color: #e2e8f0; font-size: 0.95rem; line-height: 1.5;">${a.synopsis || ''}</p>
-                </div>
+        let html = '<div class="analysis-box" style="padding: 10px;">';
 
-                <div class="analysis-section" style="margin-bottom: 20px;">
-                    <h3 style="color: var(--accent-amber); font-size: 1.1rem; margin-bottom: 8px;"><i class="fa-solid fa-drum"></i> 1. La Anatomía Musical</h3>
-                    <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.5;">${a.section1_text || ''}</p>
+        // 1. Sinopsis / Contexto General
+        if (a.synopsis) {
+            html += `
+                <div class="analysis-synopsis-card" style="background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(6,78,59,0.2)); border-left: 4px solid var(--spotify-green); padding: 18px 22px; border-radius: 12px; margin-bottom: 24px;">
+                    <p style="margin: 0; color: #f1f5f9; font-size: 1.02rem; line-height: 1.65;">${escapeHtml(a.synopsis)}</p>
                 </div>
+            `;
+        }
 
-                <div class="analysis-section" style="margin-bottom: 20px;">
-                    <h3 style="color: var(--accent-amber); font-size: 1.1rem; margin-bottom: 8px;"><i class="fa-solid fa-quote-left"></i> 2. El Análisis Lírico (Significado & Desglose)</h3>
-                    <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.5;">${a.section2_text || ''}</p>
+        // 2. Historia / Origen (si existe)
+        if (a.origin_story) {
+            html += `
+                <div class="analysis-section" style="margin-bottom: 24px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-glass); border-radius: 12px; padding: 22px;">
+                    <h3 style="color: var(--accent-amber); font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                        <i class="fa-solid fa-book-open"></i> El Origen e Intrahistoria
+                    </h3>
+                    <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.65; white-space: pre-line; margin: 0;">${escapeHtml(a.origin_story)}</p>
                 </div>
+            `;
+        }
 
-                <div class="analysis-section" style="margin-bottom: 20px;">
-                    <h3 style="color: var(--accent-amber); font-size: 1.1rem; margin-bottom: 8px;"><i class="fa-solid fa-clapperboard"></i> 3. El Videoclip & Estética</h3>
-                    <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.5;">${a.section3_text || ''}</p>
-                </div>
+        // 3. Secciones dinámicas y modulares (SÓLO se renderizan las que tienen contenido)
+        if (Array.isArray(a.sections) && a.sections.length > 0) {
+            for (const sec of a.sections) {
+                const hasText = sec.text && sec.text.trim();
+                const hasPoints = Array.isArray(sec.points) && sec.points.length > 0;
+                if (!hasText && !hasPoints) continue; // Omitir secciones vacías
 
-                <div class="analysis-section" style="margin-bottom: 20px;">
-                    <h3 style="color: var(--accent-amber); font-size: 1.1rem; margin-bottom: 8px;"><i class="fa-solid fa-trophy"></i> 4. El Impacto Cultural & Legado</h3>
-                    <p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.5;">${a.section4_text || ''}</p>
-                </div>
+                const icon = sec.icon || 'fa-compact-disc';
+                html += `
+                    <div class="analysis-section" style="margin-bottom: 24px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-glass); border-radius: 12px; padding: 22px;">
+                        <h3 style="color: var(--accent-amber); font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fa-solid ${icon}"></i> ${escapeHtml(sec.title)}
+                        </h3>
+                        ${hasText ? `<p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.65; white-space: pre-line; margin-bottom: 12px;">${escapeHtml(sec.text)}</p>` : ''}
+                        ${renderPointsList(sec.points)}
+                    </div>
+                `;
+            }
+        } else {
+            // Retrocompatibilidad con formato antiguo (omitiendo automáticamente los campos vacíos)
+            const legacySections = [
+                { title: a.section1_title || '1. La Anatomía Musical', text: a.section1_text, points: a.section1_points, icon: 'fa-drum' },
+                { title: a.section2_title || '2. El Análisis Lírico', text: a.section2_text, points: a.section2_points, icon: 'fa-quote-left' },
+                { title: a.section3_title || '3. El Videoclip & Estética', text: a.section3_text, points: a.section3_points, icon: 'fa-clapperboard' },
+                { title: a.section4_title || '4. El Impacto Cultural & Legado', text: a.section4_text, points: a.section4_points, icon: 'fa-trophy' },
+                { title: a.section5_title || '5. Curiosidades & Anecdotario', text: a.section5_text, points: a.section5_points, icon: 'fa-lightbulb' }
+            ];
 
-                <div class="analysis-section" style="margin-bottom: 20px; background: rgba(245,158,11,0.08); border-left: 4px solid var(--accent-amber); padding: 14px; border-radius: 8px;">
-                    <h3 style="color: var(--accent-amber); font-size: 1.1rem; margin-bottom: 8px;"><i class="fa-solid fa-lightbulb"></i> 5. Curiosidades & Anecdotario</h3>
-                    <p style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.5; margin: 0;">${a.section5_text || ''}</p>
-                </div>
-            </div>
-        `;
+            for (const sec of legacySections) {
+                const hasText = sec.text && sec.text.trim();
+                const hasPoints = Array.isArray(sec.points) && sec.points.length > 0;
+                if (!hasText && !hasPoints) continue; // Si no hay nada que decir, NO se muestra
+
+                html += `
+                    <div class="analysis-section" style="margin-bottom: 24px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-glass); border-radius: 12px; padding: 22px;">
+                        <h3 style="color: var(--accent-amber); font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fa-solid ${sec.icon}"></i> ${escapeHtml(sec.title)}
+                        </h3>
+                        ${hasText ? `<p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.65; white-space: pre-line; margin-bottom: 12px;">${escapeHtml(sec.text)}</p>` : ''}
+                        ${renderPointsList(sec.points)}
+                    </div>
+                `;
+            }
+        }
+
+        html += '</div>';
+        tabContainer.innerHTML = html;
     }
 
     // Cerrar Modal

@@ -256,7 +256,7 @@ app.get('/api/playlists', (req, res) => {
                 videoPath: videoInfo && videoInfo.mp4 ? `/media-videos/${videoInfo.mp4.replace(/\\/g, '/')}` : null,
                 srtPath: videoInfo && videoInfo.srt ? `/media-videos/${videoInfo.srt.replace(/\\/g, '/')}` : null,
                 lrcPath: videoInfo && videoInfo.lrc ? `/media-videos/${videoInfo.lrc.replace(/\\/g, '/')}` : null,
-                hasAnalysis: !!cachedAnalyses[`${artist} - ${title}`]
+                hasAnalysis: !!findAnalysisForTrack(artist, title)
             };
         });
     }
@@ -308,48 +308,84 @@ function parseLyricsFile(filePath) {
     return result.length > 0 ? result : [{ time: '00:00', text: content }];
 }
 
-// API: Obtener detalle completo de una canción (Créditos, Letras, Análisis 4 Puntos)
+function findAnalysisForTrack(artist, title) {
+    if (!cachedAnalyses || Object.keys(cachedAnalyses).length === 0) {
+        loadAnalysesDb();
+    }
+    const cleanT = cleanTrackTitle(title);
+    const key1 = `${artist} - ${title}`;
+    if (cachedAnalyses[key1]) return cachedAnalyses[key1];
+
+    const key2 = `${artist} - ${cleanT}`;
+    if (cachedAnalyses[key2]) return cachedAnalyses[key2];
+
+    const key3 = title;
+    if (cachedAnalyses[key3]) return cachedAnalyses[key3];
+
+    const key4 = cleanT;
+    if (cachedAnalyses[key4]) return cachedAnalyses[key4];
+
+    // Normalized search
+    const normTarget = `${artist}${cleanT}`.toLowerCase().replace(/[^a-z0-9]/g, '');
+    for (const [k, v] of Object.entries(cachedAnalyses)) {
+        const normK = k.toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (normK === normTarget || (normK.length > 5 && (normK.includes(normTarget) || normTarget.includes(normK)))) {
+            return v;
+        }
+    }
+
+    // Match by title alone
+    const normTitle = cleanT.toLowerCase().replace(/[^a-z0-9]/g, '');
+    if (normTitle.length > 3) {
+        for (const [k, v] of Object.entries(cachedAnalyses)) {
+            const normK = k.toLowerCase().replace(/[^a-z0-9]/g, '');
+            if (normK.includes(normTitle) || normTitle.includes(normK)) {
+                return v;
+            }
+        }
+    }
+
+    return null;
+}
+
+function loadAnalysesDb() {
+    if (fs.existsSync(ANALYSES_DB_PATH)) {
+        try {
+            cachedAnalyses = JSON.parse(fs.readFileSync(ANALYSES_DB_PATH, 'utf8'));
+        } catch (e) {
+            console.error("Error cargando analyses_db.json:", e.message);
+        }
+    }
+}
+
+// API: Obtener detalle completo de una canción (Créditos, Letras, Análisis Sónico Profundo)
 app.get('/api/track/detail', async (req, res) => {
     const { artist, title } = req.query;
     if (!artist || !title) {
         return res.status(400).json({ error: 'Se requieren los parámetros artist y title' });
     }
 
-    const key = `${artist} - ${title}`;
-    let analysis = cachedAnalyses[key];
-
-        if (analysis && !analysis.section5_text) {
-        const cleanT = cleanTrackTitle(title);
-        analysis.section5_text = `💡 **Curiosidades & Hitos**: "${cleanT}" acumula múltiples anécdotas de producción. Su beat y arreglos de grabación marcaron un hito en los estudios de sonido, acumulando reconocimientos clave e inspirando la cultura pop contemporánea.`;
-    }
-
-    if (!analysis) {
-        const cleanKey = key.toLowerCase().replace(/[^a-z0-9]/g, '');
-        for (const [k, v] of Object.entries(cachedAnalyses)) {
-            if (k.toLowerCase().replace(/[^a-z0-9]/g, '') === cleanKey) {
-                analysis = v;
-                break;
-            }
-        }
-    }
+    let analysis = findAnalysisForTrack(artist, title);
 
     if (!analysis) {
         const cleanT = cleanTrackTitle(title);
         analysis = {
             title: cleanT,
             artist: artist,
-            synopsis: `Análisis sónico, lírico e historia de "${cleanT}", uno de los temas más destacados en la trayectoria de ${artist}.`,
-            section1_text: `La producción musical de "${cleanT}" destaca por una base rítmica sólida, arreglos de guitarra y sintetizadores envolventes y una estructura sonora sumamente adictiva.`,
-            section2_text: `Líricamente, "${cleanT}" aborda temáticas emotivas y pasajes autobiográficos que conectan de forma directa e inmediata con el público.`,
-            section3_text: `El apartado visual de "${cleanT}" destaca por una cuidada dirección de arte, un tratamiento del color cinematográfico y una icónica presencia en televisión.`,
-            section4_text: `Con un éxito rotundo en listas de radio y plataformas digitales, "${cleanT}" se consolida como un himno atemporal dentro del catálogo de ${artist}.`,
-            section5_text: `💡 **Curiosidades & Hitos**: "${cleanT}" acumula múltiples anécdotas de producción. Su beat y arreglos de grabación marcaron un hito en los estudios, recibiendo distinciones destacadas e inspirando a numerosos artistas posteriores.`
+            synopsis: `Análisis sónico y contexto de "${cleanT}", tema destacado dentro del catálogo de ${artist}.`,
+            sections: [
+                {
+                    title: "La Anatomía Musical & Producción",
+                    icon: "fa-drum",
+                    text: `La producción de "${cleanT}" destaca por una base instrumental sólida, arreglos envolventes y una estructura que define la identidad sonora de ${artist}.`
+                }
+            ]
         };
     }
 
     let parsedLyrics = null;
     const videoMap = scanVideoFiles();
-    const cleanKey = key.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const cleanKey = `${artist} - ${title}`.toLowerCase().replace(/[^a-z0-9]/g, '');
     const videoInfo = videoMap.get(cleanKey);
     if (videoInfo) {
         if (videoInfo.srt) parsedLyrics = parseLyricsFile(path.join(OMEN_VIDEOS_DIR, videoInfo.srt));
