@@ -616,6 +616,17 @@ app.get('/api/playlists', (req, res) => {
                 }
             }
 
+            // Strict guarantee for Música viejuna: prior studio release over modern remasters
+            if (listName === 'Música viejuna') {
+                const yr = parseInt(releaseYear, 10) || 0;
+                if (yr > 1999) {
+                    if (analysis && analysis.year && parseInt(analysis.year, 10) <= 1999) {
+                        releaseYear = analysis.year;
+                        releaseDate = `${analysis.year}-01-01`;
+                    }
+                }
+            }
+
             // Ensure releaseDate year matches releaseYear
             if (releaseDate && releaseYear) {
                 const dYear = releaseDate.split('-')[0];
