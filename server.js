@@ -14,45 +14,58 @@ if (fs.existsSync(LYRICS_CACHE_FILE)) {
 async function translateLyricsBatch(lines) {
     if (!lines || lines.length === 0) return lines;
     
-    // Check if song is already largely in Spanish
+    // Check if song is already in Spanish
     const fullSample = lines.slice(0, 15).map(l => l.text).join(' ').toLowerCase();
-    const spanishWords = fullSample.match(/\b(que|para|estoy|corazón|noche|nada|amor|vida|todo|cuando|tiempo|quiero|tengo|hacer|siento)\b/gi) || [];
-    if (spanishWords.length >= 3) {
+    const spanishWords = fullSample.match(/\b(que|para|estoy|corazón|noche|nada|amor|vida|todo|cuando|tiempo|quiero|tengo|hacer|siento|solo)\b/gi) || [];
+    if (spanishWords.length >= 4) {
         return lines;
     }
 
-    let changed = false;
-    for (let item of lines) {
-        const txt = (item.text || '').trim();
-        if (!txt || txt.length < 2) continue;
-        
-        if (lyricsTransCache[txt]) {
-            item.translation = lyricsTransCache[txt];
-        } else {
-            try {
-                const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(txt)}&langpair=en|es`;
-                const res = await fetch(url, { signal: AbortSignal.timeout(2000) });
-                if (res.ok) {
-                    const data = await res.json();
-                    const trans = data.responseData?.translatedText;
-                    if (trans && !trans.startsWith("MYMEMORY WARNING")) {
-                        item.translation = trans;
-                        lyricsTransCache[txt] = trans;
-                        changed = true;
+    // Identify unique untranslated texts
+    const untranslated = Array.from(new Set(
+        lines.map(l => (l.text || '').trim()).filter(t => t.length > 1 && !lyricsTransCache[t])
+    ));
+
+    if (untranslated.length > 0) {
+        let changed = false;
+        const batchSize = 10;
+        for (let i = 0; i < untranslated.length; i += batchSize) {
+            const chunk = untranslated.slice(i, i + batchSize);
+            await Promise.allSettled(chunk.map(async (txt) => {
+                try {
+                    const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(txt)}&langpair=en|es`;
+                    const res = await fetch(url, { signal: AbortSignal.timeout(2000) });
+                    if (res.ok) {
+                        const data = await res.json();
+                        const trans = data.responseData?.translatedText;
+                        if (trans && !trans.startsWith("MYMEMORY WARNING")) {
+                            lyricsTransCache[txt] = trans;
+                            changed = true;
+                        }
                     }
-                }
-            } catch(e) {}
+                } catch(e) {}
+            }));
+        }
+
+        if (changed) {
+            try {
+                fs.writeFileSync(LYRICS_CACHE_FILE, JSON.stringify(lyricsTransCache, null, 2), 'utf8');
+            } catch(e){}
         }
     }
 
-    if (changed) {
-        try {
-            fs.writeFileSync(LYRICS_CACHE_FILE, JSON.stringify(lyricsTransCache, null, 2), 'utf8');
-        } catch(e){}
+    // Attach translations to all lines
+    for (let item of lines) {
+        const txt = (item.text || '').trim();
+        if (lyricsTransCache[txt]) {
+            item.translation = lyricsTransCache[txt];
+        }
     }
 
     return lines;
 }
+
+
 
 
 async function fetchWikiSummary(artist, title) {
