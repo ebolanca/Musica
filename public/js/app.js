@@ -1,3 +1,37 @@
+
+    function formatBriefDate(releaseDate, releaseYear) {
+        const months = ['Ene.', 'Feb.', 'Mar.', 'Abr.', 'May.', 'Jun.', 'Jul.', 'Ago.', 'Sep.', 'Oct.', 'Nov.', 'Dic.'];
+        if (releaseDate && typeof releaseDate === 'string') {
+            const parts = releaseDate.split('-');
+            if (parts.length >= 2) {
+                const year = parts[0];
+                const monthNum = parseInt(parts[1], 10);
+                if (monthNum >= 1 && monthNum <= 12) {
+                    return `${months[monthNum - 1]} ${year}`;
+                }
+            }
+        }
+        if (releaseYear && releaseYear !== '2000') return `${releaseYear}`;
+        return releaseYear || '2000';
+    }
+
+    function switchModalTab(targetTabId) {
+        document.querySelectorAll('.modal-nav-tab').forEach(b => {
+            if (b.getAttribute('data-modal-tab') === targetTabId) {
+                b.classList.add('active');
+            } else {
+                b.classList.remove('active');
+            }
+        });
+        document.querySelectorAll('.modal-tab-content').forEach(c => {
+            if (c.id === targetTabId) {
+                c.classList.add('active');
+            } else {
+                c.classList.remove('active');
+            }
+        });
+    }
+
 document.addEventListener('DOMContentLoaded', () => {
     let allPlaylists = {};
     let currentTab = 'Música viejuna';
@@ -121,9 +155,11 @@ document.addEventListener('DOMContentLoaded', () => {
             card.className = 'song-card';
 
             const coverHtml = song.coverUrl 
-                ? `<img src="${song.coverUrl}" alt="${song.album || song.title}" class="cover-img"  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                ? `<img src="${song.coverUrl}" alt="${song.album || song.title}" class="cover-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                    <i class="fa-solid fa-record-vinyl music-icon" style="display:none;"></i>`
                 : `<i class="fa-solid fa-record-vinyl music-icon"></i>`;
+
+            const briefDate = formatBriefDate(song.releaseDate, song.releaseYear);
 
             if (viewMode === 'grid') {
                 card.innerHTML = `
@@ -136,16 +172,33 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                     <div class="song-info">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
-                            <div class="song-title" title="${song.title}">${song.title}</div>
-                            <span class="badge-duration" title="Duración">⏱️ ${song.durationFmt || '03:30'}</span>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 4px;">
+                            <div style="flex: 1; min-width: 0;">
+                                <div class="song-title" title="${song.title}">${song.title}</div>
+                                <div class="song-artist" title="${song.artist}">${song.artist}</div>
+                            </div>
+                            <div class="meta-pills-col">
+                                <span class="badge-pill badge-duration" title="Duración">
+                                    <i class="fa-regular fa-clock"></i> ${song.durationFmt || '03:30'}
+                                </span>
+                                <span class="badge-pill badge-date" title="Fecha de lanzamiento: ${song.releaseDate || song.releaseYear || ''}">
+                                    <i class="fa-regular fa-calendar"></i> ${briefDate}
+                                </span>
+                            </div>
                         </div>
-                        <div class="song-artist" title="${song.artist}">${song.artist}</div>
-                        <div class="song-album-name" title="Álbum: ${song.album || 'Desconocido'}">${song.album || 'Álbum Desconocido'} (${song.releaseYear || '2000'})</div>
-                        <div class="card-badges" style="margin-top: 8px;">
-                            ${song.hasVideo ? '<span class="badge badge-video"><i class="fa-solid fa-video"></i> Video</span>' : ''}
-                            ${song.hasLyrics ? '<span class="badge badge-lyrics"><i class="fa-solid fa-file-lines"></i> Subtítulo</span>' : ''}
-                            ${song.hasAnalysis ? '<span class="badge badge-analysis"><i class="fa-solid fa-microscope"></i> 4 Puntos</span>' : ''}
+                        <div class="song-album-name" title="Álbum: ${song.album || 'Desconocido'}">${song.album || 'Álbum Desconocido'}</div>
+                        <div class="card-action-icons">
+                            <button class="btn-card-action btn-act-credits" title="Ver Créditos" data-action="credits">
+                                <i class="fa-solid fa-circle-info"></i>
+                            </button>
+                            ${song.hasLyrics ? `
+                            <button class="btn-card-action btn-act-lyrics" title="Ver Letra de la canción" data-action="lyrics">
+                                <i class="fa-solid fa-microphone"></i>
+                            </button>` : ''}
+                            ${song.hasAnalysis ? `
+                            <button class="btn-card-action btn-act-analysis" title="Ver Análisis Sónico" data-action="analysis">
+                                <i class="fa-solid fa-microscope"></i>
+                            </button>` : ''}
                         </div>
                     </div>
                 `;
@@ -164,21 +217,46 @@ document.addEventListener('DOMContentLoaded', () => {
                             <i class="fa-solid fa-compact-disc"></i> ${song.album || 'Álbum Desconocido'}
                         </div>
                         <div class="song-year-info">
-                            📅 ${song.releaseYear || '2000'}
+                            <span class="badge-pill badge-date"><i class="fa-regular fa-calendar"></i> ${briefDate}</span>
                         </div>
-                        <div class="song-year-info" style="width: 80px;">
-                            ⏱️ ${song.durationFmt || '03:30'}
+                        <div class="song-year-info" style="width: 85px;">
+                            <span class="badge-pill badge-duration"><i class="fa-regular fa-clock"></i> ${song.durationFmt || '03:30'}</span>
                         </div>
-                        <div class="song-badges-list">
-                            ${song.hasVideo ? '<span class="badge badge-video"><i class="fa-solid fa-video"></i> Video</span>' : ''}
-                            ${song.hasLyrics ? '<span class="badge badge-lyrics"><i class="fa-solid fa-file-lines"></i> Subtítulo</span>' : ''}
-                            ${song.hasAnalysis ? '<span class="badge badge-analysis"><i class="fa-solid fa-microscope"></i> 4 Puntos</span>' : ''}
+                        <div class="card-action-icons" style="margin-top: 0; padding-top: 0;">
+                            <button class="btn-card-action btn-act-credits" title="Ver Créditos" data-action="credits">
+                                <i class="fa-solid fa-circle-info"></i>
+                            </button>
+                            ${song.hasLyrics ? `
+                            <button class="btn-card-action btn-act-lyrics" title="Ver Letra" data-action="lyrics">
+                                <i class="fa-solid fa-microphone"></i>
+                            </button>` : ''}
+                            ${song.hasAnalysis ? `
+                            <button class="btn-card-action btn-act-analysis" title="Ver Análisis Sónico" data-action="analysis">
+                                <i class="fa-solid fa-microscope"></i>
+                            </button>` : ''}
                         </div>
                     </div>
                 `;
             }
 
-            card.addEventListener('click', () => openSongModal(song));
+            card.addEventListener('click', (e) => {
+                const actionBtn = e.target.closest('.btn-card-action');
+                if (actionBtn) {
+                    e.stopPropagation();
+                    const action = actionBtn.getAttribute('data-action');
+                    if (action === 'analysis') {
+                        openSongModal(song, 'tab-microscope');
+                    } else if (action === 'lyrics') {
+                        openSongModal(song, 'tab-lyrics');
+                    } else if (action === 'credits') {
+                        openSongModal(song, 'tab-credits');
+                    } else {
+                        openSongModal(song, 'tab-credits');
+                    }
+                    return;
+                }
+                openSongModal(song, 'tab-credits');
+            });
             songsGrid.appendChild(card);
         });
     }
@@ -247,14 +325,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Abrir Modal con detalle de canción
-    function openSongModal(song) {
+    function openSongModal(song, initialTab = 'tab-credits') {
         document.getElementById('modal-title-text').textContent = song.title;
         document.getElementById('modal-artist-text').textContent = song.artist;
 
-        document.querySelectorAll('.modal-nav-tab').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.modal-tab-content').forEach(c => c.classList.remove('active'));
-        document.querySelector('[data-modal-tab="tab-credits"]').classList.add('active');
-        document.getElementById('tab-credits').classList.add('active');
+        switchModalTab(initialTab);
 
         // Mostrar de inmediato los créditos con los datos que ya tenemos del catálogo
         populateCreditsTab({}, song);
