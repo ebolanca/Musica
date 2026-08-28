@@ -13,6 +13,15 @@ if (newVersion) {
     pkg.version = parts.join('.');
 }
 
-console.log(`Versión actualizada: v${pkg.version}`);
 fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
-console.log('¡Sincronización completada!');
+
+// Actualizar versión en public/index.html
+const htmlPath = path.join(__dirname, '../public/index.html');
+if (fs.existsSync(htmlPath)) {
+    let html = fs.readFileSync(htmlPath, 'utf8');
+    html = html.replace(/Plataforma de Videoclips & Análisis Sónico v\d+\.\d+\.\d+/g, `Plataforma de Videoclips & Análisis Sónico v${pkg.version}`);
+    fs.writeFileSync(htmlPath, html, 'utf8');
+}
+
+console.log(`Versión actualizada: v${pkg.version}`);
+console.log('¡Sincronización completada en package.json y public/index.html!');
