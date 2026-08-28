@@ -18,7 +18,7 @@
             </div>
             <div class="logo-title">
                 <h1>Música</h1>
-                <p>Plataforma de Videoclips & Análisis Sónico v1.4.24</p>
+                <p>Plataforma de Videoclips & Análisis Sónico v1.4.25</p>
             </div>
         </div>
 
@@ -56,6 +56,10 @@
             <button class="tab-button" data-tab="Música latina">
                 <i class="fa-solid fa-fire"></i> Música latina
                 <span class="tab-badge" id="badge-latina">0</span>
+            </button>
+            <button class="tab-button" data-tab="Radio">
+                <i class="fa-solid fa-tower-broadcast"></i> Radio
+                <span class="tab-badge" id="badge-radio">16</span>
             </button>
         </nav>
 
@@ -190,5 +194,44 @@
     </div>
 
     <script src="js/app.js"></script>
+
+    <!-- Persistent Live Radio Player Bar -->
+    <div id="radio-player-bar" class="radio-player-bar" style="display: none;">
+        <div class="radio-bar-content">
+            <div class="radio-bar-station-info">
+                <div class="radio-bar-logo" id="radio-bar-logo">
+                    <i class="fa-solid fa-tower-broadcast"></i>
+                </div>
+                <div class="radio-bar-text">
+                    <div class="radio-bar-title" id="radio-bar-name">Hit FM</div>
+                    <div class="radio-bar-slogan" id="radio-bar-dial">Nº 1 en Éxitos Internacionales</div>
+                </div>
+                <div class="live-pill-badge">
+                    <span class="live-dot"></span> EN DIRECTO
+                </div>
+            </div>
+
+            <div class="radio-bar-center">
+                <button id="radio-btn-play" class="btn-radio-bar-play" title="Pausar / Reanudar">
+                    <i class="fa-solid fa-pause"></i>
+                </button>
+                <div class="audio-waves-anim playing" id="radio-waves">
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+
+            <div class="radio-bar-volume">
+                <button id="radio-btn-mute" class="btn-radio-volume-icon" title="Silenciar">
+                    <i class="fa-solid fa-volume-high"></i>
+                </button>
+                <input type="range" id="radio-volume-slider" min="0" max="1" step="0.05" value="0.85" class="radio-vol-slider" title="Volumen">
+                <button id="radio-btn-close" class="btn-radio-bar-close" title="Detener Radio">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+        <audio id="live-radio-audio" preload="none"></audio>
+    </div>
+
 </body>
 </html>

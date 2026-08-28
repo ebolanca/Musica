@@ -118,6 +118,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.textContent = allPlaylists[key].length;
             }
         }
+
+        const rBadge = document.getElementById('badge-radio');
+        if (rBadge && typeof radioStations !== 'undefined') {
+            rBadge.textContent = radioStations.length;
+        }
     }
 
     function getSortKey(str) {
@@ -170,7 +175,360 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    
+    // Catálogo de Emisoras de Radio Musicales de España (Hit FM la primera)
+    const radioStations = [
+        {
+            id: 'hitfm',
+            name: 'HIT FM',
+            slogan: 'Nº 1 en Hits Internacionales',
+            genre: 'Pop / Dance / Top Hits',
+            quality: '128 kbps HD',
+            color: 'linear-gradient(135deg, #ec4899, #f43f5e)',
+            logoBg: '#be123c',
+            logoText: 'HIT FM',
+            streamUrl: 'https://hitfm.kissfmradio.cires21.com/hitfm.mp3'
+        },
+        {
+            id: 'locafm',
+            name: 'LOCA FM',
+            slogan: 'La Radio de la Música Electrónica',
+            genre: 'Dance / House / Remember',
+            quality: '160 kbps HD',
+            color: 'linear-gradient(135deg, #8b5cf6, #6d28d9)',
+            logoBg: '#5b21b6',
+            logoText: 'LOCA',
+            streamUrl: 'http://s3.we4stream.com:8045/live'
+        },
+        {
+            id: 'los40',
+            name: 'LOS40',
+            slogan: 'Todos Los Éxitos',
+            genre: 'Pop / Radiofórmula / Actual',
+            quality: '128 kbps HD',
+            color: 'linear-gradient(135deg, #06b6d4, #0284c7)',
+            logoBg: '#0369a1',
+            logoText: 'LOS40',
+            streamUrl: 'https://playerservices.streamtheworld.com/api/livestream-redirect/LOS40.mp3'
+        },
+        {
+            id: 'kissfm',
+            name: 'KISS FM',
+            slogan: 'Lo Mejor de los 80 y 90 hasta Hoy',
+            genre: 'Hits 80s / 90s / 2000s',
+            quality: '128 kbps HD',
+            color: 'linear-gradient(135deg, #ef4444, #b91c1c)',
+            logoBg: '#991b1b',
+            logoText: 'KISS FM',
+            streamUrl: 'https://kissfm.kissfmradio.cires21.com/kissfm.mp3'
+        },
+        {
+            id: 'los40dance',
+            name: 'LOS40 DANCE',
+            slogan: 'La Radio del Dance y Clubbing',
+            genre: 'EDM / Dance / Club',
+            quality: '128 kbps HD',
+            color: 'linear-gradient(135deg, #10b981, #047857)',
+            logoBg: '#065f46',
+            logoText: 'DANCE',
+            streamUrl: 'https://playerservices.streamtheworld.com/api/livestream-redirect/LOS40_DANCE.mp3'
+        },
+        {
+            id: 'cadena100',
+            name: 'CADENA 100',
+            slogan: 'La Mejor Variedad Musical',
+            genre: 'Pop / Rock / Adult Contemporary',
+            quality: '128 kbps HD',
+            color: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
+            logoBg: '#1e40af',
+            logoText: 'C100',
+            streamUrl: 'http://cadena100-streamers-mp3.flumotion.com/cope/cadena100.mp3'
+        },
+        {
+            id: 'rockfm',
+            name: 'ROCK FM',
+            slogan: '50 Minutos de Rock Sin Pausa',
+            genre: 'Classic Rock / Hard Rock',
+            quality: '128 kbps HD',
+            color: 'linear-gradient(135deg, #f59e0b, #b45309)',
+            logoBg: '#92400e',
+            logoText: 'ROCK FM',
+            streamUrl: 'http://flucast10-o-cloud.flumotion.com/cope/rockfm-low.mp3'
+        },
+        {
+            id: 'los40classic',
+            name: 'LOS40 CLASSIC',
+            slogan: 'Los Números 1 de Tu Vida',
+            genre: 'Clásicos Pop / Rock / Disco',
+            quality: '128 kbps HD',
+            color: 'linear-gradient(135deg, #eab308, #ca8a04)',
+            logoBg: '#a16207',
+            logoText: 'CLASSIC',
+            streamUrl: 'https://playerservices.streamtheworld.com/api/livestream-redirect/LOS40_CLASSIC.mp3'
+        },
+        {
+            id: 'ibizaglobal',
+            name: 'IBIZA GLOBAL RADIO',
+            slogan: 'From Ibiza to the World',
+            genre: 'Deep House / Tech / Chillout',
+            quality: '128 kbps HD',
+            color: 'linear-gradient(135deg, #0ea5e9, #0369a1)',
+            logoBg: '#075985',
+            logoText: 'IBIZA',
+            streamUrl: 'http://ibizaglobalradio.streaming-pro.com:8024/'
+        },
+        {
+            id: 'europafm',
+            name: 'EUROPA FM',
+            slogan: 'Los Éxitos de Hoy y el Mejor Pop',
+            genre: 'Pop / Rock / Éxitos',
+            quality: '128 kbps HD',
+            color: 'linear-gradient(135deg, #14b8a6, #0f766e)',
+            logoBg: '#115e59',
+            logoText: 'EUROPA',
+            streamUrl: 'https://liveradio.ondacero.es/live/europafm.mp3'
+        },
+        {
+            id: 'flaixfm',
+            name: 'FLAIX FM',
+            slogan: 'El Ritme que No Para',
+            genre: 'Dance / Electronic / Hits',
+            quality: '128 kbps HD',
+            color: 'linear-gradient(135deg, #f97316, #c2410c)',
+            logoBg: '#9a3412',
+            logoText: 'FLAIX',
+            streamUrl: 'https://stream.flaixfm.cat/icecast'
+        },
+        {
+            id: 'megastar',
+            name: 'MEGASTAR FM',
+            slogan: 'Solo Temazos',
+            genre: 'Urban / Reggaeton / Pop',
+            quality: '128 kbps HD',
+            color: 'linear-gradient(135deg, #a855f7, #7e22ce)',
+            logoBg: '#6b21a8',
+            logoText: 'MEGA',
+            streamUrl: 'http://flucast35-h-cloud.flumotion.com/cope/megastar.mp3'
+        },
+        {
+            id: 'cadenadial',
+            name: 'CADENA DIAL',
+            slogan: 'Lo Mejor de Nuestra Música',
+            genre: 'Pop en Español / Baladas',
+            quality: '128 kbps HD',
+            color: 'linear-gradient(135deg, #22c55e, #15803d)',
+            logoBg: '#166534',
+            logoText: 'DIAL',
+            streamUrl: 'https://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3'
+        },
+        {
+            id: 'los40urban',
+            name: 'LOS40 URBAN',
+            slogan: 'El Ritmo de la Calle',
+            genre: 'Reggaeton / Trap / Latino',
+            quality: '128 kbps HD',
+            color: 'linear-gradient(135deg, #d97706, #b45309)',
+            logoBg: '#78350f',
+            logoText: 'URBAN',
+            streamUrl: 'https://playerservices.streamtheworld.com/api/livestream-redirect/LOS40_URBAN.mp3'
+        },
+        {
+            id: 'radiole',
+            name: 'RADIOLÉ',
+            slogan: 'La Alegría de la Música Española',
+            genre: 'Flamenco / Pop Español',
+            quality: '128 kbps HD',
+            color: 'linear-gradient(135deg, #e11d48, #9f1239)',
+            logoBg: '#881337',
+            logoText: 'RADIOLÉ',
+            streamUrl: 'https://playerservices.streamtheworld.com/api/livestream-redirect/RADIOLE.mp3'
+        },
+        {
+            id: 'flaixbac',
+            name: 'FLAIXBAC',
+            slogan: 'Els Èxits del Moment',
+            genre: 'Pop / Dance / Català & Hits',
+            quality: '128 kbps HD',
+            color: 'linear-gradient(135deg, #6366f1, #4338ca)',
+            logoBg: '#3730a3',
+            logoText: 'BAC',
+            streamUrl: 'https://stream.flaixbac.cat/icecast'
+        }
+    ];
+
+    let currentPlayingRadio = null;
+    const liveRadioAudio = document.getElementById('live-radio-audio');
+    const radioPlayerBar = document.getElementById('radio-player-bar');
+    const radioBarName = document.getElementById('radio-bar-name');
+    const radioBarDial = document.getElementById('radio-bar-dial');
+    const radioBarLogo = document.getElementById('radio-bar-logo');
+    const radioBtnPlay = document.getElementById('radio-btn-play');
+    const radioWaves = document.getElementById('radio-waves');
+    const radioBtnMute = document.getElementById('radio-btn-mute');
+    const radioVolumeSlider = document.getElementById('radio-volume-slider');
+    const radioBtnClose = document.getElementById('radio-btn-close');
+
+    function playRadioStation(station) {
+        if (!liveRadioAudio) return;
+        
+        if (currentPlayingRadio && currentPlayingRadio.id === station.id && !liveRadioAudio.paused) {
+            liveRadioAudio.pause();
+            updateRadioBarState(false);
+            renderRadioStations();
+            return;
+        }
+
+        currentPlayingRadio = station;
+        liveRadioAudio.src = station.streamUrl;
+        liveRadioAudio.volume = radioVolumeSlider ? parseFloat(radioVolumeSlider.value) : 0.85;
+        liveRadioAudio.play().then(() => {
+            updateRadioBarState(true);
+        }).catch(err => {
+            console.error('Error reproduciendo streaming de radio:', err);
+            updateRadioBarState(false);
+        });
+
+        if (radioPlayerBar) radioPlayerBar.style.display = 'block';
+        if (radioBarName) radioBarName.textContent = station.name;
+        if (radioBarDial) radioBarDial.textContent = station.slogan;
+        if (radioBarLogo) radioBarLogo.style.background = station.color;
+
+        renderRadioStations();
+    }
+
+    function updateRadioBarState(isPlaying) {
+        if (radioBtnPlay) {
+            radioBtnPlay.innerHTML = isPlaying ? '<i class="fa-solid fa-pause"></i>' : '<i class="fa-solid fa-play"></i>';
+        }
+        if (radioWaves) {
+            if (isPlaying) {
+                radioWaves.classList.add('playing');
+            } else {
+                radioWaves.classList.remove('playing');
+            }
+        }
+    }
+
+    if (radioBtnPlay) {
+        radioBtnPlay.addEventListener('click', () => {
+            if (!liveRadioAudio) return;
+            if (liveRadioAudio.paused) {
+                liveRadioAudio.play();
+                updateRadioBarState(true);
+            } else {
+                liveRadioAudio.pause();
+                updateRadioBarState(false);
+            }
+            renderRadioStations();
+        });
+    }
+
+    if (radioVolumeSlider && liveRadioAudio) {
+        radioVolumeSlider.addEventListener('input', (e) => {
+            liveRadioAudio.volume = parseFloat(e.target.value);
+            if (radioBtnMute) {
+                radioBtnMute.innerHTML = liveRadioAudio.volume === 0 ? '<i class="fa-solid fa-volume-xmark"></i>' : '<i class="fa-solid fa-volume-high"></i>';
+            }
+        });
+    }
+
+    if (radioBtnMute && liveRadioAudio) {
+        radioBtnMute.addEventListener('click', () => {
+            liveRadioAudio.muted = !liveRadioAudio.muted;
+            radioBtnMute.innerHTML = liveRadioAudio.muted ? '<i class="fa-solid fa-volume-xmark"></i>' : '<i class="fa-solid fa-volume-high"></i>';
+        });
+    }
+
+    if (radioBtnClose && liveRadioAudio && radioPlayerBar) {
+        radioBtnClose.addEventListener('click', () => {
+            liveRadioAudio.pause();
+            liveRadioAudio.src = '';
+            currentPlayingRadio = null;
+            radioPlayerBar.style.display = 'none';
+            renderRadioStations();
+        });
+    }
+
+    function renderRadioStations() {
+        currentSectionTitle.innerHTML = `<i class="fa-solid fa-tower-broadcast" style="color: var(--spotify-green);"></i> Radio en Directo - Emisoras de España`;
+        
+        let filtered = radioStations;
+        const q = (quickFilterQuery || searchQuery || '').trim().toLowerCase();
+        if (q) {
+            filtered = radioStations.filter(st => 
+                st.name.toLowerCase().includes(q) || 
+                st.genre.toLowerCase().includes(q) || 
+                st.slogan.toLowerCase().includes(q)
+            );
+        }
+
+        resultsCountText.textContent = `${filtered.length} emisoras en directo`;
+        songsGrid.className = viewMode === 'list' ? 'songs-grid view-list-mode' : 'songs-grid';
+        songsGrid.innerHTML = '';
+
+        if (filtered.length === 0) {
+            songsGrid.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--text-muted);">
+                    <i class="fa-solid fa-tower-broadcast" style="font-size: 3rem; margin-bottom: 16px; opacity: 0.3;"></i>
+                    <p>No se encontraron emisoras de radio que coincidan con la búsqueda.</p>
+                </div>
+            `;
+            return;
+        }
+
+        filtered.forEach(st => {
+            const isPlaying = currentPlayingRadio && currentPlayingRadio.id === st.id && liveRadioAudio && !liveRadioAudio.paused;
+            const card = document.createElement('div');
+            card.className = isPlaying ? 'radio-card playing' : 'radio-card';
+
+            card.innerHTML = `
+                <div class="radio-card-cover" style="background: ${st.color};">
+                    <div class="live-badge-overlay">
+                        <span class="live-dot"></span> EN VIVO
+                    </div>
+                    <div class="radio-card-logo-text">${st.logoText}</div>
+                    <div class="play-overlay">
+                        <div class="play-button-icon" style="background: ${isPlaying ? '#ef4444' : 'var(--spotify-green)'}; color: #fff;">
+                            <i class="fa-solid ${isPlaying ? 'fa-pause' : 'fa-play'}"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="song-info">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 4px;">
+                        <div>
+                            <div class="radio-station-title">${st.name}</div>
+                            <div class="radio-station-slogan" title="${st.slogan}">${st.slogan}</div>
+                        </div>
+                        <span class="badge-pill badge-date" style="color: var(--spotify-green); border-color: rgba(29,185,84,0.4);">
+                            <i class="fa-solid fa-tower-cell"></i> ${st.quality}
+                        </span>
+                    </div>
+                    <div class="radio-card-footer">
+                        <span class="badge-pill badge-duration" style="font-size: 0.72rem;">
+                            <i class="fa-solid fa-music"></i> ${st.genre}
+                        </span>
+                        <button class="btn-radio-listen" title="${isPlaying ? 'Pausar Emisora' : 'Escuchar en Directo'}">
+                            <i class="fa-solid ${isPlaying ? 'fa-pause' : 'fa-play'}"></i> ${isPlaying ? 'Sonando' : 'Escuchar'}
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            card.addEventListener('click', (e) => {
+                playRadioStation(st);
+            });
+
+            songsGrid.appendChild(card);
+        });
+    }
+
     function renderSongs() {
+        if (currentTab === 'Radio') {
+            renderRadioStations();
+            return;
+        }
+
+        const isGlobalSearch = searchQuery.trim().length > 0;
         const isGlobalSearch = searchQuery.trim().length > 0;
         let tracksToFilter = [];
 
