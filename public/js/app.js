@@ -151,27 +151,72 @@ document.addEventListener('DOMContentLoaded', () => {
         return sorted;
     }
 
+    const playlistIcons = {
+        'Música viejuna': 'fa-radio',
+        'Siglo XXI': 'fa-rocket',
+        'Dance': 'fa-headphones',
+        'Española': 'fa-guitar',
+        'Música latina': 'fa-fire'
+    };
+
+    function selectPlaylistTab(tabName) {
+        currentTab = tabName;
+        document.querySelectorAll('.tab-button').forEach(b => {
+            if (b.getAttribute('data-tab') === tabName) {
+                b.classList.add('active');
+            } else {
+                b.classList.remove('active');
+            }
+        });
+    }
+
     function renderSongs() {
-        const tracks = allPlaylists[currentTab] || [];
-        let filtered = tracks.filter(t => {
-            const matchGlobal = checkMatch(t, searchQuery);
+        const isGlobalSearch = searchQuery.trim().length > 0;
+        let tracksToFilter = [];
+
+        if (isGlobalSearch) {
+            // Búsqueda global en todas las playlists
+            for (const [pName, pTracks] of Object.entries(allPlaylists)) {
+                for (const t of pTracks) {
+                    tracksToFilter.push({ ...t, playlistName: pName });
+                }
+            }
+            document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+        } else {
+            // Filtrado local dentro de la pestaña actual
+            const pTracks = allPlaylists[currentTab] || [];
+            tracksToFilter = pTracks.map(t => ({ ...t, playlistName: currentTab }));
+            selectPlaylistTab(currentTab);
+        }
+
+        let filtered = tracksToFilter.filter(t => {
+            const matchGlobal = isGlobalSearch ? checkMatch(t, searchQuery) : true;
             const matchQuick = checkMatch(t, quickFilterQuery);
             return matchGlobal && matchQuick;
         });
 
         filtered = sortTracks(filtered);
 
-        currentSectionTitle.innerHTML = `<i class="fa-solid fa-compact-disc" style="color: var(--spotify-green);"></i> ${currentTab}`;
-        resultsCountText.textContent = `${filtered.length} canciones encontradas`;
+        if (isGlobalSearch) {
+            currentSectionTitle.innerHTML = `<i class="fa-solid fa-magnifying-glass" style="color: var(--spotify-green);"></i> Búsqueda global: "${searchQuery}"`;
+            resultsCountText.textContent = `${filtered.length} canciones encontradas en el catálogo`;
+        } else {
+            const currentIcon = playlistIcons[currentTab] || 'fa-compact-disc';
+            currentSectionTitle.innerHTML = `<i class="fa-solid ${currentIcon}" style="color: var(--spotify-green);"></i> ${currentTab}`;
+            resultsCountText.textContent = `${filtered.length} canciones encontradas`;
+        }
 
         songsGrid.className = viewMode === 'list' ? 'songs-grid view-list-mode' : 'songs-grid';
         songsGrid.innerHTML = '';
 
         if (filtered.length === 0) {
+            const emptyMsg = isGlobalSearch 
+                ? `No se encontraron canciones para "${searchQuery}" en ninguna lista.`
+                : `No se encontraron canciones en la categoría "${currentTab}".`;
             songsGrid.innerHTML = `
                 <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--text-muted);">
                     <i class="fa-solid fa-compact-disc" style="font-size: 3rem; margin-bottom: 16px; opacity: 0.3;"></i>
-                    <p>No se encontraron canciones en la categoría "${currentTab}".</p>
+                    <p>${emptyMsg}</p>
                 </div>
             `;
             return;
@@ -187,6 +232,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 : `<i class="fa-solid fa-record-vinyl music-icon"></i>`;
 
             const briefDate = formatBriefDate(song.releaseDate, song.releaseYear);
+            const playlistIcon = playlistIcons[song.playlistName] || 'fa-compact-disc';
+            const playlistBadgeHtml = isGlobalSearch ? `
+                <div style="margin-top: 4px; margin-bottom: 6px;">
+                    <span class="track-playlist-badge" data-switch-tab="${song.playlistName}" title="Ir a la lista ${song.playlistName}">
+                        <i class="fa-solid ${playlistIcon}"></i> ${song.playlistName}
+                    </span>
+                </div>
+            ` : '';
 
             if (viewMode === 'grid') {
                 card.innerHTML = `
@@ -199,6 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                     <div class="song-info">
+                        ${playlistBadgeHtml}
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 4px;">
                             <div style="flex: 1; min-width: 0;">
                                 <div class="song-title" title="${song.title}">${song.title}</div>
@@ -237,6 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="song-info-primary">
                             <div class="song-title" style="font-size: 1rem;" title="${song.title}">${song.title}</div>
                             <div class="song-artist" title="${song.artist}">${song.artist}</div>
+                            ${isGlobalSearch ? `<span class="track-playlist-badge" data-switch-tab="${song.playlistName}" style="margin-top: 4px;" title="Ir a la lista ${song.playlistName}"><i class="fa-solid ${playlistIcon}"></i> ${song.playlistName}</span>` : ''}
                         </div>
                         <div class="song-album-info" title="${song.album || 'Álbum'}">
                             <i class="fa-solid fa-compact-disc"></i> ${song.album || 'Álbum Desconocido'}
@@ -263,6 +318,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             card.addEventListener('click', (e) => {
+                const badgeBtn = e.target.closest('.track-playlist-badge');
+                if (badgeBtn) {
+                    e.stopPropagation();
+                    const targetPlaylist = badgeBtn.getAttribute('data-switch-tab');
+                    if (targetPlaylist) {
+                        searchQuery = '';
+                        searchInput.value = '';
+                        selectPlaylistTab(targetPlaylist);
+                        renderSongs();
+                    }
+                    return;
+                }
+
                 const actionBtn = e.target.closest('.btn-card-action');
                 if (actionBtn) {
                     e.stopPropagation();
@@ -277,6 +345,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         openSongModal(song, 'tab-credits');
                     }
                     return;
+                }
+
+                // Si estamos en búsqueda global y pulsamos la tarjeta, cambiamos a esa lista y abrimos el modal
+                if (isGlobalSearch && song.playlistName) {
+                    searchQuery = '';
+                    searchInput.value = '';
+                    selectPlaylistTab(song.playlistName);
+                    renderSongs();
                 }
                 openSongModal(song, 'tab-credits');
             });
