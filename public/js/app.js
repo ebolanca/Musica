@@ -418,9 +418,13 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-            function populateLyricsTab(detail) {
+    let showLyricsTranslation = true;
+
+    function populateLyricsTab(detail) {
         const tabContainer = document.getElementById('tab-lyrics');
-        if (!detail.lyrics || detail.lyrics.length === 0) {
+        const lyrics = detail && detail.lyrics ? detail.lyrics : [];
+
+        if (!lyrics || lyrics.length === 0) {
             tabContainer.innerHTML = `
                 <div style="text-align: center; padding: 40px; color: var(--text-muted);">
                     <i class="fa-solid fa-microphone-slash" style="font-size: 2.5rem; margin-bottom: 12px; opacity: 0.4;"></i>
@@ -430,14 +434,55 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const linesHtml = detail.lyrics.map(l => `
-            <div class="lyric-line" style="margin-bottom: 10px; line-height: 1.5;">
-                ${l.time ? `<span class="lyric-timestamp" style="color: var(--spotify-green); font-size: 0.85rem; font-weight: 600; margin-right: 12px;">${l.time}</span>` : ''}
-                <span class="lyric-text" style="color: #e2e8f0; font-size: 1rem;">${l.text}</span>
-            </div>
-        `).join('');
+        const linesHtml = lyrics.map(l => {
+            const hasTime = !!l.time;
+            const timeSpan = hasTime ? `<span class="lyrics-timestamp">${l.time}</span>` : '';
+            const transDiv = (l.translation && l.translation.trim().toLowerCase() !== l.text.trim().toLowerCase())
+                ? `<div class="lyrics-row-trans">${escapeHtml(l.translation)}</div>`
+                : '';
 
-        tabContainer.innerHTML = `<div class="lyrics-container" style="max-height: 480px; overflow-y: auto; padding: 10px;">${linesHtml}</div>`;
+            return `
+                <div class="lyrics-row">
+                    <div class="lyrics-row-orig">
+                        ${timeSpan}
+                        <span class="lyrics-orig-text">${escapeHtml(l.text)}</span>
+                    </div>
+                    ${transDiv}
+                </div>
+            `;
+        }).join('');
+
+        tabContainer.innerHTML = `
+            <div class="lyrics-toolbar">
+                <div class="lyrics-toolbar-badge">
+                    <i class="fa-solid fa-microphone" style="color: var(--accent-purple);"></i>
+                    <span>Letra ${lyrics[0] && lyrics[0].time ? 'Sincronizada' : 'Completa'}</span>
+                </div>
+                <button class="btn-toggle-translation" id="btn-toggle-translation" title="Mostrar/Ocultar traducción al español">
+                    <i class="fa-solid fa-language"></i>
+                    <span id="txt-trans-toggle">${showLyricsTranslation ? 'Ocultar Traducción' : 'Mostrar Traducción'}</span>
+                </button>
+            </div>
+            <div class="lyrics-container ${showLyricsTranslation ? '' : 'hide-translation'}" id="lyrics-content-list" style="max-height: 480px; overflow-y: auto; padding: 10px;">
+                ${linesHtml}
+            </div>
+        `;
+
+        const btnToggle = document.getElementById('btn-toggle-translation');
+        if (btnToggle) {
+            btnToggle.addEventListener('click', () => {
+                showLyricsTranslation = !showLyricsTranslation;
+                const list = document.getElementById('lyrics-content-list');
+                const txt = document.getElementById('txt-trans-toggle');
+                if (showLyricsTranslation) {
+                    list.classList.remove('hide-translation');
+                    txt.textContent = 'Ocultar Traducción';
+                } else {
+                    list.classList.add('hide-translation');
+                    txt.textContent = 'Mostrar Traducción';
+                }
+            });
+        }
     }
 
     function escapeHtml(text) {

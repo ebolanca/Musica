@@ -55,7 +55,7 @@ async function translateLyricsBatch(lines) {
 
     // Identify unique untranslated texts
     const untranslated = Array.from(new Set(
-        lines.map(l => (l.text || '').trim()).filter(t => t.length > 1 && !lyricsTransCache[t])
+        lines.map(l => (l.text || '').trim()).filter(t => t.length > 1 && (!lyricsTransCache[t] || lyricsTransCache[t].includes("MYMEMORY WARNING")))
     ));
 
     if (untranslated.length > 0) {
@@ -65,14 +65,20 @@ async function translateLyricsBatch(lines) {
             const chunk = untranslated.slice(i, i + batchSize);
             await Promise.allSettled(chunk.map(async (txt) => {
                 try {
-                    const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(txt)}&langpair=en|es`;
-                    const res = await fetch(url, { signal: AbortSignal.timeout(2000) });
+                    const url = `https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=auto&tl=es&q=${encodeURIComponent(txt)}`;
+                    const res = await fetch(url, {
+                        headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' },
+                        signal: AbortSignal.timeout(2500)
+                    });
                     if (res.ok) {
                         const data = await res.json();
-                        const trans = data.responseData?.translatedText;
-                        if (trans && !trans.startsWith("MYMEMORY WARNING")) {
-                            lyricsTransCache[txt] = trans;
-                            changed = true;
+                        if (Array.isArray(data) && data[0]) {
+                            const raw = String(data[0]);
+                            const trans = raw.replace(/,[a-zA-Z-]{2,5}$/, '').trim();
+                            if (trans && trans.length > 0) {
+                                lyricsTransCache[txt] = trans;
+                                changed = true;
+                            }
                         }
                     }
                 } catch(e) {}
@@ -96,6 +102,8 @@ async function translateLyricsBatch(lines) {
 
     return lines;
 }
+
+
 
 
 
@@ -701,10 +709,20 @@ app.get('/api/track/detail', async (req, res) => {
     }
 
     if (parsedLyrics && parsedLyrics.length > 0) {
-        try {
-            parsedLyrics = await translateLyricsBatch(parsedLyrics);
-        } catch(e) {
-            console.error('Error traduciendo letra:', e.message);
+        const hasUntranslated = parsedLyrics.some(l => (l.text || '').trim().length > 3 && !l.translation);
+        if (hasUntranslated) {
+            try {
+                parsedLyrics = await translateLyricsBatch(parsedLyrics);
+                const cleanT = cleanTrackTitle(title);
+                cachedLyricsDb[`${artist} - ${title}`] = parsedLyrics;
+                cachedLyricsDb[`${artist} - ${cleanT}`] = parsedLyrics;
+                cachedLyricsDb[cleanT] = parsedLyrics;
+                try {
+                    fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
+                } catch(e){}
+            } catch(e) {
+                console.error('Error traduciendo letra:', e.message);
+            }
         }
     }
 
