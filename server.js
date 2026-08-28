@@ -1,3 +1,25 @@
+function getTrackMetadata(artist, title) {
+    if (!metadataCache || Object.keys(metadataCache).length === 0) {
+        loadMetadataCache();
+    }
+    const cleanTitle = cleanTrackTitle(title);
+    let key1 = `${artist} - ${title}`.toLowerCase();
+    if (metadataCache[key1]) return metadataCache[key1];
+
+    let key2 = `${artist} - ${cleanTitle}`.toLowerCase();
+    if (metadataCache[key2]) return metadataCache[key2];
+
+    let normTarget = `${artist}${cleanTitle}`.toLowerCase().replace(/[^a-z0-9]/g, '');
+    for (const [k, meta] of Object.entries(metadataCache)) {
+        let normK = k.replace(/[^a-z0-9]/g, '');
+        if (normK.length > 5 && (normK === normTarget || normK.includes(normTarget) || normTarget.includes(normK))) {
+            return meta;
+        }
+    }
+
+    return {};
+}
+
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
@@ -174,8 +196,7 @@ app.get('/api/playlists', (req, res) => {
 
 
             const cleanTitle = cleanTrackTitle(title);
-            const metaKey = `${artist} - ${title}`.toLowerCase();
-            const meta = metadataCache[metaKey] || metadataCache[`${artist} - ${cleanTitle}`.toLowerCase()] || {};
+            const meta = getTrackMetadata(artist, title);
 
             return {
                 artist: artist,
