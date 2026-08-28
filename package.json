@@ -1,0 +1,10 @@
+{
+  "name": "musica",
+  "version": "1.0.0",
+  "description": "Plataforma web para gestión de videoclips, letras de canciones y playlists de Spotify",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {}
+}
