@@ -1952,3 +1952,288 @@ video {
   color: #64748b;
   margin-top: 3px;
 }
+
+/* ==========================================================================
+   4 Card Action Buttons Layout & Music Player Bar Styles
+   ========================================================================== */
+.section-title-group {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn-playlist-shuffle {
+  background: rgba(29, 185, 84, 0.15);
+  color: var(--spotify-green);
+  border: 1px solid rgba(29, 185, 84, 0.4);
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.btn-playlist-shuffle:hover {
+  background: var(--spotify-green);
+  color: #000;
+  border-color: var(--spotify-green);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(29, 185, 84, 0.4);
+}
+
+.card-action-icons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  width: 100%;
+}
+
+.btn-card-action {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted);
+  border-radius: 8px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+}
+
+.btn-card-action:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-card-action.btn-act-play {
+  background: rgba(29, 185, 84, 0.15);
+  color: var(--spotify-green);
+  border-color: rgba(29, 185, 84, 0.4);
+}
+
+.btn-card-action.btn-act-play:hover {
+  background: var(--spotify-green);
+  color: #000;
+  border-color: var(--spotify-green);
+  box-shadow: 0 4px 14px rgba(29, 185, 84, 0.4);
+}
+
+.btn-card-action.btn-act-play.playing {
+  background: var(--spotify-green);
+  color: #000;
+  box-shadow: 0 0 14px rgba(29, 185, 84, 0.6);
+}
+
+/* --- Persistent Floating Music Player Bar --- */
+.music-player-bar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  max-width: 980px;
+  background: rgba(15, 23, 42, 0.96);
+  border: 1px solid rgba(29, 185, 84, 0.5);
+  border-radius: 20px;
+  padding: 12px 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.85), 0 0 25px rgba(29, 185, 84, 0.2);
+  backdrop-filter: blur(20px);
+  z-index: 9998;
+  animation: slideUpBar 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.music-bar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.music-bar-track-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 240px;
+  max-width: 300px;
+}
+
+.music-bar-cover {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.music-bar-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.music-bar-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-bar-artist {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-bar-badge {
+  background: rgba(29, 185, 84, 0.15);
+  border: 1px solid rgba(29, 185, 84, 0.3);
+  color: var(--spotify-green);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.music-bar-center {
+  flex: 1;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.music-bar-ctrl-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-music-ctrl {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-music-ctrl:hover {
+  color: #fff;
+  transform: scale(1.15);
+}
+
+.btn-music-play {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--spotify-green);
+  color: #000;
+  border: none;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 15px rgba(29, 185, 84, 0.5);
+}
+
+.btn-music-play:hover {
+  transform: scale(1.1);
+}
+
+.music-bar-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.music-time {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-family: monospace;
+  min-width: 32px;
+}
+
+.music-seek-bar {
+  flex: 1;
+  accent-color: var(--spotify-green);
+  cursor: pointer;
+  height: 4px;
+}
+
+.music-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-music-cinema {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-glass);
+  color: #fff;
+  border-radius: 16px;
+  padding: 6px 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-music-cinema:hover {
+  background: rgba(29, 185, 84, 0.2);
+  border-color: var(--spotify-green);
+  color: var(--spotify-green);
+}
+
+.music-bar-volume {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-music-icon {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.btn-music-icon:hover {
+  color: #fff;
+}
+
+.music-vol-slider {
+  width: 70px;
+  accent-color: var(--spotify-green);
+  cursor: pointer;
+}

@@ -18,7 +18,7 @@
             </div>
             <div class="logo-title">
                 <h1>Música</h1>
-                <p>Plataforma de Videoclips & Análisis Sónico v1.4.29</p>
+                <p>Plataforma de Videoclips & Análisis Sónico v1.4.30</p>
             </div>
         </div>
 
@@ -106,10 +106,15 @@
 
         <!-- Section Title Bar -->
         <div class="section-bar">
-            <h2 class="section-title" id="current-section-title">
-                <i class="fa-solid fa-compact-disc" style="color: var(--spotify-green);"></i> Música viejuna
-            </h2>
-            <span class="results-count" id="results-count-text">Cargando canciones...</span>
+            <div class="section-title-group">
+                <h2 class="section-title" id="current-section-title">
+                    <i class="fa-solid fa-compact-disc" style="color: var(--spotify-green);"></i> Música viejuna
+                </h2>
+                <span class="results-count" id="results-count-text">Cargando canciones...</span>
+            </div>
+            <button class="btn-action btn-playlist-shuffle" id="btn-playlist-shuffle" title="Reproducir esta lista en modo aleatorio continuo">
+                <i class="fa-solid fa-shuffle"></i> Reproducción Aleatoria
+            </button>
         </div>
 
         <!-- Songs Grid -->
@@ -298,5 +303,46 @@
     </div>
 
 <audio id="main-music-audio" preload="auto"></audio>
+
+    <!-- Persistent Floating Music Player Bar -->
+    <div id="music-player-bar" class="music-player-bar" style="display: none;">
+        <div class="music-bar-content">
+            <div class="music-bar-track-info">
+                <img src="" alt="" id="music-bar-cover" class="music-bar-cover">
+                <div class="music-bar-text">
+                    <div class="music-bar-title" id="music-bar-title">Título</div>
+                    <div class="music-bar-artist" id="music-bar-artist">Artista</div>
+                </div>
+                <div class="music-bar-badge" id="music-bar-mode">
+                    <i class="fa-solid fa-play"></i> Canción
+                </div>
+            </div>
+
+            <div class="music-bar-center">
+                <div class="music-bar-ctrl-row">
+                    <button id="music-btn-prev" class="btn-music-ctrl" title="Canción anterior"><i class="fa-solid fa-backward-step"></i></button>
+                    <button id="music-btn-play" class="btn-music-play" title="Pausar / Reproducir"><i class="fa-solid fa-pause"></i></button>
+                    <button id="music-btn-next" class="btn-music-ctrl" title="Siguiente canción"><i class="fa-solid fa-forward-step"></i></button>
+                </div>
+                <div class="music-bar-progress-row">
+                    <span id="music-time-curr" class="music-time">0:00</span>
+                    <input type="range" id="music-seek-slider" min="0" max="100" value="0" class="music-seek-bar">
+                    <span id="music-time-dur" class="music-time">3:30</span>
+                </div>
+            </div>
+
+            <div class="music-bar-right">
+                <button id="music-btn-cinema" class="btn-music-cinema" title="Abrir en Modo Cine / Pantalla Completa">
+                    <i class="fa-solid fa-tv"></i> Modo Cine
+                </button>
+                <div class="music-bar-volume">
+                    <button id="music-btn-mute" class="btn-music-icon" title="Silenciar"><i class="fa-solid fa-volume-high"></i></button>
+                    <input type="range" id="music-vol-slider" min="0" max="1" step="0.05" value="0.85" class="music-vol-slider" title="Volumen">
+                </div>
+                <button id="music-btn-close" class="btn-music-icon" title="Detener Reproducción"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
