@@ -1,3 +1,18 @@
+function cleanTrackTitle(rawTitle) {
+    if (!rawTitle) return '';
+    return rawTitle
+        .replace(/\s*-\s*\d{4}\s*Remaster.*/i, '')
+        .replace(/\s*-\s*Remastered.*/i, '')
+        .replace(/\s*-\s*Remaster.*/i, '')
+        .replace(/\s*\(.*remaster.*\)/i, '')
+        .replace(/\s*-\s*Radio Edit.*/i, '')
+        .replace(/\s*\(.*radio edit.*\)/i, '')
+        .replace(/\s*-\s*Single Version.*/i, '')
+        .replace(/\s*\(.*deluxe.*\)/i, '')
+        .replace(/\s*-\s*Version \d{4}.*/i, '')
+        .trim();
+}
+
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
@@ -136,12 +151,14 @@ app.get('/api/playlists', (req, res) => {
             if (fs.existsSync(METADATA_CACHE_FILE)) {
                 try { metadataCache = JSON.parse(fs.readFileSync(METADATA_CACHE_FILE, 'utf8')); } catch(e){}
             }
+            const cleanTitle = cleanTrackTitle(title);
             const metaKey = `${artist} - ${title}`.toLowerCase();
-            const meta = metadataCache[metaKey] || {};
+            const meta = metadataCache[metaKey] || metadataCache[`${artist} - ${cleanTitle}`.toLowerCase()] || {};
 
             return {
                 artist: artist,
-                title: title,
+                title: meta.displayTitle || cleanTitle,
+                rawTitle: title,
                 album: meta.album || 'Álbum Desconocido',
                 coverUrl: meta.coverUrl || null,
                 releaseDate: meta.releaseDate || '2000-01-01',

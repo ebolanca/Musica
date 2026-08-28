@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let allPlaylists = {};
     let currentTab = 'Música viejuna';
     let searchQuery = '';
+    let quickFilterQuery = '';
     let sortBy = 'default';
     let sortAsc = true;
     let viewMode = 'grid';
@@ -20,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sortDirIcon = document.getElementById('sort-dir-icon');
     const btnViewGrid = document.getElementById('btn-view-grid');
     const btnViewList = document.getElementById('btn-view-list');
+    const quickFilterInput = document.getElementById('quick-filter-input');
 
     // Cargar datos iniciales
     fetchPlaylists();
@@ -84,11 +86,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderSongs() {
         const tracks = allPlaylists[currentTab] || [];
         let filtered = tracks.filter(t => {
-            if (!searchQuery) return true;
-            const q = searchQuery.toLowerCase();
-            return (t.artist || '').toLowerCase().includes(q) || 
-                   (t.title || '').toLowerCase().includes(q) ||
-                   (t.album || '').toLowerCase().includes(q);
+            const qGlobal = searchQuery.toLowerCase();
+            const qQuick = quickFilterQuery.toLowerCase();
+            const matchGlobal = !qGlobal || (t.artist || '').toLowerCase().includes(qGlobal) || (t.title || '').toLowerCase().includes(qGlobal) || (t.album || '').toLowerCase().includes(qGlobal);
+            const matchQuick = !qQuick || (t.artist || '').toLowerCase().includes(qQuick) || (t.title || '').toLowerCase().includes(qQuick) || (t.album || '').toLowerCase().includes(qQuick);
+            return matchGlobal && matchQuick;
         });
 
         filtered = sortTracks(filtered);
@@ -181,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            currentTab = btn.getAttribute('data-tab');
+            currentTab = btn.getAttribute('data-tab'); quickFilterQuery = ''; if(quickFilterInput) quickFilterInput.value = '';
             renderSongs();
         });
     });
@@ -191,6 +193,13 @@ document.addEventListener('DOMContentLoaded', () => {
         searchQuery = e.target.value;
         renderSongs();
     });
+
+    if (quickFilterInput) {
+        quickFilterInput.addEventListener('input', (e) => {
+            quickFilterQuery = e.target.value;
+            renderSongs();
+        });
+    }
 
     // Controles de Ordenamiento
     sortSelect.addEventListener('change', (e) => {

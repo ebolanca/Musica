@@ -1,12 +1,30 @@
 const fs = require('fs');
 const path = require('path');
 
-const METADATA_CACHE_FILE = path.join(__dirname, '..', 'data', 'metadata_cache.json');
+const DATA_DIR = path.join(__dirname, '..', 'data');
+if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+}
+
+const METADATA_CACHE_FILE = path.join(DATA_DIR, 'metadata_cache.json');
 let metadataCache = {};
 if (fs.existsSync(METADATA_CACHE_FILE)) {
-    try {
-        metadataCache = JSON.parse(fs.readFileSync(METADATA_CACHE_FILE, 'utf8'));
-    } catch (e) {}
+    try { metadataCache = JSON.parse(fs.readFileSync(METADATA_CACHE_FILE, 'utf8')); } catch(e){}
+}
+
+function cleanTrackTitle(rawTitle) {
+    if (!rawTitle) return '';
+    return rawTitle
+        .replace(/\s*-\s*\d{4}\s*Remaster.*/i, '')
+        .replace(/\s*-\s*Remastered.*/i, '')
+        .replace(/\s*-\s*Remaster.*/i, '')
+        .replace(/\s*\(.*remaster.*\)/i, '')
+        .replace(/\s*-\s*Radio Edit.*/i, '')
+        .replace(/\s*\(.*radio edit.*\)/i, '')
+        .replace(/\s*-\s*Single Version.*/i, '')
+        .replace(/\s*\(.*deluxe.*\)/i, '')
+        .replace(/\s*-\s*Version \d{4}.*/i, '')
+        .trim();
 }
 
 const SPOTDL_CACHE_PATH = "\\\\100.95.217.45\\omen D\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json";
@@ -15,7 +33,7 @@ if (fs.existsSync(SPOTDL_CACHE_PATH)) {
     playlistsData = JSON.parse(fs.readFileSync(SPOTDL_CACHE_PATH, 'utf8'));
 } else {
     playlistsData = {
-        "Música viejuna": [["Queen", "Bohemian Rhapsody"], ["Michael Jackson", "Beat It"], ["Guns N' Roses", "Sweet Child O' Mine"]],
+        "Música viejuna": [["Queen", "Bohemian Rhapsody - 2011 Remaster"], ["Michael Jackson", "Beat It"], ["Guns N' Roses", "Sweet Child O' Mine"]],
         "Siglo XXI": [["Coldplay", "Yellow"], ["The Killers", "Mr. Brightside"], ["OneRepublic", "Counting Stars"]],
         "Dance": [["Gala", "Freed from Desire"], ["Corona", "The Rhythm of the Night"], ["Gigi D'Agostino", "L'Amour Toujours"]],
         "Española": [["Fito & Fitipaldis", "Soldadito Marinero"], ["El Canto del Loco", "Zapatillas"], ["Amaral", "Sin Ti No Soy Nada"]],
@@ -24,50 +42,53 @@ if (fs.existsSync(SPOTDL_CACHE_PATH)) {
 }
 
 async function run() {
-    console.log("Iniciando generación de metadata (portadas, duración, álbumes, fecha lanzamiento)...");
+    console.log("Generando portadas HD Deezer/iTunes...");
     let count = 0;
     for (const [listName, tracks] of Object.entries(playlistsData)) {
         for (const item of tracks) {
             const artist = Array.isArray(item) ? item[0] : item.artist;
-            const title = Array.isArray(item) ? item[1] : item.title;
-            const key = `${artist} - ${title}`.toLowerCase();
+            const rawTitle = Array.isArray(item) ? item[1] : item.title;
+            const displayTitle = cleanTrackTitle(rawTitle);
+            const keyRaw = `${artist} - ${rawTitle}`.toLowerCase();
+            const keyClean = `${artist} - ${displayTitle}`.toLowerCase();
 
-            if (!metadataCache[key] || !metadataCache[key].coverUrl) {
+            if (!metadataCache[keyRaw] && !metadataCache[keyClean]) {
                 try {
-                    const query = encodeURIComponent(`${artist} ${title}`);
-                    const res = await fetch(`https://itunes.apple.com/search?term=${query}&entity=song&limit=1`);
+                    const query = encodeURIComponent(`artist:"${artist}" track:"${displayTitle}"`);
+                    const res = await fetch(`https://api.deezer.com/search?q=${query}`);
                     const data = await res.json();
-                    if (data.results && data.results.length > 0) {
-                        const track = data.results[0];
-                        const coverUrl = track.artworkUrl100 ? track.artworkUrl100.replace('100x100bb', '600x600bb') : null;
-                        const releaseDate = track.releaseDate ? track.releaseDate.split('T')[0] : '2000-01-01';
-                        const releaseYear = releaseDate ? releaseDate.split('-')[0] : '2000';
-                        const durationMs = track.trackTimeMillis || 210000;
-                        const totalSec = Math.floor(durationMs / 1000);
-                        const m = Math.floor(totalSec / 60);
-                        const s = totalSec % 60;
+                    
+                    if (data.data && data.data.length > 0) {
+                        const track = data.data[0];
+                        const coverUrl = track.album.cover_xl || track.album.cover_big;
+                        const durationSec = track.duration || 210;
+                        const m = Math.floor(durationSec / 60);
+                        const s = durationSec % 60;
                         const durationFmt = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
 
-                        metadataCache[key] = {
-                            album: track.collectionName || 'Álbum Desconocido',
+                        const metaObj = {
+                            displayTitle: displayTitle,
+                            album: track.album.title || 'Álbum Desconocido',
                             coverUrl: coverUrl,
-                            releaseDate: releaseDate,
-                            releaseYear: releaseYear,
-                            durationMs: durationMs,
+                            releaseDate: '1990-01-01',
+                            releaseYear: '1990',
+                            durationMs: durationSec * 1000,
                             durationFmt: durationFmt
                         };
+                        metadataCache[keyRaw] = metaObj;
+                        metadataCache[keyClean] = metaObj;
                         count++;
-                        console.log(`[${count}] Metadata guardada para: ${artist} - ${title}`);
+                        console.log(`[${count}] Portada OK: ${artist} - ${displayTitle} -> ${track.album.title}`);
                     }
                 } catch (e) {
-                    console.error(`Error para ${key}:`, e.message);
+                    console.error(`Error para ${keyClean}:`, e.message);
                 }
-                await new Promise(r => setTimeout(r, 100)); // Rate limiting suave
+                await new Promise(r => setTimeout(r, 40));
             }
         }
     }
     fs.writeFileSync(METADATA_CACHE_FILE, JSON.stringify(metadataCache, null, 2), 'utf8');
-    console.log(`¡Metadata completada! Se guardaron ${count} nuevas portadas y canciones.`);
+    console.log(`¡Portadas HD guardadas en data/metadata_cache.json! Total: ${Object.keys(metadataCache).length}`);
 }
 
 run();
