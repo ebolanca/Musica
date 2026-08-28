@@ -1320,7 +1320,7 @@ function renderRadioStations() {
             if (cinemaCurrentIndex === -1) cinemaCurrentIndex = 0;
         }
 
-        renderCinemaTrack(cinemaCurrentTrackList[cinemaCurrentIndex]);
+        renderCinemaTrack(cinemaCurrentTrackList[cinemaCurrentIndex]); playTrackAudio(cinemaCurrentTrackList[cinemaCurrentIndex]);
         cinemaOverlay.style.display = 'flex';
     }
 
@@ -1395,6 +1395,51 @@ function renderRadioStations() {
             if (currentModalSong) {
                 if (songModal) songModal.classList.remove('active');
                 openCinemaMode(currentModalSong);
+            }
+        });
+    }
+
+
+    const mainMusicAudio = document.getElementById('main-music-audio');
+
+    function playTrackAudio(track) {
+        if (!mainMusicAudio) return;
+        if (liveRadioAudio && !liveRadioAudio.paused) {
+            liveRadioAudio.pause();
+            if (radioPlayerBar) radioPlayerBar.style.display = 'none';
+        }
+
+        if (track.audioUrl) {
+            mainMusicAudio.src = track.audioUrl;
+            mainMusicAudio.play().then(() => {
+                if (cinemaPlay) cinemaPlay.innerHTML = '<i class="fa-solid fa-pause"></i>';
+            }).catch(e => {
+                console.log('Audio autoplay prevented or error:', e.message);
+                if (cinemaPlay) cinemaPlay.innerHTML = '<i class="fa-solid fa-play"></i>';
+            });
+        } else {
+            console.log('No local audio file mapped for track, playing in silent visual mode');
+        }
+    }
+
+    if (mainMusicAudio) {
+        mainMusicAudio.addEventListener('ended', () => {
+            if (cinemaCurrentTrackList.length > 0) {
+                cinemaCurrentIndex = (cinemaCurrentIndex + 1) % cinemaCurrentTrackList.length;
+                renderCinemaTrack(cinemaCurrentTrackList[cinemaCurrentIndex]);
+            }
+        });
+    }
+
+    if (cinemaPlay) {
+        cinemaPlay.addEventListener('click', () => {
+            if (!mainMusicAudio) return;
+            if (mainMusicAudio.paused) {
+                mainMusicAudio.play();
+                cinemaPlay.innerHTML = '<i class="fa-solid fa-pause"></i>';
+            } else {
+                mainMusicAudio.pause();
+                cinemaPlay.innerHTML = '<i class="fa-solid fa-play"></i>';
             }
         });
     }

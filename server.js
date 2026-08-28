@@ -371,6 +371,45 @@ const LOCAL_OMEN_CACHE = "D:\\Docker\\media-server\\spotdl-sync\\cache\\tracks_c
 const REMOTE_OMEN_CACHE = "\\\\100.95.217.45\\omen D\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json";
 const OMEN_CACHE_PATH = fs.existsSync(LOCAL_OMEN_CACHE) ? LOCAL_OMEN_CACHE : REMOTE_OMEN_CACHE;
 
+
+const LOCAL_OMEN_MUSIC = "D:\\media-library\\music";
+const REMOTE_OMEN_MUSIC = "\\\\100.95.217.45\\omen D\\media-library\\music";
+const OMEN_MUSIC_DIR = fs.existsSync(LOCAL_OMEN_MUSIC) ? LOCAL_OMEN_MUSIC : REMOTE_OMEN_MUSIC;
+
+if (fs.existsSync(OMEN_MUSIC_DIR)) {
+    app.use('/media-music', express.static(OMEN_MUSIC_DIR));
+}
+
+function scanAudioFiles() {
+    const audioMap = new Map();
+    if (!fs.existsSync(OMEN_MUSIC_DIR)) return audioMap;
+
+    try {
+        const folders = fs.readdirSync(OMEN_MUSIC_DIR, { withFileTypes: true });
+        for (const folder of folders) {
+            if (!folder.isDirectory()) continue;
+            const category = folder.name;
+            const folderPath = path.join(OMEN_MUSIC_DIR, category);
+            const files = fs.readdirSync(folderPath);
+
+            for (const file of files) {
+                const ext = path.extname(file).toLowerCase();
+                if (ext === '.mp3' || ext === '.m4a' || ext === '.flac' || ext === '.ogg') {
+                    const baseName = path.basename(file, ext).toLowerCase().replace(/[^a-z0-9]/g, '');
+                    audioMap.set(baseName, {
+                        category,
+                        fileName: file,
+                        relUrl: `/media-music/${encodeURIComponent(category)}/${encodeURIComponent(file)}`
+                    });
+                }
+            }
+        }
+    } catch(e) {
+        console.error("Error escaneando archivos de audio:", e.message);
+    }
+    return audioMap;
+}
+
 const LOCAL_OMEN_VIDEOS = "D:\\media-library\\music-videos";
 const REMOTE_OMEN_VIDEOS = "\\\\100.95.217.45\\omen D\\media-library\\music-videos";
 const OMEN_VIDEOS_DIR = fs.existsSync(LOCAL_OMEN_VIDEOS) ? LOCAL_OMEN_VIDEOS : REMOTE_OMEN_VIDEOS;
@@ -473,6 +512,7 @@ app.get('/api/playlists', (req, res) => {
     }
 
     const videoMap = scanVideoFiles();
+    const audioMap = scanAudioFiles();
     const iconicAlbumDates = {
         "appetite for destruction": {
                 "year": "1987",
@@ -585,6 +625,10 @@ app.get('/api/playlists', (req, res) => {
             seenKeys.add(dedupKey);
 
             const cleanKey = `${artist} - ${title}`.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const cleanKey2 = `${artist} ${cleanTitle}`.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const audioInfo = audioMap.get(cleanKey) || audioMap.get(cleanKey2);
+            const audioUrl = audioInfo ? audioInfo.relUrl : null;
+
             let videoInfo = videoMap.get(cleanKey);
             if (!videoInfo) {
                 const titleKey = cleanTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
@@ -651,7 +695,9 @@ app.get('/api/playlists', (req, res) => {
                 videoPath: videoInfo && videoInfo.mp4 ? `/media-videos/${videoInfo.mp4.replace(/\\/g, '/')}` : null,
                 srtPath: videoInfo && videoInfo.srt ? `/media-videos/${videoInfo.srt.replace(/\\/g, '/')}` : null,
                 lrcPath: videoInfo && videoInfo.lrc ? `/media-videos/${videoInfo.lrc.replace(/\\/g, '/')}` : null,
-                hasAnalysis: !!analysis
+                hasAnalysis: !!analysis,
+                hasAudio: !!audioUrl,
+                audioUrl: audioUrl
             });
         }
 
@@ -880,6 +926,7 @@ app.get('/api/track/detail', async (req, res) => {
         durationFmt: meta.durationFmt || '03:30',
         label: meta.label || 'Sello Discográfico Principal',
         genre: meta.genre || 'Pop / Rock / Dance',
+        audioUrl: (scanAudioFiles().get(`${artist} - ${title}`.toLowerCase().replace(/[^a-z0-9]/g, '')) || {}).relUrl || null,
         composers: meta.composers || artist,
         lyrics: parsedLyrics || [],
         analysis: analysis
