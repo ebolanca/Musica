@@ -900,3 +900,43 @@ video {
   border-color: var(--spotify-green);
   box-shadow: 0 0 12px var(--spotify-glow);
 }
+
+/* --- Credit Cards en Modal --- */
+.credit-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-glass);
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.credit-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.credit-card i {
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  margin-bottom: 2px;
+}
+
+.credit-card .credit-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.credit-card .credit-value {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -256,53 +256,65 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('[data-modal-tab="tab-credits"]').classList.add('active');
         document.getElementById('tab-credits').classList.add('active');
 
+        // Mostrar de inmediato los créditos con los datos que ya tenemos del catálogo
+        populateCreditsTab({}, song);
+
         songModal.classList.add('active');
 
-        fetch(`/api/track/detail?artist=${encodeURIComponent(song.artist)}&title=${encodeURIComponent(song.title)}`)
+        const trackTitleQuery = song.rawTitle || song.title;
+        fetch(`/api/track/detail?artist=${encodeURIComponent(song.artist)}&title=${encodeURIComponent(trackTitleQuery)}`)
             .then(res => res.json())
             .then(detail => {
                 populateCreditsTab(detail, song);
                 populateLyricsTab(detail);
                 populateAnalysisTab(detail);
-                
             })
             .catch(err => {
-                console.error('Error cargando detalle:', err);
+                console.error('Error cargando detalle adicional:', err);
             });
     }
 
-        function populateCreditsTab(detail, song) {
+    function populateCreditsTab(detail, song) {
+        detail = detail || {};
+        song = song || {};
+        const artist = detail.composers || song.artist || 'Artista Principal';
+        const album = song.album || detail.album || 'Álbum Desconocido';
+        const year = song.releaseYear || detail.releaseYear || '2000';
+        const duration = song.durationFmt || detail.durationFmt || '03:30';
+        const label = detail.label || 'Sello Discográfico Principal';
+        const genre = detail.genre || 'Pop / Rock / Dance';
+
         document.getElementById('tab-credits').innerHTML = `
             <div class="credits-grid" style="margin-top: 10px;">
                 <div class="credit-card">
                     <i class="fa-solid fa-user-pen"></i>
                     <div class="credit-label">Compositor / Autor</div>
-                    <div class="credit-value">${detail.composers || song.artist || 'Por determinar'}</div>
+                    <div class="credit-value">${artist}</div>
                 </div>
                 <div class="credit-card">
                     <i class="fa-solid fa-compact-disc"></i>
                     <div class="credit-label">Álbum</div>
-                    <div class="credit-value">${song.album || detail.album || 'Álbum Desconocido'}</div>
+                    <div class="credit-value">${album}</div>
                 </div>
                 <div class="credit-card">
                     <i class="fa-solid fa-calendar-day"></i>
                     <div class="credit-label">Año de Lanzamiento</div>
-                    <div class="credit-value">${song.releaseYear || detail.releaseYear || '2000'}</div>
+                    <div class="credit-value">${year}</div>
                 </div>
                 <div class="credit-card">
                     <i class="fa-solid fa-clock"></i>
                     <div class="credit-label">Duración</div>
-                    <div class="credit-value">${song.durationFmt || '03:30'}</div>
+                    <div class="credit-value">${duration}</div>
                 </div>
                 <div class="credit-card">
                     <i class="fa-solid fa-record-vinyl"></i>
                     <div class="credit-label">Sello Discográfico</div>
-                    <div class="credit-value">${detail.label || 'Discográfica Principal'}</div>
+                    <div class="credit-value">${label}</div>
                 </div>
                 <div class="credit-card">
                     <i class="fa-solid fa-music"></i>
                     <div class="credit-label">Género Musical</div>
-                    <div class="credit-value">${detail.genre || 'Pop / Rock / Dance'}</div>
+                    <div class="credit-value">${genre}</div>
                 </div>
             </div>
         `;

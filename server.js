@@ -109,8 +109,14 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const OMEN_CACHE_PATH = "\\\\100.95.217.45\\omen D\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json";
-const OMEN_VIDEOS_DIR = "\\\\100.95.217.45\\omen D\\media-library\\music-videos";
+// Rutas compatibles tanto en local OMEN (D:\) como remoto MSI (red Tailscale)
+const LOCAL_OMEN_CACHE = "D:\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json";
+const REMOTE_OMEN_CACHE = "\\\\100.95.217.45\\omen D\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json";
+const OMEN_CACHE_PATH = fs.existsSync(LOCAL_OMEN_CACHE) ? LOCAL_OMEN_CACHE : REMOTE_OMEN_CACHE;
+
+const LOCAL_OMEN_VIDEOS = "D:\\media-library\\music-videos";
+const REMOTE_OMEN_VIDEOS = "\\\\100.95.217.45\\omen D\\media-library\\music-videos";
+const OMEN_VIDEOS_DIR = fs.existsSync(LOCAL_OMEN_VIDEOS) ? LOCAL_OMEN_VIDEOS : REMOTE_OMEN_VIDEOS;
 const ANALYSES_DB_PATH = path.join(__dirname, 'data', 'analyses_db.json');
 
 // Servir la carpeta de videoclips de OMEN como estática si está disponible
@@ -346,15 +352,15 @@ app.get('/api/track/detail', async (req, res) => {
     const cleanKey = key.toLowerCase().replace(/[^a-z0-9]/g, '');
     const videoInfo = videoMap.get(cleanKey);
     if (videoInfo) {
-        if (videoInfo.srt) parsedLyrics = parseLyricsFile(path.join(VIDEOS_DIR, videoInfo.srt));
-        else if (videoInfo.lrc) parsedLyrics = parseLyricsFile(path.join(VIDEOS_DIR, videoInfo.lrc));
+        if (videoInfo.srt) parsedLyrics = parseLyricsFile(path.join(OMEN_VIDEOS_DIR, videoInfo.srt));
+        else if (videoInfo.lrc) parsedLyrics = parseLyricsFile(path.join(OMEN_VIDEOS_DIR, videoInfo.lrc));
     }
 
     if (!parsedLyrics) {
         try {
             const cleanT = cleanTrackTitle(title);
             const lrcurl = `https://lrclib.net/api/get?artist_name=${encodeURIComponent(artist)}&track_name=${encodeURIComponent(cleanT)}`;
-            const lrcres = await fetch(lrcurl);
+            const lrcres = await fetch(lrcurl, { signal: AbortSignal.timeout(3000) });
             if (lrcres.ok) {
                 const lrcdata = await lrcres.json();
                 if (lrcdata.syncedLyrics) {
@@ -364,7 +370,7 @@ app.get('/api/track/detail', async (req, res) => {
                 }
             } else {
                 const searchurl = `https://lrclib.net/api/search?q=${encodeURIComponent(artist + ' ' + cleanT)}`;
-                const sres = await fetch(searchurl);
+                const sres = await fetch(searchurl, { signal: AbortSignal.timeout(3000) });
                 if (sres.ok) {
                     const sdata = await sres.json();
                     if (sdata && sdata.length > 0) {
