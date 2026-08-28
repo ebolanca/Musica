@@ -610,9 +610,18 @@ app.get('/api/playlists', (req, res) => {
             } else if (analysis && analysis.year && analysis.year !== '2000') {
                 const aYr = parseInt(analysis.year, 10);
                 const mYr = parseInt(releaseYear, 10) || 0;
-                if (mYr > aYr || mYr > 2024 || mYr === 2000) {
+                if (mYr > aYr || mYr > 2024 || mYr === 2000 || (listName === 'Música viejuna' && mYr > 1999 && aYr <= 1999)) {
                     releaseYear = analysis.year;
                     releaseDate = `${analysis.year}-01-01`;
+                }
+            }
+
+            // Ensure releaseDate year matches releaseYear
+            if (releaseDate && releaseYear) {
+                const dYear = releaseDate.split('-')[0];
+                if (dYear !== releaseYear) {
+                    const parts = releaseDate.split('-');
+                    releaseDate = `${releaseYear}-${parts[1] || '01'}-${parts[2] || '01'}`;
                 }
             }
 
