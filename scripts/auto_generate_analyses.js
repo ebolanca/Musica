@@ -48,13 +48,13 @@ async function fetchWikiSummary(artist, title) {
     try {
         const query = encodeURIComponent(`${title} ${artist} song`);
         const searchUrl = `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${query}&format=json&origin=*`;
-        const res = await fetch(searchUrl, { signal: AbortSignal.timeout(4000) });
+        const res = await fetch(searchUrl, { signal: AbortSignal.timeout(3000) });
         if (!res.ok) return null;
         const data = await res.json();
         if (data.query && data.query.search && data.query.search.length > 0) {
             const pageTitle = data.query.search[0].title;
             const pageUrl = `https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro=true&explaintext=true&titles=${encodeURIComponent(pageTitle)}&format=json&origin=*`;
-            const pRes = await fetch(pageUrl, { signal: AbortSignal.timeout(4000) });
+            const pRes = await fetch(pageUrl, { signal: AbortSignal.timeout(3000) });
             if (!pRes.ok) return null;
             const pData = await pRes.json();
             const pages = pData.query.pages;
@@ -67,78 +67,69 @@ async function fetchWikiSummary(artist, title) {
     return null;
 }
 
-// Generate specialized knowledge-based deep analysis for known patterns
-function generateSongAnalysis(artist, title, album, year, wikiExtract, genre) {
+function generateSongAnalysis(artist, title, album, year, wikiExtract) {
     const cleanT = cleanTitle(title);
+    let synopsis = `"${cleanT}" (${year || 'Clásico'}) de ${artist} es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.`;
     
-    let synopsis = `"${cleanT}" (${year || 'Clásico'}) de ${artist} es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible en listas y pistas de baile.`;
-    
-    if (wikiExtract && wikiExtract.length > 100) {
+    if (wikiExtract && wikiExtract.length > 80) {
         const firstSentence = wikiExtract.split('.')[0] + '.';
         synopsis = `"${cleanT}" (${year || 'Clásico'}) de ${artist}: ${firstSentence} Un tema indispensable que marcó una etapa definitoria en la evolución musical de su época.`;
     }
 
-    const sections = [];
-
-    // 1. Origen & Contexto
-    sections.push({
-        title: `El Origen & Trayectoria: La consagración de ${artist}`,
-        icon: "fa-book-open",
-        text: `Compuesta en un momento crucial en la carrera de ${artist}, "${cleanT}" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.`,
-        points: [
-            {
-                name: "El punto de inflexión creativo",
-                desc: `El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores.`
-            }
-        ]
-    });
-
-    // 2. Anatomía Musical
-    sections.push({
-        title: "La Anatomía Musical: Estructura, Texturas & Producción",
-        icon: "fa-drum",
-        text: `La producción de "${cleanT}" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:`,
-        points: [
-            {
-                name: "La base rítmica y el tempo",
-                desc: `Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final.`
-            },
-            {
-                name: "Capas de instrumentación y arreglos",
-                desc: `El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada.`
-            },
-            {
-                name: "El gancho melódico (Hook)",
-                desc: `El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos.`
-            }
-        ]
-    });
-
-    // 3. Lírica y Significado (si aplica)
-    sections.push({
-        title: "La Lírica y el Mensaje: Emoción y Resonancia Universal",
-        icon: "fa-quote-left",
-        text: `Líricamente, "${cleanT}" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.`,
-        points: [
-            {
-                name: "La narrativa vocal",
-                desc: `La interpretación de ${artist} aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación.`
-            }
-        ]
-    });
-
-    // 4. Impacto & Legado
-    sections.push({
-        title: "El Impacto Cultural & Legado",
-        icon: "fa-trophy",
-        text: `Con millones de reproducciones en radio y plataformas de streaming, "${cleanT}" se mantiene como un himno atemporal dentro de la discografía de ${artist} y una de las composiciones más celebradas de su generación.`,
-        points: [
-            {
-                name: "Permanencia en el imaginario colectivo",
-                desc: `El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de ${artist}.`
-            }
-        ]
-    });
+    const sections = [
+        {
+            title: `El Origen & Trayectoria: La consagración de ${artist}`,
+            icon: "fa-book-open",
+            text: `Compuesta en un momento crucial en la carrera de ${artist}, "${cleanT}" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.`,
+            points: [
+                {
+                    name: "El punto de inflexión creativo",
+                    desc: `El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores.`
+                }
+            ]
+        },
+        {
+            title: "La Anatomía Musical: Estructura, Texturas & Producción",
+            icon: "fa-drum",
+            text: `La producción de "${cleanT}" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:`,
+            points: [
+                {
+                    name: "La base rítmica y el tempo",
+                    desc: `Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final.`
+                },
+                {
+                    name: "Capas de instrumentación y arreglos",
+                    desc: `El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada.`
+                },
+                {
+                    name: "El gancho melódico (Hook)",
+                    desc: `El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos.`
+                }
+            ]
+        },
+        {
+            title: "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+            icon: "fa-quote-left",
+            text: `Líricamente, "${cleanT}" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.`,
+            points: [
+                {
+                    name: "La narrativa vocal",
+                    desc: `La interpretación de ${artist} aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación.`
+                }
+            ]
+        },
+        {
+            title: "El Impacto Cultural & Legado",
+            icon: "fa-trophy",
+            text: `Con millones de reproducciones en radio y plataformas de streaming, "${cleanT}" se mantiene como un himno atemporal dentro de la discografía de ${artist} y una de las composiciones más celebradas de su generación.`,
+            points: [
+                {
+                    name: "Permanencia en el imaginario colectivo",
+                    desc: `El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de ${artist}.`
+                }
+            ]
+        }
+    ];
 
     return {
         title: cleanT,
@@ -150,9 +141,9 @@ function generateSongAnalysis(artist, title, album, year, wikiExtract, genre) {
     };
 }
 
-async function runBatch(limit = 25, specificPlaylist = null) {
+async function runBatch(limit = 9999, specificPlaylist = null) {
     const db = loadDb();
-    console.log(`Cargada base de datos actual con ${Object.keys(db).length} análisis.`);
+    console.log(`Cargada base de datos actual con ${Object.keys(db).length} entradas.`);
 
     let playlistsData = {};
     if (fs.existsSync(OMEN_CACHE_PATH)) {
@@ -184,32 +175,31 @@ async function runBatch(limit = 25, specificPlaylist = null) {
                 continue;
             }
 
-            console.log(`⏳ [${processed + 1}/${limit}] Generando análisis para: "${artist} - ${cleanT}"...`);
-
-            // Fetch Wikipedia summary if available
             const wikiExtract = await fetchWikiSummary(artist, cleanT);
-            const analysis = generateSongAnalysis(artist, cleanT, "Álbum", "2000", wikiExtract, listName);
+            const analysis = generateSongAnalysis(artist, cleanT, "Álbum", "2000", wikiExtract);
 
-            // Store in DB with multiple keys for flawless lookup
             db[key] = analysis;
             db[`${artist} - ${rawTitle}`] = analysis;
             db[cleanT] = analysis;
 
             processed++;
-            // Small delay to be polite to APIs
-            await new Promise(r => setTimeout(r, 150));
+            if (processed % 25 === 0) {
+                console.log(`💾 Guardando progreso: ${processed} canciones procesadas... (Total DB: ${Object.keys(db).length})`);
+                saveDb(db);
+            }
+            await new Promise(r => setTimeout(r, 60));
         }
 
         if (processed >= limit) break;
     }
 
     saveDb(db);
-    console.log(`\n🎉 ¡Completado! Se generaron e incorporaron ${processed} nuevos análisis profundos a la base de datos.`);
+    console.log(`\n🎉 ¡Completado! Se generaron e incorporaron ${processed} nuevos análisis profundos.`);
     console.log(`Total acumulado en analyses_db.json: ${Object.keys(db).length} entradas.`);
 }
 
 const args = process.argv.slice(2);
-const limitArg = parseInt(args[0], 10) || 50;
+const limitArg = parseInt(args[0], 10) || 9999;
 const playlistArg = args[1] || null;
 
 runBatch(limitArg, playlistArg);
