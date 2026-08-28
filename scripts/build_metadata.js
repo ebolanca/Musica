@@ -13,6 +13,14 @@ function cleanTrackTitle(rawTitle) {
     if (!rawTitle) return '';
     let clean = rawTitle
         .replace(/^\s*\.\.\.\s*/, '')
+        .replace(/\s*-\s*Club Mix.*/i, '')
+        .replace(/\s*-\s*Extended Mix.*/i, '')
+        .replace(/\s*-\s*Mix.*/i, '')
+        .replace(/\s*-\s*Club Edit.*/i, '')
+        .replace(/\s*-\s*Remix.*/i, '')
+        .replace(/\s*\(.*remix.*\)/i, '')
+        .replace(/\s*-\s*Extended.*/i, '')
+        .replace(/\s*-\s*Radio Mix.*/i, '')
         .replace(/\s*-\s*Mono.*/i, '')
         .replace(/\s*-\s*Stereo.*/i, '')
         .replace(/\s*-\s*From\s+".*?".*/i, '')
@@ -48,7 +56,7 @@ if (fs.existsSync(SPOTDL_CACHE_PATH)) {
 }
 
 async function run() {
-    console.log("Iniciando escaneo de álbumes de estudio originales...");
+    console.log("Generando portadas HD y años reales de lanzamiento...");
     let count = 0;
     for (const [listName, tracks] of Object.entries(playlistsData)) {
         for (const item of tracks) {
@@ -67,6 +75,19 @@ async function run() {
                     let track = data.data.find(t => t.album && t.album.title && !isCompilation(t.album.title));
                     if (!track) track = data.data[0];
 
+                    let releaseDate = '2000-01-01';
+                    let releaseYear = '2000';
+                    if (track.album && track.album.id) {
+                        try {
+                            const albumRes = await fetch(`https://api.deezer.com/album/${track.album.id}`);
+                            const albumData = await albumRes.json();
+                            if (albumData.release_date) {
+                                releaseDate = albumData.release_date;
+                                releaseYear = albumData.release_date.substring(0, 4);
+                            }
+                        } catch(e){}
+                    }
+
                     const coverUrl = track.album.cover_xl || track.album.cover_big;
                     const durationSec = track.duration || 210;
                     const m = Math.floor(durationSec / 60);
@@ -77,24 +98,24 @@ async function run() {
                         displayTitle: displayTitle,
                         album: track.album.title || 'Álbum Desconocido',
                         coverUrl: coverUrl,
-                        releaseDate: '1990-01-01',
-                        releaseYear: '1990',
+                        releaseDate: releaseDate,
+                        releaseYear: releaseYear,
                         durationMs: durationSec * 1000,
                         durationFmt: durationFmt
                     };
                     metadataCache[keyRaw] = metaObj;
                     metadataCache[keyClean] = metaObj;
                     count++;
-                    console.log(`[${count}] Álbum Estudio OK: ${artist} - ${displayTitle} -> ${track.album.title}`);
+                    console.log(`[${count}] OK: ${artist} - ${displayTitle} -> ${track.album.title} (${releaseYear})`);
                 }
             } catch (e) {
                 console.error(`Error para ${keyClean}:`, e.message);
             }
-            await new Promise(r => setTimeout(r, 30));
+            await new Promise(r => setTimeout(r, 20));
         }
     }
     fs.writeFileSync(METADATA_CACHE_FILE, JSON.stringify(metadataCache, null, 2), 'utf8');
-    console.log(`¡Portadas y Álbumes de estudio guardados con éxito! Total: ${Object.keys(metadataCache).length}`);
+    console.log(`¡Portadas, Álbumes y Años reales guardados! Total: ${Object.keys(metadataCache).length}`);
 }
 
 run();

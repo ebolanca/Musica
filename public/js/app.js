@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.className = 'song-card';
 
             const coverHtml = song.coverUrl 
-                ? `<img src="${song.coverUrl}" alt="${song.album || song.title}" class="cover-img" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                ? `<img src="${song.coverUrl}" alt="${song.album || song.title}" class="cover-img"  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                    <i class="fa-solid fa-record-vinyl music-icon" style="display:none;"></i>`
                 : `<i class="fa-solid fa-record-vinyl music-icon"></i>`;
 
