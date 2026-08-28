@@ -806,9 +806,9 @@ video {
   font-size: 0.78rem;
   color: var(--text-muted);
   font-style: italic;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.35;
   margin-top: 2px;
 }
 

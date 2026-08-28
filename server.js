@@ -1,3 +1,21 @@
+function cleanAlbumTitle(rawAlbum) {
+    if (!rawAlbum) return 'Álbum Desconocido';
+    let clean = rawAlbum
+        .replace(/\s*\(Digital Deluxe.*?\)/i, '')
+        .replace(/\s*\(Deluxe.*?\)/i, '')
+        .replace(/\s*\(Expanded.*?\)/i, '')
+        .replace(/\s*\(Remastered.*?\)/i, '')
+        .replace(/\s*\(Super Deluxe.*?\)/i, '')
+        .replace(/\s*\(Anniversary.*?\)/i, '')
+        .replace(/\s*\(Special Edition.*?\)/i, '')
+        .replace(/\s*\(Bonus.*?\)/i, '')
+        .replace(/\s*-\s*Deluxe.*/i, '')
+        .replace(/\s*-\s*Expanded.*/i, '')
+        .replace(/\s*-\s*Remastered.*/i, '')
+        .trim();
+    return clean || rawAlbum;
+}
+
 function parseLrc(lrcText) {
     if (!lrcText) return null;
     const lines = lrcText.split(/\r?\n/);
@@ -221,7 +239,7 @@ app.get('/api/playlists', (req, res) => {
                 artist: artist,
                 title: meta.displayTitle || cleanTitle,
                 rawTitle: title,
-                album: meta.album || 'Álbum Desconocido',
+                album: cleanAlbumTitle(meta.album),
                 coverUrl: meta.coverUrl || null,
                 releaseDate: meta.releaseDate || '2000-01-01',
                 releaseYear: meta.releaseYear || '2000',
@@ -369,7 +387,7 @@ app.get('/api/track/detail', async (req, res) => {
     res.json({
         artist: artist,
         title: meta.displayTitle || cleanTrackTitle(title),
-        album: meta.album || 'Álbum Desconocido',
+        album: cleanAlbumTitle(meta.album),
         releaseDate: meta.releaseDate || '2000-01-01',
         releaseYear: meta.releaseYear || '2000',
         durationFmt: meta.durationFmt || '03:30',

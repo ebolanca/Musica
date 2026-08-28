@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-        function populateLyricsTab(detail) {
+            function populateLyricsTab(detail) {
         const tabContainer = document.getElementById('tab-lyrics');
         if (!detail.lyrics || detail.lyrics.length === 0) {
             tabContainer.innerHTML = `
@@ -330,17 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
         tabContainer.innerHTML = `<div class="lyrics-container" style="max-height: 480px; overflow-y: auto; padding: 10px;">${linesHtml}</div>`;
     }
 
-        const linesHtml = detail.lyrics.map(l => `
-            <div class="lyric-line">
-                <span class="lyric-timestamp">${l.time || '00:00'}</span>
-                <span class="lyric-text">${l.text}</span>
-            </div>
-        `).join('');
-
-        tabContainer.innerHTML = `<div class="lyrics-container">${linesHtml}</div>`;
-    }
-
-        function populateAnalysisTab(detail) {
+    function populateAnalysisTab(detail) {
         const tabContainer = document.getElementById('tab-microscope');
         if (!detail.analysis) {
             tabContainer.innerHTML = `
@@ -383,36 +373,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h3 style="color: var(--accent-amber); font-size: 1.1rem; margin-bottom: 8px;"><i class="fa-solid fa-lightbulb"></i> 5. Curiosidades & Anecdotario</h3>
                     <p style="color: #e2e8f0; font-size: 0.95rem; line-height: 1.5; margin: 0;">${a.section5_text || ''}</p>
                 </div>
-            </div>
-        `;
-    }
-
-        const a = detail.analysis;
-        tabContainer.innerHTML = `
-            <div class="analysis-box">
-                <h4><i class="fa-solid fa-book-open"></i> 1. Contexto e Historia de la Canción</h4>
-                <p>${a.context || 'Sin información.'}</p>
-
-                <h4><i class="fa-solid fa-sliders"></i> 2. Análisis Técnico y Arquitectura Sonora</h4>
-                <p>${a.technical || 'Sin información.'}</p>
-
-                <h4><i class="fa-solid fa-quote-left"></i> 3. Desglose Lírico y Análisis Estrofa por Estrofa</h4>
-                <p>${a.lyrical || 'Sin información.'}</p>
-
-                <h4><i class="fa-solid fa-gem"></i> 4. Impacto Cultural y Legado Musical</h4>
-                <p>${a.legacy || 'Sin información.'}</p>
-            </div>
-        `;
-    }
-
-    
-
-        tabContainer.innerHTML = `
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
-                <video controls autoplay style="width: 100%; max-height: 480px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.8);">
-                    <source src="${detail.videoUrl}" type="video/mp4">
-                    Tu navegador no soporta el reproductor de video HTML5.
-                </video>
             </div>
         `;
     }
