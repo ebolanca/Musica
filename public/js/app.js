@@ -529,7 +529,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const isGlobalSearch = searchQuery.trim().length > 0;
-        const isGlobalSearch = searchQuery.trim().length > 0;
         let tracksToFilter = [];
 
         if (isGlobalSearch) {
