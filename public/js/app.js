@@ -495,7 +495,6 @@ document.addEventListener('DOMContentLoaded', () => {
         quickPillsBar.appendChild(divider);
 
         const featurePills = [
-            { id: 'video', label: 'Con Videoclip', icon: 'fa-clapperboard' },
             { id: 'analysis', label: 'Con Análisis', icon: 'fa-microscope' },
             { id: 'lyrics', label: 'Con Letra', icon: 'fa-microphone' }
         ];
@@ -1178,3 +1177,224 @@ function renderRadioStations() {
             });
     });
 });
+
+    // ==========================================================================
+    // 📊 Estadísticas del Catálogo Musical
+    // ==========================================================================
+    const statsModal = document.getElementById('stats-modal');
+    const btnOpenStats = document.getElementById('btn-open-stats');
+    const btnCloseStats = document.getElementById('btn-close-stats');
+    const statsContent = document.getElementById('stats-content');
+
+    function openStatsModal() {
+        if (!statsModal || !statsContent) return;
+        
+        let totalTracks = 0;
+        let totalDurationMs = 0;
+        let totalWithLyrics = 0;
+        let totalWithAnalysis = 0;
+        const artistCounts = {};
+        const decadeCounts = { '60s & 70s': 0, '80s': 0, '90s': 0, '2000s': 0, '2010s+': 0 };
+        const playlistBreakdown = {};
+
+        for (const [pName, tracks] of Object.entries(allPlaylists)) {
+            playlistBreakdown[pName] = tracks.length;
+            tracks.forEach(t => {
+                totalTracks++;
+                totalDurationMs += (t.durationMs || 210000);
+                if (t.hasLyrics) totalWithLyrics++;
+                if (t.hasAnalysis) totalWithAnalysis++;
+
+                const art = (t.artist || 'Desconocido').split(',')[0].split(' feat')[0].trim();
+                artistCounts[art] = (artistCounts[art] || 0) + 1;
+
+                let yr = null;
+                if (t.releaseYear) yr = parseInt(t.releaseYear, 10);
+                else if (t.releaseDate) yr = parseInt(t.releaseDate.split('-')[0], 10);
+
+                if (yr) {
+                    if (yr < 1980) decadeCounts['60s & 70s']++;
+                    else if (yr < 1990) decadeCounts['80s']++;
+                    else if (yr < 2000) decadeCounts['90s']++;
+                    else if (yr < 2010) decadeCounts['2000s']++;
+                    else decadeCounts['2010s+']++;
+                }
+            });
+        }
+
+        const totalHours = Math.round(totalDurationMs / (1000 * 60 * 60));
+        const sortedArtists = Object.entries(artistCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
+        const maxArtistCount = sortedArtists.length > 0 ? sortedArtists[0][1] : 1;
+        const maxDecadeCount = Math.max(...Object.values(decadeCounts), 1);
+
+        statsContent.innerHTML = `
+            <div class="stats-grid-cards">
+                <div class="stat-metric-card">
+                    <div class="stat-metric-number">${totalTracks}</div>
+                    <div class="stat-metric-label">Canciones Indexadas</div>
+                </div>
+                <div class="stat-metric-card">
+                    <div class="stat-metric-number">${totalHours} h</div>
+                    <div class="stat-metric-label">Música Ininterrumpida</div>
+                </div>
+                <div class="stat-metric-card">
+                    <div class="stat-metric-number">${totalWithLyrics}</div>
+                    <div class="stat-metric-label">Con Letras & Traducción</div>
+                </div>
+                <div class="stat-metric-card">
+                    <div class="stat-metric-number">${totalWithAnalysis}</div>
+                    <div class="stat-metric-label">Con Análisis Sónico</div>
+                </div>
+            </div>
+
+            <div class="stats-charts-row">
+                <div class="stats-panel-box">
+                    <div class="stats-panel-title"><i class="fa-solid fa-calendar-days" style="color:var(--spotify-green);"></i> Distribución por Décadas</div>
+                    ${Object.entries(decadeCounts).map(([dec, count]) => `
+                        <div class="stats-bar-item">
+                            <div class="stats-bar-header">
+                                <span>${dec}</span>
+                                <span style="color:var(--spotify-green);">${count} temas (${Math.round((count/totalTracks)*100)}%)</span>
+                            </div>
+                            <div class="stats-bar-track">
+                                <div class="stats-bar-fill" style="width: ${Math.round((count/maxDecadeCount)*100)}%;"></div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="stats-panel-box">
+                    <div class="stats-panel-title"><i class="fa-solid fa-star" style="color:#f59e0b;"></i> Artistas con Más Canciones</div>
+                    ${sortedArtists.map(([art, count]) => `
+                        <div class="stats-bar-item">
+                            <div class="stats-bar-header">
+                                <span style="max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${art}</span>
+                                <span style="color:#38bdf8;">${count} canciones</span>
+                            </div>
+                            <div class="stats-bar-track">
+                                <div class="stats-bar-fill" style="width: ${Math.round((count/maxArtistCount)*100)}%; background: linear-gradient(90deg, #38bdf8, #818cf8);"></div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+
+        statsModal.style.display = 'flex';
+    }
+
+    if (btnOpenStats) btnOpenStats.addEventListener('click', openStatsModal);
+    if (btnCloseStats) btnCloseStats.addEventListener('click', () => { if (statsModal) statsModal.style.display = 'none'; });
+    if (statsModal) statsModal.addEventListener('click', (e) => { if (e.target === statsModal) statsModal.style.display = 'none'; });
+
+    // ==========================================================================
+    // 📺 Modo Cine / Pantalla Completa & Smart DJ
+    // ==========================================================================
+    const cinemaOverlay = document.getElementById('cinema-overlay');
+    const btnCloseCinema = document.getElementById('btn-close-cinema');
+    const cinemaBg = document.getElementById('cinema-bg');
+    const cinemaCover = document.getElementById('cinema-cover');
+    const cinemaTitle = document.getElementById('cinema-title');
+    const cinemaArtist = document.getElementById('cinema-artist');
+    const cinemaAlbum = document.getElementById('cinema-album');
+    const cinemaLyrics = document.getElementById('cinema-lyrics');
+    const cinemaPlay = document.getElementById('cinema-play');
+    const cinemaPrev = document.getElementById('cinema-prev');
+    const cinemaNext = document.getElementById('cinema-next');
+    const btnSmartDj = document.getElementById('btn-smart-dj');
+
+    let cinemaCurrentTrackList = [];
+    let cinemaCurrentIndex = 0;
+
+    function openCinemaMode(track, trackList = null) {
+        if (!cinemaOverlay) return;
+        
+        if (trackList && trackList.length > 0) {
+            cinemaCurrentTrackList = trackList;
+            cinemaCurrentIndex = cinemaCurrentTrackList.findIndex(t => t.title === track.title && t.artist === track.artist);
+            if (cinemaCurrentIndex === -1) cinemaCurrentIndex = 0;
+        } else {
+            const list = allPlaylists[currentTab] || [];
+            cinemaCurrentTrackList = list.length > 0 ? list : [track];
+            cinemaCurrentIndex = cinemaCurrentTrackList.findIndex(t => t.title === track.title && t.artist === track.artist);
+            if (cinemaCurrentIndex === -1) cinemaCurrentIndex = 0;
+        }
+
+        renderCinemaTrack(cinemaCurrentTrackList[cinemaCurrentIndex]);
+        cinemaOverlay.style.display = 'flex';
+    }
+
+    function renderCinemaTrack(track) {
+        if (!track) return;
+        const cover = track.coverUrl || 'img/radios/hitfm.svg';
+        if (cinemaBg) cinemaBg.style.backgroundImage = `url('${cover}')`;
+        if (cinemaCover) cinemaCover.src = cover;
+        if (cinemaTitle) cinemaTitle.textContent = track.title;
+        if (cinemaArtist) cinemaArtist.textContent = track.artist;
+        if (cinemaAlbum) cinemaAlbum.textContent = `${track.album || 'Álbum'} • ${formatBriefDate(track.releaseDate, track.releaseYear)}`;
+
+        // Fetch detailed lyrics
+        if (cinemaLyrics) {
+            cinemaLyrics.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);"><i class="fa-solid fa-spinner fa-spin"></i> Cargando letra...</div>';
+            fetch(`/api/track/detail?artist=${encodeURIComponent(track.artist)}&title=${encodeURIComponent(track.title)}`)
+                .then(r => r.json())
+                .then(d => {
+                    if (d.lyrics && d.lyrics.length > 0) {
+                        cinemaLyrics.innerHTML = d.lyrics.map(l => `
+                            <div class="cinema-lyric-line">
+                                <div>${l.text}</div>
+                                ${l.translation ? `<div class="cinema-lyric-trans">${l.translation}</div>` : ''}
+                            </div>
+                        `).join('');
+                    } else {
+                        cinemaLyrics.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);"><i class="fa-solid fa-microphone-slash"></i> No hay letra sincronizada disponible para esta canción.</div>';
+                    }
+                })
+                .catch(() => {
+                    cinemaLyrics.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);">Error cargando letra</div>';
+                });
+        }
+    }
+
+    if (btnCloseCinema) {
+        btnCloseCinema.addEventListener('click', () => {
+            if (cinemaOverlay) cinemaOverlay.style.display = 'none';
+        });
+    }
+
+    if (cinemaNext) {
+        cinemaNext.addEventListener('click', () => {
+            if (cinemaCurrentTrackList.length === 0) return;
+            cinemaCurrentIndex = (cinemaCurrentIndex + 1) % cinemaCurrentTrackList.length;
+            renderCinemaTrack(cinemaCurrentTrackList[cinemaCurrentIndex]);
+        });
+    }
+
+    if (cinemaPrev) {
+        cinemaPrev.addEventListener('click', () => {
+            if (cinemaCurrentTrackList.length === 0) return;
+            cinemaCurrentIndex = (cinemaCurrentIndex - 1 + cinemaCurrentTrackList.length) % cinemaCurrentTrackList.length;
+            renderCinemaTrack(cinemaCurrentTrackList[cinemaCurrentIndex]);
+        });
+    }
+
+    if (btnSmartDj) {
+        btnSmartDj.addEventListener('click', () => {
+            const tracks = allPlaylists[currentTab] || allPlaylists['Música viejuna'] || [];
+            if (tracks.length === 0) return;
+            // Shuffle
+            const shuffled = [...tracks].sort(() => Math.random() - 0.5);
+            openCinemaMode(shuffled[0], shuffled);
+        });
+    }
+
+
+    const btnModalCinema = document.getElementById('btn-modal-cinema');
+    if (btnModalCinema) {
+        btnModalCinema.addEventListener('click', () => {
+            if (currentModalSong) {
+                if (songModal) songModal.classList.remove('active');
+                openCinemaMode(currentModalSong);
+            }
+        });
+    }

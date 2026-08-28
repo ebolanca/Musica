@@ -1608,3 +1608,347 @@ video {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* ==========================================================================
+   Stats Modal & Cinema Mode Visualizer Styles
+   ========================================================================== */
+.stats-modal-card {
+  max-width: 900px !important;
+  max-height: 88vh;
+}
+
+.stats-grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-metric-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-glass);
+  border-radius: 14px;
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.stat-metric-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(29, 185, 84, 0.4);
+}
+
+.stat-metric-number {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--spotify-green);
+  line-height: 1.2;
+}
+
+.stat-metric-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.stats-charts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .stats-charts-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stats-panel-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-glass);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.stats-panel-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stats-bar-item {
+  margin-bottom: 12px;
+}
+
+.stats-bar-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.stats-bar-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.stats-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #10b981, #3b82f6);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Cinema Mode Overlay --- */
+.cinema-overlay {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  overflow: hidden;
+  animation: fadeIn 0.3s ease;
+}
+
+.cinema-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(60px) brightness(0.25);
+  opacity: 0.8;
+  transform: scale(1.2);
+  transition: background-image 0.8s ease;
+  z-index: 1;
+}
+
+.cinema-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 40px;
+}
+
+.cinema-badge {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.btn-cinema-close {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-cinema-close:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.cinema-content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 20px 60px 40px 60px;
+  gap: 60px;
+  align-items: center;
+  max-width: 1500px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .cinema-content {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 30px;
+  }
+}
+
+.cinema-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.cinema-vinyl-wrap {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  margin-bottom: 24px;
+}
+
+.cinema-cover {
+  width: 260px;
+  height: 260px;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+}
+
+.cinema-vinyl-record {
+  position: absolute;
+  top: 15px;
+  right: 0;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #333 10%, #111 11%, #111 90%, #000 100%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  animation: spinVinyl 12s linear infinite;
+}
+
+@keyframes spinVinyl {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.cinema-track-title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 6px;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.cinema-track-artist {
+  font-size: 1.2rem;
+  color: var(--spotify-green);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.cinema-track-album {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.cinema-controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn-cinema-ctrl {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-cinema-ctrl:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.1);
+}
+
+.btn-cinema-play {
+  background: var(--spotify-green);
+  border: none;
+  color: #000;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 25px rgba(29, 185, 84, 0.5);
+}
+
+.btn-cinema-play:hover {
+  transform: scale(1.1);
+}
+
+.cinema-right {
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 24px;
+  backdrop-filter: blur(20px);
+}
+
+.cinema-lyrics-header {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--spotify-green);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cinema-lyrics-container {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.cinema-lyric-line {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-bottom: 16px;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.cinema-lyric-line.active {
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+.cinema-lyric-trans {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #64748b;
+  margin-top: 3px;
+}

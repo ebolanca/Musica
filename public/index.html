@@ -18,7 +18,7 @@
             </div>
             <div class="logo-title">
                 <h1>Música</h1>
-                <p>Plataforma de Videoclips & Análisis Sónico v1.4.27</p>
+                <p>Plataforma de Videoclips & Análisis Sónico v1.4.28</p>
             </div>
         </div>
 
@@ -27,8 +27,14 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" id="search-input" placeholder="Buscar artista, canción o clásico...">
             </div>
-            <button class="btn-action" id="btn-jellyfin-sync">
-                <i class="fa-solid fa-rotate"></i> Refrescar Jellyfin
+            <button class="btn-action" id="btn-smart-dj" title="Iniciar reproducción continua aleatoria">
+                <i class="fa-solid fa-shuffle"></i> Modo Fiesta
+            </button>
+            <button class="btn-action" id="btn-open-stats" title="Ver estadísticas completas de la biblioteca">
+                <i class="fa-solid fa-chart-pie"></i> Estadísticas
+            </button>
+            <button class="btn-action" id="btn-jellyfin-sync" title="Refrescar catálogo">
+                <i class="fa-solid fa-rotate"></i> Sincronizar
             </button>
         </div>
     </header>
@@ -120,9 +126,14 @@
                     <h2 id="modal-title-text">Cargando título...</h2>
                     <p id="modal-artist-text">Cargando artista...</p>
                 </div>
-                <button class="btn-close-modal" id="btn-close-modal">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <button class="btn-action" id="btn-modal-cinema" style="padding: 6px 14px; font-size: 0.82rem;" title="Abrir en Modo Cine / Pantalla Completa">
+                        <i class="fa-solid fa-tv"></i> Modo Cine
+                    </button>
+                    <button class="btn-close-modal" id="btn-close-modal">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
             </div>
 
             <!-- Modal Sub-Navegación (4 Pestañas) -->
@@ -234,6 +245,56 @@
             </div>
         </div>
         <audio id="live-radio-audio" preload="none"></audio>
+    </div>
+
+
+    <!-- Modal: Estadísticas del Catálogo -->
+    <div class="modal-overlay" id="stats-modal" style="display: none;">
+        <div class="modal-card stats-modal-card">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <h3 class="modal-title"><i class="fa-solid fa-chart-pie" style="color: var(--spotify-green);"></i> Estadísticas de la Biblioteca Musical</h3>
+                    <p class="modal-subtitle">Resumen y análisis de todo tu catálogo de canciones</p>
+                </div>
+                <button class="btn-close-modal" id="btn-close-stats"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body stats-modal-body" id="stats-content">
+                <!-- Rendered dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modo Cine / Pantalla Completa (Estilo Spotify TV / Apple Music) -->
+    <div class="cinema-overlay" id="cinema-overlay" style="display: none;">
+        <div class="cinema-bg" id="cinema-bg"></div>
+        <div class="cinema-header">
+            <div class="cinema-badge"><span class="live-dot" style="background:#22c55e;"></span> REPRODUCCIÓN EN CURSO</div>
+            <button class="btn-cinema-close" id="btn-close-cinema" title="Salir de pantalla completa"><i class="fa-solid fa-compress"></i> Salir</button>
+        </div>
+        <div class="cinema-content">
+            <div class="cinema-left">
+                <div class="cinema-vinyl-wrap">
+                    <img src="" alt="" id="cinema-cover" class="cinema-cover">
+                    <div class="cinema-vinyl-record" id="cinema-vinyl"></div>
+                </div>
+                <div class="cinema-track-info">
+                    <div class="cinema-track-title" id="cinema-title">Título de la Canción</div>
+                    <div class="cinema-track-artist" id="cinema-artist">Artista</div>
+                    <div class="cinema-track-album" id="cinema-album">Álbum • 2000</div>
+                </div>
+                <div class="cinema-controls">
+                    <button class="btn-cinema-ctrl" id="cinema-prev" title="Canción anterior"><i class="fa-solid fa-backward-step"></i></button>
+                    <button class="btn-cinema-play" id="cinema-play" title="Pausar / Reproducir"><i class="fa-solid fa-pause"></i></button>
+                    <button class="btn-cinema-ctrl" id="cinema-next" title="Siguiente canción"><i class="fa-solid fa-forward-step"></i></button>
+                </div>
+            </div>
+            <div class="cinema-right">
+                <div class="cinema-lyrics-header"><i class="fa-solid fa-microphone-lines"></i> Letra Sincronizada</div>
+                <div class="cinema-lyrics-container" id="cinema-lyrics">
+                    <!-- Letra sincronizada en grande -->
+                </div>
+            </div>
+        </div>
     </div>
 
 </body>
