@@ -1193,8 +1193,9 @@ video {
   border-color: var(--spotify-green);
 }
 
+
 /* ==========================================================================
-   Radio Stations & Live Player Styles
+   Radio Stations & Live Player Styles (Refined)
    ========================================================================== */
 .radio-card {
   background: var(--bg-card);
@@ -1232,27 +1233,28 @@ video {
   margin-bottom: 14px;
   position: relative;
   overflow: hidden;
-  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
-.radio-card-logo-text {
-  font-size: 2.2rem;
-  font-weight: 900;
-  letter-spacing: -1px;
-  color: #fff;
-  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
-  text-align: center;
-  padding: 10px;
-  user-select: none;
+.radio-card-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  transition: transform 0.3s ease;
+}
+
+.radio-card:hover .radio-card-logo-img {
+  transform: scale(1.05);
 }
 
 .live-badge-overlay {
   position: absolute;
   top: 10px;
   left: 10px;
-  background: rgba(225, 29, 72, 0.9);
+  background: rgba(225, 29, 72, 0.92);
   color: #fff;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 800;
   padding: 3px 8px;
   border-radius: 12px;
@@ -1261,11 +1263,12 @@ video {
   gap: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
+  z-index: 2;
 }
 
 .live-dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   background: #fff;
   border-radius: 50%;
   animation: liveBlink 1.4s infinite ease-in-out;
@@ -1277,55 +1280,101 @@ video {
 }
 
 .radio-station-title {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 800;
   color: #fff;
-  margin-bottom: 3px;
-}
-
-.radio-station-slogan {
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  margin-bottom: 10px;
+  margin-bottom: 2px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+.radio-station-slogan {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.radio-meta-pills {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.radio-meta-pills .badge-pill {
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+
 .radio-card-footer {
   margin-top: auto;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 8px;
   padding-top: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .btn-radio-listen {
+  flex: 1;
   background: var(--spotify-green);
   color: #000;
   border: none;
   border-radius: 20px;
-  padding: 6px 14px;
+  padding: 7px 12px;
   font-size: 0.82rem;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .btn-radio-listen:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(29, 185, 84, 0.6);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(29, 185, 84, 0.5);
 }
 
 .radio-card.playing .btn-radio-listen {
   background: #ef4444;
   color: #fff;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.5);
 }
+
+.btn-radio-web {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted);
+  border-radius: 20px;
+  padding: 7px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-radio-web:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
 
 /* --- Persistent Bottom Live Radio Player Bar --- */
 .radio-player-bar {

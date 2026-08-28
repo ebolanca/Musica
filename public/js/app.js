@@ -182,33 +182,30 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'hitfm',
             name: 'HIT FM',
             slogan: 'Nº 1 en Hits Internacionales',
-            genre: 'Pop / Dance / Top Hits',
+            genre: 'Pop / Dance / Hits',
             quality: '128 kbps HD',
-            color: 'linear-gradient(135deg, #ec4899, #f43f5e)',
-            logoBg: '#be123c',
-            logoText: 'HIT FM',
+            logoUrl: 'img/radios/hitfm.svg',
+            webUrl: 'https://www.hitfm.es/',
             streamUrl: 'https://hitfm.kissfmradio.cires21.com/hitfm.mp3'
         },
         {
             id: 'locafm',
             name: 'LOCA FM',
             slogan: 'La Radio de la Música Electrónica',
-            genre: 'Dance / House / Remember',
+            genre: 'Dance / House / EDM',
             quality: '160 kbps HD',
-            color: 'linear-gradient(135deg, #8b5cf6, #6d28d9)',
-            logoBg: '#5b21b6',
-            logoText: 'LOCA',
+            logoUrl: 'img/radios/locafm.svg',
+            webUrl: 'https://locafm.com/',
             streamUrl: 'http://s3.we4stream.com:8045/live'
         },
         {
             id: 'los40',
             name: 'LOS40',
             slogan: 'Todos Los Éxitos',
-            genre: 'Pop / Radiofórmula / Actual',
+            genre: 'Pop / Radiofórmula',
             quality: '128 kbps HD',
-            color: 'linear-gradient(135deg, #06b6d4, #0284c7)',
-            logoBg: '#0369a1',
-            logoText: 'LOS40',
+            logoUrl: 'img/radios/los40.svg',
+            webUrl: 'https://los40.com/',
             streamUrl: 'https://playerservices.streamtheworld.com/api/livestream-redirect/LOS40.mp3'
         },
         {
@@ -217,9 +214,8 @@ document.addEventListener('DOMContentLoaded', () => {
             slogan: 'Lo Mejor de los 80 y 90 hasta Hoy',
             genre: 'Hits 80s / 90s / 2000s',
             quality: '128 kbps HD',
-            color: 'linear-gradient(135deg, #ef4444, #b91c1c)',
-            logoBg: '#991b1b',
-            logoText: 'KISS FM',
+            logoUrl: 'img/radios/kissfm.svg',
+            webUrl: 'https://www.kissfm.es/',
             streamUrl: 'https://kissfm.kissfmradio.cires21.com/kissfm.mp3'
         },
         {
@@ -228,20 +224,18 @@ document.addEventListener('DOMContentLoaded', () => {
             slogan: 'La Radio del Dance y Clubbing',
             genre: 'EDM / Dance / Club',
             quality: '128 kbps HD',
-            color: 'linear-gradient(135deg, #10b981, #047857)',
-            logoBg: '#065f46',
-            logoText: 'DANCE',
+            logoUrl: 'img/radios/los40dance.svg',
+            webUrl: 'https://los40.com/los40_dance/',
             streamUrl: 'https://playerservices.streamtheworld.com/api/livestream-redirect/LOS40_DANCE.mp3'
         },
         {
             id: 'cadena100',
             name: 'CADENA 100',
             slogan: 'La Mejor Variedad Musical',
-            genre: 'Pop / Rock / Adult Contemporary',
+            genre: 'Pop / Rock / Adult',
             quality: '128 kbps HD',
-            color: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
-            logoBg: '#1e40af',
-            logoText: 'C100',
+            logoUrl: 'img/radios/cadena100.svg',
+            webUrl: 'https://www.cadena100.es/',
             streamUrl: 'http://cadena100-streamers-mp3.flumotion.com/cope/cadena100.mp3'
         },
         {
@@ -250,31 +244,28 @@ document.addEventListener('DOMContentLoaded', () => {
             slogan: '50 Minutos de Rock Sin Pausa',
             genre: 'Classic Rock / Hard Rock',
             quality: '128 kbps HD',
-            color: 'linear-gradient(135deg, #f59e0b, #b45309)',
-            logoBg: '#92400e',
-            logoText: 'ROCK FM',
+            logoUrl: 'img/radios/rockfm.svg',
+            webUrl: 'https://www.rockfm.fm/',
             streamUrl: 'http://flucast10-o-cloud.flumotion.com/cope/rockfm-low.mp3'
         },
         {
             id: 'los40classic',
             name: 'LOS40 CLASSIC',
             slogan: 'Los Números 1 de Tu Vida',
-            genre: 'Clásicos Pop / Rock / Disco',
+            genre: 'Clásicos 70s / 80s / 90s',
             quality: '128 kbps HD',
-            color: 'linear-gradient(135deg, #eab308, #ca8a04)',
-            logoBg: '#a16207',
-            logoText: 'CLASSIC',
+            logoUrl: 'img/radios/los40classic.svg',
+            webUrl: 'https://los40.com/los40_classic/',
             streamUrl: 'https://playerservices.streamtheworld.com/api/livestream-redirect/LOS40_CLASSIC.mp3'
         },
         {
             id: 'ibizaglobal',
             name: 'IBIZA GLOBAL RADIO',
             slogan: 'From Ibiza to the World',
-            genre: 'Deep House / Tech / Chillout',
+            genre: 'Deep House / Chillout',
             quality: '128 kbps HD',
-            color: 'linear-gradient(135deg, #0ea5e9, #0369a1)',
-            logoBg: '#075985',
-            logoText: 'IBIZA',
+            logoUrl: 'img/radios/ibizaglobal.svg',
+            webUrl: 'https://ibizaglobalradio.com/',
             streamUrl: 'http://ibizaglobalradio.streaming-pro.com:8024/'
         },
         {
@@ -283,9 +274,8 @@ document.addEventListener('DOMContentLoaded', () => {
             slogan: 'Los Éxitos de Hoy y el Mejor Pop',
             genre: 'Pop / Rock / Éxitos',
             quality: '128 kbps HD',
-            color: 'linear-gradient(135deg, #14b8a6, #0f766e)',
-            logoBg: '#115e59',
-            logoText: 'EUROPA',
+            logoUrl: 'img/radios/europafm.svg',
+            webUrl: 'https://www.europafm.com/',
             streamUrl: 'https://liveradio.ondacero.es/live/europafm.mp3'
         },
         {
@@ -294,9 +284,8 @@ document.addEventListener('DOMContentLoaded', () => {
             slogan: 'El Ritme que No Para',
             genre: 'Dance / Electronic / Hits',
             quality: '128 kbps HD',
-            color: 'linear-gradient(135deg, #f97316, #c2410c)',
-            logoBg: '#9a3412',
-            logoText: 'FLAIX',
+            logoUrl: 'img/radios/flaixfm.svg',
+            webUrl: 'https://flaixfm.cat/',
             streamUrl: 'https://stream.flaixfm.cat/icecast'
         },
         {
@@ -305,20 +294,18 @@ document.addEventListener('DOMContentLoaded', () => {
             slogan: 'Solo Temazos',
             genre: 'Urban / Reggaeton / Pop',
             quality: '128 kbps HD',
-            color: 'linear-gradient(135deg, #a855f7, #7e22ce)',
-            logoBg: '#6b21a8',
-            logoText: 'MEGA',
+            logoUrl: 'img/radios/megastar.svg',
+            webUrl: 'https://www.megastar.fm/',
             streamUrl: 'http://flucast35-h-cloud.flumotion.com/cope/megastar.mp3'
         },
         {
             id: 'cadenadial',
             name: 'CADENA DIAL',
             slogan: 'Lo Mejor de Nuestra Música',
-            genre: 'Pop en Español / Baladas',
+            genre: 'Pop en Español',
             quality: '128 kbps HD',
-            color: 'linear-gradient(135deg, #22c55e, #15803d)',
-            logoBg: '#166534',
-            logoText: 'DIAL',
+            logoUrl: 'img/radios/cadenadial.svg',
+            webUrl: 'https://cadenadial.com/',
             streamUrl: 'https://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3'
         },
         {
@@ -327,31 +314,28 @@ document.addEventListener('DOMContentLoaded', () => {
             slogan: 'El Ritmo de la Calle',
             genre: 'Reggaeton / Trap / Latino',
             quality: '128 kbps HD',
-            color: 'linear-gradient(135deg, #d97706, #b45309)',
-            logoBg: '#78350f',
-            logoText: 'URBAN',
+            logoUrl: 'img/radios/los40urban.svg',
+            webUrl: 'https://los40.com/los40_urban/',
             streamUrl: 'https://playerservices.streamtheworld.com/api/livestream-redirect/LOS40_URBAN.mp3'
         },
         {
             id: 'radiole',
             name: 'RADIOLÉ',
             slogan: 'La Alegría de la Música Española',
-            genre: 'Flamenco / Pop Español',
+            genre: 'Flamenco / Copla / Pop',
             quality: '128 kbps HD',
-            color: 'linear-gradient(135deg, #e11d48, #9f1239)',
-            logoBg: '#881337',
-            logoText: 'RADIOLÉ',
+            logoUrl: 'img/radios/radiole.svg',
+            webUrl: 'https://cadenaser.com/radiole/',
             streamUrl: 'https://playerservices.streamtheworld.com/api/livestream-redirect/RADIOLE.mp3'
         },
         {
             id: 'flaixbac',
             name: 'FLAIXBAC',
             slogan: 'Els Èxits del Moment',
-            genre: 'Pop / Dance / Català & Hits',
+            genre: 'Pop / Dance / Català',
             quality: '128 kbps HD',
-            color: 'linear-gradient(135deg, #6366f1, #4338ca)',
-            logoBg: '#3730a3',
-            logoText: 'BAC',
+            logoUrl: 'img/radios/flaixbac.svg',
+            webUrl: 'https://flaixbac.cat/',
             streamUrl: 'https://stream.flaixbac.cat/icecast'
         }
     ];
@@ -391,7 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (radioPlayerBar) radioPlayerBar.style.display = 'block';
         if (radioBarName) radioBarName.textContent = station.name;
         if (radioBarDial) radioBarDial.textContent = station.slogan;
-        if (radioBarLogo) radioBarLogo.style.background = station.color;
+        if (radioBarLogo) radioBarLogo.innerHTML = `<img src="${station.logoUrl}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">`;
 
         renderRadioStations();
     }
@@ -482,11 +466,11 @@ document.addEventListener('DOMContentLoaded', () => {
             card.className = isPlaying ? 'radio-card playing' : 'radio-card';
 
             card.innerHTML = `
-                <div class="radio-card-cover" style="background: ${st.color};">
+                <div class="radio-card-cover">
                     <div class="live-badge-overlay">
                         <span class="live-dot"></span> EN VIVO
                     </div>
-                    <div class="radio-card-logo-text">${st.logoText}</div>
+                    <img src="${st.logoUrl}" alt="${st.name}" class="radio-card-logo-img" onerror="this.src='img/radios/hitfm.svg';">
                     <div class="play-overlay">
                         <div class="play-button-icon" style="background: ${isPlaying ? '#ef4444' : 'var(--spotify-green)'}; color: #fff;">
                             <i class="fa-solid ${isPlaying ? 'fa-pause' : 'fa-play'}"></i>
@@ -494,27 +478,33 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
                 <div class="song-info">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 4px;">
-                        <div>
-                            <div class="radio-station-title">${st.name}</div>
-                            <div class="radio-station-slogan" title="${st.slogan}">${st.slogan}</div>
-                        </div>
-                        <span class="badge-pill badge-date" style="color: var(--spotify-green); border-color: rgba(29,185,84,0.4);">
+                    <div class="radio-station-title">${st.name}</div>
+                    <div class="radio-station-slogan" title="${st.slogan}">${st.slogan}</div>
+                    <div class="radio-meta-pills">
+                        <span class="badge-pill badge-duration">
+                            <i class="fa-solid fa-music"></i> ${st.genre}
+                        </span>
+                        <span class="badge-pill badge-date">
                             <i class="fa-solid fa-tower-cell"></i> ${st.quality}
                         </span>
                     </div>
                     <div class="radio-card-footer">
-                        <span class="badge-pill badge-duration" style="font-size: 0.72rem;">
-                            <i class="fa-solid fa-music"></i> ${st.genre}
-                        </span>
                         <button class="btn-radio-listen" title="${isPlaying ? 'Pausar Emisora' : 'Escuchar en Directo'}">
-                            <i class="fa-solid ${isPlaying ? 'fa-pause' : 'fa-play'}"></i> ${isPlaying ? 'Sonando' : 'Escuchar'}
+                            <i class="fa-solid ${isPlaying ? 'fa-pause' : 'fa-play'}"></i> ${isPlaying ? 'Pausar' : 'Escuchar'}
                         </button>
+                        <a href="${st.webUrl}" target="_blank" rel="noopener noreferrer" class="btn-radio-web" title="Visitar web oficial de ${st.name}">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Web
+                        </a>
                     </div>
                 </div>
             `;
 
+            // Card click listener
             card.addEventListener('click', (e) => {
+                if (e.target.closest('.btn-radio-web')) {
+                    // Let link open in new tab
+                    return;
+                }
                 playRadioStation(st);
             });
 

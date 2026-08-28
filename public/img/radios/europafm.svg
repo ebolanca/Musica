@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+        <defs>
+            <linearGradient id="eurGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#14b8a6"/>
+                <stop offset="100%" stop-color="#0f766e"/>
+            </linearGradient>
+        </defs>
+        <rect width="300" height="300" rx="40" fill="url(#eurGrad)"/>
+        <text x="150" y="135" font-family="'Outfit', sans-serif" font-weight="900" font-size="54" fill="#ffffff" text-anchor="middle" letter-spacing="-1">EUROPA</text>
+        <text x="150" y="195" font-family="'Outfit', sans-serif" font-weight="900" font-size="44" fill="#5eead4" text-anchor="middle" letter-spacing="6">FM</text>
+    </svg>

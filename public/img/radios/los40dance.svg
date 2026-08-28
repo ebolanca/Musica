@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+        <defs>
+            <linearGradient id="danceGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#10b981"/>
+                <stop offset="100%" stop-color="#047857"/>
+            </linearGradient>
+        </defs>
+        <rect width="300" height="300" rx="40" fill="url(#danceGrad)"/>
+        <text x="150" y="105" font-family="'Outfit', sans-serif" font-weight="900" font-size="38" fill="#facc15" text-anchor="middle" letter-spacing="4">LOS40</text>
+        <text x="150" y="180" font-family="'Outfit', sans-serif" font-weight="900" font-size="62" fill="#ffffff" text-anchor="middle" letter-spacing="1">DANCE</text>
+        <circle cx="150" cy="225" r="8" fill="#facc15"/>
+    </svg>

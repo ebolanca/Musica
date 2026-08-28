@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+        <defs>
+            <linearGradient id="dialGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#22c55e"/>
+                <stop offset="100%" stop-color="#14532d"/>
+            </linearGradient>
+        </defs>
+        <rect width="300" height="300" rx="40" fill="url(#dialGrad)"/>
+        <text x="150" y="115" font-family="'Outfit', sans-serif" font-weight="800" font-size="28" fill="#bbf7d0" text-anchor="middle" letter-spacing="5">CADENA</text>
+        <text x="150" y="195" font-family="'Outfit', sans-serif" font-weight="900" font-size="82" fill="#ffffff" text-anchor="middle">DIAL</text>
+    </svg>
