@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Música - Plataforma de Videoclips & Análisis Sónico</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="app-header">
+        <div class="logo-container">
+            <div class="logo-icon">
+                <i class="fa-solid fa-music"></i>
+            </div>
+            <div class="logo-title">
+                <h1>Música</h1>
+                <p>Plataforma de Videoclips & Análisis Sónico v1.0.0</p>
+            </div>
+        </div>
+
+        <div class="header-controls">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="search-input" placeholder="Buscar artista, canción o clásico...">
+            </div>
+            <button class="btn-action" id="btn-jellyfin-sync">
+                <i class="fa-solid fa-rotate"></i> Refrescar Jellyfin
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <!-- Playlist Tabs -->
+        <nav class="nav-tabs" id="playlist-tabs">
+            <button class="tab-button active" data-tab="Música viejuna">
+                <i class="fa-solid fa-radio"></i> Música viejuna
+                <span class="tab-badge" id="badge-viejuna">0</span>
+            </button>
+            <button class="tab-button" data-tab="Siglo XXI">
+                <i class="fa-solid fa-rocket"></i> Siglo XXI
+                <span class="tab-badge" id="badge-siglo">0</span>
+            </button>
+            <button class="tab-button" data-tab="Dance">
+                <i class="fa-solid fa-headphones"></i> Dance
+                <span class="tab-badge" id="badge-dance">0</span>
+            </button>
+            <button class="tab-button" data-tab="Española">
+                <i class="fa-solid fa-guitar"></i> Española
+                <span class="tab-badge" id="badge-espanola">0</span>
+            </button>
+            <button class="tab-button" data-tab="Música latina">
+                <i class="fa-solid fa-fire"></i> Música latina
+                <span class="tab-badge" id="badge-latina">0</span>
+            </button>
+        </nav>
+
+        <!-- Section Title Bar -->
+        <div class="section-bar">
+            <h2 class="section-title" id="current-section-title">
+                <i class="fa-solid fa-compact-disc" style="color: var(--spotify-green);"></i> Música viejuna
+            </h2>
+            <span class="results-count" id="results-count-text">Cargando canciones...</span>
+        </div>
+
+        <!-- Songs Grid -->
+        <div class="songs-grid" id="songs-grid">
+            <!-- Renderizado dinámico desde JS -->
+        </div>
+    </main>
+
+    <!-- Modal de Detalles de Canción (4 Pestañas) -->
+    <div class="modal-backdrop" id="song-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <div class="modal-song-title">
+                    <h2 id="modal-title-text">Cargando título...</h2>
+                    <p id="modal-artist-text">Cargando artista...</p>
+                </div>
+                <button class="btn-close-modal" id="btn-close-modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Sub-Navegación (4 Pestañas) -->
+            <nav class="modal-nav">
+                <button class="modal-nav-tab active" data-modal-tab="tab-credits">
+                    <i class="fa-solid fa-circle-info"></i> Créditos
+                </button>
+                <button class="modal-nav-tab" data-modal-tab="tab-lyrics">
+                    <i class="fa-solid fa-microphone"></i> Letra Sync (.srt)
+                </button>
+                <button class="modal-nav-tab" data-modal-tab="tab-microscope">
+                    <i class="fa-solid fa-microscope" style="color: var(--accent-amber);"></i> Análisis 4 Puntos
+                </button>
+                <button class="modal-nav-tab" data-modal-tab="tab-video">
+                    <i class="fa-solid fa-film" style="color: var(--accent-cyan);"></i> Videoclip
+                </button>
+            </nav>
+
+            <div class="modal-body">
+                <!-- Tab 1: Créditos -->
+                <div class="modal-tab-content active" id="tab-credits">
+                    <div class="credits-grid">
+                        <div class="credit-box">
+                            <div class="credit-label">Año de Lanzamiento</div>
+                            <div class="credit-value" id="credit-year">-</div>
+                        </div>
+                        <div class="credit-box">
+                            <div class="credit-label">Álbum Original</div>
+                            <div class="credit-value" id="credit-album">-</div>
+                        </div>
+                        <div class="credit-box">
+                            <div class="credit-label">Sello Discográfico</div>
+                            <div class="credit-value" id="credit-label-text">-</div>
+                        </div>
+                        <div class="credit-box">
+                            <div class="credit-label">Compositores</div>
+                            <div class="credit-value" id="credit-composers">-</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Letra Sincronizada -->
+                <div class="modal-tab-content" id="tab-lyrics">
+                    <div class="lyrics-container" id="lyrics-content-list">
+                        <!-- Renderizado de letras -->
+                    </div>
+                </div>
+
+                <!-- Tab 3: Análisis de Microscopio en 4 Puntos -->
+                <div class="modal-tab-content" id="tab-microscope">
+                    <div class="analysis-header">
+                        <p class="analysis-synopsis" id="analysis-synopsis-text"></p>
+                        <p class="analysis-origin" id="analysis-origin-text"></p>
+                    </div>
+
+                    <div class="analysis-section">
+                        <h3 class="analysis-section-title" id="sec1-title">1. La Anatomía Musical</h3>
+                        <p class="analysis-desc" id="sec1-text"></p>
+                        <div id="sec1-points-container"></div>
+                    </div>
+
+                    <div class="analysis-section">
+                        <h3 class="analysis-section-title" id="sec2-title">2. El Análisis Lírico (Significado & Desglose)</h3>
+                        <p class="analysis-desc" id="sec2-text"></p>
+                        <div id="sec2-points-container"></div>
+                    </div>
+
+                    <div class="analysis-section">
+                        <h3 class="analysis-section-title" id="sec3-title">3. El Videoclip & Estética</h3>
+                        <p class="analysis-desc" id="sec3-text"></p>
+                        <div id="sec3-points-container"></div>
+                    </div>
+
+                    <div class="analysis-section">
+                        <h3 class="analysis-section-title" id="sec4-title">4. El Impacto Cultural & Legado</h3>
+                        <p class="analysis-desc" id="sec4-text"></p>
+                        <div id="sec4-points-container"></div>
+                    </div>
+                </div>
+
+                <!-- Tab 4: Videoclip -->
+                <div class="modal-tab-content" id="tab-video">
+                    <div class="video-player-container" id="video-container">
+                        <!-- Elemento video o fallback -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
