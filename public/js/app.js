@@ -1320,12 +1320,16 @@ document.addEventListener('DOMContentLoaded', () => {
             // Karaoke Mode: Real-time Lyric Highlight & Auto-scroll
             if (cinemaOverlay && cinemaOverlay.style.display === 'flex' && cinemaParsedLyrics.length > 0) {
                 let activeIdx = -1;
-                for (let i = 0; i < cinemaParsedLyrics.length; i++) {
-                    const adjustedTime = curr + lyricsSyncOffset;
-                if (cinemaParsedLyrics[i].seconds <= adjustedTime + 0.3) {
-                        activeIdx = i;
-                    } else {
-                        break;
+                const hasTimestamps = cinemaParsedLyrics.some(l => l.hasTimestamp);
+                if (hasTimestamps) {
+                    for (let i = 0; i < cinemaParsedLyrics.length; i++) {
+                        if (cinemaParsedLyrics[i].seconds === null) continue;
+                        const adjustedTime = curr + lyricsSyncOffset;
+                        if (cinemaParsedLyrics[i].seconds <= adjustedTime + 0.3) {
+                            activeIdx = i;
+                        } else {
+                            break;
+                        }
                     }
                 }
 
@@ -2146,14 +2150,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         setCinemaViewMode('vinyl');
                     }
                     if (d.lyrics && d.lyrics.length > 0) {
+                        const hasRealTimestamps = d.lyrics.some(l => (typeof l.seconds === 'number' && l.seconds > 0) || (l.time && l.time !== '00:00'));
                         cinemaParsedLyrics = d.lyrics.map((l, idx) => {
-                            let sec = 0;
+                            let sec = null;
                             if (typeof l.seconds === 'number') sec = l.seconds;
                             else if (l.time) {
                                 const parts = l.time.split(':');
                                 sec = parseInt(parts[0], 10) * 60 + parseFloat(parts[1] || 0);
+                            } else if (!hasRealTimestamps) {
+                                sec = null; // Letra plana sin marcas de tiempo
                             }
-                            return { ...l, seconds: sec, index: idx };
+                            return { ...l, seconds: sec, index: idx, hasTimestamp: sec !== null };
                         });
 
                         cinemaLyrics.innerHTML = cinemaParsedLyrics.map(l => {

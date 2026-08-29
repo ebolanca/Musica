@@ -977,6 +977,10 @@ app.get('/api/track/detail', async (req, res) => {
     }
 
     let parsedLyrics = findLyricsForTrack(artist, title);
+    // Si la letra en caché era solo texto plano sin marcas de tiempo, intentar mejorarla con letra sincronizada
+    if (parsedLyrics && parsedLyrics.length > 0 && !parsedLyrics.some(l => l.seconds !== undefined || l.time !== undefined)) {
+        parsedLyrics = null;
+    }
     const videoMap = scanVideoFiles();
     const cleanKey = `${artist} - ${title}`.toLowerCase().replace(/[^a-z0-9]/g, '');
     const videoInfo = videoMap.get(cleanKey);
@@ -1005,7 +1009,8 @@ app.get('/api/track/detail', async (req, res) => {
                     if (sres.ok) {
                         const sdata = await sres.json();
                         if (sdata && sdata.length > 0) {
-                            const item = sdata[0];
+                            // Priorizar siempre el resultado con letra sincronizada (syncedLyrics)
+                            const item = sdata.find(i => i.syncedLyrics) || sdata[0];
                             if (item.syncedLyrics) {
                                 parsedLyrics = parseLrc(item.syncedLyrics);
                             } else if (item.plainLyrics) {
