@@ -899,6 +899,112 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    
+    // ==========================================================================
+    // 🎛️ Motor de Sincronización Fina & Anclaje de Frase (Jellyfin Style)
+    // ==========================================================================
+    let lyricsSyncOffset = 0.0;
+    let isPinModeActive = false;
+
+    const cinemaSyncSlider = document.getElementById('cinema-sync-slider');
+    const cinemaSyncValue = document.getElementById('cinema-sync-value');
+    const btnSyncMinus = document.getElementById('btn-sync-minus');
+    const btnSyncPlus = document.getElementById('btn-sync-plus');
+    const btnSyncPin = document.getElementById('btn-sync-pin');
+
+    function showSyncNotification(msg) {
+        const existing = document.querySelector('.cinema-toast-notification');
+        if (existing) existing.remove();
+
+        const toast = document.createElement('div');
+        toast.className = 'cinema-toast-notification';
+        toast.innerHTML = `<i class="fa-solid fa-sparkles" style="color:var(--spotify-green);"></i> ${msg}`;
+        
+        const overlay = document.getElementById('cinema-overlay');
+        if (overlay && overlay.style.display === 'flex') {
+            overlay.appendChild(toast);
+            setTimeout(() => { toast.remove(); }, 3500);
+        }
+    }
+
+    function updateLyricsSyncOffset(val) {
+        lyricsSyncOffset = parseFloat(val);
+        if (isNaN(lyricsSyncOffset)) lyricsSyncOffset = 0.0;
+        
+        if (cinemaSyncSlider) cinemaSyncSlider.value = lyricsSyncOffset.toFixed(1);
+        if (cinemaSyncValue) {
+            const prefix = lyricsSyncOffset > 0 ? '+' : '';
+            cinemaSyncValue.textContent = `${prefix}${lyricsSyncOffset.toFixed(1)}s`;
+        }
+
+        // Guardar desfase permanente para esta canción usando safeStorage
+        if (currentPlayingSong) {
+            const key = `offset_${normalizeText(currentPlayingSong.artist)}_${normalizeText(currentPlayingSong.title)}`;
+            safeStorage.setItem(key, lyricsSyncOffset.toFixed(1));
+        }
+
+        // Recalcular inmediatamente la línea activa
+        currentCinemaActiveLine = -1;
+    }
+
+    if (cinemaSyncSlider) {
+        cinemaSyncSlider.addEventListener('input', (e) => {
+            updateLyricsSyncOffset(e.target.value);
+        });
+    }
+
+    if (btnSyncMinus) {
+        btnSyncMinus.addEventListener('click', () => {
+            updateLyricsSyncOffset((lyricsSyncOffset - 0.1).toFixed(1));
+        });
+    }
+
+    if (btnSyncPlus) {
+        btnSyncPlus.addEventListener('click', () => {
+            updateLyricsSyncOffset((lyricsSyncOffset + 0.1).toFixed(1));
+        });
+    }
+
+    if (cinemaSyncValue) {
+        cinemaSyncValue.addEventListener('click', () => {
+            updateLyricsSyncOffset(0.0);
+            showSyncNotification('Sincronía restablecida a 0.0s');
+        });
+    }
+
+    if (btnSyncPin) {
+        btnSyncPin.addEventListener('click', () => {
+            isPinModeActive = !isPinModeActive;
+            if (isPinModeActive) {
+                btnSyncPin.classList.add('active');
+                btnSyncPin.innerHTML = '<i class="fa-solid fa-thumbtack"></i> Haz clic en la frase que suena...';
+                if (cinemaLyrics) cinemaLyrics.classList.add('pin-mode-active');
+                showSyncNotification('🎯 Modo Anclaje activo: Haz clic en la frase de la letra que está sonando ahora mismo');
+            } else {
+                btnSyncPin.classList.remove('active');
+                btnSyncPin.innerHTML = '<i class="fa-solid fa-thumbtack"></i> Anclar Frase';
+                if (cinemaLyrics) cinemaLyrics.classList.remove('pin-mode-active');
+            }
+        });
+    }
+
+    function loadTrackSyncOffset(track) {
+        if (!track) return;
+        const key = `offset_${normalizeText(track.artist)}_${normalizeText(track.title)}`;
+        let saved = 0.0;
+        const val = safeStorage.getItem(key);
+        if (val !== null) saved = parseFloat(val);
+        updateLyricsSyncOffset(saved);
+        
+        // Reset pin mode on song change
+        isPinModeActive = false;
+        if (btnSyncPin) {
+            btnSyncPin.classList.remove('active');
+            btnSyncPin.innerHTML = '<i class="fa-solid fa-thumbtack"></i> Anclar Frase';
+        }
+        if (cinemaLyrics) cinemaLyrics.classList.remove('pin-mode-active');
+    }
+
     // Audio Element Event Listeners
     if (mainMusicAudio) {
         mainMusicAudio.addEventListener('timeupdate', () => {
