@@ -2156,14 +2156,13 @@ document.addEventListener('DOMContentLoaded', () => {
                             return { ...l, seconds: sec, index: idx };
                         });
 
-                        const isSpanishList = track.playlistName === 'Española' || track.playlistName === 'Música latina' || currentTab === 'Española' || currentTab === 'Música latina';
-
                         cinemaLyrics.innerHTML = cinemaParsedLyrics.map(l => {
-                            const isSame = l.translation ? (normalizeText(l.translation) === normalizeText(l.text)) : true;
-                            const showTrans = !isSpanishList && l.translation && !isSame && l.translation.trim().length > 0;
+                            const hasTrans = l.translation && typeof l.translation === 'string' && l.translation.trim().length > 0;
+                            const isSame = hasTrans ? (normalizeText(l.translation) === normalizeText(l.text)) : true;
+                            const showTrans = hasTrans && !isSame;
                             return `
-                                <div class="cinema-lyric-line" id="cinema-lyric-${l.index}" data-sec="${l.seconds}" data-index="${l.index}" title="Pulsar para saltar a este punto">
-                                    <div>${l.text}</div>
+                                <div class="cinema-lyric-line" id="cinema-lyric-${l.index}" data-sec="${l.seconds}" data-index="${l.index}" title="Pulsar para sincronizar a partir de aquí">
+                                    <div class="cinema-lyric-orig">${l.text}</div>
                                     ${showTrans ? `<div class="cinema-lyric-trans">${l.translation}</div>` : ''}
                                 </div>
                             `;
