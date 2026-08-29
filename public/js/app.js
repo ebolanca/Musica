@@ -1116,6 +1116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cinemaSyncSlider = document.getElementById('cinema-sync-slider');
     const cinemaSyncValue = document.getElementById('cinema-sync-value');
     const btnSyncSave = document.getElementById('btn-sync-save');
+    const btnCinemaReplaceClean = document.getElementById('btn-cinema-replace-clean');
     const btnSyncMinus = document.getElementById('btn-sync-minus');
     const btnSyncPlus = document.getElementById('btn-sync-plus');
     const btnSyncPin = document.getElementById('btn-sync-pin');
@@ -1254,6 +1255,62 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             });
+        });
+    }
+
+    
+    if (btnCinemaReplaceClean) {
+        btnCinemaReplaceClean.addEventListener('click', async () => {
+            const currentSong = currentPlayingSong || (cinemaCurrentTrackList ? cinemaCurrentTrackList[cinemaCurrentIndex] : null);
+            if (!currentSong) return;
+
+            const confirmDownload = confirm(`¿Deseas descartar el audio actual de "${currentSong.title}" y descargar la versión limpia oficial de estudio (sin intros de videoclip ni diálogos)?`);
+            if (!confirmDownload) return;
+
+            btnCinemaReplaceClean.disabled = true;
+            btnCinemaReplaceClean.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Descargando...';
+            showSyncNotification('⏳ Descargando versión limpia oficial de estudio...');
+
+            try {
+                const res = await fetch('/api/track/replace-clean-audio', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        artist: currentSong.artist,
+                        title: currentSong.rawTitle || currentSong.title,
+                        category: currentSong.playlistName || currentTab
+                    })
+                });
+
+                const data = await res.json();
+                if (data.success) {
+                    // Restablecer el desfase a 0.0s
+                    const key = `offset_${normalizeText(currentSong.artist)}_${normalizeText(currentSong.title)}`;
+                    safeStorage.setItem(key, '0.0');
+                    updateLyricsSyncOffset(0.0);
+
+                    // Recargar el reproductor con el nuevo audio
+                    if (data.relUrl && mainMusicAudio) {
+                        mainMusicAudio.src = data.relUrl;
+                        mainMusicAudio.load();
+                        mainMusicAudio.play().catch(()=>{});
+                    }
+
+                    showSyncNotification('✨ ¡Pista de audio reemplazada con éxito por la versión limpia de estudio!');
+                    btnCinemaReplaceClean.innerHTML = '<i class="fa-solid fa-check"></i> Reemplazada';
+                    setTimeout(() => {
+                        btnCinemaReplaceClean.disabled = false;
+                        btnCinemaReplaceClean.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i> Versión Limpia';
+                    }, 3000);
+                } else {
+                    throw new Error(data.error || 'Error en la descarga');
+                }
+            } catch(e) {
+                console.error('Error reemplazando versión limpia:', e);
+                showSyncNotification('❌ ' + e.message);
+                btnCinemaReplaceClean.disabled = false;
+                btnCinemaReplaceClean.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i> Versión Limpia';
+            }
         });
     }
 

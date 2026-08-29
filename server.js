@@ -1309,6 +1309,76 @@ app.post('/api/lyrics/save-offset', (req, res) => {
     }
 });
 
+
+// ==========================================================================
+// 🔄 Reemplazar pista por Versión Limpia Oficial de Estudio
+// ==========================================================================
+app.post('/api/track/replace-clean-audio', async (req, res) => {
+    try {
+        const { artist, title, category } = req.body;
+        if (!artist || !title) {
+            return res.status(400).json({ error: 'Faltan parámetros requeridos (artist, title)' });
+        }
+
+        const cleanT = cleanTrackTitle(title);
+        const targetCategory = category || 'Siglo XXI';
+        const targetFolder = path.join(OMEN_MUSIC_DIR, targetCategory);
+        
+        if (!fs.existsSync(targetFolder)) {
+            try { fs.mkdirSync(targetFolder, { recursive: true }); } catch(e){}
+        }
+
+        const targetFileName = `${artist} - ${title}.mp3`;
+        const targetFilePath = path.join(targetFolder, targetFileName);
+        const tempOutput = path.join(__dirname, 'data', `temp_clean_${Date.now()}.${'mp3'}`);
+
+        const { spawn } = require('child_process');
+        const ffmpegDir = 'C:\\Users\\MSI Roberto\\.spotdl';
+        const query = `scsearch1:${artist} - ${cleanT}`;
+
+        console.log(`[CLEAN DOWNLOAD] Descargando versión limpia para: ${artist} - ${cleanT}`);
+
+        const args = [
+            '-m', 'yt_dlp',
+            '--ffmpeg-location', ffmpegDir,
+            query,
+            '-x',
+            '--audio-format', 'mp3',
+            '--audio-quality', '0',
+            '-o', tempOutput
+        ];
+
+        const proc = spawn('python', args);
+
+        let stdErr = '';
+        proc.stderr.on('data', d => { stdErr += d.toString(); });
+
+        proc.on('close', (code) => {
+            if (fs.existsSync(tempOutput)) {
+                try {
+                    fs.copyFileSync(tempOutput, targetFilePath);
+                    fs.unlinkSync(tempOutput);
+                    console.log(`✅ [CLEAN DOWNLOAD] Pista reemplazada con éxito en: ${targetFilePath}`);
+                    return res.json({ 
+                        success: true, 
+                        message: `Versión oficial limpia de estudio descargada y reemplazada correctamente.`,
+                        fileName: targetFileName,
+                        relUrl: `/media-music/${encodeURIComponent(targetCategory)}/${encodeURIComponent(targetFileName)}?t=${Date.now()}`
+                    });
+                } catch(e) {
+                    return res.status(500).json({ error: 'Error copiando archivo de audio reemplazado: ' + e.message });
+                }
+            } else {
+                console.error(`❌ [CLEAN DOWNLOAD] Falló la descarga: ${stdErr.slice(0, 300)}`);
+                return res.status(500).json({ error: 'No se pudo descargar la versión de audio limpia: ' + stdErr.slice(0, 150) });
+            }
+        });
+    } catch(err) {
+        console.error('Error en /api/track/replace-clean-audio:', err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
 const PORT = 8087;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Servidor de Música corriendo en http://localhost:${PORT}`);
