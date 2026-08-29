@@ -285,11 +285,16 @@ function parseLrc(lrcText) {
     for (let line of lines) {
         const match = line.match(lrcRegex);
         if (match) {
-            const m = match[1];
-            const s = match[2];
+            const m = parseInt(match[1], 10);
+            const s = parseFloat(match[2] + '.' + (match[3] || '0'));
             const text = match[4].trim();
             if (text) {
-                result.push({ time: m + ':' + s, text: text });
+                const totalSec = m * 60 + s;
+                result.push({ 
+                    time: (m < 10 ? '0' : '') + m + ':' + (Math.floor(s) < 10 ? '0' : '') + Math.floor(s), 
+                    seconds: totalSec,
+                    text: text 
+                });
             }
         }
     }

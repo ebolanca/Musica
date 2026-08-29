@@ -821,6 +821,30 @@ document.addEventListener('DOMContentLoaded', () => {
             if (musicSeekSlider && !musicSeekSlider.dragging) {
                 musicSeekSlider.value = (curr / dur) * 100;
             }
+
+            // Karaoke Mode: Real-time Lyric Highlight & Auto-scroll
+            if (cinemaOverlay && cinemaOverlay.style.display === 'flex' && cinemaParsedLyrics.length > 0) {
+                let activeIdx = -1;
+                for (let i = 0; i < cinemaParsedLyrics.length; i++) {
+                    if (cinemaParsedLyrics[i].seconds <= curr + 0.3) {
+                        activeIdx = i;
+                    } else {
+                        break;
+                    }
+                }
+
+                if (activeIdx !== currentCinemaActiveLine) {
+                    currentCinemaActiveLine = activeIdx;
+                    document.querySelectorAll('.cinema-lyric-line').forEach((el, idx) => {
+                        if (idx === activeIdx) {
+                            el.classList.add('active');
+                            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        } else {
+                            el.classList.remove('active');
+                        }
+                    });
+                }
+            }
         });
 
         mainMusicAudio.addEventListener('ended', () => {
@@ -1520,21 +1544,46 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cinemaArtist) cinemaArtist.textContent = track.artist;
         if (cinemaAlbum) cinemaAlbum.textContent = `${track.album || 'Álbum'} • ${formatBriefDate(track.releaseDate, track.releaseYear)}`;
 
-        // Fetch detailed lyrics
+        // Fetch detailed lyrics with Karaoke timestamp mapping
         if (cinemaLyrics) {
-            cinemaLyrics.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);"><i class="fa-solid fa-spinner fa-spin"></i> Cargando letra...</div>';
-            fetch(`/api/track/detail?artist=${encodeURIComponent(track.artist)}&title=${encodeURIComponent(track.title)}`)
+            cinemaLyrics.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);"><i class="fa-solid fa-spinner fa-spin"></i> Cargando letra sincronizada...</div>';
+            currentCinemaActiveLine = -1;
+            cinemaParsedLyrics = [];
+
+            const trackTitleQuery = track.rawTitle || track.title;
+            fetch(`/api/track/detail?artist=${encodeURIComponent(track.artist)}&title=${encodeURIComponent(trackTitleQuery)}`)
                 .then(r => r.json())
                 .then(d => {
                     if (d.lyrics && d.lyrics.length > 0) {
-                        cinemaLyrics.innerHTML = d.lyrics.map(l => `
-                            <div class="cinema-lyric-line">
+                        cinemaParsedLyrics = d.lyrics.map((l, idx) => {
+                            let sec = 0;
+                            if (typeof l.seconds === 'number') sec = l.seconds;
+                            else if (l.time) {
+                                const parts = l.time.split(':');
+                                sec = parseInt(parts[0], 10) * 60 + parseFloat(parts[1] || 0);
+                            }
+                            return { ...l, seconds: sec, index: idx };
+                        });
+
+                        cinemaLyrics.innerHTML = cinemaParsedLyrics.map(l => `
+                            <div class="cinema-lyric-line" id="cinema-lyric-${l.index}" data-sec="${l.seconds}" data-index="${l.index}" title="Pulsar para saltar a este punto">
                                 <div>${l.text}</div>
                                 ${l.translation ? `<div class="cinema-lyric-trans">${l.translation}</div>` : ''}
                             </div>
                         `).join('');
+
+                        // Click to seek on lyric line
+                        document.querySelectorAll('.cinema-lyric-line').forEach(lineEl => {
+                            lineEl.addEventListener('click', () => {
+                                const sec = parseFloat(lineEl.getAttribute('data-sec'));
+                                if (!isNaN(sec) && mainMusicAudio) {
+                                    mainMusicAudio.currentTime = sec;
+                                    if (mainMusicAudio.paused) mainMusicAudio.play();
+                                }
+                            });
+                        });
                     } else {
-                        cinemaLyrics.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);"><i class="fa-solid fa-microphone-slash"></i> No hay letra sincronizada disponible para esta canción.</div>';
+                        cinemaLyrics.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);"><i class="fa-solid fa-microphone-slash" style="font-size:2rem;margin-bottom:12px;opacity:0.4;"></i><p>No hay letra sincronizada disponible para esta canción.</p></div>';
                     }
                 })
                 .catch(() => {
