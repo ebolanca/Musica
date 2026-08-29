@@ -1649,3 +1649,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+    // Close Cinema overlay with Escape key
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && cinemaOverlay && cinemaOverlay.style.display === 'flex') {
+            cinemaOverlay.style.display = 'none';
+        }
+    });
