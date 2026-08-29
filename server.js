@@ -1223,11 +1223,12 @@ app.get('/api/radio/now-playing', async (req, res) => {
 // ==========================================================================
 app.post('/api/lyrics/save-offset', (req, res) => {
     try {
-        const { artist, title, offsetSec } = req.body;
-        if (!artist || !title || typeof offsetSec !== 'number') {
-            return res.status(400).json({ error: 'Faltan parámetros requeridos (artist, title, offsetSec)' });
+        const { artist, title, offsetSec, lyricsArray } = req.body;
+        if (!artist || !title) {
+            return res.status(400).json({ error: 'Faltan parámetros requeridos (artist, title)' });
         }
 
+        const effectiveOffset = (typeof offsetSec === 'number') ? offsetSec : 0;
         const cleanT = cleanTrackTitle(title);
         const keysToTry = [
             `${artist} - ${title}`,
@@ -1237,32 +1238,34 @@ app.post('/api/lyrics/save-offset', (req, res) => {
             title
         ];
 
-        let targetLyrics = null;
-        for (const k of keysToTry) {
-            if (cachedLyricsDb[k] && Array.isArray(cachedLyricsDb[k])) {
-                targetLyrics = cachedLyricsDb[k];
-                break;
-            }
-        }
-
-        if (!targetLyrics) {
-            // Intentar buscar por coincidencia difusa
-            const normTarget = `${artist}${cleanT}`.toLowerCase().replace(/[^a-z0-9]/g, '');
-            for (const [k, v] of Object.entries(cachedLyricsDb)) {
-                const normK = k.toLowerCase().replace(/[^a-z0-9]/g, '');
-                if (normK === normTarget || (normK.length > 5 && (normK.includes(normTarget) || normTarget.includes(normK)))) {
-                    targetLyrics = v;
+        let sourceLyrics = null;
+        if (lyricsArray && Array.isArray(lyricsArray) && lyricsArray.length > 0) {
+            sourceLyrics = lyricsArray;
+        } else {
+            for (const k of keysToTry) {
+                if (cachedLyricsDb[k] && Array.isArray(cachedLyricsDb[k])) {
+                    sourceLyrics = cachedLyricsDb[k];
                     break;
+                }
+            }
+            if (!sourceLyrics) {
+                const normTarget = `${artist}${cleanT}`.toLowerCase().replace(/[^a-z0-9]/g, '');
+                for (const [k, v] of Object.entries(cachedLyricsDb)) {
+                    const normK = k.toLowerCase().replace(/[^a-z0-9]/g, '');
+                    if (normK === normTarget || (normK.length > 5 && (normK.includes(normTarget) || normTarget.includes(normK)))) {
+                        sourceLyrics = v;
+                        break;
+                    }
                 }
             }
         }
 
-        if (!targetLyrics) {
+        if (!sourceLyrics) {
             return res.status(404).json({ error: 'No se encontraron letras en la base de datos para esta canción' });
         }
 
-        // Aplicar el desfase a todas las líneas
-        const updatedLyrics = targetLyrics.map(l => {
+        // Aplicar el desfase a todas las líneas y formatear
+        const updatedLyrics = sourceLyrics.map(l => {
             let currSec = 0;
             if (typeof l.seconds === 'number') currSec = l.seconds;
             else if (l.time) {
@@ -1270,13 +1273,14 @@ app.post('/api/lyrics/save-offset', (req, res) => {
                 currSec = parseInt(parts[0], 10) * 60 + parseFloat(parts[1] || 0);
             }
 
-            const newSec = Math.max(0, parseFloat((currSec - offsetSec).toFixed(2)));
+            const newSec = Math.max(0, parseFloat((currSec - effectiveOffset).toFixed(2)));
             const mins = Math.floor(newSec / 60);
             const secs = Math.floor(newSec % 60);
             const newTimeFmt = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
 
             return {
-                ...l,
+                text: l.text || '',
+                translation: l.translation || '',
                 seconds: newSec,
                 time: newTimeFmt
             };

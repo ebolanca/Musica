@@ -1189,24 +1189,69 @@ document.addEventListener('DOMContentLoaded', () => {
             const isSame = hasTrans ? (normalizeText(l.translation) === normalizeText(l.text)) : true;
             const showTrans = hasTrans && !isSame;
             return `
-                <div class="cinema-lyric-line" id="cinema-lyric-${l.index}" data-sec="${l.seconds}" data-index="${l.index}" title="Pulsar para sincronizar a partir de aquí">
+                <div class="cinema-lyric-line" id="cinema-lyric-${l.index}" data-sec="${l.seconds !== null ? l.seconds : ''}" data-index="${l.index}" title="Pulsar para activar y sincronizar karaoke desde esta frase">
                     <div class="cinema-lyric-orig">${l.text}</div>
                     ${showTrans ? `<div class="cinema-lyric-trans">${l.translation}</div>` : ''}
                 </div>
             `;
         }).join('');
 
-        // Re-enlazar clicks en frases
+        // Enlazar clicks en frases: Si no tiene marcas, las genera en tiempo real; si ya tiene, ajusta el desfase
         document.querySelectorAll('.cinema-lyric-line').forEach(lineEl => {
             lineEl.addEventListener('click', () => {
-                const sec = parseFloat(lineEl.getAttribute('data-sec'));
-                if (!isNaN(sec) && mainMusicAudio) {
-                    const currAudioSec = mainMusicAudio.currentTime;
-                    const newOffset = (sec - currAudioSec);
-                    updateLyricsSyncOffset(newOffset.toFixed(1));
+                if (!mainMusicAudio) return;
+                const clickedIdx = parseInt(lineEl.getAttribute('data-index'), 10);
+                const currAudioSec = mainMusicAudio.currentTime || 0;
+                
+                const hasExistingTimestamps = cinemaParsedLyrics.some(l => typeof l.seconds === 'number' && l.seconds > 0);
+
+                if (!hasExistingTimestamps) {
+                    // --- AUTO-GENERACIÓN Y ANCLAJE DESDE LA ESTROFA PULSADA ---
+                    const totalLines = cinemaParsedLyrics.length;
+                    const dur = mainMusicAudio.duration || (totalLines * 4.0);
+                    const avgStep = 3.6;
+
+                    cinemaParsedLyrics = cinemaParsedLyrics.map((l, idx) => {
+                        let lineSec = 0;
+                        if (idx === clickedIdx) {
+                            lineSec = currAudioSec;
+                        } else if (idx < clickedIdx) {
+                            const diff = clickedIdx - idx;
+                            lineSec = Math.max(0, parseFloat((currAudioSec - (diff * avgStep)).toFixed(2)));
+                        } else {
+                            const diff = idx - clickedIdx;
+                            const remainingSecs = Math.max(10, dur - currAudioSec);
+                            const step = remainingSecs / Math.max(1, totalLines - clickedIdx);
+                            lineSec = parseFloat((currAudioSec + (diff * Math.min(avgStep, step))).toFixed(2));
+                        }
+                        const mins = Math.floor(lineSec / 60);
+                        const secs = Math.floor(lineSec % 60);
+                        return {
+                            ...l,
+                            seconds: lineSec,
+                            time: `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`,
+                            hasTimestamp: true
+                        };
+                    });
+
+                    lyricsSyncOffset = 0.0;
+                    if (cinemaSyncSlider) cinemaSyncSlider.value = 0.0;
+                    if (cinemaSyncValue) cinemaSyncValue.textContent = '0.0s';
                     isUserScrollingCinema = false;
                     clearTimeout(userScrollTimer);
-                    showSyncNotification(`📍 Subtítulos sincronizados a partir de esta frase (${newOffset >= 0 ? '+' : ''}${newOffset.toFixed(1)}s)`);
+
+                    renderCinemaLyricLines();
+                    showSyncNotification(`🎙️ ¡Karaoke activado desde esta estrofa! Pulsa 💾 para guardarlo permanentemente.`);
+                } else {
+                    // --- SINCRONIZACIÓN FINA CON MARCAS EXISTENTES ---
+                    const sec = parseFloat(lineEl.getAttribute('data-sec'));
+                    if (!isNaN(sec)) {
+                        const newOffset = (sec - currAudioSec);
+                        updateLyricsSyncOffset(newOffset.toFixed(1));
+                        isUserScrollingCinema = false;
+                        clearTimeout(userScrollTimer);
+                        showSyncNotification(`📍 Subtítulos sincronizados (${newOffset >= 0 ? '+' : ''}${newOffset.toFixed(1)}s). Pulsa 💾 para grabar.`);
+                    }
                 }
             });
         });
@@ -1215,12 +1260,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnSyncSave) {
         btnSyncSave.addEventListener('click', async () => {
             const currentSong = currentPlayingSong || (cinemaCurrentTrackList ? cinemaCurrentTrackList[cinemaCurrentIndex] : null);
-            if (!currentSong) return;
-
-            if (Math.abs(lyricsSyncOffset) < 0.05) {
-                showSyncNotification('ℹ️ El desfase actual ya es 0.0s (No hay cambios que grabar)');
-                return;
-            }
+            if (!currentSong || !cinemaParsedLyrics || cinemaParsedLyrics.length === 0) return;
 
             btnSyncSave.disabled = true;
             btnSyncSave.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
@@ -1232,7 +1272,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify({
                         artist: currentSong.artist,
                         title: currentSong.rawTitle || currentSong.title,
-                        offsetSec: lyricsSyncOffset
+                        offsetSec: lyricsSyncOffset,
+                        lyricsArray: cinemaParsedLyrics
                     })
                 });
 
@@ -1243,7 +1284,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             return { ...l, index: idx, hasTimestamp: true };
                         });
 
-                        // Restablecer el desfase a 0.0s porque ya quedó grabado permanentemente
                         const key = `offset_${normalizeText(currentSong.artist)}_${normalizeText(currentSong.title)}`;
                         safeStorage.setItem(key, '0.0');
                         updateLyricsSyncOffset(0.0);
@@ -1252,7 +1292,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         btnSyncSave.classList.add('saved');
                         btnSyncSave.innerHTML = '<i class="fa-solid fa-check"></i>';
-                        showSyncNotification('💾 ¡Desfase grabado permanentemente en la base de datos!');
+                        showSyncNotification('💾 ¡Karaoke y marcas de tiempo grabadas permanentemente en la base de datos!');
 
                         setTimeout(() => {
                             btnSyncSave.disabled = false;
@@ -1264,10 +1304,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     throw new Error('Error en el servidor');
                 }
             } catch(e) {
-                console.error('Error guardando desfase permanente:', e);
+                console.error('Error guardando karaoke permanente:', e);
                 btnSyncSave.disabled = false;
                 btnSyncSave.innerHTML = '<i class="fa-solid fa-floppy-disk"></i>';
-                showSyncNotification('❌ Error al grabar desfase permanente');
+                showSyncNotification('❌ Error al grabar karaoke permanente');
             }
         });
     }
