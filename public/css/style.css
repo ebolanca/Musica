@@ -2697,3 +2697,18 @@ video {
   border-color: #00a4dc;
   background: rgba(0, 164, 220, 0.2);
 }
+
+
+/* --- Normalización Inteligente de Audio --- */
+.btn-music-icon.active-magic {
+  color: var(--spotify-green) !important;
+  text-shadow: 0 0 12px rgba(34, 197, 94, 0.7);
+  transform: scale(1.05);
+}
+.btn-music-icon.active-magic i {
+  animation: magicPulse 2.5s infinite ease-in-out;
+}
+@keyframes magicPulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px rgba(34, 197, 94, 0.4)); }
+  50% { transform: scale(1.15); filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.9)); }
+}

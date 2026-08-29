@@ -145,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const musicBtnMute = document.getElementById('music-btn-mute');
     const musicBtnClose = document.getElementById('music-btn-close');
     const musicBtnCinema = document.getElementById('music-btn-cinema');
+    const musicBtnNormalize = document.getElementById('music-btn-normalize');
 
     // Cinema Mode Elements
     const cinemaOverlay = document.getElementById('cinema-overlay');
@@ -982,6 +983,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // If this song is currently playing, toggle pause/play
         if (currentPlayingSong && currentPlayingSong.title === song.title && currentPlayingSong.artist === song.artist) {
             if (mainMusicAudio.paused) {
+                if (!audioCtx) initAudioNormalizationGraph();
+                else if (audioCtx.state === 'suspended') audioCtx.resume().catch(()=>{});
                 mainMusicAudio.play();
                 updateMusicBarState(true);
             } else {
@@ -1207,6 +1210,91 @@ document.addEventListener('DOMContentLoaded', () => {
             btnSyncPin.innerHTML = '<i class="fa-solid fa-thumbtack"></i> Anclar Frase';
         }
         if (cinemaLyrics) cinemaLyrics.classList.remove('pin-mode-active');
+    }
+
+    
+    // ==========================================================================
+    // 🎚️ Web Audio API: Normalización Inteligente & Control Dinámico de Sonoridad
+    // ==========================================================================
+    let audioCtx = null;
+    let audioSourceNode = null;
+    let compressorNode = null;
+    let normalizerGainNode = null;
+    let isAudioNormalizationActive = safeStorage.getItem('audio_normalization_enabled') !== 'false'; // Activo por defecto
+
+    function initAudioNormalizationGraph() {
+        if (audioCtx) return;
+        try {
+            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContextClass || !mainMusicAudio) return;
+            audioCtx = new AudioContextClass();
+
+            // Configurar crossOrigin para permitir Web Audio en archivos multimedia
+            mainMusicAudio.crossOrigin = "anonymous";
+            audioSourceNode = audioCtx.createMediaElementSource(mainMusicAudio);
+
+            // Dynamics Compressor Node: Limitador / Compresor transparente
+            compressorNode = audioCtx.createDynamicsCompressor();
+            compressorNode.threshold.setValueAtTime(-24, audioCtx.currentTime);
+            compressorNode.knee.setValueAtTime(30, audioCtx.currentTime);
+            compressorNode.ratio.setValueAtTime(12, audioCtx.currentTime);
+            compressorNode.attack.setValueAtTime(0.003, audioCtx.currentTime);
+            compressorNode.release.setValueAtTime(0.25, audioCtx.currentTime);
+
+            // Leveler Gain Node: Nivelación a estándar de sonoridad (-14 LUFS)
+            normalizerGainNode = audioCtx.createGain();
+            normalizerGainNode.gain.setValueAtTime(1.4, audioCtx.currentTime);
+
+            updateNormalizationRoute();
+            updateNormalizationButtonState();
+        } catch(e) {
+            console.log('Info Web Audio Normalizer:', e.message);
+        }
+    }
+
+    function updateNormalizationRoute() {
+        if (!audioSourceNode || !audioCtx) return;
+        try {
+            audioSourceNode.disconnect();
+            if (compressorNode) compressorNode.disconnect();
+            if (normalizerGainNode) normalizerGainNode.disconnect();
+
+            if (isAudioNormalizationActive) {
+                // Cadena activa: Fuente -> Ganancia de Nivelación -> Compresor Dinámico -> Salida
+                audioSourceNode.connect(normalizerGainNode);
+                normalizerGainNode.connect(compressorNode);
+                compressorNode.connect(audioCtx.destination);
+            } else {
+                // Bypass directo sin procesamiento
+                audioSourceNode.connect(audioCtx.destination);
+            }
+        } catch(e) {
+            console.log('Error conectando ruta de normalización:', e.message);
+        }
+    }
+
+    function updateNormalizationButtonState() {
+        if (!musicBtnNormalize) return;
+        if (isAudioNormalizationActive) {
+            musicBtnNormalize.classList.add('active-magic');
+            musicBtnNormalize.title = 'Normalización Inteligente (-14 LUFS / Estándar Spotify): Activada';
+        } else {
+            musicBtnNormalize.classList.remove('active-magic');
+            musicBtnNormalize.title = 'Normalización de Audio: Desactivada (Volumen Original)';
+        }
+    }
+
+    if (musicBtnNormalize) {
+        musicBtnNormalize.addEventListener('click', () => {
+            if (!audioCtx) initAudioNormalizationGraph();
+            isAudioNormalizationActive = !isAudioNormalizationActive;
+            safeStorage.setItem('audio_normalization_enabled', isAudioNormalizationActive ? 'true' : 'false');
+            updateNormalizationButtonState();
+            updateNormalizationRoute();
+            showSyncNotification(isAudioNormalizationActive 
+                ? '✨ Normalización de Audio Activada (-14 LUFS / Nivelación Inteligente)' 
+                : '🔇 Normalización de Audio Desactivada (Volumen Original)');
+        });
     }
 
     // Audio Element Event Listeners
