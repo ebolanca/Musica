@@ -140,6 +140,107 @@ document.addEventListener('DOMContentLoaded', () => {
     const cinemaPrev = document.getElementById('cinema-prev');
     const cinemaNext = document.getElementById('cinema-next');
 
+    // Jellyfin 3-Mode Cinema Elements
+    const btnModeVinyl = document.getElementById('btn-mode-vinyl');
+    const btnModeHybrid = document.getElementById('btn-mode-hybrid');
+    const btnModeFullvideo = document.getElementById('btn-mode-fullvideo');
+    const cinemaVinylWrap = document.getElementById('cinema-vinyl-wrap');
+    const cinemaHybridVideoWrap = document.getElementById('cinema-hybrid-video-wrap');
+    const cinemaHybridVideo = document.getElementById('cinema-hybrid-video');
+    const cinemaFullvideoContainer = document.getElementById('cinema-fullvideo-container');
+    const cinemaFullVideo = document.getElementById('cinema-full-video');
+    const cinemaMovieSubBar = document.getElementById('cinema-movie-subtitles-bar');
+    const cinemaMovieSubText = document.getElementById('cinema-movie-sub-text');
+    const badgeVideoCount = document.getElementById('badge-video-count');
+
+    let allJellyfinVideos = [];
+    let cinemaViewMode = safeStorage.getItem('cinema_view_mode') || 'vinyl';
+    let currentCinemaVideoItem = null;
+
+    
+    async function fetchJellyfinVideosCatalog() {
+        try {
+            const res = await fetch('/api/jellyfin/videos');
+            if (res.ok) {
+                const data = await res.json();
+                allJellyfinVideos = data.videos || [];
+                if (badgeVideoCount) badgeVideoCount.textContent = allJellyfinVideos.length;
+            }
+        } catch(e) {
+            console.log('Error cargando catálogo de Jellyfin:', e.message);
+        }
+    }
+    fetchJellyfinVideosCatalog();
+
+    function setCinemaViewMode(mode, forceVideo = false) {
+        if (!currentCinemaVideoItem && (mode === 'hybrid' || mode === 'fullvideo') && !forceVideo) {
+            mode = 'vinyl';
+        }
+        cinemaViewMode = mode;
+        safeStorage.setItem('cinema_view_mode', mode);
+
+        // Update Button States
+        [btnModeVinyl, btnModeHybrid, btnModeFullvideo].forEach(b => {
+            if (b) b.classList.remove('active');
+        });
+
+        if (mode === 'vinyl' && btnModeVinyl) btnModeVinyl.classList.add('active');
+        if (mode === 'hybrid' && btnModeHybrid) btnModeHybrid.classList.add('active');
+        if (mode === 'fullvideo' && btnModeFullvideo) btnModeFullvideo.classList.add('active');
+
+        const cinemaContentEl = document.querySelector('.cinema-content');
+
+        // Toggle Visual Containers
+        if (mode === 'vinyl') {
+            if (cinemaVinylWrap) cinemaVinylWrap.style.display = 'block';
+            if (cinemaHybridVideoWrap) cinemaHybridVideoWrap.style.display = 'none';
+            if (cinemaFullvideoContainer) cinemaFullvideoContainer.style.display = 'none';
+            if (cinemaContentEl) cinemaContentEl.style.display = 'grid';
+            if (cinemaHybridVideo) cinemaHybridVideo.pause();
+            if (cinemaFullVideo) cinemaFullVideo.pause();
+        } else if (mode === 'hybrid') {
+            if (cinemaVinylWrap) cinemaVinylWrap.style.display = 'none';
+            if (cinemaHybridVideoWrap) cinemaHybridVideoWrap.style.display = 'block';
+            if (cinemaFullvideoContainer) cinemaFullvideoContainer.style.display = 'none';
+            if (cinemaContentEl) cinemaContentEl.style.display = 'grid';
+            if (cinemaFullVideo) cinemaFullVideo.pause();
+            
+            if (currentCinemaVideoItem && cinemaHybridVideo) {
+                if (cinemaHybridVideo.src !== currentCinemaVideoItem.streamUrl) {
+                    cinemaHybridVideo.src = currentCinemaVideoItem.streamUrl;
+                }
+                if (mainMusicAudio && !mainMusicAudio.paused) {
+                    cinemaHybridVideo.currentTime = mainMusicAudio.currentTime;
+                    cinemaHybridVideo.play().catch(()=>{});
+                }
+            }
+        } else if (mode === 'fullvideo') {
+            if (cinemaContentEl) cinemaContentEl.style.display = 'none';
+            if (cinemaFullvideoContainer) cinemaFullvideoContainer.style.display = 'flex';
+            if (cinemaHybridVideo) cinemaHybridVideo.pause();
+            
+            if (currentCinemaVideoItem && cinemaFullVideo) {
+                if (cinemaFullVideo.src !== currentCinemaVideoItem.streamUrl) {
+                    cinemaFullVideo.src = currentCinemaVideoItem.streamUrl;
+                }
+                if (mainMusicAudio && !mainMusicAudio.paused) {
+                    cinemaFullVideo.currentTime = mainMusicAudio.currentTime;
+                    cinemaFullVideo.play().catch(()=>{});
+                }
+            }
+        }
+    }
+
+    if (btnModeVinyl) btnModeVinyl.addEventListener('click', () => setCinemaViewMode('vinyl'));
+    if (btnModeHybrid) btnModeHybrid.addEventListener('click', () => {
+        if (btnModeHybrid.classList.contains('disabled')) return;
+        setCinemaViewMode('hybrid');
+    });
+    if (btnModeFullvideo) btnModeFullvideo.addEventListener('click', () => {
+        if (btnModeFullvideo.classList.contains('disabled')) return;
+        setCinemaViewMode('fullvideo');
+    });
+
     // Radio Elements & Engine
     const liveRadioAudio = document.getElementById('live-radio-audio');
     const radioPlayerBar = document.getElementById('radio-player-bar');
@@ -601,6 +702,87 @@ document.addEventListener('DOMContentLoaded', () => {
             radioPlayerBar.style.display = 'none';
             renderRadioStations();
         });
+    }
+
+    
+    function renderVideoclips() {
+        currentSectionTitle.innerHTML = `<i class="fa-solid fa-film" style="color: var(--spotify-green);"></i> Catálogo de Videoclips (Jellyfin)`;
+        
+        let filtered = allJellyfinVideos;
+        const q = (quickFilterQuery || searchQuery || '').trim().toLowerCase();
+        if (q) {
+            filtered = filtered.filter(v => 
+                v.name.toLowerCase().includes(q) || 
+                v.artist.toLowerCase().includes(q) || 
+                v.title.toLowerCase().includes(q)
+            );
+        }
+
+        resultsCountText.textContent = `${filtered.length} videoclips disponibles`;
+        songsGrid.className = 'songs-grid';
+        songsGrid.innerHTML = '';
+
+        if (filtered.length === 0) {
+            songsGrid.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--text-muted);">
+                    <i class="fa-solid fa-film" style="font-size: 3rem; margin-bottom: 16px; opacity: 0.3;"></i>
+                    <p>No se encontraron videoclips que coincidan con la búsqueda.</p>
+                </div>
+            `;
+            return;
+        }
+
+        filtered.forEach(v => {
+            const card = document.createElement('div');
+            card.className = 'video-card';
+            const durFmt = v.durationSec ? formatTime(v.durationSec) : 'HD';
+
+            card.innerHTML = `
+                <div class="video-thumb-wrap">
+                    <img src="${v.thumbUrl}" class="video-thumb-img" alt="${v.name}" loading="lazy" onerror="this.src='img/radios/hitfm.svg'">
+                    <span class="video-duration-badge">${durFmt}</span>
+                    <div class="video-play-overlay-btn" title="Reproducir en Modo Cine">
+                        <div class="video-play-icon"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                </div>
+                <div class="video-card-body">
+                    <div class="video-card-title" title="${v.title}">${v.title}</div>
+                    <div class="video-card-artist">${v.artist}</div>
+                    <div class="video-card-footer">
+                        <button class="btn-video-cinema"><i class="fa-solid fa-tv"></i> Ver en Modo Cine</button>
+                        <a href="${v.webClientUrl}" target="_blank" class="btn-video-jellyfin-link" title="Abrir en Jellyfin Oficial">
+                            <i class="fa-solid fa-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            card.querySelector('.video-thumb-wrap').addEventListener('click', () => {
+                playVideoInCinema(v);
+            });
+            card.querySelector('.btn-video-cinema').addEventListener('click', () => {
+                playVideoInCinema(v);
+            });
+
+            songsGrid.appendChild(card);
+        });
+    }
+
+    function playVideoInCinema(video) {
+        currentCinemaVideoItem = video;
+        const fakeTrack = {
+            title: video.title,
+            artist: video.artist,
+            rawTitle: video.name,
+            album: 'Videoclip Oficial (Jellyfin)',
+            releaseYear: video.year || '2000',
+            releaseDate: video.year ? `${video.year}-01-01` : '2000-01-01',
+            coverUrl: video.thumbUrl,
+            audioUrl: video.streamUrl
+        };
+
+        openCinemaMode(fakeTrack, [fakeTrack]);
+        setCinemaViewMode(cinemaViewMode === 'vinyl' ? 'hybrid' : cinemaViewMode, true);
     }
 
     function renderRadioStations() {
