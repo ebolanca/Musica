@@ -690,6 +690,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function playQueueTrack(track, modeLabel = null) {
         if (!track || !mainMusicAudio) return;
         
+        // Registrar canción como escuchada en su lista y en el historial persistente
+        if (playbackMode === 'playlist_shuffle' && track.playlistName) {
+            markTrackAsPlayed(track.playlistName, track);
+        } else if (playbackMode === 'party_dj') {
+            markTrackAsPlayed('global_party', track);
+            if (track.playlistName) markTrackAsPlayed(track.playlistName, track);
+        }
+        
         // Stop radio if playing
         if (liveRadioAudio && !liveRadioAudio.paused) {
             liveRadioAudio.pause();
@@ -777,15 +785,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    
     function startPlaylistShuffle(playlistName) {
         const tracks = allPlaylists[playlistName] || allPlaylists[currentTab] || [];
         if (tracks.length === 0) return;
 
+        // Obtener canciones que NO han sonado aún en ninguna sesión
+        const { unplayed, playedCount, total } = getUnplayedPool(playlistName, tracks);
+        
+        // Barajar únicamente las pendientes
+        const shuffled = [...unplayed].sort(() => Math.random() - 0.5);
         playbackMode = 'playlist_shuffle';
-        // Shuffle tracks
-        activePlaylistQueue = [...tracks].sort(() => Math.random() - 0.5);
+        activePlaylistQueue = shuffled;
         currentQueueIndex = 0;
-        playQueueTrack(activePlaylistQueue[0], playlistName);
+
+        playQueueTrack(activePlaylistQueue[0], `${playlistName} (${playedCount + 1}/${total})`);
     }
 
     if (btnPlaylistShuffle) {
@@ -802,75 +816,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 tracks.forEach(t => allTracks.push({ ...t, playlistName: pName }));
             }
             if (allTracks.length === 0) return;
-            const shuffled = [...allTracks].sort(() => Math.random() - 0.5);
+
+            const { unplayed, playedCount, total } = getUnplayedPool('global_party', allTracks);
+            const shuffled = [...unplayed].sort(() => Math.random() - 0.5);
             playbackMode = 'party_dj';
             activePlaylistQueue = shuffled;
             currentQueueIndex = 0;
-            playQueueTrack(activePlaylistQueue[0], 'Modo Fiesta');
+
+            playQueueTrack(activePlaylistQueue[0], `Modo Fiesta (${playedCount + 1}/${total})`);
         });
-    }
-
-    
-    // Subtitle Sync Offset Engine (Jellyfin Style)
-    let lyricsSyncOffset = 0.0;
-    const cinemaSyncSlider = document.getElementById('cinema-sync-slider');
-    const cinemaSyncValue = document.getElementById('cinema-sync-value');
-    const btnSyncMinus = document.getElementById('btn-sync-minus');
-    const btnSyncPlus = document.getElementById('btn-sync-plus');
-
-    function updateLyricsSyncOffset(val) {
-        lyricsSyncOffset = parseFloat(val);
-        if (isNaN(lyricsSyncOffset)) lyricsSyncOffset = 0.0;
-        
-        if (cinemaSyncSlider) cinemaSyncSlider.value = lyricsSyncOffset.toFixed(1);
-        if (cinemaSyncValue) {
-            const prefix = lyricsSyncOffset > 0 ? '+' : '';
-            cinemaSyncValue.textContent = `${prefix}${lyricsSyncOffset.toFixed(1)}s`;
-        }
-
-        // Save offset for this track in localStorage
-        if (currentPlayingSong) {
-            const key = `offset_${normalizeText(currentPlayingSong.artist)}_${normalizeText(currentPlayingSong.title)}`;
-            try { localStorage.setItem(key, lyricsSyncOffset.toFixed(1)); } catch(e){}
-        }
-
-        // Force immediate recalculation of active lyric line
-        currentCinemaActiveLine = -1;
-    }
-
-    if (cinemaSyncSlider) {
-        cinemaSyncSlider.addEventListener('input', (e) => {
-            updateLyricsSyncOffset(e.target.value);
-        });
-    }
-
-    if (btnSyncMinus) {
-        btnSyncMinus.addEventListener('click', () => {
-            updateLyricsSyncOffset((lyricsSyncOffset - 0.1).toFixed(1));
-        });
-    }
-
-    if (btnSyncPlus) {
-        btnSyncPlus.addEventListener('click', () => {
-            updateLyricsSyncOffset((lyricsSyncOffset + 0.1).toFixed(1));
-        });
-    }
-
-    if (cinemaSyncValue) {
-        cinemaSyncValue.addEventListener('click', () => {
-            updateLyricsSyncOffset(0.0);
-        });
-    }
-
-    function loadTrackSyncOffset(track) {
-        if (!track) return;
-        const key = `offset_${normalizeText(track.artist)}_${normalizeText(track.title)}`;
-        let saved = 0.0;
-        try {
-            const val = localStorage.getItem(key);
-            if (val !== null) saved = parseFloat(val);
-        } catch(e){}
-        updateLyricsSyncOffset(saved);
     }
 
     // Audio Element Event Listeners
@@ -1693,8 +1647,24 @@ document.addEventListener('DOMContentLoaded', () => {
                         document.querySelectorAll('.cinema-lyric-line').forEach(lineEl => {
                             lineEl.addEventListener('click', () => {
                                 const sec = parseFloat(lineEl.getAttribute('data-sec'));
+                                if (isPinModeActive && mainMusicAudio) {
+                                    // Anclar la letra exactamente al segundo actual de reproducción
+                                    const currAudioSec = mainMusicAudio.currentTime;
+                                    const newOffset = (sec - currAudioSec);
+                                    updateLyricsSyncOffset(newOffset.toFixed(1));
+                                    isPinModeActive = false;
+                                    if (btnSyncPin) {
+                                        btnSyncPin.classList.remove('active');
+                                        btnSyncPin.innerHTML = '<i class="fa-solid fa-thumbtack"></i> Anclar Frase';
+                                    }
+                                    if (cinemaLyrics) cinemaLyrics.classList.remove('pin-mode-active');
+                                    showSyncNotification(`📍 Letra anclada a esta frase (Desfase: ${newOffset >= 0 ? '+' : ''}${newOffset.toFixed(1)}s)`);
+                                    return;
+                                }
+
                                 if (!isNaN(sec) && mainMusicAudio) {
-                                    mainMusicAudio.currentTime = sec;
+                                    const adjustedSec = sec - lyricsSyncOffset;
+                                    mainMusicAudio.currentTime = Math.max(0, adjustedSec);
                                     if (mainMusicAudio.paused) mainMusicAudio.play();
                                 }
                             });
