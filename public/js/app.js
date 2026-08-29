@@ -786,6 +786,78 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     
+    
+    // ==========================================================================
+    // 🛡️ Almacenamiento Seguro (Safe Storage con Fallback en Memoria para Edge/Chrome)
+    // ==========================================================================
+    const memoryStore = {};
+    const safeStorage = {
+        getItem(key) {
+            try {
+                return safeStorage.getItem(key);
+            } catch(e) {
+                return memoryStore[key] || null;
+            }
+        },
+        setItem(key, val) {
+            try {
+                safeStorage.setItem(key, val);
+            } catch(e) {
+                memoryStore[key] = val;
+            }
+        }
+    };
+
+    // ==========================================================================
+    // 🔁 Sistema de Reproducción Aleatoria Sin Repeticiones (Persistente)
+    // ==========================================================================
+    function getTrackUniqueId(track) {
+        if (!track) return '';
+        return `${normalizeText(track.artist)}__${normalizeText(track.title)}`;
+    }
+
+    function getUnplayedPool(playlistName, allTracks) {
+        const poolKey = 'played_pool_' + normalizeText(playlistName);
+        let playedIds = [];
+        try {
+            const raw = safeStorage.getItem(poolKey);
+            playedIds = raw ? JSON.parse(raw) : [];
+        } catch(e) {
+            playedIds = [];
+        }
+
+        let unplayed = allTracks.filter(t => !playedIds.includes(getTrackUniqueId(t)));
+
+        // Si ya han sonado todas las canciones de la lista, reiniciamos el ciclo limpio
+        if (unplayed.length === 0 && allTracks.length > 0) {
+            playedIds = [];
+            try { safeStorage.setItem(poolKey, JSON.stringify([])); } catch(e){}
+            unplayed = [...allTracks];
+            if (typeof showSyncNotification === 'function') {
+                showSyncNotification(`🎉 ¡Has escuchado todas las canciones de ${playlistName}! Reiniciando ciclo.`);
+            }
+        }
+
+        return { unplayed, playedCount: playedIds.length, total: allTracks.length };
+    }
+
+    function markTrackAsPlayed(playlistName, track) {
+        if (!playlistName || !track) return;
+        const poolKey = 'played_pool_' + normalizeText(playlistName);
+        let playedIds = [];
+        try {
+            const raw = safeStorage.getItem(poolKey);
+            playedIds = raw ? JSON.parse(raw) : [];
+        } catch(e) {
+            playedIds = [];
+        }
+        const tid = getTrackUniqueId(track);
+        if (!playedIds.includes(tid)) {
+            playedIds.push(tid);
+            try { safeStorage.setItem(poolKey, JSON.stringify(playedIds)); } catch(e){}
+        }
+    }
+
     function startPlaylistShuffle(playlistName) {
         const tracks = allPlaylists[playlistName] || allPlaylists[currentTab] || [];
         if (tracks.length === 0) return;
