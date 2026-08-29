@@ -1537,6 +1537,34 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCinemaTrack(cinemaCurrentTrackList[cinemaCurrentIndex]);
         playQueueTrack(cinemaCurrentTrackList[cinemaCurrentIndex]);
         cinemaOverlay.style.display = 'flex';
+
+        // Activar Pantalla Completa Nativa de Hardware (Oculta navegador, pestañas y barra de tareas)
+        try {
+            if (!document.fullscreenElement) {
+                if (document.documentElement.requestFullscreen) {
+                    document.documentElement.requestFullscreen().catch(() => {});
+                } else if (document.documentElement.webkitRequestFullscreen) {
+                    document.documentElement.webkitRequestFullscreen();
+                } else if (document.documentElement.msRequestFullscreen) {
+                    document.documentElement.msRequestFullscreen();
+                }
+            }
+        } catch(e) {}
+    }
+
+    function closeCinemaMode() {
+        if (cinemaOverlay) cinemaOverlay.style.display = 'none';
+        try {
+            if (document.fullscreenElement) {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen().catch(() => {});
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        } catch(e) {}
     }
 
     function renderCinemaTrack(track) {
@@ -1604,7 +1632,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (btnCloseCinema) {
         btnCloseCinema.addEventListener('click', () => {
-            if (cinemaOverlay) cinemaOverlay.style.display = 'none';
+            closeCinemaMode();
         });
     }
 
@@ -1660,9 +1688,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-    // Close Cinema overlay with Escape key
+    // Salir de Modo Cine y Fullscreen con tecla Escape o cambio de fullscreen
     window.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && cinemaOverlay && cinemaOverlay.style.display === 'flex') {
+            closeCinemaMode();
+        }
+    });
+
+    document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement && cinemaOverlay && cinemaOverlay.style.display === 'flex') {
             cinemaOverlay.style.display = 'none';
         }
     });
