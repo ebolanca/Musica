@@ -225,6 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (cinemaFullVideo) cinemaFullVideo.pause();
             
             if (currentCinemaVideoItem && cinemaHybridVideo) {
+                cinemaHybridVideo.muted = true; // Silenciar para evitar sonido doble
                 if (cinemaHybridVideo.src !== currentCinemaVideoItem.streamUrl) {
                     cinemaHybridVideo.src = currentCinemaVideoItem.streamUrl;
                 }
@@ -239,6 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (cinemaHybridVideo) cinemaHybridVideo.pause();
             
             if (currentCinemaVideoItem && cinemaFullVideo) {
+                cinemaFullVideo.muted = true; // Silenciar para evitar sonido doble
                 if (cinemaFullVideo.src !== currentCinemaVideoItem.streamUrl) {
                     cinemaFullVideo.src = currentCinemaVideoItem.streamUrl;
                 }
@@ -956,6 +958,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cinemaPlay) {
             cinemaPlay.innerHTML = isPlaying ? '<i class="fa-solid fa-pause"></i>' : '<i class="fa-solid fa-play"></i>';
         }
+
+        // Sincronizar estado de los elementos de vídeo
+        if (isPlaying) {
+            if (cinemaOverlay && cinemaOverlay.style.display === 'flex') {
+                if (cinemaViewMode === 'hybrid' && cinemaHybridVideo && currentCinemaVideoItem) {
+                    cinemaHybridVideo.muted = true;
+                    if (cinemaHybridVideo.paused) cinemaHybridVideo.play().catch(()=>{});
+                } else if (cinemaViewMode === 'fullvideo' && cinemaFullVideo && currentCinemaVideoItem) {
+                    cinemaFullVideo.muted = true;
+                    if (cinemaFullVideo.paused) cinemaFullVideo.play().catch(()=>{});
+                }
+            }
+        } else {
+            if (cinemaHybridVideo) cinemaHybridVideo.pause();
+            if (cinemaFullVideo) cinemaFullVideo.pause();
+        }
     }
 
     function handleCardPlayClick(song) {
@@ -1203,6 +1221,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 musicSeekSlider.value = (curr / dur) * 100;
             }
 
+            // Sincronizar vídeo en modo cine para evitar desfases
+            if (cinemaOverlay && cinemaOverlay.style.display === 'flex') {
+                const activeVideo = (cinemaViewMode === 'hybrid') ? cinemaHybridVideo : (cinemaViewMode === 'fullvideo' ? cinemaFullVideo : null);
+                if (activeVideo && !activeVideo.paused && Math.abs(activeVideo.currentTime - curr) > 0.35) {
+                    activeVideo.currentTime = curr;
+                }
+            }
+
             // Karaoke Mode: Real-time Lyric Highlight & Auto-scroll
             if (cinemaOverlay && cinemaOverlay.style.display === 'flex' && cinemaParsedLyrics.length > 0) {
                 let activeIdx = -1;
@@ -1326,6 +1352,8 @@ document.addEventListener('DOMContentLoaded', () => {
         musicBtnClose.addEventListener('click', () => {
             mainMusicAudio.pause();
             mainMusicAudio.src = '';
+            if (cinemaHybridVideo) { cinemaHybridVideo.pause(); cinemaHybridVideo.src = ''; }
+            if (cinemaFullVideo) { cinemaFullVideo.pause(); cinemaFullVideo.src = ''; }
             playbackMode = 'idle';
             currentPlayingSong = null;
             musicPlayerBar.style.display = 'none';
@@ -1968,6 +1996,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cinemaOverlay) cinemaOverlay.style.display = 'none';
         document.body.style.overflow = '';
         document.documentElement.style.overflow = '';
+        
+        // Pausar vídeos de modo cine inmediatamente
+        if (cinemaHybridVideo) cinemaHybridVideo.pause();
+        if (cinemaFullVideo) cinemaFullVideo.pause();
+
         try {
             if (document.fullscreenElement) {
                 if (document.exitFullscreen) {
