@@ -1054,7 +1054,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (activeIdx >= 0 && cinemaParsedLyrics[activeIdx]) {
                             const l = cinemaParsedLyrics[activeIdx];
                             const isSpanishList = currentPlayingSong && (currentPlayingSong.playlistName === 'Española' || currentPlayingSong.playlistName === 'Música latina' || currentTab === 'Española' || currentTab === 'Música latina');
-                            const isSame = normalizeText(l.translation) === normalizeText(l.text);
+                            const isSame = l.translation ? (normalizeText(l.translation) === normalizeText(l.text)) : true;
                             const showTrans = !isSpanishList && l.translation && !isSame && l.translation.trim().length > 0;
 
                             cinemaMovieSubText.innerHTML = `
@@ -1560,7 +1560,7 @@ document.addEventListener('DOMContentLoaded', () => {
             row.appendChild(origRow);
 
             const isSpanishList = currentModalSong && (currentModalSong.playlistName === 'Española' || currentModalSong.playlistName === 'Música latina' || currentTab === 'Española' || currentTab === 'Música latina');
-            const isSame = normalizeText(line.translation) === normalizeText(line.text);
+            const isSame = line.translation ? (normalizeText(line.translation) === normalizeText(line.text)) : true;
             const showTrans = !isSpanishList && line.translation && !isSame && line.translation.trim().length > 0;
 
             if (showTrans) {
@@ -1852,7 +1852,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const isSpanishList = track.playlistName === 'Española' || track.playlistName === 'Música latina' || currentTab === 'Española' || currentTab === 'Música latina';
 
                         cinemaLyrics.innerHTML = cinemaParsedLyrics.map(l => {
-                            const isSame = normalizeText(l.translation) === normalizeText(l.text);
+                            const isSame = l.translation ? (normalizeText(l.translation) === normalizeText(l.text)) : true;
                             const showTrans = !isSpanishList && l.translation && !isSame && l.translation.trim().length > 0;
                             return `
                                 <div class="cinema-lyric-line" id="cinema-lyric-${l.index}" data-sec="${l.seconds}" data-index="${l.index}" title="Pulsar para saltar a este punto">
