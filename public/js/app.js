@@ -1,3 +1,22 @@
+
+const memoryStore = {};
+const safeStorage = {
+    getItem(key) {
+        try {
+            return localStorage.getItem(key);
+        } catch(e) {
+            return memoryStore[key] || null;
+        }
+    },
+    setItem(key, val) {
+        try {
+            localStorage.setItem(key, val);
+        } catch(e) {
+            memoryStore[key] = val;
+        }
+    }
+};
+
 function normalizeText(str) {
     if (!str) return '';
     return str
@@ -972,25 +991,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     // 🛡️ Almacenamiento Seguro (Safe Storage con Fallback en Memoria para Edge/Chrome)
     // ==========================================================================
-    const memoryStore = {};
-    const safeStorage = {
-        getItem(key) {
-            try {
-                return safeStorage.getItem(key);
-            } catch(e) {
-                return memoryStore[key] || null;
-            }
-        },
-        setItem(key, val) {
-            try {
-                safeStorage.setItem(key, val);
-            } catch(e) {
-                memoryStore[key] = val;
-            }
-        }
-    };
-
-    // ==========================================================================
+// ==========================================================================
     // 🔁 Sistema de Reproducción Aleatoria Sin Repeticiones (Persistente)
     // ==========================================================================
     function getTrackUniqueId(track) {
