@@ -343,6 +343,13 @@ loadMetadataCache();
 function cleanTrackTitle(rawTitle) {
     if (!rawTitle) return '';
     let clean = rawTitle
+        .replace(/\s*-\s*[A-Za-z0-9\s]+\s+featuring\s+.*$/i, '')
+        .replace(/\s*-\s*[A-Za-z0-9\s]+\s+feat\.?\s+.*$/i, '')
+        .replace(/\s*\([A-Za-z0-9\s]+\s+featuring\s+.*\)$/i, '')
+        .replace(/\s*\([A-Za-z0-9\s]+\s+feat\.?\s+.*\)$/i, '')
+        .replace(/\s*\(feat\.?\s+.*\)$/i, '')
+        .replace(/\s*\(featuring\s+.*\)$/i, '')
+        .replace(/\s*\(with\s+.*\)$/i, '')
         .replace(/^\s*\.\.\.\s*/, '')
         .replace(/\s*-\s*Club Mix.*/i, '')
         .replace(/\s*-\s*Extended Mix.*/i, '')
