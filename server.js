@@ -7,6 +7,12 @@ const http = require('http');
 
 const LYRICS_DB_PATH = path.join(__dirname, 'data', 'lyrics_db.json');
 let cachedLyricsDb = {};
+
+function cleanTrackKey(str) {
+    if (!str) return '';
+    return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+}
+
 function loadLyricsDb() {
     if (fs.existsSync(LYRICS_DB_PATH)) {
         try { cachedLyricsDb = JSON.parse(fs.readFileSync(LYRICS_DB_PATH, 'utf8')); } catch(e){}
@@ -807,6 +813,112 @@ function loadAnalysesDb() {
 }
 
 // API: Obtener detalle completo de una canción (Créditos, Letras, Análisis Sónico Profundo)
+
+// ==========================================================================
+// 🎬 Jellyfin Music Videos Integration (OMEN :8096)
+// ==========================================================================
+const JELLYFIN_HOST = process.env.JELLYFIN_HOST || 'http://100.95.217.45:8096';
+const JELLYFIN_TOKEN = '128c3d9a51bd4b22bacaccad03ef9328';
+const JELLYFIN_USER_ID = '9f5ea2fca2c7415ba5a030c05821e9f9';
+
+let cachedJellyfinVideos = [];
+let jellyfinVideosLookup = new Map();
+
+async function fetchJellyfinVideos() {
+    try {
+        const url = `${JELLYFIN_HOST}/Users/${JELLYFIN_USER_ID}/Items?IncludeItemTypes=MusicVideo,Video&Recursive=true`;
+        const res = await fetch(url, {
+            headers: { 'X-Emby-Token': JELLYFIN_TOKEN },
+            signal: AbortSignal.timeout(6000)
+        });
+        if (!res.ok) {
+            console.warn(`Jellyfin API respondió con status ${res.status}`);
+            return cachedJellyfinVideos;
+        }
+        const data = await res.json();
+        const items = data.Items || [];
+        
+        cachedJellyfinVideos = items.map(item => {
+            const rawName = item.Name || '';
+            let parsedArtist = '';
+            let parsedTitle = rawName;
+            
+            if (rawName.includes(' - ')) {
+                const parts = rawName.split(' - ');
+                parsedArtist = parts[0].trim();
+                parsedTitle = parts.slice(1).join(' - ').trim();
+            }
+
+            const streamUrl = `${JELLYFIN_HOST}/Videos/${item.Id}/stream?static=true&api_key=${JELLYFIN_TOKEN}`;
+            const thumbUrl = `${JELLYFIN_HOST}/Items/${item.Id}/Images/Primary?fillWidth=480&fillHeight=270&quality=90`;
+            const webClientUrl = `${JELLYFIN_HOST}/web/index.html#!/details?id=${item.Id}&serverId=${item.ServerId}`;
+
+            return {
+                id: item.Id,
+                name: rawName,
+                artist: parsedArtist || 'Varios Artistas',
+                title: parsedTitle,
+                year: item.ProductionYear || null,
+                container: item.Container,
+                runTimeTicks: item.RunTimeTicks,
+                durationSec: item.RunTimeTicks ? Math.round(item.RunTimeTicks / 10000000) : 0,
+                streamUrl: streamUrl,
+                thumbUrl: thumbUrl,
+                webClientUrl: webClientUrl
+            };
+        });
+
+        // Construir mapa de búsqueda rápida normalizada
+        jellyfinVideosLookup.clear();
+        cachedJellyfinVideos.forEach(v => {
+            const normName = cleanTrackKey(v.name);
+            const normTitle = cleanTrackKey(v.title);
+            const normArtTit = cleanTrackKey(`${v.artist} ${v.title}`);
+            
+            jellyfinVideosLookup.set(normName, v);
+            jellyfinVideosLookup.set(normTitle, v);
+            jellyfinVideosLookup.set(normArtTit, v);
+        });
+
+        console.log(`✅ Jellyfin: ${cachedJellyfinVideos.length} videoclips cargados y sincronizados correctamente.`);
+        return cachedJellyfinVideos;
+    } catch(e) {
+        console.warn('No se pudo conectar a Jellyfin en OMEN:', e.message);
+        return cachedJellyfinVideos;
+    }
+}
+
+// Cargar videoclips en el arranque
+fetchJellyfinVideos();
+
+// Endpoint: Obtener catálogo completo de videoclips de Jellyfin
+app.get('/api/jellyfin/videos', async (req, res) => {
+    if (cachedJellyfinVideos.length === 0) {
+        await fetchJellyfinVideos();
+    }
+    res.json({
+        total: cachedJellyfinVideos.length,
+        server: JELLYFIN_HOST,
+        videos: cachedJellyfinVideos
+    });
+});
+
+// Endpoint: Refrescar catálogo en caliente
+app.post('/api/jellyfin/refresh', async (req, res) => {
+    try {
+        await fetch(`${JELLYFIN_HOST}/Library/Refresh`, {
+            method: 'POST',
+            headers: { 'X-Emby-Token': JELLYFIN_TOKEN },
+            signal: AbortSignal.timeout(5000)
+        }).catch(() => {});
+        
+        await fetchJellyfinVideos();
+        res.json({ success: true, count: cachedJellyfinVideos.length });
+    } catch(e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
 app.get('/api/track/detail', async (req, res) => {
     const { artist, title } = req.query;
     if (!artist || !title) {
@@ -932,6 +1044,9 @@ app.get('/api/track/detail', async (req, res) => {
         label: meta.label || 'Sello Discográfico Principal',
         genre: meta.genre || 'Pop / Rock / Dance',
         audioUrl: (scanAudioFiles().get(`${artist} - ${title}`.toLowerCase().replace(/[^a-z0-9]/g, '')) || {}).relUrl || null,
+        videoItem: jellyfinVideosLookup.get(cleanTrackKey(`${artist} ${title}`)) || 
+                   jellyfinVideosLookup.get(cleanTrackKey(title)) || 
+                   jellyfinVideosLookup.get(cleanTrackKey(`${artist} - ${title}`)) || null,
         composers: meta.composers || artist,
         lyrics: (parsedLyrics || []).map(l => ({
             ...l,
