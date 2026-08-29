@@ -2023,3 +2023,208 @@ video {
   margin-top: 5px;
   transition: all 0.3s ease;
 }
+
+
+/* ==========================================================================
+   🎵 Persistent Floating Music Player Bar Styles
+   ========================================================================== */
+.music-player-bar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  max-width: 1040px;
+  background: rgba(15, 23, 42, 0.96);
+  border: 1px solid rgba(29, 185, 84, 0.5);
+  border-radius: 20px;
+  padding: 12px 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.85), 0 0 25px rgba(29, 185, 84, 0.2);
+  backdrop-filter: blur(20px);
+  z-index: 9998;
+  animation: slideUpBar 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.music-bar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.music-bar-track-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 240px;
+  max-width: 320px;
+}
+
+.music-bar-cover {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.music-bar-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.music-bar-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-bar-artist {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-bar-badge {
+  background: rgba(29, 185, 84, 0.15);
+  border: 1px solid rgba(29, 185, 84, 0.3);
+  color: var(--spotify-green);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.music-bar-center {
+  flex: 1;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.music-bar-ctrl-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-music-ctrl {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-music-ctrl:hover {
+  color: #fff;
+  transform: scale(1.15);
+}
+
+.btn-music-play {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--spotify-green);
+  color: #000;
+  border: none;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 15px rgba(29, 185, 84, 0.5);
+}
+
+.btn-music-play:hover {
+  transform: scale(1.1);
+}
+
+.music-bar-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.music-time {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-family: monospace;
+  min-width: 32px;
+}
+
+.music-seek-bar {
+  flex: 1;
+  accent-color: var(--spotify-green);
+  cursor: pointer;
+  height: 4px;
+}
+
+.music-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-music-cinema {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-glass);
+  color: #fff;
+  border-radius: 16px;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-music-cinema:hover {
+  background: rgba(29, 185, 84, 0.2);
+  border-color: var(--spotify-green);
+  color: var(--spotify-green);
+}
+
+.music-bar-volume {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-music-icon {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.btn-music-icon:hover {
+  color: #fff;
+}
+
+.music-vol-slider {
+  width: 70px;
+  accent-color: var(--spotify-green);
+  cursor: pointer;
+}
