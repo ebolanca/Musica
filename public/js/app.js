@@ -810,6 +810,69 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    
+    // Subtitle Sync Offset Engine (Jellyfin Style)
+    let lyricsSyncOffset = 0.0;
+    const cinemaSyncSlider = document.getElementById('cinema-sync-slider');
+    const cinemaSyncValue = document.getElementById('cinema-sync-value');
+    const btnSyncMinus = document.getElementById('btn-sync-minus');
+    const btnSyncPlus = document.getElementById('btn-sync-plus');
+
+    function updateLyricsSyncOffset(val) {
+        lyricsSyncOffset = parseFloat(val);
+        if (isNaN(lyricsSyncOffset)) lyricsSyncOffset = 0.0;
+        
+        if (cinemaSyncSlider) cinemaSyncSlider.value = lyricsSyncOffset.toFixed(1);
+        if (cinemaSyncValue) {
+            const prefix = lyricsSyncOffset > 0 ? '+' : '';
+            cinemaSyncValue.textContent = `${prefix}${lyricsSyncOffset.toFixed(1)}s`;
+        }
+
+        // Save offset for this track in localStorage
+        if (currentPlayingSong) {
+            const key = `offset_${normalizeText(currentPlayingSong.artist)}_${normalizeText(currentPlayingSong.title)}`;
+            try { localStorage.setItem(key, lyricsSyncOffset.toFixed(1)); } catch(e){}
+        }
+
+        // Force immediate recalculation of active lyric line
+        currentCinemaActiveLine = -1;
+    }
+
+    if (cinemaSyncSlider) {
+        cinemaSyncSlider.addEventListener('input', (e) => {
+            updateLyricsSyncOffset(e.target.value);
+        });
+    }
+
+    if (btnSyncMinus) {
+        btnSyncMinus.addEventListener('click', () => {
+            updateLyricsSyncOffset((lyricsSyncOffset - 0.1).toFixed(1));
+        });
+    }
+
+    if (btnSyncPlus) {
+        btnSyncPlus.addEventListener('click', () => {
+            updateLyricsSyncOffset((lyricsSyncOffset + 0.1).toFixed(1));
+        });
+    }
+
+    if (cinemaSyncValue) {
+        cinemaSyncValue.addEventListener('click', () => {
+            updateLyricsSyncOffset(0.0);
+        });
+    }
+
+    function loadTrackSyncOffset(track) {
+        if (!track) return;
+        const key = `offset_${normalizeText(track.artist)}_${normalizeText(track.title)}`;
+        let saved = 0.0;
+        try {
+            const val = localStorage.getItem(key);
+            if (val !== null) saved = parseFloat(val);
+        } catch(e){}
+        updateLyricsSyncOffset(saved);
+    }
+
     // Audio Element Event Listeners
     if (mainMusicAudio) {
         mainMusicAudio.addEventListener('timeupdate', () => {
@@ -826,7 +889,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (cinemaOverlay && cinemaOverlay.style.display === 'flex' && cinemaParsedLyrics.length > 0) {
                 let activeIdx = -1;
                 for (let i = 0; i < cinemaParsedLyrics.length; i++) {
-                    if (cinemaParsedLyrics[i].seconds <= curr + 0.3) {
+                    const adjustedTime = curr + lyricsSyncOffset;
+                if (cinemaParsedLyrics[i].seconds <= adjustedTime + 0.3) {
                         activeIdx = i;
                     } else {
                         break;
@@ -1569,6 +1633,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderCinemaTrack(track) {
         if (!track) return;
+        loadTrackSyncOffset(track);
         const cover = track.coverUrl || 'img/radios/hitfm.svg';
         if (cinemaBg) cinemaBg.style.backgroundImage = `url('${cover}')`;
         if (cinemaCover) cinemaCover.src = cover;

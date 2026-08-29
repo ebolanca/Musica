@@ -18,7 +18,7 @@
             </div>
             <div class="logo-title">
                 <h1>Música</h1>
-                <p>Plataforma de Videoclips & Análisis Sónico v1.4.36</p>
+                <p>Plataforma de Videoclips & Análisis Sónico v1.4.37</p>
             </div>
         </div>
 
@@ -294,7 +294,16 @@
                 </div>
             </div>
             <div class="cinema-right">
-                <div class="cinema-lyrics-header"><i class="fa-solid fa-microphone-lines"></i> Letra Sincronizada</div>
+                <div class="cinema-lyrics-header-row">
+                    <div class="cinema-lyrics-header"><i class="fa-solid fa-microphone-lines"></i> Letra Sincronizada</div>
+                    <div class="cinema-sync-control" title="Ajuste fino de sincronización de subtítulos (Estilo Jellyfin)">
+                        <span class="sync-title"><i class="fa-solid fa-sliders"></i> Sincronía:</span>
+                        <button class="btn-sync-step" id="btn-sync-minus" title="Retrasar 0.1s">-0.1s</button>
+                        <input type="range" id="cinema-sync-slider" min="-5.0" max="5.0" step="0.1" value="0.0" class="cinema-sync-slider">
+                        <button class="btn-sync-step" id="btn-sync-plus" title="Avanzar 0.1s">+0.1s</button>
+                        <span id="cinema-sync-value" class="sync-value-badge" title="Pulsar para restablecer a 0.0s">0.0s</span>
+                    </div>
+                </div>
                 <div class="cinema-lyrics-container" id="cinema-lyrics">
                     <!-- Letra sincronizada en grande -->
                 </div>

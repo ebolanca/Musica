@@ -2228,3 +2228,81 @@ video {
   accent-color: var(--spotify-green);
   cursor: pointer;
 }
+
+
+/* ==========================================================================
+   🎛️ Jellyfin Subtitle Sync Offset Control Styles
+   ========================================================================== */
+.cinema-lyrics-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.cinema-sync-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 4px 12px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.sync-title {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-sync-step {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-sync-step:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: var(--spotify-green);
+}
+
+.cinema-sync-slider {
+  width: 120px;
+  height: 4px;
+  accent-color: var(--spotify-green);
+  cursor: pointer;
+}
+
+.sync-value-badge {
+  font-size: 0.78rem;
+  font-weight: 800;
+  font-family: monospace;
+  background: rgba(29, 185, 84, 0.2);
+  color: var(--spotify-green);
+  border: 1px solid rgba(29, 185, 84, 0.4);
+  padding: 2px 8px;
+  border-radius: 10px;
+  min-width: 48px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sync-value-badge:hover {
+  background: var(--spotify-green);
+  color: #000;
+}
