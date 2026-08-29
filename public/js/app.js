@@ -2081,32 +2081,38 @@ document.addEventListener('DOMContentLoaded', () => {
                             `;
                         }).join('');
 
-                        // Click to seek on lyric line
+                        // Click en una frase para alinear los subtítulos desde ahí SIN cortar la música
                         document.querySelectorAll('.cinema-lyric-line').forEach(lineEl => {
                             lineEl.addEventListener('click', () => {
                                 const sec = parseFloat(lineEl.getAttribute('data-sec'));
-                                if (isPinModeActive && mainMusicAudio) {
-                                    // Anclar la letra exactamente al segundo actual de reproducción
+                                if (!isNaN(sec) && mainMusicAudio) {
                                     const currAudioSec = mainMusicAudio.currentTime;
                                     const newOffset = (sec - currAudioSec);
                                     updateLyricsSyncOffset(newOffset.toFixed(1));
-                                    isPinModeActive = false;
-                                    if (btnSyncPin) {
-                                        btnSyncPin.classList.remove('active');
-                                        btnSyncPin.innerHTML = '<i class="fa-solid fa-thumbtack"></i> Anclar Frase';
-                                    }
-                                    if (cinemaLyrics) cinemaLyrics.classList.remove('pin-mode-active');
-                                    showSyncNotification(`📍 Letra anclada a esta frase (Desfase: ${newOffset >= 0 ? '+' : ''}${newOffset.toFixed(1)}s)`);
-                                    return;
-                                }
-
-                                if (!isNaN(sec) && mainMusicAudio) {
-                                    const adjustedSec = sec - lyricsSyncOffset;
-                                    mainMusicAudio.currentTime = Math.max(0, adjustedSec);
-                                    if (mainMusicAudio.paused) mainMusicAudio.play();
+                                    
+                                    // Reanudar el seguimiento del karaoke de inmediato
+                                    isUserScrollingCinema = false;
+                                    clearTimeout(userScrollTimer);
+                                    
+                                    showSyncNotification(`📍 Subtítulos sincronizados a partir de esta frase (${newOffset >= 0 ? '+' : ''}${newOffset.toFixed(1)}s)`);
                                 }
                             });
                         });
+
+                        // Detección de scroll manual con retorno automático a los 5 segundos
+                        if (cinemaLyrics) {
+                            const handleUserScroll = () => {
+                                isUserScrollingCinema = true;
+                                clearTimeout(userScrollTimer);
+                                userScrollTimer = setTimeout(() => {
+                                    isUserScrollingCinema = false;
+                                }, 5000);
+                            };
+
+                            cinemaLyrics.addEventListener('wheel', handleUserScroll, { passive: true });
+                            cinemaLyrics.addEventListener('touchmove', handleUserScroll, { passive: true });
+                            cinemaLyrics.addEventListener('scroll', handleUserScroll, { passive: true });
+                        }
                     } else {
                         cinemaLyrics.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);"><i class="fa-solid fa-microphone-slash" style="font-size:2rem;margin-bottom:12px;opacity:0.4;"></i><p>No hay letra sincronizada disponible para esta canción.</p></div>';
                     }
