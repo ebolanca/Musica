@@ -933,7 +933,10 @@ app.get('/api/track/detail', async (req, res) => {
         genre: meta.genre || 'Pop / Rock / Dance',
         audioUrl: (scanAudioFiles().get(`${artist} - ${title}`.toLowerCase().replace(/[^a-z0-9]/g, '')) || {}).relUrl || null,
         composers: meta.composers || artist,
-        lyrics: parsedLyrics || [],
+        lyrics: (parsedLyrics || []).map(l => ({
+            ...l,
+            translation: (l.translation && l.translation.trim().toLowerCase() !== (l.text || '').trim().toLowerCase()) ? l.translation : null
+        })),
         analysis: analysis
     });
 });

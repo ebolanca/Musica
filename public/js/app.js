@@ -1336,7 +1336,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             row.appendChild(origRow);
 
-            if (line.translation) {
+            const isSpanishList = currentModalSong && (currentModalSong.playlistName === 'Española' || currentModalSong.playlistName === 'Música latina' || currentTab === 'Española' || currentTab === 'Música latina');
+            const isSame = normalizeText(line.translation) === normalizeText(line.text);
+            const showTrans = !isSpanishList && line.translation && !isSame && line.translation.trim().length > 0;
+
+            if (showTrans) {
                 const transRow = document.createElement('div');
                 transRow.className = 'lyrics-row-trans';
                 transRow.textContent = line.translation;
@@ -1565,12 +1569,18 @@ document.addEventListener('DOMContentLoaded', () => {
                             return { ...l, seconds: sec, index: idx };
                         });
 
-                        cinemaLyrics.innerHTML = cinemaParsedLyrics.map(l => `
-                            <div class="cinema-lyric-line" id="cinema-lyric-${l.index}" data-sec="${l.seconds}" data-index="${l.index}" title="Pulsar para saltar a este punto">
-                                <div>${l.text}</div>
-                                ${l.translation ? `<div class="cinema-lyric-trans">${l.translation}</div>` : ''}
-                            </div>
-                        `).join('');
+                        const isSpanishList = track.playlistName === 'Española' || track.playlistName === 'Música latina' || currentTab === 'Española' || currentTab === 'Música latina';
+
+                        cinemaLyrics.innerHTML = cinemaParsedLyrics.map(l => {
+                            const isSame = normalizeText(l.translation) === normalizeText(l.text);
+                            const showTrans = !isSpanishList && l.translation && !isSame && l.translation.trim().length > 0;
+                            return `
+                                <div class="cinema-lyric-line" id="cinema-lyric-${l.index}" data-sec="${l.seconds}" data-index="${l.index}" title="Pulsar para saltar a este punto">
+                                    <div>${l.text}</div>
+                                    ${showTrans ? `<div class="cinema-lyric-trans">${l.translation}</div>` : ''}
+                                </div>
+                            `;
+                        }).join('');
 
                         // Click to seek on lyric line
                         document.querySelectorAll('.cinema-lyric-line').forEach(lineEl => {
