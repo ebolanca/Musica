@@ -637,17 +637,48 @@ app.get('/api/playlists', (req, res) => {
 
             const cleanKey = `${artist} - ${title}`.toLowerCase().replace(/[^a-z0-9]/g, '');
             const cleanKey2 = `${artist} ${cleanTitle}`.toLowerCase().replace(/[^a-z0-9]/g, '');
-            const audioInfo = audioMap.get(cleanKey) || audioMap.get(cleanKey2);
-            const audioUrl = audioInfo ? audioInfo.relUrl : null;
+            let audioInfo = audioMap.get(cleanKey) || audioMap.get(cleanKey2);
+            
+            // Fuzzy search for audio files if exact match failed
+            if (!audioInfo) {
+                const titleKey = cleanTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
+                const artistKey = (artist || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+                if (titleKey.length >= 4) {
+                    for (const [k, v] of audioMap.entries()) {
+                        if (k.includes(titleKey) && (artistKey.length < 4 || k.includes(artistKey.slice(0, 8)) || artistKey.includes(k.slice(0, 8)))) {
+                            audioInfo = v;
+                            break;
+                        }
+                    }
+                }
+            }
 
-            let videoInfo = videoMap.get(cleanKey);
+            let videoInfo = videoMap.get(cleanKey) || videoMap.get(cleanKey2);
             if (!videoInfo) {
                 const titleKey = cleanTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
-                for (const [k, v] of videoMap.entries()) {
-                    if (k.includes(titleKey)) {
-                        videoInfo = v;
-                        break;
+                const artistKey = (artist || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+                if (titleKey.length >= 4) {
+                    for (const [k, v] of videoMap.entries()) {
+                        if (k.includes(titleKey) && (artistKey.length < 4 || k.includes(artistKey.slice(0, 8)) || artistKey.includes(k.slice(0, 8)))) {
+                            videoInfo = v;
+                            break;
+                        }
                     }
+                }
+            }
+
+            // Buscar videoclip en catálogo de Jellyfin
+            const jellyVideo = jellyfinVideosLookup.get(cleanTrackKey(`${artist} ${cleanTitle}`)) || 
+                               jellyfinVideosLookup.get(cleanTrackKey(cleanTitle)) || 
+                               jellyfinVideosLookup.get(cleanTrackKey(`${artist} - ${title}`)) || null;
+
+            let audioUrl = audioInfo ? audioInfo.relUrl : null;
+            // Si no hay MP3 pero hay videoclip en local o Jellyfin, usar como audio stream de respaldo
+            if (!audioUrl) {
+                if (videoInfo && videoInfo.mp4) {
+                    audioUrl = `/media-videos/${videoInfo.mp4.replace(/\\/g, '/')}`;
+                } else if (jellyVideo && jellyVideo.streamUrl) {
+                    audioUrl = jellyVideo.streamUrl;
                 }
             }
 

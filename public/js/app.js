@@ -907,8 +907,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         currentPlayingSong = track;
 
-        if (track.audioUrl) {
-            mainMusicAudio.src = track.audioUrl;
+        const playableUrl = track.audioUrl || (track.videoItem ? track.videoItem.streamUrl : null) || track.videoPath;
+        if (playableUrl) {
+            if (mainMusicAudio.src !== playableUrl) {
+                mainMusicAudio.src = playableUrl;
+            }
             mainMusicAudio.volume = musicVolSlider ? parseFloat(musicVolSlider.value) : 0.85;
             mainMusicAudio.play().then(() => {
                 updateMusicBarState(true);
