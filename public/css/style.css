@@ -2712,3 +2712,36 @@ video {
   0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px rgba(34, 197, 94, 0.4)); }
   50% { transform: scale(1.15); filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.9)); }
 }
+
+
+/* --- Botón Grabar Sincronía Permanente en Modo Cine --- */
+.btn-sync-save {
+  background: rgba(34, 197, 94, 0.2);
+  border: 1px solid rgba(34, 197, 94, 0.5);
+  color: var(--spotify-green);
+  border-radius: 8px;
+  padding: 4px 9px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-left: 4px;
+}
+
+.btn-sync-save:hover {
+  background: var(--spotify-green);
+  color: #000;
+  transform: scale(1.1);
+  box-shadow: 0 0 16px rgba(34, 197, 94, 0.6);
+}
+
+.btn-sync-save.saved {
+  background: #3b82f6 !important;
+  color: #fff !important;
+  border-color: #60a5fa !important;
+  box-shadow: 0 0 16px rgba(59, 130, 246, 0.6);
+}

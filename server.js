@@ -1210,6 +1210,94 @@ app.get('/api/radio/now-playing', async (req, res) => {
     res.json({ nowPlaying: title, cached: false });
 });
 
+
+// ==========================================================================
+// 💾 Grabar Desfase Permanente de Letras / Subtítulos
+// ==========================================================================
+app.post('/api/lyrics/save-offset', (req, res) => {
+    try {
+        const { artist, title, offsetSec } = req.body;
+        if (!artist || !title || typeof offsetSec !== 'number') {
+            return res.status(400).json({ error: 'Faltan parámetros requeridos (artist, title, offsetSec)' });
+        }
+
+        const cleanT = cleanTrackTitle(title);
+        const keysToTry = [
+            `${artist} - ${title}`,
+            `${artist} - ${cleanT}`,
+            cleanT,
+            `${artist} ${cleanT}`,
+            title
+        ];
+
+        let targetLyrics = null;
+        for (const k of keysToTry) {
+            if (cachedLyricsDb[k] && Array.isArray(cachedLyricsDb[k])) {
+                targetLyrics = cachedLyricsDb[k];
+                break;
+            }
+        }
+
+        if (!targetLyrics) {
+            // Intentar buscar por coincidencia difusa
+            const normTarget = `${artist}${cleanT}`.toLowerCase().replace(/[^a-z0-9]/g, '');
+            for (const [k, v] of Object.entries(cachedLyricsDb)) {
+                const normK = k.toLowerCase().replace(/[^a-z0-9]/g, '');
+                if (normK === normTarget || (normK.length > 5 && (normK.includes(normTarget) || normTarget.includes(normK)))) {
+                    targetLyrics = v;
+                    break;
+                }
+            }
+        }
+
+        if (!targetLyrics) {
+            return res.status(404).json({ error: 'No se encontraron letras en la base de datos para esta canción' });
+        }
+
+        // Aplicar el desfase a todas las líneas
+        const updatedLyrics = targetLyrics.map(l => {
+            let currSec = 0;
+            if (typeof l.seconds === 'number') currSec = l.seconds;
+            else if (l.time) {
+                const parts = l.time.split(':');
+                currSec = parseInt(parts[0], 10) * 60 + parseFloat(parts[1] || 0);
+            }
+
+            const newSec = Math.max(0, parseFloat((currSec - offsetSec).toFixed(2)));
+            const mins = Math.floor(newSec / 60);
+            const secs = Math.floor(newSec % 60);
+            const newTimeFmt = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+
+            return {
+                ...l,
+                seconds: newSec,
+                time: newTimeFmt
+            };
+        });
+
+        // Guardar en todas las variantes de clave en memoria
+        keysToTry.forEach(k => {
+            cachedLyricsDb[k] = updatedLyrics;
+        });
+        cachedLyricsDb[`${artist} - ${title}`] = updatedLyrics;
+        cachedLyricsDb[`${artist} - ${cleanT}`] = updatedLyrics;
+        cachedLyricsDb[cleanT] = updatedLyrics;
+
+        // Guardar permanentemente en disco
+        try {
+            fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
+        } catch(e) {
+            console.error('Error escribiendo en LYRICS_DB_PATH:', e.message);
+        }
+
+        console.log(`[LYRICS SYNC] Desfase de ${offsetSec}s guardado permanentemente para ${artist} - ${title}`);
+        res.json({ success: true, lyrics: updatedLyrics });
+    } catch(err) {
+        console.error('Error en /api/lyrics/save-offset:', err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
 const PORT = 8087;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Servidor de Música corriendo en http://localhost:${PORT}`);

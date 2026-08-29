@@ -1115,6 +1115,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const cinemaSyncSlider = document.getElementById('cinema-sync-slider');
     const cinemaSyncValue = document.getElementById('cinema-sync-value');
+    const btnSyncSave = document.getElementById('btn-sync-save');
     const btnSyncMinus = document.getElementById('btn-sync-minus');
     const btnSyncPlus = document.getElementById('btn-sync-plus');
     const btnSyncPin = document.getElementById('btn-sync-pin');
@@ -1176,6 +1177,98 @@ document.addEventListener('DOMContentLoaded', () => {
         cinemaSyncValue.addEventListener('click', () => {
             updateLyricsSyncOffset(0.0);
             showSyncNotification('Sincronía restablecida a 0.0s');
+        });
+    }
+
+    
+    // Función reutilizable para renderizar las líneas del karaoke
+    function renderCinemaLyricLines() {
+        if (!cinemaLyrics || !cinemaParsedLyrics || cinemaParsedLyrics.length === 0) return;
+        cinemaLyrics.innerHTML = cinemaParsedLyrics.map(l => {
+            const hasTrans = l.translation && typeof l.translation === 'string' && l.translation.trim().length > 0;
+            const isSame = hasTrans ? (normalizeText(l.translation) === normalizeText(l.text)) : true;
+            const showTrans = hasTrans && !isSame;
+            return `
+                <div class="cinema-lyric-line" id="cinema-lyric-${l.index}" data-sec="${l.seconds}" data-index="${l.index}" title="Pulsar para sincronizar a partir de aquí">
+                    <div class="cinema-lyric-orig">${l.text}</div>
+                    ${showTrans ? `<div class="cinema-lyric-trans">${l.translation}</div>` : ''}
+                </div>
+            `;
+        }).join('');
+
+        // Re-enlazar clicks en frases
+        document.querySelectorAll('.cinema-lyric-line').forEach(lineEl => {
+            lineEl.addEventListener('click', () => {
+                const sec = parseFloat(lineEl.getAttribute('data-sec'));
+                if (!isNaN(sec) && mainMusicAudio) {
+                    const currAudioSec = mainMusicAudio.currentTime;
+                    const newOffset = (sec - currAudioSec);
+                    updateLyricsSyncOffset(newOffset.toFixed(1));
+                    isUserScrollingCinema = false;
+                    clearTimeout(userScrollTimer);
+                    showSyncNotification(`📍 Subtítulos sincronizados a partir de esta frase (${newOffset >= 0 ? '+' : ''}${newOffset.toFixed(1)}s)`);
+                }
+            });
+        });
+    }
+
+    if (btnSyncSave) {
+        btnSyncSave.addEventListener('click', async () => {
+            const currentSong = currentPlayingSong || (cinemaCurrentTrackList ? cinemaCurrentTrackList[cinemaCurrentIndex] : null);
+            if (!currentSong) return;
+
+            if (Math.abs(lyricsSyncOffset) < 0.05) {
+                showSyncNotification('ℹ️ El desfase actual ya es 0.0s (No hay cambios que grabar)');
+                return;
+            }
+
+            btnSyncSave.disabled = true;
+            btnSyncSave.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+
+            try {
+                const res = await fetch('/api/lyrics/save-offset', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        artist: currentSong.artist,
+                        title: currentSong.rawTitle || currentSong.title,
+                        offsetSec: lyricsSyncOffset
+                    })
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.success && data.lyrics) {
+                        cinemaParsedLyrics = data.lyrics.map((l, idx) => {
+                            return { ...l, index: idx, hasTimestamp: true };
+                        });
+
+                        // Restablecer el desfase a 0.0s porque ya quedó grabado permanentemente
+                        const key = `offset_${normalizeText(currentSong.artist)}_${normalizeText(currentSong.title)}`;
+                        safeStorage.setItem(key, '0.0');
+                        updateLyricsSyncOffset(0.0);
+
+                        renderCinemaLyricLines();
+
+                        btnSyncSave.classList.add('saved');
+                        btnSyncSave.innerHTML = '<i class="fa-solid fa-check"></i>';
+                        showSyncNotification('💾 ¡Desfase grabado permanentemente en la base de datos!');
+
+                        setTimeout(() => {
+                            btnSyncSave.disabled = false;
+                            btnSyncSave.classList.remove('saved');
+                            btnSyncSave.innerHTML = '<i class="fa-solid fa-floppy-disk"></i>';
+                        }, 2500);
+                    }
+                } else {
+                    throw new Error('Error en el servidor');
+                }
+            } catch(e) {
+                console.error('Error guardando desfase permanente:', e);
+                btnSyncSave.disabled = false;
+                btnSyncSave.innerHTML = '<i class="fa-solid fa-floppy-disk"></i>';
+                showSyncNotification('❌ Error al grabar desfase permanente');
+            }
         });
     }
 
