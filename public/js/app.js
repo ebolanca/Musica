@@ -1119,8 +1119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnCinemaReplaceClean = document.getElementById('btn-cinema-replace-clean');
     const btnSyncMinus = document.getElementById('btn-sync-minus');
     const btnSyncPlus = document.getElementById('btn-sync-plus');
-    const btnSyncPin = document.getElementById('btn-sync-pin');
-
+    
     function showSyncNotification(msg) {
         const existing = document.querySelector('.cinema-toast-notification');
         if (existing) existing.remove();
@@ -1369,21 +1368,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (btnSyncPin) {
-        btnSyncPin.addEventListener('click', () => {
-            isPinModeActive = !isPinModeActive;
-            if (isPinModeActive) {
-                btnSyncPin.classList.add('active');
-                btnSyncPin.innerHTML = '<i class="fa-solid fa-thumbtack"></i> Haz clic en la frase que suena...';
-                if (cinemaLyrics) cinemaLyrics.classList.add('pin-mode-active');
-                showSyncNotification('🎯 Modo Anclaje activo: Haz clic en la frase de la letra que está sonando ahora mismo');
-            } else {
-                btnSyncPin.classList.remove('active');
-                btnSyncPin.innerHTML = '<i class="fa-solid fa-thumbtack"></i> Anclar Frase';
-                if (cinemaLyrics) cinemaLyrics.classList.remove('pin-mode-active');
-            }
-        });
-    }
+
 
     function loadTrackSyncOffset(track) {
         if (!track) return;
@@ -1394,12 +1379,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateLyricsSyncOffset(saved);
         
         // Reset pin mode on song change
-        isPinModeActive = false;
-        if (btnSyncPin) {
-            btnSyncPin.classList.remove('active');
-            btnSyncPin.innerHTML = '<i class="fa-solid fa-thumbtack"></i> Anclar Frase';
-        }
-        if (cinemaLyrics) cinemaLyrics.classList.remove('pin-mode-active');
+        
     }
 
     
