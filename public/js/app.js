@@ -1892,8 +1892,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         cinemaLyrics.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);"><i class="fa-solid fa-microphone-slash" style="font-size:2rem;margin-bottom:12px;opacity:0.4;"></i><p>No hay letra sincronizada disponible para esta canción.</p></div>';
                     }
                 })
-                .catch(() => {
-                    cinemaLyrics.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);">Error cargando letra</div>';
+                .catch((err) => {
+                    console.error('Error detallado en renderCinemaTrack:', err);
+                    cinemaLyrics.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);"><i class="fa-solid fa-triangle-exclamation" style="font-size:2rem;margin-bottom:12px;opacity:0.4;"></i><p>No se pudo cargar la letra para esta canción.</p></div>';
                 });
         }
     }
@@ -1953,18 +1954,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     btnJellyfinSync.innerHTML = '<i class="fa-solid fa-rotate"></i> Sincronizar';
                 });
         });
+        // Salir de Modo Cine y Fullscreen con tecla Escape o cambio de fullscreen
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && cinemaOverlay && cinemaOverlay.style.display === 'flex') {
+                closeCinemaMode();
+            }
+        });
+
+        document.addEventListener('fullscreenchange', () => {
+            if (!document.fullscreenElement && cinemaOverlay && cinemaOverlay.style.display === 'flex') {
+                cinemaOverlay.style.display = 'none';
+            }
+        });
     }
 });
-
-    // Salir de Modo Cine y Fullscreen con tecla Escape o cambio de fullscreen
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && cinemaOverlay && cinemaOverlay.style.display === 'flex') {
-            closeCinemaMode();
-        }
-    });
-
-    document.addEventListener('fullscreenchange', () => {
-        if (!document.fullscreenElement && cinemaOverlay && cinemaOverlay.style.display === 'flex') {
-            cinemaOverlay.style.display = 'none';
-        }
-    });
