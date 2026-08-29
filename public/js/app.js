@@ -902,7 +902,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.querySelectorAll('.cinema-lyric-line').forEach((el, idx) => {
                         if (idx === activeIdx) {
                             el.classList.add('active');
-                            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            if (cinemaLyrics) {
+                                const containerHeight = cinemaLyrics.clientHeight;
+                                const elTop = el.offsetTop;
+                                const elHeight = el.clientHeight;
+                                const targetScroll = elTop - (containerHeight / 2) + (elHeight / 2);
+                                cinemaLyrics.scrollTo({
+                                    top: Math.max(0, targetScroll),
+                                    behavior: 'smooth'
+                                });
+                            }
                         } else {
                             el.classList.remove('active');
                         }
@@ -1600,6 +1609,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         renderCinemaTrack(cinemaCurrentTrackList[cinemaCurrentIndex]);
         playQueueTrack(cinemaCurrentTrackList[cinemaCurrentIndex]);
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+        window.scrollTo(0, 0);
         cinemaOverlay.style.display = 'flex';
 
         // Activar Pantalla Completa Nativa de Hardware (Oculta navegador, pestañas y barra de tareas)
@@ -1618,6 +1630,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function closeCinemaMode() {
         if (cinemaOverlay) cinemaOverlay.style.display = 'none';
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
         try {
             if (document.fullscreenElement) {
                 if (document.exitFullscreen) {

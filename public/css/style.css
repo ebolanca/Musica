@@ -2306,3 +2306,24 @@ video {
   background: var(--spotify-green);
   color: #000;
 }
+
+
+.cinema-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-height: 100vh !important;
+  overflow: hidden !important;
+}
+
+.cinema-lyrics-container {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.cinema-lyrics-container::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
