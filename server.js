@@ -4,6 +4,20 @@ const fs = require('fs');
 const path = require('path');
 const http = require('http');
 
+// Cargar variables de entorno desde .env si existe
+const ENV_PATH = path.join(__dirname, '.env');
+if (fs.existsSync(ENV_PATH)) {
+    try {
+        const envLines = fs.readFileSync(ENV_PATH, 'utf8').split('\n');
+        for (const l of envLines) {
+            const trimmed = l.trim();
+            if (trimmed && !trimmed.startsWith('#') && trimmed.includes('=')) {
+                const [k, ...v] = trimmed.split('=');
+                process.env[k.trim()] = v.join('=').trim();
+            }
+        }
+    } catch(e){}
+}
 
 const LYRICS_DB_PATH = path.join(__dirname, 'data', 'lyrics_db.json');
 let cachedLyricsDb = {};
@@ -140,6 +154,127 @@ async function fetchWikiSummary(artist, title) {
         return null;
     }
     return null;
+}
+
+function isGenericAnalysis(analysis) {
+    if (!analysis) return true;
+    if (!analysis.sections || analysis.sections.length === 0) return true;
+    if (analysis.synopsis && analysis.synopsis.includes("es una pieza fundamental dentro de su género")) return true;
+    if (analysis.sections[0] && analysis.sections[0].points && analysis.sections[0].points[0] && analysis.sections[0].points[0].name === "El punto de inflexión creativo") return true;
+    return false;
+}
+
+async function generateGeminiAnalysis(artist, title, album, year) {
+    const cleanT = cleanTrackTitle(title);
+    const geminiKey = process.env.GEMINI_API_KEY;
+
+    if (geminiKey) {
+        const prompt = `Actúa como un crítico musical y musicólogo apasionado y de altísimo nivel.
+Genera un análisis sónico, lírico e histórico profundo, vibrante, apasionado y revelador para la canción "${cleanT}" de ${artist} (álbum: ${album || 'Desconocido'}, año: ${year || 'Clásico'}).
+
+El análisis debe ser rico, con datos reales y específicos de producción (instrumentos, sintetizadores o pedales utilizados, colaboraciones, samples, técnicas de grabación), análisis lírico exhaustivo y contexto cultural.
+
+Debes responder ÚNICAMENTE con un objeto JSON válido con esta estructura exacta:
+{
+  "title": "${cleanT}",
+  "artist": "${artist}",
+  "year": "${year || '2000'}",
+  "album": "${album || 'Álbum'}",
+  "synopsis": "Una sinopsis vibrante, apasionada y profunda de 4-6 líneas que atrape al lector de inmediato...",
+  "sections": [
+    {
+      "title": "El Origen & Trayectoria",
+      "icon": "fa-book-open",
+      "text": "Historia detallada del origen, anécdotas del estudio y contexto de la carrera...",
+      "points": [
+        { "name": "Título del detalle clave", "desc": "Explicación profunda..." }
+      ]
+    },
+    {
+      "title": "La Anatomía Musical: Producción, Texturas e Instrumentación",
+      "icon": "fa-drum",
+      "text": "Análisis técnico de instrumentos, tempo, producción y arreglos...",
+      "points": [
+        { "name": "Instrumento / Riff / Detalle", "desc": "Descripción técnica del sonido..." }
+      ]
+    },
+    {
+      "title": "La Lírica y el Mensaje",
+      "icon": "fa-quote-left",
+      "text": "Análisis lírico profundo y significado...",
+      "points": [
+        { "name": "Tema lírico", "desc": "Explicación..." }
+      ]
+    },
+    {
+      "title": "El Impacto Cultural & Legado",
+      "icon": "fa-trophy",
+      "text": "Impacto en el cine, listas de éxitos y trascendencia...",
+      "points": [
+        { "name": "Trascendencia", "desc": "Legado..." }
+      ]
+    }
+  ]
+}`;
+
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${geminiKey}`;
+        const payload = JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }],
+            generationConfig: {
+                responseMimeType: "application/json",
+                temperature: 0.7
+            }
+        });
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: payload,
+                signal: AbortSignal.timeout(25000)
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+                if (text) {
+                    const parsed = JSON.parse(text);
+                    if (parsed && parsed.synopsis && parsed.sections) {
+                        return parsed;
+                    }
+                }
+            } else {
+                const errText = await response.text();
+                console.error(`[Gemini API error ${response.status}]:`, errText);
+            }
+        } catch (e) {
+            console.error(`[Gemini API catch]:`, e.message);
+        }
+    }
+
+    // Fallback to Ollama if OMEN is reachable
+    try {
+        const ollamaRes = await fetch('http://100.95.217.45:11434/api/generate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                model: "llama3.2:latest",
+                prompt: `Genera análisis musical profundo en formato JSON para "${cleanT}" de ${artist} con title, artist, year, album, synopsis, sections (title, icon, text, points).`,
+                stream: false,
+                format: "json"
+            }),
+            signal: AbortSignal.timeout(15000)
+        });
+        if (ollamaRes.ok) {
+            const odata = await ollamaRes.json();
+            if (odata.response) {
+                const parsed = JSON.parse(odata.response);
+                if (parsed && parsed.synopsis && parsed.sections) return parsed;
+            }
+        }
+    } catch(e) {}
+
+    return generateDeepModularAnalysis(artist, cleanT, album, year);
 }
 
 function generateDeepModularAnalysis(artist, title, album, year, wikiExtract) {
@@ -957,6 +1092,36 @@ app.post('/api/jellyfin/refresh', async (req, res) => {
     }
 });
 
+// Endpoint: Generar o re-analizar pista con Gemini AI
+app.post('/api/analysis/generate', async (req, res) => {
+    const { artist, title, force } = req.body;
+    if (!artist || !title) {
+        return res.status(400).json({ error: 'artist y title son obligatorios' });
+    }
+
+    try {
+        const cleanT = cleanTrackTitle(title);
+        const meta = getTrackMetadata(artist, title);
+        const analysis = await generateGeminiAnalysis(artist, cleanT, meta.album, meta.releaseYear);
+
+        if (analysis) {
+            const key = `${artist} - ${cleanT}`;
+            cachedAnalyses[key] = analysis;
+            cachedAnalyses[`${artist} - ${title}`] = analysis;
+            cachedAnalyses[cleanT] = analysis;
+            try {
+                fs.writeFileSync(ANALYSES_DB_PATH, JSON.stringify(cachedAnalyses, null, 2), 'utf8');
+            } catch(e) {
+                console.error("Error persistiendo analysis en DB:", e.message);
+            }
+            return res.json({ success: true, analysis });
+        }
+        res.status(500).json({ error: 'No se pudo generar el análisis sónico' });
+    } catch(e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
 app.get('/api/track/detail', async (req, res) => {
     const { artist, title } = req.query;
     if (!artist || !title) {
@@ -965,21 +1130,21 @@ app.get('/api/track/detail', async (req, res) => {
 
     let analysis = findAnalysisForTrack(artist, title);
 
-    if (!analysis) {
+    if (!analysis || isGenericAnalysis(analysis)) {
         const cleanT = cleanTrackTitle(title);
         const meta = getTrackMetadata(artist, title);
-        const wiki = await fetchWikiSummary(artist, cleanT);
-        analysis = generateDeepModularAnalysis(artist, cleanT, meta.album, meta.releaseYear, wiki);
-
-        // Guardar de inmediato en base de datos para que quede disponible para siempre
-        const key = `${artist} - ${cleanT}`;
-        cachedAnalyses[key] = analysis;
-        cachedAnalyses[`${artist} - ${title}`] = analysis;
-        cachedAnalyses[cleanT] = analysis;
-        try {
-            fs.writeFileSync(ANALYSES_DB_PATH, JSON.stringify(cachedAnalyses, null, 2), 'utf8');
-        } catch(e) {
-            console.error("Error guardando nuevo análisis en analyses_db.json:", e.message);
+        const aiAnalysis = await generateGeminiAnalysis(artist, cleanT, meta.album, meta.releaseYear);
+        if (aiAnalysis && !isGenericAnalysis(aiAnalysis)) {
+            analysis = aiAnalysis;
+            const key = `${artist} - ${cleanT}`;
+            cachedAnalyses[key] = analysis;
+            cachedAnalyses[`${artist} - ${title}`] = analysis;
+            cachedAnalyses[cleanT] = analysis;
+            try {
+                fs.writeFileSync(ANALYSES_DB_PATH, JSON.stringify(cachedAnalyses, null, 2), 'utf8');
+            } catch(e) {
+                console.error("Error guardando nuevo análisis en analyses_db.json:", e.message);
+            }
         }
     }
 

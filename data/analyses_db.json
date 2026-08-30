@@ -2,59 +2,71 @@
   "1973": {
     "title": "1973",
     "artist": "James Blunt",
-    "year": "2000",
-    "album": "Álbum",
-    "synopsis": "\"1973\" (2000) de James Blunt es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "year": "2007",
+    "album": "All the Lost Souls",
+    "synopsis": "Una deslumbrante oda a la nostalgia, la cultura de club ibicenca y la fugacidad de la juventud. '1973' se erige como una joya del pop de autor donde la calidez del piano folk se funde magistralmente con la pulsación rítmica del disco de los años 70. Con una melancolía luminosa y contagiosa, James Blunt transforma un recuerdo personal en la pista de baile de Pacha en un himno universal sobre el paso inexorable del tiempo y los fantasmas dorados del pasado.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de James Blunt",
+        "title": "El Origen & Trayectoria",
         "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de James Blunt, \"1973\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "text": "Tras el arrollador éxito planetario de su álbum debut 'Back to Bedlam', James Blunt se instaló en Ibiza, buscando un refugio creativo y vital. Allí entabló amistad con Simona, una figura icónica de la escena nocturna del mítico club Pacha. Fascinado por el espíritu hedonista pero melancólico de la isla, Blunt comenzó a componer '1973' como una carta de amor a esa era dorada y a la complicidad de las noches interminables.",
         "points": [
           {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+            "name": "La Musa y Pacha Ibiza",
+            "desc": "Inspirada directamente en Simona, una camarera y promotora veterana de Pacha Ibiza, la letra rinde homenaje a la atmósfera libre de la discoteca abierta a finales de los años 60 y consagrada en la década de 1970."
+          },
+          {
+            "name": "La Colaboración con Mark Batson",
+            "desc": "El tema fue coescrito junto al renombrado productor y pianista Mark Batson (conocido por sus trabajos con Dr. Dre, Eminem y Alicia Keys), lo que le aportó una sensibilidad rítmica y un 'groove' urbano que redefinió el sonido de Blunt."
           }
         ]
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "title": "La Anatomía Musical: Producción, Texturas e Instrumentación",
         "icon": "fa-drum",
-        "text": "La producción de \"1973\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "text": "Producida por Tom Rothrock en los estudios Conway Recording de Hollywood, '1973' ostenta una textura sonora impecable grabada en cinta analógica para capturar la saturación cálida de los 70. En la tonalidad de La mayor y con un tempo ágil de 120 BPM, la producción entrelaza capas de teclado vintage sobre una sección rítmica con claro sabor 'disco-folk'.",
         "points": [
           {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+            "name": "Riff de Piano Steinway & Hammond B3",
+            "desc": "El núcleo melódico se sostiene en un insistente y rítmico patrón de piano acústico Steinway, arropado sutilmente por un órgano Hammond B3 con altavoz Leslie que añade densidad armónica."
           },
           {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+            "name": "Línea de Bajo Pulsante",
+            "desc": "El bajo eléctrico ejecuta un patrón fluido con sabor 'funky/disco' que impulsa la pista hacia adelante, marcando un claro contraste con las temáticas líricas nostálgicas."
           },
           {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+            "name": "Procesamiento Vocal de Época",
+            "desc": "La voz de Blunt fue procesada a través de preamplificadores de válvulas Neve 1073 y un compresor UREI 1176, otorgándole ese timbre agudo tan característico pero con un borde analógico suave y aireado."
           }
         ]
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "title": "La Lírica y el Mensaje",
         "icon": "fa-quote-left",
-        "text": "Líricamente, \"1973\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "text": "La letra explora la nostalgia no como una tristeza paralizante, sino como un refugio cálido. Blunt utiliza la referencia al año 1973 como un símbolo de la edad de oro del glamour, la libertad y la inocencia perdida, confrontando el presente fugaz con los ecos de canciones pasadas.",
         "points": [
           {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de James Blunt aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+            "name": "Simona y la Música como Máquina del Tiempo",
+            "desc": "Frases como 'Singing the song, I thought came from 1973' muestran cómo la música actúa como el vehículo definitivo para la memoria afectiva y la congelación del tiempo."
+          },
+          {
+            "name": "El Bittersweet de la Madurez",
+            "desc": "Subyace una aceptación resignada de que los días de juventud desmedida quedan atrás, convirtiendo a la pista de baile en un templo de recuerdos."
           }
         ]
       },
       {
         "title": "El Impacto Cultural & Legado",
         "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"1973\" se mantiene como un himno atemporal dentro de la discografía de James Blunt y una de las composiciones más celebradas de su generación.",
+        "text": "'1973' demostró la versatilidad de James Blunt más allá de las baladas acústicas desgarradoras, convirtiéndose en el primer sencillo de su segundo disco 'All the Lost Souls'. Fue un éxito masivo en toda Europa, alcanzando el número 1 en las listas de Alemania, Suiza, Austria y Venezuela, y consolidando su estatus internacional.",
         "points": [
           {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de James Blunt."
+            "name": "Reinvención Sonora",
+            "desc": "Sirvió como el puente perfecto para alejar a Blunt del encasillamiento de 'one-hit wonder' de balada triste, mostrando un estilo sofisticado, rítmico y bailable."
+          },
+          {
+            "name": "Himno Nostálgico Contemporáneo",
+            "desc": "Ha perdurado en la cultura popular como uno de los grandes temas de pop retro-chic de la década de 2000, frecuentemente versionado y mezclado en la escena electrónica ibicenca."
           }
         ]
       }
@@ -65,57 +77,69 @@
     "artist": "Anne-Marie",
     "year": "2000",
     "album": "Álbum",
-    "synopsis": "\"2002\" (2000) de Anne-Marie es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "synopsis": "2002 no es simplemente un sencillo pop contagioso, sino una deslumbrante máquina del tiempo sonora diseñada con precisión quirúrgica para apelar a la memoria afectiva colectiva. Con una arquitectura acústica radiante y un gancho melódico imbatible, Anne-Marie encapsula la euforia del primer amor adolescente entrelazándola con las citas musicales más icónicas del cambio de milenio. Es un ejercicio magistral de metanarrativa pop donde la nostalgia Y2K y la producción de vanguardia colisionan con una pasión irresistible.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de Anne-Marie",
+        "title": "El Origen & Trayectoria",
         "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de Anne-Marie, \"2002\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "text": "Concebida en una intensa sesión de composición en los estudios de Londres junto a Ed Sheeran, Julia Michaels, Benny Blanco y el aclamado productor Steve Mac, '2002' nació casi por accidente. Fue Ed Sheeran quien actuó como el gran catalizador conceptual, instando a Anne-Marie a transformar las canciones que marcaron su infancia en el núcleo lírico del estribillo. Lo que comenzó como un divertido juego de improvisación con una guitarra acústica se convirtió rápidamente en uno de los mayores éxitos de la carrera de Anne-Marie, consolidando su estatus como una de las voces definitivas del pop británico contemporáneo.",
         "points": [
           {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+            "name": "La Catalización de Ed Sheeran",
+            "desc": "Sheeran no solo coescribió la estructura armónica, sino que insistió de forma vehemente en incluir las interpolaciones de los clásicos del pop de los años 2000."
+          },
+          {
+            "name": "La Alquimia de Steve Mac",
+            "desc": "El legendario productor británico aportó su toque místico para equilibrar la calidez de los instrumentos orgánicos con la potencia del pop comercial moderno."
           }
         ]
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "title": "La Anatomía Musical: Producción, Texturas e Instrumentación",
         "icon": "fa-drum",
-        "text": "La producción de \"2002\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "text": "Desde el primer compás, la canción establece un ambiente íntimo y festivo mediante un pegajoso arpegio de guitarra acústica (grabada con una Martin 000-28) procesada con una ecualización brillante y compresión suave. La producción rítmica combina un chasquido de caja (snare) seco y orgánico con un pulso de sub-bajo sintetizado estilo 808 que sostiene el peso en las frecuencias graves. Las capas vocales de Anne-Marie están dispuestas en un suntuoso arreglo multipista que imita la densidad armónica de las producciones de Max Martin de principios de los 2000.",
         "points": [
           {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+            "name": "Arpegiado de Guitarra Acústica",
+            "desc": "Un riff en tonalidad de Mi Mayor con un groove sincopado que sirve como motor rítmico y columna vertebral emocional de todo el track."
           },
           {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+            "name": "Sub-Bajo 808 y Percusión Pop",
+            "desc": "Mezcla híbrida entre elementos de batería acústica real y graves sintetizados de alta frecuencia para lograr impacto en sistemas de sonido modernos."
           },
           {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+            "name": "Arquitectura Vocal Multipista",
+            "desc": "Uso de doblajes vocales en paralelo y sutiles efectos de delay estéreo que otorgan a la voz principal una presencia tridimensional y luminosa."
           }
         ]
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "title": "La Lírica y el Mensaje",
         "icon": "fa-quote-left",
-        "text": "Líricamente, \"2002\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "text": "El verdadero brillo conceptual de '2002' reside en su estribillo: un collage lírico que ensambla versos memorables de seis himnos fundamentales de la cultura pop y hip-hop de la época. Anne-Marie utiliza la música como el vehículo definitivo para la nostalgia, recordando la inocencia, el descubrimiento del amor y la libertad de la adolescencia. Es un tributo directo a la forma en que las canciones se convierten en la banda sonora indeleble de nuestras vidas.",
         "points": [
           {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de Anne-Marie aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+            "name": "El Rompecabezas de Interpolaciones",
+            "desc": "Entrelaza genialmente frases de '...Baby One More Time' y 'Oops!... I Did It Again' (Britney Spears), '99 Problems' (Jay-Z), 'Bye Bye Bye' (*NSYNC), 'Ride Wit Me' (Nelly) y 'The Next Episode' (Dr. Dre)."
+          },
+          {
+            "name": "Nostalgia Afectiva Teenager",
+            "desc": "La narrativa explora cómo la música popular codifica nuestros recuerdos más intensos, haciendo que el primer amor sea inseparable de las canciones que sonaban en la radio."
           }
         ]
       },
       {
         "title": "El Impacto Cultural & Legado",
         "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"2002\" se mantiene como un himno atemporal dentro de la discografía de Anne-Marie y una de las composiciones más celebradas de su generación.",
+        "text": "'2002' fue un fenómeno global masivo que rompió récords de reproducción en todo el mundo, destacando de forma histórica en el mercado asiático (donde se convirtió en la canción internacional más escuchada de todos los tiempos en las listas de Corea del Sur). La canción no solo impulsó el álbum debut de Anne-Marie a los primeros puestos de las listas mundiales, sino que anticipó y consolidó la gran ola de revisión estética y sonora de los años 2000 que dominaría la música pop posterior.",
         "points": [
           {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Anne-Marie."
+            "name": "Hito Histórico Internacional",
+            "desc": "Superó los mil millones de reproducciones y dominó las listas del Reino Unido, Europa y Asia, alcanzando certificaciones de múltiple platino."
+          },
+          {
+            "name": "Pionera de la Ola Nostálgica Y2K",
+            "desc": "Marcó la pauta para la tendencia del pop contemporáneo de rendir homenaje directo a la era dorada del pop del nuevo milenio a través de samplings e interpolaciones."
           }
         ]
       }
@@ -10416,80 +10440,72 @@
   },
   "toto - Africa": {
     "title": "Africa",
-    "artist": "toto",
+    "artist": "Toto",
     "year": "1982",
-    "synopsis": "iNos plantamos ante el Santo Grial de los músicos de sesión, Roberto! Viajamos al año 1982 (sí, el mismo año bendito de Thriller y Beat It) para desarmar en el taller sónico \"Africa\" de los californianos Toto, la joya de la corona que cerraba su multipremiado álbum Toto W. Esta es la historia de una paradoja maravillosa: la canción de rock-pop más perfecta, analizada y reproducida del grupo estuvo a punto de quedarse fuera del disco. El guitarrista Steve Lukather (al que ya conoces de sobra por su muro de acero en \"Beat It\") odiaba el tema al\n\nprincipio. Le dijo al teclista David Paich: \"Si esta canción es un éxito, me desnudo y corro por todo el bulevar de Hollywood. Es una melodía de feria y la letra no tiene ningún sentido\". Afortunadamente para el pudor de los angelinos, el bajista David Hungate y el resto de la banda insistieron en meterla en el último minuto. David Paich compuso la base y la letra encerrado en su estudio con un nuevo sintetizador, inspirado por los relatos de los misioneros católicos que volvían de los colegios de África y por su propia fantasía de chico de California que jamás había pisado ese continente. El resultado fue un número 1 mundial que hoy es patrimonio de la humanidad. Pasamos este transatlántico de la ingeniería de estudio por nuestro microscopio de cuatro puntos. 1.",
+    "album": "Toto IV",
+    "synopsis": "¡Nos plantamos ante el Santo Grial de los músicos de sesión de Los Ángeles! Publicada en 1982 en el multipremiado álbum 'Toto IV', 'Africa' es una obra cumbre del pop-rock que estuvo a punto de ser descartada por la propia banda. Una arquitectura sónica monumental construida sobre polirritmias de ensueño, sintetizadores de vanguardia y armonías vocales estratosféricas.",
     "sections": [
       {
-        "title": "La Anatomía Musical",
+        "title": "El Origen & Trayectoria: El rechazo inicial de Steve Lukather",
+        "icon": "fa-book-open",
+        "text": "David Paich compuso la base y la letra encerrado en su estudio tras experimentar con un nuevo teclado, inspirado por los relatos de misioneros católicos. Irónicamente, el guitarrista Steve Lukather odiaba el tema al principio y amenazó con 'correr desnudo por Hollywood' si la canción tenía éxito.",
+        "points": [
+          {
+            "name": "La intuición de David Hungate",
+            "desc": "El bajista y el resto del grupo insistieron en incluirla en el último minuto antes de cerrar el álbum 'Toto IV', convirtiéndose en su mayor himno global."
+          },
+          {
+            "name": "Mercenarios de sesión al servicio del pop",
+            "desc": "Los miembros de Toto eran los instrumentistas de élite que habían grabado 'Thriller' y 'Beat It' para Michael Jackson, aplicando su maestría de microfonía y arreglos."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Bucle Analógico, Yamaha CS-80 & Coros Triplicados",
         "icon": "fa-drum",
-        "text": "El puzle de la percusión, el CS-80 y los coros matemáticos Como ya te adelanté cuando hablamos de \"Beat It\", los miembros de Toto no eran unos chavales de garaje que tocaban por intuición; eran los mercenarios de sesión mejor pagados de Los Ángeles. Tipos hiper-profesionales que sabían de acústica, microfonía y arreglos más que nadie. Por eso, meter \"Africa\" en Audacity o Reaper es una delicia de precisión de reloj suizo:",
+        "text": "La producción es un reloj suizo de precisión acústica y analógica:",
         "points": [
           {
-            "name": "El bucle de percusión analógico de Jeff Porcaro (El latido)",
-            "desc": "El gran secreto de la canción es su base rítmica. El batería Jeff Porcaro y eI percusionista Lenny Castro se encerraron en eI estudio y grabaron durante horas, pista por pista, una amalgama de instrumentos tradicionales: congas, timbales, maracas, cencerros y un sutil traqueteo de pandereta. En lugar de usar una caja de ritmos digital, Jeff Porcaro cortó físicamente la cinta de magnetófono con una cuchilla para crear un bucle analógico perfecto de dos compases. Ese \"latido\" constante y elástico de madera y cuero es el que propulsa el tema."
+            "name": "El bucle de percusión de Jeff Porcaro (El Latido)",
+            "desc": "Porcaro y Lenny Castro grabaron congas, timbales, maracas y cencerros durante horas; luego cortaron físicamente la cinta de magnetófono con cuchilla para crear un loop analógico de dos compases hipnótico."
           },
           {
-            "name": "El colchón del Yamaha CS-80 (Los vientos de África)",
-            "desc": "David Paich utilizó eI sintetizador polifónico más legendario y caro de la época, el Yamaha CS"
+            "name": "Los vientos del Yamaha CS-80",
+            "desc": "David Paich utilizó el sintetizador polifónico más avanzado de la época para crear ese colchón etéreo y melancólico que evoca los vientos de la sabana."
           },
           {
-            "name": "El bajo andante de David Hungate",
-            "desc": "El bajo hace un trabajo quirúrgico. Va marcando las notas fundamentales pero metiendo síncopas (notas a contratiempo) que se clavan milimétricamente en el bombo de Porcaro, dándole a la balada ese caminar elegante que evita que suene blanda o lenta."
+            "name": "El bajo andante sincopado",
+            "desc": "David Hungate clava notas sincopadas a contratiempo en el bombo de Porcaro, dotando a la balada de un caminar ágil y elegante."
           },
           {
-            "name": "La arquitectura coral del estribillo (La escuela de los tres cantantes)",
-            "desc": "El contraste vocal es soberbio. Las estrofas las canta David Paich con una voz de barítono baja, íntima y profunda. Pero cuando llega el estribillo, explota la voz de tenor de Bobby Kimball arropada por capas y capas de coros afinados al milímetro por Steve Lukather. Grabaron los coros triplicando las pistas para crear un muro de armonías de tres partes que suena masivo, limpio y celestial."
-          },
-          {
-            "name": "El Análisis Lírico",
-            "desc": "La autopsia del dilema geográfico y la mitología pop\n\nLa letra, escrita por David Paich y Jeff Porcaro, es un viaje cinematográfico agridulce. No habla de la realidad geopolítica de África, sino de la lucha interna de un hombre blanco, un intelectual o científico, que tiene que elegir entre su carrera/obligaciones en la gran ciudad o dejarlo todo por amor en un entorno salvaje y místico que lo atrapa a través de la distancia. Vamos a destripar el texto sección por sección: Primera Estrofa: El tambor de la noche y el vuelo transatlántico \"l hear the drums echoing tonight / But she hears only whispers of some quiet conversation / She's coming in, 12:30 flight / The moonlit wings reflect the stars that guide me towards salvation\""
-          },
-          {
-            "name": "El desglose",
-            "desc": "La canción arranca con una estampa visual de cine negro: \"Escucho los tambores resonando esta noche, pero ella solo escucha los susurros de alguna conversación tranquila\" Nos presenta la distancia entre el narrador (atrapado en la llamada de la selva) y su pareja (en el entorno urbano). Y mete la llegada de la mujer: \"Ella llega en el vuelo de las 12:"
-          },
-          {
-            "name": "Las alas iluminadas por la luna reflejan las estrellas que me guían hacia la salvación\". El reencuentro es visto como un viaje espiritual. Segunda Estrofa",
-            "desc": "El sabio y eI mapa de la lluvia \"l stopped an Old man along the way / Hoping to find some long forgotten words or ancient melodies / He turned to me as ifto say: 'Hurry boy, it's waiting there for you\"'"
-          },
-          {
-            "name": "El desglose",
-            "desc": "El protagonista busca respuestas en la mística local: \"Detuve a un anciano en el camino, esperando encontrar algunas palabras olvidadas hace tiempo o melodías ancestrales\". Busca la sabiduría de la tierra para resolver su crisis existencial. Y el anciano ejerce de oráculo: \"Se volvió hacia mí como diciendo: 'Date prisa, chico, te está esperando allí'\". Lo empuja a tomar la decisión antes de que la rutina lo devore. El Estribillo: La bendición de las nubes y el monte Kilimanjaro Aquí llega una de las estrofas más tarareadas de la historia, que encierra un par de gazapos geográficos divertidos que le importaron un rábano a la radiofórmula: \"It's gonna take a lot to drag me away from you / There's nothing that a hundred men or more could ever do / I bless the rains down in Africa / Gonna take some time to do the things we never had\""
-          },
-          {
-            "name": "Lección de vocabulario",
-            "desc": "\"Drag me away\" significa arrastrarme lejos, separarme o apartarme a la fuerza. \"I bless the rains\" significa bendigo las lluvias."
-          },
-          {
-            "name": "El desglose",
-            "desc": "El estribillo es un grito de fidelidad absoluta arropado por el muro de coros de Lukather y Kimball: \"Va a hacer falta mucho para alejarme de ti, no hay nada que cien hombres o más pudieran hacerjamás\". Y lanza el lema icónico: \"Bendigo las lluvias allá en África. Nos va a llevar algún tiempo hacer las cosas que nunca tuvimos\". El agua (la lluvia en el desierto) funciona como la metáfora de la purificación y el renacimiento de la pareja lejos de la deshumanización de las ciudades occidentales."
+            "name": "Arquitectura vocal a tres voces",
+            "desc": "La voz grave y cercana de David Paich en la estrofa contrasta con el estallido tenor de Bobby Kimball en el coro, arropado por capas de coros triplicadas por Steve Lukather."
           }
         ]
       },
       {
-        "title": "El Videoclip",
-        "icon": "fa-clapperboard",
-        "text": "La biblioteca gótica y el tintero del gigante El video musical, dirigido por Steve Barron (el mismo genio de \"Take on Me\" y \"Billie Jean\"), optó por una estética de aventura arqueológica muy en la línea de las películas de Indiana\n\nJones que reventaban las taquillas en esa época:",
+        "title": "La Lírica y el Mensaje: El Dilema Geográfico y la Mitología Pop",
+        "icon": "fa-quote-left",
+        "text": "La letra no describe la realidad política de África, sino la fantasía cinematográfica y el conflicto interno de un hombre que debe elegir entre su carrera urbana y un amor salvaje y lejano.",
         "points": [
           {
-            "name": "La trinchera de los libros",
-            "desc": "El video muestra a David Paich interpretando a un investigador o profesor metido en una biblioteca gigantesca, oscura y laberíntica, rodeado de globos terráqueos, mapas antiguos y libros de tapas de cuero. Va hojeando tomos sobre la cultura africana mientras el resto de la banda aparece tocando en directo encima de un montón de libros gigantes."
+            "name": "La estampa visual nocturna",
+            "desc": "'I hear the drums echoing tonight / She hears only whispers of some quiet conversation': la distancia física y emocional se retrata desde los primeros versos."
           },
           {
-            "name": "La amenaza del chamán",
-            "desc": "El contraste de peligro lo mete la silueta de un nativo africano con una lanza que vigila al profesor desde las sombras de los pasillos de la biblioteca. Al final del clip, el nativo arroja la lanza contra una estantería, derribando un tintero que mancha un libro de geografía. Es la traducción visual de la letra: el mundo salvaje irrumpe por la fuerza en la comodidad del estudio del intelectual, obligándole a despertar y a salir al mundo real."
+            "name": "La bendición de las lluvias",
+            "desc": "'I bless the rains down in Africa' se convirtió en una de las frases más coreadas de la historia del pop, simbolizando la redención y la entrega pasional."
           }
         ]
       },
       {
-        "title": "El Impacto Cultural",
+        "title": "El Impacto Cultural & Inmortalidad",
         "icon": "fa-trophy",
-        "text": "El monolito del Yacht Rocky el meme inmortal de internet \"Africa\" fue un tsunami comercial incontestable. Llegó al número 1 de la lista Billboard Hot 100 en febrero de 1983 y al número 3 en el Reino Unido, convirtiéndose en el mayor éxito de la carrera de Toto y apuntalando los 6 premios Grammy que se llevó el álbum esa temporada. Sin embargo, el verdadero hito histórico de este tema es su segunda vida digital en el siglo XXI. La canción dejó de ser un clásico de gasolinera de los 80 para transformarse en eI mayor fenómeno de culto de la cultura de internet y de la generación Millennial:",
+        "text": "Número 1 en el Billboard Hot 100 en 1983 y ganadora de múltiples premios Grammy, 'Africa' ha experimentado un renacimiento apoteósico en el siglo XXI gracias a la cultura digital y versiones de bandas como Weezer.",
         "points": [
           {
-            "name": "Es el pilar fundamental del género bautizado como Yacht Rock (música de estudio ultra- pulida de la costa oeste americana). • En 2018, la banda de rock alternativo Weezer hizo una versión de la canción obligada por una campaña masiva de sus fans en Twitter; la versión volvió a reventar las listas de éxitos juveniles. • Hay una instalación de arte sonora permanente en eI desierto de Namibia creada por eI artista Max Siedentopf, que consiste en una serie de altavoces conectados a baterías solares que reproducen \"Africa\" de Toto en bucle infinito para el fin de los tiempos, demostrando que la profecía de que el tema sobreviviría a la propia humanidad se ha cumplido al pie de la letra. Al final, \"Africa\" funciona como una maquinaria de ingeniería de sonido insuperable",
-            "desc": "un bucle de percusión de cuero cortado a mano por Jeff Porcaro que camina junto al bajo sincopado de Hungate, arropados por los vientos de seda del sintetizador Yamaha CS"
+            "name": "Patrimonio de la cultura digital",
+            "desc": "Es una de las canciones de los años 80 más reproducidas en la historia de Spotify con miles de millones de streams."
           }
         ]
       }
@@ -10497,80 +10513,72 @@
   },
   "Africa": {
     "title": "Africa",
-    "artist": "toto",
+    "artist": "Toto",
     "year": "1982",
-    "synopsis": "iNos plantamos ante el Santo Grial de los músicos de sesión, Roberto! Viajamos al año 1982 (sí, el mismo año bendito de Thriller y Beat It) para desarmar en el taller sónico \"Africa\" de los californianos Toto, la joya de la corona que cerraba su multipremiado álbum Toto W. Esta es la historia de una paradoja maravillosa: la canción de rock-pop más perfecta, analizada y reproducida del grupo estuvo a punto de quedarse fuera del disco. El guitarrista Steve Lukather (al que ya conoces de sobra por su muro de acero en \"Beat It\") odiaba el tema al\n\nprincipio. Le dijo al teclista David Paich: \"Si esta canción es un éxito, me desnudo y corro por todo el bulevar de Hollywood. Es una melodía de feria y la letra no tiene ningún sentido\". Afortunadamente para el pudor de los angelinos, el bajista David Hungate y el resto de la banda insistieron en meterla en el último minuto. David Paich compuso la base y la letra encerrado en su estudio con un nuevo sintetizador, inspirado por los relatos de los misioneros católicos que volvían de los colegios de África y por su propia fantasía de chico de California que jamás había pisado ese continente. El resultado fue un número 1 mundial que hoy es patrimonio de la humanidad. Pasamos este transatlántico de la ingeniería de estudio por nuestro microscopio de cuatro puntos. 1.",
+    "album": "Toto IV",
+    "synopsis": "¡Nos plantamos ante el Santo Grial de los músicos de sesión de Los Ángeles! Publicada en 1982 en el multipremiado álbum 'Toto IV', 'Africa' es una obra cumbre del pop-rock que estuvo a punto de ser descartada por la propia banda. Una arquitectura sónica monumental construida sobre polirritmias de ensueño, sintetizadores de vanguardia y armonías vocales estratosféricas.",
     "sections": [
       {
-        "title": "La Anatomía Musical",
+        "title": "El Origen & Trayectoria: El rechazo inicial de Steve Lukather",
+        "icon": "fa-book-open",
+        "text": "David Paich compuso la base y la letra encerrado en su estudio tras experimentar con un nuevo teclado, inspirado por los relatos de misioneros católicos. Irónicamente, el guitarrista Steve Lukather odiaba el tema al principio y amenazó con 'correr desnudo por Hollywood' si la canción tenía éxito.",
+        "points": [
+          {
+            "name": "La intuición de David Hungate",
+            "desc": "El bajista y el resto del grupo insistieron en incluirla en el último minuto antes de cerrar el álbum 'Toto IV', convirtiéndose en su mayor himno global."
+          },
+          {
+            "name": "Mercenarios de sesión al servicio del pop",
+            "desc": "Los miembros de Toto eran los instrumentistas de élite que habían grabado 'Thriller' y 'Beat It' para Michael Jackson, aplicando su maestría de microfonía y arreglos."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Bucle Analógico, Yamaha CS-80 & Coros Triplicados",
         "icon": "fa-drum",
-        "text": "El puzle de la percusión, el CS-80 y los coros matemáticos Como ya te adelanté cuando hablamos de \"Beat It\", los miembros de Toto no eran unos chavales de garaje que tocaban por intuición; eran los mercenarios de sesión mejor pagados de Los Ángeles. Tipos hiper-profesionales que sabían de acústica, microfonía y arreglos más que nadie. Por eso, meter \"Africa\" en Audacity o Reaper es una delicia de precisión de reloj suizo:",
+        "text": "La producción es un reloj suizo de precisión acústica y analógica:",
         "points": [
           {
-            "name": "El bucle de percusión analógico de Jeff Porcaro (El latido)",
-            "desc": "El gran secreto de la canción es su base rítmica. El batería Jeff Porcaro y eI percusionista Lenny Castro se encerraron en eI estudio y grabaron durante horas, pista por pista, una amalgama de instrumentos tradicionales: congas, timbales, maracas, cencerros y un sutil traqueteo de pandereta. En lugar de usar una caja de ritmos digital, Jeff Porcaro cortó físicamente la cinta de magnetófono con una cuchilla para crear un bucle analógico perfecto de dos compases. Ese \"latido\" constante y elástico de madera y cuero es el que propulsa el tema."
+            "name": "El bucle de percusión de Jeff Porcaro (El Latido)",
+            "desc": "Porcaro y Lenny Castro grabaron congas, timbales, maracas y cencerros durante horas; luego cortaron físicamente la cinta de magnetófono con cuchilla para crear un loop analógico de dos compases hipnótico."
           },
           {
-            "name": "El colchón del Yamaha CS-80 (Los vientos de África)",
-            "desc": "David Paich utilizó eI sintetizador polifónico más legendario y caro de la época, el Yamaha CS"
+            "name": "Los vientos del Yamaha CS-80",
+            "desc": "David Paich utilizó el sintetizador polifónico más avanzado de la época para crear ese colchón etéreo y melancólico que evoca los vientos de la sabana."
           },
           {
-            "name": "El bajo andante de David Hungate",
-            "desc": "El bajo hace un trabajo quirúrgico. Va marcando las notas fundamentales pero metiendo síncopas (notas a contratiempo) que se clavan milimétricamente en el bombo de Porcaro, dándole a la balada ese caminar elegante que evita que suene blanda o lenta."
+            "name": "El bajo andante sincopado",
+            "desc": "David Hungate clava notas sincopadas a contratiempo en el bombo de Porcaro, dotando a la balada de un caminar ágil y elegante."
           },
           {
-            "name": "La arquitectura coral del estribillo (La escuela de los tres cantantes)",
-            "desc": "El contraste vocal es soberbio. Las estrofas las canta David Paich con una voz de barítono baja, íntima y profunda. Pero cuando llega el estribillo, explota la voz de tenor de Bobby Kimball arropada por capas y capas de coros afinados al milímetro por Steve Lukather. Grabaron los coros triplicando las pistas para crear un muro de armonías de tres partes que suena masivo, limpio y celestial."
-          },
-          {
-            "name": "El Análisis Lírico",
-            "desc": "La autopsia del dilema geográfico y la mitología pop\n\nLa letra, escrita por David Paich y Jeff Porcaro, es un viaje cinematográfico agridulce. No habla de la realidad geopolítica de África, sino de la lucha interna de un hombre blanco, un intelectual o científico, que tiene que elegir entre su carrera/obligaciones en la gran ciudad o dejarlo todo por amor en un entorno salvaje y místico que lo atrapa a través de la distancia. Vamos a destripar el texto sección por sección: Primera Estrofa: El tambor de la noche y el vuelo transatlántico \"l hear the drums echoing tonight / But she hears only whispers of some quiet conversation / She's coming in, 12:30 flight / The moonlit wings reflect the stars that guide me towards salvation\""
-          },
-          {
-            "name": "El desglose",
-            "desc": "La canción arranca con una estampa visual de cine negro: \"Escucho los tambores resonando esta noche, pero ella solo escucha los susurros de alguna conversación tranquila\" Nos presenta la distancia entre el narrador (atrapado en la llamada de la selva) y su pareja (en el entorno urbano). Y mete la llegada de la mujer: \"Ella llega en el vuelo de las 12:"
-          },
-          {
-            "name": "Las alas iluminadas por la luna reflejan las estrellas que me guían hacia la salvación\". El reencuentro es visto como un viaje espiritual. Segunda Estrofa",
-            "desc": "El sabio y eI mapa de la lluvia \"l stopped an Old man along the way / Hoping to find some long forgotten words or ancient melodies / He turned to me as ifto say: 'Hurry boy, it's waiting there for you\"'"
-          },
-          {
-            "name": "El desglose",
-            "desc": "El protagonista busca respuestas en la mística local: \"Detuve a un anciano en el camino, esperando encontrar algunas palabras olvidadas hace tiempo o melodías ancestrales\". Busca la sabiduría de la tierra para resolver su crisis existencial. Y el anciano ejerce de oráculo: \"Se volvió hacia mí como diciendo: 'Date prisa, chico, te está esperando allí'\". Lo empuja a tomar la decisión antes de que la rutina lo devore. El Estribillo: La bendición de las nubes y el monte Kilimanjaro Aquí llega una de las estrofas más tarareadas de la historia, que encierra un par de gazapos geográficos divertidos que le importaron un rábano a la radiofórmula: \"It's gonna take a lot to drag me away from you / There's nothing that a hundred men or more could ever do / I bless the rains down in Africa / Gonna take some time to do the things we never had\""
-          },
-          {
-            "name": "Lección de vocabulario",
-            "desc": "\"Drag me away\" significa arrastrarme lejos, separarme o apartarme a la fuerza. \"I bless the rains\" significa bendigo las lluvias."
-          },
-          {
-            "name": "El desglose",
-            "desc": "El estribillo es un grito de fidelidad absoluta arropado por el muro de coros de Lukather y Kimball: \"Va a hacer falta mucho para alejarme de ti, no hay nada que cien hombres o más pudieran hacerjamás\". Y lanza el lema icónico: \"Bendigo las lluvias allá en África. Nos va a llevar algún tiempo hacer las cosas que nunca tuvimos\". El agua (la lluvia en el desierto) funciona como la metáfora de la purificación y el renacimiento de la pareja lejos de la deshumanización de las ciudades occidentales."
+            "name": "Arquitectura vocal a tres voces",
+            "desc": "La voz grave y cercana de David Paich en la estrofa contrasta con el estallido tenor de Bobby Kimball en el coro, arropado por capas de coros triplicadas por Steve Lukather."
           }
         ]
       },
       {
-        "title": "El Videoclip",
-        "icon": "fa-clapperboard",
-        "text": "La biblioteca gótica y el tintero del gigante El video musical, dirigido por Steve Barron (el mismo genio de \"Take on Me\" y \"Billie Jean\"), optó por una estética de aventura arqueológica muy en la línea de las películas de Indiana\n\nJones que reventaban las taquillas en esa época:",
+        "title": "La Lírica y el Mensaje: El Dilema Geográfico y la Mitología Pop",
+        "icon": "fa-quote-left",
+        "text": "La letra no describe la realidad política de África, sino la fantasía cinematográfica y el conflicto interno de un hombre que debe elegir entre su carrera urbana y un amor salvaje y lejano.",
         "points": [
           {
-            "name": "La trinchera de los libros",
-            "desc": "El video muestra a David Paich interpretando a un investigador o profesor metido en una biblioteca gigantesca, oscura y laberíntica, rodeado de globos terráqueos, mapas antiguos y libros de tapas de cuero. Va hojeando tomos sobre la cultura africana mientras el resto de la banda aparece tocando en directo encima de un montón de libros gigantes."
+            "name": "La estampa visual nocturna",
+            "desc": "'I hear the drums echoing tonight / She hears only whispers of some quiet conversation': la distancia física y emocional se retrata desde los primeros versos."
           },
           {
-            "name": "La amenaza del chamán",
-            "desc": "El contraste de peligro lo mete la silueta de un nativo africano con una lanza que vigila al profesor desde las sombras de los pasillos de la biblioteca. Al final del clip, el nativo arroja la lanza contra una estantería, derribando un tintero que mancha un libro de geografía. Es la traducción visual de la letra: el mundo salvaje irrumpe por la fuerza en la comodidad del estudio del intelectual, obligándole a despertar y a salir al mundo real."
+            "name": "La bendición de las lluvias",
+            "desc": "'I bless the rains down in Africa' se convirtió en una de las frases más coreadas de la historia del pop, simbolizando la redención y la entrega pasional."
           }
         ]
       },
       {
-        "title": "El Impacto Cultural",
+        "title": "El Impacto Cultural & Inmortalidad",
         "icon": "fa-trophy",
-        "text": "El monolito del Yacht Rocky el meme inmortal de internet \"Africa\" fue un tsunami comercial incontestable. Llegó al número 1 de la lista Billboard Hot 100 en febrero de 1983 y al número 3 en el Reino Unido, convirtiéndose en el mayor éxito de la carrera de Toto y apuntalando los 6 premios Grammy que se llevó el álbum esa temporada. Sin embargo, el verdadero hito histórico de este tema es su segunda vida digital en el siglo XXI. La canción dejó de ser un clásico de gasolinera de los 80 para transformarse en eI mayor fenómeno de culto de la cultura de internet y de la generación Millennial:",
+        "text": "Número 1 en el Billboard Hot 100 en 1983 y ganadora de múltiples premios Grammy, 'Africa' ha experimentado un renacimiento apoteósico en el siglo XXI gracias a la cultura digital y versiones de bandas como Weezer.",
         "points": [
           {
-            "name": "Es el pilar fundamental del género bautizado como Yacht Rock (música de estudio ultra- pulida de la costa oeste americana). • En 2018, la banda de rock alternativo Weezer hizo una versión de la canción obligada por una campaña masiva de sus fans en Twitter; la versión volvió a reventar las listas de éxitos juveniles. • Hay una instalación de arte sonora permanente en eI desierto de Namibia creada por eI artista Max Siedentopf, que consiste en una serie de altavoces conectados a baterías solares que reproducen \"Africa\" de Toto en bucle infinito para el fin de los tiempos, demostrando que la profecía de que el tema sobreviviría a la propia humanidad se ha cumplido al pie de la letra. Al final, \"Africa\" funciona como una maquinaria de ingeniería de sonido insuperable",
-            "desc": "un bucle de percusión de cuero cortado a mano por Jeff Porcaro que camina junto al bajo sincopado de Hungate, arropados por los vientos de seda del sintetizador Yamaha CS"
+            "name": "Patrimonio de la cultura digital",
+            "desc": "Es una de las canciones de los años 80 más reproducidas en la historia de Spotify con miles de millones de streams."
           }
         ]
       }
@@ -56043,59 +56051,71 @@
   "James Blunt - 1973": {
     "title": "1973",
     "artist": "James Blunt",
-    "year": "2000",
-    "album": "Álbum",
-    "synopsis": "\"1973\" (2000) de James Blunt es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "year": "2007",
+    "album": "All the Lost Souls",
+    "synopsis": "Una deslumbrante oda a la nostalgia, la cultura de club ibicenca y la fugacidad de la juventud. '1973' se erige como una joya del pop de autor donde la calidez del piano folk se funde magistralmente con la pulsación rítmica del disco de los años 70. Con una melancolía luminosa y contagiosa, James Blunt transforma un recuerdo personal en la pista de baile de Pacha en un himno universal sobre el paso inexorable del tiempo y los fantasmas dorados del pasado.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de James Blunt",
+        "title": "El Origen & Trayectoria",
         "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de James Blunt, \"1973\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "text": "Tras el arrollador éxito planetario de su álbum debut 'Back to Bedlam', James Blunt se instaló en Ibiza, buscando un refugio creativo y vital. Allí entabló amistad con Simona, una figura icónica de la escena nocturna del mítico club Pacha. Fascinado por el espíritu hedonista pero melancólico de la isla, Blunt comenzó a componer '1973' como una carta de amor a esa era dorada y a la complicidad de las noches interminables.",
         "points": [
           {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+            "name": "La Musa y Pacha Ibiza",
+            "desc": "Inspirada directamente en Simona, una camarera y promotora veterana de Pacha Ibiza, la letra rinde homenaje a la atmósfera libre de la discoteca abierta a finales de los años 60 y consagrada en la década de 1970."
+          },
+          {
+            "name": "La Colaboración con Mark Batson",
+            "desc": "El tema fue coescrito junto al renombrado productor y pianista Mark Batson (conocido por sus trabajos con Dr. Dre, Eminem y Alicia Keys), lo que le aportó una sensibilidad rítmica y un 'groove' urbano que redefinió el sonido de Blunt."
           }
         ]
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "title": "La Anatomía Musical: Producción, Texturas e Instrumentación",
         "icon": "fa-drum",
-        "text": "La producción de \"1973\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "text": "Producida por Tom Rothrock en los estudios Conway Recording de Hollywood, '1973' ostenta una textura sonora impecable grabada en cinta analógica para capturar la saturación cálida de los 70. En la tonalidad de La mayor y con un tempo ágil de 120 BPM, la producción entrelaza capas de teclado vintage sobre una sección rítmica con claro sabor 'disco-folk'.",
         "points": [
           {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+            "name": "Riff de Piano Steinway & Hammond B3",
+            "desc": "El núcleo melódico se sostiene en un insistente y rítmico patrón de piano acústico Steinway, arropado sutilmente por un órgano Hammond B3 con altavoz Leslie que añade densidad armónica."
           },
           {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+            "name": "Línea de Bajo Pulsante",
+            "desc": "El bajo eléctrico ejecuta un patrón fluido con sabor 'funky/disco' que impulsa la pista hacia adelante, marcando un claro contraste con las temáticas líricas nostálgicas."
           },
           {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+            "name": "Procesamiento Vocal de Época",
+            "desc": "La voz de Blunt fue procesada a través de preamplificadores de válvulas Neve 1073 y un compresor UREI 1176, otorgándole ese timbre agudo tan característico pero con un borde analógico suave y aireado."
           }
         ]
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "title": "La Lírica y el Mensaje",
         "icon": "fa-quote-left",
-        "text": "Líricamente, \"1973\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "text": "La letra explora la nostalgia no como una tristeza paralizante, sino como un refugio cálido. Blunt utiliza la referencia al año 1973 como un símbolo de la edad de oro del glamour, la libertad y la inocencia perdida, confrontando el presente fugaz con los ecos de canciones pasadas.",
         "points": [
           {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de James Blunt aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+            "name": "Simona y la Música como Máquina del Tiempo",
+            "desc": "Frases como 'Singing the song, I thought came from 1973' muestran cómo la música actúa como el vehículo definitivo para la memoria afectiva y la congelación del tiempo."
+          },
+          {
+            "name": "El Bittersweet de la Madurez",
+            "desc": "Subyace una aceptación resignada de que los días de juventud desmedida quedan atrás, convirtiendo a la pista de baile en un templo de recuerdos."
           }
         ]
       },
       {
         "title": "El Impacto Cultural & Legado",
         "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"1973\" se mantiene como un himno atemporal dentro de la discografía de James Blunt y una de las composiciones más celebradas de su generación.",
+        "text": "'1973' demostró la versatilidad de James Blunt más allá de las baladas acústicas desgarradoras, convirtiéndose en el primer sencillo de su segundo disco 'All the Lost Souls'. Fue un éxito masivo en toda Europa, alcanzando el número 1 en las listas de Alemania, Suiza, Austria y Venezuela, y consolidando su estatus internacional.",
         "points": [
           {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de James Blunt."
+            "name": "Reinvención Sonora",
+            "desc": "Sirvió como el puente perfecto para alejar a Blunt del encasillamiento de 'one-hit wonder' de balada triste, mostrando un estilo sofisticado, rítmico y bailable."
+          },
+          {
+            "name": "Himno Nostálgico Contemporáneo",
+            "desc": "Ha perdurado en la cultura popular como uno de los grandes temas de pop retro-chic de la década de 2000, frecuentemente versionado y mezclado en la escena electrónica ibicenca."
           }
         ]
       }
@@ -106675,57 +106695,69 @@
     "artist": "Anne-Marie",
     "year": "2000",
     "album": "Álbum",
-    "synopsis": "\"2002\" (2000) de Anne-Marie es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "synopsis": "2002 no es simplemente un sencillo pop contagioso, sino una deslumbrante máquina del tiempo sonora diseñada con precisión quirúrgica para apelar a la memoria afectiva colectiva. Con una arquitectura acústica radiante y un gancho melódico imbatible, Anne-Marie encapsula la euforia del primer amor adolescente entrelazándola con las citas musicales más icónicas del cambio de milenio. Es un ejercicio magistral de metanarrativa pop donde la nostalgia Y2K y la producción de vanguardia colisionan con una pasión irresistible.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de Anne-Marie",
+        "title": "El Origen & Trayectoria",
         "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de Anne-Marie, \"2002\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "text": "Concebida en una intensa sesión de composición en los estudios de Londres junto a Ed Sheeran, Julia Michaels, Benny Blanco y el aclamado productor Steve Mac, '2002' nació casi por accidente. Fue Ed Sheeran quien actuó como el gran catalizador conceptual, instando a Anne-Marie a transformar las canciones que marcaron su infancia en el núcleo lírico del estribillo. Lo que comenzó como un divertido juego de improvisación con una guitarra acústica se convirtió rápidamente en uno de los mayores éxitos de la carrera de Anne-Marie, consolidando su estatus como una de las voces definitivas del pop británico contemporáneo.",
         "points": [
           {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+            "name": "La Catalización de Ed Sheeran",
+            "desc": "Sheeran no solo coescribió la estructura armónica, sino que insistió de forma vehemente en incluir las interpolaciones de los clásicos del pop de los años 2000."
+          },
+          {
+            "name": "La Alquimia de Steve Mac",
+            "desc": "El legendario productor británico aportó su toque místico para equilibrar la calidez de los instrumentos orgánicos con la potencia del pop comercial moderno."
           }
         ]
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "title": "La Anatomía Musical: Producción, Texturas e Instrumentación",
         "icon": "fa-drum",
-        "text": "La producción de \"2002\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "text": "Desde el primer compás, la canción establece un ambiente íntimo y festivo mediante un pegajoso arpegio de guitarra acústica (grabada con una Martin 000-28) procesada con una ecualización brillante y compresión suave. La producción rítmica combina un chasquido de caja (snare) seco y orgánico con un pulso de sub-bajo sintetizado estilo 808 que sostiene el peso en las frecuencias graves. Las capas vocales de Anne-Marie están dispuestas en un suntuoso arreglo multipista que imita la densidad armónica de las producciones de Max Martin de principios de los 2000.",
         "points": [
           {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+            "name": "Arpegiado de Guitarra Acústica",
+            "desc": "Un riff en tonalidad de Mi Mayor con un groove sincopado que sirve como motor rítmico y columna vertebral emocional de todo el track."
           },
           {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+            "name": "Sub-Bajo 808 y Percusión Pop",
+            "desc": "Mezcla híbrida entre elementos de batería acústica real y graves sintetizados de alta frecuencia para lograr impacto en sistemas de sonido modernos."
           },
           {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+            "name": "Arquitectura Vocal Multipista",
+            "desc": "Uso de doblajes vocales en paralelo y sutiles efectos de delay estéreo que otorgan a la voz principal una presencia tridimensional y luminosa."
           }
         ]
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "title": "La Lírica y el Mensaje",
         "icon": "fa-quote-left",
-        "text": "Líricamente, \"2002\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "text": "El verdadero brillo conceptual de '2002' reside en su estribillo: un collage lírico que ensambla versos memorables de seis himnos fundamentales de la cultura pop y hip-hop de la época. Anne-Marie utiliza la música como el vehículo definitivo para la nostalgia, recordando la inocencia, el descubrimiento del amor y la libertad de la adolescencia. Es un tributo directo a la forma en que las canciones se convierten en la banda sonora indeleble de nuestras vidas.",
         "points": [
           {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de Anne-Marie aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+            "name": "El Rompecabezas de Interpolaciones",
+            "desc": "Entrelaza genialmente frases de '...Baby One More Time' y 'Oops!... I Did It Again' (Britney Spears), '99 Problems' (Jay-Z), 'Bye Bye Bye' (*NSYNC), 'Ride Wit Me' (Nelly) y 'The Next Episode' (Dr. Dre)."
+          },
+          {
+            "name": "Nostalgia Afectiva Teenager",
+            "desc": "La narrativa explora cómo la música popular codifica nuestros recuerdos más intensos, haciendo que el primer amor sea inseparable de las canciones que sonaban en la radio."
           }
         ]
       },
       {
         "title": "El Impacto Cultural & Legado",
         "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"2002\" se mantiene como un himno atemporal dentro de la discografía de Anne-Marie y una de las composiciones más celebradas de su generación.",
+        "text": "'2002' fue un fenómeno global masivo que rompió récords de reproducción en todo el mundo, destacando de forma histórica en el mercado asiático (donde se convirtió en la canción internacional más escuchada de todos los tiempos en las listas de Corea del Sur). La canción no solo impulsó el álbum debut de Anne-Marie a los primeros puestos de las listas mundiales, sino que anticipó y consolidó la gran ola de revisión estética y sonora de los años 2000 que dominaría la música pop posterior.",
         "points": [
           {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Anne-Marie."
+            "name": "Hito Histórico Internacional",
+            "desc": "Superó los mil millones de reproducciones y dominó las listas del Reino Unido, Europa y Asia, alcanzando certificaciones de múltiple platino."
+          },
+          {
+            "name": "Pionera de la Ola Nostálgica Y2K",
+            "desc": "Marcó la pauta para la tendencia del pop contemporáneo de rendir homenaje directo a la era dorada del pop del nuevo milenio a través de samplings e interpolaciones."
           }
         ]
       }
@@ -259409,6 +259441,152 @@
           {
             "name": "Permanencia en el imaginario colectivo",
             "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Coro, Taleesa."
+          }
+        ]
+      }
+    ]
+  },
+  "Toto - Africa": {
+    "title": "Africa",
+    "artist": "Toto",
+    "year": "1982",
+    "album": "Toto IV",
+    "synopsis": "¡Nos plantamos ante el Santo Grial de los músicos de sesión de Los Ángeles! Publicada en 1982 en el multipremiado álbum 'Toto IV', 'Africa' es una obra cumbre del pop-rock que estuvo a punto de ser descartada por la propia banda. Una arquitectura sónica monumental construida sobre polirritmias de ensueño, sintetizadores de vanguardia y armonías vocales estratosféricas.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: El rechazo inicial de Steve Lukather",
+        "icon": "fa-book-open",
+        "text": "David Paich compuso la base y la letra encerrado en su estudio tras experimentar con un nuevo teclado, inspirado por los relatos de misioneros católicos. Irónicamente, el guitarrista Steve Lukather odiaba el tema al principio y amenazó con 'correr desnudo por Hollywood' si la canción tenía éxito.",
+        "points": [
+          {
+            "name": "La intuición de David Hungate",
+            "desc": "El bajista y el resto del grupo insistieron en incluirla en el último minuto antes de cerrar el álbum 'Toto IV', convirtiéndose en su mayor himno global."
+          },
+          {
+            "name": "Mercenarios de sesión al servicio del pop",
+            "desc": "Los miembros de Toto eran los instrumentistas de élite que habían grabado 'Thriller' y 'Beat It' para Michael Jackson, aplicando su maestría de microfonía y arreglos."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Bucle Analógico, Yamaha CS-80 & Coros Triplicados",
+        "icon": "fa-drum",
+        "text": "La producción es un reloj suizo de precisión acústica y analógica:",
+        "points": [
+          {
+            "name": "El bucle de percusión de Jeff Porcaro (El Latido)",
+            "desc": "Porcaro y Lenny Castro grabaron congas, timbales, maracas y cencerros durante horas; luego cortaron físicamente la cinta de magnetófono con cuchilla para crear un loop analógico de dos compases hipnótico."
+          },
+          {
+            "name": "Los vientos del Yamaha CS-80",
+            "desc": "David Paich utilizó el sintetizador polifónico más avanzado de la época para crear ese colchón etéreo y melancólico que evoca los vientos de la sabana."
+          },
+          {
+            "name": "El bajo andante sincopado",
+            "desc": "David Hungate clava notas sincopadas a contratiempo en el bombo de Porcaro, dotando a la balada de un caminar ágil y elegante."
+          },
+          {
+            "name": "Arquitectura vocal a tres voces",
+            "desc": "La voz grave y cercana de David Paich en la estrofa contrasta con el estallido tenor de Bobby Kimball en el coro, arropado por capas de coros triplicadas por Steve Lukather."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: El Dilema Geográfico y la Mitología Pop",
+        "icon": "fa-quote-left",
+        "text": "La letra no describe la realidad política de África, sino la fantasía cinematográfica y el conflicto interno de un hombre que debe elegir entre su carrera urbana y un amor salvaje y lejano.",
+        "points": [
+          {
+            "name": "La estampa visual nocturna",
+            "desc": "'I hear the drums echoing tonight / She hears only whispers of some quiet conversation': la distancia física y emocional se retrata desde los primeros versos."
+          },
+          {
+            "name": "La bendición de las lluvias",
+            "desc": "'I bless the rains down in Africa' se convirtió en una de las frases más coreadas de la historia del pop, simbolizando la redención y la entrega pasional."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Inmortalidad",
+        "icon": "fa-trophy",
+        "text": "Número 1 en el Billboard Hot 100 en 1983 y ganadora de múltiples premios Grammy, 'Africa' ha experimentado un renacimiento apoteósico en el siglo XXI gracias a la cultura digital y versiones de bandas como Weezer.",
+        "points": [
+          {
+            "name": "Patrimonio de la cultura digital",
+            "desc": "Es una de las canciones de los años 80 más reproducidas en la historia de Spotify con miles de millones de streams."
+          }
+        ]
+      }
+    ]
+  },
+  "TOTO - Africa": {
+    "title": "Africa",
+    "artist": "Toto",
+    "year": "1982",
+    "album": "Toto IV",
+    "synopsis": "¡Nos plantamos ante el Santo Grial de los músicos de sesión de Los Ángeles! Publicada en 1982 en el multipremiado álbum 'Toto IV', 'Africa' es una obra cumbre del pop-rock que estuvo a punto de ser descartada por la propia banda. Una arquitectura sónica monumental construida sobre polirritmias de ensueño, sintetizadores de vanguardia y armonías vocales estratosféricas.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: El rechazo inicial de Steve Lukather",
+        "icon": "fa-book-open",
+        "text": "David Paich compuso la base y la letra encerrado en su estudio tras experimentar con un nuevo teclado, inspirado por los relatos de misioneros católicos. Irónicamente, el guitarrista Steve Lukather odiaba el tema al principio y amenazó con 'correr desnudo por Hollywood' si la canción tenía éxito.",
+        "points": [
+          {
+            "name": "La intuición de David Hungate",
+            "desc": "El bajista y el resto del grupo insistieron en incluirla en el último minuto antes de cerrar el álbum 'Toto IV', convirtiéndose en su mayor himno global."
+          },
+          {
+            "name": "Mercenarios de sesión al servicio del pop",
+            "desc": "Los miembros de Toto eran los instrumentistas de élite que habían grabado 'Thriller' y 'Beat It' para Michael Jackson, aplicando su maestría de microfonía y arreglos."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Bucle Analógico, Yamaha CS-80 & Coros Triplicados",
+        "icon": "fa-drum",
+        "text": "La producción es un reloj suizo de precisión acústica y analógica:",
+        "points": [
+          {
+            "name": "El bucle de percusión de Jeff Porcaro (El Latido)",
+            "desc": "Porcaro y Lenny Castro grabaron congas, timbales, maracas y cencerros durante horas; luego cortaron físicamente la cinta de magnetófono con cuchilla para crear un loop analógico de dos compases hipnótico."
+          },
+          {
+            "name": "Los vientos del Yamaha CS-80",
+            "desc": "David Paich utilizó el sintetizador polifónico más avanzado de la época para crear ese colchón etéreo y melancólico que evoca los vientos de la sabana."
+          },
+          {
+            "name": "El bajo andante sincopado",
+            "desc": "David Hungate clava notas sincopadas a contratiempo en el bombo de Porcaro, dotando a la balada de un caminar ágil y elegante."
+          },
+          {
+            "name": "Arquitectura vocal a tres voces",
+            "desc": "La voz grave y cercana de David Paich en la estrofa contrasta con el estallido tenor de Bobby Kimball en el coro, arropado por capas de coros triplicadas por Steve Lukather."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: El Dilema Geográfico y la Mitología Pop",
+        "icon": "fa-quote-left",
+        "text": "La letra no describe la realidad política de África, sino la fantasía cinematográfica y el conflicto interno de un hombre que debe elegir entre su carrera urbana y un amor salvaje y lejano.",
+        "points": [
+          {
+            "name": "La estampa visual nocturna",
+            "desc": "'I hear the drums echoing tonight / She hears only whispers of some quiet conversation': la distancia física y emocional se retrata desde los primeros versos."
+          },
+          {
+            "name": "La bendición de las lluvias",
+            "desc": "'I bless the rains down in Africa' se convirtió en una de las frases más coreadas de la historia del pop, simbolizando la redención y la entrega pasional."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Inmortalidad",
+        "icon": "fa-trophy",
+        "text": "Número 1 en el Billboard Hot 100 en 1983 y ganadora de múltiples premios Grammy, 'Africa' ha experimentado un renacimiento apoteósico en el siglo XXI gracias a la cultura digital y versiones de bandas como Weezer.",
+        "points": [
+          {
+            "name": "Patrimonio de la cultura digital",
+            "desc": "Es una de las canciones de los años 80 más reproducidas en la historia de Spotify con miles de millones de streams."
           }
         ]
       }

@@ -1943,7 +1943,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(detail => {
                 populateCreditsTab(detail, song);
                 populateLyricsTab(detail);
-                populateAnalysisTab(detail);
+                populateAnalysisTab(detail, song.artist, song.title);
             })
             .catch(err => {
                 console.error('Error cargando detalle adicional:', err);
@@ -2058,48 +2058,138 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function populateAnalysisTab(detail) {
+    function populateAnalysisTab(detail, trackArtist, trackTitle) {
         const container = document.getElementById('tab-microscope');
+        const artist = trackArtist || (currentModalTrack ? currentModalTrack.artist : '') || (detail && detail.analysis ? detail.analysis.artist : '');
+        const title = trackTitle || (currentModalTrack ? currentModalTrack.title : '') || (detail && detail.analysis ? detail.analysis.title : '');
+
         if (!detail || !detail.analysis) {
             container.innerHTML = `
-                <div style="text-align: center; padding: 40px; color: var(--text-muted);">
-                    <i class="fa-solid fa-microscope" style="font-size: 2.5rem; margin-bottom: 12px; opacity: 0.4;"></i>
-                    <p>No hay análisis sónico disponible para esta canción.</p>
+                <div style="text-align: center; padding: 50px 20px; color: var(--text-muted);">
+                    <i class="fa-solid fa-microscope" style="font-size: 2.8rem; margin-bottom: 16px; opacity: 0.4; color: #38bdf8;"></i>
+                    <h4 style="color: #fff; margin-bottom: 8px; font-size: 1.1rem;">Sin análisis sónico registrado</h4>
+                    <p style="margin-bottom: 20px; font-size: 0.9rem;">¿Deseas que Gemini AI analice esta pista en profundidad ahora mismo?</p>
+                    <button class="btn-reanalyze-ai" id="btn-trigger-ai-analysis">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Analizar con Gemini AI
+                    </button>
                 </div>
             `;
+            const btn = document.getElementById('btn-trigger-ai-analysis');
+            if (btn) {
+                btn.addEventListener('click', () => triggerReanalysis(artist, title));
+            }
             return;
         }
 
         const a = detail.analysis;
+        const isGeneric = (a.synopsis && a.synopsis.includes("es una pieza fundamental dentro de su género")) || 
+                          (a.sections && a.sections[0] && a.sections[0].points && a.sections[0].points[0] && a.sections[0].points[0].name === "El punto de inflexión creativo");
+
         let html = `
-            <div class="analysis-synopsis-box">
-                <p>${a.synopsis || 'Análisis no disponible'}</p>
-            </div>
-            <div class="analysis-sections-grid">
+            <div class="analysis-container">
+                <!-- Hero Card -->
+                <div class="analysis-hero-card">
+                    <div class="analysis-hero-top">
+                        <div class="analysis-badges-row">
+                            <span class="analysis-ai-badge">
+                                <i class="fa-solid fa-brain"></i> ${isGeneric ? 'Plantilla Básica' : 'Gemini AI Sónico'}
+                            </span>
+                            ${a.year && a.year !== '2000' ? `<span class="analysis-meta-pill"><i class="fa-regular fa-calendar"></i> ${a.year}</span>` : ''}
+                            ${a.album && a.album !== 'Álbum' && a.album !== 'Álbum Principal' ? `<span class="analysis-meta-pill"><i class="fa-solid fa-compact-disc"></i> ${a.album}</span>` : ''}
+                        </div>
+                        <button class="btn-reanalyze-ai" id="btn-reanalyze-ai" title="Regenerar análisis sónico con Gemini AI">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> ${isGeneric ? 'Mejorar con Gemini IA' : 'Re-analizar con IA'}
+                        </button>
+                    </div>
+                    <p class="analysis-synopsis-text">${a.synopsis || 'Análisis no disponible'}</p>
+                </div>
+
+                <!-- Secciones Modulares -->
+                <div class="analysis-sections-grid">
         `;
 
         if (a.sections && a.sections.length > 0) {
-            a.sections.forEach(sec => {
-                const pointsHtml = (sec.points && sec.points.length > 0)
-                    ? `<ul class="analysis-points-list">${sec.points.map(p =>
-                        `<li><strong>${p.name}:</strong> ${p.desc}</li>`).join('')}</ul>`
-                    : '';
+            a.sections.forEach((sec, idx) => {
+                let secType = 'origen';
+                const lowerTitle = (sec.title || '').toLowerCase();
+                if (idx === 1 || lowerTitle.includes('anatomía') || lowerTitle.includes('musical') || lowerTitle.includes('producción')) secType = 'anatomia';
+                else if (idx === 2 || lowerTitle.includes('lírica') || lowerTitle.includes('mensaje') || lowerTitle.includes('letra')) secType = 'lirica';
+                else if (idx === 3 || lowerTitle.includes('impacto') || lowerTitle.includes('legado') || lowerTitle.includes('cultura')) secType = 'legado';
+
+                let pointsHtml = '';
+                if (sec.points && sec.points.length > 0) {
+                    pointsHtml = `
+                        <div class="analysis-points-container">
+                            ${sec.points.map(p => `
+                                <div class="analysis-point-card">
+                                    <div class="analysis-point-name">
+                                        <i class="fa-solid fa-circle-dot"></i> ${p.name || 'Detalle'}
+                                    </div>
+                                    <p class="analysis-point-desc">${p.desc || ''}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                }
+
                 html += `
-                    <div class="analysis-section-card">
-                        <div class="analysis-sec-title">
-                            <i class="fa-solid ${sec.icon || 'fa-compact-disc'}"></i>
-                            ${sec.title}
+                    <div class="analysis-section-card" data-type="${secType}">
+                        <div class="analysis-sec-header">
+                            <div class="analysis-sec-icon-wrap">
+                                <i class="fa-solid ${sec.icon || 'fa-compact-disc'}"></i>
+                            </div>
+                            <h4 class="analysis-sec-title-text">${sec.title}</h4>
                         </div>
-                        <div class="analysis-sec-content">
-                            <p>${sec.text || ''}</p>
-                            ${pointsHtml}
-                        </div>
+                        ${sec.text ? `<p class="analysis-sec-intro-text">${sec.text}</p>` : ''}
+                        ${pointsHtml}
                     </div>
                 `;
             });
         }
-        html += `</div>`;
+
+        html += `
+                </div>
+            </div>
+        `;
+
         container.innerHTML = html;
+
+        const reanalyzeBtn = document.getElementById('btn-reanalyze-ai');
+        if (reanalyzeBtn) {
+            reanalyzeBtn.addEventListener('click', () => triggerReanalysis(artist, title));
+        }
+    }
+
+    async function triggerReanalysis(artist, title) {
+        const btn = document.getElementById('btn-reanalyze-ai') || document.getElementById('btn-trigger-ai-analysis');
+        if (btn) {
+            btn.classList.add('loading');
+            btn.innerHTML = `<i class="fa-solid fa-spinner"></i> Analizando con Gemini AI...`;
+        }
+
+        try {
+            const res = await fetch('/api/analysis/generate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ artist, title, force: true })
+            });
+
+            if (res.ok) {
+                const data = await res.json();
+                if (data.analysis) {
+                    populateAnalysisTab({ analysis: data.analysis }, artist, title);
+                    return;
+                }
+            }
+            alert('No se pudo regenerar el análisis.');
+        } catch(e) {
+            alert('Error de conexión al generar el análisis con IA.');
+        } finally {
+            if (btn) {
+                btn.classList.remove('loading');
+                btn.innerHTML = `<i class="fa-solid fa-wand-magic-sparkles"></i> Re-analizar con IA`;
+            }
+        }
     }
 
     if (btnCloseModal) {
