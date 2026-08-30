@@ -170,48 +170,29 @@ async function generateGeminiAnalysis(artist, title, album, year) {
 
     if (geminiKey) {
         const prompt = `Actúa como un crítico musical y musicólogo apasionado y de altísimo nivel.
-Genera un análisis sónico, lírico e histórico profundo, vibrante, apasionado y revelador para la canción "${cleanT}" de ${artist} (álbum: ${album || 'Desconocido'}, año: ${year || 'Clásico'}).
+Genera un análisis sónico, musical e histórico profundo, vibrante, apasionado y revelador para la canción "${cleanT}" de ${artist} (álbum: ${album || 'Desconocido'}, año: ${year || 'Clásico'}).
 
-El análisis debe ser rico, con datos reales y específicos de producción (instrumentos, sintetizadores o pedales utilizados, colaboraciones, samples, técnicas de grabación), análisis lírico exhaustivo y contexto cultural.
+NORMAS ESTRICTAS DE CALIDAD Y REALISMO (CERO RELLENO):
+1. NUNCA inventes ni uses frases genéricas de plantilla ("marcó un hito", "pieza fundamental dentro de su género").
+2. ADAPTA LAS SECCIONES A LA REALIDAD DE LA CANCIÓN (genera entre 2 y 4 secciones que tengan sentido real):
+   - Si la canción es INSTRUMENTAL (o sin letra significativa), NO incluyas sección lírica; profundiza en la armonía, instrumentos, arreglos y texturas.
+   - Si la canción NO tuvo un impacto cultural, cinematográfico o premios destacables, NO inventes ni fuerces una sección de legado; omítela o reemplázala por anécdotas reales de la grabación o de los músicos.
+3. DATOS ESPECÍFICOS Y TÉCNICOS: Menciona instrumentos reales, sintetizadores, pedales de efectos, afinaciones, colaboraciones, samples, baterías, o técnicas de producción si aplican.
 
-Debes responder ÚNICAMENTE con un objeto JSON válido con esta estructura exacta:
+Debes responder ÚNICAMENTE con un objeto JSON válido con esta estructura:
 {
   "title": "${cleanT}",
   "artist": "${artist}",
   "year": "${year || '2000'}",
   "album": "${album || 'Álbum'}",
-  "synopsis": "Una sinopsis vibrante, apasionada y profunda de 4-6 líneas que atrape al lector de inmediato...",
+  "synopsis": "Una sinopsis vibrante y reveladora de 3-5 líneas con datos concretos y contexto real...",
   "sections": [
     {
-      "title": "El Origen & Trayectoria",
+      "title": "Título descriptivo de la sección (ej: El Origen & Trayectoria / La Anatomía Musical / etc.)",
       "icon": "fa-book-open",
-      "text": "Historia detallada del origen, anécdotas del estudio y contexto de la carrera...",
+      "text": "Explicación fluida y fundamentada...",
       "points": [
-        { "name": "Título del detalle clave", "desc": "Explicación profunda..." }
-      ]
-    },
-    {
-      "title": "La Anatomía Musical: Producción, Texturas e Instrumentación",
-      "icon": "fa-drum",
-      "text": "Análisis técnico de instrumentos, tempo, producción y arreglos...",
-      "points": [
-        { "name": "Instrumento / Riff / Detalle", "desc": "Descripción técnica del sonido..." }
-      ]
-    },
-    {
-      "title": "La Lírica y el Mensaje",
-      "icon": "fa-quote-left",
-      "text": "Análisis lírico profundo y significado...",
-      "points": [
-        { "name": "Tema lírico", "desc": "Explicación..." }
-      ]
-    },
-    {
-      "title": "El Impacto Cultural & Legado",
-      "icon": "fa-trophy",
-      "text": "Impacto en el cine, listas de éxitos y trascendencia...",
-      "points": [
-        { "name": "Trascendencia", "desc": "Legado..." }
+        { "name": "Nombre del detalle concreto", "desc": "Descripción técnica o anécdota real..." }
       ]
     }
   ]
