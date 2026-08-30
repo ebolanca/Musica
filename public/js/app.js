@@ -2389,7 +2389,25 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cinemaArtist) cinemaArtist.textContent = track.artist;
         if (cinemaAlbum) cinemaAlbum.textContent = `${track.album || 'Álbum'} • ${formatBriefDate(track.releaseDate, track.releaseYear)}`;
 
-        // Fetch detailed lyrics with Karaoke timestamp mapping
+        // Limpiar inmediatamente el vídeo de la canción anterior para evitar que se quede enganchado
+        currentCinemaVideoItem = null;
+        if (cinemaHybridVideo) {
+            cinemaHybridVideo.pause();
+            cinemaHybridVideo.removeAttribute('src');
+            cinemaHybridVideo.load();
+        }
+        if (cinemaFullVideo) {
+            cinemaFullVideo.pause();
+            cinemaFullVideo.removeAttribute('src');
+            cinemaFullVideo.load();
+        }
+
+        // Desactivar temporalmente los botones de vídeo mientras se consulta la nueva pista
+        if (btnModeHybrid) btnModeHybrid.classList.add('disabled');
+        if (btnModeFullvideo) btnModeFullvideo.classList.add('disabled');
+        setCinemaViewMode('vinyl');
+
+        // Fetch detailed lyrics with Karaoke timestamp mapping & Jellyfin video
         if (cinemaLyrics) {
             cinemaLyrics.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);"><i class="fa-solid fa-spinner fa-spin"></i> Cargando letra sincronizada...</div>';
             currentCinemaActiveLine = -1;
@@ -2400,13 +2418,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(r => r.json())
                 .then(d => {
                     // Mapear videoclip de Jellyfin si existe
-                    // No sobreescribir si ya estaba asignado (p.ej. desde playVideoInCinema)
-                    if (d.videoItem) {
+                    if (d.videoItem && d.videoItem.streamUrl) {
                         currentCinemaVideoItem = d.videoItem;
-                    } else if (!currentCinemaVideoItem) {
-                        currentCinemaVideoItem = null;
-                    }
-                    if (currentCinemaVideoItem) {
                         if (btnModeHybrid) {
                             btnModeHybrid.classList.remove('disabled');
                             btnModeHybrid.title = 'Modo Híbrido: Videoclip + Letra lateral';
@@ -2415,8 +2428,11 @@ document.addEventListener('DOMContentLoaded', () => {
                             btnModeFullvideo.classList.remove('disabled');
                             btnModeFullvideo.title = 'Modo Cine Total: Videoclip a pantalla completa';
                         }
-                        setCinemaViewMode(cinemaViewMode);
+                        // SIEMPRE que haya vídeo disponible, el modo por defecto es HÍBRIDO (o Fullvideo si estaba en ese)
+                        const targetMode = (cinemaViewMode === 'fullvideo') ? 'fullvideo' : 'hybrid';
+                        setCinemaViewMode(targetMode, true);
                     } else {
+                        currentCinemaVideoItem = null;
                         if (btnModeHybrid) {
                             btnModeHybrid.classList.add('disabled');
                             btnModeHybrid.title = 'Esta canción no dispone de videoclip en Jellyfin';
@@ -2425,6 +2441,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             btnModeFullvideo.classList.add('disabled');
                             btnModeFullvideo.title = 'Esta canción no dispone de videoclip en Jellyfin';
                         }
+                        // Si no hay vídeo, forzar modo VINILO
                         setCinemaViewMode('vinyl');
                     }
                     if (d.lyrics && d.lyrics.length > 0) {
