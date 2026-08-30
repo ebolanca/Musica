@@ -237,10 +237,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 cinemaHybridVideo.muted = true; // Silenciar para evitar sonido doble
                 if (cinemaHybridVideo.src !== currentCinemaVideoItem.streamUrl) {
                     cinemaHybridVideo.src = currentCinemaVideoItem.streamUrl;
-                }
-                if (mainMusicAudio && !mainMusicAudio.paused) {
-                    cinemaHybridVideo.currentTime = mainMusicAudio.currentTime;
-                    cinemaHybridVideo.play().catch(()=>{});
+                    cinemaHybridVideo.onloadedmetadata = () => {
+                        if (mainMusicAudio) cinemaHybridVideo.currentTime = mainMusicAudio.currentTime;
+                        if (mainMusicAudio && !mainMusicAudio.paused) cinemaHybridVideo.play().catch(()=>{});
+                    };
+                } else {
+                    if (mainMusicAudio) cinemaHybridVideo.currentTime = mainMusicAudio.currentTime;
+                    if (mainMusicAudio && !mainMusicAudio.paused) cinemaHybridVideo.play().catch(()=>{});
                 }
             }
         } else if (mode === 'fullvideo') {
@@ -252,10 +255,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 cinemaFullVideo.muted = true; // Silenciar para evitar sonido doble
                 if (cinemaFullVideo.src !== currentCinemaVideoItem.streamUrl) {
                     cinemaFullVideo.src = currentCinemaVideoItem.streamUrl;
-                }
-                if (mainMusicAudio && !mainMusicAudio.paused) {
-                    cinemaFullVideo.currentTime = mainMusicAudio.currentTime;
-                    cinemaFullVideo.play().catch(()=>{});
+                    cinemaFullVideo.onloadedmetadata = () => {
+                        if (mainMusicAudio) cinemaFullVideo.currentTime = mainMusicAudio.currentTime;
+                        if (mainMusicAudio && !mainMusicAudio.paused) cinemaFullVideo.play().catch(()=>{});
+                    };
+                } else {
+                    if (mainMusicAudio) cinemaFullVideo.currentTime = mainMusicAudio.currentTime;
+                    if (mainMusicAudio && !mainMusicAudio.paused) cinemaFullVideo.play().catch(()=>{});
                 }
             }
         }
@@ -1487,11 +1493,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 musicSeekSlider.value = (curr / dur) * 100;
             }
 
-            // Sincronizar vídeo en modo cine para evitar desfases
+            // Sincronizar vídeo en modo cine en tiempo real con precisión milimétrica (umbral 0.12s)
             if (cinemaOverlay && cinemaOverlay.style.display === 'flex') {
                 const activeVideo = (cinemaViewMode === 'hybrid') ? cinemaHybridVideo : (cinemaViewMode === 'fullvideo' ? cinemaFullVideo : null);
-                if (activeVideo && !activeVideo.paused && Math.abs(activeVideo.currentTime - curr) > 0.35) {
-                    activeVideo.currentTime = curr;
+                if (activeVideo && !activeVideo.paused) {
+                    const drift = Math.abs(activeVideo.currentTime - curr);
+                    if (drift > 0.12) {
+                        activeVideo.currentTime = curr;
+                    }
+                }
+            }
+        });
+
+        // Sincronización instantánea al arrastrar la barra de progreso
+        mainMusicAudio.addEventListener('seeked', () => {
+            if (cinemaOverlay && cinemaOverlay.style.display === 'flex') {
+                const activeVideo = (cinemaViewMode === 'hybrid') ? cinemaHybridVideo : (cinemaViewMode === 'fullvideo' ? cinemaFullVideo : null);
+                if (activeVideo) {
+                    activeVideo.currentTime = mainMusicAudio.currentTime;
                 }
             }
 
@@ -2458,35 +2477,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             return { ...l, seconds: sec, index: idx, hasTimestamp: sec !== null };
                         });
 
-                        cinemaLyrics.innerHTML = cinemaParsedLyrics.map(l => {
-                            const hasTrans = l.translation && typeof l.translation === 'string' && l.translation.trim().length > 0;
-                            const isSame = hasTrans ? (normalizeText(l.translation) === normalizeText(l.text)) : true;
-                            const showTrans = hasTrans && !isSame;
-                            return `
-                                <div class="cinema-lyric-line" id="cinema-lyric-${l.index}" data-sec="${l.seconds}" data-index="${l.index}" title="Pulsar para sincronizar a partir de aquí">
-                                    <div class="cinema-lyric-orig">${l.text}</div>
-                                    ${showTrans ? `<div class="cinema-lyric-trans">${l.translation}</div>` : ''}
-                                </div>
-                            `;
-                        }).join('');
-
-                        // Click en una frase para alinear los subtítulos desde ahí SIN cortar la música
-                        document.querySelectorAll('.cinema-lyric-line').forEach(lineEl => {
-                            lineEl.addEventListener('click', () => {
-                                const sec = parseFloat(lineEl.getAttribute('data-sec'));
-                                if (!isNaN(sec) && mainMusicAudio) {
-                                    const currAudioSec = mainMusicAudio.currentTime;
-                                    const newOffset = (sec - currAudioSec);
-                                    updateLyricsSyncOffset(newOffset.toFixed(1));
-                                    
-                                    // Reanudar el seguimiento del karaoke de inmediato
-                                    isUserScrollingCinema = false;
-                                    clearTimeout(userScrollTimer);
-                                    
-                                    showSyncNotification(`📍 Subtítulos sincronizados a partir de esta frase (${newOffset >= 0 ? '+' : ''}${newOffset.toFixed(1)}s)`);
-                                }
-                            });
-                        });
+                        renderCinemaLyricLines();
 
                         // Detección de scroll manual con retorno automático a los 5 segundos
                         if (cinemaLyrics) {
