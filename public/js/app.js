@@ -102,6 +102,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPlayingSong = null;
     let currentModalSong = null;
 
+    // Cinema state (declaradas explícitamente para evitar globales implícitas)
+    let cinemaCurrentTrackList = [];
+    let cinemaCurrentIndex = 0;
+    let currentCinemaActiveLine = -1;
+    let cinemaParsedLyrics = [];
+    let isUserScrollingCinema = false;
+    let userScrollTimer = null;
+
     // DOM Elements
     const songsGrid = document.getElementById('songs-grid');
     const searchInput = document.getElementById('search-input');
@@ -2072,6 +2080,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (a.sections && a.sections.length > 0) {
             a.sections.forEach(sec => {
+                const pointsHtml = (sec.points && sec.points.length > 0)
+                    ? `<ul class="analysis-points-list">${sec.points.map(p =>
+                        `<li><strong>${p.name}:</strong> ${p.desc}</li>`).join('')}</ul>`
+                    : '';
                 html += `
                     <div class="analysis-section-card">
                         <div class="analysis-sec-title">
@@ -2079,7 +2091,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             ${sec.title}
                         </div>
                         <div class="analysis-sec-content">
-                            ${sec.content}
+                            <p>${sec.text || ''}</p>
+                            ${pointsHtml}
                         </div>
                     </div>
                 `;
@@ -2297,7 +2310,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(r => r.json())
                 .then(d => {
                     // Mapear videoclip de Jellyfin si existe
-                    currentCinemaVideoItem = d.videoItem || null;
+                    // No sobreescribir si ya estaba asignado (p.ej. desde playVideoInCinema)
+                    if (d.videoItem) {
+                        currentCinemaVideoItem = d.videoItem;
+                    } else if (!currentCinemaVideoItem) {
+                        currentCinemaVideoItem = null;
+                    }
                     if (currentCinemaVideoItem) {
                         if (btnModeHybrid) {
                             btnModeHybrid.classList.remove('disabled');
@@ -2443,17 +2461,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     btnJellyfinSync.innerHTML = '<i class="fa-solid fa-rotate"></i> Sincronizar';
                 });
         });
-        // Salir de Modo Cine y Fullscreen con tecla Escape o cambio de fullscreen
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && cinemaOverlay && cinemaOverlay.style.display === 'flex') {
-                closeCinemaMode();
-            }
-        });
-
-        document.addEventListener('fullscreenchange', () => {
-            if (!document.fullscreenElement && cinemaOverlay && cinemaOverlay.style.display === 'flex') {
-                cinemaOverlay.style.display = 'none';
-            }
-        });
     }
+
+    // Salir de Modo Cine y Fullscreen con tecla Escape o cambio de fullscreen
+    // (fuera del if(btnJellyfinSync) para garantizar que siempre se registran)
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && cinemaOverlay && cinemaOverlay.style.display === 'flex') {
+            closeCinemaMode();
+        }
+    });
+
+    document.addEventListener('fullscreenchange', () => {
+        // Usar closeCinemaMode() para limpiar overflow y pausar vídeos correctamente
+        if (!document.fullscreenElement && cinemaOverlay && cinemaOverlay.style.display === 'flex') {
+            closeCinemaMode();
+        }
+    });
 });

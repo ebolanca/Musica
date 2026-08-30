@@ -1099,27 +1099,7 @@ app.get('/api/track/detail', async (req, res) => {
     });
 });
 
-// API: Refrescar biblioteca de Jellyfin
-app.post('/api/jellyfin/refresh', (req, res) => {
-    const jellyfinUrl = 'http://192.168.1.39:8096/Library/Refresh';
-    const reqOpts = {
-        method: 'POST',
-        headers: {
-            'X-Emby-Token': '128c3d9a51bd4b22bacaccad03ef9328'
-        }
-    };
 
-    const jReq = http.request(jellyfinUrl, reqOpts, (jRes) => {
-        res.json({ success: true, status: jRes.statusCode, message: 'Biblioteca de Jellyfin refrescada con éxito.' });
-    });
-
-    jReq.on('error', (e) => {
-        console.error("Error llamando API de Jellyfin:", e.message);
-        res.json({ success: false, message: `No se pudo conectar con Jellyfin (192.168.1.39): ${e.message}` });
-    });
-
-    jReq.end();
-});
 
 
 // ==========================================================================
