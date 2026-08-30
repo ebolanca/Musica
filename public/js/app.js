@@ -1503,29 +1503,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             }
-        });
-
-        // Sincronización instantánea al arrastrar la barra de progreso
-        mainMusicAudio.addEventListener('seeked', () => {
-            if (cinemaOverlay && cinemaOverlay.style.display === 'flex') {
-                const activeVideo = (cinemaViewMode === 'hybrid') ? cinemaHybridVideo : (cinemaViewMode === 'fullvideo' ? cinemaFullVideo : null);
-                if (activeVideo) {
-                    activeVideo.currentTime = mainMusicAudio.currentTime;
-                }
-            }
 
             // Karaoke Mode: Real-time Lyric Highlight & Auto-scroll
             if (cinemaOverlay && cinemaOverlay.style.display === 'flex' && cinemaParsedLyrics.length > 0) {
                 let activeIdx = -1;
                 const hasTimestamps = cinemaParsedLyrics.some(l => l.hasTimestamp);
                 if (hasTimestamps) {
+                    const adjustedTime = curr + lyricsSyncOffset;
                     for (let i = 0; i < cinemaParsedLyrics.length; i++) {
                         if (cinemaParsedLyrics[i].seconds === null) continue;
-                        const adjustedTime = curr + lyricsSyncOffset;
-                        if (cinemaParsedLyrics[i].seconds <= adjustedTime + 0.3) {
+                        if (cinemaParsedLyrics[i].seconds <= adjustedTime + 0.25) {
                             activeIdx = i;
-                        } else {
-                            break;
                         }
                     }
                 }
@@ -1535,7 +1523,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.querySelectorAll('.cinema-lyric-line').forEach((el, idx) => {
                         if (idx === activeIdx) {
                             el.classList.add('active');
-                            if (cinemaLyrics) {
+                            if (cinemaLyrics && !isUserScrollingCinema) {
                                 const containerHeight = cinemaLyrics.clientHeight;
                                 const elTop = el.offsetTop;
                                 const elHeight = el.clientHeight;
@@ -1567,6 +1555,16 @@ document.addEventListener('DOMContentLoaded', () => {
                             if (cinemaMovieSubBar) cinemaMovieSubBar.style.display = 'none';
                         }
                     }
+                }
+            }
+        });
+
+        // Sincronización instantánea al arrastrar la barra de progreso
+        mainMusicAudio.addEventListener('seeked', () => {
+            if (cinemaOverlay && cinemaOverlay.style.display === 'flex') {
+                const activeVideo = (cinemaViewMode === 'hybrid') ? cinemaHybridVideo : (cinemaViewMode === 'fullvideo' ? cinemaFullVideo : null);
+                if (activeVideo) {
+                    activeVideo.currentTime = mainMusicAudio.currentTime;
                 }
             }
         });
