@@ -2267,9 +2267,12 @@ video {
   background: rgba(255, 255, 255, 0.1);
   border: none;
   color: #fff;
-  font-size: 0.72rem;
-  font-weight: 700;
-  padding: 2px 7px;
+  font-size: 0.7rem;
+  width: 26px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
