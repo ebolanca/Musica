@@ -1115,7 +1115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     btnCinemaReplaceClean.innerHTML = '<i class="fa-solid fa-check"></i> Reemplazada';
                     setTimeout(() => {
                         btnCinemaReplaceClean.disabled = false;
-                        btnCinemaReplaceClean.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i> Versión Limpia';
+                        btnCinemaReplaceClean.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i> Versión';
                     }, 3000);
                 } else {
                     throw new Error(data.error || 'Error en la descarga');
@@ -1124,7 +1124,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('Error reemplazando versión limpia:', e);
                 showSyncNotification('❌ ' + e.message);
                 btnCinemaReplaceClean.disabled = false;
-                btnCinemaReplaceClean.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i> Versión Limpia';
+                btnCinemaReplaceClean.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i> Versión';
             }
         });
     }
@@ -2121,8 +2121,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (cinemaCurrentIndex === -1) cinemaCurrentIndex = 0;
         }
 
-        renderCinemaTrack(cinemaCurrentTrackList[cinemaCurrentIndex]);
-        playQueueTrack(cinemaCurrentTrackList[cinemaCurrentIndex]);
+        const currentTargetTrack = cinemaCurrentTrackList[cinemaCurrentIndex];
+        const isAlreadyPlayingThisTrack = currentPlayingSong && 
+            currentPlayingSong.title === currentTargetTrack.title && 
+            currentPlayingSong.artist === currentTargetTrack.artist && 
+            mainMusicAudio && !mainMusicAudio.paused;
+
+        renderCinemaTrack(currentTargetTrack);
+        if (!isAlreadyPlayingThisTrack) {
+            playQueueTrack(currentTargetTrack);
+        }
         document.body.style.overflow = 'hidden';
         document.documentElement.style.overflow = 'hidden';
         window.scrollTo(0, 0);
