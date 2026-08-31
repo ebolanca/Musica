@@ -168,114 +168,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const cinemaPrev = document.getElementById('cinema-prev');
     const cinemaNext = document.getElementById('cinema-next');
 
-    // Jellyfin 3-Mode Cinema Elements
-    const btnModeVinyl = document.getElementById('btn-mode-vinyl');
-    const btnModeHybrid = document.getElementById('btn-mode-hybrid');
-    const btnModeFullvideo = document.getElementById('btn-mode-fullvideo');
+    // Cinema: Modo Vinilo únicamente (sin reproductor de vídeo Jellyfin)
     const cinemaVinylWrap = document.getElementById('cinema-vinyl-wrap');
-    const cinemaHybridVideoWrap = document.getElementById('cinema-hybrid-video-wrap');
-    const cinemaHybridVideo = document.getElementById('cinema-hybrid-video');
-    const cinemaFullvideoContainer = document.getElementById('cinema-fullvideo-container');
-    const cinemaFullVideo = document.getElementById('cinema-full-video');
-    const cinemaMovieSubBar = document.getElementById('cinema-movie-subtitles-bar');
-    const cinemaMovieSubText = document.getElementById('cinema-movie-sub-text');
-    const badgeVideoCount = document.getElementById('badge-video-count');
 
-    let allJellyfinVideos = [];
-    let cinemaViewMode = safeStorage.getItem('cinema_view_mode') || 'vinyl';
-    let currentCinemaVideoItem = null;
-
-    
-    async function fetchJellyfinVideosCatalog() {
-        try {
-            const res = await fetch('/api/jellyfin/videos');
-            if (res.ok) {
-                const data = await res.json();
-                allJellyfinVideos = data.videos || [];
-                if (badgeVideoCount) badgeVideoCount.textContent = allJellyfinVideos.length;
-            }
-        } catch(e) {
-            console.log('Error cargando catálogo de Jellyfin:', e.message);
-        }
-    }
-    fetchJellyfinVideosCatalog();
-
-    function setCinemaViewMode(mode, forceVideo = false) {
-        if (!currentCinemaVideoItem && (mode === 'hybrid' || mode === 'fullvideo') && !forceVideo) {
-            mode = 'vinyl';
-        }
-        cinemaViewMode = mode;
-        safeStorage.setItem('cinema_view_mode', mode);
-
-        // Update Button States
-        [btnModeVinyl, btnModeHybrid, btnModeFullvideo].forEach(b => {
-            if (b) b.classList.remove('active');
-        });
-
-        if (mode === 'vinyl' && btnModeVinyl) btnModeVinyl.classList.add('active');
-        if (mode === 'hybrid' && btnModeHybrid) btnModeHybrid.classList.add('active');
-        if (mode === 'fullvideo' && btnModeFullvideo) btnModeFullvideo.classList.add('active');
-
-        const cinemaContentEl = document.querySelector('.cinema-content');
-
-        // Toggle Visual Containers
-        if (mode === 'vinyl') {
-            if (cinemaVinylWrap) cinemaVinylWrap.style.display = 'block';
-            if (cinemaHybridVideoWrap) cinemaHybridVideoWrap.style.display = 'none';
-            if (cinemaFullvideoContainer) cinemaFullvideoContainer.style.display = 'none';
-            if (cinemaContentEl) cinemaContentEl.style.display = 'grid';
-            if (cinemaHybridVideo) cinemaHybridVideo.pause();
-            if (cinemaFullVideo) cinemaFullVideo.pause();
-        } else if (mode === 'hybrid') {
-            if (cinemaVinylWrap) cinemaVinylWrap.style.display = 'none';
-            if (cinemaHybridVideoWrap) cinemaHybridVideoWrap.style.display = 'block';
-            if (cinemaFullvideoContainer) cinemaFullvideoContainer.style.display = 'none';
-            if (cinemaContentEl) cinemaContentEl.style.display = 'grid';
-            if (cinemaFullVideo) cinemaFullVideo.pause();
-            
-            if (currentCinemaVideoItem && cinemaHybridVideo) {
-                cinemaHybridVideo.muted = true; // Silenciar para evitar sonido doble
-                if (cinemaHybridVideo.src !== currentCinemaVideoItem.streamUrl) {
-                    cinemaHybridVideo.src = currentCinemaVideoItem.streamUrl;
-                    cinemaHybridVideo.onloadedmetadata = () => {
-                        if (mainMusicAudio) cinemaHybridVideo.currentTime = mainMusicAudio.currentTime;
-                        if (mainMusicAudio && !mainMusicAudio.paused) cinemaHybridVideo.play().catch(()=>{});
-                    };
-                } else {
-                    if (mainMusicAudio) cinemaHybridVideo.currentTime = mainMusicAudio.currentTime;
-                    if (mainMusicAudio && !mainMusicAudio.paused) cinemaHybridVideo.play().catch(()=>{});
-                }
-            }
-        } else if (mode === 'fullvideo') {
-            if (cinemaContentEl) cinemaContentEl.style.display = 'none';
-            if (cinemaFullvideoContainer) cinemaFullvideoContainer.style.display = 'flex';
-            if (cinemaHybridVideo) cinemaHybridVideo.pause();
-            
-            if (currentCinemaVideoItem && cinemaFullVideo) {
-                cinemaFullVideo.muted = true; // Silenciar para evitar sonido doble
-                if (cinemaFullVideo.src !== currentCinemaVideoItem.streamUrl) {
-                    cinemaFullVideo.src = currentCinemaVideoItem.streamUrl;
-                    cinemaFullVideo.onloadedmetadata = () => {
-                        if (mainMusicAudio) cinemaFullVideo.currentTime = mainMusicAudio.currentTime;
-                        if (mainMusicAudio && !mainMusicAudio.paused) cinemaFullVideo.play().catch(()=>{});
-                    };
-                } else {
-                    if (mainMusicAudio) cinemaFullVideo.currentTime = mainMusicAudio.currentTime;
-                    if (mainMusicAudio && !mainMusicAudio.paused) cinemaFullVideo.play().catch(()=>{});
-                }
-            }
-        }
-    }
-
-    if (btnModeVinyl) btnModeVinyl.addEventListener('click', () => setCinemaViewMode('vinyl'));
-    if (btnModeHybrid) btnModeHybrid.addEventListener('click', () => {
-        if (btnModeHybrid.classList.contains('disabled')) return;
-        setCinemaViewMode('hybrid');
-    });
-    if (btnModeFullvideo) btnModeFullvideo.addEventListener('click', () => {
-        if (btnModeFullvideo.classList.contains('disabled')) return;
-        setCinemaViewMode('fullvideo');
-    });
 
     // Radio Elements & Engine
     const liveRadioAudio = document.getElementById('live-radio-audio');
@@ -740,86 +635,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    
-    function renderVideoclips() {
-        currentSectionTitle.innerHTML = `<i class="fa-solid fa-film" style="color: var(--spotify-green);"></i> Catálogo de Videoclips (Jellyfin)`;
-        
-        let filtered = allJellyfinVideos;
-        const q = (quickFilterQuery || searchQuery || '').trim().toLowerCase();
-        if (q) {
-            filtered = filtered.filter(v => 
-                v.name.toLowerCase().includes(q) || 
-                v.artist.toLowerCase().includes(q) || 
-                v.title.toLowerCase().includes(q)
-            );
-        }
 
-        resultsCountText.textContent = `${filtered.length} videoclips disponibles`;
-        songsGrid.className = 'songs-grid';
-        songsGrid.innerHTML = '';
-
-        if (filtered.length === 0) {
-            songsGrid.innerHTML = `
-                <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--text-muted);">
-                    <i class="fa-solid fa-film" style="font-size: 3rem; margin-bottom: 16px; opacity: 0.3;"></i>
-                    <p>No se encontraron videoclips que coincidan con la búsqueda.</p>
-                </div>
-            `;
-            return;
-        }
-
-        filtered.forEach(v => {
-            const card = document.createElement('div');
-            card.className = 'video-card';
-            const durFmt = v.durationSec ? formatTime(v.durationSec) : 'HD';
-
-            card.innerHTML = `
-                <div class="video-thumb-wrap">
-                    <img src="${v.thumbUrl}" class="video-thumb-img" alt="${v.name}" loading="lazy" onerror="this.src='img/radios/hitfm.svg'">
-                    <span class="video-duration-badge">${durFmt}</span>
-                    <div class="video-play-overlay-btn" title="Reproducir en Modo Cine">
-                        <div class="video-play-icon"><i class="fa-solid fa-play"></i></div>
-                    </div>
-                </div>
-                <div class="video-card-body">
-                    <div class="video-card-title" title="${v.title}">${v.title}</div>
-                    <div class="video-card-artist">${v.artist}</div>
-                    <div class="video-card-footer">
-                        <button class="btn-video-cinema"><i class="fa-solid fa-tv"></i> Ver en Modo Cine</button>
-                        <a href="${v.webClientUrl}" target="_blank" class="btn-video-jellyfin-link" title="Abrir en Jellyfin Oficial">
-                            <i class="fa-solid fa-up-right-from-square"></i>
-                        </a>
-                    </div>
-                </div>
-            `;
-
-            card.querySelector('.video-thumb-wrap').addEventListener('click', () => {
-                playVideoInCinema(v);
-            });
-            card.querySelector('.btn-video-cinema').addEventListener('click', () => {
-                playVideoInCinema(v);
-            });
-
-            songsGrid.appendChild(card);
-        });
-    }
-
-    function playVideoInCinema(video) {
-        currentCinemaVideoItem = video;
-        const fakeTrack = {
-            title: video.title,
-            artist: video.artist,
-            rawTitle: video.name,
-            album: 'Videoclip Oficial (Jellyfin)',
-            releaseYear: video.year || '2000',
-            releaseDate: video.year ? `${video.year}-01-01` : '2000-01-01',
-            coverUrl: video.thumbUrl,
-            audioUrl: video.streamUrl
-        };
-
-        openCinemaMode(fakeTrack, [fakeTrack]);
-        setCinemaViewMode(cinemaViewMode === 'vinyl' ? 'hybrid' : cinemaViewMode, true);
-    }
 
     function renderRadioStations() {
         currentSectionTitle.innerHTML = `<i class="fa-solid fa-tower-broadcast" style="color: var(--spotify-green);"></i> Radio en Directo - Emisoras de España`;
@@ -974,21 +790,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cinemaPlay.innerHTML = isPlaying ? '<i class="fa-solid fa-pause"></i>' : '<i class="fa-solid fa-play"></i>';
         }
 
-        // Sincronizar estado de los elementos de vídeo
-        if (isPlaying) {
-            if (cinemaOverlay && cinemaOverlay.style.display === 'flex') {
-                if (cinemaViewMode === 'hybrid' && cinemaHybridVideo && currentCinemaVideoItem) {
-                    cinemaHybridVideo.muted = true;
-                    if (cinemaHybridVideo.paused) cinemaHybridVideo.play().catch(()=>{});
-                } else if (cinemaViewMode === 'fullvideo' && cinemaFullVideo && currentCinemaVideoItem) {
-                    cinemaFullVideo.muted = true;
-                    if (cinemaFullVideo.paused) cinemaFullVideo.play().catch(()=>{});
-                }
-            }
-        } else {
-            if (cinemaHybridVideo) cinemaHybridVideo.pause();
-            if (cinemaFullVideo) cinemaFullVideo.pause();
-        }
+
     }
 
     function handleCardPlayClick(song) {
@@ -1493,16 +1295,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 musicSeekSlider.value = (curr / dur) * 100;
             }
 
-            // Sincronizar vídeo en modo cine en tiempo real con precisión milimétrica (umbral 0.12s)
-            if (cinemaOverlay && cinemaOverlay.style.display === 'flex') {
-                const activeVideo = (cinemaViewMode === 'hybrid') ? cinemaHybridVideo : (cinemaViewMode === 'fullvideo' ? cinemaFullVideo : null);
-                if (activeVideo && !activeVideo.paused) {
-                    const drift = Math.abs(activeVideo.currentTime - curr);
-                    if (drift > 0.12) {
-                        activeVideo.currentTime = curr;
-                    }
-                }
-            }
+
 
             // Karaoke Mode: Real-time Lyric Highlight & Auto-scroll
             if (cinemaOverlay && cinemaOverlay.style.display === 'flex' && cinemaParsedLyrics.length > 0) {
@@ -1538,36 +1331,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     });
 
-                    // Actualizar Subtítulos Flotantes de Película (Modo Cine Total)
-                    if (cinemaMovieSubText) {
-                        if (activeIdx >= 0 && cinemaParsedLyrics[activeIdx]) {
-                            const l = cinemaParsedLyrics[activeIdx];
-                            const isSpanishList = currentPlayingSong && (currentPlayingSong.playlistName === 'Española' || currentPlayingSong.playlistName === 'Música latina' || currentTab === 'Española' || currentTab === 'Música latina');
-                            const isSame = l.translation ? (normalizeText(l.translation) === normalizeText(l.text)) : true;
-                            const showTrans = !isSpanishList && l.translation && !isSame && l.translation.trim().length > 0;
 
-                            cinemaMovieSubText.innerHTML = `
-                                <div>${l.text}</div>
-                                ${showTrans ? `<div class="cinema-movie-sub-trans">${l.translation}</div>` : ''}
-                            `;
-                            if (cinemaMovieSubBar) cinemaMovieSubBar.style.display = 'block';
-                        } else {
-                            if (cinemaMovieSubBar) cinemaMovieSubBar.style.display = 'none';
-                        }
-                    }
                 }
             }
         });
 
-        // Sincronización instantánea al arrastrar la barra de progreso
-        mainMusicAudio.addEventListener('seeked', () => {
-            if (cinemaOverlay && cinemaOverlay.style.display === 'flex') {
-                const activeVideo = (cinemaViewMode === 'hybrid') ? cinemaHybridVideo : (cinemaViewMode === 'fullvideo' ? cinemaFullVideo : null);
-                if (activeVideo) {
-                    activeVideo.currentTime = mainMusicAudio.currentTime;
-                }
-            }
-        });
+
 
         mainMusicAudio.addEventListener('ended', () => {
             if (playbackMode === 'playlist_shuffle' || playbackMode === 'party_dj') {
@@ -1639,8 +1408,7 @@ document.addEventListener('DOMContentLoaded', () => {
         musicBtnClose.addEventListener('click', () => {
             mainMusicAudio.pause();
             mainMusicAudio.src = '';
-            if (cinemaHybridVideo) { cinemaHybridVideo.pause(); cinemaHybridVideo.src = ''; }
-            if (cinemaFullVideo) { cinemaFullVideo.pause(); cinemaFullVideo.src = ''; }
+
             playbackMode = 'idle';
             currentPlayingSong = null;
             musicPlayerBar.style.display = 'none';
@@ -2379,9 +2147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
         document.documentElement.style.overflow = '';
         
-        // Pausar vídeos de modo cine inmediatamente
-        if (cinemaHybridVideo) cinemaHybridVideo.pause();
-        if (cinemaFullVideo) cinemaFullVideo.pause();
+
 
         try {
             if (document.fullscreenElement) {
@@ -2406,23 +2172,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cinemaArtist) cinemaArtist.textContent = track.artist;
         if (cinemaAlbum) cinemaAlbum.textContent = `${track.album || 'Álbum'} • ${formatBriefDate(track.releaseDate, track.releaseYear)}`;
 
-        // Limpiar inmediatamente el vídeo de la canción anterior para evitar que se quede enganchado
-        currentCinemaVideoItem = null;
-        if (cinemaHybridVideo) {
-            cinemaHybridVideo.pause();
-            cinemaHybridVideo.removeAttribute('src');
-            cinemaHybridVideo.load();
-        }
-        if (cinemaFullVideo) {
-            cinemaFullVideo.pause();
-            cinemaFullVideo.removeAttribute('src');
-            cinemaFullVideo.load();
-        }
 
-        // Desactivar temporalmente los botones de vídeo mientras se consulta la nueva pista
-        if (btnModeHybrid) btnModeHybrid.classList.add('disabled');
-        if (btnModeFullvideo) btnModeFullvideo.classList.add('disabled');
-        setCinemaViewMode('vinyl');
 
         // Fetch detailed lyrics with Karaoke timestamp mapping & Jellyfin video
         if (cinemaLyrics) {
@@ -2434,33 +2184,7 @@ document.addEventListener('DOMContentLoaded', () => {
             fetch(`/api/track/detail?artist=${encodeURIComponent(track.artist)}&title=${encodeURIComponent(trackTitleQuery)}`)
                 .then(r => r.json())
                 .then(d => {
-                    // Mapear videoclip de Jellyfin si existe
-                    if (d.videoItem && d.videoItem.streamUrl) {
-                        currentCinemaVideoItem = d.videoItem;
-                        if (btnModeHybrid) {
-                            btnModeHybrid.classList.remove('disabled');
-                            btnModeHybrid.title = 'Modo Híbrido: Videoclip + Letra lateral';
-                        }
-                        if (btnModeFullvideo) {
-                            btnModeFullvideo.classList.remove('disabled');
-                            btnModeFullvideo.title = 'Modo Cine Total: Videoclip a pantalla completa';
-                        }
-                        // SIEMPRE que haya vídeo disponible, el modo por defecto es HÍBRIDO (o Fullvideo si estaba en ese)
-                        const targetMode = (cinemaViewMode === 'fullvideo') ? 'fullvideo' : 'hybrid';
-                        setCinemaViewMode(targetMode, true);
-                    } else {
-                        currentCinemaVideoItem = null;
-                        if (btnModeHybrid) {
-                            btnModeHybrid.classList.add('disabled');
-                            btnModeHybrid.title = 'Esta canción no dispone de videoclip en Jellyfin';
-                        }
-                        if (btnModeFullvideo) {
-                            btnModeFullvideo.classList.add('disabled');
-                            btnModeFullvideo.title = 'Esta canción no dispone de videoclip en Jellyfin';
-                        }
-                        // Si no hay vídeo, forzar modo VINILO
-                        setCinemaViewMode('vinyl');
-                    }
+
                     if (d.lyrics && d.lyrics.length > 0) {
                         const hasRealTimestamps = d.lyrics.some(l => (typeof l.seconds === 'number' && l.seconds > 0) || (l.time && l.time !== '00:00'));
                         cinemaParsedLyrics = d.lyrics.map((l, idx) => {
