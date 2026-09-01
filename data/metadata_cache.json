@@ -14589,8 +14589,8 @@
     "releaseYear": "2000",
     "durationMs": 264000,
     "durationFmt": "04:24",
-    "year": "2018",
-    "date": "2018-07-04"
+    "year": "2000",
+    "date": "2000-07-04"
   },
   "enigma - return to innocence": {
     "title": "Return to Innocence",
@@ -22067,7 +22067,9 @@
     "displayTitle": "Moi... Lolita",
     "album": "Gourmandises",
     "releaseDate": "2000-07-04",
-    "releaseYear": "2000"
+    "releaseYear": "2000",
+    "year": "2000",
+    "date": "2000-07-04"
   },
   "alizée - moi lolita": {
     "displayTitle": "Moi... Lolita",

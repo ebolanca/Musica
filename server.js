@@ -875,8 +875,8 @@ app.get('/api/playlists', (req, res) => {
             const meta = getTrackMetadata(artist, title);
             const analysis = findAnalysisForTrack(artist, title);
 
-            let releaseYear = meta.releaseYear || '2000';
-            let releaseDate = meta.releaseDate || `${releaseYear}-01-01`;
+            let releaseYear = meta.year || meta.releaseYear || '2000';
+            let releaseDate = meta.date || meta.releaseDate || `${releaseYear}-01-01`;
 
             // Check iconic album dates
             const normAlbum = (meta.album || '').toLowerCase().trim();
