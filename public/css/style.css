@@ -3095,6 +3095,47 @@ video {
 }
 
 
+/* --- Barra de Progreso y Tiempo en Modo Cine (Desktop) --- */
+.cinema-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 380px;
+  margin-top: 14px;
+  margin-bottom: 6px;
+}
+
+.cinema-time {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-family: monospace;
+  font-weight: 700;
+  min-width: 36px;
+  text-align: center;
+}
+
+.cinema-seek-bar {
+  flex: 1;
+  accent-color: var(--spotify-green);
+  cursor: pointer;
+  height: 5px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
+}
+
+.cinema-seek-bar:hover {
+  height: 8px;
+}
+
+.cinema-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
 /* ==========================================================================
    📱 DISEÑO RESPONSIVE Y MÓVIL (100% INTACTO EL MODO PC / ESCRITORIO)
    ========================================================================== */

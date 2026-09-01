@@ -18,7 +18,7 @@
             </div>
             <div class="logo-title">
                 <h1>Música</h1>
-                <p>Plataforma de Videoclips & Análisis Sónico v1.4.75</p>
+                <p>Plataforma de Videoclips & Análisis Sónico v1.4.76</p>
             </div>
         </div>
 
@@ -296,6 +296,13 @@
                     <div class="cinema-track-title" id="cinema-title">Título de la Canción</div>
                     <div class="cinema-track-artist" id="cinema-artist">Artista</div>
                     <div class="cinema-track-album" id="cinema-album">Álbum • 2000</div>
+                </div>
+
+                <!-- ⏱️ Barra de Tiempo y Progreso en Modo Cine -->
+                <div class="cinema-progress-row">
+                    <span class="cinema-time" id="cinema-time-curr">0:00</span>
+                    <input type="range" id="cinema-seek-slider" min="0" max="100" value="0" class="cinema-seek-bar" title="Desplazar punto de reproducción">
+                    <span class="cinema-time" id="cinema-time-dur">0:00</span>
                 </div>
                 <div class="cinema-controls">
                     <button class="btn-cinema-ctrl" id="cinema-prev" title="Canción anterior"><i class="fa-solid fa-backward-step"></i></button>
