@@ -9650,11 +9650,20 @@
     "releaseDate": "1975-10-31",
     "releaseYear": "1975",
     "durationMs": 148000,
-    "durationFmt": "02:28"
+    "durationFmt": "02:28",
+    "year": "1975",
+    "date": "1975-10-31"
   },
   "queen - bohemian rhapsody": {
+    "displayTitle": "Bohemian Rhapsody",
+    "album": "Bohemian Rhapsody (The Original Soundtrack)",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/5bbfab8ae2def08b9d58932b5e6121a4/1000x1000-000000-80-0-0.jpg",
     "releaseDate": "1975-10-31",
-    "releaseYear": "1975"
+    "releaseYear": "1975",
+    "durationMs": 148000,
+    "durationFmt": "02:28",
+    "year": "1975",
+    "date": "1975-10-31"
   },
   "queen - crazy little thing called love - 2011 remaster": {
     "displayTitle": "Crazy Little Thing Called Love",
@@ -9663,18 +9672,27 @@
     "releaseDate": "1979-10-05",
     "releaseYear": "1979",
     "durationMs": 164000,
-    "durationFmt": "02:44"
+    "durationFmt": "02:44",
+    "year": "1979",
+    "date": "1979-01-01"
   },
   "queen - crazy little thing called love": {
+    "displayTitle": "Crazy Little Thing Called Love",
+    "album": "Bohemian Rhapsody (The Original Soundtrack)",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/5bbfab8ae2def08b9d58932b5e6121a4/1000x1000-000000-80-0-0.jpg",
     "releaseDate": "1979-10-05",
-    "releaseYear": "1979"
+    "releaseYear": "1979",
+    "durationMs": 164000,
+    "durationFmt": "02:44",
+    "year": "1979",
+    "date": "1979-01-01"
   },
   "milli vanilli - blame it on the rain": {
     "title": "Blame It on the Rain",
     "artist": "Milli Vanilli",
     "album": "Girl You Know It’s True: The Best of Milli Vanilli",
-    "year": "2013",
-    "date": "2013-01-01",
+    "year": "1989",
+    "date": "1989-03-07",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/306a58f61a608dca43e1f14a2995bc34/1000x1000-000000-80-0-0.jpg"
   },
@@ -9685,22 +9703,27 @@
     "releaseDate": "1980-08-22",
     "releaseYear": "1980",
     "durationMs": 217000,
-    "durationFmt": "03:37"
+    "durationFmt": "03:37",
+    "year": "1980",
+    "date": "1980-06-30"
   },
   "queen - another one bites the dust": {
-    "title": "Another One Bites the Dust",
-    "artist": "Queen",
-    "album": "Greatest Hits",
-    "year": "2008",
-    "date": "2008-01-01",
-    "source": "MusicBrainz Picard"
+    "displayTitle": "Another One Bites The Dust",
+    "album": "The Game",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/156c197582a4d4b40e17d72b79d3df62/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "1980-08-22",
+    "releaseYear": "1980",
+    "durationMs": 217000,
+    "durationFmt": "03:37",
+    "year": "1980",
+    "date": "1980-06-30"
   },
   "michael jackson - billie jean": {
     "title": "Billie Jean",
     "artist": "Michael Jackson",
     "album": "The Essential Michael Jackson",
-    "year": "2005",
-    "date": "2005-01-01",
+    "year": "1982",
+    "date": "1982-11-29",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/32/4f/fd/324ffda2-9e51-8f6a-0c2d-c6fd2b41ac55/074643811224.jpg/600x600bb.jpg"
   },
@@ -9711,7 +9734,9 @@
     "releaseDate": "1987-07-21",
     "releaseYear": "1987",
     "durationMs": 355000,
-    "durationFmt": "05:55"
+    "durationFmt": "05:55",
+    "year": "1987",
+    "date": "1987-07-21"
   },
   "genesis - i can't dance - remastered 2007": {
     "displayTitle": "I Can't Dance",
@@ -9720,7 +9745,9 @@
     "releaseDate": "1991-11-25",
     "releaseYear": "1991",
     "durationMs": 240000,
-    "durationFmt": "04:00"
+    "durationFmt": "04:00",
+    "year": "1991",
+    "date": "1991-10-28"
   },
   "genesis - i can't dance": {
     "displayTitle": "I Can't Dance",
@@ -9729,14 +9756,16 @@
     "releaseDate": "1991-11-25",
     "releaseYear": "1991",
     "durationMs": 240000,
-    "durationFmt": "04:00"
+    "durationFmt": "04:00",
+    "year": "1991",
+    "date": "1991-10-28"
   },
   "richard marx - right here waiting": {
     "title": "Right Here Waiting",
     "artist": "Richard Marx",
     "album": "Unforgettable Love Songs",
-    "year": "2009",
-    "date": "2009-01-01",
+    "year": "1989",
+    "date": "1989-04-26",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6eb779fd8b6a40944ebf72b6b34003e3/1000x1000-000000-80-0-0.jpg"
   },
@@ -9747,7 +9776,9 @@
     "releaseDate": "1990-03-16",
     "releaseYear": "1990",
     "durationMs": 295000,
-    "durationFmt": "04:55"
+    "durationFmt": "04:55",
+    "year": "1990",
+    "date": "1990-03-19"
   },
   "depeche mode - policy of truth": {
     "displayTitle": "Policy of Truth",
@@ -9756,14 +9787,16 @@
     "releaseDate": "1990-03-16",
     "releaseYear": "1990",
     "durationMs": 295000,
-    "durationFmt": "04:55"
+    "durationFmt": "04:55",
+    "year": "1990",
+    "date": "1990-03-19"
   },
   "depeche mode - personal jesus": {
     "title": "Personal Jesus",
     "artist": "Depeche Mode",
     "album": "The Best of Depeche Mode, Volume 1",
-    "year": "2006",
-    "date": "2006-01-01",
+    "year": "1987",
+    "date": "1987-08-29",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/55972109f7c4049deb78402a94ee3b7b/1000x1000-000000-80-0-0.jpg"
   },
@@ -9774,7 +9807,9 @@
     "releaseDate": "1979-11-30",
     "releaseYear": "1979",
     "durationMs": 238000,
-    "durationFmt": "03:58"
+    "durationFmt": "03:58",
+    "year": "1979",
+    "date": "1979-11-23"
   },
   "guns n' roses - you could be mine": {
     "displayTitle": "You Could Be Mine",
@@ -9783,7 +9818,9 @@
     "releaseDate": "1991-09-17",
     "releaseYear": "1991",
     "durationMs": 348000,
-    "durationFmt": "05:48"
+    "durationFmt": "05:48",
+    "year": "1991",
+    "date": "1991-06-21"
   },
   "u2 - one": {
     "displayTitle": "One",
@@ -9792,14 +9829,16 @@
     "releaseDate": "1991-11-18",
     "releaseYear": "1991",
     "durationMs": 276000,
-    "durationFmt": "04:36"
+    "durationFmt": "04:36",
+    "year": "1988",
+    "date": "1988-11-18"
   },
   "the cranberries - zombie": {
     "title": "Zombie",
     "artist": "The Cranberries",
     "album": "Hitarchief Top 2000",
-    "year": "2009",
-    "date": "2009-01-01",
+    "year": "1994",
+    "date": "1994-10-03",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/36917cca6bd7098af00298bba28524a6/1000x1000-000000-80-0-0.jpg"
   },
@@ -9807,8 +9846,8 @@
     "title": "I Will Always Love You",
     "artist": "Whitney Houston",
     "album": "The Ballads Collection",
-    "year": "2009",
-    "date": "2009-01-01",
+    "year": "1992",
+    "date": "1992-11-03",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/d071ab8d81111be6434c2f2cf372ab13/1000x1000-000000-80-0-0.jpg"
   },
@@ -9819,14 +9858,16 @@
     "releaseDate": "1989-01-01",
     "releaseYear": "1989",
     "durationMs": 216000,
-    "durationFmt": "03:36"
+    "durationFmt": "03:36",
+    "year": "1989",
+    "date": "1989-01-01"
   },
   "scorpions - wind of change": {
     "title": "Wind of Change",
     "artist": "Scorpions",
     "album": "The Ultimate Collection: Rock Ballads",
-    "year": "2009",
-    "date": "2009-01-01",
+    "year": "1990",
+    "date": "1990-11-06",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/65/29/ca/6529cad4-827a-8aa5-ebbc-f9de2ea33af2/00602567825265.rgb.jpg/600x600bb.jpg"
   },
@@ -9834,8 +9875,8 @@
     "title": "Just Can't Get Enough",
     "artist": "Depeche Mode",
     "album": "Greatest Hits, Vol. 1",
-    "year": "2009",
-    "date": "2009-01-01",
+    "year": "1981",
+    "date": "1981-09-07",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/19/b8/13/19b81309-d81c-66f7-25b5-ecf545bc2db7/0094635797954.jpg/600x600bb.jpg"
   },
@@ -9846,7 +9887,9 @@
     "releaseDate": "1993-10-29",
     "releaseYear": "1993",
     "durationMs": 191000,
-    "durationFmt": "03:11"
+    "durationFmt": "03:11",
+    "year": "1993",
+    "date": "1993-01-01"
   },
   "new kids on the block - you got it (the right stuff)": {
     "displayTitle": "You Got It (The Right Stuff)",
@@ -9855,7 +9898,9 @@
     "releaseDate": "1989-01-01",
     "releaseYear": "1989",
     "durationMs": 249000,
-    "durationFmt": "04:09"
+    "durationFmt": "04:09",
+    "year": "1988",
+    "date": "1988-09-06"
   },
   "milli vanilli - i'm gonna miss you": {
     "displayTitle": "I'm Gonna Miss You",
@@ -9864,7 +9909,9 @@
     "releaseDate": "1989-06-28",
     "releaseYear": "1989",
     "durationMs": 186000,
-    "durationFmt": "03:06"
+    "durationFmt": "03:06",
+    "year": "1988",
+    "date": "1988-11-14"
   },
   "milli vanilli - girl you know it's true": {
     "title": "Girl You Know It's True",
@@ -9882,7 +9929,9 @@
     "releaseDate": "1996-04-15",
     "releaseYear": "1996",
     "durationMs": 291000,
-    "durationFmt": "04:51"
+    "durationFmt": "04:51",
+    "year": "1995",
+    "date": "1995-10-10"
   },
   "backstreet boys - everybody (backstreet's back) - radio edit": {
     "displayTitle": "Everybody (Backstreet's Back)",
@@ -9891,7 +9940,9 @@
     "releaseDate": "1997-06-30",
     "releaseYear": "1997",
     "durationMs": 224000,
-    "durationFmt": "03:44"
+    "durationFmt": "03:44",
+    "year": "1997",
+    "date": "1997-07-14"
   },
   "backstreet boys - everybody (backstreet's back)": {
     "displayTitle": "Everybody (Backstreet's Back)",
@@ -9900,14 +9951,16 @@
     "releaseDate": "1997-06-30",
     "releaseYear": "1997",
     "durationMs": 224000,
-    "durationFmt": "03:44"
+    "durationFmt": "03:44",
+    "year": "1997",
+    "date": "1997-07-14"
   },
   "nirvana - smells like teen spirit": {
     "title": "Smells Like Teen Spirit",
     "artist": "Nirvana",
     "album": "Classic Cuts Presents: Anthems",
-    "year": "2010",
-    "date": "2010-01-01",
+    "year": "1991",
+    "date": "1991-09-10",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/95/fd/b9/95fdb9b2-6d2b-92a6-97f2-51c1a6d77f1a/00602527874609.rgb.jpg/600x600bb.jpg"
   },
@@ -9918,7 +9971,9 @@
     "releaseDate": "1991-02-19",
     "releaseYear": "1991",
     "durationMs": 266000,
-    "durationFmt": "04:26"
+    "durationFmt": "04:26",
+    "year": "1991",
+    "date": "1991-02-19"
   },
   "oasis - don't look back in anger - remastered": {
     "displayTitle": "Don't Look Back in Anger",
@@ -9927,7 +9982,9 @@
     "releaseDate": "1995-10-02",
     "releaseYear": "1995",
     "durationMs": 287000,
-    "durationFmt": "04:47"
+    "durationFmt": "04:47",
+    "year": "1995",
+    "date": "1995-10-02"
   },
   "oasis - don't look back in anger": {
     "displayTitle": "Don't Look Back in Anger",
@@ -9936,7 +9993,9 @@
     "releaseDate": "1995-10-02",
     "releaseYear": "1995",
     "durationMs": 287000,
-    "durationFmt": "04:47"
+    "durationFmt": "04:47",
+    "year": "1995",
+    "date": "1995-10-02"
   },
   "guns n' roses - yesterdays": {
     "displayTitle": "Yesterdays",
@@ -9945,14 +10004,16 @@
     "releaseDate": "1991-09-17",
     "releaseYear": "1991",
     "durationMs": 193000,
-    "durationFmt": "03:13"
+    "durationFmt": "03:13",
+    "year": "1991",
+    "date": "1991-09-17"
   },
   "bon jovi - always": {
     "title": "Always",
     "artist": "Bon Jovi",
     "album": "Greatest Hits",
-    "year": "2008",
-    "date": "2008-01-01",
+    "year": "1994",
+    "date": "1994-09-12",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/9a/ed/d0/9aedd0b6-e815-9f20-19b8-58b93fa9b1d0/06UMGIM04503.rgb.jpg/600x600bb.jpg"
   },
@@ -9963,15 +10024,20 @@
     "releaseDate": "1995-10-30",
     "releaseYear": "1995",
     "durationMs": 258000,
-    "durationFmt": "04:18"
+    "durationFmt": "04:18",
+    "year": "1995",
+    "date": "1995-10-02"
   },
   "oasis - wonderwall": {
-    "title": "Wonderwall",
-    "artist": "Oasis",
-    "album": "Familiar to Millions",
-    "year": "2000",
-    "date": "2000-01-01",
-    "source": "MusicBrainz Picard"
+    "displayTitle": "Wonderwall",
+    "album": "(What's The Story) Morning Glory?",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ddb062c517401ee74d8a4df6f895d75e/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "1995-10-30",
+    "releaseYear": "1995",
+    "durationMs": 258000,
+    "durationFmt": "04:18",
+    "year": "1995",
+    "date": "1995-10-02"
   },
   "duran duran - ordinary world": {
     "displayTitle": "Ordinary World",
@@ -9980,14 +10046,16 @@
     "releaseDate": "1992-12-07",
     "releaseYear": "1992",
     "durationMs": 277000,
-    "durationFmt": "04:37"
+    "durationFmt": "04:37",
+    "year": "1981",
+    "date": "1981-06-15"
   },
   "no doubt - just a girl": {
     "title": "Just a Girl",
     "artist": "No Doubt",
     "album": "Tragic Kingdom + Rock Steady",
-    "year": "2009",
-    "date": "2009-01-01",
+    "year": "1995",
+    "date": "1995-09-21",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/fe/0a/68/fe0a687a-537e-e902-0778-90465c118f77/00602547870575.rgb.jpg/600x600bb.jpg"
   },
@@ -9998,7 +10066,9 @@
     "releaseDate": "1996-11-04",
     "releaseYear": "1996",
     "durationMs": 172000,
-    "durationFmt": "02:52"
+    "durationFmt": "02:52",
+    "year": "1996",
+    "date": "1996-06-26"
   },
   "londonbeat - i've been thinking about you": {
     "displayTitle": "I've Been Thinking About You",
@@ -10007,14 +10077,16 @@
     "releaseDate": "1990-09-24",
     "releaseYear": "1990",
     "durationMs": 204000,
-    "durationFmt": "03:24"
+    "durationFmt": "03:24",
+    "year": "1990",
+    "date": "1990-01-01"
   },
   "michael jackson - black or white": {
     "title": "Black or White",
     "artist": "Michael Jackson",
     "album": "The Essential Michael Jackson",
-    "year": "2005",
-    "date": "2005-01-01",
+    "year": "1991",
+    "date": "1991-11-11",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/3d/9d/38/3d9d3811-71f0-3a0e-1ada-3004e56ff852/827969428726.jpg/600x600bb.jpg"
   },
@@ -10025,14 +10097,16 @@
     "releaseDate": "1997-05-27",
     "releaseYear": "1997",
     "durationMs": 306000,
-    "durationFmt": "05:06"
+    "durationFmt": "05:06",
+    "year": "1997",
+    "date": "1997-01-01"
   },
   "jennifer lopez - if you had my love": {
     "title": "If You Had My Love",
     "artist": "Jennifer Lopez",
     "album": "Greatest Hits",
-    "year": "2007",
-    "date": "2007-01-01",
+    "year": "1999",
+    "date": "1999-05-04",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/c7/f4/6d/c7f46dbd-bc8d-7a7a-cf66-4b96dc59e105/888880316592.jpg/600x600bb.jpg"
   },
@@ -10043,7 +10117,9 @@
     "releaseDate": "1999-01-12",
     "releaseYear": "1999",
     "durationMs": 210000,
-    "durationFmt": "03:30"
+    "durationFmt": "03:30",
+    "year": "1998",
+    "date": "1998-09-29"
   },
   "britney spears - baby one more time": {
     "title": "Baby One More Time",
@@ -10060,7 +10136,9 @@
     "releaseDate": "1997-12-01",
     "releaseYear": "1997",
     "durationMs": 264000,
-    "durationFmt": "04:24"
+    "durationFmt": "04:24",
+    "year": "1997",
+    "date": "1997-12-01"
   },
   "whitney houston - i have nothing - film version": {
     "displayTitle": "I Have Nothing - Film Version",
@@ -10069,14 +10147,16 @@
     "releaseDate": "1992-11-17",
     "releaseYear": "1992",
     "durationMs": 296000,
-    "durationFmt": "04:56"
+    "durationFmt": "04:56",
+    "year": "1992",
+    "date": "1992-11-17"
   },
   "eros ramazzotti - più bella cosa": {
     "title": "Più bella cosa",
     "artist": "Eros Ramazzotti",
     "album": "e²",
-    "year": "2007",
-    "date": "2007-01-01",
+    "year": "1996",
+    "date": "1996-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Features/08/d3/f6/dj.offlunts.jpg/600x600bb.jpg"
   },
@@ -10087,14 +10167,16 @@
     "releaseDate": "1995-10-31",
     "releaseYear": "1995",
     "durationMs": 240000,
-    "durationFmt": "04:00"
+    "durationFmt": "04:00",
+    "year": "1995",
+    "date": "1995-08-08"
   },
   "michael jackson - heal the world": {
     "title": "Heal the World",
     "artist": "Michael Jackson",
     "album": "The Essential Michael Jackson",
-    "year": "2005",
-    "date": "2005-01-01",
+    "year": "1991",
+    "date": "1991-11-26",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/cf/68/f9/cf68f9d4-e395-9ced-3e50-8cf7f1f9d3e0/884977307832.jpg/600x600bb.jpg"
   },
@@ -10102,8 +10184,8 @@
     "title": "Quit Playing Games (With My Heart)",
     "artist": "Backstreet Boys",
     "album": "100 Hits: 90s Essentials",
-    "year": "2013",
-    "date": "2013-01-01",
+    "year": "1996",
+    "date": "1996-05-06",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/59/00/53/59005338-772d-2dd7-e2ff-674484629337/012414158925.jpg/600x600bb.jpg"
   },
@@ -10129,8 +10211,8 @@
     "title": "Born in the U.S.A.",
     "artist": "Bruce Springsteen",
     "album": "The Essential Bruce Springsteen",
-    "year": "2003",
-    "date": "2003-01-01",
+    "year": "1984",
+    "date": "1984-06-04",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/32/72/68/327268ba-b9dd-b322-2a16-bdd0212df48c/074643865326.jpg/600x600bb.jpg"
   },
@@ -10141,7 +10223,9 @@
     "releaseDate": "1987-11-14",
     "releaseYear": "1987",
     "durationMs": 251000,
-    "durationFmt": "04:11"
+    "durationFmt": "04:11",
+    "year": "1987",
+    "date": "1987-08-31"
   },
   "michael jackson - smooth criminal": {
     "displayTitle": "Smooth Criminal",
@@ -10150,25 +10234,29 @@
     "releaseDate": "1987-11-14",
     "releaseYear": "1987",
     "durationMs": 251000,
-    "durationFmt": "04:11"
+    "durationFmt": "04:11",
+    "year": "1987",
+    "date": "1987-08-31"
   },
   "rick astley - never gonna give you up": {
     "title": "Never Gonna Give You Up",
     "artist": "Rick Astley",
     "album": "80 was prachtig!",
-    "year": "2009",
-    "date": "2009-01-01",
+    "year": "1987",
+    "date": "1987-07-27",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/ce/6d/5b/ce6d5b48-8c36-b990-3b9c-81862fadb459/0859381157694.jpg/600x600bb.jpg"
   },
   "the verve - bitter sweet symphony": {
-    "title": "Bitter Sweet Symphony",
-    "artist": "The Verve",
-    "album": "Hitarchief Top 2000",
-    "year": "2009",
-    "date": "2009-01-01",
-    "source": "MusicBrainz Picard",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/5c/b1/85/5cb18512-9cbd-7b84-4042-37f23bc2ae45/17UMGIM89555.rgb.jpg/600x600bb.jpg"
+    "displayTitle": "Bitter Sweet Symphony",
+    "album": "Urban Hymns",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ecc7727e897198892b98e7c019fba45f/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "1997-06-16",
+    "releaseYear": "1997",
+    "durationMs": 357000,
+    "durationFmt": "05:57",
+    "year": "1997",
+    "date": "1997-06-16"
   },
   "frankie valli - grease - 2007 remaster": {
     "displayTitle": "Grease",
@@ -10177,7 +10265,9 @@
     "releaseDate": "1978-05-01",
     "releaseYear": "1978",
     "durationMs": 439000,
-    "durationFmt": "07:19"
+    "durationFmt": "07:19",
+    "year": "1967",
+    "date": "1967-05-01"
   },
   "frankie valli - grease": {
     "displayTitle": "Grease",
@@ -10186,7 +10276,9 @@
     "releaseDate": "1978-05-01",
     "releaseYear": "1978",
     "durationMs": 439000,
-    "durationFmt": "07:19"
+    "durationFmt": "07:19",
+    "year": "1967",
+    "date": "1967-05-01"
   },
   "spice girls - say you'll be there": {
     "displayTitle": "Say You'll Be There",
@@ -10195,7 +10287,9 @@
     "releaseDate": "1996-11-04",
     "releaseYear": "1996",
     "durationMs": 235000,
-    "durationFmt": "03:55"
+    "durationFmt": "03:55",
+    "year": "1996",
+    "date": "1996-09-19"
   },
   "dire straits - money for nothing - edit": {
     "displayTitle": "Money For Nothing - Edit",
@@ -10204,14 +10298,16 @@
     "releaseDate": "1985-06-24",
     "releaseYear": "1985",
     "durationMs": 289000,
-    "durationFmt": "04:49"
+    "durationFmt": "04:49",
+    "year": "1985",
+    "date": "1985-05-13"
   },
   "depeche mode - enjoy the silence": {
     "title": "Enjoy the Silence",
     "artist": "Depeche Mode",
     "album": "The Best of Videos, Vol. 1",
-    "year": "2006",
-    "date": "2006-01-01",
+    "year": "1990",
+    "date": "1990-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/a1/67/9c/a1679c06-1050-239c-bd3a-c374f7c6459e/886449952601.jpg/600x600bb.jpg"
   },
@@ -10222,7 +10318,9 @@
     "releaseDate": "1986-11-04",
     "releaseYear": "1986",
     "durationMs": 230000,
-    "durationFmt": "03:50"
+    "durationFmt": "03:50",
+    "year": "1984",
+    "date": "1984-01-16"
   },
   "pretenders - don't get me wrong": {
     "displayTitle": "Don't Get Me Wrong",
@@ -10231,14 +10329,16 @@
     "releaseDate": "1986-11-04",
     "releaseYear": "1986",
     "durationMs": 230000,
-    "durationFmt": "03:50"
+    "durationFmt": "03:50",
+    "year": "1984",
+    "date": "1984-01-16"
   },
   "fine young cannibals - she drives me crazy": {
     "title": "She Drives Me Crazy",
     "artist": "Fine Young Cannibals",
     "album": "Las 101 canciones de E.G.B.",
-    "year": "2015",
-    "date": "2015-01-01",
+    "year": "1988",
+    "date": "1988-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/4f/fe/9d/4ffe9dfd-4fe7-6c13-cf1e-96d02732d9e9/639842820820.jpg/600x600bb.jpg"
   },
@@ -10249,7 +10349,9 @@
     "releaseDate": "1983-01-21",
     "releaseYear": "1983",
     "durationMs": 216000,
-    "durationFmt": "03:36"
+    "durationFmt": "03:36",
+    "year": "1982",
+    "date": "1982-09-01"
   },
   "eurythmics, annie lennox, dave stewart - sweet dreams (are made of this)": {
     "displayTitle": "Sweet Dreams (Are Made of This)",
@@ -10258,14 +10360,16 @@
     "releaseDate": "1983-01-21",
     "releaseYear": "1983",
     "durationMs": 216000,
-    "durationFmt": "03:36"
+    "durationFmt": "03:36",
+    "year": "1982",
+    "date": "1982-09-01"
   },
   "depeche mode - never let me down again": {
     "title": "Never Let Me Down Again",
     "artist": "Depeche Mode",
     "album": "Greatest Hits, Vol. 1",
-    "year": "2009",
-    "date": "2009-01-01",
+    "year": "1987",
+    "date": "1987-08-24",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/fb/84/e0/fb84e05f-3b17-11a7-250b-139d403c10bc/886445705096.jpg/600x600bb.jpg"
   },
@@ -10273,7 +10377,9 @@
     "releaseDate": "1985-04-05",
     "releaseYear": "1985",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music/c6/e1/c8/mzi.ixgzfcmc.jpg/600x600bb.jpg",
-    "album": "Hunting High and Low (Deluxe Edition)"
+    "album": "Hunting High and Low (Deluxe Edition)",
+    "year": "1985",
+    "date": "1985-06-01"
   },
   "the cure - lullaby": {
     "title": "Lullaby",
@@ -10288,8 +10394,8 @@
     "title": "Slave to Love",
     "artist": "Bryan Ferry",
     "album": "As 100 mais da antena 1, volume 2",
-    "year": "2009",
-    "date": "2009-01-01",
+    "year": "1985",
+    "date": "1985-05-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f0/06/d5/f006d538-140b-012f-b852-a8873081d6fd/13ULAIM48843.rgb.jpg/600x600bb.jpg"
   },
@@ -10300,7 +10406,9 @@
     "releaseDate": "1986-03-25",
     "releaseYear": "1986",
     "durationMs": 226000,
-    "durationFmt": "03:46"
+    "durationFmt": "03:46",
+    "year": "1986",
+    "date": "1986-02-05"
   },
   "santana, rob thomas - smooth (feat. rob thomas)": {
     "displayTitle": "Smooth (feat. Rob Thomas)",
@@ -10309,19 +10417,25 @@
     "releaseDate": "1999-06-29",
     "releaseYear": "1999",
     "durationMs": 296000,
-    "durationFmt": "04:56"
+    "durationFmt": "04:56",
+    "year": "1999",
+    "date": "1999-06-15"
   },
   "tears for fears - shout": {
     "releaseDate": "1984-11-19",
     "releaseYear": "1984",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/74/41/43/744143ae-afad-8380-106e-1c1bc48922e4/14UMGIM34762.rgb.jpg/600x600bb.jpg",
-    "album": "Songs from the Big Chair"
+    "album": "Songs from the Big Chair",
+    "year": "1984",
+    "date": "1984-11-23"
   },
   "rick astley - together forever": {
     "releaseDate": "1988-01-12",
     "releaseYear": "1988",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/ce/6d/5b/ce6d5b48-8c36-b990-3b9c-81862fadb459/0859381157694.jpg/600x600bb.jpg",
-    "album": "Whenever You Need Somebody"
+    "album": "Whenever You Need Somebody",
+    "year": "1987",
+    "date": "1987-11-13"
   },
   "madonna - into the groove": {
     "displayTitle": "Into the Groove",
@@ -10330,14 +10444,16 @@
     "releaseDate": "1985-07-23",
     "releaseYear": "1985",
     "durationMs": 285000,
-    "durationFmt": "04:45"
+    "durationFmt": "04:45",
+    "year": "1984",
+    "date": "1984-11-12"
   },
   "r.e.m. - shiny happy people": {
     "title": "Shiny Happy People",
     "artist": "R.E.M.",
     "album": "Die ultimative Chart Show: Die erfolgreichsten Lieblingssongs der Männer",
-    "year": "2009",
-    "date": "2009-01-01",
+    "year": "1991",
+    "date": "1991-03-12",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/05/ae/86/05ae8650-7bce-2377-8959-78ea033a99d9/00888072013711.rgb.jpg/600x600bb.jpg"
   },
@@ -10345,8 +10461,8 @@
     "title": "Bette Davis Eyes",
     "artist": "Kim Carnes",
     "album": "100 Essential Songs for Her",
-    "year": "2009",
-    "date": "2009-01-01",
+    "year": "1975",
+    "date": "1975-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/91/41/9e/91419ea4-cca8-1834-c047-f4ce973e80fc/13UABIM59266.rgb.jpg/600x600bb.jpg"
   },
@@ -10357,7 +10473,9 @@
     "releaseDate": "1992-03-02",
     "releaseYear": "1992",
     "durationMs": 218000,
-    "durationFmt": "03:38"
+    "durationFmt": "03:38",
+    "year": "1991",
+    "date": "1991-09-24"
   },
   "daryl hall & john oates - maneater - radio edit": {
     "displayTitle": "Maneater",
@@ -10366,22 +10484,27 @@
     "releaseDate": "1982-10-31",
     "releaseYear": "1982",
     "durationMs": 206000,
-    "durationFmt": "03:26"
+    "durationFmt": "03:26",
+    "year": "1982",
+    "date": "1982-10-04"
   },
   "daryl hall & john oates - maneater": {
-    "title": "Maneater",
-    "artist": "Daryl Hall & John Oates",
-    "album": "Ultimate 80s Dance Party",
-    "year": "2016",
-    "date": "2016-01-01",
-    "source": "MusicBrainz Picard"
+    "displayTitle": "Maneater",
+    "album": "Haynes DAD - Ultimate Guide To Rock",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/d21343365670113449d46f8a0e1cff18/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "1982-10-31",
+    "releaseYear": "1982",
+    "durationMs": 206000,
+    "durationFmt": "03:26",
+    "year": "1982",
+    "date": "1982-10-04"
   },
   "cyndi lauper - girls just want to have fun": {
     "title": "Girls Just Want to Have Fun",
     "artist": "Cyndi Lauper",
     "album": "100 Essential Songs for Her",
-    "year": "2009",
-    "date": "2009-01-01",
+    "year": "1983",
+    "date": "1983-09-06",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/8a/8c/13/8a8c13e0-06af-1710-7b7d-ebec65fb8361/074643893022.jpg/600x600bb.jpg"
   },
@@ -10392,22 +10515,27 @@
     "releaseDate": "1984-01-04",
     "releaseYear": "1984",
     "durationMs": 241000,
-    "durationFmt": "04:01"
+    "durationFmt": "04:01",
+    "year": "1983",
+    "date": "1983-12-21"
   },
   "van halen - jump": {
-    "title": "Jump",
-    "artist": "Van Halen",
+    "displayTitle": "Jump",
     "album": "1984",
-    "year": "1984",
-    "date": "1984-01-01",
-    "source": "MusicBrainz Picard"
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/0649448bcdeeeb48c25edc0e83653711/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "1984-01-04",
+    "releaseYear": "1984",
+    "durationMs": 241000,
+    "durationFmt": "04:01",
+    "year": "1983",
+    "date": "1983-12-21"
   },
   "michael jackson - remember the time": {
     "title": "Remember the Time",
     "artist": "Michael Jackson",
     "album": "Michael Jackson: The King Of Pop",
-    "year": "2010",
-    "date": "2010-01-01",
+    "year": "1991",
+    "date": "1991-11-26",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/cf/68/f9/cf68f9d4-e395-9ced-3e50-8cf7f1f9d3e0/884977307832.jpg/600x600bb.jpg"
   },
@@ -10415,8 +10543,8 @@
     "title": "Daddy Cool",
     "artist": "Boney M.",
     "album": "The Party Mix: 70s",
-    "year": "2013",
-    "date": "2013-01-01",
+    "year": "1976",
+    "date": "1976-05-28",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music4/v4/aa/23/e3/aa23e3a1-de3e-5aa7-870b-a1403afb2b10/886444503273.jpg/600x600bb.jpg"
   },
@@ -10424,8 +10552,8 @@
     "title": "Rivers of Babylon",
     "artist": "Boney M.",
     "album": "De Finale Foute CD van Q-music, vol.13",
-    "year": "2014",
-    "date": "2014-01-01",
+    "year": "1970",
+    "date": "1970-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Features/86/5b/a5/dj.wobwaecw.jpg/600x600bb.jpg"
   },
@@ -10451,8 +10579,8 @@
     "title": "Macho Man",
     "artist": "Village People",
     "album": "The Very Best of Boney M. & Village People",
-    "year": "2008",
-    "date": "2008-01-01",
+    "year": "1978",
+    "date": "1978-02-12",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/f9/3b/e0/f93be046-d1f7-c9f5-2c43-b4d9b157816a/00602577178016.rgb.jpg/600x600bb.jpg"
   },
@@ -10487,8 +10615,8 @@
     "title": "Like a Prayer",
     "artist": "Madonna",
     "album": "Celebration: The Video Collection",
-    "year": "2009",
-    "date": "2009-01-01",
+    "year": "1985",
+    "date": "1985-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/20/3c/f5/203cf53d-689e-528f-29d7-ba33758254aa/mzi.rotbotfl.jpg/600x600bb.jpg"
   },
@@ -10496,8 +10624,8 @@
     "title": "Like a Virgin",
     "artist": "Madonna",
     "album": "Celebration: The Video Collection",
-    "year": "2009",
-    "date": "2009-01-01",
+    "year": "1990",
+    "date": "1990-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/8e/80/32/8e803264-c925-14dd-3412-2d7652c3df7b/mzi.wxptosaa.jpg/600x600bb.jpg"
   },
@@ -10526,7 +10654,9 @@
     "releaseDate": "1995-03-27",
     "releaseYear": "1995",
     "durationMs": 242000,
-    "durationFmt": "04:02"
+    "durationFmt": "04:02",
+    "year": "1995",
+    "date": "1995-03-27"
   },
   "take that - back for good": {
     "releaseDate": "1995-03-27",
@@ -10539,7 +10669,9 @@
     "releaseDate": "1990-07-15",
     "releaseYear": "1990",
     "durationMs": 174000,
-    "durationFmt": "02:54"
+    "durationFmt": "02:54",
+    "year": "1966",
+    "date": "1966-07-25"
   },
   "phil collins - you can't hurry love": {
     "displayTitle": "You Can't Hurry Love",
@@ -10548,7 +10680,9 @@
     "releaseDate": "1990-07-15",
     "releaseYear": "1990",
     "durationMs": 174000,
-    "durationFmt": "02:54"
+    "durationFmt": "02:54",
+    "year": "1966",
+    "date": "1966-07-25"
   },
   "phil collins - in the air tonight - 2015 remaster": {
     "displayTitle": "In the Air Tonight",
@@ -10557,15 +10691,20 @@
     "releaseDate": "1990-07-15",
     "releaseYear": "1990",
     "durationMs": 393000,
-    "durationFmt": "06:33"
+    "durationFmt": "06:33",
+    "year": "1990",
+    "date": "1990-01-01"
   },
   "phil collins - in the air tonight": {
-    "title": "In The Air Tonight",
-    "artist": "Phil Collins",
-    "album": "The Singles",
-    "year": "2016",
-    "date": "2016-01-01",
-    "source": "MusicBrainz Picard"
+    "displayTitle": "In the Air Tonight",
+    "album": "Serious Hits...Live! (2019 Remaster)",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/91beeb3909afe72adbe38e04e8645801/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "1990-07-15",
+    "releaseYear": "1990",
+    "durationMs": 393000,
+    "durationFmt": "06:33",
+    "year": "1990",
+    "date": "1990-01-01"
   },
   "phil collins - another day in paradise - 2016 remaster": {
     "displayTitle": "Another Day in Paradise",
@@ -10574,15 +10713,20 @@
     "releaseDate": "1990-07-15",
     "releaseYear": "1990",
     "durationMs": 336000,
-    "durationFmt": "05:36"
+    "durationFmt": "05:36",
+    "year": "1989",
+    "date": "1989-10-23"
   },
   "phil collins - another day in paradise": {
-    "title": "Another Day In Paradise",
-    "artist": "Phil Collins",
-    "album": "The Singles",
-    "year": "2016",
-    "date": "2016-01-01",
-    "source": "MusicBrainz Picard"
+    "displayTitle": "Another Day in Paradise",
+    "album": "Serious Hits...Live! (2019 Remaster)",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/91beeb3909afe72adbe38e04e8645801/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "1990-07-15",
+    "releaseYear": "1990",
+    "durationMs": 336000,
+    "durationFmt": "05:36",
+    "year": "1989",
+    "date": "1989-10-23"
   },
   "jennifer lopez - let's get loud": {
     "title": "Let's Get Loud",
@@ -10606,8 +10750,8 @@
     "title": "Waiting For Tonight",
     "artist": "Jennifer Lopez",
     "album": "Greatest Hits",
-    "year": "2007",
-    "date": "2007-01-01",
+    "year": "1999",
+    "date": "1999-04-20",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/c7/f4/6d/c7f46dbd-bc8d-7a7a-cf66-4b96dc59e105/888880316592.jpg/600x600bb.jpg"
   },
@@ -10618,7 +10762,9 @@
     "releaseDate": "1992-01-01",
     "releaseYear": "1992",
     "durationMs": 225000,
-    "durationFmt": "03:45"
+    "durationFmt": "03:45",
+    "year": "1992",
+    "date": "1992-03-24"
   },
   "snap! - the power": {
     "displayTitle": "The Power",
@@ -10645,7 +10791,9 @@
     "releaseDate": "1990-05-20",
     "releaseYear": "1990",
     "durationMs": 259000,
-    "durationFmt": "04:19"
+    "durationFmt": "04:19",
+    "year": "1990",
+    "date": "1990-10-17"
   },
   "roxette - the look": {
     "title": "The Look",
@@ -10681,7 +10829,9 @@
     "releaseDate": "1991-11-04",
     "releaseYear": "1991",
     "durationMs": 230000,
-    "durationFmt": "03:50"
+    "durationFmt": "03:50",
+    "year": "1991",
+    "date": "1991-03-27"
   },
   "roxette - joyride - single version": {
     "displayTitle": "Joyride",
@@ -10875,15 +11025,20 @@
     "releaseDate": "1991-10-14",
     "releaseYear": "1991",
     "durationMs": 257000,
-    "durationFmt": "04:17"
+    "durationFmt": "04:17",
+    "year": "1991",
+    "date": "1991-01-01"
   },
   "queen - the show must go on": {
-    "title": "The Show Must Go On",
-    "artist": "Queen",
-    "album": "Greatest Hits",
-    "year": "2008",
-    "date": "2008-01-01",
-    "source": "MusicBrainz Picard"
+    "displayTitle": "The Show Must Go On",
+    "album": "Live Around The World",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8d741cce7897d5b4b30234e2a728fd0f/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "1991-10-14",
+    "releaseYear": "1991",
+    "durationMs": 257000,
+    "durationFmt": "04:17",
+    "year": "1991",
+    "date": "1991-01-01"
   },
   "bon jovi - livin' on a prayer": {
     "displayTitle": "Livin' On A Prayer",
@@ -10941,7 +11096,9 @@
     "releaseDate": "1983-11-14",
     "releaseYear": "1983",
     "durationMs": 237000,
-    "durationFmt": "03:57"
+    "durationFmt": "03:57",
+    "year": "1998",
+    "date": "1998-08-26"
   },
   "irene cara - flashdance...what a feeling": {
     "displayTitle": "Flashdance...What a Feeling",
@@ -10950,7 +11107,9 @@
     "releaseDate": "1983-11-14",
     "releaseYear": "1983",
     "durationMs": 237000,
-    "durationFmt": "03:57"
+    "durationFmt": "03:57",
+    "year": "1998",
+    "date": "1998-08-26"
   },
   "modern talking - brother louie": {
     "title": "Brother Louie",
@@ -11175,7 +11334,9 @@
     "releaseDate": "1985-01-01",
     "releaseYear": "1985",
     "durationMs": 231000,
-    "durationFmt": "03:51"
+    "durationFmt": "03:51",
+    "year": "1991",
+    "date": "1991-01-01"
   },
   "paul young - every time you go away - radio edit": {
     "displayTitle": "Every Time You Go Away",
@@ -11235,8 +11396,8 @@
     "title": "You Give Love a Bad Name",
     "artist": "Bon Jovi",
     "album": "Greatest Hits",
-    "year": "2008",
-    "date": "2008-01-01",
+    "year": "1986",
+    "date": "1986-08",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/40/16/3e/40163e24-6985-b785-d4ea-cbae07d74812/06UMGIM05422.rgb.jpg/600x600bb.jpg"
   },
@@ -11273,7 +11434,9 @@
     "releaseDate": "1986-09-22",
     "releaseYear": "1986",
     "durationMs": 281000,
-    "durationFmt": "04:41"
+    "durationFmt": "04:41",
+    "year": "1986",
+    "date": "1986-09-12"
   },
   "barbra streisand - woman in love": {
     "displayTitle": "Woman in Love",
@@ -11282,7 +11445,9 @@
     "releaseDate": "1980-08-16",
     "releaseYear": "1980",
     "durationMs": 233000,
-    "durationFmt": "03:53"
+    "durationFmt": "03:53",
+    "year": "1980",
+    "date": "1980-09-23"
   },
   "survivor - eye of the tiger": {
     "title": "Eye of the Tiger",
@@ -11326,7 +11491,9 @@
     "releaseDate": "1985-04-22",
     "releaseYear": "1985",
     "durationMs": 238000,
-    "durationFmt": "03:58"
+    "durationFmt": "03:58",
+    "year": "1983",
+    "date": "1983-01-01"
   },
   "u2 - pride (in the name of love) - remastered 2009": {
     "displayTitle": "Pride (In The Name Of Love)",
@@ -11502,7 +11669,9 @@
     "releaseDate": "1997-12-29",
     "releaseYear": "1997",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/fe/01/94/fe0194d2-ec9d-a83f-817b-02938d2141f2/00731455785821.rgb.jpg/600x600bb.jpg",
-    "album": "Postcards from Heaven"
+    "album": "Postcards from Heaven",
+    "year": "1998",
+    "date": "1998-05-04"
   },
   "robin s - show me love": {
     "displayTitle": "Show Me Love",
@@ -11511,7 +11680,9 @@
     "releaseDate": "1993-06-15",
     "releaseYear": "1993",
     "durationMs": 269000,
-    "durationFmt": "04:29"
+    "durationFmt": "04:29",
+    "year": "1993",
+    "date": "1993-01-01"
   },
   "simply red - something got me started": {
     "displayTitle": "Something Got Me Started",
@@ -11520,7 +11691,9 @@
     "releaseDate": "1991-02-22",
     "releaseYear": "1991",
     "durationMs": 240000,
-    "durationFmt": "04:00"
+    "durationFmt": "04:00",
+    "year": "1991",
+    "date": "1991-01-01"
   },
   "lou bega - mambo no. 5 (a little bit of...)": {
     "displayTitle": "Mambo No. 5 (A Little Bit of...)",
@@ -11538,7 +11711,9 @@
     "releaseDate": "1991-09-17",
     "releaseYear": "1991",
     "durationMs": 537000,
-    "durationFmt": "08:57"
+    "durationFmt": "08:57",
+    "year": "1992",
+    "date": "1992-01-01"
   },
   "wet wet wet - love is all around - from \"four weddings and a funeral\"": {
     "displayTitle": "Love Is All Around",
@@ -11547,7 +11722,9 @@
     "releaseDate": "1995-01-01",
     "releaseYear": "1995",
     "durationMs": 246000,
-    "durationFmt": "04:06"
+    "durationFmt": "04:06",
+    "year": "1994",
+    "date": "1994-03-18"
   },
   "wet wet wet - love is all around": {
     "title": "Love Is All Around",
@@ -11564,7 +11741,9 @@
     "releaseDate": "1995-05-01",
     "releaseYear": "1995",
     "durationMs": 189000,
-    "durationFmt": "03:09"
+    "durationFmt": "03:09",
+    "year": "1993",
+    "date": "1993-01-01"
   },
   "emilia - big big world": {
     "displayTitle": "Big Big World",
@@ -11573,7 +11752,9 @@
     "releaseDate": "1998-10-09",
     "releaseYear": "1998",
     "durationMs": 202000,
-    "durationFmt": "03:22"
+    "durationFmt": "03:22",
+    "year": "1999",
+    "date": "1999-01-01"
   },
   "natalie imbruglia - torn": {
     "displayTitle": "Torn",
@@ -11618,7 +11799,9 @@
     "releaseDate": "1998-08-18",
     "releaseYear": "1998",
     "durationMs": 299000,
-    "durationFmt": "04:59"
+    "durationFmt": "04:59",
+    "year": "1991",
+    "date": "1991-01-01"
   },
   "aerosmith - i don't want to miss a thing": {
     "displayTitle": "I Don't Want to Miss a Thing",
@@ -11773,8 +11956,8 @@
     "title": "The Final Countdown",
     "artist": "Europe",
     "album": "Le 100 canzoni di sempre internazionali",
-    "year": "2009",
-    "date": "2009-01-01",
+    "year": "1987",
+    "date": "1987-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f27265df605c4bce229b0623e18f179a/1000x1000-000000-80-0-0.jpg"
   },
@@ -11839,14 +12022,16 @@
     "releaseDate": "1975-01-01",
     "releaseYear": "1975",
     "durationMs": 435000,
-    "durationFmt": "07:15"
+    "durationFmt": "07:15",
+    "year": "1985",
+    "date": "1985-01-01"
   },
   "status quo - whatever you want": {
     "title": "Whatever You Want",
     "artist": "Status Quo",
     "album": "101 Classic Hits",
-    "year": "2017",
-    "date": "2017-01-01",
+    "year": "1977",
+    "date": "1977-11",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/766c7acca10a3ef6605e6bf6a59e02a9/1000x1000-000000-80-0-0.jpg"
   },
@@ -11863,8 +12048,8 @@
     "title": "Never Ending Story",
     "artist": "Limahl",
     "album": "80er Pop Hits",
-    "year": "2021",
-    "date": "2021-01-01",
+    "year": "1997",
+    "date": "1997-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/92a3450c8f3f7e42f336f22c07eb6113/1000x1000-000000-80-0-0.jpg"
   },
@@ -11875,7 +12060,9 @@
     "releaseDate": "1979-03-01",
     "releaseYear": "1979",
     "durationMs": 249000,
-    "durationFmt": "04:09"
+    "durationFmt": "04:09",
+    "year": "1979",
+    "date": "1979-03-16"
   },
   "supertramp - the logical song": {
     "displayTitle": "The Logical Song",
@@ -11884,7 +12071,9 @@
     "releaseDate": "1979-03-01",
     "releaseYear": "1979",
     "durationMs": 249000,
-    "durationFmt": "04:09"
+    "durationFmt": "04:09",
+    "year": "1979",
+    "date": "1979-03-16"
   },
   "bonnie tyler - holding out for a hero - from \"footloose\" soundtrack": {
     "displayTitle": "Holding Out for a Hero",
@@ -11911,7 +12100,9 @@
     "releaseDate": "1988-08-01",
     "releaseYear": "1988",
     "durationMs": 228000,
-    "durationFmt": "03:48"
+    "durationFmt": "03:48",
+    "year": "1988",
+    "date": "1988-11-21"
   },
   "aerosmith - crazy": {
     "title": "Crazy",
@@ -12007,8 +12198,8 @@
     "title": "Thriller",
     "artist": "Michael Jackson",
     "album": "Michael Jackson: The King Of Pop",
-    "year": "2010",
-    "date": "2010-01-01",
+    "year": "1982",
+    "date": "1982-11-29",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/92a024220a9532489c75c9d994835697/1000x1000-000000-80-0-0.jpg"
   },
@@ -12045,7 +12236,9 @@
     "releaseDate": "1984-09-27",
     "releaseYear": "1984",
     "durationMs": 226000,
-    "durationFmt": "03:46"
+    "durationFmt": "03:46",
+    "year": "1984",
+    "date": "1984-09-27"
   },
   "alphaville - forever young": {
     "displayTitle": "Forever Young",
@@ -12054,7 +12247,9 @@
     "releaseDate": "1984-09-27",
     "releaseYear": "1984",
     "durationMs": 226000,
-    "durationFmt": "03:46"
+    "durationFmt": "03:46",
+    "year": "1984",
+    "date": "1984-09-27"
   },
   "orchestral manoeuvres in the dark - enola gay - remastered 2003": {
     "displayTitle": "Enola Gay",
@@ -12063,7 +12258,9 @@
     "releaseDate": "1980-09-26",
     "releaseYear": "1980",
     "durationMs": 340000,
-    "durationFmt": "05:40"
+    "durationFmt": "05:40",
+    "year": "1982",
+    "date": "1982-01-01"
   },
   "orchestral manoeuvres in the dark - enola gay": {
     "displayTitle": "Enola Gay",
@@ -12072,7 +12269,9 @@
     "releaseDate": "1980-09-26",
     "releaseYear": "1980",
     "durationMs": 340000,
-    "durationFmt": "05:40"
+    "durationFmt": "05:40",
+    "year": "1982",
+    "date": "1982-01-01"
   },
   "kool & the gang - celebration": {
     "displayTitle": "Celebration",
@@ -12090,22 +12289,27 @@
     "releaseDate": "1981-11-20",
     "releaseYear": "1981",
     "durationMs": 291000,
-    "durationFmt": "04:51"
+    "durationFmt": "04:51",
+    "year": "1981",
+    "date": "1981-09-24"
   },
   "kool & the gang - get down on it": {
-    "title": "Get Down on It",
-    "artist": "Kool & the Gang",
-    "album": "The Best of Kool & The Gang",
-    "year": "2001",
-    "date": "2001-01-01",
-    "source": "MusicBrainz Picard"
+    "displayTitle": "Get Down On It",
+    "album": "Something Special",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/432ebc60ba4d20887d67ef6b3cece11e/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "1981-11-20",
+    "releaseYear": "1981",
+    "durationMs": 291000,
+    "durationFmt": "04:51",
+    "year": "1981",
+    "date": "1981-09-24"
   },
   "queen - i want to break free": {
     "title": "I Want to Break Free",
     "artist": "Queen",
     "album": "Kiss FM: La mejor música (edición 2008)",
-    "year": "2008",
-    "date": "2008-01-01",
+    "year": "1984",
+    "date": "1984-02-27",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/b7/fe/49/b7fe491a-974c-d792-c430-f80ac605b423/14DMGIM05556.rgb.jpg/600x600bb.jpg"
   },
@@ -12152,7 +12356,9 @@
     "releaseDate": "1979-04-13",
     "releaseYear": "1979",
     "durationMs": 224000,
-    "durationFmt": "03:44"
+    "durationFmt": "03:44",
+    "year": "1979",
+    "date": "1979-04-13"
   },
   "michael jackson - man in the mirror - 2012 remaster": {
     "displayTitle": "Man in the Mirror",
@@ -12176,8 +12382,8 @@
     "title": "You Get What You Give",
     "artist": "New Radicals",
     "album": "Never Forget: The Ultimate 90s Collection",
-    "year": "2007",
-    "date": "2007-01-01",
+    "year": "1998",
+    "date": "1998-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/57293301a3a7573a3b7dab693fcb51d9/1000x1000-000000-80-0-0.jpg"
   },
@@ -12185,8 +12391,8 @@
     "title": "Born Slippy (NUXX)",
     "artist": "Underworld",
     "album": "I Love 90s",
-    "year": "2016",
-    "date": "2016-01-01",
+    "year": "1996",
+    "date": "1996-07",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/97460d8b65336a11623fb223930e74d0/1000x1000-000000-80-0-0.jpg"
   },
@@ -12232,7 +12438,9 @@
     "releaseDate": "1995-04-07",
     "releaseYear": "1995",
     "durationMs": 223000,
-    "durationFmt": "03:43"
+    "durationFmt": "03:43",
+    "year": "1990",
+    "date": "1990-01-01"
   },
   "diana king - i say a little prayer": {
     "displayTitle": "I Say A Little Prayer",
@@ -12277,7 +12485,9 @@
     "releaseDate": "1994-11-15",
     "releaseYear": "1994",
     "durationMs": 276000,
-    "durationFmt": "04:36"
+    "durationFmt": "04:36",
+    "year": "1994",
+    "date": "1994-11-15"
   },
   "blackstreet, dr. dre, queen pen - no diggity": {
     "displayTitle": "No Diggity",
@@ -12295,7 +12505,9 @@
     "releaseDate": "1997-06-16",
     "releaseYear": "1997",
     "durationMs": 357000,
-    "durationFmt": "05:57"
+    "durationFmt": "05:57",
+    "year": "1997",
+    "date": "1997-06-16"
   },
   "queen - friends will be friends - remastered 2011": {
     "displayTitle": "Friends Will Be Friends",
@@ -12304,11 +12516,20 @@
     "releaseDate": "1986-06-09",
     "releaseYear": "1986",
     "durationMs": 126000,
-    "durationFmt": "02:06"
+    "durationFmt": "02:06",
+    "year": "1986",
+    "date": "1986-06-02"
   },
   "queen - friends will be friends": {
+    "displayTitle": "Friends Will Be Friends",
+    "album": "Live at Wembley Stadium",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/bffe9bbf3a5270200d59f9537c5581ed/1000x1000-000000-80-0-0.jpg",
     "releaseDate": "1986-06-09",
-    "releaseYear": "1986"
+    "releaseYear": "1986",
+    "durationMs": 126000,
+    "durationFmt": "02:06",
+    "year": "1986",
+    "date": "1986-06-02"
   },
   "bryan adams, melanie c - when you're gone": {
     "displayTitle": "When You're Gone",
@@ -12317,7 +12538,9 @@
     "releaseDate": "1998-10-26",
     "releaseYear": "1998",
     "durationMs": 205000,
-    "durationFmt": "03:25"
+    "durationFmt": "03:25",
+    "year": "1998",
+    "date": "1998-01-01"
   },
   "taylor dayne - tell it to my heart": {
     "displayTitle": "Tell It to My Heart",
@@ -12332,8 +12555,8 @@
     "title": "Tubthumping",
     "artist": "Chumbawamba",
     "album": "101 Running Songs",
-    "year": "2009",
-    "date": "2009-01-01",
+    "year": "1997",
+    "date": "1997-11-24",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/572f41efd895ad006ede0f2b02dcc4b1/1000x1000-000000-80-0-0.jpg"
   },
@@ -12362,7 +12585,9 @@
     "releaseDate": "1991-09-17",
     "releaseYear": "1991",
     "durationMs": 456000,
-    "durationFmt": "07:36"
+    "durationFmt": "07:36",
+    "year": "1991",
+    "date": "1991-08-31"
   },
   "guns n' roses - paradise city": {
     "displayTitle": "Paradise City",
@@ -12371,7 +12596,9 @@
     "releaseDate": "1987-07-21",
     "releaseYear": "1987",
     "durationMs": 406000,
-    "durationFmt": "06:46"
+    "durationFmt": "06:46",
+    "year": "1993",
+    "date": "1993-01-01"
   },
   "duran duran - hungry like the wolf - 2009 remaster": {
     "displayTitle": "Hungry Like the Wolf",
@@ -12412,8 +12639,8 @@
     "title": "I Will Survive",
     "artist": "Gloria Gaynor",
     "album": "Fantastic 70s",
-    "year": "2022",
-    "date": "2022-01-01",
+    "year": "1978",
+    "date": "1978-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7281e24f40a1323a6f9298d2a1a21143/1000x1000-000000-80-0-0.jpg"
   },
@@ -12430,8 +12657,8 @@
     "title": "Think Twice",
     "artist": "Céline Dion",
     "album": "The Essential",
-    "year": "2008",
-    "date": "2008-01-01",
+    "year": "1993",
+    "date": "1993-11-09",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7ce8408b33a172ca9ccefed1b5f7dec9/1000x1000-000000-80-0-0.jpg"
   },
@@ -12532,7 +12759,9 @@
     "releaseDate": "1988-01-01",
     "releaseYear": "1988",
     "durationMs": 296000,
-    "durationFmt": "04:56"
+    "durationFmt": "04:56",
+    "year": "1988",
+    "date": "1988-01-01"
   },
   "tracy chapman - baby can i hold you": {
     "displayTitle": "Baby Can I Hold You",
@@ -12541,7 +12770,9 @@
     "releaseDate": "1988-01-01",
     "releaseYear": "1988",
     "durationMs": 193000,
-    "durationFmt": "03:13"
+    "durationFmt": "03:13",
+    "year": "1988",
+    "date": "1988-01-01"
   },
   "kiss - i was made for lovin' you": {
     "displayTitle": "I Was Made For Lovin' You",
@@ -12559,15 +12790,20 @@
     "releaseDate": "1978-01-05",
     "releaseYear": "1978",
     "durationMs": 212000,
-    "durationFmt": "03:32"
+    "durationFmt": "03:32",
+    "year": "1978",
+    "date": "1978-11-10"
   },
   "queen - don't stop me now": {
-    "title": "Don't Stop Me Now",
-    "artist": "Queen",
-    "album": "Anthems",
-    "year": "2025",
-    "date": "2025-01-01",
-    "source": "MusicBrainz Picard"
+    "displayTitle": "Don't Stop Me Now",
+    "album": "Jazz",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4b8ab9c1f112b63c07e3983b98e98006/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "1978-01-05",
+    "releaseYear": "1978",
+    "durationMs": 212000,
+    "durationFmt": "03:32",
+    "year": "1978",
+    "date": "1978-11-10"
   },
   "blondie - maria": {
     "title": "Maria",
@@ -12611,7 +12847,9 @@
     "releaseDate": "1971-10-11",
     "releaseYear": "1971",
     "durationMs": 184000,
-    "durationFmt": "03:04"
+    "durationFmt": "03:04",
+    "year": "1990",
+    "date": "1990-01-01"
   },
   "john lennon - imagine": {
     "displayTitle": "Imagine",
@@ -12620,7 +12858,9 @@
     "releaseDate": "1971-10-11",
     "releaseYear": "1971",
     "durationMs": 184000,
-    "durationFmt": "03:04"
+    "durationFmt": "03:04",
+    "year": "1990",
+    "date": "1990-01-01"
   },
   "the human league - don't you want me": {
     "displayTitle": "Don't You Want Me",
@@ -12661,7 +12901,10 @@
   "bryan adams - please forgive me": {
     "releaseDate": "1993-10-15",
     "releaseYear": "1993",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c4b0599e27b5a65344582dd0ac81d3b7/1000x1000-000000-80-0-0.jpg"
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c4b0599e27b5a65344582dd0ac81d3b7/1000x1000-000000-80-0-0.jpg",
+    "year": "1999",
+    "date": "1999-01-01",
+    "album": "Golden Collection 2000"
   },
   "bryan adams - have you ever really loved a woman? - from \"don juan demarco\" soundtrack": {
     "displayTitle": "Have You Ever Really Loved A Woman?",
@@ -12670,7 +12913,9 @@
     "releaseDate": "1996-05-15",
     "releaseYear": "1996",
     "durationMs": 294000,
-    "durationFmt": "04:54"
+    "durationFmt": "04:54",
+    "year": "1995",
+    "date": "1995-04-03"
   },
   "bryan adams - have you ever really loved a woman?": {
     "displayTitle": "Have You Ever Really Loved A Woman?",
@@ -12684,7 +12929,10 @@
   "bryan adams - summer of '69": {
     "releaseDate": "1984-11-05",
     "releaseYear": "1984",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f5c062034dbbf74f9c158c51ba783871/1000x1000-000000-80-0-0.jpg"
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f5c062034dbbf74f9c158c51ba783871/1000x1000-000000-80-0-0.jpg",
+    "year": "1992",
+    "date": "1992-01-01",
+    "album": "Live USA ’87"
   },
   "ace of base - beautiful life": {
     "displayTitle": "Beautiful Life",
@@ -12693,7 +12941,9 @@
     "releaseDate": "1995-10-20",
     "releaseYear": "1995",
     "durationMs": 221000,
-    "durationFmt": "03:41"
+    "durationFmt": "03:41",
+    "year": "1995",
+    "date": "1995-01-01"
   },
   "red hot chili peppers - californication": {
     "displayTitle": "Californication",
@@ -12726,8 +12976,8 @@
     "title": "Genie in a Bottle",
     "artist": "Christina Aguilera",
     "album": "Radio 538 Hitzone: Gold",
-    "year": "2009",
-    "date": "2009-01-01",
+    "year": "1999",
+    "date": "1999-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/98276416e4db0e5eb6fbb9c9f1a52bdc/1000x1000-000000-80-0-0.jpg"
   },
@@ -12744,8 +12994,8 @@
     "title": "Under the Bridge",
     "artist": "Red Hot Chili Peppers",
     "album": "The Best of Red Hot Chili Peppers",
-    "year": "2010",
-    "date": "2010-01-01",
+    "year": "1996",
+    "date": "1996-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e3f1bee87b1d5d1313641762f375a3fb/1000x1000-000000-80-0-0.jpg"
   },
@@ -12753,8 +13003,8 @@
     "title": "Bitch",
     "artist": "Meredith Brooks",
     "album": "101 One Hit Wonders",
-    "year": "2012",
-    "date": "2012-01-01",
+    "year": "1997",
+    "date": "1997-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/d65259e5a4778af1813373a8f06c4d20/1000x1000-000000-80-0-0.jpg"
   },
@@ -12783,7 +13033,9 @@
     "releaseDate": "1965-01-22",
     "releaseYear": "1965",
     "durationMs": 118000,
-    "durationFmt": "01:58"
+    "durationFmt": "01:58",
+    "year": "1967",
+    "date": "1967-01-01"
   },
   "alizée - moi... lolita": {
     "displayTitle": "Moi... Lolita",
@@ -12798,8 +13050,8 @@
     "title": "Return to Innocence",
     "artist": "Enigma",
     "album": "Remember the Future",
-    "year": "2001",
-    "date": "2001-01-01",
+    "year": "1993",
+    "date": "1993-12-06",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/00eac2b394a1e76d5b42824ac11a57c0/1000x1000-000000-80-0-0.jpg"
   },
@@ -12810,7 +13062,9 @@
     "releaseDate": "1988-10-10",
     "releaseYear": "1988",
     "durationMs": 544000,
-    "durationFmt": "09:04"
+    "durationFmt": "09:04",
+    "year": "1987",
+    "date": "1987-01-01"
   },
   "dover - serenade": {
     "title": "Serenade",
@@ -12946,8 +13200,8 @@
     "title": "Faith",
     "artist": "George Michael",
     "album": "Now That’s What I Call the 80s",
-    "year": "2015",
-    "date": "2015-01-01",
+    "year": "1987",
+    "date": "1987-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f24a4351040ae09175cbd775607aafe6/1000x1000-000000-80-0-0.jpg"
   },
@@ -12955,8 +13209,8 @@
     "title": "Lovefool",
     "artist": "The Cardigans",
     "album": "Latest & Greatest Indie Love",
-    "year": "2015",
-    "date": "2015-01-01",
+    "year": "1997",
+    "date": "1997-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c7dcdea2a0d4f52f2a9fae5610194653/1000x1000-000000-80-0-0.jpg"
   },
@@ -13030,7 +13284,9 @@
     "releaseDate": "1995-01-01",
     "releaseYear": "1995",
     "durationMs": 246000,
-    "durationFmt": "04:06"
+    "durationFmt": "04:06",
+    "year": "1994",
+    "date": "1994-03-18"
   },
   "whitney houston - i have nothing": {
     "title": "I Have Nothing",
@@ -13149,8 +13405,8 @@
     "title": "Everywhere",
     "artist": "Fleetwood Mac",
     "album": "I Love 80s",
-    "year": "2018",
-    "date": "2018-01-01",
+    "year": "1991",
+    "date": "1991-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/662706e98f7e16249bf7d8e65b4974ff/1000x1000-000000-80-0-0.jpg"
   },
@@ -13187,15 +13443,20 @@
     "releaseDate": "1976-12-08",
     "releaseYear": "1976",
     "durationMs": 432000,
-    "durationFmt": "07:12"
+    "durationFmt": "07:12",
+    "year": "1995",
+    "date": "1995-01-01"
   },
   "eagles - hotel california": {
-    "title": "Hotel California",
-    "artist": "Eagles",
-    "album": "Legacy",
-    "year": "2018",
-    "date": "2018-01-01",
-    "source": "MusicBrainz Picard"
+    "displayTitle": "Hotel California",
+    "album": "Hell Freezes Over (Remaster 2018)",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/2d8ad0dfdf16395cf21cb153f806b094/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "1976-12-08",
+    "releaseYear": "1976",
+    "durationMs": 432000,
+    "durationFmt": "07:12",
+    "year": "1995",
+    "date": "1995-01-01"
   },
   "the rolling stones - (i can't get no) satisfaction - mono": {
     "displayTitle": "I Can't Get No Satisfaction",
@@ -13231,7 +13492,9 @@
     "releaseDate": "1977-11-04",
     "releaseYear": "1977",
     "durationMs": 211000,
-    "durationFmt": "03:31"
+    "durationFmt": "03:31",
+    "year": "1977",
+    "date": "1977-01-01"
   },
   "spandau ballet - gold - 2003 remaster": {
     "displayTitle": "Gold",
@@ -13255,8 +13518,8 @@
     "title": "Sleeping Satellite",
     "artist": "Tasmin Archer",
     "album": "101 One Hit Wonders",
-    "year": "2012",
-    "date": "2012-01-01",
+    "year": "1993",
+    "date": "1993-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e69d4099bd113d23a797fa7ffbd7f407/1000x1000-000000-80-0-0.jpg"
   },
@@ -13267,7 +13530,9 @@
     "releaseDate": "1998-10-07",
     "releaseYear": "1998",
     "durationMs": 283000,
-    "durationFmt": "04:43"
+    "durationFmt": "04:43",
+    "year": "1998",
+    "date": "1998-01-01"
   },
   "ice mc - think about the way": {
     "displayTitle": "Think About the Way",
@@ -13300,8 +13565,8 @@
     "title": "The Way to Your Heart",
     "artist": "Soulsister",
     "album": "80er Pop Hits",
-    "year": "2021",
-    "date": "2021-01-01",
+    "year": "1989",
+    "date": "1989-05",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/2b7204a83454c7a10076e48447755e1f/1000x1000-000000-80-0-0.jpg"
   },
@@ -13374,7 +13639,9 @@
     "releaseDate": "1980-02-01",
     "releaseYear": "1980",
     "durationMs": 212000,
-    "durationFmt": "03:32"
+    "durationFmt": "03:32",
+    "year": "1980",
+    "date": "1980-02-01"
   },
   "culture club - do you really want to hurt me": {
     "displayTitle": "Do You Really Want To Hurt Me",
@@ -13383,7 +13650,9 @@
     "releaseDate": "1998-01-01",
     "releaseYear": "1998",
     "durationMs": 237000,
-    "durationFmt": "03:57"
+    "durationFmt": "03:57",
+    "year": "1982",
+    "date": "1982-01-01"
   },
   "backstreet boys - get down (you're the one for me) - lp edit no rap": {
     "displayTitle": "Get Down (You're the One for Me) - LP Edit No Rap",
@@ -13425,8 +13694,8 @@
     "title": "We're Not Gonna Take It",
     "artist": "Twisted Sister",
     "album": "Rock of Ages (2009 original Broadway cast)",
-    "year": "2009",
-    "date": "2009-01-01",
+    "year": "1984",
+    "date": "1984-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/321fb7cf825b4b4bebb3650d8537bc76/1000x1000-000000-80-0-0.jpg"
   },
@@ -13464,7 +13733,9 @@
     "releaseDate": "1989-08-21",
     "releaseYear": "1989",
     "durationMs": 333000,
-    "durationFmt": "05:33"
+    "durationFmt": "05:33",
+    "year": "1989",
+    "date": "1989-09-12"
   },
   "creedence clearwater revival - have you ever seen the rain": {
     "displayTitle": "Have You Ever Seen The Rain",
@@ -13473,7 +13744,9 @@
     "releaseDate": "1970-12-01",
     "releaseYear": "1970",
     "durationMs": 125000,
-    "durationFmt": "02:05"
+    "durationFmt": "02:05",
+    "year": "1968",
+    "date": "1968-07-01"
   },
   "ini kamoze - here comes the hotstepper": {
     "displayTitle": "Here Comes the Hotstepper",
@@ -13509,14 +13782,16 @@
     "releaseDate": "1991-06-24",
     "releaseYear": "1991",
     "durationMs": 221000,
-    "durationFmt": "03:41"
+    "durationFmt": "03:41",
+    "year": "1992",
+    "date": "1992-01-01"
   },
   "counting crows - mr. jones": {
     "title": "Mr. Jones",
     "artist": "Counting Crows",
     "album": "2 for 1: August and Everything After / Recovering the Satellites",
-    "year": "2009",
-    "date": "2009-01-01",
+    "year": "1994",
+    "date": "1994-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/819a381af9372f741787144848278399/1000x1000-000000-80-0-0.jpg"
   },
@@ -13541,8 +13816,8 @@
     "title": "Only When I Sleep",
     "artist": "The Corrs",
     "album": "Best of The Corrs",
-    "year": "2001",
-    "date": "2001-01-01",
+    "year": "1999",
+    "date": "1999-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/013d0481286e505e8e6f4bcc008b2ed1/1000x1000-000000-80-0-0.jpg"
   },
@@ -13558,14 +13833,17 @@
   "the cranberries - linger": {
     "releaseDate": "1993-02-15",
     "releaseYear": "1993",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/9628e1cad0709c01a9ea4b0a0d583722/1000x1000-000000-80-0-0.jpg"
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/9628e1cad0709c01a9ea4b0a0d583722/1000x1000-000000-80-0-0.jpg",
+    "year": "1994",
+    "date": "1994-01-01",
+    "album": "Thoughts That Linger"
   },
   "the cranberries - dreams": {
     "title": "Dreams",
     "artist": "The Cranberries",
     "album": "20th Century Masters: The Millennium Collection: The Best of The Cranberries",
-    "year": "2005",
-    "date": "2005-01-01",
+    "year": "1994",
+    "date": "1994-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/29daf9a4798a4a4de0275446b77683c3/1000x1000-000000-80-0-0.jpg"
   },
@@ -13659,8 +13937,8 @@
     "title": "Fly Away",
     "artist": "Lenny Kravitz",
     "album": "20 Years on MTV: 1998",
-    "year": "2007",
-    "date": "2007-01-01",
+    "year": "1998",
+    "date": "1998-05-12",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7b9a0b3b4f75736802eed274c137bccd/1000x1000-000000-80-0-0.jpg"
   },
@@ -13704,8 +13982,8 @@
     "title": "More Than Words",
     "artist": "Extreme",
     "album": "NOW That’s What I Call Power Ballads",
-    "year": "2009",
-    "date": "2009-01-01",
+    "year": "1993",
+    "date": "1993-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1d63214d11a84c336500030c39f46a4d/1000x1000-000000-80-0-0.jpg"
   },
@@ -13725,7 +14003,9 @@
     "releaseDate": "1987-10-02",
     "releaseYear": "1987",
     "durationMs": 255000,
-    "durationFmt": "04:15"
+    "durationFmt": "04:15",
+    "year": "1991",
+    "date": "1991-01-01"
   },
   "alannah myles - black velvet": {
     "displayTitle": "Black Velvet",
@@ -13734,7 +14014,9 @@
     "releaseDate": "1989-03-14",
     "releaseYear": "1989",
     "durationMs": 287000,
-    "durationFmt": "04:47"
+    "durationFmt": "04:47",
+    "year": "1989",
+    "date": "1989-03-14"
   },
   "eurythmics, annie lennox, dave stewart - there must be an angel (playing with my heart)": {
     "displayTitle": "There Must Be an Angel (Playing With My Heart)",
@@ -13752,14 +14034,16 @@
     "releaseDate": "1964-08-01",
     "releaseYear": "1964",
     "durationMs": 176000,
-    "durationFmt": "02:56"
+    "durationFmt": "02:56",
+    "year": "1964",
+    "date": "1964-11"
   },
   "chesney hawkes - the one and only": {
     "title": "The One and Only",
     "artist": "Chesney Hawkes",
     "album": "Mastermix Presents the 100 Collection: 90s Volume 1",
-    "year": "2019",
-    "date": "2019-01-01",
+    "year": "1999",
+    "date": "1999-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/cc182ab27a97ac81080207615844cdac/1000x1000-000000-80-0-0.jpg"
   },
@@ -13785,8 +14069,8 @@
     "title": "Luka",
     "artist": "Suzanne Vega",
     "album": "Absolute 80’s 2",
-    "year": "2009",
-    "date": "2009-01-01",
+    "year": "1992",
+    "date": "1992-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e66c8802b4e32613ade556425b07ede8/1000x1000-000000-80-0-0.jpg"
   },
@@ -13797,7 +14081,9 @@
     "releaseDate": "1983-10-14",
     "releaseYear": "1983",
     "durationMs": 237000,
-    "durationFmt": "03:57"
+    "durationFmt": "03:57",
+    "year": "1983",
+    "date": "1983-10-14"
   },
   "queen - we are the champions - remastered 2011": {
     "displayTitle": "We Are The Champions",
@@ -13806,15 +14092,20 @@
     "releaseDate": "1977-10-07",
     "releaseYear": "1977",
     "durationMs": 237000,
-    "durationFmt": "03:57"
+    "durationFmt": "03:57",
+    "year": "1985",
+    "date": "1985-07-13"
   },
   "queen - we are the champions": {
-    "title": "We Are the Champions",
-    "artist": "Queen",
-    "album": "Anthems",
-    "year": "2025",
-    "date": "2025-01-01",
-    "source": "MusicBrainz Picard"
+    "displayTitle": "We Are The Champions",
+    "album": "Bohemian Rhapsody (The Original Soundtrack)",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/5bbfab8ae2def08b9d58932b5e6121a4/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "1977-10-07",
+    "releaseYear": "1977",
+    "durationMs": 237000,
+    "durationFmt": "03:57",
+    "year": "1985",
+    "date": "1985-07-13"
   },
   "don mclean - american pie": {
     "displayTitle": "American Pie",
@@ -13859,7 +14150,9 @@
     "releaseDate": "1999-05-04",
     "releaseYear": "1999",
     "durationMs": 201000,
-    "durationFmt": "03:21"
+    "durationFmt": "03:21",
+    "year": "1997",
+    "date": "1997-01-01"
   },
   "chris isaak - wicked game": {
     "title": "Wicked Game",
@@ -13954,14 +14247,16 @@
     "releaseDate": "1998-09-21",
     "releaseYear": "1998",
     "durationMs": 180000,
-    "durationFmt": "03:00"
+    "durationFmt": "03:00",
+    "year": "1999",
+    "date": "1999-10-19"
   },
   "hanson - mmmbop": {
     "title": "Mmmbop",
     "artist": "Hanson",
     "album": "House, M.D.: Season 5",
-    "year": "2009",
-    "date": "2009-01-01",
+    "year": "1997",
+    "date": "1997-07",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/394c44c400a9786a9582a7fed308622e/1000x1000-000000-80-0-0.jpg"
   },
@@ -13972,7 +14267,9 @@
     "releaseDate": "1997-06-18",
     "releaseYear": "1997",
     "durationMs": 253000,
-    "durationFmt": "04:13"
+    "durationFmt": "04:13",
+    "year": "1998",
+    "date": "1998-01-01"
   },
   "the cranberries - promises": {
     "title": "Promises",
@@ -14014,8 +14311,8 @@
     "title": "Rock the Night",
     "artist": "Europe",
     "album": "Live Look at Eden",
-    "year": "2011",
-    "date": "2011-01-01",
+    "year": "1986",
+    "date": "1986-05-26",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f27265df605c4bce229b0623e18f179a/1000x1000-000000-80-0-0.jpg"
   },
@@ -14243,8 +14540,8 @@
     "title": "Fall at Your Feet",
     "artist": "Crowded House",
     "album": "101 Classic Hits",
-    "year": "2017",
-    "date": "2017-01-01",
+    "year": "1992",
+    "date": "1992-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c9594b7ab443b3a9087291f55ef0ba3f/1000x1000-000000-80-0-0.jpg"
   },
@@ -14255,7 +14552,9 @@
     "releaseDate": "1995-01-01",
     "releaseYear": "1995",
     "durationMs": 242000,
-    "durationFmt": "04:02"
+    "durationFmt": "04:02",
+    "year": "1995",
+    "date": "1995-10-31"
   },
   "lumidee - never leave you (uh oooh, uh oooh)": {
     "displayTitle": "Never Leave You (Uh Oooh, Uh Oooh)",
@@ -14279,8 +14578,8 @@
     "title": "Bad Medicine",
     "artist": "Bon Jovi",
     "album": "This Left Feels Right: Greatest Hits With a Twist",
-    "year": "2003",
-    "date": "2003-01-01",
+    "year": "1993",
+    "date": "1993-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ae062209da6c897f5670963ae99985f3/1000x1000-000000-80-0-0.jpg"
   },
@@ -14291,7 +14590,9 @@
     "releaseDate": "1984-10-29",
     "releaseYear": "1984",
     "durationMs": 229000,
-    "durationFmt": "03:49"
+    "durationFmt": "03:49",
+    "year": "1998",
+    "date": "1998-01-01"
   },
   "mike oldfield - to france": {
     "displayTitle": "To France",
@@ -14300,7 +14601,9 @@
     "releaseDate": "1984-06-16",
     "releaseYear": "1984",
     "durationMs": 332000,
-    "durationFmt": "05:32"
+    "durationFmt": "05:32",
+    "year": "1984",
+    "date": "1984-01-01"
   },
   "bob dylan - like a rolling stone": {
     "displayTitle": "Like a Rolling Stone",
@@ -14318,7 +14621,9 @@
     "releaseDate": "1995-11-20",
     "releaseYear": "1995",
     "durationMs": 191000,
-    "durationFmt": "03:11"
+    "durationFmt": "03:11",
+    "year": "1996",
+    "date": "1996-01-01"
   },
   "will.i.am - i like to move it": {
     "title": "I Like to Move It",
@@ -14350,8 +14655,8 @@
     "title": "Wild World",
     "artist": "Mr. Big",
     "album": "Rock FM Still Loving You…Aún: Más de las mejores baladas del rock",
-    "year": "2018",
-    "date": "2018-01-01",
+    "year": "1996",
+    "date": "1996-12-09",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/dbbeb1fc3e9961441fdd86486f56ba60/1000x1000-000000-80-0-0.jpg"
   },
@@ -14541,7 +14846,9 @@
     "releaseDate": "1983-05-27",
     "releaseYear": "1983",
     "durationMs": 283000,
-    "durationFmt": "04:43"
+    "durationFmt": "04:43",
+    "year": "1983",
+    "date": "1983-06-10"
   },
   "rod stewart - baby jane": {
     "displayTitle": "Baby Jane",
@@ -14550,14 +14857,16 @@
     "releaseDate": "1983-05-27",
     "releaseYear": "1983",
     "durationMs": 283000,
-    "durationFmt": "04:43"
+    "durationFmt": "04:43",
+    "year": "1983",
+    "date": "1983-06-10"
   },
   "simply red - fairground": {
     "title": "Fairground",
     "artist": "Simply Red",
     "album": "Summer Nights",
-    "year": "2009",
-    "date": "2009-01-01",
+    "year": "1999",
+    "date": "1999-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/11a330a67a66bccdc6384e0c3b2138d7/1000x1000-000000-80-0-0.jpg"
   },
@@ -14568,7 +14877,9 @@
     "releaseDate": "1999-01-01",
     "releaseYear": "1999",
     "durationMs": 212000,
-    "durationFmt": "03:32"
+    "durationFmt": "03:32",
+    "year": "1998",
+    "date": "1998-01-01"
   },
   "enrique iglesias - bailamos": {
     "displayTitle": "Bailamos",
@@ -14619,8 +14930,8 @@
     "title": "Fields of Gold",
     "artist": "Sting",
     "album": "Live in Berlin",
-    "year": "2010",
-    "date": "2010-01-01",
+    "year": "1993",
+    "date": "1993-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/316afdaed93c4a18cf730389648d03d6/1000x1000-000000-80-0-0.jpg"
   },
@@ -14628,8 +14939,8 @@
     "title": "We Don't Need Another Hero (Thunderdome)",
     "artist": "Tina Turner",
     "album": "Private Dancer",
-    "year": "2017",
-    "date": "2017-01-01",
+    "year": "1985",
+    "date": "1985-07-08",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/af3de3dfc186dc55265c9a26ac455e94/1000x1000-000000-80-0-0.jpg"
   },
@@ -14799,8 +15110,8 @@
     "title": "We Like to Party! (The Vengabus)",
     "artist": "Vengaboys",
     "album": "MNM Back To The 90s & Nillies (The Party Edition)",
-    "year": "2018",
-    "date": "2018-01-01",
+    "year": "1998",
+    "date": "1998-11-11",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/cc05a05dfca5a82db14f92a95fc6ab94/1000x1000-000000-80-0-0.jpg"
   },
@@ -14811,7 +15122,9 @@
     "releaseDate": "1970-03-06",
     "releaseYear": "1970",
     "durationMs": 243000,
-    "durationFmt": "04:03"
+    "durationFmt": "04:03",
+    "year": "1970",
+    "date": "1970-03-06"
   },
   "the beatles - let it be": {
     "displayTitle": "Let It Be",
@@ -14820,7 +15133,9 @@
     "releaseDate": "1970-03-06",
     "releaseYear": "1970",
     "durationMs": 243000,
-    "durationFmt": "04:03"
+    "durationFmt": "04:03",
+    "year": "1970",
+    "date": "1970-03-06"
   },
   "moloko - sing it back": {
     "title": "Sing It Back",
@@ -14874,14 +15189,16 @@
     "releaseDate": "1993-09-21",
     "releaseYear": "1993",
     "durationMs": 278000,
-    "durationFmt": "04:38"
+    "durationFmt": "04:38",
+    "year": "1993",
+    "date": "1993-01-01"
   },
   "corona - the rhythm of the night": {
     "title": "The Rhythm of the Night",
     "artist": "Corona",
     "album": "Flaix History, Volume 1",
-    "year": "2002",
-    "date": "2002-01-01",
+    "year": "1994",
+    "date": "1994-01-01",
     "source": "MusicBrainz Picard",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/0a4a28b6de4c5d517a8ac580dc6fa8e5/1000x1000-000000-80-0-0.jpg"
   },
@@ -19399,12 +19716,17 @@
     "releaseDate": "1987-04-13",
     "releaseYear": "1987",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/5c/0e/66/5c0e66c0-d383-5641-3ec0-4bdb629c49ad/886445705119.jpg/600x600bb.jpg",
-    "album": "Violator (Deluxe)"
+    "album": "Violator (Deluxe)",
+    "year": "1987",
+    "date": "1987-08-24"
   },
   "toni braxton, frankie knuckles - un-break my heart - classic radio mix": {
     "releaseDate": "1996-10-07",
     "releaseYear": "1996",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music/9d/0c/ab/mzi.blcsqcfw.jpg/600x600bb.jpg"
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music/9d/0c/ab/mzi.blcsqcfw.jpg/600x600bb.jpg",
+    "year": "1996",
+    "date": "1996-11-11",
+    "album": "Secrets"
   },
   "fugees, ms. lauryn hill, wyclef jean, pras - ready or not": {
     "releaseDate": "1996-09-02",
@@ -19414,12 +19736,18 @@
   "run–d.m.c., jason nevins - it's like that": {
     "releaseDate": "1997-11-01",
     "releaseYear": "1997",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/b1/48/e8/b148e844-469c-7357-a765-253eb83ba4a2/886444962599.jpg/600x600bb.jpg"
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/b1/48/e8/b148e844-469c-7357-a765-253eb83ba4a2/886444962599.jpg/600x600bb.jpg",
+    "year": "1998",
+    "date": "1998-01",
+    "album": "The Braun MTV Eurochart ’98, Volume 1"
   },
   "whitney houston, chris cox, barry harris - it's not right but it's okay - thunderpuss mix/remastered: 2000": {
     "releaseDate": "1998-11-17",
     "releaseYear": "1998",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/4b/fb/0c/4bfb0cca-77b7-380c-a8aa-f59de0560b6b/078221903721.jpg/600x600bb.jpg"
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/4b/fb/0c/4bfb0cca-77b7-380c-a8aa-f59de0560b6b/078221903721.jpg/600x600bb.jpg",
+    "year": "1999",
+    "date": "1999-05-25",
+    "album": "My Love Is Your Love"
   },
   "freddie mercury, serge ramaekers, carl ward, colin peter - living on my own - no more brothers radio mix": {
     "releaseDate": "1985-09-02",
@@ -37531,5 +37859,36 @@
     "title": "Livin' a Lie",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/420234debd2928decb282d18534644d6/1000x1000-000000-80-0-0.jpg",
     "year": "2000"
+  },
+  "diddy, faith evans, 112 - i'll be missing you": {
+    "displayTitle": "I'll Be Missing You (feat. Faith Evans, 112)",
+    "album": "No Way Out (2014 Remaster)",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6036a3aa435eadd0849a9caaf6323d1a/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "1997-05-27",
+    "releaseYear": "1997",
+    "durationMs": 306000,
+    "durationFmt": "05:06",
+    "year": "1997",
+    "date": "1997-01-01"
+  },
+  "backstreet boys - quit playing games": {
+    "title": "Quit Playing Games (With My Heart)",
+    "artist": "Backstreet Boys",
+    "album": "100 Hits: 90s Essentials",
+    "year": "1996",
+    "date": "1996-05-06",
+    "source": "MusicBrainz Picard",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/59/00/53/59005338-772d-2dd7-e2ff-674484629337/012414158925.jpg/600x600bb.jpg"
+  },
+  "santana, rob thomas - smooth": {
+    "displayTitle": "Smooth (feat. Rob Thomas)",
+    "album": "Supernatural (Legacy Edition)",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/929132f50492c7acfab23b32722f4537/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "1999-06-29",
+    "releaseYear": "1999",
+    "durationMs": 296000,
+    "durationFmt": "04:56",
+    "year": "1999",
+    "date": "1999-06-15"
   }
 }
