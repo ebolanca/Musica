@@ -433,18 +433,37 @@ function getTrackMetadata(artist, title) {
     }
     const cleanTitle = cleanTrackTitle(title);
     let key1 = `${artist} - ${title}`.toLowerCase();
-    if (metadataCache[key1]) return metadataCache[key1];
+    if (metadataCache[key1] && metadataCache[key1].coverUrl) return metadataCache[key1];
 
     let key2 = `${artist} - ${cleanTitle}`.toLowerCase();
-    if (metadataCache[key2]) return metadataCache[key2];
+    if (metadataCache[key2] && metadataCache[key2].coverUrl) return metadataCache[key2];
 
-    let normTarget = `${artist}${cleanTitle}`.toLowerCase().replace(/[^a-z0-9]/g, '');
+    let normArt = (artist || '').toLowerCase().replace(/,/g, ' ').replace(/&/g, ' ').replace(/[^a-z0-9]/g, '');
+    let normTit = cleanTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
+    let normTarget = `${normArt}${normTit}`;
+
     for (const [k, meta] of Object.entries(metadataCache)) {
-        let normK = k.replace(/[^a-z0-9]/g, '');
-        if (normK.length > 5 && (normK === normTarget || normK.includes(normTarget) || normTarget.includes(normK))) {
+        if (!meta || !meta.coverUrl) continue;
+        let normK = k.toLowerCase().replace(/,/g, ' ').replace(/&/g, ' ').replace(/[^a-z0-9]/g, '');
+        if (normK === normTarget || (normK.length > 5 && (normK.includes(normTarget) || normTarget.includes(normK)))) {
             return meta;
         }
     }
+
+    // Secondary match: title match + primary artist word match
+    const primaryArtist = normArt.split(' ')[0] || '';
+    if (normTit.length > 3) {
+        for (const [k, meta] of Object.entries(metadataCache)) {
+            if (!meta || !meta.coverUrl) continue;
+            let normK = k.toLowerCase().replace(/,/g, ' ').replace(/&/g, ' ').replace(/[^a-z0-9]/g, '');
+            if (normK.includes(normTit) && (primaryArtist.length < 3 || normK.includes(primaryArtist))) {
+                return meta;
+            }
+        }
+    }
+
+    if (metadataCache[key1]) return metadataCache[key1];
+    if (metadataCache[key2]) return metadataCache[key2];
 
     return {};
 }
