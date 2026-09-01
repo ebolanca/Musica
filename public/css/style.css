@@ -3093,3 +3093,414 @@ video {
 .cinema-seek-bar:hover {
   height: 7px;
 }
+
+
+/* ==========================================================================
+   📱 DISEÑO RESPONSIVE Y MÓVIL (100% INTACTO EL MODO PC / ESCRITORIO)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* --- Layout y Contenedor Principal en Móvil --- */
+  .container {
+    padding: 12px 14px 110px 14px !important;
+  }
+
+  /* --- Cabecera y Buscador --- */
+  .header-top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .header-title-wrap {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .header-actions {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .header-actions::-webkit-scrollbar {
+    display: none;
+  }
+
+  .btn-action-pill {
+    padding: 8px 14px;
+    font-size: 0.82rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* --- Pestañas de Categorías con Scroll Táctil Horizontal --- */
+  .tabs-nav {
+    display: flex;
+    overflow-x: auto;
+    padding: 4px 2px 10px 2px;
+    gap: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .tabs-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-button {
+    padding: 9px 16px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+    border-radius: 20px;
+  }
+
+  /* --- Barra de Búsqueda y Filtros Rápidos --- */
+  .search-container {
+    margin-bottom: 14px;
+  }
+
+  .quick-pills-row {
+    overflow-x: auto;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .quick-pills-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* --- Grid de Canciones en Móvil --- */
+  .songs-grid.grid-mode {
+    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  .song-card {
+    border-radius: 14px;
+  }
+
+  .song-card .card-body {
+    padding: 10px;
+  }
+
+  .song-title {
+    font-size: 0.88rem;
+  }
+
+  .song-artist {
+    font-size: 0.76rem;
+  }
+
+  .meta-pills-col {
+    display: none;
+  }
+
+  .card-action-icons {
+    gap: 4px;
+    margin-top: 8px;
+  }
+
+  .btn-card-action {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+
+  /* --- Barra Inferior de Reproducción en Móvil (Estilo App Nativa Spotify) --- */
+  .music-player-bar {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 20px 20px 0 0 !important;
+    padding: 10px 16px !important;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.9) !important;
+    background: rgba(15, 23, 42, 0.98) !important;
+    backdrop-filter: blur(25px) !important;
+    z-index: 9999;
+  }
+
+  .music-bar-content {
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+
+  .music-bar-left {
+    min-width: 0;
+    flex: 1;
+    gap: 10px;
+  }
+
+  .music-bar-cover {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+  }
+
+  .music-bar-title {
+    font-size: 0.86rem;
+    max-width: 140px;
+  }
+
+  .music-bar-artist {
+    font-size: 0.74rem;
+    max-width: 140px;
+  }
+
+  .music-bar-center {
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+  .music-bar-progress-row {
+    display: none; /* En móvil se simplifica para ahorrar espacio vertical */
+  }
+
+  .music-bar-controls {
+    gap: 10px;
+  }
+
+  .btn-music-ctrl {
+    font-size: 1rem;
+  }
+
+  .btn-music-play {
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+  }
+
+  .music-bar-right {
+    display: flex;
+    gap: 8px;
+  }
+
+  .music-bar-volume {
+    display: none; /* En móvil se controla con los botones físicos del teléfono */
+  }
+
+  .btn-music-cinema {
+    padding: 6px 10px;
+    font-size: 0.74rem;
+    border-radius: 12px;
+  }
+
+  /* --- MODO CINE EN MÓVIL (Layout Vertical Optimizado) --- */
+  .cinema-overlay {
+    padding: 0 !important;
+  }
+
+  .cinema-content {
+    flex-direction: column !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100vh !important;
+    padding: 12px 14px !important;
+    padding-top: calc(14px + env(safe-area-inset-top, 0px)) !important;
+    padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px)) !important;
+    gap: 10px !important;
+    border-radius: 0 !important;
+    overflow-y: auto !important;
+  }
+
+  .cinema-left {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 10px 12px !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+  }
+
+  .cinema-vinyl-wrapper {
+    width: 68px !important;
+    height: 68px !important;
+    min-width: 68px !important;
+    margin-bottom: 0 !important;
+  }
+
+  .cinema-track-info {
+    flex: 1 !important;
+    min-width: 0 !important;
+    text-align: left !important;
+  }
+
+  .cinema-track-title {
+    font-size: 1.05rem !important;
+    margin-bottom: 2px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .cinema-track-artist {
+    font-size: 0.85rem !important;
+    margin-bottom: 2px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .cinema-track-album {
+    font-size: 0.74rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .cinema-progress-row {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 4px !important;
+    margin-bottom: 2px !important;
+    gap: 8px !important;
+  }
+
+  .cinema-time {
+    font-size: 0.74rem !important;
+    min-width: 32px !important;
+  }
+
+  .cinema-controls {
+    width: 100% !important;
+    justify-content: center !important;
+    gap: 20px !important;
+    margin-top: 4px !important;
+  }
+
+  .btn-cinema-ctrl {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 0.95rem !important;
+  }
+
+  .btn-cinema-play {
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 1.2rem !important;
+  }
+
+  /* Contenedor de Karaoke en Modo Cine Móvil */
+  .cinema-right {
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding: 12px 14px !important;
+    border-radius: 16px !important;
+  }
+
+  .cinema-lyrics-header-row {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .cinema-lyrics-header {
+    font-size: 0.9rem !important;
+  }
+
+  .cinema-sync-control {
+    padding: 3px 8px !important;
+    gap: 6px !important;
+  }
+
+  .cinema-sync-slider {
+    width: 70px !important;
+  }
+
+  .cinema-lyrics-container {
+    padding: 20px 4px 60px 4px !important;
+  }
+
+  .cinema-lyric-line {
+    font-size: 1.05rem !important;
+    margin-bottom: 16px !important;
+    padding: 8px 12px !important;
+  }
+
+  .cinema-lyric-line.active {
+    font-size: 1.35rem !important;
+  }
+
+  .cinema-lyric-line.active .cinema-lyric-trans {
+    font-size: 0.95rem !important;
+  }
+
+  .cinema-lyric-trans {
+    font-size: 0.82rem !important;
+    margin-top: 4px !important;
+  }
+
+  /* --- Modales estilo Bottom Sheet en Móvil --- */
+  .modal {
+    align-items: flex-end !important;
+    padding: 0 !important;
+  }
+
+  .modal-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 85vh !important;
+    border-radius: 24px 24px 0 0 !important;
+    padding: 18px 16px !important;
+    margin: 0 !important;
+    animation: slideUpModal 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  @keyframes slideUpModal {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+
+  .stats-grid-cards {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .stats-charts-row {
+    flex-direction: column !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .songs-grid.grid-mode {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .cinema-track-title {
+    font-size: 0.95rem !important;
+  }
+
+  .cinema-track-artist {
+    font-size: 0.8rem !important;
+  }
+
+  .btn-sync-clean {
+    padding: 3px 6px !important;
+    font-size: 0.72rem !important;
+  }
+
+  .sync-value-badge {
+    font-size: 0.72rem !important;
+    padding: 2px 6px !important;
+    min-width: 40px !important;
+  }
+}
