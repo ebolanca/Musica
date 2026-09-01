@@ -1283,8 +1283,56 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    
+    // ==========================================================================
+    // 🛡️ Screen Wake Lock API: Evitar suspensión del PC durante la reproducción
+    // ==========================================================================
+    let wakeLockSentinel = null;
+
+    async function requestWakeLock() {
+        if ('wakeLock' in navigator) {
+            try {
+                if (!wakeLockSentinel) {
+                    wakeLockSentinel = await navigator.wakeLock.request('screen');
+                    wakeLockSentinel.addEventListener('release', () => {
+                        wakeLockSentinel = null;
+                    });
+                    console.log('🛡️ Wake Lock activo: El PC no se suspenderá mientras suene la música.');
+                }
+            } catch (err) {
+                console.log('Wake Lock no disponible o denegado:', err.message);
+            }
+        }
+    }
+
+    function releaseWakeLock() {
+        if (wakeLockSentinel) {
+            try {
+                wakeLockSentinel.release().then(() => {
+                    wakeLockSentinel = null;
+                    console.log('💤 Wake Lock liberado: El PC puede suspenderse con normalidad.');
+                }).catch(() => {});
+            } catch (e) {
+                wakeLockSentinel = null;
+            }
+        }
+    }
+
+    // Re-adquirir el Wake Lock automáticamente si se cambia de pestaña mientras suena
+    document.addEventListener('visibilitychange', async () => {
+        if (document.visibilityState === 'visible' && mainMusicAudio && !mainMusicAudio.paused) {
+            await requestWakeLock();
+        }
+    });
+
     // Audio Element Event Listeners
     if (mainMusicAudio) {
+        mainMusicAudio.addEventListener('play', () => {
+            requestWakeLock();
+        });
+        mainMusicAudio.addEventListener('pause', () => {
+            releaseWakeLock();
+        });
         mainMusicAudio.addEventListener('timeupdate', () => {
             if (!mainMusicAudio.duration) return;
             const curr = mainMusicAudio.currentTime;
@@ -2135,6 +2183,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.style.overflow = 'hidden';
         window.scrollTo(0, 0);
         cinemaOverlay.style.display = 'flex';
+        requestWakeLock();
 
         // Activar Pantalla Completa Nativa de Hardware (Oculta navegador, pestañas y barra de tareas)
         try {
@@ -2152,6 +2201,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function closeCinemaMode() {
         if (cinemaOverlay) cinemaOverlay.style.display = 'none';
+        if (mainMusicAudio && mainMusicAudio.paused) releaseWakeLock();
         document.body.style.overflow = '';
         document.documentElement.style.overflow = '';
         
