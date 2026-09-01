@@ -73,29 +73,31 @@ async function translateLyricsBatch(lines) {
         return lines;
     }
 
-    // Process in contextual stanzas/blocks of 15 lines to preserve contextual meaning and idioms
-    const blockSize = 15;
+    // Primero: aplicar instantáneamente desde la caché en memoria (0ms)
+    lines.forEach(l => {
+        const t = (l.text || '').trim();
+        if (!l.translation && lyricsTransCache[t]) {
+            l.translation = lyricsTransCache[t];
+        }
+    });
+
+    const needsTrans = lines.some(l => {
+        const t = (l.text || '').trim();
+        return t.length > 1 && !l.translation;
+    });
+
+    if (!needsTrans) return lines;
+
+    // Traducir las líneas pendientes en 1 o 2 llamadas ultra-rápidas a Google Translate
+    const blockSize = 30;
     for (let i = 0; i < lines.length; i += blockSize) {
         const block = lines.slice(i, i + blockSize);
-        const needsTrans = block.some(l => {
-            const t = (l.text || '').trim();
-            return t.length > 1 && (!lyricsTransCache[t] || lyricsTransCache[t].includes("MYMEMORY WARNING"));
-        });
-
-        if (!needsTrans) {
-            block.forEach(l => {
-                const t = (l.text || '').trim();
-                if (lyricsTransCache[t]) l.translation = lyricsTransCache[t];
-            });
-            continue;
-        }
-
         const blockText = block.map(l => (l.text || '').trim()).join('\n');
         try {
             const url = `https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=auto&tl=es&q=${encodeURIComponent(blockText)}`;
             const res = await fetch(url, {
                 headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' },
-                signal: AbortSignal.timeout(3500)
+                signal: AbortSignal.timeout(2000)
             });
             if (res.ok) {
                 const data = await res.json();
@@ -125,6 +127,8 @@ async function translateLyricsBatch(lines) {
 
     return lines;
 }
+
+
 
 
 
@@ -1220,8 +1224,11 @@ app.get('/api/track/detail', async (req, res) => {
             }
         }
 
-        // Si se acaba de obtener, guardar en caché inmediatamente y traducir en segundo plano
+        // Traducir inmediatamente con caché en memoria y guardar
         if (parsedLyrics && parsedLyrics.length > 0) {
+            try {
+                parsedLyrics = await translateLyricsBatch(parsedLyrics);
+            } catch(e){}
             const cleanT = cleanTrackTitle(title);
             cachedLyricsDb[`${artist} - ${title}`] = parsedLyrics;
             cachedLyricsDb[`${artist} - ${cleanT}`] = parsedLyrics;
@@ -1229,33 +1236,22 @@ app.get('/api/track/detail', async (req, res) => {
             try {
                 fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
             } catch(e){}
-
-            // Traducir en segundo plano sin congelar la respuesta del usuario
-            translateLyricsBatch(parsedLyrics).then(translated => {
-                if (translated) {
-                    cachedLyricsDb[`${artist} - ${title}`] = translated;
-                    cachedLyricsDb[`${artist} - ${cleanT}`] = translated;
-                    cachedLyricsDb[cleanT] = translated;
-                    try { fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8'); } catch(e){}
-                }
-            }).catch(()=>{});
         }
     }
 
     if (parsedLyrics && parsedLyrics.length > 0) {
         const hasUntranslated = parsedLyrics.some(l => (l.text || '').trim().length > 3 && !l.translation);
         if (hasUntranslated) {
-            translateLyricsBatch(parsedLyrics).then(translated => {
-                if (translated) {
-                    const cleanT = cleanTrackTitle(title);
-                    cachedLyricsDb[`${artist} - ${title}`] = translated;
-                    cachedLyricsDb[`${artist} - ${cleanT}`] = translated;
-                    cachedLyricsDb[cleanT] = translated;
-                    try {
-                        fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
-                    } catch(e){}
-                }
-            }).catch(()=>{});
+            try {
+                parsedLyrics = await translateLyricsBatch(parsedLyrics);
+                const cleanT = cleanTrackTitle(title);
+                cachedLyricsDb[`${artist} - ${title}`] = parsedLyrics;
+                cachedLyricsDb[`${artist} - ${cleanT}`] = parsedLyrics;
+                cachedLyricsDb[cleanT] = parsedLyrics;
+                try {
+                    fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
+                } catch(e){}
+            } catch(e){}
         }
     }
 
