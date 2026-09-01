@@ -1162,6 +1162,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         renderCinemaLyricLines();
 
+                        // Si la letra no tiene traducciones todavía, re-consultar en 3s para mostrarlas cuando termine la traducción en segundo plano
+                        const needsTrans = cinemaParsedLyrics.some(l => (l.text || '').trim().length > 3 && !l.translation);
+                        if (needsTrans) {
+                            setTimeout(() => {
+                                fetch(`/api/track/detail?artist=${encodeURIComponent(track.artist)}&title=${encodeURIComponent(trackTitleQuery)}`)
+                                    .then(r => r.json())
+                                    .then(freshData => {
+                                        if (freshData && freshData.lyrics && freshData.lyrics.some(l => l.translation)) {
+                                            cinemaParsedLyrics = cinemaParsedLyrics.map((l, idx) => ({
+                                                ...l,
+                                                translation: freshData.lyrics[idx] ? freshData.lyrics[idx].translation : l.translation
+                                            }));
+                                            renderCinemaLyricLines();
+                                        }
+                                    }).catch(()=>{});
+                            }, 3000);
+                        }
+
                         btnSyncSave.classList.add('saved');
                         btnSyncSave.innerHTML = '<i class="fa-solid fa-check"></i>';
                         showSyncNotification('💾 ¡Karaoke y marcas de tiempo grabadas permanentemente en la base de datos!');
