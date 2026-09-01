@@ -1524,16 +1524,41 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
         let stdErr = '';
         proc.stderr.on('data', d => { stdErr += d.toString(); });
 
-        proc.on('close', (code) => {
+        proc.on('close', async (code) => {
             if (fs.existsSync(tempOutput)) {
                 try {
                     fs.copyFileSync(tempOutput, targetFilePath);
                     fs.unlinkSync(tempOutput);
                     console.log(`✅ [CLEAN DOWNLOAD] Pista reemplazada con éxito en: ${targetFilePath}`);
+                    // 🔄 RESTABLECIMIENTO AUTOMÁTICO A 0.0s Y LETRA LIMPIA DE ESTUDIO
+                    // Al sustituir por audio limpio, eliminamos desfases previos del videoclip y cargamos marcas limpias
+                    try {
+                        const cleanT = cleanTrackTitle(title);
+                        const lrcurl = `https://lrclib.net/api/get?artist_name=${encodeURIComponent(artist)}&track_name=${encodeURIComponent(cleanT)}`;
+                        const lrcres = await fetch(lrcurl, { signal: AbortSignal.timeout(3000) });
+                        if (lrcres.ok) {
+                            const lrcdata = await lrcres.json();
+                            if (lrcdata.syncedLyrics) {
+                                let freshLyrics = parseLrc(lrcdata.syncedLyrics);
+                                if (freshLyrics) {
+                                    freshLyrics = await translateLyricsBatch(freshLyrics);
+                                    cachedLyricsDb[`${artist} - ${title}`] = freshLyrics;
+                                    cachedLyricsDb[`${artist} - ${cleanT}`] = freshLyrics;
+                                    cachedLyricsDb[cleanT] = freshLyrics;
+                                    fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
+                                    console.log(`✅ Letras sincronizadas restablecidas automáticamente a 0.0s para ${artist} - ${cleanT}`);
+                                }
+                            }
+                        }
+                    } catch(e) {
+                        console.error('Aviso restableciendo letra en replace-clean-audio:', e.message);
+                    }
+
                     return res.json({ 
                         success: true, 
-                        message: `Versión oficial limpia de estudio descargada y reemplazada correctamente.`,
+                        message: `Versión oficial limpia de estudio descargada y reemplazada correctamente. Retardo restablecido a 0.0s.`,
                         fileName: targetFileName,
+                        offsetSec: 0.0,
                         relUrl: `/media-music/${encodeURIComponent(targetCategory)}/${encodeURIComponent(targetFileName)}?t=${Date.now()}`
                     });
                 } catch(e) {
