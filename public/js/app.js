@@ -163,6 +163,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const cinemaTitle = document.getElementById('cinema-title');
     const cinemaArtist = document.getElementById('cinema-artist');
     const cinemaAlbum = document.getElementById('cinema-album');
+    const cinemaTimeCurr = document.getElementById('cinema-time-curr');
+    const cinemaTimeDur = document.getElementById('cinema-time-dur');
+    const cinemaSeekSlider = document.getElementById('cinema-seek-slider');
     const cinemaLyrics = document.getElementById('cinema-lyrics');
     const cinemaPlay = document.getElementById('cinema-play');
     const cinemaPrev = document.getElementById('cinema-prev');
@@ -1361,6 +1364,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 musicSeekSlider.value = (curr / dur) * 100;
             }
 
+            if (cinemaTimeCurr) cinemaTimeCurr.textContent = formatTime(curr);
+            if (cinemaTimeDur) cinemaTimeDur.textContent = formatTime(dur);
+            if (cinemaSeekSlider && !cinemaSeekSlider.dragging) {
+                cinemaSeekSlider.value = (curr / dur) * 100;
+            }
+
 
 
             // Karaoke Mode: Real-time Lyric Highlight & Auto-scroll
@@ -1419,6 +1428,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (musicSeekSlider && mainMusicAudio) {
         musicSeekSlider.addEventListener('input', (e) => {
+            if (mainMusicAudio.duration) {
+                mainMusicAudio.currentTime = (parseFloat(e.target.value) / 100) * mainMusicAudio.duration;
+            }
+        });
+    }
+
+    if (cinemaSeekSlider && mainMusicAudio) {
+        cinemaSeekSlider.addEventListener('input', (e) => {
             if (mainMusicAudio.duration) {
                 mainMusicAudio.currentTime = (parseFloat(e.target.value) / 100) * mainMusicAudio.duration;
             }
