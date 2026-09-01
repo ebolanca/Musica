@@ -996,24 +996,43 @@ video {
 
 .card-action-icons {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
   width: 100%;
   margin-top: auto;
-  padding-top: 8px;
+  padding-top: 6px;
 }
 
 .btn-card-action {
-  height: 38px;
+  height: 32px;
   width: 100%;
   border-radius: 8px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   cursor: pointer;
-  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   outline: none;
+}
+
+.btn-act-play {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.btn-act-play:hover {
+  background: var(--spotify-green);
+  border-color: var(--spotify-green);
+  color: #000;
+  box-shadow: 0 0 12px rgba(29, 185, 84, 0.6);
+  transform: translateY(-2px);
+}
+.btn-act-play.playing {
+  background: #ef4444 !important;
+  border-color: #ef4444 !important;
+  color: #fff !important;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.6);
 }
 
 .btn-card-action:hover {
