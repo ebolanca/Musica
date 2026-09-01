@@ -14320,5 +14320,121 @@
         ]
       }
     ]
+  },
+  "Gabinete Caligari - La culpa fue del cha-cha-chá": {
+    "title": "La culpa fue del cha-cha-chá",
+    "artist": "Gabinete Caligari",
+    "year": "1989",
+    "album": "Privado",
+    "synopsis": "Publicada en el álbum Privado (1989), esta canción representa el punto de inflexión donde Gabinete Caligari culminó su metamorfosis desde el post-punk de la Movida Madrileña hacia una fórmula de pop castizo y folclórico absolutamente singular. Bajo la producción de Jesús N. Gómez, la banda madrileña articuló un híbrido entre el rock hispano, la canción melódica y el patrón afro-cubano del cha-cha-chá, cimentando la figura de Jaime Urrutia como el crooner ibérico por excelencia.",
+    "sections": [
+      {
+        "title": "Origen e Innovación Casticista",
+        "icon": "fa-history",
+        "text": "Tras haber liderado la vertiente más oscura e influenciada por Joy Division y The Birthday Party a principios de los 80, Gabinete Caligari inició una apertura tonal que bautizaron como 'rock torero'. En 'La culpa fue del cha-cha-chá', el grupo abandonó por completo las atmósferas sombrías para abrazar la tradición de las orquestas de baile y la cultura de bar española de finales de siglo.",
+        "points": [
+          {
+            "name": "Evolución estética del trío",
+            "desc": "El trío formado por Jaime Urrutia, Ferni Presas y Edi Clavo dejó atrás las líneas de bajo siniestras para componer un tema pensado para el gran público sin perder su identidad narrativa."
+          },
+          {
+            "name": "Producción en Estudios Kirios",
+            "desc": "El productor Jesús N. Gómez diseñó un sonido pulcro y orgánico, alejándose de los sintetizadores estridentes de la época para dar prioridad a instrumentos acústicos y secciones de viento reales."
+          }
+        ]
+      },
+      {
+        "title": "Anatomía Rítmica y Textura Sónica",
+        "icon": "fa-guitar",
+        "text": "El núcleo sónico del tema reside en la apropiación y simplificación del patrón de cha-cha-chá de 4/4 adaptado a una base instrumental de pop-rock clásico. La instrumentación equilibra guitarras de timbre limpio con brillantes arreglos de viento-metal que actúan como réplica a las frases vocales.",
+        "points": [
+          {
+            "name": "Batería sincopada de Edi Clavo",
+            "desc": "Edi Clavo traslada el ritmo caribeño al kit de batería estándar usando el aro de la caja (rimshot) y marcando la síncopa característica en los tiempos débiles del compás."
+          },
+          {
+            "name": "Sección de metales (Call-and-Response)",
+            "desc": "Arreglos de trompeta y saxofón grabados con condensadores de gran diafragma que responden a la voz en el estribillo al más puro estilo de las orquestas tropicales de los 50."
+          },
+          {
+            "name": "Tono de guitarra Telecaster",
+            "desc": "Jaime Urrutia emplea una Fender Telecaster rasgueada con compresión moderada y un toque de chorus analógico (Boss CE-2) que otorga brillo y amplitud espacial a la rítmica."
+          }
+        ]
+      },
+      {
+        "title": "Declamación Vocal y Retórica Nocturna",
+        "icon": "fa-microphone-alt",
+        "text": "Líricamente, la canción es un retrato irónico de la noche madrileña, el desamor y la excusa cómplice. La entrega vocal de Jaime Urrutia se distancia del pop convencional para acercarse al fraseo del chotis y el pasodoble.",
+        "points": [
+          {
+            "name": "Registro de barítono y vibrato",
+            "desc": "Urrutia explora su rango grave con un vibrato marcado y un tono arrastrado totalmente reconocible, influenciado por la tonadilla española y el cuplé."
+          },
+          {
+            "name": "Ironía y cotidianidad lírica",
+            "desc": "La letra personifica el ritmo del baile como el 'culpable' de un desliz sentimental, utilizando un lenguaje castizo y urbano que resonó en el imaginario colectivo."
+          }
+        ]
+      }
+    ]
+  },
+  "La culpa fue del cha-cha-chá": {
+    "title": "La culpa fue del cha-cha-chá",
+    "artist": "Gabinete Caligari",
+    "year": "1989",
+    "album": "Privado",
+    "synopsis": "Publicada en el álbum Privado (1989), esta canción representa el punto de inflexión donde Gabinete Caligari culminó su metamorfosis desde el post-punk de la Movida Madrileña hacia una fórmula de pop castizo y folclórico absolutamente singular. Bajo la producción de Jesús N. Gómez, la banda madrileña articuló un híbrido entre el rock hispano, la canción melódica y el patrón afro-cubano del cha-cha-chá, cimentando la figura de Jaime Urrutia como el crooner ibérico por excelencia.",
+    "sections": [
+      {
+        "title": "Origen e Innovación Casticista",
+        "icon": "fa-history",
+        "text": "Tras haber liderado la vertiente más oscura e influenciada por Joy Division y The Birthday Party a principios de los 80, Gabinete Caligari inició una apertura tonal que bautizaron como 'rock torero'. En 'La culpa fue del cha-cha-chá', el grupo abandonó por completo las atmósferas sombrías para abrazar la tradición de las orquestas de baile y la cultura de bar española de finales de siglo.",
+        "points": [
+          {
+            "name": "Evolución estética del trío",
+            "desc": "El trío formado por Jaime Urrutia, Ferni Presas y Edi Clavo dejó atrás las líneas de bajo siniestras para componer un tema pensado para el gran público sin perder su identidad narrativa."
+          },
+          {
+            "name": "Producción en Estudios Kirios",
+            "desc": "El productor Jesús N. Gómez diseñó un sonido pulcro y orgánico, alejándose de los sintetizadores estridentes de la época para dar prioridad a instrumentos acústicos y secciones de viento reales."
+          }
+        ]
+      },
+      {
+        "title": "Anatomía Rítmica y Textura Sónica",
+        "icon": "fa-guitar",
+        "text": "El núcleo sónico del tema reside en la apropiación y simplificación del patrón de cha-cha-chá de 4/4 adaptado a una base instrumental de pop-rock clásico. La instrumentación equilibra guitarras de timbre limpio con brillantes arreglos de viento-metal que actúan como réplica a las frases vocales.",
+        "points": [
+          {
+            "name": "Batería sincopada de Edi Clavo",
+            "desc": "Edi Clavo traslada el ritmo caribeño al kit de batería estándar usando el aro de la caja (rimshot) y marcando la síncopa característica en los tiempos débiles del compás."
+          },
+          {
+            "name": "Sección de metales (Call-and-Response)",
+            "desc": "Arreglos de trompeta y saxofón grabados con condensadores de gran diafragma que responden a la voz en el estribillo al más puro estilo de las orquestas tropicales de los 50."
+          },
+          {
+            "name": "Tono de guitarra Telecaster",
+            "desc": "Jaime Urrutia emplea una Fender Telecaster rasgueada con compresión moderada y un toque de chorus analógico (Boss CE-2) que otorga brillo y amplitud espacial a la rítmica."
+          }
+        ]
+      },
+      {
+        "title": "Declamación Vocal y Retórica Nocturna",
+        "icon": "fa-microphone-alt",
+        "text": "Líricamente, la canción es un retrato irónico de la noche madrileña, el desamor y la excusa cómplice. La entrega vocal de Jaime Urrutia se distancia del pop convencional para acercarse al fraseo del chotis y el pasodoble.",
+        "points": [
+          {
+            "name": "Registro de barítono y vibrato",
+            "desc": "Urrutia explora su rango grave con un vibrato marcado y un tono arrastrado totalmente reconocible, influenciado por la tonadilla española y el cuplé."
+          },
+          {
+            "name": "Ironía y cotidianidad lírica",
+            "desc": "La letra personifica el ritmo del baile como el 'culpable' de un desliz sentimental, utilizando un lenguaje castizo y urbano que resonó en el imaginario colectivo."
+          }
+        ]
+      }
+    ]
   }
 }

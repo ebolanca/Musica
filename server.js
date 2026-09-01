@@ -564,6 +564,50 @@ if (fs.existsSync(ANALYSES_DB_PATH)) {
 }
 
 // Función auxiliar para escanear archivos de vídeo y letras
+
+let cachedLocalVideoMap = new Map();
+let lastVideoScanTime = 0;
+
+function getCachedVideoFiles() {
+    const now = Date.now();
+    if (cachedLocalVideoMap.size === 0 || (now - lastVideoScanTime > 300000)) { // 5 minutos de caché
+        cachedLocalVideoMap = scanAudioFilesAndVideos();
+        lastVideoScanTime = now;
+    }
+    return cachedLocalVideoMap;
+}
+
+function scanAudioFilesAndVideos() {
+    const videoFilesMap = new Map();
+    if (!fs.existsSync(OMEN_VIDEOS_DIR)) return videoFilesMap;
+
+    try {
+        const folders = fs.readdirSync(OMEN_VIDEOS_DIR, { withFileTypes: true });
+        for (const folder of folders) {
+            if (!folder.isDirectory()) continue;
+            const category = folder.name;
+            const folderPath = path.join(OMEN_VIDEOS_DIR, category);
+            const files = fs.readdirSync(folderPath);
+
+            for (const file of files) {
+                const ext = path.extname(file).toLowerCase();
+                const baseName = path.basename(file, ext).toLowerCase().replace(/[^a-z0-9]/g, '');
+                
+                if (!videoFilesMap.has(baseName)) {
+                    videoFilesMap.set(baseName, { category, mp4: null, srt: null, lrc: null, rawName: file });
+                }
+                const entry = videoFilesMap.get(baseName);
+                if (ext === '.mp4') entry.mp4 = path.join(category, file);
+                if (ext === '.srt') entry.srt = path.join(category, file);
+                if (ext === '.lrc') entry.lrc = path.join(category, file);
+            }
+        }
+    } catch (e) {
+        console.error("Error escaneando carpeta de videoclips:", e.message);
+    }
+    return videoFilesMap;
+}
+
 function scanVideoFiles() {
     const videoFilesMap = new Map();
     if (!fs.existsSync(OMEN_VIDEOS_DIR)) return videoFilesMap;
@@ -645,7 +689,7 @@ app.get('/api/playlists', (req, res) => {
         };
     }
 
-    const videoMap = scanVideoFiles();
+    const videoMap = getCachedVideoFiles();
     const audioMap = scanAudioFiles();
     const iconicAlbumDates = {
         "appetite for destruction": {
@@ -1111,22 +1155,21 @@ app.get('/api/track/detail', async (req, res) => {
 
     let analysis = findAnalysisForTrack(artist, title);
 
+    // Si no hay análisis, lanzar la generación con IA en segundo plano sin bloquear la respuesta de letras
     if (!analysis || isGenericAnalysis(analysis)) {
         const cleanT = cleanTrackTitle(title);
         const meta = getTrackMetadata(artist, title);
-        const aiAnalysis = await generateGeminiAnalysis(artist, cleanT, meta.album, meta.releaseYear);
-        if (aiAnalysis && !isGenericAnalysis(aiAnalysis)) {
-            analysis = aiAnalysis;
-            const key = `${artist} - ${cleanT}`;
-            cachedAnalyses[key] = analysis;
-            cachedAnalyses[`${artist} - ${title}`] = analysis;
-            cachedAnalyses[cleanT] = analysis;
-            try {
-                fs.writeFileSync(ANALYSES_DB_PATH, JSON.stringify(cachedAnalyses, null, 2), 'utf8');
-            } catch(e) {
-                console.error("Error guardando nuevo análisis en analyses_db.json:", e.message);
+        generateGeminiAnalysis(artist, cleanT, meta.album, meta.releaseYear).then(aiAnalysis => {
+            if (aiAnalysis && !isGenericAnalysis(aiAnalysis)) {
+                const key = `${artist} - ${cleanT}`;
+                cachedAnalyses[key] = aiAnalysis;
+                cachedAnalyses[`${artist} - ${title}`] = aiAnalysis;
+                cachedAnalyses[cleanT] = aiAnalysis;
+                try {
+                    fs.writeFileSync(ANALYSES_DB_PATH, JSON.stringify(cachedAnalyses, null, 2), 'utf8');
+                } catch(e){}
             }
-        }
+        }).catch(()=>{});
     }
 
     let parsedLyrics = findLyricsForTrack(artist, title);
@@ -1177,36 +1220,42 @@ app.get('/api/track/detail', async (req, res) => {
             }
         }
 
-        // Si se acaba de obtener, traducir en paralelo y guardar permanentemente en lyrics_db.json
+        // Si se acaba de obtener, guardar en caché inmediatamente y traducir en segundo plano
         if (parsedLyrics && parsedLyrics.length > 0) {
+            const cleanT = cleanTrackTitle(title);
+            cachedLyricsDb[`${artist} - ${title}`] = parsedLyrics;
+            cachedLyricsDb[`${artist} - ${cleanT}`] = parsedLyrics;
+            cachedLyricsDb[cleanT] = parsedLyrics;
             try {
-                parsedLyrics = await translateLyricsBatch(parsedLyrics);
-                const cleanT = cleanTrackTitle(title);
-                cachedLyricsDb[`${artist} - ${title}`] = parsedLyrics;
-                cachedLyricsDb[`${artist} - ${cleanT}`] = parsedLyrics;
-                cachedLyricsDb[cleanT] = parsedLyrics;
-                try {
-                    fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
-                } catch(e){}
-            } catch(e) {}
+                fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
+            } catch(e){}
+
+            // Traducir en segundo plano sin congelar la respuesta del usuario
+            translateLyricsBatch(parsedLyrics).then(translated => {
+                if (translated) {
+                    cachedLyricsDb[`${artist} - ${title}`] = translated;
+                    cachedLyricsDb[`${artist} - ${cleanT}`] = translated;
+                    cachedLyricsDb[cleanT] = translated;
+                    try { fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8'); } catch(e){}
+                }
+            }).catch(()=>{});
         }
     }
 
     if (parsedLyrics && parsedLyrics.length > 0) {
         const hasUntranslated = parsedLyrics.some(l => (l.text || '').trim().length > 3 && !l.translation);
         if (hasUntranslated) {
-            try {
-                parsedLyrics = await translateLyricsBatch(parsedLyrics);
-                const cleanT = cleanTrackTitle(title);
-                cachedLyricsDb[`${artist} - ${title}`] = parsedLyrics;
-                cachedLyricsDb[`${artist} - ${cleanT}`] = parsedLyrics;
-                cachedLyricsDb[cleanT] = parsedLyrics;
-                try {
-                    fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
-                } catch(e){}
-            } catch(e) {
-                console.error('Error traduciendo letra:', e.message);
-            }
+            translateLyricsBatch(parsedLyrics).then(translated => {
+                if (translated) {
+                    const cleanT = cleanTrackTitle(title);
+                    cachedLyricsDb[`${artist} - ${title}`] = translated;
+                    cachedLyricsDb[`${artist} - ${cleanT}`] = translated;
+                    cachedLyricsDb[cleanT] = translated;
+                    try {
+                        fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
+                    } catch(e){}
+                }
+            }).catch(()=>{});
         }
     }
 
