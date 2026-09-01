@@ -16201,13 +16201,12 @@
     "durationFmt": "03:18"
   },
   "alice deejay - better off alone": {
-    "displayTitle": "Better Off Alone",
+    "title": "Better Off Alone",
+    "artist": "Alice Deejay",
     "album": "Better Off Alone",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/758b1915fa74ad3cc01fc60362086e49/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "1999-07-19",
-    "releaseYear": "1999",
-    "durationMs": 214000,
-    "durationFmt": "03:34"
+    "year": "1998",
+    "date": "1998-01-01",
+    "source": "MusicBrainz Picard"
   },
   "lasgo - something": {
     "title": "Something",
@@ -16253,13 +16252,12 @@
     "durationFmt": "03:22"
   },
   "dj sylvan - guitar spell": {
-    "displayTitle": "Guitar Spell",
+    "title": "Guitar Spell",
+    "artist": "DJ Sylvan",
     "album": "Made in Spain",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/310869472d665eb220aa5b5bcf5cb28d/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
-    "durationMs": 297000,
-    "durationFmt": "04:57"
+    "year": "1991",
+    "date": "1991-01-01",
+    "source": "MusicBrainz Picard"
   },
   "jan wayne - because the night (radio edit)": {
     "displayTitle": "Because The Night",
@@ -16403,13 +16401,12 @@
     "durationFmt": "03:45"
   },
   "jessy - head over heels - radio edit": {
-    "displayTitle": "Head over heels",
-    "album": "Rain",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4511c58e2fa90d4d930a9b76d0e4566b/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
-    "durationMs": 182000,
-    "durationFmt": "03:02"
+    "title": "Head over Heels (Jan Vervloet Remix 2)",
+    "artist": "Jessy",
+    "album": "Head over Heels",
+    "year": "2003",
+    "date": "2003-01-01",
+    "source": "Auto-Tagger Studio Master"
   },
   "jessy - head over heels": {
     "title": "Head Over Heels",
@@ -16420,13 +16417,12 @@
     "source": "MusicBrainz Picard"
   },
   "jessy - look at me now - radio edit": {
-    "displayTitle": "Look at me now",
-    "album": "Look at me now",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ba843bfdc5ce6a08a00a619fb4876238/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2002-02-19",
-    "releaseYear": "2002",
-    "durationMs": 227000,
-    "durationFmt": "03:47"
+    "title": "Look at Me Now (Radio Edit)",
+    "artist": "Jessy",
+    "album": "Look at Me Now - EP",
+    "year": "2002",
+    "date": "2002-01-01",
+    "source": "Auto-Tagger Studio Master"
   },
   "jessy - look at me now": {
     "displayTitle": "Look at me now",
@@ -16438,13 +16434,12 @@
     "durationFmt": "03:47"
   },
   "barthezz - on the move - radio edit": {
-    "displayTitle": "On The Move",
-    "album": "On The Move",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/de8963982bf9db7c0abdb5c41d41d10b/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
-    "durationMs": 215000,
-    "durationFmt": "03:35"
+    "title": "On the Move (Radio Edit)",
+    "artist": "Barthezz",
+    "album": "On the Move",
+    "year": "2000",
+    "date": "2000-01-01",
+    "source": "Auto-Tagger Studio Master"
   },
   "barthezz - on the move": {
     "displayTitle": "On The Move",
@@ -16473,13 +16468,12 @@
     "source": "MusicBrainz Picard"
   },
   "a.c.t.v. - la noche (original mix)": {
-    "displayTitle": "La Noche (Original Mix)",
+    "title": "La Noche (Original Mix)",
+    "artist": "A.C.T.V.",
     "album": "La Noche / In After Hours (Single)",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/95c83eacc8ac5daaa8ebc458379bb5c5/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
-    "durationMs": 322000,
-    "durationFmt": "05:22"
+    "year": "2008",
+    "date": "2008-01-01",
+    "source": "MusicBrainz Picard"
   },
   "toni atomic, eloise - sweet sleep - radio edit": {
     "displayTitle": "Sweet Sleep",
@@ -16652,9 +16646,9 @@
   "continuum 8 - continuum (original remake)": {
     "title": "Continuum (Original Remake)",
     "artist": "Continuum 8",
-    "album": "Continuum",
-    "year": "2015",
-    "date": "2015-01-01",
+    "album": "Continuum - EP",
+    "year": "2010",
+    "date": "2010-01-01",
     "source": "MusicBrainz Picard"
   },
   "the motiv - searching for golden eyes (original dance mix)": {
@@ -16675,13 +16669,12 @@
     "durationFmt": "05:09"
   },
   "absolom - secret - radio edit": {
-    "displayTitle": "Secret",
-    "album": "Secret/Baby Boomers (Secret/Baby Boomers)",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b8348f00a2d3f0421e6117b2439308af/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
-    "durationMs": 191000,
-    "durationFmt": "03:11"
+    "title": "Secret (Radio Edit)",
+    "artist": "Absolom",
+    "album": "Secret",
+    "year": "1998",
+    "date": "1998-01-01",
+    "source": "Auto-Tagger Studio Master"
   },
   "absolom - secret": {
     "title": "Secret",
@@ -16782,18 +16775,17 @@
     "title": "End Of The Road (Original Mix)",
     "artist": "Bandido",
     "album": "End Of The Road - Single",
-    "year": "2017",
-    "date": "2017-01-01",
+    "year": "2010",
+    "date": "2010-01-01",
     "source": "MusicBrainz Picard"
   },
   "anneke van hooff - lie to me - extended mix": {
-    "displayTitle": "Lie To Me",
-    "album": "Lie To Me",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f22a51ebaa11a737092ba5b3d9b9678b/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2004-11-22",
-    "releaseYear": "2004",
-    "durationMs": 334000,
-    "durationFmt": "05:34"
+    "title": "Lie to Me (Radio Edit)",
+    "artist": "Anneke van Hooff",
+    "album": "Lie to Me - Single",
+    "year": "2004",
+    "date": "2004-01-01",
+    "source": "Auto-Tagger Studio Master"
   },
   "anneke van hooff - lie to me": {
     "displayTitle": "Lie To Me",
@@ -16805,13 +16797,12 @@
     "durationFmt": "05:34"
   },
   "committe - trance line": {
-    "displayTitle": "Trance Line",
-    "album": "Trance Line / Drop the bass",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/fc54c16caddb2e60e1c804793652c098/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2003-06-19",
-    "releaseYear": "2003",
-    "durationMs": 307000,
-    "durationFmt": "05:07"
+    "title": "Trance Line",
+    "artist": "Committe",
+    "album": "Musical Biography 1.0 (Dimas & Martinez)",
+    "year": "2003",
+    "date": "2003-01-01",
+    "source": "MusicBrainz Picard"
   },
   "cabballero - hymn (trance-club-mix)": {
     "title": "Hymn (Trance-Club-Mix)",
@@ -16831,13 +16822,12 @@
     "durationFmt": "06:34"
   },
   "absolom - stars - extended mix": {
-    "displayTitle": "Stars",
-    "album": "Stars and Disasters",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b1774fbe350e83a9ba37a6b009e9b3d6/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2024-05-27",
-    "releaseYear": "2024",
-    "durationMs": 214000,
-    "durationFmt": "03:34"
+    "title": "Stars (Vocal Radio Edit)",
+    "artist": "Absolom",
+    "album": "Stars",
+    "year": "2001",
+    "date": "2001-01-01",
+    "source": "Auto-Tagger Studio Master"
   },
   "absolom - stars": {
     "displayTitle": "Stars",
@@ -16849,13 +16839,12 @@
     "durationFmt": "03:34"
   },
   "dj liberty - seguro - original b-side mix": {
-    "displayTitle": "Seguro",
-    "album": "Seguro",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f0c1f05160d022e2977446e47eb55f35/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
-    "durationMs": 310000,
-    "durationFmt": "05:10"
+    "title": "Seguro (Original B-Side Mix)",
+    "artist": "DJ Liberty",
+    "album": "Remember DJ Liberty - EP",
+    "year": "2005",
+    "date": "2005-01-01",
+    "source": "Auto-Tagger Studio Master"
   },
   "dj liberty - seguro": {
     "displayTitle": "Seguro",
@@ -16892,13 +16881,12 @@
     "source": "MusicBrainz Picard"
   },
   "aqualords - children of the demon - nico parisi mix": {
-    "displayTitle": "Children of the Demon - Nico Parisi Mix",
-    "album": "Children of the Demon",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/eb59ad61399afa40b03faf83f7d2f16b/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
-    "durationMs": 476000,
-    "durationFmt": "07:56"
+    "title": "Children of the Demon (Nico Parisi Mix)",
+    "artist": "Aqualords",
+    "album": "Children of the Demon - Single",
+    "year": "2014",
+    "date": "2014-01-01",
+    "source": "Auto-Tagger Studio Master"
   },
   "orion too, caitlin - you and me": {
     "displayTitle": "You And Me",
@@ -16919,13 +16907,12 @@
     "durationFmt": "03:17"
   },
   "control - representative": {
-    "displayTitle": "Representative",
-    "album": "Representative",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8a2f2dcbbc22f7c4e7b9f890bc7a4911/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
-    "durationMs": 240000,
-    "durationFmt": "04:00"
+    "title": "Representative",
+    "artist": "Control",
+    "album": "Musical Biography 1.0 (Dimas & Martinez)",
+    "year": "2003",
+    "date": "2003-01-01",
+    "source": "MusicBrainz Picard"
   },
   "information society - running": {
     "displayTitle": "Running",
@@ -16937,13 +16924,12 @@
     "durationFmt": "07:46"
   },
   "dune - espiral": {
-    "displayTitle": "Espiral",
-    "album": "Dunne",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6db54b6ba7d94e9781858317f9d14a1e/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
-    "durationMs": 296000,
-    "durationFmt": "04:56"
+    "title": "Espiral",
+    "artist": "Dune",
+    "album": "Made in Spain",
+    "year": "1991",
+    "date": "1991-01-01",
+    "source": "MusicBrainz Picard"
   },
   "yoly - to france": {
     "displayTitle": "To France",
@@ -16981,13 +16967,12 @@
     "durationFmt": "03:30"
   },
   "absolom - secret - extended vocal mix": {
-    "displayTitle": "Secret",
-    "album": "Secret/Baby Boomers (Secret/Baby Boomers)",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b8348f00a2d3f0421e6117b2439308af/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2014-02-17",
-    "releaseYear": "2014",
-    "durationMs": 191000,
-    "durationFmt": "03:11"
+    "title": "Secret (Extended Vocal Mix)",
+    "artist": "Absolom",
+    "album": "Secret / Baby Boomers (Secret / Baby Boomers)",
+    "year": "1998",
+    "date": "1998-01-01",
+    "source": "Auto-Tagger Studio Master"
   },
   "scanners, marian dacal - gun shy": {
     "displayTitle": "Gun Shy",
@@ -17061,13 +17046,12 @@
     "source": "MusicBrainz Picard"
   },
   "bbe - seven days and one week - radio edit": {
-    "displayTitle": "Seven Days and One Week",
-    "album": "Seven Days and One Week",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ff24114b3813d5f7597d74109f82df21/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
-    "durationMs": 271000,
-    "durationFmt": "04:31"
+    "title": "Seven Days and One Week (Radio Edit)",
+    "artist": "B.B.E.",
+    "album": "Seven Days and One Week - Single",
+    "year": "1996",
+    "date": "1996-01-01",
+    "source": "Auto-Tagger Studio Master"
   },
   "bbe - seven days and one week": {
     "displayTitle": "Seven Days and One Week",
@@ -17326,13 +17310,12 @@
     "durationFmt": "09:36"
   },
   "barthezz - infected - radio edit": {
-    "displayTitle": "Infected",
+    "title": "Infected (Radio Edit)",
+    "artist": "Barthezz",
     "album": "Infected",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6fd5554d888088d1906adf2655aa6a28/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
-    "durationMs": 209000,
-    "durationFmt": "03:29"
+    "year": "2001",
+    "date": "2001-01-01",
+    "source": "Auto-Tagger Studio Master"
   },
   "barthezz - infected": {
     "displayTitle": "Infected",
@@ -17353,13 +17336,12 @@
     "durationFmt": "04:02"
   },
   "absolom - secret - extended instrumental mix": {
-    "displayTitle": "Secret",
-    "album": "Secret/Baby Boomers (Secret/Baby Boomers)",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b8348f00a2d3f0421e6117b2439308af/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2014-02-17",
-    "releaseYear": "2014",
-    "durationMs": 191000,
-    "durationFmt": "03:11"
+    "title": "Secret (Extended Instrumental Mix)",
+    "artist": "Absolom",
+    "album": "Secret / Baby Boomers (Secret / Baby Boomers)",
+    "year": "1998",
+    "date": "1998-01-01",
+    "source": "Auto-Tagger Studio Master"
   },
   "peter murphy - all night long": {
     "displayTitle": "All Night Long",
@@ -17398,21 +17380,20 @@
     "durationFmt": "02:45"
   },
   "jerry daley - living on my own (extended mix)": {
-    "title": "Living on My Own (extended mix)",
+    "title": "Living On My Own (Extended Mix)",
     "artist": "Jerry Daley",
-    "album": "Living on My Own",
-    "year": "2010",
-    "date": "2010-01-01",
+    "album": "Living On My Own - EP",
+    "year": "2009",
+    "date": "2009-01-01",
     "source": "MusicBrainz Picard"
   },
   "dj marta - my direction (dance mix)": {
-    "displayTitle": "My Direction (Dance Mix)",
+    "title": "My Direction (Dance Mix)",
+    "artist": "DJ Marta",
     "album": "Hard Dance Compil Vol. 2",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/5ccebbd0d498d5bd8e3c18bcef9db724/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
-    "durationMs": 315000,
-    "durationFmt": "05:15"
+    "year": "2010",
+    "date": "2010-01-01",
+    "source": "MusicBrainz Picard"
   },
   "jones & stephenson - the first rebirth": {
     "title": "The First Rebirth",
@@ -17794,13 +17775,12 @@
     "durationFmt": "04:06"
   },
   "3 ways - real love - radio edit remastered": {
-    "displayTitle": "Real Love",
-    "album": "Real Love",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e895e012899e8fcfc0851d0c5077ba5f/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
-    "durationMs": 483000,
-    "durationFmt": "08:03"
+    "title": "Real Love (Remix)",
+    "artist": "Mary J. Blige",
+    "album": "What's the 411? (Remix)",
+    "year": "1992",
+    "date": "1992-01-01",
+    "source": "Auto-Tagger Studio Master"
   },
   "3 ways - real love": {
     "displayTitle": "Real Love",
@@ -17821,22 +17801,20 @@
     "durationFmt": "06:46"
   },
   "alfredo pareja - no more lies": {
-    "displayTitle": "No More Lies",
+    "title": "No More Lies",
+    "artist": "Alfredo Pareja",
     "album": "No More Lies",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/5f8c56ee2d8c020e2d73d59b01c343ca/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
-    "durationMs": 441000,
-    "durationFmt": "07:21"
+    "year": "2010",
+    "date": "2010-01-01",
+    "source": "MusicBrainz Picard"
   },
   "dagon - boom chaka (radio mix)": {
-    "displayTitle": "Boom Chaka (Radio Mix)",
-    "album": "The Album - Pepsi Comercial Song - 90's Top Hit",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/3048e97aea529d5d2f436aec3fa63771/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
-    "durationMs": 282000,
-    "durationFmt": "04:42"
+    "title": "Boom Chaka (Radio Mix)",
+    "artist": "Dagon",
+    "album": "Made in Spain",
+    "year": "1991",
+    "date": "1991-01-01",
+    "source": "MusicBrainz Picard"
   },
   "ismael lora - shout - 12' inch mix": {
     "displayTitle": "Shout - 12' Inch Mix",
@@ -17865,13 +17843,12 @@
     "source": "MusicBrainz Picard"
   },
   "bacon popper - free - smoked mix": {
-    "displayTitle": "Free - Smoked Mix",
-    "album": "Los Cuarenta Dance Hits - Luxury Edition",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7a4ac9903512ee54ba275bdc07398b6d/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
-    "durationMs": 311000,
-    "durationFmt": "05:11"
+    "title": "Free (Smoked Mix)",
+    "artist": "Bacon Popper",
+    "album": "Disco and Dance Hits Made in Italy",
+    "year": "1999",
+    "date": "1999-01-01",
+    "source": "Auto-Tagger Studio Master"
   },
   "natural born deejays - airplay": {
     "displayTitle": "Airplay",
@@ -18049,13 +18026,12 @@
     "durationFmt": "05:49"
   },
   "chimo bayo - asi me gusta a mi": {
-    "displayTitle": "Asi Me Gusta a Mi",
-    "album": "Techno Valencia Vol.1 (Sonido de Valencia)",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a393c5adf14a4fdf3aed60a525730af6/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
-    "durationMs": 369000,
-    "durationFmt": "06:09"
+    "title": "Asi Me Gusta a Mi",
+    "artist": "Chimo Bayo",
+    "album": "La Ruta Del Bakalao Vol. 2",
+    "year": "1991",
+    "date": "1991-01-01",
+    "source": "MusicBrainz Picard"
   },
   "espiral - dunne": {
     "displayTitle": "Dunne",
@@ -18093,31 +18069,28 @@
     "durationFmt": "05:12"
   },
   "dhany - quiero respirar - edit": {
-    "displayTitle": "Quiero Respirar - Edit",
+    "title": "Quiero Respirar (Edit)",
+    "artist": "Dhany",
     "album": "Quiero Respirar",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/95568a80396668c1cca032680810cafe/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "1999-09-08",
-    "releaseYear": "1999",
-    "durationMs": 239000,
-    "durationFmt": "03:59"
+    "year": "1999",
+    "date": "1999-01-01",
+    "source": "Auto-Tagger Studio Master"
   },
   "attica - timewarp": {
-    "displayTitle": "Timewarp",
-    "album": "Groovy Booty",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/779dc23320d37fd7c02e84b27fecb486/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
-    "durationMs": 219000,
-    "durationFmt": "03:39"
+    "title": "Timewarp",
+    "artist": "Attica",
+    "album": "Dj Marta Vol. 5",
+    "year": "2005",
+    "date": "2005-01-01",
+    "source": "MusicBrainz Picard"
   },
   "dj ötzi - sweet caroline - party remix": {
-    "displayTitle": "Sweet Caroline - Party Remix",
-    "album": "Sweet Caroline (Party Remix)",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/45ed96228a8160537e386395286abc28/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
-    "durationMs": 207000,
-    "durationFmt": "03:27"
+    "title": "Sweet Caroline (Party Remix)",
+    "artist": "DJ Ötzi",
+    "album": "Sweet Caroline (Party Remix) - Single",
+    "year": "2010",
+    "date": "2010-01-01",
+    "source": "Auto-Tagger Studio Master"
   },
   "xtm, annia - fly on the wings of love - xtm remix": {
     "displayTitle": "Fly on the Wings of Love - XTM Remix",
@@ -18691,27 +18664,27 @@
     "source": "MusicBrainz Picard"
   },
   "absolom - secret (extended instrumental mix)": {
-    "title": "Secret (extended instrumental MIX)",
+    "title": "Secret (Extended Instrumental Mix)",
     "artist": "Absolom",
-    "album": "Secret",
-    "year": "1997",
-    "date": "1997-01-01",
+    "album": "Secret / Baby Boomers (Secret / Baby Boomers)",
+    "year": "1998",
+    "date": "1998-01-01",
     "source": "MusicBrainz Picard"
   },
   "absolom - secret (extended vocal mix)": {
-    "title": "Secret (extended vocal MIX)",
+    "title": "Secret (Extended Vocal Mix)",
     "artist": "Absolom",
-    "album": "Secret",
-    "year": "1997",
-    "date": "1997-01-01",
+    "album": "Secret / Baby Boomers (Secret / Baby Boomers)",
+    "year": "1998",
+    "date": "1998-01-01",
     "source": "MusicBrainz Picard"
   },
   "absolom - secret (radio edit)": {
     "title": "Secret (Radio Edit)",
     "artist": "Absolom",
     "album": "Secret",
-    "year": "2016",
-    "date": "2016-01-01",
+    "year": "1998",
+    "date": "1998-01-01",
     "source": "MusicBrainz Picard"
   },
   "absolom - stars (extended mix)": {
@@ -18835,7 +18808,7 @@
     "source": "MusicBrainz Picard"
   },
   "barthezz - infected (radio edit)": {
-    "title": "Infected (radio edit)",
+    "title": "Infected (Radio Edit)",
     "artist": "Barthezz",
     "album": "Infected",
     "year": "2001",
@@ -18867,9 +18840,9 @@
     "source": "MusicBrainz Picard"
   },
   "cascada - everytime we touch (hardwell & maurice west remix)": {
-    "title": "Everytime We Touch (Hardwell & Maurice West remix)",
+    "title": "Everytime We Touch (Hardwell & Maurice West Remix)",
     "artist": "Cascada",
-    "album": "Everytime We Touch (Hardwell & Maurice West remix)",
+    "album": "Everytime We Touch (Hardwell & Maurice West Remix) - Single",
     "year": "2018",
     "date": "2018-01-01",
     "source": "MusicBrainz Picard"
@@ -19069,9 +19042,9 @@
   "dj ötzi - sweet caroline (party remix)": {
     "title": "Sweet Caroline (Party Remix)",
     "artist": "DJ Ötzi",
-    "album": "Sweet Caroline",
-    "year": "2009",
-    "date": "2009-01-01",
+    "album": "Sweet Caroline (Party Remix) - Single",
+    "year": "2010",
+    "date": "2010-01-01",
     "source": "MusicBrainz Picard"
   },
   "inma santos & jaimolin - d.o.n.s. - drop the gun (extended mix) (a1)": {
@@ -19366,8 +19339,8 @@
     "title": "Victim Of Your Love (Hard Floor Mix)",
     "artist": "John Dark Face (Sound Factory Vol.IV)",
     "album": "The Members Of The Table EP Vol.1",
-    "year": "2017",
-    "date": "2017-01-01",
+    "year": "2009",
+    "date": "2009-01-01",
     "source": "MusicBrainz Picard"
   },
   "johnny o international recording artist - official johnny o fantasy girl video": {
@@ -31763,11 +31736,11 @@
     "source": "MusicBrainz Picard"
   },
   "bacon popper - free (smoked mix)": {
-    "title": "Free (Smoked mix)",
+    "title": "Free (Smoked Mix)",
     "artist": "Bacon Popper",
-    "album": "Free",
-    "year": "1998",
-    "date": "1998-01-01",
+    "album": "Disco and Dance Hits Made in Italy",
+    "year": "1999",
+    "date": "1999-01-01",
     "source": "MusicBrainz Picard"
   },
   "b.b.e. - seven days & one week": {
@@ -35713,5 +35686,541 @@
     "year": "2017",
     "date": "2017-01-01",
     "source": "MusicBrainz Picard"
+  },
+  "mary j. blige - real love (remix)": {
+    "title": "Real Love (Remix)",
+    "artist": "Mary J. Blige",
+    "album": "What's the 411? (Remix)",
+    "year": "1992",
+    "date": "1992-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "abel the kid raul ortiz - groove 10": {
+    "title": "Groove 2.0 The Music",
+    "artist": "Abel the Kid & Raul Ortiz",
+    "album": "Groove 2.0 The Music - Single",
+    "year": "2002",
+    "date": "2002-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "abel the kid & raul ortiz - groove 2.0 the music": {
+    "title": "Groove 2.0 The Music",
+    "artist": "Abel the Kid & Raul Ortiz",
+    "album": "Groove 2.0 The Music - Single",
+    "year": "2002",
+    "date": "2002-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "abel the kid raul ortiz - groove 20 the music": {
+    "title": "Groove 2.0 The Music",
+    "artist": "Abel the Kid & Raul Ortiz",
+    "album": "Groove 2.0 The Music - Single",
+    "year": "2002",
+    "date": "2002-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "abel the kid raul ortiz monique - stay with me": {
+    "title": "Stay With Me (feat. Monique)",
+    "artist": "Abel the Kid & Raul Ortiz",
+    "album": "Stay With Me (feat. Monique) - Single",
+    "year": "2002",
+    "date": "2002-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "abel the kid & raul ortiz - stay with me (feat. monique)": {
+    "title": "Stay With Me (feat. Monique)",
+    "artist": "Abel the Kid & Raul Ortiz",
+    "album": "Stay With Me (feat. Monique) - Single",
+    "year": "2002",
+    "date": "2002-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "absolom - stars (vocal radio edit)": {
+    "title": "Stars (Vocal Radio Edit)",
+    "artist": "Absolom",
+    "album": "Stars",
+    "year": "2001",
+    "date": "2001-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "actv - la noche original mix": {
+    "title": "La Noche (Original Mix)",
+    "artist": "A.C.T.V.",
+    "album": "La Noche / In After Hours (Single)",
+    "year": "2008",
+    "date": "2008-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "after hours - strange": {
+    "title": "505",
+    "artist": "Arctic Monkeys",
+    "album": "Favourite Worst Nightmare",
+    "year": "2007",
+    "date": "2007-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "arctic monkeys - 505": {
+    "title": "505",
+    "artist": "Arctic Monkeys",
+    "album": "Favourite Worst Nightmare",
+    "year": "2007",
+    "date": "2007-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "albert neve juanjo martin nalaya - supermartxe": {
+    "title": "Supermartxe",
+    "artist": "Albert Neve, Juanjo Martin & Nalaya",
+    "album": "Latin House Party",
+    "year": "2009",
+    "date": "2009-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "albert neve, juanjo martin & nalaya - supermartxe": {
+    "title": "Supermartxe",
+    "artist": "Albert Neve, Juanjo Martin & Nalaya",
+    "album": "Latin House Party",
+    "year": "2009",
+    "date": "2009-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "alexia double you - me and you": {
+    "title": "Me and You (feat. Double You)",
+    "artist": "Alexia",
+    "album": "Ultimate 2007 Greatest Hits",
+    "year": "1995",
+    "date": "1995-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "alexia - me and you (feat. double you)": {
+    "title": "Me and You (feat. Double You)",
+    "artist": "Alexia",
+    "album": "Ultimate 2007 Greatest Hits",
+    "year": "1995",
+    "date": "1995-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "anneke van hooff - lie to me (radio edit)": {
+    "title": "Lie to Me (Radio Edit)",
+    "artist": "Anneke van Hooff",
+    "album": "Lie to Me - Single",
+    "year": "2004",
+    "date": "2004-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "arkimed - lultimo di mohicani": {
+    "title": "L'ultimo dei Mohicani (2021 Remaster)",
+    "artist": "Arkimed",
+    "album": "Best of Arkimed 90's (2021 Remaster)",
+    "year": "2021",
+    "date": "2021-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "arkimed - l'ultimo dei mohicani (2021 remaster)": {
+    "title": "L'ultimo dei Mohicani (2021 Remaster)",
+    "artist": "Arkimed",
+    "album": "Best of Arkimed 90's (2021 Remaster)",
+    "year": "2021",
+    "date": "2021-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "atb - 9pm till i come": {
+    "title": "9 PM - Till I Come (Radio Edit)",
+    "artist": "ATB",
+    "album": "9 PM (Till I Come)",
+    "year": "1999",
+    "date": "1999-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "atb - 9 pm - till i come (radio edit)": {
+    "title": "9 PM - Till I Come (Radio Edit)",
+    "artist": "ATB",
+    "album": "9 PM (Till I Come)",
+    "year": "1999",
+    "date": "1999-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "attic - im loosing you - original mix": {
+    "title": "The River of Dreams",
+    "artist": "Billy Joel",
+    "album": "River of Dreams",
+    "year": "1993",
+    "date": "1993-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "billy joel - the river of dreams": {
+    "title": "The River of Dreams",
+    "artist": "Billy Joel",
+    "album": "River of Dreams",
+    "year": "1993",
+    "date": "1993-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "avantgarde - get down again - original mix": {
+    "title": "Get Down Again (Jerry Ropero Remix)",
+    "artist": "Avant Garde",
+    "album": "House Every Weekend 2018",
+    "year": "2017",
+    "date": "2017-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "avant garde - get down again (jerry ropero remix)": {
+    "title": "Get Down Again (Jerry Ropero Remix)",
+    "artist": "Avant Garde",
+    "album": "House Every Weekend 2018",
+    "year": "2017",
+    "date": "2017-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "bandido - end of the road original mix": {
+    "title": "End Of The Road (Original Mix)",
+    "artist": "Bandido",
+    "album": "End Of The Road - Single",
+    "year": "2010",
+    "date": "2010-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "barthezz - on the move (radio edit)": {
+    "title": "On the Move (Radio Edit)",
+    "artist": "Barthezz",
+    "album": "On the Move",
+    "year": "2000",
+    "date": "2000-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "b.b.e. - seven days and one week (radio edit)": {
+    "title": "Seven Days and One Week (Radio Edit)",
+    "artist": "B.B.E.",
+    "album": "Seven Days and One Week - Single",
+    "year": "1996",
+    "date": "1996-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "cabballero - hymn radio-trance-mix": {
+    "title": "Hymn (Radio Trance Mix)",
+    "artist": "Cabballero",
+    "album": "Hymn - Single",
+    "year": "1994",
+    "date": "1994-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "cabballero - hymn (radio trance mix)": {
+    "title": "Hymn (Radio Trance Mix)",
+    "artist": "Cabballero",
+    "album": "Hymn - Single",
+    "year": "1994",
+    "date": "1994-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "cabballero - hymn trance-club-mix": {
+    "title": "Hymn (Trance Club-Mix)",
+    "artist": "Cabballero",
+    "album": "Hymn - Single",
+    "year": "1994",
+    "date": "1994-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "cabballero - hymn (trance club-mix)": {
+    "title": "Hymn (Trance Club-Mix)",
+    "artist": "Cabballero",
+    "album": "Hymn - Single",
+    "year": "1994",
+    "date": "1994-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "cascada maurice west - everytime we touch - hardwell  maurice west remix": {
+    "title": "Everytime We Touch (Hardwell & Maurice West Remix)",
+    "artist": "Cascada",
+    "album": "Everytime We Touch (Hardwell & Maurice West Remix) - Single",
+    "year": "2018",
+    "date": "2018-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "century john wesley - lover why - vocal dream mix": {
+    "title": "Lover Why (1996 Vocal Dream Mix)",
+    "artist": "Century & John Wesley",
+    "album": "Best of Century (Le meilleur des années 80)",
+    "year": "1996",
+    "date": "1996-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "century & john wesley - lover why (1996 vocal dream mix)": {
+    "title": "Lover Why (1996 Vocal Dream Mix)",
+    "artist": "Century & John Wesley",
+    "album": "Best of Century (Le meilleur des années 80)",
+    "year": "1996",
+    "date": "1996-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "coca  villa - la noche": {
+    "title": "La Noche",
+    "artist": "COCA & Villa",
+    "album": "In Search of Sunrise, Vol. 4: Latin America (Mixed by Tiësto)",
+    "year": "2005",
+    "date": "2005-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "commander tom - are am eye": {
+    "title": "Are Am Eye? (We Do Voodoo Remix) [Mixed]",
+    "artist": "Commander Tom",
+    "album": "Tomorrowland Winter 2023: Amelie Lens at Mainstage (DJ Mix)",
+    "year": "2023",
+    "date": "2023-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "commander tom - are am eye? (we do voodoo remix) [mixed]": {
+    "title": "Are Am Eye? (We Do Voodoo Remix) [Mixed]",
+    "artist": "Commander Tom",
+    "album": "Tomorrowland Winter 2023: Amelie Lens at Mainstage (DJ Mix)",
+    "year": "2023",
+    "date": "2023-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "continuum 8 - continuum original remake": {
+    "title": "Continuum (Original Remake)",
+    "artist": "Continuum 8",
+    "album": "Continuum - EP",
+    "year": "2010",
+    "date": "2010-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "coro taleesa - because the night": {
+    "title": "Because the Night (Radio Edit) [feat. Taleesa]",
+    "artist": "Co.Ro.",
+    "album": "Because the Night (feat. Taleesa) - EP",
+    "year": "1992",
+    "date": "1992-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "co.ro. - because the night (radio edit) [feat. taleesa]": {
+    "title": "Because the Night (Radio Edit) [feat. Taleesa]",
+    "artist": "Co.Ro.",
+    "album": "Because the Night (feat. Taleesa) - EP",
+    "year": "1992",
+    "date": "1992-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "dagon - boom chaka radio mix": {
+    "title": "Boom Chaka (Radio Mix)",
+    "artist": "Dagon",
+    "album": "Made in Spain",
+    "year": "1991",
+    "date": "1991-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "darren tate jono grant solar system - let the light shine in - solar system remix": {
+    "title": "Let the Light Shine in (Nitrous Oxide Remix) [Mixed]",
+    "artist": "Darren Tate & Jono Grant",
+    "album": "Asot 1241 - A State of Trance Episode 1241 (DJ Mix)",
+    "year": "2025",
+    "date": "2025-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "darren tate & jono grant - let the light shine in (nitrous oxide remix) [mixed]": {
+    "title": "Let the Light Shine in (Nitrous Oxide Remix) [Mixed]",
+    "artist": "Darren Tate & Jono Grant",
+    "album": "Asot 1241 - A State of Trance Episode 1241 (DJ Mix)",
+    "year": "2025",
+    "date": "2025-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "dhany - quiero respirar (edit)": {
+    "title": "Quiero Respirar (Edit)",
+    "artist": "Dhany",
+    "album": "Quiero Respirar",
+    "year": "1999",
+    "date": "1999-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "dj abel pedro miras alberto tapia - 2001 the odyssey": {
+    "title": "2001 the Odyssey",
+    "artist": "Dj Abel, Pedro Miras & Alberto Tapia",
+    "album": "Nº1 Techno & Progressive",
+    "year": "2000",
+    "date": "2000-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "dj abel, pedro miras & alberto tapia - 2001 the odyssey": {
+    "title": "2001 the Odyssey",
+    "artist": "Dj Abel, Pedro Miras & Alberto Tapia",
+    "album": "Nº1 Techno & Progressive",
+    "year": "2000",
+    "date": "2000-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "dj liberty - seguro (original b-side mix)": {
+    "title": "Seguro (Original B-Side Mix)",
+    "artist": "DJ Liberty",
+    "album": "Remember DJ Liberty - EP",
+    "year": "2005",
+    "date": "2005-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "dj marta - my direction dance mix": {
+    "title": "My Direction (Dance Mix)",
+    "artist": "DJ Marta",
+    "album": "Hard Dance Compil Vol. 2",
+    "year": "2010",
+    "date": "2010-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "dj nano - groove 10": {
+    "title": "Nano Groove",
+    "artist": "DJ-RS",
+    "album": "Data Beat",
+    "year": "2024",
+    "date": "2024-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "dj-rs - nano groove": {
+    "title": "Nano Groove",
+    "artist": "DJ-RS",
+    "album": "Data Beat",
+    "year": "2024",
+    "date": "2024-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "double vision - knockin remix 2000": {
+    "title": "Knockin (First Radio Mix)",
+    "artist": "Double Vision",
+    "album": "Knockin (Remix) - EP",
+    "year": "1995",
+    "date": "1995-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "double vision - knockin (first radio mix)": {
+    "title": "Knockin (First Radio Mix)",
+    "artist": "Double Vision",
+    "album": "Knockin (Remix) - EP",
+    "year": "1995",
+    "date": "1995-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "fragma - everytime you need me": {
+    "title": "Everytime You Need Me (feat. Maria Rubia) [Radio Version]",
+    "artist": "Fragma",
+    "album": "Everytime You Need Me (feat. Maria Rubia) [Remixes]",
+    "year": "2001",
+    "date": "2001-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "fragma - everytime you need me (feat. maria rubia) [radio version]": {
+    "title": "Everytime You Need Me (feat. Maria Rubia) [Radio Version]",
+    "artist": "Fragma",
+    "album": "Everytime You Need Me (feat. Maria Rubia) [Remixes]",
+    "year": "2001",
+    "date": "2001-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "fragma - tocas miracle": {
+    "title": "Toca's Miracle (Radio Edit)",
+    "artist": "Fragma",
+    "album": "Toca (20th Anniversary Edition)",
+    "year": "2000",
+    "date": "2000-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "fragma - toca's miracle (radio edit)": {
+    "title": "Toca's Miracle (Radio Edit)",
+    "artist": "Fragma",
+    "album": "Toca (20th Anniversary Edition)",
+    "year": "2000",
+    "date": "2000-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "gala molella phil jay - come into my life molella and phil jay edit mix": {
+    "title": "Come Into My Life (Molella And Phil Jay Edit Mix)",
+    "artist": "Gala",
+    "album": "Come Into My Life",
+    "year": "1997",
+    "date": "1997-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "gala - come into my life (molella and phil jay edit mix)": {
+    "title": "Come Into My Life (Molella And Phil Jay Edit Mix)",
+    "artist": "Gala",
+    "album": "Come Into My Life",
+    "year": "1997",
+    "date": "1997-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "gala molella phil jay - let a boy cry": {
+    "title": "Galamegamix (Radio Edit) [prod. Molella, Phil Jay] [Radio Edit]",
+    "artist": "Gala",
+    "album": "Galamegamix",
+    "year": "1998",
+    "date": "1998-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "gala - galamegamix (radio edit) [prod. molella, phil jay] [radio edit]": {
+    "title": "Galamegamix (Radio Edit) [prod. Molella, Phil Jay] [Radio Edit]",
+    "artist": "Gala",
+    "album": "Galamegamix",
+    "year": "1998",
+    "date": "1998-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "ian van dahl marsha - castles in the sky - radio mix": {
+    "title": "Castles in the Sky (feat. Marsha) [Radio Mix]",
+    "artist": "Ian Van Dahl",
+    "album": "Castles in the Sky (feat. Marsha) [Remixes] - Single",
+    "year": "2000",
+    "date": "2000-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "ian van dahl - castles in the sky (feat. marsha) [radio mix]": {
+    "title": "Castles in the Sky (feat. Marsha) [Radio Mix]",
+    "artist": "Ian Van Dahl",
+    "album": "Castles in the Sky (feat. Marsha) [Remixes] - Single",
+    "year": "2000",
+    "date": "2000-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "jerry daley - living on my own extended mix": {
+    "title": "Living On My Own (Extended Mix)",
+    "artist": "Jerry Daley",
+    "album": "Living On My Own - EP",
+    "year": "2009",
+    "date": "2009-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "jessy - head over heels (jan vervloet remix 2)": {
+    "title": "Head over Heels (Jan Vervloet Remix 2)",
+    "artist": "Jessy",
+    "album": "Head over Heels",
+    "year": "2003",
+    "date": "2003-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "jessy - look at me now (radio edit)": {
+    "title": "Look at Me Now (Radio Edit)",
+    "artist": "Jessy",
+    "album": "Look at Me Now - EP",
+    "year": "2002",
+    "date": "2002-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "jk - you  i - bliss team radio edit": {
+    "title": "You & I (Bliss Team Radio Edit)",
+    "artist": "JK",
+    "album": "You & I",
+    "year": "1994",
+    "date": "1994-01-01",
+    "source": "Auto-Tagger Studio Master"
+  },
+  "jk - you & i (bliss team radio edit)": {
+    "title": "You & I (Bliss Team Radio Edit)",
+    "artist": "JK",
+    "album": "You & I",
+    "year": "1994",
+    "date": "1994-01-01",
+    "source": "MusicBrainz Picard"
+  },
+  "john dark face sound factory voliv - victim of your love hard floor mix": {
+    "title": "Victim Of Your Love (Hard Floor Mix)",
+    "artist": "John Dark Face (Sound Factory Vol.IV)",
+    "album": "The Members Of The Table EP Vol.1",
+    "year": "2009",
+    "date": "2009-01-01",
+    "source": "Auto-Tagger Studio Master"
   }
 }
