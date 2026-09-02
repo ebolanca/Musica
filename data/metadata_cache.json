@@ -12961,11 +12961,12 @@
   "vengaboys - boom, boom, boom, boom!!": {
     "title": "Boom, Boom, Boom, Boom!!",
     "artist": "Vengaboys",
-    "album": "Urban Blues (Bonus Tracks)",
-    "year": "1962",
-    "date": "1962-03-01",
-    "source": "MusicBrainz Picard",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/41e71f8047038de8d35f1e378c518cf7/1000x1000-000000-80-0-0.jpg"
+    "album": "The Party Album!",
+    "year": "1998",
+    "date": "1998-10-23",
+    "releaseYear": "1998",
+    "releaseDate": "1998-10-23",
+    "source": "Verified Master Database"
   },
   "youssou n'dour, neneh cherry - 7 seconds (feat. neneh cherry)": {
     "displayTitle": "7 Seconds (feat. Neneh Cherry)",
@@ -13922,15 +13923,14 @@
     "date": "1990-01-01"
   },
   "diana king - i say a little prayer": {
-    "displayTitle": "I Say A Little Prayer",
-    "album": "My Best Friend's Wedding (Music from the Motion Picture)",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/21bd52cc8c0ff159b19ea2e9a551215c/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "1997-06-24",
+    "title": "I Say A Little Prayer",
+    "artist": "Diana King",
+    "album": "My Best Friend's Wedding / Think Like a Girl",
+    "year": "1997",
+    "date": "1997-06-24",
     "releaseYear": "1997",
-    "durationMs": 215000,
-    "durationFmt": "03:35",
-    "year": "1966",
-    "date": "1966-01-01"
+    "releaseDate": "1997-06-24",
+    "source": "Verified Master Database"
   },
   "the cure - friday i'm in love": {
     "displayTitle": "Friday I'm In Love",
@@ -28262,10 +28262,12 @@
   "dianakingvevo - diana king - say a little prayer": {
     "title": "Diana King - Say A Little Prayer",
     "artist": "DianaKingVEVO",
-    "album": "Single / Álbum",
-    "year": "2014",
-    "date": "2014-01-01",
-    "source": "MusicBrainz Picard"
+    "album": "My Best Friend's Wedding / Think Like a Girl",
+    "year": "1997",
+    "date": "1997-06-24",
+    "source": "MusicBrainz Picard",
+    "releaseYear": "1997",
+    "releaseDate": "1997-06-24"
   },
   "dianakingvevo - diana king - shy guy": {
     "title": "Diana King - Shy Guy",
