@@ -1,3 +1,15 @@
+
+function normalizePlaylistKey(name) {
+    if (!name) return 'Música viejuna';
+    const clean = name.trim();
+    if (/viejuna/i.test(clean)) return 'Música viejuna';
+    if (/siglo\s*xxi/i.test(clean)) return 'Siglo XXI';
+    if (/española|espanola/i.test(clean)) return 'Española';
+    if (/latina/i.test(clean)) return 'Música latina';
+    if (/dance/i.test(clean)) return 'Dance';
+    return clean;
+}
+
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
@@ -807,7 +819,8 @@ app.get('/api/playlists', (req, res) => {
 
     // Enriquecer cada canción con el estado del videoclip, letras y DEDUPLICACIÓN
     const response = {};
-    for (const [listName, rawTracks] of Object.entries(playlistsData)) {
+    for (const [rawListName, rawTracks] of Object.entries(playlistsData)) {
+        const listName = normalizePlaylistKey(rawListName);
         const seenKeys = new Set();
         const enrichedTracks = [];
 
@@ -933,7 +946,7 @@ app.get('/api/playlists', (req, res) => {
             });
         }
 
-        response[listName] = enrichedTracks;
+        if (!response[listName]) { response[listName] = []; } response[listName] = response[listName].concat(enrichedTracks);
     }
 
     res.json(response);
