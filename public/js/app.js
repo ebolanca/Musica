@@ -2342,9 +2342,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const musicBarTitle = document.getElementById('music-bar-title');
-    const musicBarArtist = document.getElementById('music-bar-artist');
-    const musicBarCover = document.getElementById('music-bar-cover');
+    // Using existing musicBarTitle, musicBarArtist, musicBarCover from scope
 
     if (musicBarTitle) musicBarTitle.addEventListener('click', handleOpenMusicBarModal);
     if (musicBarArtist) musicBarArtist.addEventListener('click', handleOpenMusicBarModal);
