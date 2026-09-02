@@ -565,9 +565,14 @@ function scanAudioFiles() {
                 const ext = path.extname(file).toLowerCase();
                 if (ext === '.mp3' || ext === '.m4a' || ext === '.flac' || ext === '.ogg') {
                     const baseName = path.basename(file, ext).toLowerCase().replace(/[^a-z0-9]/g, '');
+                    let sizeBytes = 0;
+                    try { sizeBytes = fs.statSync(path.join(folderPath, file)).size; } catch(e){}
+                    const isTruncated = sizeBytes > 0 && sizeBytes < 2.5 * 1024 * 1024; // < 2.5MB is truncated/preview
                     audioMap.set(baseName, {
                         category,
                         fileName: file,
+                        sizeBytes,
+                        isTruncated,
                         relUrl: `/media-music/${encodeURIComponent(category)}/${encodeURIComponent(file)}`
                     });
                 }
@@ -876,6 +881,14 @@ app.get('/api/playlists', (req, res) => {
                                jellyfinVideosLookup.get(cleanTrackKey(`${artist} - ${title}`)) || null;
 
             let audioUrl = audioInfo ? audioInfo.relUrl : null;
+            // Si el archivo de audio está truncado (<2.5MB) pero tenemos videoclip completo, usar el videoclip como audio
+            if (audioInfo && audioInfo.isTruncated) {
+                if (videoInfo && videoInfo.mp4) {
+                    audioUrl = `/media-videos/${videoInfo.mp4.replace(/\\/g, '/')}`;
+                } else if (jellyVideo && jellyVideo.streamUrl) {
+                    audioUrl = jellyVideo.streamUrl;
+                }
+            }
             // Si no hay MP3 pero hay videoclip en local o Jellyfin, usar como audio stream de respaldo
             if (!audioUrl) {
                 if (videoInfo && videoInfo.mp4) {
