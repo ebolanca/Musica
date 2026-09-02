@@ -408,9 +408,17 @@ function cleanAlbumTitle(rawAlbum) {
         .replace(/\s*\(Anniversary.*?\)/i, '')
         .replace(/\s*\(Special Edition.*?\)/i, '')
         .replace(/\s*\(Bonus.*?\)/i, '')
+        .replace(/\s*\(.*remaster.*\)/i, '')
+        .replace(/\s*\(.*acoustic.*\)/i, '')
+        .replace(/\s*\(.*remix.*\)/i, '')
+        .replace(/\s*\(.*live.*\)/i, '')
         .replace(/\s*-\s*Deluxe.*/i, '')
         .replace(/\s*-\s*Expanded.*/i, '')
         .replace(/\s*-\s*Remastered.*/i, '')
+        .replace(/\s*-\s*Remaster.*/i, '')
+        .replace(/\s*-\s*\d{4}\s*remaster.*/i, '')
+        .replace(/\s*-\s*Live.*/i, '')
+        .replace(/\s*-\s*Acoustic.*/i, '')
         .trim();
     return clean || rawAlbum;
 }
@@ -940,9 +948,9 @@ app.get('/api/playlists', (req, res) => {
 
             enrichedTracks.push({
                 artist: artist,
-                title: meta.displayTitle || cleanTitle,
+                title: (/dance/i.test(listName)) ? (meta.displayTitle || cleanTitle) : cleanTrackTitle(meta.displayTitle || cleanTitle),
                 rawTitle: title,
-                album: cleanAlbumTitle(meta.album),
+                album: (/dance/i.test(listName)) ? (meta.album || 'Álbum Desconocido') : cleanAlbumTitle(meta.album),
                 coverUrl: meta.coverUrl || null,
                 releaseDate: releaseDate,
                 releaseYear: releaseYear,
