@@ -535,6 +535,7 @@ loadMetadataCache();
 function cleanTrackTitle(rawTitle) {
     if (!rawTitle) return '';
     let clean = rawTitle
+        // Quitar colaboraciones/features
         .replace(/\s*-\s*[A-Za-z0-9\s]+\s+featuring\s+.*$/i, '')
         .replace(/\s*-\s*[A-Za-z0-9\s]+\s+feat\.?\s+.*$/i, '')
         .replace(/\s*\([A-Za-z0-9\s]+\s+featuring\s+.*\)$/i, '')
@@ -543,26 +544,17 @@ function cleanTrackTitle(rawTitle) {
         .replace(/\s*\(featuring\s+.*\)$/i, '')
         .replace(/\s*\(with\s+.*\)$/i, '')
         .replace(/^\s*\.\.\.\s*/, '')
-        .replace(/\s*-\s*Club Mix.*/i, '')
-        .replace(/\s*-\s*Extended Mix.*/i, '')
-        .replace(/\s*-\s*Mix.*/i, '')
-        .replace(/\s*-\s*Club Edit.*/i, '')
-        .replace(/\s*-\s*Remix.*/i, '')
-        .replace(/\s*\(.*remix.*\)/i, '')
-        .replace(/\s*-\s*Extended.*/i, '')
-        .replace(/\s*-\s*Radio Mix.*/i, '')
-        .replace(/\s*-\s*Mono.*/i, '')
-        .replace(/\s*-\s*Stereo.*/i, '')
+        // Quitar cualquier sufijo entre paréntesis que sea versión, remaster, edit, mix, etc.
+        .replace(/\s*\([^)]*(radio version|album version|single version|\d{4} version|short version|extended version|original version|version)[^)]*\)/gi, '')
+        .replace(/\s*\([^)]*(radio edit|club edit|extended mix|club mix|radio mix|dance vault|re-edit|edit|mixed)[^)]*\)/gi, '')
+        .replace(/\s*\([^)]*(remastered|\d{4} remaster|remaster|20\d\d remaster|19\d\d remaster)[^)]*\)/gi, '')
+        .replace(/\s*\([^)]*(remix|revisited|dub|vip mix|acoustic|unplugged|live|demo|deluxe|evolutions)[^)]*\)/gi, '')
+        // Quitar sufijos precedidos por guión
+        .replace(/\s*-\s*(radio version|album version|single version|\d{4} version|short version|original version|version).*/gi, '')
+        .replace(/\s*-\s*(radio edit|club edit|extended mix|club mix|radio mix|edit).*/gi, '')
+        .replace(/\s*-\s*(remastered|\d{4} remaster|remaster|20\d\d remaster|19\d\d remaster).*/gi, '')
+        .replace(/\s*-\s*(remix|acoustic|unplugged|live|demo|extended|mono|stereo|original).*/gi, '')
         .replace(/\s*-\s*From\s+".*?".*/i, '')
-        .replace(/\s*-\s*\d{4}\s*Remaster.*/i, '')
-        .replace(/\s*-\s*Remastered.*/i, '')
-        .replace(/\s*-\s*Remaster.*/i, '')
-        .replace(/\s*\(.*remaster.*\)/i, '')
-        .replace(/\s*-\s*Radio Edit.*/i, '')
-        .replace(/\s*\(.*radio edit.*\)/i, '')
-        .replace(/\s*-\s*Single Version.*/i, '')
-        .replace(/\s*\(.*deluxe.*\)/i, '')
-        .replace(/\s*-\s*Original.*/i, '')
         .trim();
 
     clean = clean.replace(/^[(\[]+([^)]+)[)\]]\s*/, '$1 ');
