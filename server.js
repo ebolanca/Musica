@@ -372,8 +372,41 @@ async function autoEnrichCatalogInBackground() {
                     const key = `${artist} - ${cleanT}`;
                     cachedAnalyses[key] = analysis;
                     cachedAnalyses[`${artist} - ${rawTitle}`] = analysis;
-                    cachedAnalyses[cleanT] = analysis;
                     newEntriesCount++;
+
+                    // Auto-resolver fecha de lanzamiento con Apple Music / iTunes si la canción es nueva
+                    const mKey1 = `${artist} - ${rawTitle}`.toLowerCase();
+                    const mKey2 = `${artist} - ${cleanT}`.toLowerCase();
+                    if (!metadataCache[mKey1] && !metadataCache[mKey2]) {
+                        try {
+                            const q = encodeURIComponent(`${artist} ${cleanT}`.trim());
+                            const itRes = await fetch(`https://itunes.apple.com/search?term=${q}&entity=song&limit=5`, { signal: AbortSignal.timeout(4000) });
+                            if (itRes.ok) {
+                                const itData = await itRes.json();
+                                if (itData.results && itData.results.length > 0) {
+                                    const best = itData.results[0];
+                                    const rDate = (best.releaseDate || '').split('T')[0];
+                                    const rYear = rDate.split('-')[0];
+                                    const metaObj = {
+                                        title: cleanT,
+                                        displayTitle: cleanT,
+                                        artist: artist,
+                                        album: best.collectionName || 'Álbum',
+                                        year: rYear,
+                                        date: rDate,
+                                        releaseYear: rYear,
+                                        releaseDate: rDate,
+                                        coverUrl: best.artworkUrl100 ? best.artworkUrl100.replace('100x100bb', '600x600bb') : null,
+                                        durationMs: best.trackTimeMillis || 0,
+                                        source: 'Apple Music / iTunes Auto-Resolver'
+                                    };
+                                    metadataCache[mKey1] = metaObj;
+                                    metadataCache[mKey2] = metaObj;
+                                    try { fs.writeFileSync(METADATA_CACHE_FILE, JSON.stringify(metadataCache, null, 2), 'utf8'); } catch(e){}
+                                }
+                            }
+                        } catch(e) {}
+                    }
 
                     // Save batch every 20 entries
                     if (newEntriesCount % 20 === 0) {
@@ -917,20 +950,25 @@ app.get('/api/playlists', (req, res) => {
             if (iconicAlbumDates[normAlbum]) {
                 releaseYear = iconicAlbumDates[normAlbum].year;
                 releaseDate = iconicAlbumDates[normAlbum].date;
-            } else if (analysis && analysis.year && analysis.year !== '2000') {
-                const aYr = parseInt(analysis.year, 10);
-                const mYr = parseInt(releaseYear, 10) || 0;
-                if (mYr > aYr || mYr > 2024 || mYr === 2000 || (listName === 'Música viejuna' && mYr > 1999 && aYr <= 1999)) {
-                    releaseYear = analysis.year;
-                    releaseDate = `${analysis.year}-01-01`;
-                }
             }
 
-            // Strict guarantee for Música viejuna: prior studio release over modern remasters
-            if (listName === 'Música viejuna') {
-                const yr = parseInt(releaseYear, 10) || 0;
-                if (yr > 1999) {
-                    if (analysis && analysis.year && parseInt(analysis.year, 10) <= 1999) {
+            // Regla de coherencia estructural por tipo de Playlist (cero contaminación cruzada)
+            const yrNum = parseInt(releaseYear, 10) || 0;
+            if (/siglo\s*xxi/i.test(listName)) {
+                // Siglo XXI: La música es por definición del año 2000 en adelante
+                if (yrNum > 0 && yrNum < 2000) {
+                    if (meta.year && parseInt(meta.year, 10) >= 2000) {
+                        releaseYear = meta.year;
+                        releaseDate = meta.date || `${releaseYear}-01-01`;
+                    } else {
+                        releaseYear = '2000';
+                        releaseDate = '2000-01-01';
+                    }
+                }
+            } else if (/viejuna/i.test(listName)) {
+                // Música viejuna: Clásicos anteriores a 2003
+                if (yrNum > 2003) {
+                    if (analysis && analysis.year && parseInt(analysis.year, 10) <= 2003) {
                         releaseYear = analysis.year;
                         releaseDate = `${analysis.year}-01-01`;
                     }
@@ -1028,29 +1066,12 @@ function findAnalysisForTrack(artist, title) {
     const key2 = `${artist} - ${cleanT}`;
     if (cachedAnalyses[key2]) return cachedAnalyses[key2];
 
-    const key3 = title;
-    if (cachedAnalyses[key3]) return cachedAnalyses[key3];
-
-    const key4 = cleanT;
-    if (cachedAnalyses[key4]) return cachedAnalyses[key4];
-
-    // Normalized search
+    // Normalized search: solo si coinciden tanto el artista como el título juntos
     const normTarget = `${artist}${cleanT}`.toLowerCase().replace(/[^a-z0-9]/g, '');
     for (const [k, v] of Object.entries(cachedAnalyses)) {
         const normK = k.toLowerCase().replace(/[^a-z0-9]/g, '');
-        if (normK === normTarget || (normK.length > 5 && (normK.includes(normTarget) || normTarget.includes(normK)))) {
+        if (normK === normTarget) {
             return v;
-        }
-    }
-
-    // Match by title alone
-    const normTitle = cleanT.toLowerCase().replace(/[^a-z0-9]/g, '');
-    if (normTitle.length > 3) {
-        for (const [k, v] of Object.entries(cachedAnalyses)) {
-            const normK = k.toLowerCase().replace(/[^a-z0-9]/g, '');
-            if (normK.includes(normTitle) || normTitle.includes(normK)) {
-                return v;
-            }
         }
     }
 
