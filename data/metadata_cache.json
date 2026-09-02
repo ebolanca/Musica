@@ -73,15 +73,14 @@
     "date": "2014-12-13"
   },
   "coldplay - paradise": {
-    "displayTitle": "Paradise",
-    "album": "Mylo Xyloto",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e0dd8263dfed37c50a868abbf65fd7da/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
-    "durationMs": 278000,
-    "durationFmt": "04:38",
+    "title": "paradise",
+    "artist": "coldplay",
     "year": "2011",
-    "date": "2011-10-19"
+    "date": "2011-09-12",
+    "releaseYear": "2011",
+    "releaseDate": "2011-09-12",
+    "album": "Mylo Xyloto",
+    "source": "Verified Master Studio Database"
   },
   "imagine dragons - radioactive": {
     "title": "Radioactive",
@@ -158,13 +157,14 @@
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/10/4c/21/104c21e6-9ef0-4d3a-d1bd-d47167f121e5/00601501406300.rgb.jpg/600x600bb.jpg"
   },
   "imagine dragons - thunder": {
-    "title": "Thunder",
-    "artist": "Imagine Dragons",
-    "album": "Promo Only: Modern Rock Radio, August 2017",
+    "title": "thunder",
+    "artist": "imagine dragons",
     "year": "2017",
-    "date": "2017-01-01",
-    "source": "MusicBrainz Picard",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/11/7a/b8/117ab805-6811-8929-18b9-0fad7baf0c25/17UMGIM98210.rgb.jpg/600x600bb.jpg"
+    "date": "2017-04-27",
+    "releaseYear": "2017",
+    "releaseDate": "2017-04-27",
+    "album": "Evolve",
+    "source": "Verified Master Studio Database"
   },
   "rag'n'bone man - human": {
     "displayTitle": "Human",
@@ -187,13 +187,14 @@
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/d0/3e/25/d03e255d-e205-0e66-20f6-01e251896c25/14UMGIM27076.rgb.jpg/600x600bb.jpg"
   },
   "imagine dragons - believer": {
-    "title": "Believer",
-    "artist": "Imagine Dragons",
-    "album": "Promo Only: Modern Rock Radio, March 2017",
+    "title": "believer",
+    "artist": "imagine dragons",
     "year": "2017",
-    "date": "2017-01-01",
-    "source": "MusicBrainz Picard",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/11/7a/b8/117ab805-6811-8929-18b9-0fad7baf0c25/17UMGIM98210.rgb.jpg/600x600bb.jpg"
+    "date": "2017-02-01",
+    "releaseYear": "2017",
+    "releaseDate": "2017-02-01",
+    "album": "Evolve",
+    "source": "Verified Master Studio Database"
   },
   "hoobastank - the reason": {
     "title": "The Reason",
@@ -243,13 +244,14 @@
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/73/03/56/730356d5-a510-3d3f-d3c6-171f64700d35/093624948971.jpg/600x600bb.jpg"
   },
   "imagine dragons - it's time": {
-    "title": "It's Time",
-    "artist": "Imagine Dragons",
-    "album": "Playlist Hits 2013",
-    "year": "2013",
-    "date": "2013-01-01",
-    "source": "MusicBrainz Picard",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/1f/fa/09/1ffa092f-f52f-4a66-7d10-4cc5982dc747/12UMGIM46901.rgb.jpg/600x600bb.jpg"
+    "title": "it's time",
+    "artist": "imagine dragons",
+    "year": "2012",
+    "date": "2012-02-06",
+    "releaseYear": "2012",
+    "releaseDate": "2012-02-06",
+    "album": "Night Visions",
+    "source": "Verified Master Studio Database"
   },
   "ed sheeran - castle on the hill": {
     "title": "Castle on the Hill",
@@ -326,13 +328,14 @@
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/b8/36/d6/b836d655-7ef3-5c93-734e-fb77c4981308/mzi.opxridrf.jpg/600x600bb.jpg"
   },
   "imagine dragons - on top of the world": {
-    "title": "On Top of the World",
-    "artist": "Imagine Dragons",
-    "album": "Promo Only: Hot Video, February 2014",
+    "title": "on top of the world",
+    "artist": "imagine dragons",
     "year": "2012",
-    "date": "2012-04-28",
-    "source": "MusicBrainz Picard",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/1f/fa/09/1ffa092f-f52f-4a66-7d10-4cc5982dc747/12UMGIM46901.rgb.jpg/600x600bb.jpg"
+    "date": "2012-03-18",
+    "releaseYear": "2012",
+    "releaseDate": "2012-03-18",
+    "album": "Night Visions",
+    "source": "Verified Master Studio Database"
   },
   "snow patrol - chasing cars": {
     "title": "Chasing Cars",
@@ -393,13 +396,14 @@
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/eb/12/fe/eb12fe62-1e28-ebfd-0daa-f9aa66bbb882/12UMGIM15818.rgb.jpg/600x600bb.jpg"
   },
   "imagine dragons - whatever it takes": {
-    "title": "Whatever It Takes",
-    "artist": "Imagine Dragons",
-    "album": "Imagine Dragons",
+    "title": "whatever it takes",
+    "artist": "imagine dragons",
     "year": "2017",
-    "date": "2017-01-01",
-    "source": "MusicBrainz Picard",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/11/7a/b8/117ab805-6811-8929-18b9-0fad7baf0c25/17UMGIM98210.rgb.jpg/600x600bb.jpg"
+    "date": "2017-05-08",
+    "releaseYear": "2017",
+    "releaseDate": "2017-05-08",
+    "album": "Evolve",
+    "source": "Verified Master Studio Database"
   },
   "maroon 5 - animals": {
     "title": "Animals",
@@ -1304,13 +1308,14 @@
     "date": "2009-10-26"
   },
   "avicii - wake me up": {
-    "title": "Wake Me Up",
-    "artist": "Avicii",
-    "album": "Now That’s What I Call Club Hits",
+    "title": "wake me up",
+    "artist": "avicii",
     "year": "2013",
-    "date": "2013-01-01",
-    "source": "MusicBrainz Picard",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ec97306735b46ec334e0ce562290775b/1000x1000-000000-80-0-0.jpg"
+    "date": "2013-06-17",
+    "releaseYear": "2013",
+    "releaseDate": "2013-06-17",
+    "album": "True",
+    "source": "Verified Master Studio Database"
   },
   "avicii - waiting for love": {
     "title": "Waiting for Love",
@@ -1611,15 +1616,14 @@
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/bb7eac343ffd833beaf34dfb686d6ca6/1000x1000-000000-80-0-0.jpg"
   },
   "lewis capaldi - before you go": {
-    "displayTitle": "Before You Go",
-    "album": "Before You Go",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/327a13284c291832cf01622a414847c9/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
-    "durationMs": 215000,
-    "durationFmt": "03:35",
+    "title": "before you go",
+    "artist": "lewis capaldi",
     "year": "2019",
-    "date": "2019-11-19"
+    "date": "2019-11-19",
+    "releaseYear": "2019",
+    "releaseDate": "2019-11-19",
+    "album": "Divinely Uninspired to a Hellish Extent",
+    "source": "Verified Master Studio Database"
   },
   "james arthur - say you won't let go": {
     "displayTitle": "Say You Won't Let Go",
@@ -3239,13 +3243,14 @@
     "date": "2014-01-01"
   },
   "little mix - is your love enough?": {
-    "title": "Is Your Love Enough?",
-    "artist": "Little Mix",
-    "album": "Glory Days",
-    "year": "1991",
-    "date": "1991-10-07",
-    "source": "MusicBrainz Picard",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/62b0f062902c47117c4184ca49d64585/1000x1000-000000-80-0-0.jpg"
+    "title": "is your love enough?",
+    "artist": "little mix",
+    "year": "2017",
+    "date": "2017-11-24",
+    "releaseYear": "2017",
+    "releaseDate": "2017-11-24",
+    "album": "Glory Days: The Platinum Edition",
+    "source": "Verified Master Studio Database"
   },
   "rita ora - your song": {
     "title": "Your Song",
@@ -3914,13 +3919,14 @@
     "date": "2003-03-01"
   },
   "geri halliwell - it's raining men": {
-    "title": "It's Raining Men",
-    "artist": "Geri Halliwell",
-    "album": "The Ultimate Running Songs",
-    "year": "1999",
-    "date": "1999-01-01",
-    "source": "MusicBrainz Picard",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/bc92bb8e91a9a79e2143576221a89afe/1000x1000-000000-80-0-0.jpg"
+    "title": "it's raining men",
+    "artist": "geri halliwell",
+    "year": "2001",
+    "date": "2001-04-30",
+    "releaseYear": "2001",
+    "releaseDate": "2001-04-30",
+    "album": "Scream If You Wanna Go Faster",
+    "source": "Verified Master Studio Database"
   },
   "rihanna - only girl (in the world)": {
     "title": "Only Girl (in the World)",
@@ -4203,13 +4209,14 @@
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/58ca1d20e8d19c1e5f8e821d07412c74/1000x1000-000000-80-0-0.jpg"
   },
   "*nsync - bye bye bye": {
-    "title": "Bye Bye Bye",
-    "artist": "*NSYNC",
-    "album": "Player Piano Favorites: Olde Piano Rolls",
-    "year": "1996",
-    "date": "1996-01-01",
-    "source": "MusicBrainz Picard",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/01fdca2ecf54d678ff005162b5b6cc92/1000x1000-000000-80-0-0.jpg"
+    "title": "bye bye bye",
+    "artist": "*nsync",
+    "year": "2000",
+    "date": "2000-01-11",
+    "releaseYear": "2000",
+    "releaseDate": "2000-01-11",
+    "album": "No Strings Attached",
+    "source": "Verified Master Studio Database"
   },
   "tom jones, mousse t. - sexbomb": {
     "displayTitle": "Sexbomb",
@@ -4386,12 +4393,12 @@
     "displayTitle": "A New Day Has Come - Radio Remix",
     "album": "A New Day Has Come",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/05908fa1edac622facfa411ec1c80a82/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2001-01-01",
-    "releaseYear": "2001",
+    "releaseDate": "2002-02-11",
+    "releaseYear": "2002",
     "durationMs": 263000,
     "durationFmt": "04:23",
-    "year": "2000",
-    "date": "2000-01-01"
+    "year": "2002",
+    "date": "2002-02-11"
   },
   "dido - white flag": {
     "title": "White Flag",
@@ -4415,14 +4422,14 @@
   },
   "blue, elton john - sorry seems to be the hardest word": {
     "displayTitle": "Sorry Seems To Be The Hardest Word",
-    "album": "Sorry Seems To Be The Hardest Word",
+    "album": "One Love",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/03abbb1587a1026b9e8218678219c2ae/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2003-03-01",
-    "releaseYear": "2003",
+    "releaseDate": "2002-12-09",
+    "releaseYear": "2002",
     "durationMs": 211000,
     "durationFmt": "03:31",
-    "year": "2000",
-    "date": "2000-01-01"
+    "year": "2002",
+    "date": "2002-12-09"
   },
   "santana, michelle branch - the game of love (feat. michelle branch) - main / radio mix": {
     "displayTitle": "The Game of Love (feat. Michelle Branch) - Main / Radio Mix",
@@ -5105,13 +5112,14 @@
     "date": "2017-01-13"
   },
   "imagine dragons - natural": {
-    "title": "Natural",
-    "artist": "Imagine Dragons",
-    "album": "Ö3 Greatest Hits 83",
+    "title": "natural",
+    "artist": "imagine dragons",
     "year": "2018",
-    "date": "2018-01-01",
-    "source": "MusicBrainz Picard",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/3f/80/a8/3f80a8ef-5409-42ac-c126-c7354698c7fc/18UMGIM65849.rgb.jpg/600x600bb.jpg"
+    "date": "2018-07-17",
+    "releaseYear": "2018",
+    "releaseDate": "2018-07-17",
+    "album": "Origins",
+    "source": "Verified Master Studio Database"
   },
   "selena gomez, marshmello - wolves": {
     "displayTitle": "Wolves",
@@ -5400,14 +5408,14 @@
   },
   "imagine dragons, jid, arcane, league of legends - enemy (with jid) - from the series arcane league of legends": {
     "displayTitle": "Enemy (with JID) - from the series Arcane League of Legends",
-    "album": "Arcane League of Legends: Season 2 Original Soundtrack (Extended Edition)",
+    "album": "Arcane League of Legends",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7848f386b4b919bed2ea4daf49af163c/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
+    "releaseDate": "2021-10-28",
+    "releaseYear": "2021",
     "durationMs": 186000,
     "durationFmt": "03:06",
-    "year": "2014",
-    "date": "2014-09-18"
+    "year": "2021",
+    "date": "2021-10-28"
   },
   "ava max - kings & queens": {
     "title": "Kings & Queens",
@@ -5671,14 +5679,14 @@
   },
   "shakira, freshlyground - waka waka (this time for africa) [the official 2010 fifa world cup (tm) song] (feat. freshlyground)": {
     "displayTitle": "Waka Waka (This Time for Africa) [The Official 2010 FIFA World Cup (TM) Song] (feat. Freshlyground)",
-    "album": "Listen Up! The Official 2010 FIFA World Cup Album",
+    "album": "Sale el Sol (2010 FIFA World Cup)",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/2e77ebbcee1703aff100fe2bae06ebd5/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
+    "releaseDate": "2010-05-07",
+    "releaseYear": "2010",
     "durationMs": 203000,
     "durationFmt": "03:23",
-    "year": "1998",
-    "date": "1998-01-01"
+    "year": "2010",
+    "date": "2010-05-07"
   },
   "pitbull, chris brown - international love (feat. chris brown)": {
     "displayTitle": "International Love (feat. Chris Brown)",
@@ -6101,15 +6109,14 @@
     "date": "2023-09-15"
   },
   "imagine dragons - eyes closed": {
-    "displayTitle": "Eyes Closed",
-    "album": "Eyes Closed",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/980041bb2c42a9e0bcb40487206a298a/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
-    "durationMs": 199000,
-    "durationFmt": "03:19",
+    "title": "eyes closed",
+    "artist": "imagine dragons",
     "year": "2024",
-    "date": "2024-04-03"
+    "date": "2024-04-03",
+    "releaseYear": "2024",
+    "releaseDate": "2024-04-03",
+    "album": "Loom",
+    "source": "Verified Master Studio Database"
   },
   "sabrina carpenter - espresso": {
     "displayTitle": "Espresso",
@@ -6174,13 +6181,14 @@
     "date": "2015-03-03"
   },
   "imagine dragons - bones": {
-    "title": "Bones",
-    "artist": "Imagine Dragons",
-    "album": "NOW That’s What I Call Music! 83",
+    "title": "bones",
+    "artist": "imagine dragons",
     "year": "2022",
-    "date": "2022-01-01",
-    "source": "MusicBrainz Picard",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/33/87/c8/3387c827-adaa-681d-bd10-ce7d8e888b9c/22UMGIM21054.rgb.jpg/600x600bb.jpg"
+    "date": "2022-03-11",
+    "releaseYear": "2022",
+    "releaseDate": "2022-03-11",
+    "album": "Mercury – Acts 1 & 2",
+    "source": "Verified Master Studio Database"
   },
   "david guetta, alphaville, ava max - forever young": {
     "displayTitle": "Forever Young",
@@ -7055,12 +7063,12 @@
     "displayTitle": "Blame (feat. John Newman)",
     "album": "Motion",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a72e5db10e9168cd6f5065fbe750cdbb/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
+    "releaseDate": "2014-09-05",
+    "releaseYear": "2014",
     "durationMs": 211000,
     "durationFmt": "03:31",
     "year": "2014",
-    "date": "2014-09-07"
+    "date": "2014-09-05"
   },
   "taylor swift - the fate of ophelia": {
     "displayTitle": "The Fate of Ophelia",
@@ -21609,7 +21617,10 @@
   },
   "Coldplay - Paradise": {
     "releaseDate": "2011-09-12",
-    "releaseYear": "2011"
+    "releaseYear": "2011",
+    "year": "2011",
+    "date": "2011-09-12",
+    "album": "Mylo Xyloto"
   },
   "Imagine Dragons - Radioactive": {
     "releaseDate": "2012-01-01",
@@ -21644,8 +21655,11 @@
     "releaseYear": "2003"
   },
   "Imagine Dragons - Thunder": {
-    "releaseDate": "2017-02-01",
-    "releaseYear": "2017"
+    "releaseDate": "2017-04-27",
+    "releaseYear": "2017",
+    "year": "2017",
+    "date": "2017-04-27",
+    "album": "Evolve"
   },
   "Rag'n'Bone Man - Human": {
     "releaseDate": "2016-04-22",
@@ -21657,7 +21671,10 @@
   },
   "Imagine Dragons - Believer": {
     "releaseDate": "2017-02-01",
-    "releaseYear": "2017"
+    "releaseYear": "2017",
+    "year": "2017",
+    "date": "2017-02-01",
+    "album": "Evolve"
   },
   "Hoobastank - The Reason": {
     "releaseDate": "2003-06-30",
@@ -21680,8 +21697,11 @@
     "releaseYear": "2007"
   },
   "Imagine Dragons - It's Time": {
-    "releaseDate": "1971-09-09",
-    "releaseYear": "1971"
+    "releaseDate": "2012-02-06",
+    "releaseYear": "2012",
+    "year": "2012",
+    "date": "2012-02-06",
+    "album": "Night Visions"
   },
   "Ed Sheeran - Castle on the Hill": {
     "releaseDate": "2009-07-21",
@@ -21716,8 +21736,11 @@
     "releaseYear": "2009"
   },
   "Imagine Dragons - On Top Of The World": {
-    "releaseDate": "2012-09-04",
-    "releaseYear": "2012"
+    "releaseDate": "2012-03-18",
+    "releaseYear": "2012",
+    "year": "2012",
+    "date": "2012-03-18",
+    "album": "Night Visions"
   },
   "Snow Patrol - Chasing Cars": {
     "releaseDate": "2005-03-29",
@@ -21745,7 +21768,10 @@
   },
   "Imagine Dragons - Whatever It Takes": {
     "releaseDate": "2017-05-08",
-    "releaseYear": "2017"
+    "releaseYear": "2017",
+    "year": "2017",
+    "date": "2017-05-08",
+    "album": "Evolve"
   },
   "Maroon 5 - Animals": {
     "releaseDate": "2005-09-26",
@@ -25735,10 +25761,12 @@
   "shakira - shakira - waka waka (this time for africa) (official hd video) ft. freshlyground": {
     "title": "Shakira - Waka Waka (This Time For Africa) (Official HD Video) ft. Freshlyground",
     "artist": "Shakira",
-    "album": "Single / Álbum",
+    "album": "Sale el Sol",
     "year": "2010",
-    "date": "2010-01-01",
-    "source": "MusicBrainz Picard"
+    "date": "2010-05-07",
+    "source": "MusicBrainz Picard",
+    "releaseYear": "2010",
+    "releaseDate": "2010-05-07"
   },
   "manu guinarte - siniestro total - bailaré sobre tu tumba (tocata)": {
     "title": "SINIESTRO TOTAL - Bailaré sobre tu tumba (Tocata)",
@@ -30888,10 +30916,12 @@
   "a. r. rahman - a. r. rahman, the pussycat dolls - jai ho (you are my destiny) ft. nicole scherzinger": {
     "title": "A. R. Rahman, The Pussycat Dolls - Jai Ho (You Are My Destiny) ft. Nicole Scherzinger",
     "artist": "A. R. Rahman",
-    "album": "Single / Álbum",
+    "album": "Slumdog Millionaire",
     "year": "2009",
-    "date": "2009-01-01",
-    "source": "MusicBrainz Picard"
+    "date": "2009-02-23",
+    "source": "MusicBrainz Picard",
+    "releaseYear": "2009",
+    "releaseDate": "2009-02-23"
   },
   "ariana grande - ariana grande - focus (official video)": {
     "title": "Ariana Grande - Focus (Official Video)",
@@ -30904,10 +30934,12 @@
   "アリアナ・グランデ - ノー・ティアーズ・レフト・トゥ・クライ (ミュージック・ビデオ)": {
     "title": "ノー・ティアーズ・レフト・トゥ・クライ (ミュージック・ビデオ)",
     "artist": "アリアナ・グランデ",
-    "album": "スウィートナー ～デラックス・エディション",
-    "year": "2018",
-    "date": "2018-01-01",
-    "source": "MusicBrainz Picard"
+    "album": "A New Day Has Come",
+    "year": "2002",
+    "date": "2002-02-11",
+    "source": "MusicBrainz Picard",
+    "releaseYear": "2002",
+    "releaseDate": "2002-02-11"
   },
   "ariana grande - ariana grande - one last time (official lyric video)": {
     "title": "Ariana Grande - One Last Time (Official Lyric Video)",
@@ -31008,10 +31040,12 @@
   "avicii - avicii - wake me up (official video)": {
     "title": "Avicii - Wake Me Up (Official Video)",
     "artist": "Avicii",
-    "album": "Single / Álbum",
+    "album": "True",
     "year": "2013",
-    "date": "2013-01-01",
-    "source": "MusicBrainz Picard"
+    "date": "2013-06-17",
+    "source": "MusicBrainz Picard",
+    "releaseYear": "2013",
+    "releaseDate": "2013-06-17"
   },
   "avicii - avicii vs nicky romero - i could be the one (nicktim)": {
     "title": "Avicii vs Nicky Romero - I Could Be The One (Nicktim)",
@@ -31152,10 +31186,12 @@
   "blue - sorry seems to be the hardest word - radio edit": {
     "title": "Sorry Seems To Be The Hardest Word - Radio Edit",
     "artist": "Blue",
-    "album": "Royal: The First Twenty Years",
-    "year": "2021",
-    "date": "2021-01-01",
-    "source": "MusicBrainz Picard"
+    "album": "One Love",
+    "year": "2002",
+    "date": "2002-12-09",
+    "source": "MusicBrainz Picard",
+    "releaseYear": "2002",
+    "releaseDate": "2002-12-09"
   },
   "b.o.b - b.o.b - nothin' on you (feat. bruno mars) [official video]": {
     "title": "B.o.B - Nothin' On You (feat. Bruno Mars) [Official Video]",
@@ -31552,10 +31588,12 @@
   "coldplay - coldplay - paradise (official video)": {
     "title": "Coldplay - Paradise (Official Video)",
     "artist": "Coldplay",
-    "album": "Single / Álbum",
+    "album": "Mylo Xyloto",
     "year": "2011",
-    "date": "2011-01-01",
-    "source": "MusicBrainz Picard"
+    "date": "2011-09-12",
+    "source": "MusicBrainz Picard",
+    "releaseYear": "2011",
+    "releaseDate": "2011-09-12"
   },
   "coldplay - coldplay - trouble (official video)": {
     "title": "Coldplay - Trouble (Official video)",
@@ -31616,10 +31654,12 @@
   "jupiterfantasy94 - a new day has come (radio remix) - celine dion - a new day has come": {
     "title": "A New Day Has Come (Radio Remix) - Celine Dion - A New Day Has Come",
     "artist": "jupiterfantasy94",
-    "album": "Single / Álbum",
-    "year": "2013",
-    "date": "2013-01-01",
-    "source": "MusicBrainz Picard"
+    "album": "A New Day Has Come",
+    "year": "2002",
+    "date": "2002-02-11",
+    "source": "MusicBrainz Picard",
+    "releaseYear": "2002",
+    "releaseDate": "2002-02-11"
   },
   "daft punk - daft punk - one more time (official video)": {
     "title": "Daft Punk - One More Time (Official Video)",
@@ -32480,18 +32520,22 @@
   "imaginedragons - imagine dragons - believer (official music video)": {
     "title": "Imagine Dragons - Believer (Official Music Video)",
     "artist": "ImagineDragons",
-    "album": "Single / Álbum",
+    "album": "Evolve",
     "year": "2017",
-    "date": "2017-01-01",
-    "source": "MusicBrainz Picard"
+    "date": "2017-02-01",
+    "source": "MusicBrainz Picard",
+    "releaseYear": "2017",
+    "releaseDate": "2017-02-01"
   },
   "imaginedragons - imagine dragons - bones (official music video)": {
     "title": "Imagine Dragons - Bones (Official Music Video)",
     "artist": "ImagineDragons",
-    "album": "Single / Álbum",
+    "album": "Mercury – Acts 1 & 2",
     "year": "2022",
-    "date": "2022-01-01",
-    "source": "MusicBrainz Picard"
+    "date": "2022-03-11",
+    "source": "MusicBrainz Picard",
+    "releaseYear": "2022",
+    "releaseDate": "2022-03-11"
   },
   "imaginedragons - imagine dragons - demons (official music video)": {
     "title": "Imagine Dragons - Demons (Official Music Video)",
@@ -32504,34 +32548,42 @@
   "imaginedragons - imagine dragons - eyes closed (official music video)": {
     "title": "Imagine Dragons - Eyes Closed (Official Music Video)",
     "artist": "ImagineDragons",
-    "album": "Single / Álbum",
+    "album": "Loom",
     "year": "2024",
-    "date": "2024-01-01",
-    "source": "MusicBrainz Picard"
+    "date": "2024-04-03",
+    "source": "MusicBrainz Picard",
+    "releaseYear": "2024",
+    "releaseDate": "2024-04-03"
   },
   "imaginedragons - imagine dragons - it's time (official music video)": {
     "title": "Imagine Dragons - It's Time (Official Music Video)",
     "artist": "ImagineDragons",
-    "album": "Single / Álbum",
+    "album": "Night Visions",
     "year": "2012",
-    "date": "2012-01-01",
-    "source": "MusicBrainz Picard"
+    "date": "2012-02-06",
+    "source": "MusicBrainz Picard",
+    "releaseYear": "2012",
+    "releaseDate": "2012-02-06"
   },
   "imaginedragons - imagine dragons - natural": {
     "title": "Imagine Dragons - Natural",
     "artist": "ImagineDragons",
-    "album": "Single / Álbum",
+    "album": "Origins",
     "year": "2018",
-    "date": "2018-01-01",
-    "source": "MusicBrainz Picard"
+    "date": "2018-07-17",
+    "source": "MusicBrainz Picard",
+    "releaseYear": "2018",
+    "releaseDate": "2018-07-17"
   },
   "imaginedragons - imagine dragons - on top of the world (official music video)": {
     "title": "Imagine Dragons - On Top Of The World (Official Music Video)",
     "artist": "ImagineDragons",
-    "album": "Single / Álbum",
-    "year": "2013",
-    "date": "2013-01-01",
-    "source": "MusicBrainz Picard"
+    "album": "Night Visions",
+    "year": "2012",
+    "date": "2012-03-18",
+    "source": "MusicBrainz Picard",
+    "releaseYear": "2012",
+    "releaseDate": "2012-03-18"
   },
   "imaginedragons - imagine dragons - radioactive (lyric video)": {
     "title": "Imagine Dragons - Radioactive (Lyric Video)",
@@ -32544,18 +32596,22 @@
   "imaginedragons - imagine dragons - thunder": {
     "title": "Imagine Dragons - Thunder",
     "artist": "ImagineDragons",
-    "album": "Single / Álbum",
+    "album": "Evolve",
     "year": "2017",
-    "date": "2017-01-01",
-    "source": "MusicBrainz Picard"
+    "date": "2017-04-27",
+    "source": "MusicBrainz Picard",
+    "releaseYear": "2017",
+    "releaseDate": "2017-04-27"
   },
   "imaginedragons - imagine dragons - whatever it takes (official music video)": {
     "title": "Imagine Dragons - Whatever It Takes (Official Music Video)",
     "artist": "ImagineDragons",
-    "album": "Single / Álbum",
+    "album": "Evolve",
     "year": "2017",
-    "date": "2017-01-01",
-    "source": "MusicBrainz Picard"
+    "date": "2017-05-08",
+    "source": "MusicBrainz Picard",
+    "releaseYear": "2017",
+    "releaseDate": "2017-05-08"
   },
   "imaginedragons - imagine dragons x j.i.d - enemy (from the series arcane league of legends)": {
     "title": "Imagine Dragons x J.I.D - Enemy (from the series Arcane League of Legends)",
@@ -33784,10 +33840,12 @@
   "*nsync - *nsync - bye bye bye (official video)": {
     "title": "*NSYNC - Bye Bye Bye (Official Video)",
     "artist": "*NSYNC",
-    "album": "Single / Álbum",
-    "year": "2009",
-    "date": "2009-01-01",
-    "source": "MusicBrainz Picard"
+    "album": "No Strings Attached",
+    "year": "2000",
+    "date": "2000-01-11",
+    "source": "MusicBrainz Picard",
+    "releaseYear": "2000",
+    "releaseDate": "2000-01-11"
   },
   "time records - o-zone - dragostea din tei [official video]": {
     "title": "O-Zone - Dragostea Din Tei [Official Video]",
@@ -37688,10 +37746,12 @@
   "coldplay - paradise (radio edit)": {
     "title": "Paradise (radio edit)",
     "artist": "Coldplay",
-    "album": "Paradise",
+    "album": "Mylo Xyloto",
     "year": "2011",
-    "date": "2011-01-01",
-    "source": "MusicBrainz Picard"
+    "date": "2011-09-12",
+    "source": "MusicBrainz Picard",
+    "releaseYear": "2011",
+    "releaseDate": "2011-09-12"
   },
   "coldplay & bts - my universe": {
     "title": "My Universe",
@@ -37728,10 +37788,12 @@
   "céline dion - a new day has come (radio remix)": {
     "title": "A New Day Has Come (radio remix)",
     "artist": "Céline Dion",
-    "album": "The Essential",
-    "year": "2008",
-    "date": "2008-01-01",
-    "source": "MusicBrainz Picard"
+    "album": "A New Day Has Come",
+    "year": "2002",
+    "date": "2002-02-11",
+    "source": "MusicBrainz Picard",
+    "releaseYear": "2002",
+    "releaseDate": "2002-02-11"
   },
   "david guetta feat. usher - without you": {
     "title": "Without You",
@@ -38176,10 +38238,12 @@
   "imagine dragons - enemy (from the animated series arcane)": {
     "title": "Enemy (from the animated series Arcane)",
     "artist": "Imagine Dragons",
-    "album": "Enemy (from the animated series Arcane)",
+    "album": "Arcane League of Legends",
     "year": "2021",
-    "date": "2021-01-01",
-    "source": "MusicBrainz Picard"
+    "date": "2021-10-28",
+    "source": "MusicBrainz Picard",
+    "releaseYear": "2021",
+    "releaseDate": "2021-10-28"
   },
   "inna feat. bob taylor - déjà vu": {
     "title": "Déjà Vu",
@@ -38928,10 +38992,12 @@
   "shakira - waka waka (esto es áfrica)": {
     "title": "Waka Waka (Esto es África)",
     "artist": "Shakira",
-    "album": "Los Nº 1 de los 40 Principales",
+    "album": "Sale el Sol",
     "year": "2010",
-    "date": "2010-01-01",
-    "source": "MusicBrainz Picard"
+    "date": "2010-05-07",
+    "source": "MusicBrainz Picard",
+    "releaseYear": "2010",
+    "releaseDate": "2010-05-07"
   },
   "shakira feat. wyclef jean - hips don’t lie": {
     "title": "Hips Don’t Lie",
@@ -39973,7 +40039,11 @@
     "artist": "A.R. Rahman, The Pussycat Dolls, Nicole Scherzinger",
     "title": "Jai Ho! (You Are My Destiny)",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/a8/92/ca/a892ca65-89ae-7ce3-ce08-e5aef83cfd11/00602527009230.rgb.jpg/600x600bb.jpg",
-    "year": "2000"
+    "year": "2009",
+    "date": "2009-02-23",
+    "releaseYear": "2009",
+    "releaseDate": "2009-02-23",
+    "album": "Slumdog Millionaire"
   },
   "the pussycat dolls, snoop dogg - buttons - final edit version": {
     "artist": "The Pussycat Dolls, Snoop Dogg",
@@ -41122,14 +41192,14 @@
   },
   "shakira, freshlyground - waka waka (this time for africa) [the official 2010 fifa world cup (tm) song]": {
     "displayTitle": "Waka Waka (This Time for Africa) [The Official 2010 FIFA World Cup (TM) Song] (feat. Freshlyground)",
-    "album": "Listen Up! The Official 2010 FIFA World Cup Album",
+    "album": "Sale el Sol (2010 FIFA World Cup)",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/2e77ebbcee1703aff100fe2bae06ebd5/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
+    "releaseDate": "2010-05-07",
+    "releaseYear": "2010",
     "durationMs": 203000,
     "durationFmt": "03:23",
-    "year": "1998",
-    "date": "1998-01-01"
+    "year": "2010",
+    "date": "2010-05-07"
   },
   "pitbull, chris brown - international love": {
     "displayTitle": "International Love (feat. Chris Brown)",
@@ -41319,12 +41389,12 @@
     "displayTitle": "Blame (feat. John Newman)",
     "album": "Motion",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a72e5db10e9168cd6f5065fbe750cdbb/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "2000-01-01",
-    "releaseYear": "2000",
+    "releaseDate": "2014-09-05",
+    "releaseYear": "2014",
     "durationMs": 211000,
     "durationFmt": "03:31",
     "year": "2014",
-    "date": "2014-09-07"
+    "date": "2014-09-05"
   },
   "alex ubago, amaia montero - sin miedo a nada": {
     "displayTitle": "Sin miedo a nada (feat. Amaia Montero)",
@@ -41788,5 +41858,1055 @@
     "year": "2017",
     "date": "2017-12-07",
     "album": "Wolfdads"
+  },
+  "imagine dragons jid arcane league of legends - enemy": {
+    "title": "enemy",
+    "artist": "imagine dragons jid arcane league of legends",
+    "year": "2021",
+    "date": "2021-10-28",
+    "releaseYear": "2021",
+    "releaseDate": "2021-10-28",
+    "album": "Arcane League of Legends",
+    "source": "Verified Master Studio Database"
+  },
+  "imagine dragons - enemy": {
+    "title": "enemy",
+    "artist": "imagine dragons",
+    "year": "2021",
+    "date": "2021-10-28",
+    "releaseYear": "2021",
+    "releaseDate": "2021-10-28",
+    "album": "Arcane League of Legends",
+    "source": "Verified Master Studio Database"
+  },
+  "imagine dragons - its time": {
+    "title": "its time",
+    "artist": "imagine dragons",
+    "year": "2012",
+    "date": "2012-02-06",
+    "releaseYear": "2012",
+    "releaseDate": "2012-02-06",
+    "album": "Night Visions",
+    "source": "Verified Master Studio Database"
+  },
+  "shakira freshlyground - waka waka this time for africa": {
+    "title": "waka waka this time for africa",
+    "artist": "shakira freshlyground",
+    "year": "2010",
+    "date": "2010-05-07",
+    "releaseYear": "2010",
+    "releaseDate": "2010-05-07",
+    "album": "Sale el Sol (2010 FIFA World Cup)",
+    "source": "Verified Master Studio Database"
+  },
+  "shakira - waka waka": {
+    "title": "waka waka",
+    "artist": "shakira",
+    "year": "2010",
+    "date": "2010-05-07",
+    "releaseYear": "2010",
+    "releaseDate": "2010-05-07",
+    "album": "Sale el Sol",
+    "source": "Verified Master Studio Database"
+  },
+  "little mix - is your love enough": {
+    "title": "is your love enough",
+    "artist": "little mix",
+    "year": "2017",
+    "date": "2017-11-24",
+    "releaseYear": "2017",
+    "releaseDate": "2017-11-24",
+    "album": "Glory Days: The Platinum Edition",
+    "source": "Verified Master Studio Database"
+  },
+  "nsync - bye bye bye": {
+    "title": "bye bye bye",
+    "artist": "nsync",
+    "year": "2000",
+    "date": "2000-01-11",
+    "releaseYear": "2000",
+    "releaseDate": "2000-01-11",
+    "album": "No Strings Attached",
+    "source": "Verified Master Studio Database"
+  },
+  "calvin harris john newman - blame": {
+    "title": "blame",
+    "artist": "calvin harris john newman",
+    "year": "2014",
+    "date": "2014-09-05",
+    "releaseYear": "2014",
+    "releaseDate": "2014-09-05",
+    "album": "Motion",
+    "source": "Verified Master Studio Database"
+  },
+  "calvin harris - blame": {
+    "title": "blame",
+    "artist": "calvin harris",
+    "year": "2014",
+    "date": "2014-09-05",
+    "releaseYear": "2014",
+    "releaseDate": "2014-09-05",
+    "album": "Motion",
+    "source": "Verified Master Studio Database"
+  },
+  "geri halliwell - its raining men": {
+    "title": "its raining men",
+    "artist": "geri halliwell",
+    "year": "2001",
+    "date": "2001-04-30",
+    "releaseYear": "2001",
+    "releaseDate": "2001-04-30",
+    "album": "Scream If You Wanna Go Faster",
+    "source": "Verified Master Studio Database"
+  },
+  "ar rahman the pussycat dolls nicole scherzinger - jai ho you are my destiny": {
+    "title": "jai ho you are my destiny",
+    "artist": "ar rahman the pussycat dolls nicole scherzinger",
+    "year": "2009",
+    "date": "2009-02-23",
+    "releaseYear": "2009",
+    "releaseDate": "2009-02-23",
+    "album": "Slumdog Millionaire",
+    "source": "Verified Master Studio Database"
+  },
+  "the pussycat dolls - jai ho": {
+    "title": "jai ho",
+    "artist": "the pussycat dolls",
+    "year": "2009",
+    "date": "2009-02-23",
+    "releaseYear": "2009",
+    "releaseDate": "2009-02-23",
+    "album": "Slumdog Millionaire",
+    "source": "Verified Master Studio Database"
+  },
+  "a.r. rahman the pussycat dolls - jai ho": {
+    "title": "jai ho",
+    "artist": "a.r. rahman the pussycat dolls",
+    "year": "2009",
+    "date": "2009-02-23",
+    "releaseYear": "2009",
+    "releaseDate": "2009-02-23",
+    "album": "Slumdog Millionaire",
+    "source": "Verified Master Studio Database"
+  },
+  "blue elton john - sorry seems to be the hardest word": {
+    "title": "sorry seems to be the hardest word",
+    "artist": "blue elton john",
+    "year": "2002",
+    "date": "2002-12-09",
+    "releaseYear": "2002",
+    "releaseDate": "2002-12-09",
+    "album": "One Love",
+    "source": "Verified Master Studio Database"
+  },
+  "blue - sorry seems to be the hardest word": {
+    "title": "sorry seems to be the hardest word",
+    "artist": "blue",
+    "year": "2002",
+    "date": "2002-12-09",
+    "releaseYear": "2002",
+    "releaseDate": "2002-12-09",
+    "album": "One Love",
+    "source": "Verified Master Studio Database"
+  },
+  "celine dion - a new day has come": {
+    "title": "a new day has come",
+    "artist": "celine dion",
+    "year": "2002",
+    "date": "2002-02-11",
+    "releaseYear": "2002",
+    "releaseDate": "2002-02-11",
+    "album": "A New Day Has Come",
+    "source": "Verified Master Studio Database"
+  },
+  "céline dion - a new day has come": {
+    "title": "a new day has come",
+    "artist": "céline dion",
+    "year": "2002",
+    "date": "2002-02-11",
+    "releaseYear": "2002",
+    "releaseDate": "2002-02-11",
+    "album": "A New Day Has Come",
+    "source": "Verified Master Studio Database"
+  },
+  "destinyschildlosemybreath": {
+    "title": "Lose My Breath",
+    "artist": "Destiny's Child",
+    "album": "Destiny Fulfilled",
+    "year": "2004",
+    "date": "2004-09-21",
+    "releaseYear": "2004",
+    "releaseDate": "2004-09-21",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/06/fa/55/06fa553a-33c2-282c-4625-d7d4e16812bb/mzi.loqhyccy.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "pnkgetthepartystarted": {
+    "title": "Get the Party Started",
+    "artist": "P!nk",
+    "album": "Greatest Hits...So Far!!!",
+    "year": "2001",
+    "date": "2001-10-09",
+    "releaseYear": "2001",
+    "releaseDate": "2001-10-09",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/e0/a0/a5/e0a0a571-b775-16c0-2a9c-ff2778c1f8f7/884977798951.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "clinedionidroveallnight": {
+    "title": "I Drove All Night",
+    "artist": "Céline Dion",
+    "album": "One Heart",
+    "year": "2003",
+    "date": "2003-03-03",
+    "releaseYear": "2003",
+    "releaseDate": "2003-03-03",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/e6/ee/51/e6ee5141-2dfd-3656-5c6e-e25a46cf85a4/696998718524.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "ninaskyjabbamoveyabody": {
+    "title": "Move Ya Body",
+    "artist": "Nina Sky, Jabba",
+    "album": "Nina Sky",
+    "year": "2004",
+    "date": "2004-04-12",
+    "releaseYear": "2004",
+    "releaseDate": "2004-04-12",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/24/64/cd/2464cdd1-be47-a05a-cc51-30fa5fd483ca/06UMGIM16615.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "kevinlyttleturnmeon": {
+    "title": "Turn Me On",
+    "artist": "Kevin Lyttle",
+    "album": "Turn Me On - Single",
+    "year": "2003",
+    "date": "2003-10-13",
+    "releaseYear": "2003",
+    "releaseDate": "2003-10-13",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/c3/af/d3/c3afd31c-721e-faa2-da73-b3d0b381d9bb/s02.agetghia.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "philcollinscantstoplovingyou2016remaster": {
+    "title": "Can't Stop Loving You - 2016 Remaster",
+    "artist": "Phil Collins",
+    "album": "Face Value (Remastered)",
+    "year": "1981",
+    "date": "1981-01-01",
+    "releaseYear": "1981",
+    "releaseDate": "1981-01-01",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/d2/d8/d6/d2d8d6ad-85d4-7024-9726-e1f312beb522/603497889754.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "eminemwithoutme": {
+    "title": "Without Me",
+    "artist": "Eminem",
+    "album": "The Eminem Show",
+    "year": "2002",
+    "date": "2002-05-14",
+    "releaseYear": "2002",
+    "releaseDate": "2002-05-14",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/dd/5c/e6/dd5ce621-f7d2-f767-7a08-e7a7eaa7870b/00602537526994.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "brunomarsijustmight": {
+    "title": "I Just Might",
+    "artist": "Bruno Mars",
+    "album": "The Romantic",
+    "year": "2026",
+    "date": "2026-01-09",
+    "releaseYear": "2026",
+    "releaseDate": "2026-01-09",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/ed/46/bf/ed46bf4e-7cb9-965a-54f3-03059977fe6c/075679589293.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "alexwarrenfeverdream": {
+    "title": "FEVER DREAM",
+    "artist": "Alex Warren",
+    "album": "FEVER DREAM - Single",
+    "year": "2026",
+    "date": "2026-06-05",
+    "releaseYear": "2026",
+    "releaseDate": "2026-06-05",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/be/f7/65/bef765dc-cf56-c979-976e-2e133040793f/075679588937.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "dualipaloveagain": {
+    "title": "Love Again",
+    "artist": "Dua Lipa",
+    "album": "Future Nostalgia",
+    "year": "2020",
+    "date": "2020-03-27",
+    "releaseYear": "2020",
+    "releaseDate": "2020-03-27",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/6c/11/d6/6c11d681-aa3a-d59e-4c2e-f77e181026ab/190295092665.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "tameimpaladracula": {
+    "title": "Dracula",
+    "artist": "Tame Impala",
+    "album": "Dracula - Single",
+    "year": "2025",
+    "date": "2025-09-24",
+    "releaseYear": "2025",
+    "releaseDate": "2025-09-24",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/36/be/b4/36beb41f-c644-55cb-9fbb-bf0622a66653/196873644783.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "davidguettaannemariecoileraybabydonthurtme": {
+    "title": "Baby Don't Hurt Me",
+    "artist": "David Guetta, Anne-Marie, Coi Leray",
+    "album": "Baby Don't Hurt Me - Single",
+    "year": "2023",
+    "date": "2023-03-27",
+    "releaseYear": "2023",
+    "releaseDate": "2023-03-27",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/67/c9/25/67c925c4-6a09-6029-bccc-50a578d6991e/5054197640698.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "shakiraburnaboydaidai": {
+    "title": "Dai Dai",
+    "artist": "Shakira, Burna Boy",
+    "album": "Dai Dai - Single",
+    "year": "2026",
+    "date": "2026-05-14",
+    "releaseYear": "2026",
+    "releaseDate": "2026-05-14",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/61/49/8d/61498ded-f0dc-227d-cd1d-2051b5d9f195/196874328590.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "innadaddyyankeemorethanfriends": {
+    "title": "More Than Friends",
+    "artist": "INNA, Daddy Yankee",
+    "album": "More Than Friends (feat. Daddy Yankee) - Single",
+    "year": "2013",
+    "date": "2013-01-18",
+    "releaseYear": "2013",
+    "releaseDate": "2013-01-18",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/0d/c6/c2/0dc6c2a1-57dc-1550-5cba-005391bbafec/cover.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "arianagrandewecantbefriendswaitforyourlove": {
+    "title": "we can't be friends (wait for your love)",
+    "artist": "Ariana Grande",
+    "album": "eternal sunshine",
+    "year": "2024",
+    "date": "2024-03-08",
+    "releaseYear": "2024",
+    "releaseDate": "2024-03-08",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/34/fe/a1/34fea184-6d20-3f50-b4ce-5e1501c1c5ab/24UMGIM00198.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "atomickittenthetideishighradiomix": {
+    "title": "The Tide Is High - Radio Mix",
+    "artist": "Atomic Kitten",
+    "album": "Atomic Kitten: The Greatest Hits",
+    "year": "2002",
+    "date": "2002-01-01",
+    "releaseYear": "2002",
+    "releaseDate": "2002-01-01",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/cd/eb/12/cdeb128c-08b6-36bf-2988-3ee61cd179ab/00724357815451.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "selenagomezthesceneloveyoulikealovesong": {
+    "title": "Love You Like A Love Song",
+    "artist": "Selena Gomez & The Scene",
+    "album": "When The Sun Goes Down",
+    "year": "2011",
+    "date": "2011-06-17",
+    "releaseYear": "2011",
+    "releaseDate": "2011-06-17",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/70/31/00/7031001b-f918-6009-76c2-9db98d3ef811/11DMGIM02401.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "jessiejarianagrandenickiminajbangbang": {
+    "title": "Bang Bang",
+    "artist": "Jessie J, Ariana Grande, Nicki Minaj",
+    "album": "Bang Bang - Single",
+    "year": "2014",
+    "date": "2014-07-28",
+    "releaseYear": "2014",
+    "releaseDate": "2014-07-28",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/ce/81/a0/ce81a0d7-6beb-16bc-2b98-a6b6a9b0faff/14UMGIM31140.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "avrillavignemyhappyending": {
+    "title": "My Happy Ending",
+    "artist": "Avril Lavigne",
+    "album": "Nickelodeon Kids' Choice",
+    "year": "2005",
+    "date": "2005-03-22",
+    "releaseYear": "2005",
+    "releaseDate": "2005-03-22",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music/92/cf/57/mzi.ktrcaurm.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "linkinparksomewhereibelong": {
+    "title": "Somewhere I Belong",
+    "artist": "Linkin Park",
+    "album": "Meteora (Deluxe Edition)",
+    "year": "2003",
+    "date": "2003-02-24",
+    "releaseYear": "2003",
+    "releaseDate": "2003-02-24",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/13/44/05/134405bd-9e27-a678-8953-b5f724201f95/093624948988.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "annemarie2002": {
+    "title": "2002",
+    "artist": "Anne-Marie",
+    "album": "Speak Your Mind (Deluxe)",
+    "year": "2018",
+    "date": "2018-04-20",
+    "releaseYear": "2018",
+    "releaseDate": "2018-04-20",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/c1/5d/9b/c15d9bc5-4181-9874-d65b-7741203ccad6/190295567279.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "davidguettateddyswimstonesandigonegonegone": {
+    "title": "Gone Gone Gone",
+    "artist": "David Guetta, Teddy Swims, Tones And I",
+    "album": "Gone Gone Gone - Single",
+    "year": "2025",
+    "date": "2025-10-10",
+    "releaseYear": "2025",
+    "releaseDate": "2025-10-10",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/ac/1b/01/ac1b0190-eef2-043f-dc65-89217875dc4d/5026854057859.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "chappellroangoodluckbabe": {
+    "title": "Good Luck, Babe!",
+    "artist": "Chappell Roan",
+    "album": "Good Luck, Babe! - Single",
+    "year": "2024",
+    "date": "2024-04-05",
+    "releaseYear": "2024",
+    "releaseDate": "2024-04-05",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/29/a7/c4/29a7c478-351d-25eb-a116-3e68118cdab8/24UMGIM31246.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "ladygagabrunomarsdiewithasmile": {
+    "title": "Die With A Smile",
+    "artist": "Lady Gaga, Bruno Mars",
+    "album": "Die With A Smile - Single",
+    "year": "2024",
+    "date": "2024-08-16",
+    "releaseYear": "2024",
+    "releaseDate": "2024-08-16",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/11/ae/f2/11aef294-f57c-bab9-c9fc-529162984e62/24UMGIM85348.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "taylorswiftthefateofophelia": {
+    "title": "The Fate of Ophelia",
+    "artist": "Taylor Swift",
+    "album": "The Fate of Ophelia (Loud Luxury Remix) - Single",
+    "year": "2025",
+    "date": "2025-11-06",
+    "releaseYear": "2025",
+    "releaseDate": "2025-11-06",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/0f/31/96/0f3196af-cc88-9938-02ce-0016fea0995f/25UM1IM77216.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "calvinharrisjohnnewmanblamefeatjohnnewman": {
+    "title": "Blame (feat. John Newman)",
+    "artist": "Calvin Harris, John Newman",
+    "album": "Motion",
+    "year": "2014",
+    "date": "2014-09-05",
+    "releaseYear": "2014",
+    "releaseDate": "2014-09-05",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/da/50/cc/da50cc80-3515-a38d-369b-0d700ffd249d/886444820448.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "shaboozeyabarsongtipsy": {
+    "title": "A Bar Song (Tipsy)",
+    "artist": "Shaboozey",
+    "album": "Where I've Been, Isn't Where I'm Going",
+    "year": "2024",
+    "date": "2024-04-12",
+    "releaseYear": "2024",
+    "releaseDate": "2024-04-12",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/be/db/81/bedb81c3-ca23-a1b9-f275-59e46ae4fdb1/197342625517_cover.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "djsnakebipolarsunshinemiddle": {
+    "title": "Middle",
+    "artist": "DJ Snake, Bipolar Sunshine",
+    "album": "Encore",
+    "year": "2016",
+    "date": "2016-01-01",
+    "releaseYear": "2016",
+    "releaseDate": "2016-01-01",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/63/ac/63/63ac638b-3de9-9e57-46e7-8e39de90e767/16UMGIM48348.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "ladygagaarianagranderainonmewitharianagrande": {
+    "title": "Rain On Me (with Ariana Grande)",
+    "artist": "Lady Gaga, Ariana Grande",
+    "album": "Chromatica",
+    "year": "2020",
+    "date": "2020-05-22",
+    "releaseYear": "2020",
+    "releaseDate": "2020-05-22",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/5d/4d/f9/5d4df96a-e95e-2fe9-404a-5d570513762d/20UMGIM15390.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "willsmithswitch": {
+    "title": "Switch",
+    "artist": "Will Smith",
+    "album": "Lost and Found",
+    "year": "2005",
+    "date": "2005-02-15",
+    "releaseYear": "2005",
+    "releaseDate": "2005-02-15",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/1b/c4/79/1bc4792a-6bb0-a8b8-fd39-74729ac474e8/19UMGIM74818.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "jenniferlopezpitbulldanceagain": {
+    "title": "Dance Again",
+    "artist": "Jennifer Lopez, Pitbull",
+    "album": "Dance Again...The Hits",
+    "year": "2012",
+    "date": "2012-04-02",
+    "releaseYear": "2012",
+    "releaseDate": "2012-04-02",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/c1/bb/f7/c1bbf743-efcc-af8b-c37b-4aeb97c47900/886443535084.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "huntrxejaeaudreynunareiamikpopdemonhunterscastgolden": {
+    "title": "Golden",
+    "artist": "HUNTR/X, EJAE, AUDREY NUNA, REI AMI, KPop Demon Hunters Cast",
+    "album": "KPop Demon Hunters (Soundtrack from the Netflix Film)",
+    "year": "2025",
+    "date": "2025-06-19",
+    "releaseYear": "2025",
+    "releaseDate": "2025-06-19",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/e1/15/42/e1154273-8ecd-5702-e6e6-597f28001681/25UMGIM82363.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "jasonderulotheotherside": {
+    "title": "The Other Side",
+    "artist": "Jason Derulo",
+    "album": "Talk Dirty",
+    "year": "2013",
+    "date": "2013-09-20",
+    "releaseYear": "2013",
+    "releaseDate": "2013-09-20",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/28/6f/7d/286f7df6-9da7-bdf5-5a66-b31f15583185/093624938699.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "tistooaksifollowrivers": {
+    "title": "I Follow Rivers",
+    "artist": "Tiësto, Oaks",
+    "album": "Prismatic: Pack One - Single",
+    "year": "2025",
+    "date": "2025-01-31",
+    "releaseYear": "2025",
+    "releaseDate": "2025-01-31",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/80/86/e4/8086e454-fcb4-967e-f5de-3710fb7da4a6/075679630933.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "ladygagabornthisway": {
+    "title": "Born This Way",
+    "artist": "Lady Gaga",
+    "album": "Born This Way (Special Edition)",
+    "year": "2011",
+    "date": "2011-02-11",
+    "releaseYear": "2011",
+    "releaseDate": "2011-02-11",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/42/9f/0f/429f0fd2-30bd-b64e-27fc-76d8fbbd0988/11UMGIM12476.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "coldplaybtsmyuniverse": {
+    "title": "My Universe",
+    "artist": "Coldplay, BTS",
+    "album": "Music of the Spheres",
+    "year": "2021",
+    "date": "2021-09-24",
+    "releaseYear": "2021",
+    "releaseDate": "2021-09-24",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/df/60/00/df600071-c5c7-24e7-e4d7-1a6b71fa44e7/190296529818.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "thepussycatdollssnoopdoggbuttonsfinaleditversion": {
+    "title": "Buttons - Final Edit Version",
+    "artist": "The Pussycat Dolls, Snoop Dogg",
+    "album": "PCD Forever (Deluxe Edition)",
+    "year": "2005",
+    "date": "2005-09-13",
+    "releaseYear": "2005",
+    "releaseDate": "2005-09-13",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/c4/eb/7c/c4eb7c2e-bbf2-8da1-4752-dda69e8ba6b8/26UMGIM02033.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "magicrude": {
+    "title": "Rude",
+    "artist": "MAGIC!",
+    "album": "Don't Kill the Magic",
+    "year": "2013",
+    "date": "2013-10-11",
+    "releaseYear": "2013",
+    "releaseDate": "2013-10-11",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/2a/46/74/2a4674c2-889f-4f6b-e4e9-b3693f8ee962/886444607650.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "bobsinclargarypinelovegeneration": {
+    "title": "Love Generation",
+    "artist": "Bob Sinclar, Gary Pine",
+    "album": "Western Dream",
+    "year": "2005",
+    "date": "2005-10-13",
+    "releaseYear": "2005",
+    "releaseDate": "2005-10-13",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/b6/8c/f1/b68cf12b-de23-8c41-26c0-87f992089926/3596974587397_cover.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "davidguettaakonneyoplayhardfeatneyoakon": {
+    "title": "Play Hard (feat. Ne-Yo & Akon)",
+    "artist": "David Guetta, Akon, Ne-Yo",
+    "album": "Party Till Sunrise - EP",
+    "year": "2011",
+    "date": "2011-08-24",
+    "releaseYear": "2011",
+    "releaseDate": "2011-08-24",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/7d/af/50/7daf504b-a2dc-a4dd-ee9d-5ca9094a1679/5059460202825.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "atomickitteneternalflame": {
+    "title": "Eternal Flame",
+    "artist": "Atomic Kitten",
+    "album": "Atomic Kitten",
+    "year": "2001",
+    "date": "2001-07-23",
+    "releaseYear": "2001",
+    "releaseDate": "2001-07-23",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music4/v4/18/4b/d1/184bd1ac-38d1-a8af-0fc3-f59815203599/00724358250053.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "rihannapondereplay": {
+    "title": "Pon de Replay",
+    "artist": "Rihanna",
+    "album": "Music of the Sun",
+    "year": "2005",
+    "date": "2005-05-24",
+    "releaseYear": "2005",
+    "releaseDate": "2005-05-24",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/2f/89/a4/2f89a4e5-83c4-7cc8-93d6-99b0d8283a1f/16UMGIM58839.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "blackeyedpeasdontphunkwithmyheart": {
+    "title": "Don't Phunk With My Heart",
+    "artist": "Black Eyed Peas",
+    "album": "Monkey Business",
+    "year": "2005",
+    "date": "2005-05-25",
+    "releaseYear": "2005",
+    "releaseDate": "2005-05-25",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/63/b0/47/63b0476f-3cc6-276a-f09e-ab415db818cd/00602498372425.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "davidguettachriswillisfergielmfaogettinoveryoufeatfergielmfao": {
+    "title": "Gettin' Over You (feat. Fergie & LMFAO)",
+    "artist": "David Guetta, Chris Willis, Fergie, LMFAO",
+    "album": "One Love (Deluxe)",
+    "year": "2009",
+    "date": "2009-08-24",
+    "releaseYear": "2009",
+    "releaseDate": "2009-08-24",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/0a/0c/4f/0a0c4f12-1489-3bda-ab41-7cb04f181e5f/5099990837951.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "echosmithcoolkids": {
+    "title": "Cool Kids",
+    "artist": "Echosmith",
+    "album": "Talking Dreams",
+    "year": "2013",
+    "date": "2013-05-31",
+    "releaseYear": "2013",
+    "releaseDate": "2013-05-31",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/7b/9d/7f/7b9d7f17-ba35-34f8-3a64-d4d5cc47d3e0/093624932956.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "rcityadamlevinelockedawayfeatadamlevine": {
+    "title": "Locked Away (feat. Adam Levine)",
+    "artist": "R. City, Adam Levine",
+    "album": "What Dreams Are Made Of",
+    "year": "2015",
+    "date": "2015-06-29",
+    "releaseYear": "2015",
+    "releaseDate": "2015-06-29",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/89/ef/93/89ef935b-8a7d-5c78-ba16-e02a82632913/dj.moqmmhzx.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "selenagomezsameoldlove": {
+    "title": "Same Old Love",
+    "artist": "Selena Gomez",
+    "album": "Revival (Deluxe)",
+    "year": "2015",
+    "date": "2015-09-10",
+    "releaseYear": "2015",
+    "releaseDate": "2015-09-10",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/0f/17/eb/0f17eba1-bae8-9a6d-f21e-b727926f5af1/15UMGIM48241.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "innabobtaylordejavu": {
+    "title": "Deja Vu",
+    "artist": "INNA, Bob Taylor",
+    "album": "Hot",
+    "year": "2009",
+    "date": "2009-08-04",
+    "releaseYear": "2009",
+    "releaseDate": "2009-08-04",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music6/v4/c1/84/a8/c184a8ff-23be-da53-4840-11e042e1175d/Inna_-_Hot_itunes.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "missyelliottgeturfreakon": {
+    "title": "Get Ur Freak On",
+    "artist": "Missy Elliott",
+    "album": "Miss E...So Addictive",
+    "year": "2001",
+    "date": "2001-03-06",
+    "releaseYear": "2001",
+    "releaseDate": "2001-03-06",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music/71/c2/4f/mzi.gsutnxrb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "thepussycatdollswhenigrowup": {
+    "title": "When I Grow Up",
+    "artist": "The Pussycat Dolls",
+    "album": "Doll Domination - The Mini Collection - EP",
+    "year": "2008",
+    "date": "2008-05-27",
+    "releaseYear": "2008",
+    "releaseDate": "2008-05-27",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/90/f1/f5/90f1f50d-b431-d962-9eb4-cfcc99fc2462/09UMGIM05272.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "alexwarrenordinary": {
+    "title": "Ordinary",
+    "artist": "Alex Warren",
+    "album": "Ordinary - Single",
+    "year": "2024",
+    "date": "2024-09-26",
+    "releaseYear": "2024",
+    "releaseDate": "2024-09-26",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/46/78/fb/4678fb84-d19e-f11b-93ff-4dc17660bff8/075679619075.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "marshmellokhalidnumb": {
+    "title": "Numb",
+    "artist": "Marshmello, Khalid",
+    "album": "Numb - Single",
+    "year": "2022",
+    "date": "2022-06-10",
+    "releaseYear": "2022",
+    "releaseDate": "2022-06-10",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/b8/89/cc/b889ccdd-ce21-16ce-beab-15c9d8fd1a51/196589226488.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "selenagomezsinglesoon": {
+    "title": "Single Soon",
+    "artist": "Selena Gomez",
+    "album": "Single Soon - Single",
+    "year": "2023",
+    "date": "2023-08-25",
+    "releaseYear": "2023",
+    "releaseDate": "2023-08-25",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/37/21/45/37214531-57d0-b6d2-5dcd-0a4b6318d86f/23UMGIM91977.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "taylorswiftantihero": {
+    "title": "Anti-Hero",
+    "artist": "Taylor Swift",
+    "album": "Midnights",
+    "year": "2022",
+    "date": "2022-10-21",
+    "releaseYear": "2022",
+    "releaseDate": "2022-10-21",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/3d/01/f2/3d01f2e5-5a08-835f-3d30-d031720b2b80/22UM1IM07364.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "trevordanielfalling": {
+    "title": "Falling",
+    "artist": "Trevor Daniel",
+    "album": "Falling - Single",
+    "year": "2018",
+    "date": "2018-10-05",
+    "releaseYear": "2018",
+    "releaseDate": "2018-10-05",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/fe/66/14/fe66145c-430e-f7a0-e5ce-8e8e5be19c89/888915747841.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "arizonazervasroxanne": {
+    "title": "ROXANNE",
+    "artist": "Arizona Zervas",
+    "album": "ROXANNE - Single",
+    "year": "2019",
+    "date": "2019-10-10",
+    "releaseYear": "2019",
+    "releaseDate": "2019-10-10",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/9c/19/1b/9c191bbf-15e1-ffd6-c36d-2e480a1a156e/886448153238.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "loudluxurybrandobody": {
+    "title": "Body",
+    "artist": "Loud Luxury, Brando",
+    "album": "Body (feat. brando) - Single",
+    "year": "2017",
+    "date": "2017-10-27",
+    "releaseYear": "2017",
+    "releaseDate": "2017-10-27",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/25/1f/cb/251fcb41-b36b-2608-ac23-b3d1ef6782c1/8718522173752.png/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "pitbulljohnryanfireballfeatjohnryan": {
+    "title": "Fireball (feat. John Ryan)",
+    "artist": "Pitbull, John Ryan",
+    "album": "Globalization",
+    "year": "2014",
+    "date": "2014-07-23",
+    "releaseYear": "2014",
+    "releaseDate": "2014-07-23",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/7d/cc/08/7dcc0849-8aed-b259-e246-f7ffad54507b/886444753852.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "teddyswimsthedoor": {
+    "title": "The Door",
+    "artist": "Teddy Swims",
+    "album": "I've Tried Everything But Therapy (Part 1)",
+    "year": "2024",
+    "date": "2024-04-17",
+    "releaseYear": "2024",
+    "releaseDate": "2024-04-17",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/36/19/66/36196640-1561-dc5e-c6bc-1e5f4befa583/093624856771.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "bensonboonebeautifulthings": {
+    "title": "Beautiful Things",
+    "artist": "Benson Boone",
+    "album": "Beautiful Things - Single",
+    "year": "2024",
+    "date": "2024-01-18",
+    "releaseYear": "2024",
+    "releaseDate": "2024-01-18",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/54/f4/92/54f49210-e260-b519-ebbd-f4f40ee710cd/054391342751.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "harrystyleslatenighttalking": {
+    "title": "Late Night Talking",
+    "artist": "Harry Styles",
+    "album": "Harry's House",
+    "year": "2022",
+    "date": "2022-05-20",
+    "releaseYear": "2022",
+    "releaseDate": "2022-05-20",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/2a/19/fb/2a19fb85-2f70-9e44-f2a9-82abe679b88e/886449990061.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "davidguettabeberexhaimgoodblue": {
+    "title": "I'm Good (Blue)",
+    "artist": "David Guetta, Bebe Rexha",
+    "album": "I'm Good (Blue) - Single",
+    "year": "2022",
+    "date": "2022-08-26",
+    "releaseYear": "2022",
+    "releaseDate": "2022-08-26",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/32/d2/9c/32d29c8a-e0a2-a629-7889-23c12ead0595/5054197344749.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "neafelixjaehnsomesayfelixjaehnremix": {
+    "title": "Some Say - Felix Jaehn Remix",
+    "artist": "Nea, felix jaehn",
+    "album": "Some Say (Felix Jaehn Remix) - Single",
+    "year": "2019",
+    "date": "2019-11-01",
+    "releaseYear": "2019",
+    "releaseDate": "2019-11-01",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/33/ea/fd/33eafd59-90aa-c329-2253-414d58dad73d/886447975404.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "tatemcraegreedy": {
+    "title": "greedy",
+    "artist": "Tate McRae",
+    "album": "THINK LATER",
+    "year": "2023",
+    "date": "2023-09-15",
+    "releaseYear": "2023",
+    "releaseDate": "2023-09-15",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/21/4a/c2/214ac20c-a66c-84a1-e357-f7e60b1932ca/196871542661.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "siaunstoppable": {
+    "title": "Unstoppable",
+    "artist": "Sia",
+    "album": "This Is Acting",
+    "year": "2016",
+    "date": "2016-01-21",
+    "releaseYear": "2016",
+    "releaseDate": "2016-01-21",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/bc/13/27/bc13275c-8b26-802d-771b-d15ae00fb530/mzm.hvpwjsvi.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "djsnakejustinbieberletmeloveyou": {
+    "title": "Let Me Love You",
+    "artist": "DJ Snake, Justin Bieber",
+    "album": "Let Me Love You (feat. Justin Bieber) [Marshmello Remix] - Single",
+    "year": "2016",
+    "date": "2016-12-21",
+    "releaseYear": "2016",
+    "releaseDate": "2016-12-21",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/85/a4/a3/85a4a36a-7f1a-f167-3a7d-8cec6543741b/00602557325423.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "calvinharriselliegouldingmiraclewithelliegoulding": {
+    "title": "Miracle (with Ellie Goulding)",
+    "artist": "Calvin Harris, Ellie Goulding",
+    "album": "Today's Hits: Aug 2023 (DJ Mix)",
+    "year": "2023",
+    "date": "2023-08-04",
+    "releaseYear": "2023",
+    "releaseDate": "2023-08-04",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/1c/99/c7/1c99c7bc-8977-390b-ac94-4abb8a1c9056/271844b9-410f-437b-ae12-82492339d05e.png/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "harrystylesadoreyou": {
+    "title": "Adore You",
+    "artist": "Harry Styles",
+    "album": "Fine Line",
+    "year": "2019",
+    "date": "2019-12-06",
+    "releaseYear": "2019",
+    "releaseDate": "2019-12-06",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/2b/c4/c9/2bc4c9d4-3bc6-ab13-3f71-df0b89b173de/886448022213.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "dualipabreakmyheart": {
+    "title": "Break My Heart",
+    "artist": "Dua Lipa",
+    "album": "Future Nostalgia",
+    "year": "2020",
+    "date": "2020-03-25",
+    "releaseYear": "2020",
+    "releaseDate": "2020-03-25",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/6c/11/d6/6c11d681-aa3a-d59e-4c2e-f77e181026ab/190295092665.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "dualipadontstartnow": {
+    "title": "Don't Start Now",
+    "artist": "Dua Lipa",
+    "album": "Don't Start Now - Single",
+    "year": "2019",
+    "date": "2019-10-31",
+    "releaseYear": "2019",
+    "releaseDate": "2019-10-31",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/41/ee/66/41ee66fa-f8dd-7e82-155a-3a1b360dc562/190295322175.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "stromaealorsondanseradioedit": {
+    "title": "Alors On Danse - Radio Edit",
+    "artist": "Stromae",
+    "album": "Alors on danse - Single",
+    "year": "2009",
+    "date": "2009-09-26",
+    "releaseYear": "2009",
+    "releaseDate": "2009-09-26",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/a8/69/90/a869906a-dd48-b772-785b-871459b36df2/10UMGIM03438.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "floridawhistle": {
+    "title": "Whistle",
+    "artist": "Flo Rida",
+    "album": "2000s R&B",
+    "year": "2012",
+    "date": "2012-04-24",
+    "releaseYear": "2012",
+    "releaseDate": "2012-04-24",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/60/cb/80/60cb805d-f231-4f92-b531-781625d84f5a/5059460031142.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "aliciakeysnoone": {
+    "title": "No One",
+    "artist": "Alicia Keys",
+    "album": "As I Am (Expanded Edition)",
+    "year": "2007",
+    "date": "2007-10-09",
+    "releaseYear": "2007",
+    "releaseDate": "2007-10-09",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/c7/88/df/c788dffe-d06f-8923-ad61-a6194daf6616/888880809919.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "calvinharrisdiscipleshowdeepisyourlove": {
+    "title": "How Deep Is Your Love",
+    "artist": "Calvin Harris, Disciples",
+    "album": "How Deep Is Your Love - Single",
+    "year": "2015",
+    "date": "2015-07-17",
+    "releaseYear": "2015",
+    "releaseDate": "2015-07-17",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/04/5c/85/045c85d9-94cb-a9c7-f39b-aa5b7e803c04/dj.dkdebfmh.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "adelerollinginthedeep": {
+    "title": "Rolling in the Deep",
+    "artist": "Adele",
+    "album": "21",
+    "year": "2010",
+    "date": "2010-11-29",
+    "releaseYear": "2010",
+    "releaseDate": "2010-11-29",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/eb/ca/25/ebca2596-cd1e-b295-91a3-771c868d0a79/191404113868.png/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "theweekndblindinglights": {
+    "title": "Blinding Lights",
+    "artist": "The Weeknd",
+    "album": "Blinding Lights - Single",
+    "year": "2019",
+    "date": "2019-11-29",
+    "releaseYear": "2019",
+    "releaseDate": "2019-11-29",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/a6/6e/bf/a66ebf79-5008-8948-b352-a790fc87446b/19UM1IM04638.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "dualipalevitating": {
+    "title": "Levitating",
+    "artist": "Dua Lipa",
+    "album": "Future Nostalgia",
+    "year": "2020",
+    "date": "2020-03-27",
+    "releaseYear": "2020",
+    "releaseDate": "2020-03-27",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/6c/11/d6/6c11d681-aa3a-d59e-4c2e-f77e181026ab/190295092665.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "blackpinkkillthislove": {
+    "title": "Kill This Love",
+    "artist": "BLACKPINK",
+    "album": "KILL THIS LOVE - EP",
+    "year": "2019",
+    "date": "2019-04-04",
+    "releaseYear": "2019",
+    "releaseDate": "2019-04-04",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/d6/2a/db/d62adbe1-6994-581c-b3b2-aeacafa35c1d/19UMGIM30819.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "aviciiwaitingforlove": {
+    "title": "Waiting For Love",
+    "artist": "Avicii",
+    "album": "Stories",
+    "year": "2015",
+    "date": "2015-05-22",
+    "releaseYear": "2015",
+    "releaseDate": "2015-05-22",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/e0/f4/25/e0f425ba-2848-f1c2-e102-9ddcef5e9d9d/15UMGIM35223.rgb.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
+  },
+  "hoziertakemetochurch": {
+    "title": "Take Me To Church",
+    "artist": "Hozier",
+    "album": "Hozier (Expanded Edition)",
+    "year": "2013",
+    "date": "2013-09-13",
+    "releaseYear": "2013",
+    "releaseDate": "2013-09-13",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/5e/1b/f1/5e1bf1de-e5f1-e73e-0752-e7882b4f2d57/886444718820.jpg/600x600bb.jpg",
+    "source": "Apple Music iTunes Official"
   }
 }
