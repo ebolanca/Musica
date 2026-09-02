@@ -9,8 +9,17 @@ if (newVersion) {
     pkg.version = newVersion.replace('v', '');
 } else {
     const parts = pkg.version.split('.');
-    parts[parts.length - 1] = String(Number(parts[parts.length - 1]) + 1);
-    pkg.version = parts.join('.');
+    let major = parseInt(parts[0], 10) || 1;
+    let minor = parseInt(parts[1], 10) || 0;
+    let patch = parseInt(parts[2], 10) || 0;
+
+    patch++;
+    if (patch >= 100) {
+        minor++;
+        patch = 0;
+    }
+    const patchStr = patch < 10 ? `0${patch}` : `${patch}`;
+    pkg.version = `${major}.${minor}.${patchStr}`;
 }
 
 fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
