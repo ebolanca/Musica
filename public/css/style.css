@@ -381,16 +381,17 @@ body {
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(14px);
-  z-index: 1000;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(16px);
+  z-index: 250000;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 20px;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
+  box-sizing: border-box;
 }
 
 .modal-backdrop.active {
@@ -399,18 +400,20 @@ body {
 }
 
 .modal-container {
-  background: var(--bg-glass);
-  border: 1px solid var(--border-glass);
+  background: rgba(15, 23, 42, 0.94);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 20px;
   width: 100%;
-  max-width: 1000px;
-  max-height: 90vh;
+  max-width: 860px;
+  max-height: calc(100vh - 120px);
   display: flex;
   flex-direction: column;
-  box-shadow: var(--shadow-glow);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
   overflow: hidden;
-  transform: scale(0.95) translateY(10px);
-  transition: transform 0.3s ease;
+  box-sizing: border-box;
+  transform: scale(0.96) translateY(12px);
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .modal-backdrop.active .modal-container {
@@ -3563,4 +3566,59 @@ video {
     padding: 2px 6px !important;
     min-width: 40px !important;
   }
+}
+
+
+/* --- Interactive Clickable Titles (Ficha de Canción) --- */
+.cinema-track-title,
+.cinema-track-artist,
+.cinema-cover,
+.music-bar-title,
+.music-bar-artist,
+.music-bar-cover,
+.song-title,
+.song-artist {
+  cursor: pointer;
+  transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+}
+
+.cinema-track-title:hover {
+  color: var(--spotify-green);
+  text-decoration: underline;
+}
+
+.cinema-track-artist:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.cinema-cover:hover {
+  transform: scale(1.02);
+}
+
+.music-bar-title:hover {
+  color: var(--spotify-green);
+  text-decoration: underline;
+}
+
+.music-bar-artist:hover {
+  color: #fff;
+}
+
+.music-bar-cover:hover {
+  transform: scale(1.05);
+}
+
+.credit-card, .credit-box {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 14px 16px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.credit-card:hover, .credit-box:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(29, 185, 84, 0.3);
+  transform: translateY(-2px);
 }

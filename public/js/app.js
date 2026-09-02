@@ -2319,6 +2319,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    
+    // Click en Título / Artista / Portada en Modo Cine para abrir Ficha de Canción
+    const handleOpenCinemaTrackModal = () => {
+        if (cinemaCurrentTrackList && cinemaCurrentTrackList.length > 0) {
+            const track = cinemaCurrentTrackList[cinemaCurrentIndex];
+            if (track) openSongModal(track, 'tab-credits');
+        } else if (currentPlayingSong) {
+            openSongModal(currentPlayingSong, 'tab-credits');
+        }
+    };
+
+    if (cinemaTitle) cinemaTitle.addEventListener('click', handleOpenCinemaTrackModal);
+    if (cinemaArtist) cinemaArtist.addEventListener('click', handleOpenCinemaTrackModal);
+    if (cinemaAlbum) cinemaAlbum.addEventListener('click', handleOpenCinemaTrackModal);
+    if (cinemaCover) cinemaCover.addEventListener('click', handleOpenCinemaTrackModal);
+
+    // Click en Título / Artista / Portada en Barra Flotante Inferior
+    const handleOpenMusicBarModal = () => {
+        if (currentPlayingSong) {
+            openSongModal(currentPlayingSong, 'tab-credits');
+        }
+    };
+
+    const musicBarTitle = document.getElementById('music-bar-title');
+    const musicBarArtist = document.getElementById('music-bar-artist');
+    const musicBarCover = document.getElementById('music-bar-cover');
+
+    if (musicBarTitle) musicBarTitle.addEventListener('click', handleOpenMusicBarModal);
+    if (musicBarArtist) musicBarArtist.addEventListener('click', handleOpenMusicBarModal);
+    if (musicBarCover) musicBarCover.addEventListener('click', handleOpenMusicBarModal);
+
     if (btnCloseCinema) {
         btnCloseCinema.addEventListener('click', () => {
             closeCinemaMode();
