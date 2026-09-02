@@ -14920,7 +14920,7 @@
   },
   "queen - bohemian rhapsody - 2011 remaster": {
     "displayTitle": "Bohemian Rhapsody",
-    "album": "Bohemian Rhapsody (The Original Soundtrack)",
+    "album": "A Night at the Opera",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/5bbfab8ae2def08b9d58932b5e6121a4/1000x1000-000000-80-0-0.jpg",
     "releaseDate": "1975-10-31",
     "releaseYear": "1975",
@@ -14930,15 +14930,14 @@
     "date": "1975-10-31"
   },
   "queen - bohemian rhapsody": {
-    "displayTitle": "Bohemian Rhapsody",
-    "album": "Bohemian Rhapsody (The Original Soundtrack)",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/5bbfab8ae2def08b9d58932b5e6121a4/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "1975-10-31",
-    "releaseYear": "1975",
-    "durationMs": 148000,
-    "durationFmt": "02:28",
+    "title": "bohemian rhapsody",
+    "artist": "queen",
     "year": "1975",
-    "date": "1975-10-31"
+    "date": "1975-10-31",
+    "releaseYear": "1975",
+    "releaseDate": "1975-10-31",
+    "album": "A Night at the Opera",
+    "source": "Master Classic Original Release Database"
   },
   "queen - crazy little thing called love - 2011 remaster": {
     "displayTitle": "Crazy Little Thing Called Love",
@@ -14980,51 +14979,42 @@
     "displayTitle": "Another One Bites The Dust",
     "album": "The Game",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/156c197582a4d4b40e17d72b79d3df62/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "1980-08-22",
+    "releaseDate": "1980-06-30",
     "releaseYear": "1980",
     "durationMs": 217000,
     "durationFmt": "03:37",
     "year": "1980",
-    "date": "1980-08-22"
+    "date": "1980-06-30"
   },
   "queen - another one bites the dust": {
-    "displayTitle": "Another One Bites The Dust",
-    "album": "The Game",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/156c197582a4d4b40e17d72b79d3df62/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "1980-08-22",
-    "releaseYear": "1980",
-    "durationMs": 217000,
-    "durationFmt": "03:37",
+    "title": "another one bites the dust",
+    "artist": "queen",
     "year": "1980",
-    "date": "1980-08-22"
+    "date": "1980-06-30",
+    "releaseYear": "1980",
+    "releaseDate": "1980-06-30",
+    "album": "The Game",
+    "source": "Master Classic Original Release Database"
   },
   "michael jackson - billie jean": {
-    "title": "Billie Jean",
-    "displayTitle": "Billie Jean",
-    "artist": "Michael Jackson",
-    "album": "Michael Jackson's This Is It",
-    "year": "2009",
-    "date": "2009-10-26",
-    "releaseYear": "2009",
-    "releaseDate": "2009-10-26",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a0ad67d1beb761f2cb9f8b60e5bcf07a/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 293000,
-    "durationFmt": "4:53",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "billie jean",
+    "artist": "michael jackson",
+    "year": "1982",
+    "date": "1982-11-30",
+    "releaseYear": "1982",
+    "releaseDate": "1982-11-30",
+    "album": "Thriller",
+    "source": "Master Classic Original Release Database"
   },
   "guns n' roses - sweet child o' mine": {
-    "title": "Sweet Child O Mine (Live)",
-    "displayTitle": "Sweet Child O Mine (Live)",
-    "artist": "Guns N' Roses",
-    "album": "Rocket Queen (Live)",
-    "year": "2019",
-    "date": "2019-07-18",
-    "releaseYear": "2019",
-    "releaseDate": "2019-07-18",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/3adb2189fb9d74ec879d020dc042be84/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 423000,
-    "durationFmt": "7:03",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "sweet child o' mine",
+    "artist": "guns n' roses",
+    "year": "1987",
+    "date": "1987-07-21",
+    "releaseYear": "1987",
+    "releaseDate": "1987-07-21",
+    "album": "Appetite for Destruction",
+    "source": "Master Classic Original Release Database"
   },
   "genesis - i can't dance - remastered 2007": {
     "title": "I Can't Dance",
@@ -15755,11 +15745,11 @@
     "title": "Money For Nothing (Edit)",
     "displayTitle": "Money For Nothing (Edit)",
     "artist": "Dire Straits",
-    "album": "Sultans Of Swing - The Very Best Of Dire Straits",
-    "year": "2003",
-    "date": "2003-11-13",
-    "releaseYear": "2003",
-    "releaseDate": "2003-11-13",
+    "album": "Brothers in Arms",
+    "year": "1985",
+    "date": "1985-05-13",
+    "releaseYear": "1985",
+    "releaseDate": "1985-05-13",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c3ae8d3be626021c0a1fadea222307b3/1000x1000-000000-80-0-0.jpg",
     "durationMs": 245000,
     "durationFmt": "4:05",
@@ -15858,18 +15848,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "a-ha - take on me": {
-    "title": "Take On Me (2017 Acoustic)",
-    "displayTitle": "Take On Me (2017 Acoustic)",
-    "artist": "a-ha",
-    "album": "Take On Me (2017 Acoustic)",
-    "year": "2017",
-    "date": "2017-12-01",
-    "releaseYear": "2017",
-    "releaseDate": "2017-12-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1a28cc1fde787f09921e900ac60c84bf/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 185000,
-    "durationFmt": "3:05",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "ha",
+    "artist": "a",
+    "year": "1985",
+    "date": "1985-05-21",
+    "releaseYear": "1985",
+    "releaseDate": "1985-05-21",
+    "album": "Hunting High and Low",
+    "source": "Master Classic Original Release Database"
   },
   "the cure - lullaby": {
     "title": "Lullaby",
@@ -15942,18 +15928,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "rick astley - together forever": {
-    "title": "Together Forever (7\" Version)",
-    "displayTitle": "Together Forever (7\" Version)",
-    "artist": "Rick Astley",
-    "album": "The Best of Me",
-    "year": "2026",
-    "date": "2026-01-28",
-    "releaseYear": "2026",
-    "releaseDate": "2026-01-28",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1fcfca61ca4e05027612a1af865b2e03/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 204000,
-    "durationFmt": "3:24",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "together forever",
+    "artist": "rick astley",
+    "year": "1987",
+    "date": "1987-11-12",
+    "releaseYear": "1987",
+    "releaseDate": "1987-11-12",
+    "album": "Whenever You Need Somebody",
+    "source": "Master Classic Original Release Database"
   },
   "madonna - into the groove": {
     "title": "Into the Groove",
@@ -16037,43 +16019,38 @@
     "date": "1982-10-31"
   },
   "cyndi lauper - girls just want to have fun": {
-    "title": "Girls Just Want to Have Fun",
-    "displayTitle": "Girls Just Want to Have Fun",
-    "artist": "Cyndi Lauper",
-    "album": "She's So Unusual",
+    "title": "girls just want to have fun",
+    "artist": "cyndi lauper",
     "year": "1983",
-    "date": "1983-10-14",
+    "date": "1983-09-06",
     "releaseYear": "1983",
-    "releaseDate": "1983-10-14",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/48bcf7415317ec8dc1181ee55b4b0aeb/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 235000,
-    "durationFmt": "3:55",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "releaseDate": "1983-09-06",
+    "album": "She's So Unusual",
+    "source": "Master Classic Original Release Database"
   },
   "van halen - jump - 2015 remaster": {
     "title": "Jump (2015 Remaster)",
     "displayTitle": "Jump (2015 Remaster)",
     "artist": "Van Halen",
-    "album": "1984 (Remastered)",
-    "year": "1984",
-    "date": "1984-01-04",
-    "releaseYear": "1984",
-    "releaseDate": "1984-01-04",
+    "album": "1984",
+    "year": "1983",
+    "date": "1983-12-21",
+    "releaseYear": "1983",
+    "releaseDate": "1983-12-21",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/0649448bcdeeeb48c25edc0e83653711/1000x1000-000000-80-0-0.jpg",
     "durationMs": 241000,
     "durationFmt": "4:01",
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "van halen - jump": {
-    "displayTitle": "Jump",
+    "title": "jump",
+    "artist": "van halen",
+    "year": "1983",
+    "date": "1983-12-21",
+    "releaseYear": "1983",
+    "releaseDate": "1983-12-21",
     "album": "1984",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/0649448bcdeeeb48c25edc0e83653711/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "1984-01-04",
-    "releaseYear": "1984",
-    "durationMs": 241000,
-    "durationFmt": "04:01",
-    "year": "1984",
-    "date": "1984-01-04"
+    "source": "Master Classic Original Release Database"
   },
   "michael jackson - remember the time": {
     "title": "Remember the Time",
@@ -16414,46 +16391,38 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "roxette - listen to your heart": {
-    "title": "Listen To Your Heart",
-    "displayTitle": "Listen To Your Heart",
-    "artist": "Roxette",
-    "album": "Look Sharp! 30th Anniversary Edition",
-    "year": "2022",
-    "date": "2022-01-12",
-    "releaseYear": "2022",
-    "releaseDate": "2022-01-12",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e7e132a29b202daab5326d9f243ec914/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 328000,
-    "durationFmt": "5:28",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "listen to your heart",
+    "artist": "roxette",
+    "year": "1988",
+    "date": "1988-10-21",
+    "releaseYear": "1988",
+    "releaseDate": "1988-10-21",
+    "album": "Look Sharp!",
+    "source": "Master Classic Original Release Database"
   },
   "roxette - it must have been love - from the film \"pretty woman\"": {
     "title": "It Must Have Been Love (From the Film \"Pretty Woman\")",
     "displayTitle": "It Must Have Been Love (From the Film \"Pretty Woman\")",
     "artist": "Roxette",
-    "album": "The Ballad Hits",
-    "year": "2002",
-    "date": "2002-11-04",
-    "releaseYear": "2002",
-    "releaseDate": "2002-11-04",
+    "album": "Pretty Woman Soundtrack",
+    "year": "1990",
+    "date": "1990-03-23",
+    "releaseYear": "1990",
+    "releaseDate": "1990-03-23",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4574dd00d3bbad3e44beb0f9fee46772/1000x1000-000000-80-0-0.jpg",
     "durationMs": 259000,
     "durationFmt": "4:19",
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "roxette - the look": {
-    "title": "The Look",
-    "displayTitle": "The Look",
-    "artist": "Roxette",
-    "album": "The Pop Hits",
-    "year": "2003",
-    "date": "2003-03-24",
-    "releaseYear": "2003",
-    "releaseDate": "2003-03-24",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/146abb75ffd7ad263c7356ef413a9f69/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 237000,
-    "durationFmt": "3:57",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "the look",
+    "artist": "roxette",
+    "year": "1988",
+    "date": "1988-10-21",
+    "releaseYear": "1988",
+    "releaseDate": "1988-10-21",
+    "album": "Look Sharp!",
+    "source": "Master Classic Original Release Database"
   },
   "roxette - spending my time": {
     "title": "Spending My Time",
@@ -16501,26 +16470,25 @@
     "title": "Joyride",
     "displayTitle": "Joyride",
     "artist": "Roxette",
-    "album": "Joyride 30th Anniversary Edition",
-    "year": "2021",
-    "date": "2021-11-26",
-    "releaseYear": "2021",
-    "releaseDate": "2021-11-26",
+    "album": "Joyride",
+    "year": "1991",
+    "date": "1991-03-28",
+    "releaseYear": "1991",
+    "releaseDate": "1991-03-28",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1375eae126a3629004398d86a7519a00/1000x1000-000000-80-0-0.jpg",
     "durationMs": 263000,
     "durationFmt": "4:23",
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "roxette - joyride": {
-    "displayTitle": "Joyride",
-    "album": "Die Stars und Hits 1991",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1375eae126a3629004398d86a7519a00/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "1991-02-27",
-    "releaseYear": "1991",
-    "durationMs": 263000,
-    "durationFmt": "04:23",
+    "title": "joyride",
+    "artist": "roxette",
     "year": "1991",
-    "date": "1991-02-27"
+    "date": "1991-03-28",
+    "releaseYear": "1991",
+    "releaseDate": "1991-03-28",
+    "album": "Joyride",
+    "source": "Master Classic Original Release Database"
   },
   "roxette - dangerous": {
     "title": "Dangerous",
@@ -16799,18 +16767,14 @@
     "date": "1991-10-14"
   },
   "bon jovi - livin' on a prayer": {
-    "title": "Livin' On A Prayer",
-    "displayTitle": "Livin' On A Prayer",
-    "artist": "Bon Jovi",
+    "title": "livin' on a prayer",
+    "artist": "bon jovi",
+    "year": "1986",
+    "date": "1986-10-31",
+    "releaseYear": "1986",
+    "releaseDate": "1986-10-31",
     "album": "Slippery When Wet",
-    "year": "1998",
-    "date": "1998-09-21",
-    "releaseYear": "1998",
-    "releaseDate": "1998-09-21",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1f0365311a9d03c267f175e0ef79f40c/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 249000,
-    "durationFmt": "4:09",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "source": "Master Classic Original Release Database"
   },
   "black - wonderful life": {
     "title": "Wonderful Life",
@@ -16841,18 +16805,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "belinda carlisle - heaven is a place on earth": {
-    "title": "Heaven Is A Place On Earth",
-    "displayTitle": "Heaven Is A Place On Earth",
-    "artist": "Belinda Carlisle",
-    "album": "Heaven Is a Place on Earth",
-    "year": "2026",
-    "date": "2026-01-28",
-    "releaseYear": "2026",
-    "releaseDate": "2026-01-28",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8e9691afb5e38383098a0b313dcaa95a/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 247000,
-    "durationFmt": "4:07",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "heaven is a place on earth",
+    "artist": "belinda carlisle",
+    "year": "1987",
+    "date": "1987-09-14",
+    "releaseYear": "1987",
+    "releaseDate": "1987-09-14",
+    "album": "Heaven on Earth",
+    "source": "Master Classic Original Release Database"
   },
   "whitesnake - is this love - 2017 remaster": {
     "title": "Bad Boys (2018 Remaster)",
@@ -17031,26 +16991,25 @@
     "title": "Radio Ga Ga",
     "displayTitle": "Radio Ga Ga",
     "artist": "Queen",
-    "album": "Greatest Hits II",
-    "year": "2011",
-    "date": "2011-01-01",
-    "releaseYear": "2011",
-    "releaseDate": "2011-01-01",
+    "album": "The Works",
+    "year": "1984",
+    "date": "1984-01-23",
+    "releaseYear": "1984",
+    "releaseDate": "1984-01-23",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/9a3d400b9397879df564df1d0a66c69a/1000x1000-000000-80-0-0.jpg",
     "durationMs": 347000,
     "durationFmt": "5:47",
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "queen - radio ga ga": {
-    "displayTitle": "Radio Ga Ga",
-    "album": "Greatest Hits I, II & III: The Platinum Collection",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/5bbfab8ae2def08b9d58932b5e6121a4/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "1984-01-23",
-    "releaseYear": "1984",
-    "durationMs": 246000,
-    "durationFmt": "04:06",
+    "title": "radio ga ga",
+    "artist": "queen",
     "year": "1984",
-    "date": "1984-01-23"
+    "date": "1984-01-23",
+    "releaseYear": "1984",
+    "releaseDate": "1984-01-23",
+    "album": "The Works",
+    "source": "Master Classic Original Release Database"
   },
   "gloria estefan, miami sound machine - conga": {
     "title": "Conga!",
@@ -17134,18 +17093,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "wham! - wake me up before you go-go": {
-    "title": "Wake Me Up Before You Go-Go",
-    "displayTitle": "Wake Me Up Before You Go-Go",
-    "artist": "Wham!",
+    "title": "wake me up before you go",
+    "artist": "wham!",
+    "year": "1984",
+    "date": "1984-05-14",
+    "releaseYear": "1984",
+    "releaseDate": "1984-05-14",
     "album": "Make It Big",
-    "year": "1985",
-    "date": "1985-01-22",
-    "releaseYear": "1985",
-    "releaseDate": "1985-01-22",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/3c1858a4aa5d732a60c8cfcf424f24ef/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 230000,
-    "durationFmt": "3:50",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "source": "Master Classic Original Release Database"
   },
   "bonnie tyler - total eclipse of the heart": {
     "title": "Total Eclipse of the Heart",
@@ -17310,18 +17265,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "george michael - careless whisper": {
-    "title": "Careless Whisper",
-    "displayTitle": "Careless Whisper",
-    "artist": "George Michael",
-    "album": "The Final",
-    "year": "2011",
-    "date": "2011-11-15",
-    "releaseYear": "2011",
-    "releaseDate": "2011-11-15",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/bb61a054494a99eba6467d8364e3380c/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 300000,
-    "durationFmt": "5:00",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "careless whisper",
+    "artist": "george michael",
+    "year": "1984",
+    "date": "1984-07-23",
+    "releaseYear": "1984",
+    "releaseDate": "1984-07-23",
+    "album": "Make It Big",
+    "source": "Master Classic Original Release Database"
   },
   "bryan adams - heaven": {
     "title": "Heaven",
@@ -17419,18 +17370,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "survivor - eye of the tiger": {
-    "title": "Eye of the Tiger",
-    "displayTitle": "Eye of the Tiger",
-    "artist": "Survivor",
-    "album": "Rocky IV",
-    "year": "2006",
-    "date": "2006-02-28",
-    "releaseYear": "2006",
-    "releaseDate": "2006-02-28",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e66b5d3a40f69690c1633afb73cc590c/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 245000,
-    "durationFmt": "4:05",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "eye of the tiger",
+    "artist": "survivor",
+    "year": "1982",
+    "date": "1982-05-29",
+    "releaseYear": "1982",
+    "releaseDate": "1982-05-29",
+    "album": "Eye of the Tiger",
+    "source": "Master Classic Original Release Database"
   },
   "michael jackson - the way you make me feel - 2012 remaster": {
     "title": "The Way You Make Me Feel (2012 Remaster)",
@@ -17515,25 +17462,24 @@
     "displayTitle": "With Or Without You (Remastered 2007)",
     "artist": "U2",
     "album": "The Joshua Tree",
-    "year": "2007",
-    "date": "2007-11-20",
-    "releaseYear": "2007",
-    "releaseDate": "2007-11-20",
+    "year": "1987",
+    "date": "1987-03-09",
+    "releaseYear": "1987",
+    "releaseDate": "1987-03-09",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b255afa51b3c1af7872acb56da319c2d/1000x1000-000000-80-0-0.jpg",
     "durationMs": 295000,
     "durationFmt": "4:55",
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "u2 - with or without you": {
-    "displayTitle": "With Or Without You",
-    "album": "U218 Singles (Deluxe Edition)",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b255afa51b3c1af7872acb56da319c2d/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "1987-03-16",
-    "releaseYear": "1987",
-    "durationMs": 295000,
-    "durationFmt": "04:55",
+    "title": "with or without you",
+    "artist": "u2",
     "year": "1987",
-    "date": "1987-03-16"
+    "date": "1987-03-09",
+    "releaseYear": "1987",
+    "releaseDate": "1987-03-09",
+    "album": "The Joshua Tree",
+    "source": "Master Classic Original Release Database"
   },
   "cher - believe": {
     "title": "Believe",
@@ -17799,18 +17745,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "guns n' roses - november rain": {
-    "title": "November Rain",
-    "displayTitle": "November Rain",
-    "artist": "Guns N' Roses",
-    "album": "Use Your Illusion I",
+    "title": "november rain",
+    "artist": "guns n' roses",
     "year": "1991",
-    "date": "1991-01-01",
+    "date": "1991-09-17",
     "releaseYear": "1991",
-    "releaseDate": "1991-01-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/546fe1eca5d3bf48c6a48fb3c0ddac63/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 537000,
-    "durationFmt": "8:57",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "releaseDate": "1991-09-17",
+    "album": "Use Your Illusion I",
+    "source": "Master Classic Original Release Database"
   },
   "wet wet wet - love is all around - from \"four weddings and a funeral\"": {
     "title": "Love Is All Around (From \"Four Weddings And A Funeral\")",
@@ -18175,28 +18117,24 @@
     "date": "1997-11-03"
   },
   "europe - the final countdown": {
-    "title": "The Final Countdown",
-    "displayTitle": "The Final Countdown",
-    "artist": "Europe",
-    "album": "The Final Countdown (Expanded Edition)",
-    "year": "1988",
-    "date": "1988-09-16",
-    "releaseYear": "1988",
-    "releaseDate": "1988-09-16",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f27265df605c4bce229b0623e18f179a/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 310000,
-    "durationFmt": "5:10",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "the final countdown",
+    "artist": "europe",
+    "year": "1986",
+    "date": "1986-02-14",
+    "releaseYear": "1986",
+    "releaseDate": "1986-02-14",
+    "album": "The Final Countdown",
+    "source": "Master Classic Original Release Database"
   },
   "opus - live is life - live": {
     "title": "Live Is Life (Live Version)",
     "displayTitle": "Live Is Life (Live Version)",
     "artist": "Opus",
-    "album": "Live Is Life (Live)",
-    "year": "2025",
-    "date": "2025-12-03",
-    "releaseYear": "2025",
-    "releaseDate": "2025-12-03",
+    "album": "Live Is Life",
+    "year": "1984",
+    "date": "1984-09-02",
+    "releaseYear": "1984",
+    "releaseDate": "1984-09-02",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1527e77042961337a5861ad9d82e27a2/1000x1000-000000-80-0-0.jpg",
     "durationMs": 297000,
     "durationFmt": "4:57",
@@ -18217,18 +18155,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "toto - africa": {
-    "title": "Africa",
-    "displayTitle": "Africa",
-    "artist": "Toto",
-    "album": "Toto IV",
+    "title": "africa",
+    "artist": "toto",
     "year": "1982",
     "date": "1982-04-08",
     "releaseYear": "1982",
     "releaseDate": "1982-04-08",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/153332e88a14255a8c3d5959a5a21882/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 296000,
-    "durationFmt": "4:56",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "album": "Toto IV",
+    "source": "Master Classic Original Release Database"
   },
   "john waite - missing you": {
     "title": "Missing You",
@@ -18245,18 +18179,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "dire straits - sultans of swing": {
-    "title": "Sultans Of Swing",
-    "displayTitle": "Sultans Of Swing",
-    "artist": "Dire Straits",
+    "title": "sultans of swing",
+    "artist": "dire straits",
+    "year": "1978",
+    "date": "1978-05-19",
+    "releaseYear": "1978",
+    "releaseDate": "1978-05-19",
     "album": "Dire Straits",
-    "year": "1983",
-    "date": "1983-02-15",
-    "releaseYear": "1983",
-    "releaseDate": "1983-02-15",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1bf2bc47623db2ec36a38be064131ce5/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 350000,
-    "durationFmt": "5:50",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "source": "Master Classic Original Release Database"
   },
   "dire straits - walk of life": {
     "title": "Walk Of Life",
@@ -18421,18 +18351,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "toto - hold the line": {
-    "title": "Hold the Line",
-    "displayTitle": "Hold the Line",
-    "artist": "Toto",
-    "album": "Toto",
+    "title": "hold the line",
+    "artist": "toto",
     "year": "1978",
-    "date": "1978-10-10",
+    "date": "1978-09-11",
     "releaseYear": "1978",
-    "releaseDate": "1978-10-10",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/18a61113ea28b3261a97c6ca167f00ba/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 236000,
-    "durationFmt": "3:56",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "releaseDate": "1978-09-11",
+    "album": "Toto",
+    "source": "Master Classic Original Release Database"
   },
   "the buggles - video killed the radio star": {
     "title": "Video Killed The Radio Star ('80s Weight Loss Workout Mix)",
@@ -18530,18 +18456,14 @@
     "date": "1984-02-13"
   },
   "michael jackson - thriller": {
-    "title": "Thriller",
-    "displayTitle": "Thriller",
-    "artist": "Michael Jackson",
-    "album": "Thriller 25 Super Deluxe Edition",
-    "year": "2008",
-    "date": "2008-02-08",
-    "releaseYear": "2008",
-    "releaseDate": "2008-02-08",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/92a024220a9532489c75c9d994835697/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 358000,
-    "durationFmt": "5:58",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "thriller",
+    "artist": "michael jackson",
+    "year": "1982",
+    "date": "1982-11-30",
+    "releaseYear": "1982",
+    "releaseDate": "1982-11-30",
+    "album": "Thriller",
+    "source": "Master Classic Original Release Database"
   },
   "f.r. david - words - original version 1983": {
     "title": "Words (Original Version 1983)",
@@ -18666,18 +18588,14 @@
     "date": "1981-11-20"
   },
   "queen - i want to break free": {
-    "title": "I Want To Break Free (Single Remix)",
-    "displayTitle": "I Want To Break Free (Single Remix)",
-    "artist": "Queen",
-    "album": "Greatest Hits II",
-    "year": "2011",
-    "date": "2011-01-01",
-    "releaseYear": "2011",
-    "releaseDate": "2011-01-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/9a3d400b9397879df564df1d0a66c69a/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 259000,
-    "durationFmt": "4:19",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "i want to break free",
+    "artist": "queen",
+    "year": "1984",
+    "date": "1984-04-02",
+    "releaseYear": "1984",
+    "releaseDate": "1984-04-02",
+    "album": "The Works",
+    "source": "Master Classic Original Release Database"
   },
   "backstreet boys - i want it that way": {
     "title": "I Want It That Way",
@@ -19031,18 +18949,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "guns n' roses - welcome to the jungle": {
-    "title": "Welcome To The Jungle",
-    "displayTitle": "Welcome To The Jungle",
-    "artist": "Guns N' Roses",
-    "album": "Appetite For Destruction (Super Deluxe Edition)",
-    "year": "2018",
-    "date": "2018-06-29",
-    "releaseYear": "2018",
-    "releaseDate": "2018-06-29",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8bfe7b3b0985d9ff0751090fb2b6f73f/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 271000,
-    "durationFmt": "4:31",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "welcome to the jungle",
+    "artist": "guns n' roses",
+    "year": "1987",
+    "date": "1987-07-21",
+    "releaseYear": "1987",
+    "releaseDate": "1987-07-21",
+    "album": "Appetite for Destruction",
+    "source": "Master Classic Original Release Database"
   },
   "guns n' roses - don't cry (original)": {
     "title": "Don't Cry (Original)",
@@ -19073,18 +18987,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "guns n' roses - paradise city": {
-    "title": "Paradise City",
-    "displayTitle": "Paradise City",
-    "artist": "Guns N' Roses",
-    "album": "Appetite For Destruction (Super Deluxe Edition)",
-    "year": "2018",
-    "date": "2018-06-29",
-    "releaseYear": "2018",
-    "releaseDate": "2018-06-29",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8bfe7b3b0985d9ff0751090fb2b6f73f/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 406000,
-    "durationFmt": "6:46",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "paradise city",
+    "artist": "guns n' roses",
+    "year": "1987",
+    "date": "1987-07-21",
+    "releaseYear": "1987",
+    "releaseDate": "1987-07-21",
+    "album": "Appetite for Destruction",
+    "source": "Master Classic Original Release Database"
   },
   "duran duran - hungry like the wolf - 2009 remaster": {
     "title": "Hungry Like the Wolf (Live at Oakland Coliseum, Oakland, CA, 14/04/1984; 2004 Remaster)",
@@ -19362,25 +19272,24 @@
     "displayTitle": "Don't Stop Me Now",
     "artist": "Queen",
     "album": "Jazz",
-    "year": "2011",
-    "date": "2011-06-27",
-    "releaseYear": "2011",
-    "releaseDate": "2011-06-27",
+    "year": "1978",
+    "date": "1978-11-10",
+    "releaseYear": "1978",
+    "releaseDate": "1978-11-10",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4b8ab9c1f112b63c07e3983b98e98006/1000x1000-000000-80-0-0.jpg",
     "durationMs": 212000,
     "durationFmt": "3:32",
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "queen - don't stop me now": {
-    "displayTitle": "Don't Stop Me Now",
-    "album": "Jazz",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4b8ab9c1f112b63c07e3983b98e98006/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "1978-01-05",
-    "releaseYear": "1978",
-    "durationMs": 212000,
-    "durationFmt": "03:32",
+    "title": "don't stop me now",
+    "artist": "queen",
     "year": "1978",
-    "date": "1978-01-05"
+    "date": "1978-11-10",
+    "releaseYear": "1978",
+    "releaseDate": "1978-11-10",
+    "album": "Jazz",
+    "source": "Master Classic Original Release Database"
   },
   "blondie - maria": {
     "title": "Maria",
@@ -19559,18 +19468,14 @@
     "date": "1996-05-15"
   },
   "bryan adams - summer of '69": {
-    "title": "Summer Of '69",
-    "displayTitle": "Summer Of '69",
-    "artist": "Bryan Adams",
+    "title": "summer of '69",
+    "artist": "bryan adams",
+    "year": "1984",
+    "date": "1984-11-05",
+    "releaseYear": "1984",
+    "releaseDate": "1984-11-05",
     "album": "Reckless",
-    "year": "2014",
-    "date": "2014-11-24",
-    "releaseYear": "2014",
-    "releaseDate": "2014-11-24",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f5c062034dbbf74f9c158c51ba783871/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 215000,
-    "durationFmt": "3:35",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "source": "Master Classic Original Release Database"
   },
   "ace of base - beautiful life": {
     "title": "Beautiful Life",
@@ -19928,18 +19833,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "michael jackson - beat it": {
-    "title": "Beat It",
-    "displayTitle": "Beat It",
-    "artist": "Michael Jackson",
-    "album": "Michael Jackson's This Is It",
-    "year": "2009",
-    "date": "2009-10-26",
-    "releaseYear": "2009",
-    "releaseDate": "2009-10-26",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a0ad67d1beb761f2cb9f8b60e5bcf07a/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 258000,
-    "durationFmt": "4:18",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "beat it",
+    "artist": "michael jackson",
+    "year": "1982",
+    "date": "1982-11-30",
+    "releaseYear": "1982",
+    "releaseDate": "1982-11-30",
+    "album": "Thriller",
+    "source": "Master Classic Original Release Database"
   },
   "the cardigans - my favourite game": {
     "title": "My Favourite Game",
@@ -19970,18 +19871,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "george michael - faith": {
-    "title": "Faith (Remastered)",
-    "displayTitle": "Faith (Remastered)",
-    "artist": "George Michael",
+    "title": "faith",
+    "artist": "george michael",
+    "year": "1987",
+    "date": "1987-10-12",
+    "releaseYear": "1987",
+    "releaseDate": "1987-10-12",
     "album": "Faith",
-    "year": "2010",
-    "date": "2010-09-27",
-    "releaseYear": "2010",
-    "releaseDate": "2010-09-27",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f24a4351040ae09175cbd775607aafe6/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 193000,
-    "durationFmt": "3:13",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "source": "Master Classic Original Release Database"
   },
   "the cardigans - lovefool": {
     "title": "Lovefool",
@@ -20194,26 +20091,25 @@
     "title": "99 Red Balloons (Club MIx)",
     "displayTitle": "99 Red Balloons (Club MIx)",
     "artist": "Nena",
-    "album": "80s Dance",
-    "year": "2026",
-    "date": "2026-01-28",
-    "releaseYear": "2026",
-    "releaseDate": "2026-01-28",
+    "album": "Nena",
+    "year": "1983",
+    "date": "1983-02-28",
+    "releaseYear": "1983",
+    "releaseDate": "1983-02-28",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b0cfff5a62ebf6acfb1bc4aacb818a2d/1000x1000-000000-80-0-0.jpg",
     "durationMs": 230000,
     "durationFmt": "3:50",
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "nena - 99 red balloons": {
-    "displayTitle": "99 Red Balloons",
-    "album": "99 Luftballons",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/568fa4197d547efe4c6aec1c087ab57b/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "1984-08-21",
-    "releaseYear": "1984",
-    "durationMs": 229000,
-    "durationFmt": "03:49",
-    "year": "1984",
-    "date": "1984-08-21"
+    "title": "99 red balloons",
+    "artist": "nena",
+    "year": "1983",
+    "date": "1983-02-28",
+    "releaseYear": "1983",
+    "releaseDate": "1983-02-28",
+    "album": "Nena",
+    "source": "Master Classic Original Release Database"
   },
   "david bowie - modern love - 2018 remaster": {
     "title": "Modern Love (2018 Remaster)",
@@ -20674,18 +20570,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "dr. alban - sing hallelujah!": {
-    "title": "Sing Hallelujah! (Short Version)",
-    "displayTitle": "Sing Hallelujah! (Short Version)",
-    "artist": "Dr. Alban",
-    "album": "Sing Hallelujah!",
-    "year": "2026",
-    "date": "2026-01-28",
-    "releaseYear": "2026",
-    "releaseDate": "2026-01-28",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/332e1a5c1b0c81b38032fd50e355e00f/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 241000,
-    "durationFmt": "4:01",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "sing hallelujah!",
+    "artist": "dr. alban",
+    "year": "1992",
+    "date": "1992-05-18",
+    "releaseYear": "1992",
+    "releaseDate": "1992-05-18",
+    "album": "One Love",
+    "source": "Master Classic Original Release Database"
   },
   "nina sky, jabba - move ya body": {
     "title": "Move Ya Body",
@@ -21245,18 +21137,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "the police - every breath you take": {
-    "title": "Every Breath You Take",
-    "displayTitle": "Every Breath You Take",
-    "artist": "The Police",
-    "album": "The Very Best Of Sting And The Police",
-    "year": "2002",
-    "date": "2002-01-01",
-    "releaseYear": "2002",
-    "releaseDate": "2002-01-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/316afdaed93c4a18cf730389648d03d6/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 252000,
-    "durationFmt": "4:12",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "every breath you take",
+    "artist": "the police",
+    "year": "1983",
+    "date": "1983-05-20",
+    "releaseYear": "1983",
+    "releaseDate": "1983-05-20",
+    "album": "Synchronicity",
+    "source": "Master Classic Original Release Database"
   },
   "spin doctors - two princes": {
     "title": "Two Princes",
@@ -21287,18 +21175,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "cyndi lauper - time after time": {
-    "title": "Time After Time",
-    "displayTitle": "Time After Time",
-    "artist": "Cyndi Lauper",
-    "album": "She's So Unusual",
+    "title": "time after time",
+    "artist": "cyndi lauper",
     "year": "1983",
     "date": "1983-10-14",
     "releaseYear": "1983",
     "releaseDate": "1983-10-14",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/48bcf7415317ec8dc1181ee55b4b0aeb/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 237000,
-    "durationFmt": "3:57",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "album": "She's So Unusual",
+    "source": "Master Classic Original Release Database"
   },
   "queen - we are the champions - remastered 2011": {
     "title": "We Are The Champions",
@@ -21340,18 +21224,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "eddy grant - gimme hope jo'anna": {
-    "title": "Gimme Hope Jo'anna",
-    "displayTitle": "Gimme Hope Jo'anna",
-    "artist": "Eddy Grant",
+    "title": "gimme hope jo'anna",
+    "artist": "eddy grant",
+    "year": "1988",
+    "date": "1988-01-01",
+    "releaseYear": "1988",
+    "releaseDate": "1988-01-01",
     "album": "File Under Rock",
-    "year": "2026",
-    "date": "2026-03-20",
-    "releaseYear": "2026",
-    "releaseDate": "2026-03-20",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/9ed07dc81142bd8cacdacfb0a9cdf511/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 243000,
-    "durationFmt": "4:03",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "source": "Master Classic Original Release Database"
   },
   "dj matrix, matt joe, carolina marquez - será porque te amo": {
     "title": "Será porque te amo",
@@ -22095,18 +21975,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "fools garden - lemon tree": {
-    "title": "Lemon Tree",
-    "displayTitle": "Lemon Tree",
-    "artist": "Fools Garden",
-    "album": "Lemon Tree",
-    "year": "2026",
-    "date": "2026-01-28",
-    "releaseYear": "2026",
-    "releaseDate": "2026-01-28",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/31e10efa1be6cda1f97a17b94175f79b/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 191000,
-    "durationFmt": "3:11",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "lemon tree",
+    "artist": "fools garden",
+    "year": "1995",
+    "date": "1995-04-23",
+    "releaseYear": "1995",
+    "releaseDate": "1995-04-23",
+    "album": "Dish of the Day",
+    "source": "Master Classic Original Release Database"
   },
   "will.i.am - i like to move it": {
     "title": "I Like To Move It",
@@ -22339,10 +22215,10 @@
     "displayTitle": "No One Like You (Remastered 2015)",
     "artist": "Scorpions",
     "album": "Blackout",
-    "year": "2026",
-    "date": "2026-01-28",
-    "releaseYear": "2026",
-    "releaseDate": "2026-01-28",
+    "year": "1982",
+    "date": "1982-03-22",
+    "releaseYear": "1982",
+    "releaseDate": "1982-03-22",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b896eaaef6fe69c4e0c5d576ad06b8bf/1000x1000-000000-80-0-0.jpg",
     "durationMs": 238000,
     "durationFmt": "3:58",
@@ -22747,18 +22623,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "yazoo - only you": {
-    "title": "Only You (Remastered 2018)",
-    "displayTitle": "Only You (Remastered 2018)",
-    "artist": "Yazoo",
-    "album": "Four Pieces",
-    "year": "2026",
-    "date": "2026-01-28",
-    "releaseYear": "2026",
-    "releaseDate": "2026-01-28",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c1b0a551967632a40e95276002fc055b/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 193000,
-    "durationFmt": "3:13",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "only you",
+    "artist": "yazoo",
+    "year": "1982",
+    "date": "1982-03-15",
+    "releaseYear": "1982",
+    "releaseDate": "1982-03-15",
+    "album": "Upstairs at Eric's",
+    "source": "Master Classic Original Release Database"
   },
   "christopher cross - arthur's theme (best that you can do)": {
     "title": "Arthur's Theme (Best That You Can Do)",
@@ -36724,12 +36596,12 @@
   "a-ha - a-ha - take on me (official video) [4k]": {
     "title": "a-ha - Take On Me (Official Video) [4K]",
     "artist": "a-ha",
-    "album": "Single / Álbum",
-    "year": "2010",
-    "date": "2010-01-01",
+    "album": "Hunting High and Low",
+    "year": "1985",
+    "date": "1985-05-21",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2010",
-    "releaseDate": "2010-01-01"
+    "releaseYear": "1985",
+    "releaseDate": "1985-05-21"
   },
   "abba - abba - mamma mia (official music video)": {
     "title": "ABBA - Mamma Mia (Official Music Video)",
@@ -37004,12 +36876,12 @@
   "belinda carlisle - belinda carlisle - heaven is a place on earth (official music video) (4k remaster)": {
     "title": "Belinda Carlisle - Heaven Is A Place On Earth (Official Music Video) (4K Remaster)",
     "artist": "Belinda Carlisle",
-    "album": "Single / Álbum",
-    "year": "2013",
-    "date": "2013-01-01",
+    "album": "Heaven on Earth",
+    "year": "1987",
+    "date": "1987-09-14",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2013",
-    "releaseDate": "2013-01-01"
+    "releaseYear": "1987",
+    "releaseDate": "1987-09-14"
   },
   "bill medley & jennifer warnes - (i’ve had) the time of my life": {
     "title": "(I’ve Had) The Time of My Life",
@@ -37114,12 +36986,12 @@
   "bon jovi - bon jovi - livin' on a prayer": {
     "title": "Bon Jovi - Livin' On A Prayer",
     "artist": "Bon Jovi",
-    "album": "Single / Álbum",
-    "year": "2009",
-    "date": "2009-01-01",
+    "album": "Slippery When Wet",
+    "year": "1986",
+    "date": "1986-10-31",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2009",
-    "releaseDate": "2009-01-01"
+    "releaseYear": "1986",
+    "releaseDate": "1986-10-31"
   },
   "boney m. - boney m. - daddy cool (sopot festival 1979)": {
     "title": "Boney M. - Daddy Cool (Sopot Festival 1979)",
@@ -37264,12 +37136,12 @@
   "bryan adams - bryan adams - summer of 69 (official music video)": {
     "title": "Bryan Adams - Summer Of 69 (Official Music Video)",
     "artist": "Bryan Adams",
-    "album": "Single / Álbum",
-    "year": "2008",
-    "date": "2008-01-01",
+    "album": "Reckless",
+    "year": "1984",
+    "date": "1984-11-05",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2008",
-    "releaseDate": "2008-01-01"
+    "releaseYear": "1984",
+    "releaseDate": "1984-11-05"
   },
   "bryan adams - bryan adams - when you're gone ft. melanie c": {
     "title": "Bryan Adams - When You're Gone ft. Melanie C",
@@ -37684,22 +37556,22 @@
   "dire straits - dire straits - money for nothing (official music video)": {
     "title": "Dire Straits - Money For Nothing (Official Music Video)",
     "artist": "Dire Straits",
-    "album": "Single / Álbum",
-    "year": "2010",
-    "date": "2010-01-01",
+    "album": "Brothers in Arms",
+    "year": "1985",
+    "date": "1985-05-13",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2010",
-    "releaseDate": "2010-01-01"
+    "releaseYear": "1985",
+    "releaseDate": "1985-05-13"
   },
   "dire straits - dire straits - sultans of swing (official music video)": {
     "title": "Dire Straits - Sultans Of Swing (Official Music Video)",
     "artist": "Dire Straits",
-    "album": "Single / Álbum",
-    "year": "2010",
-    "date": "2010-01-01",
+    "album": "Dire Straits",
+    "year": "1978",
+    "date": "1978-05-19",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2010",
-    "releaseDate": "2010-01-01"
+    "releaseYear": "1978",
+    "releaseDate": "1978-05-19"
   },
   "dj matrix, matt joe & carolina marquez - será porque te amo": {
     "title": "Será porque te amo",
@@ -37764,12 +37636,12 @@
   "dr. alban - sing hallelujah": {
     "title": "Sing Hallelujah",
     "artist": "Dr. Alban",
-    "album": "Top 40 Classics",
-    "year": "2013",
-    "date": "2013-01-01",
+    "album": "One Love",
+    "year": "1992",
+    "date": "1992-05-18",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2013",
-    "releaseDate": "2013-01-01"
+    "releaseYear": "1992",
+    "releaseDate": "1992-05-18"
   },
   "duran duran - hungry like the wolf (night version)": {
     "title": "Hungry Like the Wolf (night version)",
@@ -37814,12 +37686,12 @@
   "old tapes - eddy grant - gimme hope jo anna  1988": {
     "title": "Eddy Grant - Gimme Hope Jo Anna  1988",
     "artist": "OLD TAPES",
-    "album": "Single / Álbum",
-    "year": "2018",
-    "date": "2018-01-01",
+    "album": "File Under Rock",
+    "year": "1988",
+    "date": "1988-01-01",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2018",
-    "releaseDate": "2018-01-01"
+    "releaseYear": "1988",
+    "releaseDate": "1988-01-01"
   },
   "edwyn collins - edwyn collins - a girl like you (official video)": {
     "title": "Edwyn Collins - A Girl Like You (Official Video)",
@@ -37964,22 +37836,22 @@
   "europe - europe - the final countdown (official video)": {
     "title": "Europe - The Final Countdown (Official Video)",
     "artist": "Europe",
-    "album": "Single / Álbum",
-    "year": "2009",
-    "date": "2009-01-01",
+    "album": "The Final Countdown",
+    "year": "1986",
+    "date": "1986-02-14",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2009",
-    "releaseDate": "2009-01-01"
+    "releaseYear": "1986",
+    "releaseDate": "1986-02-14"
   },
   "eurythmics - sweet dreams (are made of this)": {
-    "title": "Sweet Dreams (Are Made of This)",
-    "artist": "Eurythmics",
-    "album": "80 was prachtig!",
-    "year": "2009",
-    "date": "2009-01-01",
-    "source": "MusicBrainz Picard",
-    "releaseYear": "2009",
-    "releaseDate": "2009-01-01"
+    "title": "sweet dreams (are made of this)",
+    "artist": "eurythmics",
+    "year": "1983",
+    "date": "1983-01-21",
+    "releaseYear": "1983",
+    "releaseDate": "1983-01-21",
+    "album": "Sweet Dreams",
+    "source": "Master Classic Original Release Database"
   },
   "eurythmics - there must be an angel (playing with my heart)": {
     "title": "There Must Be an Angel (Playing with My Heart)",
@@ -38034,12 +37906,12 @@
   "fools garden - fools garden - lemon tree (official hd video)": {
     "title": "Fools Garden - Lemon Tree (Official HD Video)",
     "artist": "Fools Garden",
-    "album": "Single / Álbum",
-    "year": "2017",
-    "date": "2017-01-01",
+    "album": "Dish of the Day",
+    "year": "1995",
+    "date": "1995-04-23",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2017",
-    "releaseDate": "2017-01-01"
+    "releaseYear": "1995",
+    "releaseDate": "1995-04-23"
   },
   "f.r. david - words (original version 1983)": {
     "title": "Words (Original Version 1983)",
@@ -38184,42 +38056,42 @@
   "guns n' roses - guns n' roses - november rain": {
     "title": "Guns N' Roses - November Rain",
     "artist": "Guns N' Roses",
-    "album": "Single / Álbum",
-    "year": "2009",
-    "date": "2009-01-01",
+    "album": "Use Your Illusion I",
+    "year": "1991",
+    "date": "1991-09-17",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2009",
-    "releaseDate": "2009-01-01"
+    "releaseYear": "1991",
+    "releaseDate": "1991-09-17"
   },
   "guns n’ roses - paradise city": {
     "title": "Paradise City",
     "artist": "Guns N’ Roses",
     "album": "Appetite for Destruction",
     "year": "1987",
-    "date": "1987-01-01",
+    "date": "1987-07-21",
     "source": "MusicBrainz Picard",
     "releaseYear": "1987",
-    "releaseDate": "1987-01-01"
+    "releaseDate": "1987-07-21"
   },
   "guns n’ roses - sweet child o’ mine": {
     "title": "Sweet Child o’ Mine",
     "artist": "Guns N’ Roses",
     "album": "Appetite for Destruction",
     "year": "1987",
-    "date": "1987-01-01",
+    "date": "1987-07-21",
     "source": "MusicBrainz Picard",
     "releaseYear": "1987",
-    "releaseDate": "1987-01-01"
+    "releaseDate": "1987-07-21"
   },
   "guns n’ roses - welcome to the jungle": {
     "title": "Welcome to the Jungle",
     "artist": "Guns N’ Roses",
     "album": "Appetite for Destruction",
     "year": "1987",
-    "date": "1987-01-01",
+    "date": "1987-07-21",
     "source": "MusicBrainz Picard",
     "releaseYear": "1987",
-    "releaseDate": "1987-01-01"
+    "releaseDate": "1987-07-21"
   },
   "guns n' roses - guns n' roses - yesterdays": {
     "title": "Guns N' Roses - Yesterdays",
@@ -38814,22 +38686,22 @@
   "michael jackson - michael jackson - beat it (official 4k video)": {
     "title": "Michael Jackson - Beat It (Official 4K Video)",
     "artist": "Michael Jackson",
-    "album": "Single / Álbum",
-    "year": "2011",
-    "date": "2011-01-01",
+    "album": "Thriller",
+    "year": "1982",
+    "date": "1982-11-30",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2011",
-    "releaseDate": "2011-01-01"
+    "releaseYear": "1982",
+    "releaseDate": "1982-11-30"
   },
   "michael jackson - michael jackson - billie jean (official video)": {
     "title": "Michael Jackson - Billie Jean (Official Video)",
     "artist": "Michael Jackson",
-    "album": "Single / Álbum",
-    "year": "2009",
-    "date": "2009-01-01",
+    "album": "Thriller",
+    "year": "1982",
+    "date": "1982-11-30",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2009",
-    "releaseDate": "2009-01-01"
+    "releaseYear": "1982",
+    "releaseDate": "1982-11-30"
   },
   "michael jackson - michael jackson - black or white (official video - shortened version)": {
     "title": "Michael Jackson - Black Or White (Official Video - Shortened Version)",
@@ -38914,12 +38786,12 @@
   "michael jackson - michael jackson - thriller (official video - shortened version)": {
     "title": "Michael Jackson - Thriller (Official Video - Shortened Version)",
     "artist": "Michael Jackson",
-    "album": "Single / Álbum",
-    "year": "2009",
-    "date": "2009-01-01",
+    "album": "Thriller",
+    "year": "1982",
+    "date": "1982-11-30",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2009",
-    "releaseDate": "2009-01-01"
+    "releaseYear": "1982",
+    "releaseDate": "1982-11-30"
   },
   "michael jackson - wanna be startin’ somethin’": {
     "title": "Wanna Be Startin’ Somethin’",
@@ -39074,12 +38946,12 @@
   "nena - 99 red balloons (club mix)": {
     "title": "99 Red Balloons (club mix)",
     "artist": "Nena",
-    "album": "Greatest Ever 80s Twelve Inch Mixes",
-    "year": "2022",
-    "date": "2022-01-01",
+    "album": "Nena",
+    "year": "1983",
+    "date": "1983-02-28",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2022",
-    "releaseDate": "2022-01-01"
+    "releaseYear": "1983",
+    "releaseDate": "1983-02-28"
   },
   "musical time machine - netzwerk  - memories [1995]": {
     "title": "Netzwerk  - Memories [1995]",
@@ -39194,12 +39066,12 @@
   "opus - opus - live is life - original video 1985": {
     "title": "OPUS - Live Is Life - Original Video 1985",
     "artist": "opus",
-    "album": "Single / Álbum",
-    "year": "2012",
-    "date": "2012-01-01",
+    "album": "Live Is Life",
+    "year": "1984",
+    "date": "1984-09-02",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2012",
-    "releaseDate": "2012-01-01"
+    "releaseYear": "1984",
+    "releaseDate": "1984-09-02"
   },
   "orchestral manoeuvres in the dark - enola gay (remastered 2019)": {
     "title": "Enola Gay (Remastered 2019)",
@@ -39374,22 +39246,22 @@
   "queen - another one bites the dust (remastered 2011)": {
     "title": "Another One Bites The Dust (Remastered 2011)",
     "artist": "Queen",
-    "album": "Greatest Hits",
-    "year": "1981",
-    "date": "1981-01-01",
+    "album": "The Game",
+    "year": "1980",
+    "date": "1980-06-30",
     "source": "MusicBrainz Picard",
-    "releaseYear": "1981",
-    "releaseDate": "1981-01-01"
+    "releaseYear": "1980",
+    "releaseDate": "1980-06-30"
   },
   "queen - bohemian rhapsody (remastered 2011)": {
     "title": "Bohemian Rhapsody (Remastered 2011)",
     "artist": "Queen",
-    "album": "Greatest Hits",
-    "year": "1981",
-    "date": "1981-01-01",
+    "album": "A Night at the Opera",
+    "year": "1975",
+    "date": "1975-10-31",
     "source": "MusicBrainz Picard",
-    "releaseYear": "1981",
-    "releaseDate": "1981-01-01"
+    "releaseYear": "1975",
+    "releaseDate": "1975-10-31"
   },
   "queen - crazy little thing called love (remastered 2011)": {
     "title": "Crazy Little Thing Called Love (Remastered 2011)",
@@ -39444,12 +39316,12 @@
   "this is queen - radio ga ga (remastered 2011)": {
     "title": "Radio Ga Ga (Remastered 2011)",
     "artist": "This Is Queen",
-    "album": "Single / Álbum",
-    "year": "2018",
-    "date": "2018-01-01",
+    "album": "The Works",
+    "year": "1984",
+    "date": "1984-01-23",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2018",
-    "releaseDate": "2018-01-01"
+    "releaseYear": "1984",
+    "releaseDate": "1984-01-23"
   },
   "queenremastered4 - queen - we will rock you - remastered [hd] - with lyrics": {
     "title": "Queen - We will rock you - Remastered [HD] - with lyrics",
@@ -39534,12 +39406,12 @@
   "rick astley - rick astley - together forever (official video) [4k remaster]": {
     "title": "Rick Astley - Together Forever (Official Video) [4K Remaster]",
     "artist": "Rick Astley",
-    "album": "Single / Álbum",
-    "year": "2009",
-    "date": "2009-01-01",
+    "album": "Whenever You Need Somebody",
+    "year": "1987",
+    "date": "1987-11-12",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2009",
-    "releaseDate": "2009-01-01"
+    "releaseYear": "1987",
+    "releaseDate": "1987-11-12"
   },
   "robbie williams - robbie williams - angels": {
     "title": "Robbie Williams - Angels",
@@ -39622,44 +39494,44 @@
     "releaseDate": "2025-01-01"
   },
   "roxette - it must have been love": {
-    "title": "It Must Have Been Love",
-    "artist": "Roxette",
-    "album": "Hitarchief Top 2000",
-    "year": "2009",
-    "date": "2009-01-01",
-    "source": "MusicBrainz Picard",
-    "releaseYear": "2009",
-    "releaseDate": "2009-01-01"
+    "title": "it must have been love",
+    "artist": "roxette",
+    "year": "1990",
+    "date": "1990-03-23",
+    "releaseYear": "1990",
+    "releaseDate": "1990-03-23",
+    "album": "Pretty Woman Soundtrack",
+    "source": "Master Classic Original Release Database"
   },
   "kenesoljas音楽ニ - roxette - joyride (single version)": {
     "title": "Roxette - Joyride (Single Version)",
     "artist": "Kenesoljas音楽ニ",
-    "album": "Single / Álbum",
-    "year": "2018",
-    "date": "2018-01-01",
+    "album": "Joyride",
+    "year": "1991",
+    "date": "1991-03-28",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2018",
-    "releaseDate": "2018-01-01"
+    "releaseYear": "1991",
+    "releaseDate": "1991-03-28"
   },
   "roxette - roxette - listen to your heart (official music video)": {
     "title": "Roxette - Listen To Your Heart (Official Music Video)",
     "artist": "Roxette",
-    "album": "Single / Álbum",
-    "year": "2009",
-    "date": "2009-01-01",
+    "album": "Look Sharp!",
+    "year": "1988",
+    "date": "1988-10-21",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2009",
-    "releaseDate": "2009-01-01"
+    "releaseYear": "1988",
+    "releaseDate": "1988-10-21"
   },
   "roxette - roxette - the look": {
     "title": "Roxette - The Look",
     "artist": "Roxette",
-    "album": "Single / Álbum",
-    "year": "2009",
-    "date": "2009-01-01",
+    "album": "Look Sharp!",
+    "year": "1988",
+    "date": "1988-10-21",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2009",
-    "releaseDate": "2009-01-01"
+    "releaseYear": "1988",
+    "releaseDate": "1988-10-21"
   },
   "roxy music - roxy music - more than this": {
     "title": "Roxy Music - More Than This",
@@ -39734,12 +39606,12 @@
   "alessandro rossi - scorpions - no one like you (2015 - remaster)": {
     "title": "Scorpions - No One Like You (2015 - Remaster)",
     "artist": "Alessandro Rossi",
-    "album": "Single / Álbum",
-    "year": "2025",
-    "date": "2025-01-01",
+    "album": "Blackout",
+    "year": "1982",
+    "date": "1982-03-22",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2025",
-    "releaseDate": "2025-01-01"
+    "releaseYear": "1982",
+    "releaseDate": "1982-03-22"
   },
   "andy cooper - scorpions - rock you like a hurricane (comeblack 2011)": {
     "title": "Scorpions - Rock You Like A Hurricane (Comeblack 2011)",
@@ -40304,12 +40176,12 @@
   "the police - the police - every breath you take (official music video)": {
     "title": "The Police - Every Breath You Take (Official Music Video)",
     "artist": "The Police",
-    "album": "Single / Álbum",
-    "year": "2010",
-    "date": "2010-01-01",
+    "album": "Synchronicity",
+    "year": "1983",
+    "date": "1983-05-20",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2010",
-    "releaseDate": "2010-01-01"
+    "releaseYear": "1983",
+    "releaseDate": "1983-05-20"
   },
   "whimsical - crash (the primitives)": {
     "title": "Crash (The Primitives)",
@@ -40484,22 +40356,22 @@
   "toto - toto - africa (official hd video)": {
     "title": "Toto - Africa (Official HD Video)",
     "artist": "TOTO",
-    "album": "Single / Álbum",
-    "year": "2013",
-    "date": "2013-01-01",
+    "album": "Toto IV",
+    "year": "1982",
+    "date": "1982-04-08",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2013",
-    "releaseDate": "2013-01-01"
+    "releaseYear": "1982",
+    "releaseDate": "1982-04-08"
   },
   "toto - toto - hold the line (official video)": {
     "title": "Toto - Hold The Line (Official Video)",
     "artist": "TOTO",
-    "album": "Single / Álbum",
-    "year": "2013",
-    "date": "2013-01-01",
+    "album": "Toto",
+    "year": "1978",
+    "date": "1978-09-11",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2013",
-    "releaseDate": "2013-01-01"
+    "releaseYear": "1978",
+    "releaseDate": "1978-09-11"
   },
   "tracy chapman - tracy chapman - baby can i hold you (official music video)": {
     "title": "Tracy Chapman - Baby Can I Hold You (Official Music Video)",
@@ -40604,12 +40476,12 @@
   "wham! - wake me up before you go‐go": {
     "title": "Wake Me Up Before You Go‐Go",
     "artist": "Wham!",
-    "album": "Hits + Stars Eighties",
-    "year": "2009",
-    "date": "2009-01-01",
+    "album": "Make It Big",
+    "year": "1984",
+    "date": "1984-05-14",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2009",
-    "releaseDate": "2009-01-01"
+    "releaseYear": "1984",
+    "releaseDate": "1984-05-14"
   },
   "whitney houston - i have nothing (film version)": {
     "title": "I Have Nothing (film version)",
@@ -40684,12 +40556,12 @@
   "toppop - yazoo - only you • toppop": {
     "title": "Yazoo - Only You • TopPop",
     "artist": "TopPop",
-    "album": "Single / Álbum",
-    "year": "2016",
-    "date": "2016-01-01",
+    "album": "Upstairs at Eric's",
+    "year": "1982",
+    "date": "1982-03-15",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2016",
-    "releaseDate": "2016-01-01"
+    "releaseYear": "1982",
+    "releaseDate": "1982-03-15"
   },
   "youssou ndour - youssou n'dour - 7 seconds ft. neneh cherry": {
     "title": "Youssou N'Dour - 7 Seconds ft. Neneh Cherry",
@@ -40934,12 +40806,12 @@
   "アリアナ・グランデ - ノー・ティアーズ・レフト・トゥ・クライ (ミュージック・ビデオ)": {
     "title": "ノー・ティアーズ・レフト・トゥ・クライ (ミュージック・ビデオ)",
     "artist": "アリアナ・グランデ",
-    "album": "A New Day Has Come",
-    "year": "2002",
-    "date": "2002-02-11",
+    "album": "Joyride",
+    "year": "1991",
+    "date": "1991-03-28",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2002",
-    "releaseDate": "2002-02-11"
+    "releaseYear": "1991",
+    "releaseDate": "1991-03-28"
   },
   "ariana grande - ariana grande - one last time (official lyric video)": {
     "title": "Ariana Grande - One Last Time (Official Lyric Video)",
@@ -48370,12 +48242,12 @@
   "a‐ha - take on me": {
     "title": "Take on Me",
     "artist": "a‐ha",
-    "album": "Crazy Times: 80s Music Videos",
-    "year": "2010",
-    "date": "2010-01-01",
+    "album": "Hunting High and Low",
+    "year": "1985",
+    "date": "1985-05-21",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2010",
-    "releaseDate": "2010-01-01"
+    "releaseYear": "1985",
+    "releaseDate": "1985-05-21"
   },
   "alanis morissette - ironic (acoustic album version)": {
     "title": "Ironic (acoustic album version)",
@@ -48486,14 +48358,14 @@
     "date": "1987-04-13"
   },
   "dire straits - money for nothing": {
-    "title": "Money for Nothing",
-    "artist": "Dire Straits",
-    "album": "Greatest Hits",
-    "year": "2008",
-    "date": "2008-01-01",
-    "source": "MusicBrainz Picard",
-    "releaseYear": "2008",
-    "releaseDate": "2008-01-01"
+    "title": "money for nothing",
+    "artist": "dire straits",
+    "year": "1985",
+    "date": "1985-05-13",
+    "releaseYear": "1985",
+    "releaseDate": "1985-05-13",
+    "album": "Brothers in Arms",
+    "source": "Master Classic Original Release Database"
   },
   "don mclean - american pie (full length version)": {
     "title": "American Pie (full length version)",
@@ -48568,12 +48440,12 @@
   "fool’s garden - lemon tree (radio edit)": {
     "title": "Lemon Tree (radio edit)",
     "artist": "Fool’s Garden",
-    "album": "Pop Giganten: One Hit Wonder",
-    "year": "2017",
-    "date": "2017-01-01",
+    "album": "Dish of the Day",
+    "year": "1995",
+    "date": "1995-04-23",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2017",
-    "releaseDate": "2017-01-01"
+    "releaseYear": "1995",
+    "releaseDate": "1995-04-23"
   },
   "genesis - i can’t dance": {
     "title": "I Can’t Dance",
@@ -48628,12 +48500,12 @@
   "guns n’ roses - november rain": {
     "title": "November Rain",
     "artist": "Guns N’ Roses",
-    "album": "The Very Best of Guns N’ Roses",
-    "year": "2009",
-    "date": "2009-01-01",
+    "album": "Use Your Illusion I",
+    "year": "1991",
+    "date": "1991-09-17",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2009",
-    "releaseDate": "2009-01-01"
+    "releaseYear": "1991",
+    "releaseDate": "1991-09-17"
   },
   "guns n’ roses - yesterdays": {
     "title": "Yesterdays",
@@ -48818,12 +48690,12 @@
   "rick astley - together forever (7″ version)": {
     "title": "Together Forever (7″ version)",
     "artist": "Rick Astley",
-    "album": "Le 100 canzoni di sempre internazionali",
-    "year": "2009",
-    "date": "2009-01-01",
+    "album": "Whenever You Need Somebody",
+    "year": "1987",
+    "date": "1987-11-12",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2009",
-    "releaseDate": "2009-01-01"
+    "releaseYear": "1987",
+    "releaseDate": "1987-11-12"
   },
   "robbie williams - angels (edit)": {
     "title": "Angels (edit)",
@@ -48878,12 +48750,12 @@
   "scorpions - no one like you (1982)": {
     "title": "No One Like You (1982)",
     "artist": "Scorpions",
-    "album": "From the First Sting",
-    "year": "2025",
-    "date": "2025-01-01",
+    "album": "Blackout",
+    "year": "1982",
+    "date": "1982-03-22",
     "source": "MusicBrainz Picard",
-    "releaseYear": "2025",
-    "releaseDate": "2025-01-01"
+    "releaseYear": "1982",
+    "releaseDate": "1982-03-22"
   },
   "scorpions - rock you like a hurricane": {
     "title": "Rock You Like a Hurricane",
@@ -54402,29 +54274,31 @@
     "date": "1993-05-08"
   },
   "opus - live is life": {
-    "displayTitle": "Live Is Life - Live",
-    "album": "Live Is Life",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1527e77042961337a5861ad9d82e27a2/1000x1000-000000-80-0-0.jpg",
-    "releaseDate": "1984-09-02",
-    "releaseYear": "1984",
-    "durationMs": 297000,
-    "durationFmt": "04:57",
+    "title": "live is life",
+    "artist": "opus",
     "year": "1984",
-    "date": "1984-09-02"
+    "date": "1984-09-02",
+    "releaseYear": "1984",
+    "releaseDate": "1984-09-02",
+    "album": "Live Is Life",
+    "source": "Master Classic Original Release Database"
   },
   "nena - 99 luftballons": {
-    "year": "1984",
-    "date": "1984-01-01",
-    "album": "99 Luftballons",
-    "releaseYear": "1984",
-    "releaseDate": "1984-01-01"
+    "title": "99 luftballons",
+    "artist": "nena",
+    "year": "1983",
+    "date": "1983-02-28",
+    "releaseYear": "1983",
+    "releaseDate": "1983-02-28",
+    "album": "Nena",
+    "source": "Master Classic Original Release Database"
   },
   "nena - 99 red balloons (99 luftballons)": {
-    "year": "1984",
-    "date": "1984-01-01",
-    "album": "99 Luftballons",
-    "releaseYear": "1984",
-    "releaseDate": "1984-01-01"
+    "year": "1983",
+    "date": "1983-02-28",
+    "album": "Nena",
+    "releaseYear": "1983",
+    "releaseDate": "1983-02-28"
   },
   "the rolling stones - (i can't get no) satisfaction": {
     "year": "1965",
@@ -55993,18 +55867,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "gunsnrosesnovemberrain": {
-    "title": "November Rain",
-    "displayTitle": "November Rain",
-    "artist": "Guns N' Roses",
-    "album": "Use Your Illusion I",
+    "title": "november rain",
+    "artist": "guns n' roses",
     "year": "1991",
-    "date": "1991-01-01",
+    "date": "1991-09-17",
     "releaseYear": "1991",
-    "releaseDate": "1991-01-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/546fe1eca5d3bf48c6a48fb3c0ddac63/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 537000,
-    "durationFmt": "8:57",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "releaseDate": "1991-09-17",
+    "album": "Use Your Illusion I",
+    "source": "Master Classic Original Release Database"
   },
   "creedenceclearwaterrevivalfortunateson": {
     "title": "Fortunate Son",
@@ -71841,32 +71711,24 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "michaeljacksonbilliejean": {
-    "title": "Billie Jean",
-    "displayTitle": "Billie Jean",
-    "artist": "Michael Jackson",
-    "album": "Michael Jackson's This Is It",
-    "year": "2009",
-    "date": "2009-10-26",
-    "releaseYear": "2009",
-    "releaseDate": "2009-10-26",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a0ad67d1beb761f2cb9f8b60e5bcf07a/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 293000,
-    "durationFmt": "4:53",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "billie jean",
+    "artist": "michael jackson",
+    "year": "1982",
+    "date": "1982-11-30",
+    "releaseYear": "1982",
+    "releaseDate": "1982-11-30",
+    "album": "Thriller",
+    "source": "Master Classic Original Release Database"
   },
   "gunsnrosessweetchildomine": {
-    "title": "Sweet Child O Mine (Live)",
-    "displayTitle": "Sweet Child O Mine (Live)",
-    "artist": "Guns N' Roses",
-    "album": "Rocket Queen (Live)",
-    "year": "2019",
-    "date": "2019-07-18",
-    "releaseYear": "2019",
-    "releaseDate": "2019-07-18",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/3adb2189fb9d74ec879d020dc042be84/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 423000,
-    "durationFmt": "7:03",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "sweet child o mine",
+    "artist": "guns n roses",
+    "year": "1987",
+    "date": "1987-07-21",
+    "releaseYear": "1987",
+    "releaseDate": "1987-07-21",
+    "album": "Appetite for Destruction",
+    "source": "Master Classic Original Release Database"
   },
   "genesisicantdanceremastered2007": {
     "title": "I Can't Dance",
@@ -72502,11 +72364,11 @@
     "title": "Money For Nothing (Edit)",
     "displayTitle": "Money For Nothing (Edit)",
     "artist": "Dire Straits",
-    "album": "Sultans Of Swing - The Very Best Of Dire Straits",
-    "year": "2003",
-    "date": "2003-11-13",
-    "releaseYear": "2003",
-    "releaseDate": "2003-11-13",
+    "album": "Brothers in Arms",
+    "year": "1985",
+    "date": "1985-05-13",
+    "releaseYear": "1985",
+    "releaseDate": "1985-05-13",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c3ae8d3be626021c0a1fadea222307b3/1000x1000-000000-80-0-0.jpg",
     "durationMs": 245000,
     "durationFmt": "4:05",
@@ -72583,18 +72445,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "ahatakeonme": {
-    "title": "Take On Me (2017 Acoustic)",
-    "displayTitle": "Take On Me (2017 Acoustic)",
-    "artist": "a-ha",
-    "album": "Take On Me (2017 Acoustic)",
-    "year": "2017",
-    "date": "2017-12-01",
-    "releaseYear": "2017",
-    "releaseDate": "2017-12-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1a28cc1fde787f09921e900ac60c84bf/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 185000,
-    "durationFmt": "3:05",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "ha",
+    "artist": "a",
+    "year": "1985",
+    "date": "1985-05-21",
+    "releaseYear": "1985",
+    "releaseDate": "1985-05-21",
+    "album": "Hunting High and Low",
+    "source": "Master Classic Original Release Database"
   },
   "thecurelullaby": {
     "title": "Lullaby",
@@ -72667,18 +72525,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "rickastleytogetherforever": {
-    "title": "Together Forever (7\" Version)",
-    "displayTitle": "Together Forever (7\" Version)",
-    "artist": "Rick Astley",
-    "album": "The Best of Me",
-    "year": "2026",
-    "date": "2026-01-28",
-    "releaseYear": "2026",
-    "releaseDate": "2026-01-28",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1fcfca61ca4e05027612a1af865b2e03/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 204000,
-    "durationFmt": "3:24",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "together forever",
+    "artist": "rick astley",
+    "year": "1987",
+    "date": "1987-11-12",
+    "releaseYear": "1987",
+    "releaseDate": "1987-11-12",
+    "album": "Whenever You Need Somebody",
+    "source": "Master Classic Original Release Database"
   },
   "madonnaintothegroove": {
     "title": "Into the Groove",
@@ -72751,28 +72605,24 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "cyndilaupergirlsjustwanttohavefun": {
-    "title": "Girls Just Want to Have Fun",
-    "displayTitle": "Girls Just Want to Have Fun",
-    "artist": "Cyndi Lauper",
-    "album": "She's So Unusual",
+    "title": "girls just want to have fun",
+    "artist": "cyndi lauper",
     "year": "1983",
-    "date": "1983-10-14",
+    "date": "1983-09-06",
     "releaseYear": "1983",
-    "releaseDate": "1983-10-14",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/48bcf7415317ec8dc1181ee55b4b0aeb/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 235000,
-    "durationFmt": "3:55",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "releaseDate": "1983-09-06",
+    "album": "She's So Unusual",
+    "source": "Master Classic Original Release Database"
   },
   "vanhalenjump2015remaster": {
     "title": "Jump (2015 Remaster)",
     "displayTitle": "Jump (2015 Remaster)",
     "artist": "Van Halen",
-    "album": "1984 (Remastered)",
-    "year": "1984",
-    "date": "1984-01-04",
-    "releaseYear": "1984",
-    "releaseDate": "1984-01-04",
+    "album": "1984",
+    "year": "1983",
+    "date": "1983-12-21",
+    "releaseYear": "1983",
+    "releaseDate": "1983-12-21",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/0649448bcdeeeb48c25edc0e83653711/1000x1000-000000-80-0-0.jpg",
     "durationMs": 241000,
     "durationFmt": "4:01",
@@ -73045,46 +72895,38 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "roxettelistentoyourheart": {
-    "title": "Listen To Your Heart",
-    "displayTitle": "Listen To Your Heart",
-    "artist": "Roxette",
-    "album": "Look Sharp! 30th Anniversary Edition",
-    "year": "2022",
-    "date": "2022-01-12",
-    "releaseYear": "2022",
-    "releaseDate": "2022-01-12",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e7e132a29b202daab5326d9f243ec914/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 328000,
-    "durationFmt": "5:28",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "listen to your heart",
+    "artist": "roxette",
+    "year": "1988",
+    "date": "1988-10-21",
+    "releaseYear": "1988",
+    "releaseDate": "1988-10-21",
+    "album": "Look Sharp!",
+    "source": "Master Classic Original Release Database"
   },
   "roxetteitmusthavebeenlovefromthefilmprettywoman": {
     "title": "It Must Have Been Love (From the Film \"Pretty Woman\")",
     "displayTitle": "It Must Have Been Love (From the Film \"Pretty Woman\")",
     "artist": "Roxette",
-    "album": "The Ballad Hits",
-    "year": "2002",
-    "date": "2002-11-04",
-    "releaseYear": "2002",
-    "releaseDate": "2002-11-04",
+    "album": "Pretty Woman Soundtrack",
+    "year": "1990",
+    "date": "1990-03-23",
+    "releaseYear": "1990",
+    "releaseDate": "1990-03-23",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4574dd00d3bbad3e44beb0f9fee46772/1000x1000-000000-80-0-0.jpg",
     "durationMs": 259000,
     "durationFmt": "4:19",
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "roxettethelook": {
-    "title": "The Look",
-    "displayTitle": "The Look",
-    "artist": "Roxette",
-    "album": "The Pop Hits",
-    "year": "2003",
-    "date": "2003-03-24",
-    "releaseYear": "2003",
-    "releaseDate": "2003-03-24",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/146abb75ffd7ad263c7356ef413a9f69/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 237000,
-    "durationFmt": "3:57",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "the look",
+    "artist": "roxette",
+    "year": "1988",
+    "date": "1988-10-21",
+    "releaseYear": "1988",
+    "releaseDate": "1988-10-21",
+    "album": "Look Sharp!",
+    "source": "Master Classic Original Release Database"
   },
   "roxettespendingmytime": {
     "title": "Spending My Time",
@@ -73132,11 +72974,11 @@
     "title": "Joyride",
     "displayTitle": "Joyride",
     "artist": "Roxette",
-    "album": "Joyride 30th Anniversary Edition",
-    "year": "2021",
-    "date": "2021-11-26",
-    "releaseYear": "2021",
-    "releaseDate": "2021-11-26",
+    "album": "Joyride",
+    "year": "1991",
+    "date": "1991-03-28",
+    "releaseYear": "1991",
+    "releaseDate": "1991-03-28",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1375eae126a3629004398d86a7519a00/1000x1000-000000-80-0-0.jpg",
     "durationMs": 263000,
     "durationFmt": "4:23",
@@ -73353,18 +73195,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "bonjovilivinonaprayer": {
-    "title": "Livin' On A Prayer",
-    "displayTitle": "Livin' On A Prayer",
-    "artist": "Bon Jovi",
+    "title": "livin on a prayer",
+    "artist": "bon jovi",
+    "year": "1986",
+    "date": "1986-10-31",
+    "releaseYear": "1986",
+    "releaseDate": "1986-10-31",
     "album": "Slippery When Wet",
-    "year": "1998",
-    "date": "1998-09-21",
-    "releaseYear": "1998",
-    "releaseDate": "1998-09-21",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1f0365311a9d03c267f175e0ef79f40c/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 249000,
-    "durationFmt": "4:09",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "source": "Master Classic Original Release Database"
   },
   "blackwonderfullife": {
     "title": "Wonderful Life",
@@ -73395,18 +73233,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "belindacarlisleheavenisaplaceonearth": {
-    "title": "Heaven Is A Place On Earth",
-    "displayTitle": "Heaven Is A Place On Earth",
-    "artist": "Belinda Carlisle",
-    "album": "Heaven Is a Place on Earth",
-    "year": "2026",
-    "date": "2026-01-28",
-    "releaseYear": "2026",
-    "releaseDate": "2026-01-28",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8e9691afb5e38383098a0b313dcaa95a/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 247000,
-    "durationFmt": "4:07",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "heaven is a place on earth",
+    "artist": "belinda carlisle",
+    "year": "1987",
+    "date": "1987-09-14",
+    "releaseYear": "1987",
+    "releaseDate": "1987-09-14",
+    "album": "Heaven on Earth",
+    "source": "Master Classic Original Release Database"
   },
   "whitesnakeisthislove2017remaster": {
     "title": "Bad Boys (2018 Remaster)",
@@ -73552,11 +73386,11 @@
     "title": "Radio Ga Ga",
     "displayTitle": "Radio Ga Ga",
     "artist": "Queen",
-    "album": "Greatest Hits II",
-    "year": "2011",
-    "date": "2011-01-01",
-    "releaseYear": "2011",
-    "releaseDate": "2011-01-01",
+    "album": "The Works",
+    "year": "1984",
+    "date": "1984-01-23",
+    "releaseYear": "1984",
+    "releaseDate": "1984-01-23",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/9a3d400b9397879df564df1d0a66c69a/1000x1000-000000-80-0-0.jpg",
     "durationMs": 347000,
     "durationFmt": "5:47",
@@ -73633,18 +73467,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "whamwakemeupbeforeyougogo": {
-    "title": "Wake Me Up Before You Go-Go",
-    "displayTitle": "Wake Me Up Before You Go-Go",
-    "artist": "Wham!",
+    "title": "wake me up before you go",
+    "artist": "wham",
+    "year": "1984",
+    "date": "1984-05-14",
+    "releaseYear": "1984",
+    "releaseDate": "1984-05-14",
     "album": "Make It Big",
-    "year": "1985",
-    "date": "1985-01-22",
-    "releaseYear": "1985",
-    "releaseDate": "1985-01-22",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/3c1858a4aa5d732a60c8cfcf424f24ef/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 230000,
-    "durationFmt": "3:50",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "source": "Master Classic Original Release Database"
   },
   "bonnietylertotaleclipseoftheheart": {
     "title": "Total Eclipse of the Heart",
@@ -73787,18 +73617,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "georgemichaelcarelesswhisper": {
-    "title": "Careless Whisper",
-    "displayTitle": "Careless Whisper",
-    "artist": "George Michael",
-    "album": "The Final",
-    "year": "2011",
-    "date": "2011-11-15",
-    "releaseYear": "2011",
-    "releaseDate": "2011-11-15",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/bb61a054494a99eba6467d8364e3380c/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 300000,
-    "durationFmt": "5:00",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "careless whisper",
+    "artist": "george michael",
+    "year": "1984",
+    "date": "1984-07-23",
+    "releaseYear": "1984",
+    "releaseDate": "1984-07-23",
+    "album": "Make It Big",
+    "source": "Master Classic Original Release Database"
   },
   "bryanadamsheaven": {
     "title": "Heaven",
@@ -73885,18 +73711,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "survivoreyeofthetiger": {
-    "title": "Eye of the Tiger",
-    "displayTitle": "Eye of the Tiger",
-    "artist": "Survivor",
-    "album": "Rocky IV",
-    "year": "2006",
-    "date": "2006-02-28",
-    "releaseYear": "2006",
-    "releaseDate": "2006-02-28",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e66b5d3a40f69690c1633afb73cc590c/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 245000,
-    "durationFmt": "4:05",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "eye of the tiger",
+    "artist": "survivor",
+    "year": "1982",
+    "date": "1982-05-29",
+    "releaseYear": "1982",
+    "releaseDate": "1982-05-29",
+    "album": "Eye of the Tiger",
+    "source": "Master Classic Original Release Database"
   },
   "michaeljacksonthewayyoumakemefeel2012remaster": {
     "title": "The Way You Make Me Feel (2012 Remaster)",
@@ -73959,10 +73781,10 @@
     "displayTitle": "With Or Without You (Remastered 2007)",
     "artist": "U2",
     "album": "The Joshua Tree",
-    "year": "2007",
-    "date": "2007-11-20",
-    "releaseYear": "2007",
-    "releaseDate": "2007-11-20",
+    "year": "1987",
+    "date": "1987-03-09",
+    "releaseYear": "1987",
+    "releaseDate": "1987-03-09",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b255afa51b3c1af7872acb56da319c2d/1000x1000-000000-80-0-0.jpg",
     "durationMs": 295000,
     "durationFmt": "4:55",
@@ -74557,28 +74379,24 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "europethefinalcountdown": {
-    "title": "The Final Countdown",
-    "displayTitle": "The Final Countdown",
-    "artist": "Europe",
-    "album": "The Final Countdown (Expanded Edition)",
-    "year": "1988",
-    "date": "1988-09-16",
-    "releaseYear": "1988",
-    "releaseDate": "1988-09-16",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f27265df605c4bce229b0623e18f179a/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 310000,
-    "durationFmt": "5:10",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "the final countdown",
+    "artist": "europe",
+    "year": "1986",
+    "date": "1986-02-14",
+    "releaseYear": "1986",
+    "releaseDate": "1986-02-14",
+    "album": "The Final Countdown",
+    "source": "Master Classic Original Release Database"
   },
   "opusliveislifelive": {
     "title": "Live Is Life (Live Version)",
     "displayTitle": "Live Is Life (Live Version)",
     "artist": "Opus",
-    "album": "Live Is Life (Live)",
-    "year": "2025",
-    "date": "2025-12-03",
-    "releaseYear": "2025",
-    "releaseDate": "2025-12-03",
+    "album": "Live Is Life",
+    "year": "1984",
+    "date": "1984-09-02",
+    "releaseYear": "1984",
+    "releaseDate": "1984-09-02",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1527e77042961337a5861ad9d82e27a2/1000x1000-000000-80-0-0.jpg",
     "durationMs": 297000,
     "durationFmt": "4:57",
@@ -74599,18 +74417,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "totoafrica": {
-    "title": "Africa",
-    "displayTitle": "Africa",
-    "artist": "Toto",
-    "album": "Toto IV",
+    "title": "africa",
+    "artist": "toto",
     "year": "1982",
     "date": "1982-04-08",
     "releaseYear": "1982",
     "releaseDate": "1982-04-08",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/153332e88a14255a8c3d5959a5a21882/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 296000,
-    "durationFmt": "4:56",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "album": "Toto IV",
+    "source": "Master Classic Original Release Database"
   },
   "johnwaitemissingyou": {
     "title": "Missing You",
@@ -74627,18 +74441,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "direstraitssultansofswing": {
-    "title": "Sultans Of Swing",
-    "displayTitle": "Sultans Of Swing",
-    "artist": "Dire Straits",
+    "title": "sultans of swing",
+    "artist": "dire straits",
+    "year": "1978",
+    "date": "1978-05-19",
+    "releaseYear": "1978",
+    "releaseDate": "1978-05-19",
     "album": "Dire Straits",
-    "year": "1983",
-    "date": "1983-02-15",
-    "releaseYear": "1983",
-    "releaseDate": "1983-02-15",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1bf2bc47623db2ec36a38be064131ce5/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 350000,
-    "durationFmt": "5:50",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "source": "Master Classic Original Release Database"
   },
   "direstraitswalkoflife": {
     "title": "Walk Of Life",
@@ -74781,18 +74591,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "totoholdtheline": {
-    "title": "Hold the Line",
-    "displayTitle": "Hold the Line",
-    "artist": "Toto",
-    "album": "Toto",
+    "title": "hold the line",
+    "artist": "toto",
     "year": "1978",
-    "date": "1978-10-10",
+    "date": "1978-09-11",
     "releaseYear": "1978",
-    "releaseDate": "1978-10-10",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/18a61113ea28b3261a97c6ca167f00ba/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 236000,
-    "durationFmt": "3:56",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "releaseDate": "1978-09-11",
+    "album": "Toto",
+    "source": "Master Classic Original Release Database"
   },
   "thebugglesvideokilledtheradiostar": {
     "title": "Video Killed The Radio Star ('80s Weight Loss Workout Mix)",
@@ -74879,18 +74685,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "michaeljacksonthriller": {
-    "title": "Thriller",
-    "displayTitle": "Thriller",
-    "artist": "Michael Jackson",
-    "album": "Thriller 25 Super Deluxe Edition",
-    "year": "2008",
-    "date": "2008-02-08",
-    "releaseYear": "2008",
-    "releaseDate": "2008-02-08",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/92a024220a9532489c75c9d994835697/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 358000,
-    "durationFmt": "5:58",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "thriller",
+    "artist": "michael jackson",
+    "year": "1982",
+    "date": "1982-11-30",
+    "releaseYear": "1982",
+    "releaseDate": "1982-11-30",
+    "album": "Thriller",
+    "source": "Master Classic Original Release Database"
   },
   "frdavidwordsoriginalversion1983": {
     "title": "Words (Original Version 1983)",
@@ -74949,18 +74751,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "queeniwanttobreakfree": {
-    "title": "I Want To Break Free (Single Remix)",
-    "displayTitle": "I Want To Break Free (Single Remix)",
-    "artist": "Queen",
-    "album": "Greatest Hits II",
-    "year": "2011",
-    "date": "2011-01-01",
-    "releaseYear": "2011",
-    "releaseDate": "2011-01-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/9a3d400b9397879df564df1d0a66c69a/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 259000,
-    "durationFmt": "4:19",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "i want to break free",
+    "artist": "queen",
+    "year": "1984",
+    "date": "1984-04-02",
+    "releaseYear": "1984",
+    "releaseDate": "1984-04-02",
+    "album": "The Works",
+    "source": "Master Classic Original Release Database"
   },
   "backstreetboysiwantitthatway": {
     "title": "I Want It That Way",
@@ -75285,18 +75083,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "gunsnroseswelcometothejungle": {
-    "title": "Welcome To The Jungle",
-    "displayTitle": "Welcome To The Jungle",
-    "artist": "Guns N' Roses",
-    "album": "Appetite For Destruction (Super Deluxe Edition)",
-    "year": "2018",
-    "date": "2018-06-29",
-    "releaseYear": "2018",
-    "releaseDate": "2018-06-29",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8bfe7b3b0985d9ff0751090fb2b6f73f/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 271000,
-    "durationFmt": "4:31",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "welcome to the jungle",
+    "artist": "guns n' roses",
+    "year": "1987",
+    "date": "1987-07-21",
+    "releaseYear": "1987",
+    "releaseDate": "1987-07-21",
+    "album": "Appetite for Destruction",
+    "source": "Master Classic Original Release Database"
   },
   "gunsnrosesdontcryoriginal": {
     "title": "Don't Cry (Original)",
@@ -75327,18 +75121,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "gunsnrosesparadisecity": {
-    "title": "Paradise City",
-    "displayTitle": "Paradise City",
-    "artist": "Guns N' Roses",
-    "album": "Appetite For Destruction (Super Deluxe Edition)",
-    "year": "2018",
-    "date": "2018-06-29",
-    "releaseYear": "2018",
-    "releaseDate": "2018-06-29",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8bfe7b3b0985d9ff0751090fb2b6f73f/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 406000,
-    "durationFmt": "6:46",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "paradise city",
+    "artist": "guns n' roses",
+    "year": "1987",
+    "date": "1987-07-21",
+    "releaseYear": "1987",
+    "releaseDate": "1987-07-21",
+    "album": "Appetite for Destruction",
+    "source": "Master Classic Original Release Database"
   },
   "duranduranhungrylikethewolf2009remaster": {
     "title": "Hungry Like the Wolf (Live at Oakland Coliseum, Oakland, CA, 14/04/1984; 2004 Remaster)",
@@ -75597,10 +75387,10 @@
     "displayTitle": "Don't Stop Me Now",
     "artist": "Queen",
     "album": "Jazz",
-    "year": "2011",
-    "date": "2011-06-27",
-    "releaseYear": "2011",
-    "releaseDate": "2011-06-27",
+    "year": "1978",
+    "date": "1978-11-10",
+    "releaseYear": "1978",
+    "releaseDate": "1978-11-10",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4b8ab9c1f112b63c07e3983b98e98006/1000x1000-000000-80-0-0.jpg",
     "durationMs": 212000,
     "durationFmt": "3:32",
@@ -75733,18 +75523,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "bryanadamssummerof69": {
-    "title": "Summer Of '69",
-    "displayTitle": "Summer Of '69",
-    "artist": "Bryan Adams",
+    "title": "summer of 69",
+    "artist": "bryan adams",
+    "year": "1984",
+    "date": "1984-11-05",
+    "releaseYear": "1984",
+    "releaseDate": "1984-11-05",
     "album": "Reckless",
-    "year": "2014",
-    "date": "2014-11-24",
-    "releaseYear": "2014",
-    "releaseDate": "2014-11-24",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f5c062034dbbf74f9c158c51ba783871/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 215000,
-    "durationFmt": "3:35",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "source": "Master Classic Original Release Database"
   },
   "aceofbasebeautifullife": {
     "title": "Beautiful Life",
@@ -76111,18 +75897,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "michaeljacksonbeatit": {
-    "title": "Beat It",
-    "displayTitle": "Beat It",
-    "artist": "Michael Jackson",
-    "album": "Michael Jackson's This Is It",
-    "year": "2009",
-    "date": "2009-10-26",
-    "releaseYear": "2009",
-    "releaseDate": "2009-10-26",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a0ad67d1beb761f2cb9f8b60e5bcf07a/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 258000,
-    "durationFmt": "4:18",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "beat it",
+    "artist": "michael jackson",
+    "year": "1982",
+    "date": "1982-11-30",
+    "releaseYear": "1982",
+    "releaseDate": "1982-11-30",
+    "album": "Thriller",
+    "source": "Master Classic Original Release Database"
   },
   "thecardigansmyfavouritegame": {
     "title": "My Favourite Game",
@@ -76153,18 +75935,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "georgemichaelfaith": {
-    "title": "Faith (Remastered)",
-    "displayTitle": "Faith (Remastered)",
-    "artist": "George Michael",
+    "title": "faith",
+    "artist": "george michael",
+    "year": "1987",
+    "date": "1987-10-12",
+    "releaseYear": "1987",
+    "releaseDate": "1987-10-12",
     "album": "Faith",
-    "year": "2010",
-    "date": "2010-09-27",
-    "releaseYear": "2010",
-    "releaseDate": "2010-09-27",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f24a4351040ae09175cbd775607aafe6/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 193000,
-    "durationFmt": "3:13",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "source": "Master Classic Original Release Database"
   },
   "thecardiganslovefool": {
     "title": "Lovefool",
@@ -76366,11 +76144,11 @@
     "title": "99 Red Balloons (Club MIx)",
     "displayTitle": "99 Red Balloons (Club MIx)",
     "artist": "Nena",
-    "album": "80s Dance",
-    "year": "2026",
-    "date": "2026-01-28",
-    "releaseYear": "2026",
-    "releaseDate": "2026-01-28",
+    "album": "Nena",
+    "year": "1983",
+    "date": "1983-02-28",
+    "releaseYear": "1983",
+    "releaseDate": "1983-02-28",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b0cfff5a62ebf6acfb1bc4aacb818a2d/1000x1000-000000-80-0-0.jpg",
     "durationMs": 230000,
     "durationFmt": "3:50",
@@ -76769,18 +76547,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "dralbansinghallelujah": {
-    "title": "Sing Hallelujah! (Short Version)",
-    "displayTitle": "Sing Hallelujah! (Short Version)",
-    "artist": "Dr. Alban",
-    "album": "Sing Hallelujah!",
-    "year": "2026",
-    "date": "2026-01-28",
-    "releaseYear": "2026",
-    "releaseDate": "2026-01-28",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/332e1a5c1b0c81b38032fd50e355e00f/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 241000,
-    "durationFmt": "4:01",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "sing hallelujah",
+    "artist": "dr alban",
+    "year": "1992",
+    "date": "1992-05-18",
+    "releaseYear": "1992",
+    "releaseDate": "1992-05-18",
+    "album": "One Love",
+    "source": "Master Classic Original Release Database"
   },
   "twistedsisterwerenotgonnatakeit": {
     "title": "We're Not Gonna Take It",
@@ -77315,18 +77089,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "thepoliceeverybreathyoutake": {
-    "title": "Every Breath You Take",
-    "displayTitle": "Every Breath You Take",
-    "artist": "The Police",
-    "album": "The Very Best Of Sting And The Police",
-    "year": "2002",
-    "date": "2002-01-01",
-    "releaseYear": "2002",
-    "releaseDate": "2002-01-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/316afdaed93c4a18cf730389648d03d6/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 252000,
-    "durationFmt": "4:12",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "every breath you take",
+    "artist": "the police",
+    "year": "1983",
+    "date": "1983-05-20",
+    "releaseYear": "1983",
+    "releaseDate": "1983-05-20",
+    "album": "Synchronicity",
+    "source": "Master Classic Original Release Database"
   },
   "freddiemercurysergeramaekerscarlwardcolinpeterlivingonmyownnomorebrothersradiomix": {
     "title": "Living On My Own (No More Brothers Radio Mix)",
@@ -77371,18 +77141,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "cyndilaupertimeaftertime": {
-    "title": "Time After Time",
-    "displayTitle": "Time After Time",
-    "artist": "Cyndi Lauper",
-    "album": "She's So Unusual",
+    "title": "time after time",
+    "artist": "cyndi lauper",
     "year": "1983",
     "date": "1983-10-14",
     "releaseYear": "1983",
     "releaseDate": "1983-10-14",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/48bcf7415317ec8dc1181ee55b4b0aeb/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 237000,
-    "durationFmt": "3:57",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "album": "She's So Unusual",
+    "source": "Master Classic Original Release Database"
   },
   "queenwearethechampionsremastered2011": {
     "title": "We Are The Champions",
@@ -77413,18 +77179,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "eddygrantgimmehopejoanna": {
-    "title": "Gimme Hope Jo'anna",
-    "displayTitle": "Gimme Hope Jo'anna",
-    "artist": "Eddy Grant",
+    "title": "gimme hope joanna",
+    "artist": "eddy grant",
+    "year": "1988",
+    "date": "1988-01-01",
+    "releaseYear": "1988",
+    "releaseDate": "1988-01-01",
     "album": "File Under Rock",
-    "year": "2026",
-    "date": "2026-03-20",
-    "releaseYear": "2026",
-    "releaseDate": "2026-03-20",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/9ed07dc81142bd8cacdacfb0a9cdf511/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 243000,
-    "durationFmt": "4:03",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "source": "Master Classic Original Release Database"
   },
   "djmatrixmattjoecarolinamarquezseraporqueteamo": {
     "title": "Será porque te amo",
@@ -78155,18 +77917,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "foolsgardenlemontree": {
-    "title": "Lemon Tree",
-    "displayTitle": "Lemon Tree",
-    "artist": "Fools Garden",
-    "album": "Lemon Tree",
-    "year": "2026",
-    "date": "2026-01-28",
-    "releaseYear": "2026",
-    "releaseDate": "2026-01-28",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/31e10efa1be6cda1f97a17b94175f79b/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 191000,
-    "durationFmt": "3:11",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "lemon tree",
+    "artist": "fools garden",
+    "year": "1995",
+    "date": "1995-04-23",
+    "releaseYear": "1995",
+    "releaseDate": "1995-04-23",
+    "album": "Dish of the Day",
+    "source": "Master Classic Original Release Database"
   },
   "williamiliketomoveit": {
     "title": "I Like To Move It",
@@ -78355,10 +78113,10 @@
     "displayTitle": "No One Like You (Remastered 2015)",
     "artist": "Scorpions",
     "album": "Blackout",
-    "year": "2026",
-    "date": "2026-01-28",
-    "releaseYear": "2026",
-    "releaseDate": "2026-01-28",
+    "year": "1982",
+    "date": "1982-03-22",
+    "releaseYear": "1982",
+    "releaseDate": "1982-03-22",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b896eaaef6fe69c4e0c5d576ad06b8bf/1000x1000-000000-80-0-0.jpg",
     "durationMs": 238000,
     "durationFmt": "3:58",
@@ -78687,18 +78445,14 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "yazooonlyyou": {
-    "title": "Only You (Remastered 2018)",
-    "displayTitle": "Only You (Remastered 2018)",
-    "artist": "Yazoo",
-    "album": "Four Pieces",
-    "year": "2026",
-    "date": "2026-01-28",
-    "releaseYear": "2026",
-    "releaseDate": "2026-01-28",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c1b0a551967632a40e95276002fc055b/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 193000,
-    "durationFmt": "3:13",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "title": "only you",
+    "artist": "yazoo",
+    "year": "1982",
+    "date": "1982-03-15",
+    "releaseYear": "1982",
+    "releaseDate": "1982-03-15",
+    "album": "Upstairs at Eric's",
+    "source": "Master Classic Original Release Database"
   },
   "christophercrossarthursthemebestthatyoucando": {
     "title": "Arthur's Theme (Best That You Can Do)",
@@ -86735,5 +86489,305 @@
     "durationMs": 221000,
     "durationFmt": "3:41",
     "source": "Deezer / Apple Music Official Master Catalog"
+  },
+  "eddy grant - gimme hope joanna": {
+    "title": "gimme hope joanna",
+    "artist": "eddy grant",
+    "year": "1988",
+    "date": "1988-01-01",
+    "releaseYear": "1988",
+    "releaseDate": "1988-01-01",
+    "album": "File Under Rock",
+    "source": "Master Classic Original Release Database"
+  },
+  "nena99redballoons": {
+    "title": "99 red balloons",
+    "artist": "nena",
+    "year": "1983",
+    "date": "1983-02-28",
+    "releaseYear": "1983",
+    "releaseDate": "1983-02-28",
+    "album": "Nena",
+    "source": "Master Classic Original Release Database"
+  },
+  "nena99luftballons": {
+    "title": "99 luftballons",
+    "artist": "nena",
+    "year": "1983",
+    "date": "1983-02-28",
+    "releaseYear": "1983",
+    "releaseDate": "1983-02-28",
+    "album": "Nena",
+    "source": "Master Classic Original Release Database"
+  },
+  "dr alban - sing hallelujah": {
+    "title": "sing hallelujah",
+    "artist": "dr alban",
+    "year": "1992",
+    "date": "1992-05-18",
+    "releaseYear": "1992",
+    "releaseDate": "1992-05-18",
+    "album": "One Love",
+    "source": "Master Classic Original Release Database"
+  },
+  "scorpions - no one like you": {
+    "title": "no one like you",
+    "artist": "scorpions",
+    "year": "1982",
+    "date": "1982-03-22",
+    "releaseYear": "1982",
+    "releaseDate": "1982-03-22",
+    "album": "Blackout",
+    "source": "Master Classic Original Release Database"
+  },
+  "scorpionsnoonelikeyou": {
+    "title": "no one like you",
+    "artist": "scorpions",
+    "year": "1982",
+    "date": "1982-03-22",
+    "releaseYear": "1982",
+    "releaseDate": "1982-03-22",
+    "album": "Blackout",
+    "source": "Master Classic Original Release Database"
+  },
+  "whitesnake - bad boys": {
+    "title": "bad boys",
+    "artist": "whitesnake",
+    "year": "1987",
+    "date": "1987-04-07",
+    "releaseYear": "1987",
+    "releaseDate": "1987-04-07",
+    "album": "Whitesnake",
+    "source": "Master Classic Original Release Database"
+  },
+  "whitesnakebadboys": {
+    "title": "bad boys",
+    "artist": "whitesnake",
+    "year": "1987",
+    "date": "1987-04-07",
+    "releaseYear": "1987",
+    "releaseDate": "1987-04-07",
+    "album": "Whitesnake",
+    "source": "Master Classic Original Release Database"
+  },
+  "opusliveislife": {
+    "title": "live is life",
+    "artist": "opus",
+    "year": "1984",
+    "date": "1984-09-02",
+    "releaseYear": "1984",
+    "releaseDate": "1984-09-02",
+    "album": "Live Is Life",
+    "source": "Master Classic Original Release Database"
+  },
+  "bon jovi - livin on a prayer": {
+    "title": "livin on a prayer",
+    "artist": "bon jovi",
+    "year": "1986",
+    "date": "1986-10-31",
+    "releaseYear": "1986",
+    "releaseDate": "1986-10-31",
+    "album": "Slippery When Wet",
+    "source": "Master Classic Original Release Database"
+  },
+  "queenbohemianrhapsody": {
+    "title": "bohemian rhapsody",
+    "artist": "queen",
+    "year": "1975",
+    "date": "1975-10-31",
+    "releaseYear": "1975",
+    "releaseDate": "1975-10-31",
+    "album": "A Night at the Opera",
+    "source": "Master Classic Original Release Database"
+  },
+  "queendontstopmenow": {
+    "title": "don't stop me now",
+    "artist": "queen",
+    "year": "1978",
+    "date": "1978-11-10",
+    "releaseYear": "1978",
+    "releaseDate": "1978-11-10",
+    "album": "Jazz",
+    "source": "Master Classic Original Release Database"
+  },
+  "queenanotheronebitesthedust": {
+    "title": "another one bites the dust",
+    "artist": "queen",
+    "year": "1980",
+    "date": "1980-06-30",
+    "releaseYear": "1980",
+    "releaseDate": "1980-06-30",
+    "album": "The Game",
+    "source": "Master Classic Original Release Database"
+  },
+  "queenradiogaga": {
+    "title": "radio ga ga",
+    "artist": "queen",
+    "year": "1984",
+    "date": "1984-01-23",
+    "releaseYear": "1984",
+    "releaseDate": "1984-01-23",
+    "album": "The Works",
+    "source": "Master Classic Original Release Database"
+  },
+  "guns n roses - sweet child o mine": {
+    "title": "sweet child o mine",
+    "artist": "guns n roses",
+    "year": "1987",
+    "date": "1987-07-21",
+    "releaseYear": "1987",
+    "releaseDate": "1987-07-21",
+    "album": "Appetite for Destruction",
+    "source": "Master Classic Original Release Database"
+  },
+  "wham - wake me up before you go-go": {
+    "title": "wake me up before you go",
+    "artist": "wham",
+    "year": "1984",
+    "date": "1984-05-14",
+    "releaseYear": "1984",
+    "releaseDate": "1984-05-14",
+    "album": "Make It Big",
+    "source": "Master Classic Original Release Database"
+  },
+  "eurythmicssweetdreamsaremadeofthis": {
+    "title": "sweet dreams (are made of this)",
+    "artist": "eurythmics",
+    "year": "1983",
+    "date": "1983-01-21",
+    "releaseYear": "1983",
+    "releaseDate": "1983-01-21",
+    "album": "Sweet Dreams",
+    "source": "Master Classic Original Release Database"
+  },
+  "eurythmics - sweet dreams": {
+    "title": "sweet dreams",
+    "artist": "eurythmics",
+    "year": "1983",
+    "date": "1983-01-21",
+    "releaseYear": "1983",
+    "releaseDate": "1983-01-21",
+    "album": "Sweet Dreams",
+    "source": "Master Classic Original Release Database"
+  },
+  "eurythmicssweetdreams": {
+    "title": "sweet dreams",
+    "artist": "eurythmics",
+    "year": "1983",
+    "date": "1983-01-21",
+    "releaseYear": "1983",
+    "releaseDate": "1983-01-21",
+    "album": "Sweet Dreams",
+    "source": "Master Classic Original Release Database"
+  },
+  "u2withorwithoutyou": {
+    "title": "with or without you",
+    "artist": "u2",
+    "year": "1987",
+    "date": "1987-03-09",
+    "releaseYear": "1987",
+    "releaseDate": "1987-03-09",
+    "album": "The Joshua Tree",
+    "source": "Master Classic Original Release Database"
+  },
+  "u2 - i still haven't found what i'm looking for": {
+    "title": "i still haven't found what i'm looking for",
+    "artist": "u2",
+    "year": "1987",
+    "date": "1987-03-09",
+    "releaseYear": "1987",
+    "releaseDate": "1987-03-09",
+    "album": "The Joshua Tree",
+    "source": "Master Classic Original Release Database"
+  },
+  "u2istillhaventfoundwhatimlookingfor": {
+    "title": "i still haven't found what i'm looking for",
+    "artist": "u2",
+    "year": "1987",
+    "date": "1987-03-09",
+    "releaseYear": "1987",
+    "releaseDate": "1987-03-09",
+    "album": "The Joshua Tree",
+    "source": "Master Classic Original Release Database"
+  },
+  "journey - don't stop believin'": {
+    "title": "don't stop believin'",
+    "artist": "journey",
+    "year": "1981",
+    "date": "1981-10-31",
+    "releaseYear": "1981",
+    "releaseDate": "1981-10-31",
+    "album": "Escape",
+    "source": "Master Classic Original Release Database"
+  },
+  "journeydontstopbelievin": {
+    "title": "dont stop believin",
+    "artist": "journey",
+    "year": "1981",
+    "date": "1981-10-31",
+    "releaseYear": "1981",
+    "releaseDate": "1981-10-31",
+    "album": "Escape",
+    "source": "Master Classic Original Release Database"
+  },
+  "journey - dont stop believin": {
+    "title": "dont stop believin",
+    "artist": "journey",
+    "year": "1981",
+    "date": "1981-10-31",
+    "releaseYear": "1981",
+    "releaseDate": "1981-10-31",
+    "album": "Escape",
+    "source": "Master Classic Original Release Database"
+  },
+  "vanhalenjump": {
+    "title": "jump",
+    "artist": "van halen",
+    "year": "1983",
+    "date": "1983-12-21",
+    "releaseYear": "1983",
+    "releaseDate": "1983-12-21",
+    "album": "1984",
+    "source": "Master Classic Original Release Database"
+  },
+  "direstraitsmoneyfornothing": {
+    "title": "money for nothing",
+    "artist": "dire straits",
+    "year": "1985",
+    "date": "1985-05-13",
+    "releaseYear": "1985",
+    "releaseDate": "1985-05-13",
+    "album": "Brothers in Arms",
+    "source": "Master Classic Original Release Database"
+  },
+  "bryan adams - summer of 69": {
+    "title": "summer of 69",
+    "artist": "bryan adams",
+    "year": "1984",
+    "date": "1984-11-05",
+    "releaseYear": "1984",
+    "releaseDate": "1984-11-05",
+    "album": "Reckless",
+    "source": "Master Classic Original Release Database"
+  },
+  "roxetteitmusthavebeenlove": {
+    "title": "it must have been love",
+    "artist": "roxette",
+    "year": "1990",
+    "date": "1990-03-23",
+    "releaseYear": "1990",
+    "releaseDate": "1990-03-23",
+    "album": "Pretty Woman Soundtrack",
+    "source": "Master Classic Original Release Database"
+  },
+  "roxettejoyride": {
+    "title": "joyride",
+    "artist": "roxette",
+    "year": "1991",
+    "date": "1991-03-28",
+    "releaseYear": "1991",
+    "releaseDate": "1991-03-28",
+    "album": "Joyride",
+    "source": "Master Classic Original Release Database"
   }
 }
