@@ -1622,6 +1622,552 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
             try {
                 const dumpCmd = `python -m yt_dlp --dump-json --flat-playlist "${q}"`;
                 const dumpOutput = await new Promise((resolve) => {
+                    exec(dumpCmd, { maxBuffer: 10 * 1024 * 1024, timeout: 15000, windowsHide: true }, (err, stdout) => {
+                        resolve(stdout || '');
+                    });
+                });
+
+                if (!dumpOutput) continue;
+
+                const lines = dumpOutput.trim().split('\n');
+
+                for (const line of lines) {
+                    try {
+                        const item = JSON.parse(line);
+                        const dur = item.duration;
+                        if (!dur || dur < 60) continue;
+
+                        const itemTitle = (item.title || '').toLowerCase();
+                        if (itemTitle.includes('preview') || itemTitle.includes('teaser') || itemTitle.includes('trailer') || itemTitle.includes('snippet')) continue;
+
+                        // Descartar remixes, mashups, covers o sped up si el tema original no los tiene
+                        const isRemixWord = /remix|club mix|extended|tribute|cover by|sped up|slowed|mashup|parody/i.test(itemTitle);
+                        if (isRemixWord && !/remix|club/i.test(title)) continue;
+
+                        // Penalizar o descartar colaboradores ajenos
+                        let collabPenalty = 0;
+                        const hasOriginalCollab = title.toLowerCase().includes('feat') || title.toLowerCase().includes('con ') || title.toLowerCase().includes('ft.');
+                        if (!hasOriginalCollab && (itemTitle.includes('feat.') || itemTitle.includes('ft.') || itemTitle.includes(' con '))) {
+                            collabPenalty = 15;
+                        }
+
+                        // REGLA ESTRICTA SOLICITADA POR EL USUARIO: solo aceptar diferencia de +- 10 segundos
+                        if (expectedDurationSec) {
+                            const rawDiff = Math.abs(dur - expectedDurationSec);
+                            if (rawDiff > 10) {
+                                continue; // Descartado por no estar dentro de +-10s
+                            }
+                        }
+
+                        const diff = (expectedDurationSec ? Math.abs(dur - expectedDurationSec) : 0) + collabPenalty;
+
+                        allValidCandidates.push({
+                            url: item.webpage_url || item.url,
+                            duration: dur,
+                            title: item.title,
+                            diff: diff
+                        });
+                    } catch(e) {}
+                }
+
+                if (allValidCandidates.length >= 3) break;
+            } catch(e) {
+                console.warn(`Aviso buscando con ${q}:`, e.message);
+            }
+        }
+
+        // Eliminar duplicados por URL
+        const uniqueCandidates = [];
+        const seenUrls = new Set();
+        for (const c of allValidCandidates) {
+            if (!seenUrls.has(c.url)) {
+                seenUrls.add(c.url);
+                uniqueCandidates.push(c);
+            }
+        }
+
+        if (uniqueCandidates.length > 0) {
+            uniqueCandidates.sort((a, b) => a.diff - b.diff);
+
+            // ROTACIÓN DE VERSIONES: ordenar candidatos empezando por la siguiente opción
+            const trackCycleKey = `${artist} - ${cleanT}`.toLowerCase();
+            const cycle = versionCycleIndex[trackCycleKey] || 0;
+            const startIdx = cycle % uniqueCandidates.length;
+            versionCycleIndex[trackCycleKey] = cycle + 1;
+
+            // Reorganizar lista para probar primero la opción elegida por rotación, luego las demás como fallback
+            const orderedCandidates = [
+                ...uniqueCandidates.slice(startIdx),
+                ...uniqueCandidates.slice(0, startIdx)
+            ];
+
+            console.log(`[CLEAN DOWNLOAD] Probando ${orderedCandidates.length} candidatos válidos (iniciando en opción ${startIdx + 1})...`);
+
+            let downloadedSuccess = false;
+            let finalStats = null;
+
+            for (let i = 0; i < orderedCandidates.length; i++) {
+                const cand = orderedCandidates[i];
+                console.log(`[CLEAN DOWNLOAD] Intentando candidato [${i + 1}/${orderedCandidates.length}]: "${cand.title}" (${cand.duration}s) -> ${cand.url}`);
+
+                const downloadCmd = `python -m yt_dlp --ffmpeg-location "${ffmpegDir}" "${cand.url}" -x --audio-format mp3 --audio-quality 0 -o "${tempOutput}"`;
+
+                const result = await new Promise((resolve) => {
+                    exec(downloadCmd, { timeout: 45000, windowsHide: true }, (err, stdout, stderr) => {
+                        if (fs.existsSync(tempOutput)) {
+                            try {
+                                const stats = fs.statSync(tempOutput);
+                                if (stats.size >= 900000) {
+                                    return resolve({ success: true, stats });
+                                } else {
+                                    try { fs.unlinkSync(tempOutput); } catch(e){}
+                                }
+                            } catch(e) {}
+                        }
+                        console.warn(`⚠️ Candidato "${cand.title}" falló (DRM/bloqueo/peso inválido). Probando siguiente...`);
+                        resolve({ success: false });
+                    });
+                });
+
+                if (result.success) {
+                    downloadedSuccess = true;
+                    finalStats = result.stats;
+                    bestCandidate = cand;
+                    break;
+                }
+            }
+
+            if (!downloadedSuccess || !finalStats) {
+                return res.status(500).json({ error: 'Ninguno de los candidatos disponibles pudo descargarse (posible protección DRM o restricción).' });
+            }
+
+            try {
+                fs.copyFileSync(tempOutput, targetFilePath);
+                fs.unlinkSync(tempOutput);
+                console.log(`✅ [CLEAN DOWNLOAD] Pista reemplazada con éxito (${finalStats.size} bytes) en: ${targetFilePath}`);
+
+                // Restablecer retardo a 0.0s y sincronizar letras limpias
+                try {
+                    const lrcurl = `https://lrclib.net/api/get?artist_name=${encodeURIComponent(artist)}&track_name=${encodeURIComponent(cleanT)}`;
+                    const lrcres = await fetch(lrcurl, { signal: AbortSignal.timeout(3000) });
+                    if (lrcres.ok) {
+                        const lrcdata = await lrcres.json();
+                        if (lrcdata.syncedLyrics) {
+                            let freshLyrics = parseLrc(lrcdata.syncedLyrics);
+                            if (freshLyrics) {
+                                freshLyrics = await translateLyricsBatch(freshLyrics);
+                                cachedLyricsDb[`${artist} - ${title}`] = freshLyrics;
+                                cachedLyricsDb[`${artist} - ${cleanT}`] = freshLyrics;
+                                cachedLyricsDb[cleanT] = freshLyrics;
+                                fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
+                                console.log(`✅ Letras sincronizadas restablecidas automáticamente a 0.0s para ${artist} - ${cleanT}`);
+                            }
+                        }
+                    }
+                } catch(e) {}
+
+                return res.json({ success: true, analysis });
+        }
+        res.status(500).json({ error: 'No se pudo generar el análisis sónico' });
+    } catch(e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
+app.get('/api/track/detail', async (req, res) => {
+    const { artist, title } = req.query;
+    if (!artist || !title) {
+        return res.status(400).json({ error: 'Se requieren los parámetros artist y title' });
+    }
+
+    let analysis = findAnalysisForTrack(artist, title);
+
+    // Si no hay análisis, lanzar la generación con IA en segundo plano sin bloquear la respuesta de letras
+    if (!analysis || isGenericAnalysis(analysis)) {
+        const cleanT = cleanTrackTitle(title);
+        const meta = getTrackMetadata(artist, title);
+        generateGeminiAnalysis(artist, cleanT, meta.album, meta.releaseYear).then(aiAnalysis => {
+            if (aiAnalysis && !isGenericAnalysis(aiAnalysis)) {
+                const key = `${artist} - ${cleanT}`;
+                cachedAnalyses[key] = aiAnalysis;
+                cachedAnalyses[`${artist} - ${title}`] = aiAnalysis;
+                cachedAnalyses[cleanT] = aiAnalysis;
+                try {
+                    fs.writeFileSync(ANALYSES_DB_PATH, JSON.stringify(cachedAnalyses, null, 2), 'utf8');
+                } catch(e){}
+            }
+        }).catch(()=>{});
+    }
+
+    let parsedLyrics = findLyricsForTrack(artist, title);
+    // Si la letra en caché era solo texto plano sin marcas de tiempo, intentar mejorarla con letra sincronizada
+    if (parsedLyrics && parsedLyrics.length > 0 && !parsedLyrics.some(l => l.seconds !== undefined || l.time !== undefined)) {
+        parsedLyrics = null;
+    }
+    const videoMap = scanVideoFiles();
+    const cleanKey = `${artist} - ${title}`.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const videoInfo = videoMap.get(cleanKey);
+
+    if (!parsedLyrics) {
+        if (videoInfo) {
+            if (videoInfo.srt) parsedLyrics = parseLyricsFile(path.join(OMEN_VIDEOS_DIR, videoInfo.srt));
+            else if (videoInfo.lrc) parsedLyrics = parseLyricsFile(path.join(OMEN_VIDEOS_DIR, videoInfo.lrc));
+        }
+
+        if (!parsedLyrics) {
+            try {
+                const cleanT = cleanTrackTitle(title);
+                const lrcurl = `https://lrclib.net/api/get?artist_name=${encodeURIComponent(artist)}&track_name=${encodeURIComponent(cleanT)}`;
+                const lrcres = await fetch(lrcurl, { signal: AbortSignal.timeout(3000) });
+                if (lrcres.ok) {
+                    const lrcdata = await lrcres.json();
+                    if (lrcdata.syncedLyrics) {
+                        parsedLyrics = parseLrc(lrcdata.syncedLyrics);
+                    } else if (lrcdata.plainLyrics) {
+                        parsedLyrics = lrcdata.plainLyrics.split('\n').filter(l => l.trim()).map(l => ({ text: l.trim() }));
+                    }
+                } else {
+                    const searchurl = `https://lrclib.net/api/search?q=${encodeURIComponent(artist + ' ' + cleanT)}`;
+                    const sres = await fetch(searchurl, { signal: AbortSignal.timeout(3000) });
+                    if (sres.ok) {
+                        const sdata = await sres.json();
+                        if (sdata && sdata.length > 0) {
+                            // Priorizar siempre el resultado con letra sincronizada (syncedLyrics)
+                            const item = sdata.find(i => i.syncedLyrics) || sdata[0];
+                            if (item.syncedLyrics) {
+                                parsedLyrics = parseLrc(item.syncedLyrics);
+                            } else if (item.plainLyrics) {
+                                parsedLyrics = item.plainLyrics.split('\n').filter(l => l.trim()).map(l => ({ text: l.trim() }));
+                            }
+                        }
+                    }
+                }
+            } catch(e) {
+                console.error('Error buscando letra en LRCLIB:', e.message);
+            }
+        }
+
+        // Traducir inmediatamente con caché en memoria y guardar
+        if (parsedLyrics && parsedLyrics.length > 0) {
+            try {
+                parsedLyrics = await translateLyricsBatch(parsedLyrics);
+            } catch(e){}
+            const cleanT = cleanTrackTitle(title);
+            cachedLyricsDb[`${artist} - ${title}`] = parsedLyrics;
+            cachedLyricsDb[`${artist} - ${cleanT}`] = parsedLyrics;
+            cachedLyricsDb[cleanT] = parsedLyrics;
+            try {
+                fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
+            } catch(e){}
+        }
+    }
+
+    if (parsedLyrics && parsedLyrics.length > 0) {
+        const hasUntranslated = parsedLyrics.some(l => (l.text || '').trim().length > 3 && !l.translation);
+        if (hasUntranslated) {
+            try {
+                parsedLyrics = await translateLyricsBatch(parsedLyrics);
+                const cleanT = cleanTrackTitle(title);
+                cachedLyricsDb[`${artist} - ${title}`] = parsedLyrics;
+                cachedLyricsDb[`${artist} - ${cleanT}`] = parsedLyrics;
+                cachedLyricsDb[cleanT] = parsedLyrics;
+                try {
+                    fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
+                } catch(e){}
+            } catch(e){}
+        }
+    }
+
+    const meta = getTrackMetadata(artist, title);
+
+    let finalYear = meta.releaseYear || '2000';
+    let finalDate = meta.releaseDate || `${finalYear}-01-01`;
+    if (analysis && analysis.year && analysis.year !== '2000') {
+        const aYr = parseInt(analysis.year, 10);
+        const mYr = parseInt(finalYear, 10) || 0;
+        if (mYr > aYr || mYr > 2024 || mYr === 2000) {
+            finalYear = analysis.year;
+            finalDate = `${analysis.year}-01-01`;
+        }
+    }
+
+    res.json({
+        artist: artist,
+        title: meta.displayTitle || cleanTrackTitle(title),
+        album: cleanAlbumTitle(meta.album),
+        releaseDate: finalDate,
+        releaseYear: finalYear,
+        durationFmt: meta.durationFmt || '03:30',
+        label: meta.label || 'Sello Discográfico Principal',
+        genre: meta.genre || 'Pop / Rock / Dance',
+        audioUrl: (scanAudioFiles().get(`${artist} - ${title}`.toLowerCase().replace(/[^a-z0-9]/g, '')) || {}).relUrl || null,
+        videoItem: jellyfinVideosLookup.get(cleanTrackKey(`${artist} ${title}`)) || 
+                   jellyfinVideosLookup.get(cleanTrackKey(title)) || 
+                   jellyfinVideosLookup.get(cleanTrackKey(`${artist} - ${title}`)) || null,
+        composers: meta.composers || artist,
+        lyrics: (parsedLyrics || []).map(l => ({
+            ...l,
+            translation: (l.translation && l.translation.trim().toLowerCase() !== (l.text || '').trim().toLowerCase()) ? l.translation : null
+        })),
+        analysis: analysis
+    });
+});
+
+
+
+
+// ==========================================================================
+// API: Ahora suena en la radio (Extracción de metadatos ICY en tiempo real)
+// ==========================================================================
+const httpsLib = require('https');
+const radioNowPlayingCache = new Map();
+
+function fetchIcyMetadata(streamUrl) {
+    return new Promise((resolve) => {
+        try {
+            const parsed = new URL(streamUrl);
+            const lib = parsed.protocol === 'https:' ? httpsLib : http;
+            const req = lib.get(streamUrl, {
+                headers: {
+                    'Icy-MetaData': '1',
+                    'User-Agent': 'VLC/3.0.18 LibVLC/3.0.18'
+                }
+            }, (res) => {
+                if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+                    return resolve(fetchIcyMetadata(res.headers.location));
+                }
+                const icyMetaInt = parseInt(res.headers['icy-metaint'], 10);
+                if (!icyMetaInt || isNaN(icyMetaInt)) {
+                    res.destroy();
+                    return resolve(null);
+                }
+                let byteCount = 0;
+                let metaLength = 0;
+                let metaBuffer = Buffer.alloc(0);
+                let readingMeta = false;
+
+                res.on('data', (chunk) => {
+                    if (!readingMeta) {
+                        byteCount += chunk.length;
+                        if (byteCount >= icyMetaInt) {
+                            readingMeta = true;
+                            const metaLenIndex = chunk.length - (byteCount - icyMetaInt);
+                            if (metaLenIndex < chunk.length) {
+                                metaLength = chunk[metaLenIndex] * 16;
+                                if (metaLength > 0) {
+                                    metaBuffer = Buffer.concat([metaBuffer, chunk.slice(metaLenIndex + 1)]);
+                                } else {
+                                    res.destroy();
+                                    return resolve(null);
+                                }
+                            }
+                        }
+                    } else {
+                        metaBuffer = Buffer.concat([metaBuffer, chunk]);
+                    }
+
+                    if (readingMeta && metaBuffer.length >= metaLength) {
+                        res.destroy();
+                        const metaStr = metaBuffer.slice(0, metaLength).toString('utf8');
+                        const match = metaStr.match(/StreamTitle='([^']*)'/i);
+                        const title = match ? match[1].trim() : null;
+                        return resolve(title);
+                    }
+                });
+
+                res.on('error', () => { res.destroy(); resolve(null); });
+                setTimeout(() => { res.destroy(); resolve(null); }, 3500);
+            });
+            req.on('error', () => resolve(null));
+            req.setTimeout(3500, () => { req.destroy(); resolve(null); });
+        } catch(e) {
+            resolve(null);
+        }
+    });
+}
+
+app.get('/api/radio/now-playing', async (req, res) => {
+    const { streamUrl, id } = req.query;
+    if (!streamUrl && !id) {
+        return res.status(400).json({ error: 'Falta streamUrl o id' });
+    }
+
+    const cacheKey = id || streamUrl;
+    const cached = radioNowPlayingCache.get(cacheKey);
+    if (cached && (Date.now() - cached.timestamp < 15000)) {
+        return res.json({ nowPlaying: cached.title, cached: true });
+    }
+
+    let title = null;
+    if (streamUrl) {
+        title = await fetchIcyMetadata(streamUrl);
+    }
+    
+    if (title) {
+        title = title.replace(/\s*-\s*$/, '').trim();
+    }
+
+    radioNowPlayingCache.set(cacheKey, { title, timestamp: Date.now() });
+    res.json({ nowPlaying: title, cached: false });
+});
+
+
+// ==========================================================================
+// 💾 Grabar Desfase Permanente de Letras / Subtítulos
+// ==========================================================================
+app.post('/api/lyrics/save-offset', (req, res) => {
+    try {
+        const { artist, title, offsetSec, lyricsArray } = req.body;
+        if (!artist || !title) {
+            return res.status(400).json({ error: 'Faltan parámetros requeridos (artist, title)' });
+        }
+
+        const effectiveOffset = (typeof offsetSec === 'number') ? offsetSec : 0;
+        const cleanT = cleanTrackTitle(title);
+        const keysToTry = [
+            `${artist} - ${title}`,
+            `${artist} - ${cleanT}`,
+            cleanT,
+            `${artist} ${cleanT}`,
+            title
+        ];
+
+        let sourceLyrics = null;
+        if (lyricsArray && Array.isArray(lyricsArray) && lyricsArray.length > 0) {
+            sourceLyrics = lyricsArray;
+        } else {
+            for (const k of keysToTry) {
+                if (cachedLyricsDb[k] && Array.isArray(cachedLyricsDb[k])) {
+                    sourceLyrics = cachedLyricsDb[k];
+                    break;
+                }
+            }
+            if (!sourceLyrics) {
+                const normTarget = `${artist}${cleanT}`.toLowerCase().replace(/[^a-z0-9]/g, '');
+                for (const [k, v] of Object.entries(cachedLyricsDb)) {
+                    const normK = k.toLowerCase().replace(/[^a-z0-9]/g, '');
+                    if (normK === normTarget || (normK.length > 5 && (normK.includes(normTarget) || normTarget.includes(normK)))) {
+                        sourceLyrics = v;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (!sourceLyrics) {
+            return res.status(404).json({ error: 'No se encontraron letras en la base de datos para esta canción' });
+        }
+
+        // Aplicar el desfase a todas las líneas y formatear
+        const updatedLyrics = sourceLyrics.map(l => {
+            let currSec = 0;
+            if (typeof l.seconds === 'number') currSec = l.seconds;
+            else if (l.time) {
+                const parts = l.time.split(':');
+                currSec = parseInt(parts[0], 10) * 60 + parseFloat(parts[1] || 0);
+            }
+
+            const newSec = Math.max(0, parseFloat((currSec - effectiveOffset).toFixed(2)));
+            const mins = Math.floor(newSec / 60);
+            const secs = Math.floor(newSec % 60);
+            const newTimeFmt = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+
+            return {
+                text: l.text || '',
+                translation: l.translation || '',
+                seconds: newSec,
+                time: newTimeFmt
+            };
+        });
+
+        // Guardar en todas las variantes de clave en memoria
+        keysToTry.forEach(k => {
+            cachedLyricsDb[k] = updatedLyrics;
+        });
+        cachedLyricsDb[`${artist} - ${title}`] = updatedLyrics;
+        cachedLyricsDb[`${artist} - ${cleanT}`] = updatedLyrics;
+        cachedLyricsDb[cleanT] = updatedLyrics;
+
+        // Guardar permanentemente en disco
+        try {
+            fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
+        } catch(e) {
+            console.error('Error escribiendo en LYRICS_DB_PATH:', e.message);
+        }
+
+        console.log(`[LYRICS SYNC] Desfase de ${offsetSec}s guardado permanentemente para ${artist} - ${title}`);
+        res.json({ success: true, lyrics: updatedLyrics });
+    } catch(err) {
+        console.error('Error en /api/lyrics/save-offset:', err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
+
+// ==========================================================================
+// 🔄 Reemplazar pista por Versión Limpia Oficial de Estudio
+// ==========================================================================
+let versionCycleIndex = {};
+
+app.post('/api/track/replace-clean-audio', async (req, res) => {
+    try {
+        const { artist, title, category } = req.body;
+        if (!artist || !title) {
+            return res.status(400).json({ error: 'Faltan parámetros requeridos (artist, title)' });
+        }
+
+        const cleanT = cleanTrackTitle(title);
+        const targetCategory = category || 'Siglo XXI';
+        const targetFolder = path.join(OMEN_MUSIC_DIR, targetCategory);
+        
+        if (!fs.existsSync(targetFolder)) {
+            try { fs.mkdirSync(targetFolder, { recursive: true }); } catch(e){}
+        }
+
+        const targetFileName = `${artist} - ${title}.mp3`;
+        const targetFilePath = path.join(targetFolder, targetFileName);
+        const tempOutput = path.join(__dirname, 'data', `temp_clean_${Date.now()}.mp3`);
+
+        const { exec } = require('child_process');
+        const ffmpegDir = 'C:\\Users\\MSI Roberto\\.spotdl';
+
+        console.log(`[CLEAN DOWNLOAD] Buscando versión limpia y exacta de estudio para: ${artist} - ${cleanT}`);
+
+        // 1. Obtener duración esperada de estudio (en segundos)
+        let expectedDurationSec = null;
+        const meta = getTrackMetadata(artist, title);
+        if (meta && meta.durationMs) {
+            expectedDurationSec = Math.round(meta.durationMs / 1000);
+        } else {
+            try {
+                const itunesRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(artist + ' ' + cleanT)}&entity=song&limit=5`, { signal: AbortSignal.timeout(3500) });
+                if (itunesRes.ok) {
+                    const itunesData = await itunesRes.json();
+                    if (itunesData.results && itunesData.results.length > 0) {
+                        const match = itunesData.results.find(r => (r.artistName || '').toLowerCase().includes(artist.toLowerCase().split(/[,&]/)[0].trim())) || itunesData.results[0];
+                        if (match && match.trackTimeMillis) {
+                            expectedDurationSec = Math.round(match.trackTimeMillis / 1000);
+                        }
+                    }
+                }
+            } catch(e) {}
+        }
+
+        console.log(`[CLEAN DOWNLOAD] Duración oficial de estudio esperada: ${expectedDurationSec ? expectedDurationSec + 's (' + Math.floor(expectedDurationSec/60) + ':' + (expectedDurationSec%60).toString().padStart(2, '0') + ')' : 'No especificada'}`);
+
+        // 2. Buscar candidatos en SoundCloud y YouTube con yt-dlp dump-json
+        const searchQueries = [
+            `scsearch10:${artist} - ${cleanT}`,
+            `ytsearch10:${artist} - ${cleanT} audio`
+        ];
+
+        let bestCandidate = null;
+        let allValidCandidates = [];
+
+        for (const q of searchQueries) {
+            try {
+                const dumpCmd = `python -m yt_dlp --dump-json --flat-playlist "${q}"`;
+                const dumpOutput = await new Promise((resolve) => {
                     exec(dumpCmd, { maxBuffer: 10 * 1024 * 1024, timeout: 15000 }, (err, stdout) => {
                         resolve(stdout || '');
                     });
