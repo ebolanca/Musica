@@ -1812,5 +1812,113 @@
         ]
       }
     ]
+  },
+  "Gnarls Barkley, CeeLo Green, Danger Mouse - Crazy": {
+    "title": "Crazy",
+    "artist": "Gnarls Barkley, CeeLo Green, Danger Mouse",
+    "year": "2006",
+    "album": "St. Elsewhere",
+    "synopsis": "Nacida de la colisión impensable entre el soul visceral de CeeLo Green y la estética de producción analógica de Danger Mouse, 'Crazy' reinterpretó el pop del siglo XXI. Construida sobre un oscuro sample de un Spaghetti Western italiano de 1968, la pista contrapone una lírica sobre la frontera de la cordura con una cadencia hipnótica que conquistó tanto a la crítica underground como a las listas globales.",
+    "sections": [
+      {
+        "title": "La Alquimia del Sample: Del Spaghetti Western al Neo-Soul",
+        "icon": "fa-record-vinyl",
+        "text": "Danger Mouse (Brian Burton) no construyó la base instrumental desde cero, sino que desenterró una gema olvidada del cine B italiano: el tema 'Nel villaggio' (también conocido como 'Last Man Standing'), compuesto por los hermanos Gian Piero y Gianfranco Reverberi para la película *Preparati la bara!* (1968). Burton redujo el tempo del arreglo original, acentuó la línea de bajo orquestal y superpuso una batería seca con compresión clásica de estilo hip-hop.",
+        "points": [
+          {
+            "name": "El Sample Reverberi",
+            "desc": "La icónica progresión de cuerdas dramáticas y el motivo melódico de piano provienen directamente de la partitura de 1968, aportando una atmósfera cinematográfica y melancólica."
+          },
+          {
+            "name": "Textura de Batería 'Dry' y Compresión",
+            "desc": "La batería presenta un tratamiento de bajo ataque y caída corta, imitando el sonido de caja y bombo de los vinilos de funk de los años 70 pasados por un sampler E-mu SP-1200."
+          }
+        ]
+      },
+      {
+        "title": "Arquitectura Armónica y Catarsis Vocal",
+        "icon": "fa-sliders-h",
+        "text": "La pista está anclada en la tonalidad de Do menor (Cm), siguiendo una progresión armónica directa pero altamente efectiva: Cm - Mi♭ - La♭ - Sol7. La resolución constante en el acorde dominante (Sol7) genera un ciclo incesante de tensión y alivio psicológico. Sobre este bucle, CeeLo Green entregó una interpretación vocal ejecutada casi en una sola toma, canalizando la emotividad sin filtro del gospel sureño y el R&B clásico.",
+        "points": [
+          {
+            "name": "Ciclo Armónico Menor",
+            "desc": "La secuencia Cm - E♭ - A♭ - G7 refuerza la temática de inestabilidad mental y claustrofobia emocional, donde el Sol mayor actúa como el gancho armónico resolutivo."
+          },
+          {
+            "name": "Dinámica Vocal y Registro Agudo",
+            "desc": "CeeLo alterna entre un falsete rasgado en las estrofas y un timbre de pecho rasposo y potente en los estribillos, logrando un matiz desgarrazo de vulnerabilidad."
+          }
+        ]
+      },
+      {
+        "title": "Hito de Distribución y Transición a la Era Digital",
+        "icon": "fa-bolt",
+        "text": "Además de su valor musical, 'Crazy' ocupa un lugar preciso en la historia de la industria fonográfica por su modelo de consumo. En abril de 2006, se convirtió en la primera canción en alcanzar el puesto número uno de la lista oficial de sencillos del Reino Unido (UK Singles Chart) basándose de manera exclusiva en las descargas digitales, semanas antes de que su formato físico saliera a la venta.",
+        "points": [
+          {
+            "name": "Hito en la UK Singles Chart (2006)",
+            "desc": "Permaneció nueve semanas consecutivas en el número uno del Reino Unido apoyada por la plataforma iTunes, marcando el fin definitivo del CD single como formato dominante."
+          },
+          {
+            "name": "Reconocimiento Grammy 2007",
+            "desc": "La canción ganó el Grammy a 'Mejor Interpretación Urban/Alternative', legitimando el cruce de géneros entre la música alternativa y el soul contemporáneo."
+          }
+        ]
+      }
+    ]
+  },
+  "Crazy": {
+    "title": "Crazy",
+    "artist": "Gnarls Barkley, CeeLo Green, Danger Mouse",
+    "year": "2006",
+    "album": "St. Elsewhere",
+    "synopsis": "Nacida de la colisión impensable entre el soul visceral de CeeLo Green y la estética de producción analógica de Danger Mouse, 'Crazy' reinterpretó el pop del siglo XXI. Construida sobre un oscuro sample de un Spaghetti Western italiano de 1968, la pista contrapone una lírica sobre la frontera de la cordura con una cadencia hipnótica que conquistó tanto a la crítica underground como a las listas globales.",
+    "sections": [
+      {
+        "title": "La Alquimia del Sample: Del Spaghetti Western al Neo-Soul",
+        "icon": "fa-record-vinyl",
+        "text": "Danger Mouse (Brian Burton) no construyó la base instrumental desde cero, sino que desenterró una gema olvidada del cine B italiano: el tema 'Nel villaggio' (también conocido como 'Last Man Standing'), compuesto por los hermanos Gian Piero y Gianfranco Reverberi para la película *Preparati la bara!* (1968). Burton redujo el tempo del arreglo original, acentuó la línea de bajo orquestal y superpuso una batería seca con compresión clásica de estilo hip-hop.",
+        "points": [
+          {
+            "name": "El Sample Reverberi",
+            "desc": "La icónica progresión de cuerdas dramáticas y el motivo melódico de piano provienen directamente de la partitura de 1968, aportando una atmósfera cinematográfica y melancólica."
+          },
+          {
+            "name": "Textura de Batería 'Dry' y Compresión",
+            "desc": "La batería presenta un tratamiento de bajo ataque y caída corta, imitando el sonido de caja y bombo de los vinilos de funk de los años 70 pasados por un sampler E-mu SP-1200."
+          }
+        ]
+      },
+      {
+        "title": "Arquitectura Armónica y Catarsis Vocal",
+        "icon": "fa-sliders-h",
+        "text": "La pista está anclada en la tonalidad de Do menor (Cm), siguiendo una progresión armónica directa pero altamente efectiva: Cm - Mi♭ - La♭ - Sol7. La resolución constante en el acorde dominante (Sol7) genera un ciclo incesante de tensión y alivio psicológico. Sobre este bucle, CeeLo Green entregó una interpretación vocal ejecutada casi en una sola toma, canalizando la emotividad sin filtro del gospel sureño y el R&B clásico.",
+        "points": [
+          {
+            "name": "Ciclo Armónico Menor",
+            "desc": "La secuencia Cm - E♭ - A♭ - G7 refuerza la temática de inestabilidad mental y claustrofobia emocional, donde el Sol mayor actúa como el gancho armónico resolutivo."
+          },
+          {
+            "name": "Dinámica Vocal y Registro Agudo",
+            "desc": "CeeLo alterna entre un falsete rasgado en las estrofas y un timbre de pecho rasposo y potente en los estribillos, logrando un matiz desgarrazo de vulnerabilidad."
+          }
+        ]
+      },
+      {
+        "title": "Hito de Distribución y Transición a la Era Digital",
+        "icon": "fa-bolt",
+        "text": "Además de su valor musical, 'Crazy' ocupa un lugar preciso en la historia de la industria fonográfica por su modelo de consumo. En abril de 2006, se convirtió en la primera canción en alcanzar el puesto número uno de la lista oficial de sencillos del Reino Unido (UK Singles Chart) basándose de manera exclusiva en las descargas digitales, semanas antes de que su formato físico saliera a la venta.",
+        "points": [
+          {
+            "name": "Hito en la UK Singles Chart (2006)",
+            "desc": "Permaneció nueve semanas consecutivas en el número uno del Reino Unido apoyada por la plataforma iTunes, marcando el fin definitivo del CD single como formato dominante."
+          },
+          {
+            "name": "Reconocimiento Grammy 2007",
+            "desc": "La canción ganó el Grammy a 'Mejor Interpretación Urban/Alternative', legitimando el cruce de géneros entre la música alternativa y el soul contemporáneo."
+          }
+        ]
+      }
+    ]
   }
 }
