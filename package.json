@@ -1,6 +1,6 @@
 {
   "name": "musica",
-  "version": "1.5.08",
+  "version": "1.5.09",
   "description": "Plataforma web para gestión de videoclips, letras de canciones y playlists de Spotify",
   "main": "server.js",
   "scripts": {

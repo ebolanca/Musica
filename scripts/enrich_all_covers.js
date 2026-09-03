@@ -151,7 +151,7 @@ async function fetchBestCover(artist, title, preferredAlbum) {
                     };
                 } else {
                     entry.coverUrl = coverData.coverUrl;
-                    if (!entry.album || entry.album === 'Álbum' || entry.album === 'Álbum Desconocido') {
+                    if ((!entry.album || entry.album === 'Álbum' || entry.album === 'Álbum Desconocido') && !isCompilation(coverData.album)) {
                         entry.album = coverData.album;
                     }
                 }

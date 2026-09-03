@@ -18154,14 +18154,17 @@
   },
   "womack & womack - teardrops - 7” single version": {
     "title": "Teardrops",
+    "displayTitle": "Teardrops",
     "artist": "Womack & Womack",
-    "album": "Ultimate Collection: 80s School Days",
-    "year": "2009",
-    "date": "2009-01-01",
-    "source": "MusicBrainz Picard",
-    "releaseYear": "2009",
-    "releaseDate": "2009-01-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a926e646048f06c65e082e8fe53b9e8e/1000x1000-000000-80-0-0.jpg"
+    "album": "Conscience",
+    "year": "1988",
+    "date": "1988-08-15",
+    "releaseYear": "1988",
+    "releaseDate": "1988-08-15",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/dc842e156b30aae0fd6a99064c2d30dd/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 230000,
+    "durationFmt": "3:50",
+    "source": "Master Studio Catalog"
   },
   "aerosmith - crazy": {
     "title": "Crazy",
@@ -18597,25 +18600,31 @@
   },
   "cornershop - brimful of asha (norman cook remix) (single version)": {
     "title": "Brimful of Asha",
+    "displayTitle": "Brimful of Asha",
     "artist": "Cornershop",
-    "album": "NOW That’s What I Call 90s Dance",
-    "year": "2012",
-    "date": "2012-01-01",
-    "source": "MusicBrainz Picard",
-    "releaseYear": "2012",
-    "releaseDate": "2012-01-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6b8d03b553b482d482bfd6d179cead9b/1000x1000-000000-80-0-0.jpg"
+    "album": "When I Was Born for the 7th Time",
+    "year": "1997",
+    "date": "1997-08-18",
+    "releaseYear": "1997",
+    "releaseDate": "1997-08-18",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b6d19afad0c35c7b8f54c7bd9ad4e6c7/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 244000,
+    "durationFmt": "4:04",
+    "source": "Master Studio Catalog"
   },
   "cornershop - brimful of asha": {
     "title": "Brimful of Asha",
+    "displayTitle": "Brimful of Asha",
     "artist": "Cornershop",
-    "album": "NOW That’s What I Call 90s Dance",
-    "year": "2012",
-    "date": "2012-01-01",
-    "source": "MusicBrainz Picard",
-    "releaseYear": "2012",
-    "releaseDate": "2012-01-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6b8d03b553b482d482bfd6d179cead9b/1000x1000-000000-80-0-0.jpg"
+    "album": "When I Was Born for the 7th Time",
+    "year": "1997",
+    "date": "1997-08-18",
+    "releaseYear": "1997",
+    "releaseDate": "1997-08-18",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b6d19afad0c35c7b8f54c7bd9ad4e6c7/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 244000,
+    "durationFmt": "4:04",
+    "source": "Master Studio Catalog"
   },
   "diana king - shy guy": {
     "title": "Shy Guy",
@@ -21751,15 +21760,18 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "bruce springsteen - sad eyes - studio outtake - 1990": {
-    "title": "Sad Eyes (Studio Outtake - 1990)",
+    "title": "Sad Eyes",
+    "displayTitle": "Sad Eyes",
     "artist": "Bruce Springsteen",
     "album": "Tracks",
-    "year": "2018",
-    "date": "2018-01-01",
-    "source": "MusicBrainz Picard",
-    "releaseYear": "2018",
-    "releaseDate": "2018-01-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ab38d1e280ed92bffb638fc5d9f42736/1000x1000-000000-80-0-0.jpg"
+    "year": "1998",
+    "date": "1998-11-10",
+    "releaseYear": "1998",
+    "releaseDate": "1998-11-10",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ab38d1e280ed92bffb638fc5d9f42736/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 229000,
+    "durationFmt": "3:49",
+    "source": "Master Studio Catalog"
   },
   "bon jovi - bad medicine": {
     "title": "Bad Medicine",
@@ -36970,15 +36982,18 @@
     "releaseDate": "2009-01-01"
   },
   "bruce springsteen - sad eyes (studio outtake - 1990)": {
-    "title": "Sad Eyes (Studio Outtake - 1990)",
+    "title": "Sad Eyes",
+    "displayTitle": "Sad Eyes",
     "artist": "Bruce Springsteen",
     "album": "Tracks",
-    "year": "2018",
-    "date": "2018-01-01",
-    "source": "MusicBrainz Picard",
-    "releaseYear": "2018",
-    "releaseDate": "2018-01-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ab38d1e280ed92bffb638fc5d9f42736/1000x1000-000000-80-0-0.jpg"
+    "year": "1998",
+    "date": "1998-11-10",
+    "releaseYear": "1998",
+    "releaseDate": "1998-11-10",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ab38d1e280ed92bffb638fc5d9f42736/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 229000,
+    "durationFmt": "3:49",
+    "source": "Master Studio Catalog"
   },
   "bryan adams - have you ever really loved a woman? (classic version)": {
     "title": "Have You Ever Really Loved a Woman?",
@@ -37093,14 +37108,18 @@
     "releaseDate": "2017-01-01"
   },
   "cornershop - cornershop - brimful of asha, norman cook mix (tjinder singh) official music video": {
-    "title": "Cornershop - Brimful Of Asha, Norman Cook Mix (Tjinder Singh) Official Music Video",
+    "title": "Brimful of Asha",
     "artist": "Cornershop",
-    "album": "Single / Álbum",
-    "year": "2012",
-    "date": "2012-01-01",
-    "source": "MusicBrainz Picard",
-    "releaseYear": "2012",
-    "releaseDate": "2012-01-01"
+    "album": "When I Was Born for the 7th Time",
+    "year": "1997",
+    "date": "1997-08-18",
+    "source": "Master Studio Catalog",
+    "releaseYear": "1997",
+    "releaseDate": "1997-08-18",
+    "displayTitle": "Brimful of Asha",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b6d19afad0c35c7b8f54c7bd9ad4e6c7/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 244000,
+    "durationFmt": "4:04"
   },
   "craig david - craig david - 7 days (official video)": {
     "title": "Craig David - 7 Days (Official Video)",
@@ -40495,14 +40514,18 @@
     "releaseDate": "1999-01-01"
   },
   "womackandwomackvevo - womack & womack - teardrops (official music video)": {
-    "title": "Womack & Womack - Teardrops (Official Music Video)",
-    "artist": "WomackAndWomackVEVO",
-    "album": "Single / Álbum",
-    "year": "2009",
-    "date": "2009-01-01",
-    "source": "MusicBrainz Picard",
-    "releaseYear": "2009",
-    "releaseDate": "2009-01-01"
+    "title": "Teardrops",
+    "artist": "Womack & Womack",
+    "album": "Conscience",
+    "year": "1988",
+    "date": "1988-08-15",
+    "source": "Master Studio Catalog",
+    "releaseYear": "1988",
+    "releaseDate": "1988-08-15",
+    "displayTitle": "Teardrops",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/dc842e156b30aae0fd6a99064c2d30dd/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 230000,
+    "durationFmt": "3:50"
   },
   "toppop - yazoo - only you • toppop": {
     "title": "Yazoo - Only You • TopPop",
@@ -48985,14 +49008,17 @@
   },
   "womack & womack - teardrops": {
     "title": "Teardrops",
+    "displayTitle": "Teardrops",
     "artist": "Womack & Womack",
-    "album": "Ultimate Collection: 80s School Days",
-    "year": "2009",
-    "date": "2009-01-01",
-    "source": "MusicBrainz Picard",
-    "releaseYear": "2009",
-    "releaseDate": "2009-01-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a926e646048f06c65e082e8fe53b9e8e/1000x1000-000000-80-0-0.jpg"
+    "album": "Conscience",
+    "year": "1988",
+    "date": "1988-08-15",
+    "releaseYear": "1988",
+    "releaseDate": "1988-08-15",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/dc842e156b30aae0fd6a99064c2d30dd/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 230000,
+    "durationFmt": "3:50",
+    "source": "Master Studio Catalog"
   },
   "the merry ploughboys - the winds are singing freedom": {
     "title": "The Winds Are Singing Freedom",
@@ -52483,15 +52509,18 @@
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c93397e9727e0c01d6e794614bcd2033/1000x1000-000000-80-0-0.jpg"
   },
   "cornershop - brimful of asha - norman cook radio edit remix": {
+    "title": "Brimful of Asha",
+    "displayTitle": "Brimful of Asha",
     "artist": "Cornershop",
-    "title": "Brimful of Asha - Norman Cook Radio Edit Remix",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/6b/64/2c/6b642c8d-2f9a-7c79-5130-f7810eb8033e/00094635681451.rgb.jpg/600x600bb.jpg",
+    "album": "When I Was Born for the 7th Time",
     "year": "1997",
     "date": "1997-08-18",
-    "album": "When I Was Born for the 7th Time",
     "releaseYear": "1997",
     "releaseDate": "1997-08-18",
-    "displayTitle": "Brimful of Asha - Norman Cook Radio Edit Remix"
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b6d19afad0c35c7b8f54c7bd9ad4e6c7/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 244000,
+    "durationFmt": "4:04",
+    "source": "Master Studio Catalog"
   },
   "olivia newton-john - physical - remastered 2021": {
     "title": "Physical",
@@ -74704,15 +74733,15 @@
     "title": "Teardrops",
     "displayTitle": "Teardrops",
     "artist": "Womack & Womack",
-    "album": "Teardrops (Sped Up)",
-    "year": "2023",
-    "date": "2023-11-03",
-    "releaseYear": "2023",
-    "releaseDate": "2023-11-03",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a926e646048f06c65e082e8fe53b9e8e/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 228000,
-    "durationFmt": "3:48",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "album": "Conscience",
+    "year": "1988",
+    "date": "1988-08-15",
+    "releaseYear": "1988",
+    "releaseDate": "1988-08-15",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/dc842e156b30aae0fd6a99064c2d30dd/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 230000,
+    "durationFmt": "3:50",
+    "source": "Master Studio Catalog"
   },
   "aerosmithcrazy": {
     "title": "Crazy",
@@ -75073,15 +75102,15 @@
     "title": "Brimful of Asha",
     "displayTitle": "Brimful of Asha",
     "artist": "Cornershop",
-    "album": "Brimful of Asha",
+    "album": "When I Was Born for the 7th Time",
     "year": "1997",
     "date": "1997-08-18",
     "releaseYear": "1997",
     "releaseDate": "1997-08-18",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6b8d03b553b482d482bfd6d179cead9b/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 243000,
-    "durationFmt": "4:03",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b6d19afad0c35c7b8f54c7bd9ad4e6c7/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 244000,
+    "durationFmt": "4:04",
+    "source": "Master Studio Catalog"
   },
   "dianakingshyguy": {
     "title": "Shy Guy",
@@ -87866,25 +87895,31 @@
   },
   "womackwomackteardrops": {
     "title": "Teardrops",
+    "displayTitle": "Teardrops",
     "artist": "Womack & Womack",
-    "album": "Ultimate Collection: 80s School Days",
-    "year": "2009",
-    "date": "2009-01-01",
-    "source": "MusicBrainz Picard",
-    "releaseYear": "2009",
-    "releaseDate": "2009-01-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a926e646048f06c65e082e8fe53b9e8e/1000x1000-000000-80-0-0.jpg"
+    "album": "Conscience",
+    "year": "1988",
+    "date": "1988-08-15",
+    "releaseYear": "1988",
+    "releaseDate": "1988-08-15",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/dc842e156b30aae0fd6a99064c2d30dd/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 230000,
+    "durationFmt": "3:50",
+    "source": "Master Studio Catalog"
   },
   "cornershopbrimfulofasha": {
     "title": "Brimful of Asha",
+    "displayTitle": "Brimful of Asha",
     "artist": "Cornershop",
-    "album": "NOW That’s What I Call 90s Dance",
-    "year": "2012",
-    "date": "2012-01-01",
-    "source": "MusicBrainz Picard",
-    "releaseYear": "2012",
-    "releaseDate": "2012-01-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6b8d03b553b482d482bfd6d179cead9b/1000x1000-000000-80-0-0.jpg"
+    "album": "When I Was Born for the 7th Time",
+    "year": "1997",
+    "date": "1997-08-18",
+    "releaseYear": "1997",
+    "releaseDate": "1997-08-18",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b6d19afad0c35c7b8f54c7bd9ad4e6c7/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 244000,
+    "durationFmt": "4:04",
+    "source": "Master Studio Catalog"
   },
   "queenwearethechampions": {
     "displayTitle": "We Are the Champions",
@@ -88089,6 +88124,48 @@
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/9079544ae5d01fcfba164c670f5e3e7f/1000x1000-000000-80-0-0.jpg",
     "durationMs": 202000,
     "durationFmt": "3:22",
+    "source": "Master Studio Catalog"
+  },
+  "womack & womack - teardrops - 7\" single version": {
+    "title": "Teardrops",
+    "displayTitle": "Teardrops",
+    "artist": "Womack & Womack",
+    "album": "Conscience",
+    "year": "1988",
+    "date": "1988-08-15",
+    "releaseYear": "1988",
+    "releaseDate": "1988-08-15",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/dc842e156b30aae0fd6a99064c2d30dd/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 230000,
+    "durationFmt": "3:50",
+    "source": "Master Studio Catalog"
+  },
+  "bruce springsteen - sad eyes": {
+    "title": "Sad Eyes",
+    "displayTitle": "Sad Eyes",
+    "artist": "Bruce Springsteen",
+    "album": "Tracks",
+    "year": "1998",
+    "date": "1998-11-10",
+    "releaseYear": "1998",
+    "releaseDate": "1998-11-10",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ab38d1e280ed92bffb638fc5d9f42736/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 229000,
+    "durationFmt": "3:49",
+    "source": "Master Studio Catalog"
+  },
+  "brucespringsteensadeyes": {
+    "title": "Sad Eyes",
+    "displayTitle": "Sad Eyes",
+    "artist": "Bruce Springsteen",
+    "album": "Tracks",
+    "year": "1998",
+    "date": "1998-11-10",
+    "releaseYear": "1998",
+    "releaseDate": "1998-11-10",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ab38d1e280ed92bffb638fc5d9f42736/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 229000,
+    "durationFmt": "3:49",
     "source": "Master Studio Catalog"
   }
 }
