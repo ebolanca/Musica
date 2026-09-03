@@ -1132,6 +1132,86 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    
+    function updateCinemaSubsDurationBadge() {
+        const durBadge = document.getElementById('cinema-subs-dur-text');
+        if (!durBadge) return;
+        if (!cinemaParsedLyrics || cinemaParsedLyrics.length === 0) {
+            durBadge.textContent = '--:--';
+            return;
+        }
+        const lastLine = cinemaParsedLyrics[cinemaParsedLyrics.length - 1];
+        let sec = 0;
+        if (lastLine) {
+            if (typeof lastLine.seconds === 'number') sec = lastLine.seconds;
+            else if (lastLine.time) {
+                const parts = lastLine.time.split(':');
+                sec = parseInt(parts[0], 10) * 60 + parseFloat(parts[1] || 0);
+            }
+        }
+        if (!sec || isNaN(sec)) {
+            durBadge.textContent = '--:--';
+            return;
+        }
+        const mins = Math.floor(sec / 60);
+        const secs = Math.floor(sec % 60);
+        durBadge.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    const btnCinemaReplaceSubs = document.getElementById('btn-cinema-replace-subs');
+    if (btnCinemaReplaceSubs) {
+        btnCinemaReplaceSubs.addEventListener('click', async () => {
+            const currentSong = currentPlayingSong || (cinemaCurrentTrackList ? cinemaCurrentTrackList[cinemaCurrentIndex] : null);
+            if (!currentSong) return;
+
+            btnCinemaReplaceSubs.disabled = true;
+            btnCinemaReplaceSubs.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Rotando...';
+            showSyncNotification('🔍 Buscando otra versión de subtítulos en la base de datos...');
+
+            try {
+                const res = await fetch('/api/lyrics/cycle-version', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        artist: currentSong.artist,
+                        title: currentSong.rawTitle || currentSong.title
+                    })
+                });
+
+                const data = await res.json();
+                if (data.success && data.lyrics && data.lyrics.length > 0) {
+                    cinemaParsedLyrics = data.lyrics.map((l, idx) => {
+                        let sec = null;
+                        if (typeof l.seconds === 'number') sec = l.seconds;
+                        else if (l.time) {
+                            const parts = l.time.split(':');
+                            sec = parseInt(parts[0], 10) * 60 + parseFloat(parts[1] || 0);
+                        }
+                        return { ...l, seconds: sec, index: idx, hasTimestamp: sec !== null };
+                    });
+
+                    // Restablecer desfase a 0.0s
+                    const key = `offset_${normalizeText(currentSong.artist)}_${normalizeText(currentSong.title)}`;
+                    safeStorage.setItem(key, '0.0');
+                    updateLyricsSyncOffset(0.0);
+
+                    renderCinemaLyricLines();
+                    updateCinemaSubsDurationBadge();
+
+                    showSyncNotification(`✨ Versión de subs ${data.candidateIndex}/${data.totalCandidates} cargada (Duración: ${data.subsDuration})`);
+                } else {
+                    showSyncNotification('⚠️ ' + (data.error || 'No se encontraron otras versiones de subtítulos.'));
+                }
+            } catch(e) {
+                console.error('Error rotando versión de subtítulos:', e);
+                showSyncNotification('❌ Error al cambiar versión de subtítulos');
+            } finally {
+                btnCinemaReplaceSubs.disabled = false;
+                btnCinemaReplaceSubs.innerHTML = '<i class="fa-solid fa-closed-captioning"></i> Versión Subs';
+            }
+        });
+    }
+
     if (btnSyncSave) {
         btnSyncSave.addEventListener('click', async () => {
             const currentSong = currentPlayingSong || (cinemaCurrentTrackList ? cinemaCurrentTrackList[cinemaCurrentIndex] : null);
@@ -2341,6 +2421,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         });
 
                         renderCinemaLyricLines();
+                        updateCinemaSubsDurationBadge();
 
                         // Detección de scroll manual con retorno automático a los 5 segundos
                         if (cinemaLyrics) {
@@ -2357,6 +2438,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             cinemaLyrics.addEventListener('scroll', handleUserScroll, { passive: true });
                         }
                     } else {
+                        updateCinemaSubsDurationBadge();
                         cinemaLyrics.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);"><i class="fa-solid fa-microphone-slash" style="font-size:2rem;margin-bottom:12px;opacity:0.4;"></i><p>No hay letra sincronizada disponible para esta canción.</p></div>';
                     }
                 })

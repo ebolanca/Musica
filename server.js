@@ -1570,6 +1570,113 @@ app.post('/api/lyrics/save-offset', (req, res) => {
 
 
 // ==========================================================================
+// 🔄 Rotar y Escoger Otra Versión de Subtítulos (LRCLIB)
+// ==========================================================================
+let lyricsCycleMap = {};
+
+app.post('/api/lyrics/cycle-version', async (req, res) => {
+    try {
+        const { artist, title } = req.body;
+        if (!artist || !title) {
+            return res.status(400).json({ error: 'Faltan parámetros artist y title' });
+        }
+
+        const cleanT = cleanTrackTitle(title);
+        const searchTerms = [
+            `${artist} ${cleanT}`,
+            cleanT,
+            `${artist} ${title}`
+        ];
+
+        let allCandidates = [];
+        const seenLrc = new Set();
+
+        for (const term of searchTerms) {
+            try {
+                const url = `https://lrclib.net/api/search?q=${encodeURIComponent(term)}`;
+                const response = await fetch(url, { signal: AbortSignal.timeout(4000) });
+                if (response.ok) {
+                    const data = await response.json();
+                    if (Array.isArray(data)) {
+                        for (const item of data) {
+                            if (item.syncedLyrics && item.syncedLyrics.trim().length > 30) {
+                                const firstLine = item.syncedLyrics.split('\n')[0].trim();
+                                const sig = `${item.duration || 0}_${firstLine}`;
+                                if (!seenLrc.has(sig)) {
+                                    seenLrc.add(sig);
+                                    allCandidates.push(item);
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch(e) {}
+            if (allCandidates.length >= 6) break;
+        }
+
+        if (allCandidates.length === 0) {
+            return res.status(404).json({ error: 'No se encontraron versiones alternativas de subtítulos' });
+        }
+
+        const cycleKey = `${artist} - ${cleanT}`.toLowerCase();
+        const currentIdx = lyricsCycleMap[cycleKey] || 0;
+        const chosenCandidate = allCandidates[currentIdx % allCandidates.length];
+        lyricsCycleMap[cycleKey] = currentIdx + 1;
+
+        let parsedLyrics = parseLrc(chosenCandidate.syncedLyrics);
+        if (!parsedLyrics || parsedLyrics.length === 0) {
+            return res.status(500).json({ error: 'Error procesando los subtítulos seleccionados' });
+        }
+
+        // Traducir subtítulos al español por lotes
+        parsedLyrics = await translateLyricsBatch(parsedLyrics);
+
+        // Guardar en la base de datos de subtítulos permanente
+        cachedLyricsDb[`${artist} - ${title}`] = parsedLyrics;
+        cachedLyricsDb[`${artist} - ${cleanT}`] = parsedLyrics;
+        cachedLyricsDb[cleanT] = parsedLyrics;
+        cachedLyricsDb[title] = parsedLyrics;
+
+        try {
+            fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
+        } catch(e) {
+            console.error('Error escribiendo en LYRICS_DB_PATH:', e.message);
+        }
+
+        // Calcular duración del último subtítulo
+        const lastLine = parsedLyrics[parsedLyrics.length - 1];
+        let subsDurSec = 0;
+        if (lastLine) {
+            if (typeof lastLine.seconds === 'number') subsDurSec = lastLine.seconds;
+            else if (lastLine.time) {
+                const parts = lastLine.time.split(':');
+                subsDurSec = parseInt(parts[0], 10) * 60 + parseFloat(parts[1] || 0);
+            }
+        }
+        const mins = Math.floor(subsDurSec / 60);
+        const secs = Math.floor(subsDurSec % 60);
+        const formattedSubsDur = `${mins}:${secs.toString().padStart(2, '0')}`;
+
+        console.log(`[LYRICS CYCLE] Versión alternativa ${(currentIdx % allCandidates.length) + 1}/${allCandidates.length} aplicada para ${artist} - ${cleanT} (Duración subtítulos: ${formattedSubsDur})`);
+
+        res.json({
+            success: true,
+            lyrics: parsedLyrics,
+            candidateIndex: (currentIdx % allCandidates.length) + 1,
+            totalCandidates: allCandidates.length,
+            subsDuration: formattedSubsDur,
+            subsDurationSec: subsDurSec,
+            trackName: chosenCandidate.trackName,
+            duration: chosenCandidate.duration
+        });
+    } catch(err) {
+        console.error('Error en /api/lyrics/cycle-version:', err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
+
+// ==========================================================================
 // 🔄 Reemplazar pista por Versión Limpia Oficial de Estudio
 // ==========================================================================
 let versionCycleIndex = {};
