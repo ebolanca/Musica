@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 
 const pkgPath = path.join(__dirname, '../package.json');
 const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
@@ -34,3 +35,16 @@ if (fs.existsSync(htmlPath)) {
 
 console.log(`Versión actualizada: v${pkg.version}`);
 console.log('¡Sincronización completada en package.json y public/index.html!');
+
+// Si se ejecuta en OMEN, asegurar que PM2 tenga el servicio levantado y guardado para reinicios
+if (os.hostname() !== 'PC-MSI') {
+    const { execSync } = require('child_process');
+    try {
+        console.log('🚀 [OMEN] Levantando y persistiendo servicio musica en PM2...');
+        execSync('pm2 start server.js --name musica || pm2 restart musica', { cwd: path.join(__dirname, '..'), stdio: 'inherit' });
+        execSync('pm2 save', { stdio: 'inherit' });
+        console.log('✅ [OMEN] PM2 guardado con éxito en arranque de Windows.');
+    } catch(e) {
+        console.error('Aviso levantando PM2 en OMEN:', e.message);
+    }
+}
