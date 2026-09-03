@@ -1221,12 +1221,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
     // ==========================================================================
-    // 🎚️ Web Audio API: Normalización Inteligente & Control Dinámico de Sonoridad
+        // ==========================================================================
+    // 🎚️ Web Audio API: Normalización Inteligente Adaptativa (AGC + Limiter)
     // ==========================================================================
     let audioCtx = null;
     let audioSourceNode = null;
     let compressorNode = null;
     let normalizerGainNode = null;
+    let analyserNode = null;
+    let agcInterval = null;
     let isAudioNormalizationActive = safeStorage.getItem('audio_normalization_enabled') !== 'false'; // Activo por defecto
 
     function initAudioNormalizationGraph() {
@@ -1236,41 +1239,84 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!AudioContextClass || !mainMusicAudio) return;
             audioCtx = new AudioContextClass();
 
-            // Configurar crossOrigin para permitir Web Audio en archivos multimedia
+            // Configurar crossOrigin para permitir Web Audio
             mainMusicAudio.crossOrigin = "anonymous";
             audioSourceNode = audioCtx.createMediaElementSource(mainMusicAudio);
 
-            // Dynamics Compressor Node: Limitador / Compresor transparente
-            compressorNode = audioCtx.createDynamicsCompressor();
-            compressorNode.threshold.setValueAtTime(-24, audioCtx.currentTime);
-            compressorNode.knee.setValueAtTime(30, audioCtx.currentTime);
-            compressorNode.ratio.setValueAtTime(12, audioCtx.currentTime);
-            compressorNode.attack.setValueAtTime(0.003, audioCtx.currentTime);
-            compressorNode.release.setValueAtTime(0.25, audioCtx.currentTime);
-
-            // Leveler Gain Node: Nivelación a estándar de sonoridad (-14 LUFS)
+            // 1. Ganancia adaptable dinámica (AGC)
             normalizerGainNode = audioCtx.createGain();
-            normalizerGainNode.gain.setValueAtTime(1.4, audioCtx.currentTime);
+            normalizerGainNode.gain.setValueAtTime(1.8, audioCtx.currentTime);
+
+            // 2. Limitador/Compresor transparente de protección
+            compressorNode = audioCtx.createDynamicsCompressor();
+            compressorNode.threshold.setValueAtTime(-14, audioCtx.currentTime);
+            compressorNode.knee.setValueAtTime(12, audioCtx.currentTime);
+            compressorNode.ratio.setValueAtTime(8, audioCtx.currentTime);
+            compressorNode.attack.setValueAtTime(0.003, audioCtx.currentTime);
+            compressorNode.release.setValueAtTime(0.18, audioCtx.currentTime);
+
+            // 3. Analizador de sonoridad en tiempo real
+            analyserNode = audioCtx.createAnalyser();
+            analyserNode.fftSize = 1024;
+            analyserNode.smoothingTimeConstant = 0.8;
 
             updateNormalizationRoute();
             updateNormalizationButtonState();
+            startAdaptiveGainControl();
         } catch(e) {
             console.log('Info Web Audio Normalizer:', e.message);
         }
+    }
+
+    function startAdaptiveGainControl() {
+        if (agcInterval) clearInterval(agcInterval);
+        const sampleBuffer = new Float32Array(1024);
+
+        agcInterval = setInterval(() => {
+            if (!isAudioNormalizationActive || !audioCtx || !analyserNode || !normalizerGainNode || !mainMusicAudio || mainMusicAudio.paused) {
+                return;
+            }
+
+            try {
+                analyserNode.getFloatTimeDomainData(sampleBuffer);
+                let sumSq = 0;
+                for (let i = 0; i < sampleBuffer.length; i++) {
+                    sumSq += sampleBuffer[i] * sampleBuffer[i];
+                }
+                const rms = Math.sqrt(sumSq / sampleBuffer.length);
+
+                // Solo actuar si hay señal musical audible (evitar amplificar silencios)
+                if (rms > 0.008) {
+                    const currentDb = 20 * Math.log10(rms);
+                    // Nivel estándar broadcast confortable (-16 dB RMS)
+                    const targetDb = -16.0;
+                    const dbDiff = targetDb - currentDb;
+
+                    let desiredGain = Math.pow(10, dbDiff / 20);
+                    // Limitar ganancia en rango seguro: min 0.7x (-3 dB), max 3.2x (+10 dB)
+                    desiredGain = Math.max(0.7, Math.min(3.2, desiredGain));
+
+                    // Transición ultrasuave (0.35s) sin saltos audibles
+                    normalizerGainNode.gain.setTargetAtTime(desiredGain, audioCtx.currentTime, 0.35);
+                }
+            } catch(err) {}
+        }, 120);
     }
 
     function updateNormalizationRoute() {
         if (!audioSourceNode || !audioCtx) return;
         try {
             audioSourceNode.disconnect();
-            if (compressorNode) compressorNode.disconnect();
             if (normalizerGainNode) normalizerGainNode.disconnect();
+            if (compressorNode) compressorNode.disconnect();
+            if (analyserNode) analyserNode.disconnect();
 
             if (isAudioNormalizationActive) {
-                // Cadena activa: Fuente -> Ganancia de Nivelación -> Compresor Dinámico -> Salida
+                // Cadena activa: Fuente -> Ganancia Adaptativa (AGC) -> Compresor/Limitador -> Analizador -> Salida
                 audioSourceNode.connect(normalizerGainNode);
                 normalizerGainNode.connect(compressorNode);
-                compressorNode.connect(audioCtx.destination);
+                compressorNode.connect(analyserNode);
+                analyserNode.connect(audioCtx.destination);
             } else {
                 // Bypass directo sin procesamiento
                 audioSourceNode.connect(audioCtx.destination);
@@ -1284,7 +1330,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!musicBtnNormalize) return;
         if (isAudioNormalizationActive) {
             musicBtnNormalize.classList.add('active-magic');
-            musicBtnNormalize.title = 'Normalización Inteligente (-14 LUFS / Estándar Spotify): Activada';
+            musicBtnNormalize.title = 'Normalización Inteligente (-14 LUFS / Nivelación Adaptativa): Activada';
         } else {
             musicBtnNormalize.classList.remove('active-magic');
             musicBtnNormalize.title = 'Normalización de Audio: Desactivada (Volumen Original)';
@@ -1294,17 +1340,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (musicBtnNormalize) {
         musicBtnNormalize.addEventListener('click', () => {
             if (!audioCtx) initAudioNormalizationGraph();
+            if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume().catch(()=>{});
             isAudioNormalizationActive = !isAudioNormalizationActive;
             safeStorage.setItem('audio_normalization_enabled', isAudioNormalizationActive ? 'true' : 'false');
             updateNormalizationButtonState();
             updateNormalizationRoute();
             showSyncNotification(isAudioNormalizationActive 
-                ? '✨ Normalización de Audio Activada (-14 LUFS / Nivelación Inteligente)' 
+                ? '✨ Normalización Adaptativa Activada (Nivelación Uniforme -14 LUFS)' 
                 : '🔇 Normalización de Audio Desactivada (Volumen Original)');
         });
     }
 
-    
     // ==========================================================================
     // 🛡️ Screen Wake Lock API: Evitar suspensión del PC durante la reproducción
     // ==========================================================================
@@ -1350,6 +1396,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mainMusicAudio) {
         mainMusicAudio.addEventListener('play', () => {
             requestWakeLock();
+            if (!audioCtx) initAudioNormalizationGraph();
+            if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume().catch(()=>{});
         });
         mainMusicAudio.addEventListener('pause', () => {
             releaseWakeLock();

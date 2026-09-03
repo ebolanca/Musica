@@ -590,7 +590,18 @@ const REMOTE_OMEN_MUSIC = "\\\\100.95.217.45\\omen D\\media-library\\music";
 const OMEN_MUSIC_DIR = fs.existsSync(LOCAL_OMEN_MUSIC) ? LOCAL_OMEN_MUSIC : REMOTE_OMEN_MUSIC;
 
 if (fs.existsSync(OMEN_MUSIC_DIR)) {
-    app.use('/media-music', express.static(OMEN_MUSIC_DIR));
+    app.use('/media-music', (req, res, next) => {
+        res.header('Access-Control-Allow-Origin', '*');
+        res.header('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Range');
+        if (req.method === 'OPTIONS') return res.sendStatus(200);
+        next();
+    }, express.static(OMEN_MUSIC_DIR, {
+        setHeaders: (res) => {
+            res.set('Access-Control-Allow-Origin', '*');
+            res.set('Accept-Ranges', 'bytes');
+        }
+    }));
 }
 
 function scanAudioFiles() {
