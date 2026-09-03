@@ -1613,8 +1613,8 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
 
         // 2. Buscar candidatos en SoundCloud y YouTube con yt-dlp dump-json
         const searchQueries = [
-            `scsearch10:${artist} - ${cleanT}`,
-            `ytsearch10:${artist} - ${cleanT} audio`
+            `scsearch25:${artist} - ${cleanT}`,
+            `scsearch25:${artist} ${cleanT}`
         ];
 
         let bestCandidate = null;
