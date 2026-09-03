@@ -1583,7 +1583,9 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
         const tempOutput = path.join(__dirname, 'data', `temp_clean_${Date.now()}.mp3`);
 
         const { exec } = require('child_process');
-        const ffmpegDir = 'C:\\Users\\MSI Roberto\\.spotdl';
+        const binDir = path.join(__dirname, 'bin');
+        const ytdlpBin = fs.existsSync(path.join(binDir, 'yt-dlp.exe')) ? `"${path.join(binDir, 'yt-dlp.exe')}"` : 'python -m yt_dlp';
+        const ffmpegDir = fs.existsSync(path.join(binDir, 'ffmpeg.exe')) ? binDir : 'C:\\Users\\MSI Roberto\\.spotdl';
 
         console.log(`[CLEAN DOWNLOAD] Buscando versión limpia y exacta de estudio para: ${artist} - ${cleanT}`);
 
@@ -1620,7 +1622,7 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
 
         for (const q of searchQueries) {
             try {
-                const dumpCmd = `python -m yt_dlp --dump-json --flat-playlist "${q}"`;
+                const dumpCmd = `${ytdlpBin} --dump-json --flat-playlist "${q}"`;
                 const dumpOutput = await new Promise((resolve) => {
                     exec(dumpCmd, { maxBuffer: 10 * 1024 * 1024, timeout: 15000, windowsHide: true }, (err, stdout) => {
                         resolve(stdout || '');
@@ -1710,7 +1712,7 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
                 const cand = orderedCandidates[i];
                 console.log(`[CLEAN DOWNLOAD] Intentando candidato [${i + 1}/${orderedCandidates.length}]: "${cand.title}" (${cand.duration}s) -> ${cand.url}`);
 
-                const downloadCmd = `python -m yt_dlp --ffmpeg-location "${ffmpegDir}" "${cand.url}" -x --audio-format mp3 --audio-quality 0 -o "${tempOutput}"`;
+                const downloadCmd = `${ytdlpBin} --ffmpeg-location "${ffmpegDir}" "${cand.url}" -x --audio-format mp3 --audio-quality 0 -o "${tempOutput}"`;
 
                 const result = await new Promise((resolve) => {
                     exec(downloadCmd, { timeout: 45000, windowsHide: true }, (err, stdout, stderr) => {
