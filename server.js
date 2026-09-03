@@ -1561,6 +1561,8 @@ app.post('/api/lyrics/save-offset', (req, res) => {
 // ==========================================================================
 // 🔄 Reemplazar pista por Versión Limpia Oficial de Estudio
 // ==========================================================================
+let versionCycleIndex = {};
+
 app.post('/api/track/replace-clean-audio', async (req, res) => {
     try {
         const { artist, title, category } = req.body;
@@ -1609,11 +1611,12 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
 
         // 2. Buscar candidatos en SoundCloud y YouTube con yt-dlp dump-json
         const searchQueries = [
-            `scsearch8:${artist} - ${cleanT}`,
-            `ytsearch8:${artist} - ${cleanT} audio`
+            `scsearch10:${artist} - ${cleanT}`,
+            `ytsearch10:${artist} - ${cleanT} audio`
         ];
 
         let bestCandidate = null;
+        let allValidCandidates = [];
 
         for (const q of searchQueries) {
             try {
@@ -1627,32 +1630,38 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
                 if (!dumpOutput) continue;
 
                 const lines = dumpOutput.trim().split('\n');
-                const candidates = [];
 
                 for (const line of lines) {
                     try {
                         const item = JSON.parse(line);
                         const dur = item.duration;
-                        // FILTRO CRÍTICO: descartar audios de menos de 60 segundos (clips/previews/teasers)
                         if (!dur || dur < 60) continue;
 
                         const itemTitle = (item.title || '').toLowerCase();
                         if (itemTitle.includes('preview') || itemTitle.includes('teaser') || itemTitle.includes('trailer') || itemTitle.includes('snippet')) continue;
 
-                        // Penalizar colaboraciones no deseadas si el artista original es en solitario
+                        // Descartar remixes, mashups, covers o sped up si el tema original no los tiene
+                        const isRemixWord = /remix|club mix|extended|tribute|cover by|sped up|slowed|mashup|parody/i.test(itemTitle);
+                        if (isRemixWord && !/remix|club/i.test(title)) continue;
+
+                        // Penalizar o descartar colaboradores ajenos
                         let collabPenalty = 0;
                         const hasOriginalCollab = title.toLowerCase().includes('feat') || title.toLowerCase().includes('con ') || title.toLowerCase().includes('ft.');
                         if (!hasOriginalCollab && (itemTitle.includes('feat.') || itemTitle.includes('ft.') || itemTitle.includes(' con '))) {
-                            collabPenalty = 25; // Penalización para priorizar versión en solitario
+                            collabPenalty = 15;
                         }
 
-                        let diff = expectedDurationSec ? Math.abs(dur - expectedDurationSec) : 0;
-                        diff += collabPenalty;
+                        // REGLA ESTRICTA SOLICITADA POR EL USUARIO: solo aceptar diferencia de +- 10 segundos
+                        if (expectedDurationSec) {
+                            const rawDiff = Math.abs(dur - expectedDurationSec);
+                            if (rawDiff > 10) {
+                                continue; // Descartado por no estar dentro de +-10s
+                            }
+                        }
 
-                        // Si hay duración de estudio esperada, descartar audios con más de 45s de diferencia
-                        if (expectedDurationSec && Math.abs(dur - expectedDurationSec) > 45) continue;
+                        const diff = (expectedDurationSec ? Math.abs(dur - expectedDurationSec) : 0) + collabPenalty;
 
-                        candidates.push({
+                        allValidCandidates.push({
                             url: item.webpage_url || item.url,
                             duration: dur,
                             title: item.title,
@@ -1661,15 +1670,33 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
                     } catch(e) {}
                 }
 
-                if (candidates.length > 0) {
-                    candidates.sort((a, b) => a.diff - b.diff);
-                    bestCandidate = candidates[0];
-                    console.log(`[CLEAN DOWNLOAD] Candidato óptimo encontrado: "${bestCandidate.title}" (${bestCandidate.duration}s, diff: ${bestCandidate.diff}s) en query: ${q}`);
-                    break;
-                }
+                if (allValidCandidates.length >= 3) break;
             } catch(e) {
                 console.warn(`Aviso buscando con ${q}:`, e.message);
             }
+        }
+
+        // Eliminar duplicados por URL
+        const uniqueCandidates = [];
+        const seenUrls = new Set();
+        for (const c of allValidCandidates) {
+            if (!seenUrls.has(c.url)) {
+                seenUrls.add(c.url);
+                uniqueCandidates.push(c);
+            }
+        }
+
+        if (uniqueCandidates.length > 0) {
+            uniqueCandidates.sort((a, b) => a.diff - b.diff);
+
+            // ROTACIÓN DE VERSIONES: seleccionar siguiente versión diferente en cada clic
+            const trackCycleKey = `${artist} - ${cleanT}`.toLowerCase();
+            const cycle = versionCycleIndex[trackCycleKey] || 0;
+            const chosenIdx = cycle % uniqueCandidates.length;
+            bestCandidate = uniqueCandidates[chosenIdx];
+            versionCycleIndex[trackCycleKey] = cycle + 1;
+
+            console.log(`[CLEAN DOWNLOAD] Versión elegida [Opción ${chosenIdx + 1}/${uniqueCandidates.length}]: "${bestCandidate.title}" (${bestCandidate.duration}s, diff: ${bestCandidate.diff}s)`);
         }
 
         if (!bestCandidate || !bestCandidate.url) {

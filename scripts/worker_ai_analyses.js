@@ -101,29 +101,50 @@ Debes responder ÚNICAMENTE con un objeto JSON válido con esta estructura exact
   ]
 }`;
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${geminiKey}`;
-    const res = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }],
-            generationConfig: { responseMimeType: 'application/json', temperature: 0.3 }
-        })
-    });
+    // Lista de modelos a rotar automáticamente en orden de preferencia
+    const availableModels = [
+        'gemini-3.5-flash',
+        'gemini-3.5-flash-lite',
+        'gemini-3.1-flash-lite'
+    ];
 
-    if (res.status === 429) {
-        throw new Error("RATE_LIMIT");
+    for (const model of availableModels) {
+        try {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${geminiKey}`;
+            const res = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [{ parts: [{ text: prompt }] }],
+                    generationConfig: { responseMimeType: 'application/json', temperature: 0.3 }
+                })
+            });
+
+            if (res.status === 429) {
+                console.warn(`⚠️ Cuota agotada en modelo [${model}]. Probando siguiente modelo disponible...`);
+                continue; // Probar siguiente modelo
+            }
+
+            if (!res.ok) {
+                const txt = await res.text();
+                console.warn(`Aviso en modelo ${model} (${res.status}): ${txt.substring(0, 80)}`);
+                continue;
+            }
+
+            const d = await res.json();
+            const rawAnswer = d.candidates?.[0]?.content?.parts?.[0]?.text;
+            if (rawAnswer) {
+                const parsed = JSON.parse(rawAnswer);
+                parsed._aiModel = model;
+                return parsed;
+            }
+        } catch(e) {
+            console.warn(`Error llamando a ${model}:`, e.message);
+        }
     }
 
-    if (!res.ok) {
-        const txt = await res.text();
-        throw new Error(`HTTP ${res.status}: ${txt}`);
-    }
-
-    const d = await res.json();
-    const rawAnswer = d.candidates?.[0]?.content?.parts?.[0]?.text;
-    if (!rawAnswer) throw new Error("Respuesta vacía de Gemini");
-    return JSON.parse(rawAnswer);
+    // Si todos los modelos dieron 429
+    throw new Error("ALL_QUOTAS_EXHAUSTED");
 }
 
 (async () => {
@@ -192,9 +213,9 @@ Debes responder ÚNICAMENTE con un objeto JSON válido con esta estructura exact
                         console.warn(`⚠️ Respuesta incompleta para ${cleanT}, reintentando...`);
                     }
                 } catch(err) {
-                    if (err.message === 'RATE_LIMIT') {
-                        console.warn(`⏳ Límite de consultas (429) alcanzado. Esperando 60 segundos antes de reintentar...`);
-                        await new Promise(r => setTimeout(r, 60000));
+                    if (err.message === 'ALL_QUOTAS_EXHAUSTED' || err.message === 'RATE_LIMIT') {
+                        console.warn('⏸️ [CUOTA DIARIA AGOTADA EN TODOS LOS MODELOS]. El worker pausará 30 minutos antes del próximo sondeo...');
+                        await new Promise(r => setTimeout(r, 30 * 60 * 1000));
                     } else {
                         console.error(`❌ Error analizando "${cleanT}":`, err.message);
                         break;
