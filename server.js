@@ -1578,39 +1578,124 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
 
         const targetFileName = `${artist} - ${title}.mp3`;
         const targetFilePath = path.join(targetFolder, targetFileName);
-        const tempOutput = path.join(__dirname, 'data', `temp_clean_${Date.now()}.${'mp3'}`);
+        const tempOutput = path.join(__dirname, 'data', `temp_clean_${Date.now()}.mp3`);
 
-        const { spawn } = require('child_process');
+        const { exec } = require('child_process');
         const ffmpegDir = 'C:\\Users\\MSI Roberto\\.spotdl';
-        const query = `scsearch1:${artist} - ${cleanT}`;
 
-        console.log(`[CLEAN DOWNLOAD] Descargando versión limpia para: ${artist} - ${cleanT}`);
+        console.log(`[CLEAN DOWNLOAD] Buscando versión limpia y exacta de estudio para: ${artist} - ${cleanT}`);
 
-        const args = [
-            '-m', 'yt_dlp',
-            '--ffmpeg-location', ffmpegDir,
-            query,
-            '-x',
-            '--audio-format', 'mp3',
-            '--audio-quality', '0',
-            '-o', tempOutput
+        // 1. Obtener duración esperada de estudio (en segundos)
+        let expectedDurationSec = null;
+        const meta = getTrackMetadata(artist, title);
+        if (meta && meta.durationMs) {
+            expectedDurationSec = Math.round(meta.durationMs / 1000);
+        } else {
+            try {
+                const itunesRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(artist + ' ' + cleanT)}&entity=song&limit=5`, { signal: AbortSignal.timeout(3500) });
+                if (itunesRes.ok) {
+                    const itunesData = await itunesRes.json();
+                    if (itunesData.results && itunesData.results.length > 0) {
+                        const match = itunesData.results.find(r => (r.artistName || '').toLowerCase().includes(artist.toLowerCase().split(/[,&]/)[0].trim())) || itunesData.results[0];
+                        if (match && match.trackTimeMillis) {
+                            expectedDurationSec = Math.round(match.trackTimeMillis / 1000);
+                        }
+                    }
+                }
+            } catch(e) {}
+        }
+
+        console.log(`[CLEAN DOWNLOAD] Duración oficial de estudio esperada: ${expectedDurationSec ? expectedDurationSec + 's (' + Math.floor(expectedDurationSec/60) + ':' + (expectedDurationSec%60).toString().padStart(2, '0') + ')' : 'No especificada'}`);
+
+        // 2. Buscar candidatos en SoundCloud y YouTube con yt-dlp dump-json
+        const searchQueries = [
+            `scsearch8:${artist} - ${cleanT}`,
+            `ytsearch8:${artist} - ${cleanT} audio`
         ];
 
-        const proc = spawn('python', args);
+        let bestCandidate = null;
 
-        let stdErr = '';
-        proc.stderr.on('data', d => { stdErr += d.toString(); });
+        for (const q of searchQueries) {
+            try {
+                const dumpCmd = `python -m yt_dlp --dump-json --flat-playlist "${q}"`;
+                const dumpOutput = await new Promise((resolve) => {
+                    exec(dumpCmd, { maxBuffer: 10 * 1024 * 1024, timeout: 15000 }, (err, stdout) => {
+                        resolve(stdout || '');
+                    });
+                });
 
-        proc.on('close', async (code) => {
+                if (!dumpOutput) continue;
+
+                const lines = dumpOutput.trim().split('\n');
+                const candidates = [];
+
+                for (const line of lines) {
+                    try {
+                        const item = JSON.parse(line);
+                        const dur = item.duration;
+                        // FILTRO CRÍTICO: descartar audios de menos de 60 segundos (clips/previews/teasers)
+                        if (!dur || dur < 60) continue;
+
+                        const itemTitle = (item.title || '').toLowerCase();
+                        if (itemTitle.includes('preview') || itemTitle.includes('teaser') || itemTitle.includes('trailer') || itemTitle.includes('snippet')) continue;
+
+                        // Penalizar colaboraciones no deseadas si el artista original es en solitario
+                        let collabPenalty = 0;
+                        const hasOriginalCollab = title.toLowerCase().includes('feat') || title.toLowerCase().includes('con ') || title.toLowerCase().includes('ft.');
+                        if (!hasOriginalCollab && (itemTitle.includes('feat.') || itemTitle.includes('ft.') || itemTitle.includes(' con '))) {
+                            collabPenalty = 25; // Penalización para priorizar versión en solitario
+                        }
+
+                        let diff = expectedDurationSec ? Math.abs(dur - expectedDurationSec) : 0;
+                        diff += collabPenalty;
+
+                        // Si hay duración de estudio esperada, descartar audios con más de 45s de diferencia
+                        if (expectedDurationSec && Math.abs(dur - expectedDurationSec) > 45) continue;
+
+                        candidates.push({
+                            url: item.webpage_url || item.url,
+                            duration: dur,
+                            title: item.title,
+                            diff: diff
+                        });
+                    } catch(e) {}
+                }
+
+                if (candidates.length > 0) {
+                    candidates.sort((a, b) => a.diff - b.diff);
+                    bestCandidate = candidates[0];
+                    console.log(`[CLEAN DOWNLOAD] Candidato óptimo encontrado: "${bestCandidate.title}" (${bestCandidate.duration}s, diff: ${bestCandidate.diff}s) en query: ${q}`);
+                    break;
+                }
+            } catch(e) {
+                console.warn(`Aviso buscando con ${q}:`, e.message);
+            }
+        }
+
+        if (!bestCandidate || !bestCandidate.url) {
+            return res.status(404).json({ error: 'No se encontró ninguna versión de estudio que coincida con la duración esperada.' });
+        }
+
+        console.log(`[CLEAN DOWNLOAD] Descargando audio desde: ${bestCandidate.url}`);
+
+        const downloadCmd = `python -m yt_dlp --ffmpeg-location "${ffmpegDir}" "${bestCandidate.url}" -x --audio-format mp3 --audio-quality 0 -o "${tempOutput}"`;
+
+        exec(downloadCmd, { timeout: 45000 }, async (err, stdout, stderr) => {
             if (fs.existsSync(tempOutput)) {
                 try {
+                    const stats = fs.statSync(tempOutput);
+                    // Verificación de seguridad: el archivo debe pesar al menos 900 KB
+                    if (stats.size < 900000) {
+                        fs.unlinkSync(tempOutput);
+                        return res.status(400).json({ error: 'El archivo descargado es demasiado corto o corrupto (< 1 MB). Operación cancelada para proteger la pista.' });
+                    }
+
                     fs.copyFileSync(tempOutput, targetFilePath);
                     fs.unlinkSync(tempOutput);
-                    console.log(`✅ [CLEAN DOWNLOAD] Pista reemplazada con éxito en: ${targetFilePath}`);
-                    // 🔄 RESTABLECIMIENTO AUTOMÁTICO A 0.0s Y LETRA LIMPIA DE ESTUDIO
-                    // Al sustituir por audio limpio, eliminamos desfases previos del videoclip y cargamos marcas limpias
+                    console.log(`✅ [CLEAN DOWNLOAD] Pista reemplazada con éxito (${stats.size} bytes) en: ${targetFilePath}`);
+
+                    // Restablecer retardo a 0.0s y sincronizar letras limpias
                     try {
-                        const cleanT = cleanTrackTitle(title);
                         const lrcurl = `https://lrclib.net/api/get?artist_name=${encodeURIComponent(artist)}&track_name=${encodeURIComponent(cleanT)}`;
                         const lrcres = await fetch(lrcurl, { signal: AbortSignal.timeout(3000) });
                         if (lrcres.ok) {
@@ -1627,28 +1712,28 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
                                 }
                             }
                         }
-                    } catch(e) {
-                        console.error('Aviso restableciendo letra en replace-clean-audio:', e.message);
-                    }
+                    } catch(e) {}
 
-                    return res.json({ 
-                        success: true, 
-                        message: `Versión oficial limpia de estudio descargada y reemplazada correctamente. Retardo restablecido a 0.0s.`,
+                    return res.json({
+                        success: true,
+                        message: `Versión oficial limpia de estudio descargada (${Math.floor(bestCandidate.duration/60)}:${(bestCandidate.duration%60).toString().padStart(2, '0')}). Retardo restablecido a 0.0s.`,
                         fileName: targetFileName,
                         offsetSec: 0.0,
+                        duration: bestCandidate.duration,
                         relUrl: `/media-music/${encodeURIComponent(targetCategory)}/${encodeURIComponent(targetFileName)}?t=${Date.now()}`
                     });
                 } catch(e) {
-                    return res.status(500).json({ error: 'Error copiando archivo de audio reemplazado: ' + e.message });
+                    return res.status(500).json({ error: 'Error copiando archivo de audio: ' + e.message });
                 }
             } else {
-                console.error(`❌ [CLEAN DOWNLOAD] Falló la descarga: ${stdErr.slice(0, 300)}`);
-                return res.status(500).json({ error: 'No se pudo descargar la versión de audio limpia: ' + stdErr.slice(0, 150) });
+                console.error(`❌ [CLEAN DOWNLOAD] Falló la descarga: ${stderr || err?.message}`);
+                return res.status(500).json({ error: 'No se pudo descargar el audio limpio: ' + (stderr || err?.message || 'Error desconocido').slice(0, 150) });
             }
         });
+
     } catch(err) {
         console.error('Error en /api/track/replace-clean-audio:', err);
-        res.status(500).json({ error: err.message });
+        res.status(500).json({ error: 'Error interno del servidor: ' + err.message });
     }
 });
 
