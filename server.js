@@ -2201,23 +2201,25 @@ app.get('/api/retro-hits/radio-radar', async (req, res) => {
         const xmlText = await tritonRes.text();
         const viejunaSet = getViejunaTracksSet();
 
-        const itemRegex = /<nowplaying-info\b[^>]*>([\s\S]*?)<\/nowplaying-info>/gi;
+        function getXmlProp(block, propName) {
+            const startTag = `<property name="${propName}"><![CDATA[`;
+            const endTag = ']]></property>';
+            const sIdx = block.indexOf(startTag);
+            if (sIdx === -1) return '';
+            const eIdx = block.indexOf(endTag, sIdx + startTag.length);
+            if (eIdx === -1) return '';
+            return block.substring(sIdx + startTag.length, eIdx).trim();
+        }
+
         const items = [];
-        let match;
-
-        while ((match = itemRegex.exec(xmlText)) !== null) {
-            const block = match[1];
-            const getProp = (propName) => {
-                const pRegex = new RegExp(`<property name="${propName}"><!\[CDATA\[(.*?)\]\]><\/property>`, 'i');
-                const m = block.match(pRegex);
-                return m ? m[1].trim() : '';
-            };
-
-            const title = getProp('cue_title');
-            const artist = getProp('track_artist_name');
-            const album = getProp('track_album_name');
-            const coverUrl = getProp('track_cover_url');
-            const timestamp = getProp('cue_time_start');
+        const blocks = xmlText.split('</nowplaying-info>');
+        for (const block of blocks) {
+            if (!block.includes('<nowplaying-info')) continue;
+            const title = getXmlProp(block, 'cue_title');
+            const artist = getXmlProp(block, 'track_artist_name');
+            const album = getXmlProp(block, 'track_album_name');
+            const coverUrl = getXmlProp(block, 'track_cover_url');
+            const timestamp = getXmlProp(block, 'cue_time_start');
 
             if (title && artist && !title.toLowerCase().includes('publicidad') && !title.toLowerCase().includes('los40 classic')) {
                 const isOwned = isHitOwned(artist, title, viejunaSet);
