@@ -2350,11 +2350,35 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         statsModal.style.display = 'flex';
+        // Forzar reflow antes de añadir la clase active para la animación de entrada
+        setTimeout(() => {
+            statsModal.classList.add('active');
+        }, 10);
     }
 
-    if (btnOpenStats) btnOpenStats.addEventListener('click', openStatsModal);
-    if (btnCloseStats) btnCloseStats.addEventListener('click', () => { if (statsModal) statsModal.style.display = 'none'; });
-    if (statsModal) statsModal.addEventListener('click', (e) => { if (e.target === statsModal) statsModal.style.display = 'none'; });
+    if (btnOpenStats) {
+        btnOpenStats.addEventListener('click', openStatsModal);
+    }
+    if (btnCloseStats) {
+        btnCloseStats.addEventListener('click', () => {
+            if (statsModal) {
+                statsModal.classList.remove('active');
+                setTimeout(() => {
+                    if (!statsModal.classList.contains('active')) statsModal.style.display = 'none';
+                }, 250);
+            }
+        });
+    }
+    if (statsModal) {
+        statsModal.addEventListener('click', (e) => {
+            if (e.target === statsModal) {
+                statsModal.classList.remove('active');
+                setTimeout(() => {
+                    if (!statsModal.classList.contains('active')) statsModal.style.display = 'none';
+                }, 250);
+            }
+        });
+    }
 
     // ==========================================================================
     // 📺 Modo Cine / Pantalla Completa

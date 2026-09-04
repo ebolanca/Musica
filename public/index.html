@@ -18,7 +18,7 @@
             </div>
             <div class="logo-title">
                 <h1>Música</h1>
-                <p>Plataforma de Videoclips & Análisis Sónico v1.5.19</p>
+                <p>Plataforma de Videoclips & Análisis Sónico v1.5.20</p>
             </div>
         </div>
 
@@ -267,14 +267,18 @@
 
 
     <!-- Modal: Estadísticas del Catálogo -->
-    <div class="modal-overlay" id="stats-modal" style="display: none;">
-        <div class="modal-card stats-modal-card">
+    <div class="modal-backdrop" id="stats-modal" style="display: none;">
+        <div class="modal-container stats-modal-card">
             <div class="modal-header">
                 <div class="modal-title-group">
-                    <h3 class="modal-title"><i class="fa-solid fa-chart-pie" style="color: var(--spotify-green);"></i> Estadísticas de la Biblioteca Musical</h3>
-                    <p class="modal-subtitle">Resumen y análisis de todo tu catálogo de canciones</p>
+                    <h3 class="modal-title" style="color:#fff; font-size:1.3rem; font-weight:800; display:flex; align-items:center; gap:8px;">
+                        <i class="fa-solid fa-chart-pie" style="color: var(--spotify-green);"></i> Estadísticas de la Biblioteca Musical
+                    </h3>
+                    <p class="modal-subtitle" style="color:var(--text-muted); font-size:0.85rem; margin-top:3px;">
+                        Resumen y análisis de todo tu catálogo de canciones
+                    </p>
                 </div>
-                <button class="btn-close-modal" id="btn-close-stats"><i class="fa-solid fa-xmark"></i></button>
+                <button class="btn-close-modal" id="btn-close-stats" title="Cerrar"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="modal-body stats-modal-body" id="stats-content">
                 <!-- Rendered dynamically -->
