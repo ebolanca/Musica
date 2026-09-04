@@ -1202,6 +1202,16 @@ app.post('/api/jellyfin/refresh', async (req, res) => {
             signal: AbortSignal.timeout(5000)
         }).catch(() => {});
         
+        // También disparar sincronización de spotdl-sync en OMEN para descargar nuevos temas de Spotify
+        try {
+            await fetch('http://100.95.217.45:4000/api/docker/restart', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: 'spotdl-sync' }),
+                signal: AbortSignal.timeout(3000)
+            });
+        } catch(e){}
+
         await fetchJellyfinVideos();
         res.json({ success: true, count: cachedJellyfinVideos.length });
     } catch(e) {
@@ -2052,16 +2062,14 @@ let cachedRetroHits = null;
 let cachedDismissed = null;
 
 function loadDismissedRetroHits() {
-    if (!cachedDismissed) {
-        if (fs.existsSync(RETRO_DISMISSED_FILE)) {
-            try {
-                cachedDismissed = JSON.parse(fs.readFileSync(RETRO_DISMISSED_FILE, 'utf8'));
-            } catch(e) {
-                cachedDismissed = {};
-            }
-        } else {
+    if (fs.existsSync(RETRO_DISMISSED_FILE)) {
+        try {
+            cachedDismissed = JSON.parse(fs.readFileSync(RETRO_DISMISSED_FILE, 'utf8'));
+        } catch(e) {
             cachedDismissed = {};
         }
+    } else {
+        cachedDismissed = {};
     }
     return cachedDismissed;
 }
@@ -2100,18 +2108,38 @@ function loadSpanishRetroHits() {
 
 function getViejunaTracksSet() {
     const set = new Set();
-    const folder = path.join(OMEN_MUSIC_DIR, 'Música viejuna');
-    if (fs.existsSync(folder)) {
+    // 1. Archivos físicos en disco (Música viejuna y posibles variantes)
+    const folderNames = ['Música viejuna', 'Música viejuna Roberto'];
+    for (const fName of folderNames) {
+        const folder = path.join(OMEN_MUSIC_DIR, fName);
+        if (fs.existsSync(folder)) {
+            try {
+                const files = fs.readdirSync(folder);
+                for (const f of files) {
+                    const ext = path.extname(f).toLowerCase();
+                    if (ext === '.mp3' || ext === '.m4a' || ext === '.flac') {
+                        const cleanName = f.replace(/\.[^.]+$/, '')
+                            .toLowerCase()
+                            .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+                            .replace(/[^a-z0-9]/g, '');
+                        set.add(cleanName);
+                    }
+                }
+            } catch(e){}
+        }
+    }
+    // 2. Caché de playlists de Spotify (tracks_cache.json) para reconocer canciones recién añadidas
+    if (fs.existsSync(OMEN_CACHE_PATH)) {
         try {
-            const files = fs.readdirSync(folder);
-            for (const f of files) {
-                const ext = path.extname(f).toLowerCase();
-                if (ext === '.mp3' || ext === '.m4a' || ext === '.flac') {
-                    const cleanName = f.replace(/\.[^.]+$/, '')
-                        .toLowerCase()
-                        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-                        .replace(/[^a-z0-9]/g, '');
-                    set.add(cleanName);
+            const cache = JSON.parse(fs.readFileSync(OMEN_CACHE_PATH, 'utf8'));
+            for (const key of ['Música viejuna Roberto', 'Música viejuna']) {
+                if (Array.isArray(cache[key])) {
+                    for (const [art, tit] of cache[key]) {
+                        const ca = (art || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+                        const ct = (tit || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+                        set.add(ca + ct);
+                        set.add(ct + ca);
+                    }
                 }
             }
         } catch(e){}

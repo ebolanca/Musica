@@ -2540,6 +2540,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(r => r.json())
                 .then(() => {
                     fetchPlaylists();
+                    if (currentTab === 'Éxitos España') {
+                        renderRetroHitsView();
+                    }
                     btnJellyfinSync.innerHTML = '<i class="fa-solid fa-check"></i> Sincronizado';
                     setTimeout(() => {
                         btnJellyfinSync.disabled = false;
@@ -2655,6 +2658,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (res.ok && data.success) {
                 setTimeout(() => {
                     cardEl.remove();
+                    renderRetroHitsView();
                 }, 300);
                 showToastNotification(`🗑️ "${title}" omitida. No volverá a sugerirse.`);
                 // Actualizar badge
@@ -2893,6 +2897,24 @@ document.addEventListener('DOMContentLoaded', () => {
             filterBar.appendChild(b);
         });
 
+        const refreshRetroBtn = document.createElement('button');
+        refreshRetroBtn.className = 'retro-switch-btn';
+        refreshRetroBtn.style.fontSize = '0.8rem';
+        refreshRetroBtn.style.padding = '6px 14px';
+        refreshRetroBtn.style.marginLeft = 'auto';
+        refreshRetroBtn.style.color = '#38bdf8';
+        refreshRetroBtn.style.borderColor = 'rgba(56, 189, 248, 0.4)';
+        refreshRetroBtn.innerHTML = '<i class="fa-solid fa-rotate"></i> Refrescar sugerencias';
+        refreshRetroBtn.title = 'Volver a contrastar contra tu colección y Spotify';
+        refreshRetroBtn.addEventListener('click', () => {
+            refreshRetroBtn.disabled = true;
+            refreshRetroBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Contrastando...';
+            renderRetroHitsView().finally(() => {
+                showToastNotification('✅ Catálogo de sugerencias contrastado y actualizado');
+            });
+        });
+        filterBar.appendChild(refreshRetroBtn);
+
         container.appendChild(filterBar);
 
         // Filtrar hits a mostrar
@@ -2901,9 +2923,11 @@ document.addEventListener('DOMContentLoaded', () => {
             displayHits = displayHits.filter(h => h.year === retroState.selectedYear);
         }
         if (retroState.filter === 'missing') {
-            displayHits = displayHits.filter(h => !h.isOwned);
+            displayHits = displayHits.filter(h => !h.isOwned && !h.isDismissed);
         } else if (retroState.filter === 'owned') {
             displayHits = displayHits.filter(h => h.isOwned);
+        } else if (retroState.filter === 'dismissed') {
+            displayHits = displayHits.filter(h => h.isDismissed);
         }
 
         // Filtro de texto rápido si hay búsqueda

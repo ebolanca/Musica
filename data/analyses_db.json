@@ -32930,5 +32930,245 @@
       }
     ],
     "_aiModel": "gemini-3.5-flash-lite"
+  },
+  "Ariana Grande, Zedd - Break Free": {
+    "title": "Break Free",
+    "artist": "Ariana Grande, Zedd",
+    "year": "2014",
+    "album": "My Everything",
+    "synopsis": "Break Free representa la convergencia del pop vocal de Ariana Grande con la arquitectura EDM de Zedd, caracterizada por un diseño sonoro de alta energía y una estructura de 'build-up' y 'drop' optimizada para radio. La producción prioriza la claridad vocal sobre una base sintética agresiva, consolidando la transición de Grande hacia un sonido mainstream global con una producción técnica de alta fidelidad.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La pista opera en un tempo de 130 BPM en la tonalidad de Mi mayor. La producción de Zedd utiliza sintetizadores de onda de sierra (sawtooth) con sidechaining agresivo para crear espacio para el kick drum de 4/4. El espectro de frecuencias está dominado por un sub-bajo profundo (40-60 Hz) y una capa de sintetizadores de alta frecuencia (3-5 kHz) que proporcionan el brillo característico del EDM de 2014. La voz de Grande está procesada con una compresión multibanda para mantener la consistencia dinámica, con una reverberación de tipo 'hall' corta y un delay sutil en las colas de fraseo. El 'drop' prescinde de elementos melódicos complejos, confiando en un diseño de sonido de sintetizador 'supersaw' apilado que ocupa el rango medio-alto, dejando el espectro de medios-bajos despejado para la percusión."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra aborda la liberación emocional tras una relación opresiva. En el verso 'I only wanna die alive / Never by the hands of a broken heart', Grande utiliza la paradoja 'die alive' para enfatizar la intensidad de vivir al límite frente a la muerte emocional. El estribillo 'Now that I've become who I really am / I've finally found the road to the stars' emplea la metáfora del camino estelar como símbolo de autorrealización. El término 'Break Free' funciona como un doble sentido: la liberación de una pareja tóxica y la ruptura de las expectativas impuestas por la industria musical sobre su imagen previa de 'niña Disney'."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Dirigido por Chris Marrs Piliero, el videoclip es un homenaje directo a la ciencia ficción de los años 50 y 60, específicamente a películas como 'Barbarella' y 'Star Wars'. La estética utiliza una paleta de colores saturados, efectos visuales prácticos y CGI retro. El simbolismo es claro: Grande derrota a robots y alienígenas, representando la superación de obstáculos y el control sobre su propia narrativa. La iconografía espacial refuerza la idea de 'despegue' y libertad absoluta, alineándose con la temática de la canción."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "La canción alcanzó el puesto número 4 en el Billboard Hot 100, consolidando a Ariana Grande como una fuerza dominante en el pop. Fue un éxito comercial certificado multiplatino. Una curiosidad técnica documentada es la dificultad de Grande con la letra en inglés, ya que el compositor Max Martin insistió en una gramática específica que ella consideraba incorrecta, lo que generó tensiones creativas durante la grabación. El impacto fue masivo en clubes y festivales, siendo un pilar fundamental en la era dorada del EDM comercial."
+      }
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
+  },
+  "LMFAO, Lauren Bennett, GoonRock - Party Rock Anthem": {
+    "title": "Party Rock Anthem",
+    "artist": "LMFAO, Lauren Bennett, GoonRock",
+    "year": "2011",
+    "album": "Sorry For Party Rocking",
+    "synopsis": "Party Rock Anthem es un pilar del electro-pop y dance-pop de la era post-2010, caracterizado por una estructura de 'build-up' y 'drop' altamente optimizada para el consumo en clubes. Su tesis sónica se basa en la saturación armónica de sintetizadores analógicos virtuales, una compresión de bus agresiva y el uso de voces procesadas con vocoder y auto-tune correctivo para maximizar la energía rítmica.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción se fundamenta en un tempo de 130 BPM con una estructura de 4/4. El diseño sonoro destaca por un 'sidechain' extremadamente marcado en los sintetizadores (posiblemente emulaciones de Sylenth1 o Nexus), que bombean rítmicamente contra el bombo (kick) de 4 en el suelo. El espectro de frecuencias está dominado por un subgrave centrado en los 50-60 Hz, con una compresión multibanda que mantiene los transitorios del 'snare' y el 'clap' en un nivel de presión sonora constante. La voz de Lauren Bennett presenta una ecualización con realce en los 3-5 kHz para cortar la mezcla densa, mientras que las voces de Redfoo y SkyBlu utilizan un procesamiento de 'hard tuning' para lograr ese timbre robótico y plano característico del género."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La lírica es hedonista y utilitaria, diseñada como un mantra para la pista de baile. El estribillo 'Everyday I'm shufflin'' hace referencia al 'Melbourne Shuffle', un estilo de baile viral. En el verso 'Party rock is in the house tonight / Everybody just have a good time', se utiliza el verbo 'to rock' como sinónimo de fiesta intensa. El doble sentido reside en 'shufflin'', que no solo alude al baile, sino a la acción de moverse constantemente entre multitudes. La estructura es cíclica, priorizando la repetición de ganchos (hooks) sobre la complejidad narrativa, reforzando la psicología de la gratificación instantánea propia de la cultura EDM de la época."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip, dirigido por Mickey Finnegan, es una parodia de la película '28 Days Later'. La narrativa visual comienza con los artistas despertando de un coma tras un apocalipsis de 'party rock', donde la sociedad ha sido infectada por la necesidad de bailar. La estética utiliza una paleta de colores saturados, vestuario de neón y patrones geométricos (animal print), consolidando la identidad visual de LMFAO como una marca de estilo de vida. El simbolismo es claro: la música es un virus contagioso que obliga a la población a realizar la coreografía del 'shuffle'."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "Comercialmente, fue un éxito masivo, alcanzando el número 1 en el Billboard Hot 100 y en más de 10 países. No es una obra de nicho; se convirtió en un fenómeno global que definió el sonido de la radio comercial entre 2011 y 2012. Una curiosidad técnica es que el tema fue producido principalmente por GoonRock y Redfoo en estudios caseros, demostrando la democratización de la producción musical de alta fidelidad. Su impacto fue tal que el 'shuffle' se convirtió en un estándar cultural en plataformas emergentes como YouTube, siendo uno de los primeros ejemplos de viralidad impulsada por coreografías estandarizadas."
+      }
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
+  },
+  "Mike Posner, Seeb - I Took a Pill In Ibiza": {
+    "title": "I Took a Pill In Ibiza",
+    "artist": "Mike Posner, Seeb",
+    "year": "2015",
+    "album": "At Night, Alone.",
+    "synopsis": "El remix de Seeb transformó una balada acústica introspectiva en un himno de EDM melódico que define la era del 'tropical house' comercial. La tesis sónica reside en el contraste entre una lírica de autodestrucción nihilista y una producción de sintetizadores brillantes y percusión minimalista. Es un estudio de caso sobre cómo la recontextualización de un arreglo puede alterar radicalmente la percepción emocional de una composición.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción de Seeb se basa en un diseño sonoro de 'plucked synth' (sintetizador de pulso) con un ataque rápido y un decay corto, procesado con un filtro paso bajo que se abre en el drop. La percusión utiliza samples de caja con un 'reverb' de tipo 'plate' corto para mantener la claridad en el rango de los 200-500Hz. La voz de Posner presenta una compresión multibanda agresiva para nivelar las dinámicas, con un ligero 'pitch correction' (Auto-Tune) utilizado como efecto estético en las transiciones. El espectro de frecuencias está optimizado para sistemas de sonido de club: subgraves centrados en los 60Hz con un side-chaining marcado que genera el efecto de 'bombeo' (ducking) contra el bombo (kick), el cual es un sample procesado con transitorios enfatizados para cortar la mezcla. La reverberación es predominantemente estéreo, creando una sensación de amplitud que contrasta con la sequedad de la voz principal."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra es una autopsia de la fama vacía. Fragmento clave: 'I took a pill in Ibiza / To show Avicii I was cool'. El uso de 'pill' (pastilla) funciona como metonimia de la desconexión emocional. En 'And when I finally got sober, felt 10 years older', el uso del adjetivo 'sober' (sobrio) marca el clímax de la desilusión. El doble sentido reside en la ironía de la fama: 'You don't wanna be high like me', donde 'high' no solo refiere a la intoxicación, sino a la posición inalcanzable y solitaria de una celebridad. La estructura es confesional, utilizando un lenguaje directo y crudo que desmitifica el estilo de vida de las estrellas del pop."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial, dirigido por Jon Jon Augustavo, utiliza una narrativa de 'mockumentary' o realidad distorsionada. Posner aparece con una máscara de papel de sí mismo, simbolizando la pérdida de identidad y la alienación del artista frente a su propia imagen pública. La fotografía emplea un estilo documental con grano cinematográfico, alternando entre la euforia artificial de la fiesta y la soledad del backstage. El simbolismo es claro: la máscara es el 'personaje' que el público consume, mientras que el hombre real queda oculto y deshumanizado."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "El tema fue un éxito global masivo, alcanzando el top 10 en más de 25 países, incluyendo el #4 en el Billboard Hot 100. Es un caso curioso de 'remix que supera al original', ya que la versión acústica de Posner pasó desapercibida hasta que el dúo noruego Seeb la reconfiguró. A pesar de su éxito en listas, Posner ha declarado en entrevistas que la canción le generó una crisis de identidad, ya que el público coreaba una letra sobre la depresión y el abuso de sustancias como si fuera un himno festivo, subrayando la desconexión entre el mensaje del autor y la interpretación de la audiencia masiva."
+      }
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
+  },
+  "James Arthur - Say You Won't Let Go": {
+    "title": "Say You Won't Let Go",
+    "artist": "James Arthur",
+    "year": "2016",
+    "album": "Back from the Edge",
+    "synopsis": "Balada acústica de pop contemporáneo construida sobre una progresión armónica circular que prioriza la intimidad vocal sobre la complejidad instrumental. La producción se centra en la textura granular de la voz de Arthur, utilizando una instrumentación minimalista que evoluciona hacia un clímax orquestal contenido, consolidándose como un estándar de la radiofórmula post-2010.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La base es una guitarra acústica con un patrón de arpegio constante, procesada con una compresión de ataque lento para preservar el transitorio de la pulsación de la cuerda. La voz, grabada probablemente con un Neumann U87 o similar, presenta una saturación armónica en los medios-graves (200-400 Hz) que enfatiza el timbre rasgado de Arthur. La mezcla utiliza una reverberación de tipo 'plate' corta en la voz para dar profundidad sin emborronar la articulación. En el estribillo, se añaden capas de cuerdas sintetizadas y un bombo de batería con un filtro paso-bajo que aporta peso rítmico sin romper la estética acústica. El rango dinámico está estrictamente controlado mediante limitadores de bus para asegurar una consistencia de volumen apta para plataformas de streaming."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra explora la vulnerabilidad y la devoción a largo plazo. Verso clave: 'I met you in the dark, you lit me up'. El uso de 'lit me up' es un doble sentido: literalmente encender una luz y metafóricamente devolver la esperanza a alguien en un estado depresivo. En el coro: 'I'm so in love with you, and I hope you know', la estructura es directa, evitando metáforas complejas para maximizar la conexión emocional. Vocabulario: 'Mess' (desastre/caos personal), 'Drunk' (vulnerabilidad extrema). La narrativa sigue una línea cronológica desde el primer encuentro hasta la vejez, utilizando el recurso de la memoria como ancla de la estabilidad emocional."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial, dirigido por Felix Urbauer, emplea una estética monocromática (blanco y negro) que refuerza la atemporalidad y la melancolía de la canción. La narrativa visual es lineal, mostrando a una pareja en diferentes etapas de su vida. El simbolismo reside en la simplicidad: el enfoque constante en las manos y las miradas evita distracciones, centrando la atención en la fidelidad del compromiso. La iluminación es de alto contraste, utilizando sombras pronunciadas para enfatizar la textura de la piel y las expresiones faciales, alineándose con la crudeza vocal de la pista."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "El tema supuso el regreso triunfal de James Arthur tras su salida de Syco Music, alcanzando el número 1 en el UK Singles Chart y certificaciones de multiplatino globalmente. No es una canción de nicho; es un éxito masivo de radio que revitalizó la carrera del artista. Una curiosidad técnica es que la progresión de acordes (Sol, Re, Mi menor, Do) es una de las más utilizadas en la historia del pop, lo que explica su familiaridad inmediata al oído. La canción ha sido objeto de múltiples versiones en programas de talentos, consolidándose como un 'modern classic' del género balada-pop."
+      }
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
+  },
+  "Amy Winehouse - Back To Black": {
+    "title": "Back To Black",
+    "artist": "Amy Winehouse",
+    "year": "2006",
+    "album": "Back To Black",
+    "synopsis": "Obra maestra del soul contemporáneo producida por Mark Ronson, que fusiona la estética del girl-group de los años 60 con una producción lo-fi moderna. La tesis sónica se basa en una instrumentación orgánica, una sección de cuerdas cinematográfica y una voz procesada con una saturación analógica que enfatiza la vulnerabilidad y la decadencia emocional del relato.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción se caracteriza por una estética 'Wall of Sound' minimalista. La batería, grabada con un enfoque seco y directo, carece de reverberación artificial excesiva, priorizando el golpe de la caja. El bajo presenta una compresión notable que mantiene la consistencia en las frecuencias graves (80-150 Hz). Las cuerdas, arregladas por Nick Movshon y Homer Steinweiss, actúan como el colchón armónico que aporta el dramatismo cinematográfico. La voz de Winehouse fue grabada con una cadena de señal que resalta los medios-altos (2kHz-5kHz), utilizando una saturación armónica que emula el sonido de las cintas magnéticas de la era Motown. El uso de reverberación de placas (Plate Reverb) es sutil pero omnipresente, creando una profundidad espacial que no empaña la claridad de la dicción."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra explora el duelo tras una ruptura y el descenso a la autodestrucción. En el verso 'We only said goodbye with words / I died a hundred times', Winehouse utiliza la hipérbole para ilustrar la intensidad del trauma emocional. El estribillo 'You go back to her / And I go back to black' presenta un juego de palabras: 'Black' no solo alude al luto, sino al estado de inconsciencia inducido por el alcohol y las sustancias. El término 'Black' funciona como un doble sentido entre el color del duelo y el vacío existencial. La estructura lírica es confesional, desprovista de metáforas complejas, confiando en la crudeza de la honestidad brutal."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Dirigido por Phil Griffin, el videoclip es una pieza monocromática que refuerza la estética de funeral. La narrativa visual presenta a Winehouse caminando en un cortejo fúnebre real, simbolizando el entierro de su relación. El uso del blanco y negro no es solo una elección estilística, sino una extensión de la temática del título. La puesta en escena es austera, centrando toda la atención en la figura de la artista, cuya imagen icónica (peinado beehive y delineado grueso) se convirtió en el estándar visual de la era."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "El álbum 'Back To Black' catapultó a Winehouse al estrellato global, convirtiéndose en uno de los discos más vendidos del siglo XXI en el Reino Unido. La canción no fue un éxito instantáneo en EE. UU. comparado con 'Rehab', pero consolidó su estatus como referente del soul moderno. Curiosidad técnica: Mark Ronson ha declarado en entrevistas que el sonido 'sucio' del disco fue una decisión deliberada para alejarse de la pulcritud digital de la época, utilizando equipos analógicos de la era de los 60 para capturar una autenticidad que resonó profundamente con la crítica y el público masivo."
+      }
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
+  },
+  "Miley Cyrus - Wrecking Ball": {
+    "title": "Wrecking Ball",
+    "artist": "Miley Cyrus",
+    "year": "2013",
+    "album": "Bangerz",
+    "synopsis": "Wrecking Ball es una balada power-pop de arquitectura minimalista que evoluciona hacia un crescendo orquestal masivo. Producida por Dr. Luke y Cirkut, la pista prioriza la vulnerabilidad vocal mediante una compresión agresiva en las estrofas y una expansión dinámica controlada en el estribillo. Representa el punto de inflexión sónica de Cyrus, alejándose del pop adolescente hacia una estética de producción contemporánea de alta fidelidad.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La instrumentación comienza con un piano de cola procesado con un filtro de paso alto para enfatizar la intimidad, seguido de una percusión programada que entra en el pre-coro. La voz de Cyrus está tratada con una cadena de señal que incluye un compresor 1176 para controlar los transitorios en las notas altas y una reverberación de tipo 'plate' con un decay medio-largo para dar profundidad sin emborronar la inteligibilidad. En el estribillo, se introducen sintetizadores de baja frecuencia (sub-bass) que ocupan el espectro de los 40-60Hz, proporcionando el peso necesario para el impacto emocional. La mezcla es un ejemplo de 'loudness war' de la era, con una limitación final que reduce el rango dinámico para maximizar el volumen percibido en plataformas digitales."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra explora la autodestrucción en una relación tóxica. Frase clave: 'I came in like a wrecking ball / I never hit so hard in love'. El uso de 'wrecking ball' (bola de demolición) es una metáfora de la fuerza destructiva involuntaria. 'All you ever did was break me' utiliza un verbo de ruptura que actúa como juego de palabras con la bola de demolición. El puente 'Don't you ever say I just walked away / I will always want you' revela la ambivalencia psicológica: el deseo de destruir y la incapacidad de desprenderse del objeto de deseo."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Dirigido por Terry Richardson, el videoclip es un estudio de minimalismo extremo. La fotografía se centra en primeros planos cerrados de Cyrus, utilizando una iluminación de alto contraste (chiaroscuro) que enfatiza la textura de la piel y las lágrimas reales. El simbolismo de la bola de demolición es literal y directo: Cyrus montada sobre el objeto representa su propia vulnerabilidad y la fuerza que ella misma ejerce sobre su entorno. La ausencia de un entorno complejo obliga al espectador a confrontar la desnudez emocional y física de la artista."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "La canción alcanzó el número 1 en el Billboard Hot 100, marcando el primer sencillo de Cyrus en lograr esta posición. Su impacto fue masivo, convirtiéndose en un fenómeno viral debido a la estética provocadora del vídeo. A nivel técnico, la canción es citada frecuentemente en escuelas de producción por su transición efectiva entre la balada íntima y el pop de estadio. Aunque fue un éxito comercial indiscutible, la crítica especializada destacó que la producción de Dr. Luke seguía una fórmula estricta de la época, logrando su éxito más por la interpretación vocal cruda de Cyrus que por la innovación en la composición."
+      }
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
+  },
+  "BTS - Dynamite": {
+    "title": "Dynamite",
+    "artist": "BTS",
+    "year": "2020",
+    "album": "Dynamite (NightTime Version)",
+    "synopsis": "Dynamite es una pieza de nu-disco y funk-pop diseñada bajo una arquitectura de producción de alta fidelidad, optimizada para el streaming global. La versión 'NightTime' aplica un tratamiento de ralentización (chopped and screwed light) y una ecualización que enfatiza las frecuencias graves, transformando la energía eufórica del original en una atmósfera nocturna, íntima y texturizada.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción se basa en un tempo de 114 BPM. La versión NightTime reduce la velocidad, alterando el pitch original y generando una saturación armónica en los subgraves (40-60 Hz). El bajo es un sintetizador tipo Moog con un ataque rápido y un decay corto, procesado con compresión sidechain agresiva respecto al bombo. Las guitarras rítmicas presentan un chorus analógico y un filtro paso alto (HPF) a 200 Hz para dejar espacio al cuerpo del bajo. La voz principal utiliza una cadena de procesamiento con ecualización sustractiva en los 400 Hz, compresión multibanda para controlar las sibilancias y una reverberación de placa (plate reverb) con un pre-delay de 20ms para añadir profundidad sin perder la presencia frontal."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra es una oda al optimismo post-pandémico. En el verso 'I'm in the stars tonight, so watch me bring the fire and set the night alight', el uso de 'set the night alight' es un juego de palabras que combina la iluminación física con la vitalidad emocional. El término 'Dynamite' funciona como una metáfora de energía explosiva y contagiosa. La estructura lírica utiliza rimas consonantes simples (light/bright/night) para maximizar la memorabilidad (hook). El doble sentido reside en la transición de la soledad ('I'm diamond, you know I glow up') a la conexión colectiva, utilizando el vocabulario del brillo y la luz como símbolo de resiliencia."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "La versión NightTime no cuenta con un videoclip independiente, sino que se apoya en la estética visual del lanzamiento original. El vídeo oficial utiliza una paleta de colores saturados (estética retro-pop de los años 70). La dirección de arte se centra en la iluminación de alto contraste y el uso de decorados que evocan la cultura pop estadounidense. La identidad visual de la versión NightTime se asocia a menudo con visualizadores de bucle infinito que emplean tonos neón, violetas y azules, reforzando la transición del día a la noche y la introspección sonora."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "Dynamite marcó el primer número 1 de BTS en el Billboard Hot 100, consolidando su estatus como fenómeno global. La versión NightTime es una variante de nicho, diseñada para audiencias que consumen música en contextos de 'lo-fi' o relajación. A diferencia del impacto masivo de la versión original, esta versión funciona como un producto de catálogo para mantener la relevancia en playlists de curaduría nocturna. No es un éxito de listas por sí mismo, sino una extensión estratégica del valor de marca del sencillo original."
+      }
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
+  },
+  "P!nk - What About Us": {
+    "title": "What About Us",
+    "artist": "P!nk",
+    "year": "2017",
+    "album": "Beautiful Trauma",
+    "synopsis": "What About Us es una pieza de pop electrónico con tintes de himno político, caracterizada por una producción minimalista en sus versos que escala hacia un drop de EDM atmosférico. La tesis sónica reside en el contraste entre la vulnerabilidad vocal de P!nk y una arquitectura de sintetizadores procesados que buscan una resonancia emocional masiva, consolidando su transición hacia un sonido contemporáneo de radiofórmula de alta fidelidad.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción, a cargo de Steve Mac, se basa en un loop de sintetizador percusivo con un ataque rápido y un decay corto que marca el pulso. Los versos presentan una voz tratada con una compresión paralela agresiva para mantener la presencia a pesar del bajo nivel de instrumentación. El espectro de frecuencias subgraves es controlado mediante un sidechaining preciso que permite que el bombo (kick) respire sin enmascarar los medios-graves del sintetizador. En el estribillo, se introducen capas de sintetizadores tipo 'supersaw' con un ensanchamiento estéreo (widening) mediante técnicas de desfase, mientras que la voz principal se apoya en armonías dobladas y procesadas con un ligero pitch correction para lograr esa textura pulida y brillante característica del pop de 2017."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra aborda la desilusión política y la pérdida de conexión humana. Fragmento clave: 'We are searchlights, we can see in the dark / We are rockets, pointed up at the stars'. El uso de 'searchlights' (reflectores) funciona como metáfora de la claridad en tiempos de incertidumbre. 'What about us?' no es solo una pregunta, es una interpelación directa a las estructuras de poder. Vocabulario: 'Sticks and stones' (referencia al dicho popular sobre agresiones verbales) se subvierte para hablar de la resiliencia colectiva. La estructura lírica utiliza el 'crescendo' emocional, pasando de la introspección en el verso a la demanda colectiva en el estribillo."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Dirigido por Georgia Hudson, el videoclip emplea una estética cinematográfica de tonos desaturados y gran angular. La narrativa visual utiliza la danza contemporánea como lenguaje de resistencia, mostrando a un grupo marginado en un entorno urbano decadente. El simbolismo es claro: la coreografía representa la lucha interna y externa, mientras que la iluminación de alto contraste enfatiza la alienación de los personajes frente a un sistema que los ignora, reforzando el mensaje de 'invisibilidad' que plantea la letra."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "El tema alcanzó el número 1 en las listas de éxitos de varios países, incluyendo Australia y los Países Bajos, y fue nominado al Grammy por Mejor Interpretación Pop Solista. A diferencia de otros lanzamientos de nicho, este fue un éxito comercial masivo que reafirmó la vigencia de P!nk en la industria. Una curiosidad técnica es que la canción fue escrita originalmente por Johnny McDaid (de Snow Patrol) y Steve Mac, quienes buscaron específicamente un sonido que pudiera funcionar tanto en estadios como en plataformas de streaming, logrando una de las canciones más reproducidas de su catálogo en Spotify."
+      }
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
   }
 }
