@@ -1114,19 +1114,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const data = await res.json();
                 if (data.success) {
-                    // Restablecer el desfase a 0.0s
+                    const freshUrl = data.relUrl || `/media-music/${encodeURIComponent(currentSong.playlistName || currentTab || 'Siglo XXI')}/${encodeURIComponent(`${currentSong.artist} - ${currentSong.rawTitle || currentSong.title}.mp3`)}`;
+
+                    // 1. Restablecer el desfase a 0.0s
                     const key = `offset_${normalizeText(currentSong.artist)}_${normalizeText(currentSong.title)}`;
                     safeStorage.setItem(key, '0.0');
+                    lyricsSyncOffset = 0.0;
                     updateLyricsSyncOffset(0.0);
 
-                    // Recargar el reproductor con el nuevo audio
-                    if (data.relUrl && mainMusicAudio) {
-                        mainMusicAudio.src = data.relUrl;
+                    // 2. Actualizar referencia de la pista actual
+                    currentSong.audioUrl = freshUrl;
+                    if (currentSong.videoItem) currentSong.videoItem.streamUrl = freshUrl;
+                    if (data.size) currentSong.sizeBytes = data.size;
+
+                    // 3. Recargar inmediatamente el nuevo audio en el reproductor y reproducir desde el inicio (0s)
+                    if (mainMusicAudio) {
+                        mainMusicAudio.pause();
+                        mainMusicAudio.src = `${freshUrl}?t=${Date.now()}`;
+                        mainMusicAudio.currentTime = 0;
                         mainMusicAudio.load();
-                        mainMusicAudio.play().catch(()=>{});
+                        try {
+                            await mainMusicAudio.play();
+                            updateMusicBarState(true);
+                        } catch(playErr) {
+                            console.warn('Autoplay al reemplazar audio:', playErr);
+                            setTimeout(() => {
+                                mainMusicAudio.play().then(() => updateMusicBarState(true)).catch(() => {});
+                            }, 150);
+                        }
                     }
 
-                    showSyncNotification('✨ ¡Pista de audio reemplazada con éxito por la versión limpia de estudio!');
+                    // 4. Si estamos en Modo Cine, recargar la pista y sincronizar las letras de inmediato
+                    if (cinemaOverlay && cinemaOverlay.style.display === 'flex') {
+                        renderCinemaTrack(currentSong);
+                    }
+
+                    showSyncNotification('✨ ¡Pista reemplazada! Reproduciendo desde el inicio para verificar subtítulos...');
                     btnCinemaReplaceClean.innerHTML = '<i class="fa-solid fa-check"></i> Reemplazada';
                     setTimeout(() => {
                         btnCinemaReplaceClean.disabled = false;

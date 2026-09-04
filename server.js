@@ -1896,10 +1896,12 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
                     }
                 } catch(e) {}
 
+                const relUrl = `/media-music/${encodeURIComponent(targetCategory)}/${encodeURIComponent(targetFileName)}`;
                 return res.json({
                     success: true,
                     size: finalStats.size,
-                    candidate: bestCandidate
+                    candidate: bestCandidate,
+                    relUrl: relUrl
                 });
             } catch (copyErr) {
                 return res.status(500).json({ error: 'Error guardando archivo reemplazado: ' + copyErr.message });
