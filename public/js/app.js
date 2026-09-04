@@ -2643,6 +2643,52 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    async function dismissRetroHit(artist, title, cardEl) {
+        cardEl.classList.add('dismissing');
+        try {
+            const res = await fetch('/api/retro-hits/dismiss', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ artist, title })
+            });
+            const data = await res.json();
+            if (res.ok && data.success) {
+                setTimeout(() => {
+                    cardEl.remove();
+                }, 300);
+                showToastNotification(`🗑️ "${title}" omitida. No volverá a sugerirse.`);
+                // Actualizar badge
+                const bRetro = document.getElementById('badge-retro');
+                if (bRetro && parseInt(bRetro.textContent, 10) > 0) {
+                    bRetro.textContent = parseInt(bRetro.textContent, 10) - 1;
+                }
+            } else {
+                cardEl.classList.remove('dismissing');
+                alert('No se pudo omitir la sugerencia.');
+            }
+        } catch(e) {
+            cardEl.classList.remove('dismissing');
+            console.error('Error omitiendo:', e);
+        }
+    }
+
+    async function restoreRetroHit(artist, title, cardEl) {
+        try {
+            const res = await fetch('/api/retro-hits/undismiss', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ artist, title })
+            });
+            const data = await res.json();
+            if (res.ok && data.success) {
+                showToastNotification(`↩️ "${title}" restaurada a sugerencias.`);
+                renderRetroHitsView();
+            }
+        } catch(e) {
+            console.error('Error restaurando:', e);
+        }
+    }
+
     async function downloadRetroHit(artist, title, cardEl, btnEl) {
         const origHtml = btnEl.innerHTML;
         btnEl.classList.add('loading');
@@ -2743,7 +2789,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                     <div class="retro-banner-desc">
-                        Colección exhaustiva de los mayores éxitos internacionales que triunfaron en las radios y discotecas de España entre 1970 y 1999, contrastados con tu colección actual.
+                        Colección exhaustiva de los mayores éxitos internacionales que triunfaron en las radios y discotecas de España entre 1970 y 1999.
+                        <div style="margin-top: 6px; font-size: 0.84rem; color: #38bdf8;">
+                            <i class="fa-brands fa-spotify" style="color:#1db954;"></i> <strong>Flujo recomendado:</strong> Escucha la preescucha y pulsa <strong>Spotify</strong> para añadir la canción a tu playlist habitual. Tras añadirla, pulsa <strong>Sincronizar</strong> en la cabecera para importarla a la web. Si no te gusta un tema, pulsa <strong>Omitir</strong> para que no vuelva a sugerirse.
+                        </div>
                     </div>
                     <div class="retro-progress-container">
                         <div class="retro-progress-labels">
@@ -2826,8 +2875,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const filterPills = [
             { id: 'missing', label: `Solo las que me faltan (${data.summary.totalMissing})`, icon: 'fa-star' },
-            { id: 'all', label: `Todos los éxitos (${data.summary.totalHits})`, icon: 'fa-list' },
-            { id: 'owned', label: `En mi colección (${data.summary.totalOwned})`, icon: 'fa-check' }
+            { id: 'owned', label: `En mi colección (${data.summary.totalOwned})`, icon: 'fa-check' },
+            { id: 'dismissed', label: `Omitidas (${data.summary.totalDismissed || 0})`, icon: 'fa-eye-slash' },
+            { id: 'all', label: `Todos los éxitos (${data.summary.totalHits})`, icon: 'fa-list' }
         ];
 
         filterPills.forEach(p => {
@@ -2898,16 +2948,30 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         </div>
                     </div>
-                    <div class="retro-card-actions">
-                        ${hit.isOwned 
-                            ? '<span class="badge-owned-tag"><i class="fa-solid fa-check-circle"></i> En tu colección</span>' 
-                            : `<button class="btn-retro-add" id="btn-add-${hit.year}">
-                                   <i class="fa-solid fa-cloud-arrow-down"></i> Añadir a Viejuna
-                               </button>`
-                        }
-                        <button class="btn-retro-preview" data-track-key="${trackKey}">
-                            <i class="fa-solid fa-play"></i> Escuchar
-                        </button>
+                    <div class="retro-card-actions" style="flex-wrap: wrap;">
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            <button class="btn-retro-preview" data-track-key="${trackKey}">
+                                <i class="fa-solid fa-play"></i> Escuchar
+                            </button>
+                            <a href="https://open.spotify.com/search/${encodeURIComponent(hit.artist + ' ' + hit.title)}" target="_blank" class="btn-retro-spotify" title="Buscar y añadir en Spotify">
+                                <i class="fa-brands fa-spotify"></i> Spotify
+                            </a>
+                        </div>
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            ${hit.isOwned 
+                                ? '<span class="badge-owned-tag"><i class="fa-solid fa-check-circle"></i> En tu colección</span>' 
+                                : hit.isDismissed
+                                    ? `<button class="btn-retro-restore" title="Restaurar a sugerencias">
+                                           <i class="fa-solid fa-rotate-left"></i> Restaurar
+                                       </button>`
+                                    : `<button class="btn-retro-add" title="Descargar directamente a tu biblioteca sin pasar por Spotify">
+                                           <i class="fa-solid fa-cloud-arrow-down"></i> Directo
+                                       </button>
+                                       <button class="btn-retro-dismiss" title="No me gusta este tema, no volver a sugerir">
+                                           <i class="fa-solid fa-eye-slash"></i> Omitir
+                                       </button>`
+                            }
+                        </div>
                     </div>
                 `;
 
@@ -2919,11 +2983,27 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
 
-                // Listener de descarga
+                // Listener de descarga directa
                 const addBtn = card.querySelector('.btn-retro-add');
                 if (addBtn) {
                     addBtn.addEventListener('click', () => {
                         downloadRetroHit(hit.artist, hit.title, card, addBtn);
+                    });
+                }
+
+                // Listener de omitir
+                const dismissBtn = card.querySelector('.btn-retro-dismiss');
+                if (dismissBtn) {
+                    dismissBtn.addEventListener('click', () => {
+                        dismissRetroHit(hit.artist, hit.title, card);
+                    });
+                }
+
+                // Listener de restaurar
+                const restoreBtn = card.querySelector('.btn-retro-restore');
+                if (restoreBtn) {
+                    restoreBtn.addEventListener('click', () => {
+                        restoreRetroHit(hit.artist, hit.title, card);
                     });
                 }
 
@@ -3011,16 +3091,26 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         </div>
                     </div>
-                    <div class="retro-card-actions">
-                        ${track.isOwned 
-                            ? '<span class="badge-owned-tag"><i class="fa-solid fa-check-circle"></i> En tu colección</span>' 
-                            : `<button class="btn-retro-add">
-                                   <i class="fa-solid fa-cloud-arrow-down"></i> Añadir a Viejuna
-                               </button>`
-                        }
-                        <button class="btn-retro-preview" data-track-key="${trackKey}">
-                            <i class="fa-solid fa-play"></i> Escuchar
-                        </button>
+                    <div class="retro-card-actions" style="flex-wrap: wrap;">
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            <button class="btn-retro-preview" data-track-key="${trackKey}">
+                                <i class="fa-solid fa-play"></i> Escuchar
+                            </button>
+                            <a href="https://open.spotify.com/search/${encodeURIComponent(track.artist + ' ' + track.title)}" target="_blank" class="btn-retro-spotify" title="Buscar y añadir en Spotify">
+                                <i class="fa-brands fa-spotify"></i> Spotify
+                            </a>
+                        </div>
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            ${track.isOwned 
+                                ? '<span class="badge-owned-tag"><i class="fa-solid fa-check-circle"></i> En tu colección</span>' 
+                                : `<button class="btn-retro-add" title="Descargar directamente a tu biblioteca sin pasar por Spotify">
+                                       <i class="fa-solid fa-cloud-arrow-down"></i> Directo
+                                   </button>
+                                   <button class="btn-retro-dismiss" title="Omitir sugerencia">
+                                       <i class="fa-solid fa-eye-slash"></i> Omitir
+                                   </button>`
+                            }
+                        </div>
                     </div>
                 `;
 
@@ -3035,6 +3125,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (addBtn) {
                     addBtn.addEventListener('click', () => {
                         downloadRetroHit(track.artist, track.title, card, addBtn);
+                    });
+                }
+
+                const dismissBtn = card.querySelector('.btn-retro-dismiss');
+                if (dismissBtn) {
+                    dismissBtn.addEventListener('click', () => {
+                        dismissRetroHit(track.artist, track.title, card);
                     });
                 }
 

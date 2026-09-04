@@ -4082,3 +4082,81 @@ video {
   50% { opacity: 0.6; }
   100% { opacity: 1; }
 }
+
+/* Botón Spotify Oficial */
+.btn-retro-spotify {
+  padding: 7px 13px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  background: #1db954;
+  border: none;
+  color: #000 !important;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(29, 185, 84, 0.3);
+}
+
+.btn-retro-spotify:hover {
+  background: #1ed760;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(29, 185, 84, 0.45);
+}
+
+/* Botón Omitir / Descartar Sugerencia */
+.btn-retro-dismiss {
+  padding: 7px 11px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
+
+.btn-retro-dismiss:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.35);
+  color: #f87171;
+  transform: translateY(-1px);
+}
+
+.btn-retro-restore {
+  padding: 7px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #f59e0b;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-retro-restore:hover {
+  background: rgba(245, 158, 11, 0.25);
+  color: #fff;
+}
+
+.retro-card.dismissing {
+  opacity: 0 !important;
+  transform: scale(0.9) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.retro-card.dismissed {
+  opacity: 0.7;
+  border-style: dashed;
+}

@@ -2047,7 +2047,44 @@ app.get('/api/track/detail', async (req, res) => {
 // ==========================================================================
 
 const SPANISH_RETRO_HITS_FILE = path.join(__dirname, 'data', 'spanish_retro_hits.json');
+const RETRO_DISMISSED_FILE = path.join(__dirname, 'data', 'retro_hits_dismissed.json');
 let cachedRetroHits = null;
+let cachedDismissed = null;
+
+function loadDismissedRetroHits() {
+    if (!cachedDismissed) {
+        if (fs.existsSync(RETRO_DISMISSED_FILE)) {
+            try {
+                cachedDismissed = JSON.parse(fs.readFileSync(RETRO_DISMISSED_FILE, 'utf8'));
+            } catch(e) {
+                cachedDismissed = {};
+            }
+        } else {
+            cachedDismissed = {};
+        }
+    }
+    return cachedDismissed;
+}
+
+function saveDismissedRetroHits() {
+    try {
+        fs.writeFileSync(RETRO_DISMISSED_FILE, JSON.stringify(cachedDismissed || {}, null, 2), 'utf8');
+    } catch(e) {
+        console.error('Error guardando retro_hits_dismissed.json:', e.message);
+    }
+}
+
+function getDismissedKey(artist, title) {
+    const cleanArt = (artist || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+    const cleanTit = (title || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+    return `${cleanArt}_${cleanTit}`;
+}
+
+function isHitDismissed(artist, title) {
+    const d = loadDismissedRetroHits();
+    const k = getDismissedKey(artist, title);
+    return !!d[k];
+}
 
 function loadSpanishRetroHits() {
     if (!cachedRetroHits && fs.existsSync(SPANISH_RETRO_HITS_FILE)) {
@@ -2110,19 +2147,27 @@ app.get('/api/retro-hits/catalog', (req, res) => {
         let totalHits = 0;
         let totalOwned = 0;
 
+        const dismissedMap = loadDismissedRetroHits();
+        let totalDismissed = 0;
+
         const enrichedHits = hits.map(h => {
             const owned = isHitOwned(h.artist, h.title, viejunaSet);
+            const dismissed = isHitDismissed(h.artist, h.title);
+
+            if (dismissed) totalDismissed++;
+
             if (yearsStats[h.year]) {
                 yearsStats[h.year].total++;
                 if (owned) yearsStats[h.year].owned++;
-                else yearsStats[h.year].missing++;
+                else if (!dismissed) yearsStats[h.year].missing++;
             }
             totalHits++;
             if (owned) totalOwned++;
 
             return {
                 ...h,
-                isOwned: owned
+                isOwned: owned,
+                isDismissed: dismissed
             };
         });
 
@@ -2137,16 +2182,21 @@ app.get('/api/retro-hits/catalog', (req, res) => {
             filteredHits = filteredHits.filter(h => h.year === yNum);
         }
         if (filter === 'missing') {
-            filteredHits = filteredHits.filter(h => !h.isOwned);
+            filteredHits = filteredHits.filter(h => !h.isOwned && !h.isDismissed);
         } else if (filter === 'owned') {
             filteredHits = filteredHits.filter(h => h.isOwned);
+        } else if (filter === 'dismissed') {
+            filteredHits = filteredHits.filter(h => h.isDismissed);
         }
+
+        const effectiveMissing = Math.max(0, totalHits - totalOwned - totalDismissed);
 
         res.json({
             summary: {
                 totalHits,
                 totalOwned,
-                totalMissing: totalHits - totalOwned,
+                totalDismissed,
+                totalMissing: effectiveMissing,
                 globalPercentage: totalHits > 0 ? Math.round((totalOwned / totalHits) * 100) : 0
             },
             yearsStats: Object.values(yearsStats),
@@ -2154,6 +2204,46 @@ app.get('/api/retro-hits/catalog', (req, res) => {
         });
     } catch(e) {
         console.error('Error en /api/retro-hits/catalog:', e.message);
+        res.status(500).json({ error: e.message });
+    }
+});
+
+// Endpoint para omitir / descartar una sugerencia permanentemente
+app.post('/api/retro-hits/dismiss', (req, res) => {
+    try {
+        const { artist, title } = req.body;
+        if (!artist || !title) return res.status(400).json({ error: 'Faltan parámetros' });
+
+        const d = loadDismissedRetroHits();
+        const k = getDismissedKey(artist, title);
+        d[k] = {
+            artist,
+            title,
+            dismissedAt: new Date().toISOString()
+        };
+        saveDismissedRetroHits();
+        console.log(`🚫 [RETRO DISMISS] Sugerencia descartada: ${artist} - ${title}`);
+        res.json({ success: true, key: k, totalDismissed: Object.keys(d).length });
+    } catch(e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
+// Endpoint para restaurar una sugerencia previamente omitida
+app.post('/api/retro-hits/undismiss', (req, res) => {
+    try {
+        const { artist, title } = req.body;
+        if (!artist || !title) return res.status(400).json({ error: 'Faltan parámetros' });
+
+        const d = loadDismissedRetroHits();
+        const k = getDismissedKey(artist, title);
+        if (d[k]) {
+            delete d[k];
+            saveDismissedRetroHits();
+            console.log(`↩️ [RETRO UNDISMISS] Sugerencia restaurada: ${artist} - ${title}`);
+        }
+        res.json({ success: true, totalDismissed: Object.keys(d).length });
+    } catch(e) {
         res.status(500).json({ error: e.message });
     }
 });
