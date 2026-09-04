@@ -2567,10 +2567,8 @@ document.addEventListener('DOMContentLoaded', () => {
             closeCinemaMode();
         }
     });
-});
 
-
-    // ==========================================================================
+// ==========================================================================
     // 📻 MOTOR DESCUBRIDOR DE ÉXITOS DE ESPAÑA & RADAR EN VIVO
     // ==========================================================================
 
@@ -3048,3 +3046,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (grid) grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:30px;color:#ef4444;"><p>Error de conexión con la radio: ${e.message}</p></div>`;
         }
     }
+});
+
+
+    
