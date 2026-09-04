@@ -358,7 +358,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'Dance': 'fa-headphones',
         'Española': 'fa-guitar',
         'Música latina': 'fa-fire',
-        'Radio': 'fa-tower-broadcast'
+        'Radio': 'fa-tower-broadcast',
+        'Éxitos España': 'fa-trophy'
     };
 
     // Load initial data
@@ -397,6 +398,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const rBadge = document.getElementById('badge-radio');
         if (rBadge) rBadge.textContent = radioStations.length;
+
+        // Badge de Éxitos España
+        fetch('/api/retro-hits/catalog')
+            .then(res => res.json())
+            .then(d => {
+                const bRetro = document.getElementById('badge-retro');
+                if (bRetro && d.summary) {
+                    bRetro.textContent = d.summary.totalMissing;
+                    bRetro.title = `${d.summary.totalMissing} canciones faltantes de ${d.summary.totalHits} éxitos en España`;
+                }
+            }).catch(() => {});
     }
 
     function selectPlaylistTab(tabName) {
@@ -1644,6 +1656,12 @@ document.addEventListener('DOMContentLoaded', () => {
             renderRadioStations();
             return;
         }
+
+        if (currentTab === 'Éxitos España') {
+            if (btnPlaylistShuffle) btnPlaylistShuffle.style.display = 'none';
+            renderRetroHitsView();
+            return;
+        }
         if (btnPlaylistShuffle) btnPlaylistShuffle.style.display = 'inline-flex';
 
         const isGlobalSearch = searchQuery.trim().length > 0;
@@ -2550,3 +2568,483 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+
+    // ==========================================================================
+    // 📻 MOTOR DESCUBRIDOR DE ÉXITOS DE ESPAÑA & RADAR EN VIVO
+    // ==========================================================================
+
+    const retroState = {
+        mode: 'timeline', // 'timeline' o 'radar'
+        selectedYear: null,
+        filter: 'missing', // 'missing', 'all', 'owned'
+        cachedCatalog: null,
+        previewAudio: new Audio(),
+        currentPreviewTrack: null
+    };
+
+    retroState.previewAudio.addEventListener('ended', () => {
+        retroState.currentPreviewTrack = null;
+        updatePreviewButtonsUi();
+    });
+
+    retroState.previewAudio.addEventListener('pause', () => {
+        retroState.currentPreviewTrack = null;
+        updatePreviewButtonsUi();
+    });
+
+    function updatePreviewButtonsUi() {
+        document.querySelectorAll('.btn-retro-preview').forEach(btn => {
+            const trackKey = btn.getAttribute('data-track-key');
+            if (retroState.currentPreviewTrack === trackKey) {
+                btn.classList.add('playing');
+                btn.innerHTML = '<i class="fa-solid fa-pause"></i> Pausar';
+            } else {
+                btn.classList.remove('playing');
+                btn.innerHTML = '<i class="fa-solid fa-play"></i> Escuchar';
+            }
+        });
+    }
+
+    async function toggleRetroPreview(artist, title, btnEl) {
+        const trackKey = `${artist} - ${title}`;
+
+        // Si ya está sonando esta misma, pausar
+        if (retroState.currentPreviewTrack === trackKey && !retroState.previewAudio.paused) {
+            retroState.previewAudio.pause();
+            retroState.currentPreviewTrack = null;
+            updatePreviewButtonsUi();
+            return;
+        }
+
+        // Si hay música principal o radio sonando, pausarla
+        if (mainMusicAudio && !mainMusicAudio.paused) mainMusicAudio.pause();
+        if (liveRadioAudio && !liveRadioAudio.paused) liveRadioAudio.pause();
+
+        btnEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Cargando...';
+
+        try {
+            const res = await fetch(`/api/retro-hits/preview?artist=${encodeURIComponent(artist)}&title=${encodeURIComponent(title)}`);
+            if (!res.ok) throw new Error('Error buscando preescucha');
+            const data = await res.json();
+
+            if (data.previewUrl) {
+                retroState.previewAudio.src = data.previewUrl;
+                retroState.previewAudio.volume = 0.9;
+                await retroState.previewAudio.play();
+                retroState.currentPreviewTrack = trackKey;
+                updatePreviewButtonsUi();
+            } else {
+                alert(`No se encontró fragmento de audio para "${title}".`);
+                updatePreviewButtonsUi();
+            }
+        } catch(e) {
+            console.error('Error en preescucha:', e);
+            alert('No se pudo reproducir la preescucha.');
+            updatePreviewButtonsUi();
+        }
+    }
+
+    async function downloadRetroHit(artist, title, cardEl, btnEl) {
+        const origHtml = btnEl.innerHTML;
+        btnEl.classList.add('loading');
+        btnEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Descargando versión oficial...';
+
+        try {
+            const res = await fetch('/api/retro-hits/add-to-viejuna', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ artist, title })
+            });
+
+            const data = await res.json();
+            if (res.ok && data.success) {
+                // Actualizar tarjeta a "En tu colección"
+                cardEl.classList.add('owned');
+                const actionsBox = cardEl.querySelector('.retro-card-actions');
+                if (actionsBox) {
+                    actionsBox.innerHTML = `
+                        <span class="badge-owned-tag"><i class="fa-solid fa-check-circle"></i> ¡En tu colección!</span>
+                        <button class="btn-retro-preview" data-track-key="${artist} - ${title}">
+                            <i class="fa-solid fa-play"></i> Escuchar
+                        </button>
+                    `;
+                    const prevBtn = actionsBox.querySelector('.btn-retro-preview');
+                    if (prevBtn) {
+                        prevBtn.addEventListener('click', () => toggleRetroPreview(artist, title, prevBtn));
+                    }
+                }
+
+                // Notificación visual
+                showToastNotification(`🎉 "${title}" añadida con éxito a Música viejuna`);
+
+                // Recargar playlists en background para sincronizar
+                fetchPlaylists();
+            } else {
+                alert('No se pudo descargar la pista: ' + (data.error || 'Error desconocido'));
+                btnEl.classList.remove('loading');
+                btnEl.innerHTML = origHtml;
+            }
+        } catch(e) {
+            console.error('Error descargando hit:', e);
+            alert('Error de conexión al descargar la pista.');
+            btnEl.classList.remove('loading');
+            btnEl.innerHTML = origHtml;
+        }
+    }
+
+    function showToastNotification(msg) {
+        let toast = document.getElementById('retro-toast');
+        if (!toast) {
+            toast = document.createElement('div');
+            toast.id = 'retro-toast';
+            toast.style.cssText = 'position:fixed;bottom:90px;right:24px;background:#10b981;color:#fff;padding:14px 20px;border-radius:12px;font-weight:700;font-size:0.92rem;box-shadow:0 8px 24px rgba(0,0,0,0.4);z-index:99999;display:flex;align-items:center;gap:10px;transition:all 0.3s ease;transform:translateY(100px);opacity:0;';
+            document.body.appendChild(toast);
+        }
+        toast.innerHTML = `<i class="fa-solid fa-circle-check" style="font-size:1.2rem;"></i> ${msg}`;
+        toast.style.transform = 'translateY(0)';
+        toast.style.opacity = '1';
+        setTimeout(() => {
+            toast.style.transform = 'translateY(100px)';
+            toast.style.opacity = '0';
+        }, 4000);
+    }
+
+    async function renderRetroHitsView() {
+        currentSectionTitle.innerHTML = '<i class="fa-solid fa-trophy" style="color: #f59e0b;"></i> Éxitos en España (1970–1999)';
+        resultsCountText.textContent = 'Cargando archivo histórico de España...';
+        songsGrid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-muted);"><i class="fa-solid fa-spinner fa-spin" style="font-size:2.5rem;color:#f59e0b;margin-bottom:16px;"></i><p>Sincronizando con Los 40 Principales y ventas de España...</p></div>';
+
+        try {
+            const res = await fetch('/api/retro-hits/catalog');
+            if (!res.ok) throw new Error('Error cargando catálogo');
+            const data = await res.json();
+            retroState.cachedCatalog = data;
+
+            resultsCountText.textContent = `${data.summary.totalHits} grandes éxitos contrastados en España`;
+
+            // Construir vista interactiva
+            songsGrid.className = 'songs-grid';
+            songsGrid.innerHTML = '';
+
+            const wrapper = document.createElement('div');
+            wrapper.style.gridColumn = '1 / -1';
+
+            // 1. Banner Superior con Estadísticas
+            const summary = data.summary;
+            const bannerHtml = `
+                <div class="retro-banner">
+                    <div class="retro-banner-top">
+                        <div class="retro-banner-title">
+                            <i class="fa-solid fa-trophy"></i>
+                            <span>Descubridor de Éxitos en España (Viejuna)</span>
+                        </div>
+                        <div class="radar-live-indicator">
+                            <div class="radar-live-dot"></div>
+                            <span>Canon Los 40 & AFYVE España</span>
+                        </div>
+                    </div>
+                    <div class="retro-banner-desc">
+                        Colección exhaustiva de los mayores éxitos internacionales que triunfaron en las radios y discotecas de España entre 1970 y 1999, contrastados con tu colección actual.
+                    </div>
+                    <div class="retro-progress-container">
+                        <div class="retro-progress-labels">
+                            <span style="color: #fff;"><i class="fa-solid fa-chart-pie" style="color: #f59e0b; margin-right: 6px;"></i> Progreso de tu colección de Viejuna:</span>
+                            <span style="color: #34d399;">${summary.totalOwned} de ${summary.totalHits} conseguidos (${summary.globalPercentage}%) • ${summary.totalMissing} por descubrir</span>
+                        </div>
+                        <div class="retro-progress-track">
+                            <div class="retro-progress-fill" style="width: ${summary.globalPercentage}%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Selector de Modo: Archivo Histórico vs Radar en Vivo -->
+                <div class="retro-view-switch">
+                    <button class="retro-switch-btn ${retroState.mode === 'timeline' ? 'active' : ''}" id="btn-mode-timeline">
+                        <i class="fa-solid fa-calendar-days"></i> Archivo por Años (1970-1999)
+                    </button>
+                    <button class="retro-switch-btn ${retroState.mode === 'radar' ? 'active' : ''}" id="btn-mode-radar">
+                        <i class="fa-solid fa-tower-broadcast"></i> Radar de Emisoras (Los 40 Classic)
+                    </button>
+                </div>
+            `;
+
+            wrapper.innerHTML = bannerHtml;
+            songsGrid.appendChild(wrapper);
+
+            // Listeners de los botones de modo
+            document.getElementById('btn-mode-timeline').addEventListener('click', () => {
+                retroState.mode = 'timeline';
+                renderRetroHitsView();
+            });
+            document.getElementById('btn-mode-radar').addEventListener('click', () => {
+                retroState.mode = 'radar';
+                renderRetroRadarView();
+            });
+
+            if (retroState.mode === 'timeline') {
+                renderTimelineContent(data, wrapper);
+            }
+
+        } catch(e) {
+            console.error('Error renderizando éxitos España:', e);
+            songsGrid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:#ef4444;"><i class="fa-solid fa-triangle-exclamation" style="font-size:2rem;margin-bottom:12px;"></i><p>Error cargando éxitos de España: ${e.message}</p></div>`;
+        }
+    }
+
+    function renderTimelineContent(data, container) {
+        // Scroller horizontal de Años
+        const yearsBox = document.createElement('div');
+        yearsBox.className = 'retro-years-scroller';
+
+        // Opción: Todos los años
+        const allYearsChip = document.createElement('div');
+        allYearsChip.className = retroState.selectedYear === null ? 'retro-year-chip active' : 'retro-year-chip';
+        allYearsChip.innerHTML = `<span>Todos</span><span class="retro-year-pct">${data.summary.globalPercentage}%</span>`;
+        allYearsChip.addEventListener('click', () => {
+            retroState.selectedYear = null;
+            renderRetroHitsView();
+        });
+        yearsBox.appendChild(allYearsChip);
+
+        // Años individuales
+        data.yearsStats.forEach(stat => {
+            const chip = document.createElement('div');
+            chip.className = retroState.selectedYear === stat.year ? 'retro-year-chip active' : 'retro-year-chip';
+            chip.innerHTML = `<span>${stat.year}</span><span class="retro-year-pct">${stat.percentage}%</span>`;
+            chip.title = `${stat.year}: ${stat.owned} de ${stat.total} en tu colección (${stat.missing} faltantes)`;
+            chip.addEventListener('click', () => {
+                retroState.selectedYear = stat.year;
+                renderRetroHitsView();
+            });
+            yearsBox.appendChild(chip);
+        });
+
+        container.appendChild(yearsBox);
+
+        // Barra de Filtro de Estado (Faltantes / Todos / Colección)
+        const filterBar = document.createElement('div');
+        filterBar.style.cssText = 'display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;align-items:center;';
+
+        const filterPills = [
+            { id: 'missing', label: `Solo las que me faltan (${data.summary.totalMissing})`, icon: 'fa-star' },
+            { id: 'all', label: `Todos los éxitos (${data.summary.totalHits})`, icon: 'fa-list' },
+            { id: 'owned', label: `En mi colección (${data.summary.totalOwned})`, icon: 'fa-check' }
+        ];
+
+        filterPills.forEach(p => {
+            const b = document.createElement('button');
+            b.className = retroState.filter === p.id ? 'retro-switch-btn active' : 'retro-switch-btn';
+            b.style.fontSize = '0.8rem';
+            b.style.padding = '6px 14px';
+            b.innerHTML = `<i class="fa-solid ${p.icon}"></i> ${p.label}`;
+            b.addEventListener('click', () => {
+                retroState.filter = p.id;
+                renderRetroHitsView();
+            });
+            filterBar.appendChild(b);
+        });
+
+        container.appendChild(filterBar);
+
+        // Filtrar hits a mostrar
+        let displayHits = data.hits;
+        if (retroState.selectedYear) {
+            displayHits = displayHits.filter(h => h.year === retroState.selectedYear);
+        }
+        if (retroState.filter === 'missing') {
+            displayHits = displayHits.filter(h => !h.isOwned);
+        } else if (retroState.filter === 'owned') {
+            displayHits = displayHits.filter(h => h.isOwned);
+        }
+
+        // Filtro de texto rápido si hay búsqueda
+        if (quickFilterQuery && quickFilterQuery.trim().length > 0) {
+            const q = quickFilterQuery.toLowerCase();
+            displayHits = displayHits.filter(h => 
+                (h.title || '').toLowerCase().includes(q) || 
+                (h.artist || '').toLowerCase().includes(q) ||
+                (h.peak || '').toLowerCase().includes(q)
+            );
+        }
+
+        // Renderizar cuadrícula de tarjetas
+        const gridBox = document.createElement('div');
+        gridBox.style.cssText = 'display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:16px;';
+
+        if (displayHits.length === 0) {
+            gridBox.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; padding: 50px 20px; color: var(--text-muted);">
+                    <i class="fa-solid fa-trophy" style="font-size: 2.8rem; color: #f59e0b; opacity: 0.4; margin-bottom: 12px;"></i>
+                    <p style="font-size: 1.1rem; font-weight: 600;">¡Genial! Tienes todos los éxitos seleccionados en tu colección.</p>
+                </div>
+            `;
+        } else {
+            displayHits.forEach(hit => {
+                const card = document.createElement('div');
+                card.className = hit.isOwned ? 'retro-card owned' : 'retro-card';
+
+                const trackKey = `${hit.artist} - ${hit.title}`;
+
+                card.innerHTML = `
+                    <div class="retro-card-header">
+                        <div class="retro-cover-box">
+                            <i class="fa-solid fa-record-vinyl retro-cover-icon"></i>
+                        </div>
+                        <div class="retro-info">
+                            <div class="retro-title" title="${hit.title}">${hit.title}</div>
+                            <div class="retro-artist" title="${hit.artist}">${hit.artist}</div>
+                            <div class="retro-meta-row">
+                                <span class="retro-badge-peak"><i class="fa-solid fa-crown"></i> ${hit.peak}</span>
+                                <span class="retro-badge-year">${hit.year}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="retro-card-actions">
+                        ${hit.isOwned 
+                            ? '<span class="badge-owned-tag"><i class="fa-solid fa-check-circle"></i> En tu colección</span>' 
+                            : `<button class="btn-retro-add" id="btn-add-${hit.year}">
+                                   <i class="fa-solid fa-cloud-arrow-down"></i> Añadir a Viejuna
+                               </button>`
+                        }
+                        <button class="btn-retro-preview" data-track-key="${trackKey}">
+                            <i class="fa-solid fa-play"></i> Escuchar
+                        </button>
+                    </div>
+                `;
+
+                // Listener de preescucha
+                const previewBtn = card.querySelector('.btn-retro-preview');
+                if (previewBtn) {
+                    previewBtn.addEventListener('click', () => {
+                        toggleRetroPreview(hit.artist, hit.title, previewBtn);
+                    });
+                }
+
+                // Listener de descarga
+                const addBtn = card.querySelector('.btn-retro-add');
+                if (addBtn) {
+                    addBtn.addEventListener('click', () => {
+                        downloadRetroHit(hit.artist, hit.title, card, addBtn);
+                    });
+                }
+
+                gridBox.appendChild(card);
+            });
+        }
+
+        container.appendChild(gridBox);
+    }
+
+    async function renderRetroRadarView() {
+        const wrapper = document.querySelector('.retro-banner')?.parentNode;
+        if (!wrapper) return;
+
+        // Limpiar contenido posterior a botones de modo
+        const switchBox = wrapper.querySelector('.retro-view-switch');
+        while (switchBox && switchBox.nextSibling) {
+            wrapper.removeChild(switchBox.nextSibling);
+        }
+
+        const radarContainer = document.createElement('div');
+        radarContainer.innerHTML = `
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
+                <div>
+                    <h3 style="color:#fff;font-size:1.15rem;font-weight:700;display:flex;align-items:center;gap:8px;">
+                        <i class="fa-solid fa-tower-broadcast" style="color:#f59e0b;"></i>
+                        Emisión en Vivo: Los 40 Classic
+                    </h3>
+                    <p style="color:var(--text-muted);font-size:0.86rem;margin-top:2px;">
+                        Canciones que están pinchando en antena ahora mismo, contrastadas con tu lista de Música viejuna.
+                    </p>
+                </div>
+                <button class="retro-switch-btn" id="btn-refresh-radar" style="font-size:0.82rem;padding:6px 14px;">
+                    <i class="fa-solid fa-rotate-right"></i> Actualizar Emisión
+                </button>
+            </div>
+            <div id="radar-tracks-grid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:16px;">
+                <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted);">
+                    <i class="fa-solid fa-spinner fa-spin" style="font-size:2rem;color:#f59e0b;margin-bottom:12px;"></i>
+                    <p>Capturando emisión en directo...</p>
+                </div>
+            </div>
+        `;
+
+        wrapper.appendChild(radarContainer);
+
+        document.getElementById('btn-refresh-radar')?.addEventListener('click', renderRetroRadarView);
+
+        try {
+            const res = await fetch('/api/retro-hits/radio-radar');
+            if (!res.ok) throw new Error('Error consultando radar');
+            const data = await res.json();
+
+            const grid = document.getElementById('radar-tracks-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            if (!data.tracks || data.tracks.length === 0) {
+                grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted);"><p>No se encontraron canciones activas en la emisión en este momento.</p></div>';
+                return;
+            }
+
+            data.tracks.forEach(track => {
+                const card = document.createElement('div');
+                card.className = track.isOwned ? 'retro-card owned' : 'retro-card';
+
+                const coverHtml = track.coverUrl 
+                    ? `<img src="${track.coverUrl}" class="retro-cover-img" onerror="this.style.display='none';">`
+                    : '<i class="fa-solid fa-record-vinyl retro-cover-icon"></i>';
+
+                const trackKey = `${track.artist} - ${track.title}`;
+
+                card.innerHTML = `
+                    <div class="retro-card-header">
+                        <div class="retro-cover-box">
+                            ${coverHtml}
+                        </div>
+                        <div class="retro-info">
+                            <div class="retro-title" title="${track.title}">${track.title}</div>
+                            <div class="retro-artist" title="${track.artist}">${track.artist}</div>
+                            <div class="retro-meta-row">
+                                <span class="retro-badge-peak" style="border-color:#38bdf8;color:#38bdf8;background:rgba(56,189,248,0.12);">
+                                    <i class="fa-solid fa-radio"></i> Los 40 Classic
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="retro-card-actions">
+                        ${track.isOwned 
+                            ? '<span class="badge-owned-tag"><i class="fa-solid fa-check-circle"></i> En tu colección</span>' 
+                            : `<button class="btn-retro-add">
+                                   <i class="fa-solid fa-cloud-arrow-down"></i> Añadir a Viejuna
+                               </button>`
+                        }
+                        <button class="btn-retro-preview" data-track-key="${trackKey}">
+                            <i class="fa-solid fa-play"></i> Escuchar
+                        </button>
+                    </div>
+                `;
+
+                const prevBtn = card.querySelector('.btn-retro-preview');
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        toggleRetroPreview(track.artist, track.title, prevBtn);
+                    });
+                }
+
+                const addBtn = card.querySelector('.btn-retro-add');
+                if (addBtn) {
+                    addBtn.addEventListener('click', () => {
+                        downloadRetroHit(track.artist, track.title, card, addBtn);
+                    });
+                }
+
+                grid.appendChild(card);
+            });
+        } catch(e) {
+            console.error('Error cargando radar:', e);
+            const grid = document.getElementById('radar-tracks-grid');
+            if (grid) grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:30px;color:#ef4444;"><p>Error de conexión con la radio: ${e.message}</p></div>`;
+        }
+    }

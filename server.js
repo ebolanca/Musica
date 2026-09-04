@@ -2042,6 +2042,360 @@ app.get('/api/track/detail', async (req, res) => {
     });
 });
 
+// ==========================================================================
+// 📻 DESCUBRIDOR DE ÉXITOS DE ESPAÑA (1970-1999) & RADAR DE RADIO CLÁSICA
+// ==========================================================================
+
+const SPANISH_RETRO_HITS_FILE = path.join(__dirname, 'data', 'spanish_retro_hits.json');
+let cachedRetroHits = null;
+
+function loadSpanishRetroHits() {
+    if (!cachedRetroHits && fs.existsSync(SPANISH_RETRO_HITS_FILE)) {
+        try {
+            cachedRetroHits = JSON.parse(fs.readFileSync(SPANISH_RETRO_HITS_FILE, 'utf8'));
+        } catch(e) {
+            console.error('Error cargando spanish_retro_hits.json:', e.message);
+            cachedRetroHits = [];
+        }
+    }
+    return cachedRetroHits || [];
+}
+
+function getViejunaTracksSet() {
+    const set = new Set();
+    const folder = path.join(OMEN_MUSIC_DIR, 'Música viejuna');
+    if (fs.existsSync(folder)) {
+        try {
+            const files = fs.readdirSync(folder);
+            for (const f of files) {
+                const ext = path.extname(f).toLowerCase();
+                if (ext === '.mp3' || ext === '.m4a' || ext === '.flac') {
+                    const cleanName = f.replace(/\.[^.]+$/, '')
+                        .toLowerCase()
+                        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+                        .replace(/[^a-z0-9]/g, '');
+                    set.add(cleanName);
+                }
+            }
+        } catch(e){}
+    }
+    return set;
+}
+
+function isHitOwned(artist, title, viejunaSet) {
+    const cleanArt = (artist || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+    const cleanTit = (title || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+    const combo = cleanArt + cleanTit;
+    const comboRev = cleanTit + cleanArt;
+
+    for (const owned of viejunaSet) {
+        if (owned.includes(combo) || owned.includes(comboRev)) return true;
+        if (cleanArt.length >= 4 && cleanTit.length >= 4 && owned.includes(cleanArt) && owned.includes(cleanTit)) return true;
+    }
+    return false;
+}
+
+// 1. Catálogo histórico de éxitos con estadísticas por año
+app.get('/api/retro-hits/catalog', (req, res) => {
+    try {
+        const hits = loadSpanishRetroHits();
+        const viejunaSet = getViejunaTracksSet();
+        const { year, filter } = req.query; // filter: 'missing', 'owned', or undefined
+
+        const yearsStats = {};
+        for (let y = 1970; y <= 1999; y++) {
+            yearsStats[y] = { year: y, total: 0, owned: 0, missing: 0, percentage: 0 };
+        }
+
+        let totalHits = 0;
+        let totalOwned = 0;
+
+        const enrichedHits = hits.map(h => {
+            const owned = isHitOwned(h.artist, h.title, viejunaSet);
+            if (yearsStats[h.year]) {
+                yearsStats[h.year].total++;
+                if (owned) yearsStats[h.year].owned++;
+                else yearsStats[h.year].missing++;
+            }
+            totalHits++;
+            if (owned) totalOwned++;
+
+            return {
+                ...h,
+                isOwned: owned
+            };
+        });
+
+        // Calcular porcentajes
+        Object.values(yearsStats).forEach(s => {
+            s.percentage = s.total > 0 ? Math.round((s.owned / s.total) * 100) : 0;
+        });
+
+        let filteredHits = enrichedHits;
+        if (year && parseInt(year, 10)) {
+            const yNum = parseInt(year, 10);
+            filteredHits = filteredHits.filter(h => h.year === yNum);
+        }
+        if (filter === 'missing') {
+            filteredHits = filteredHits.filter(h => !h.isOwned);
+        } else if (filter === 'owned') {
+            filteredHits = filteredHits.filter(h => h.isOwned);
+        }
+
+        res.json({
+            summary: {
+                totalHits,
+                totalOwned,
+                totalMissing: totalHits - totalOwned,
+                globalPercentage: totalHits > 0 ? Math.round((totalOwned / totalHits) * 100) : 0
+            },
+            yearsStats: Object.values(yearsStats),
+            hits: filteredHits
+        });
+    } catch(e) {
+        console.error('Error en /api/retro-hits/catalog:', e.message);
+        res.status(500).json({ error: e.message });
+    }
+});
+
+// 2. Preescucha instantánea oficial (iTunes Search API 30s)
+app.get('/api/retro-hits/preview', async (req, res) => {
+    try {
+        const { artist, title } = req.query;
+        if (!artist || !title) return res.status(400).json({ error: 'Falta artist o title' });
+
+        const query = encodeURIComponent(`${artist} ${cleanTrackTitle(title)}`);
+        const itunesUrl = `https://itunes.apple.com/search?term=${query}&media=music&limit=5`;
+
+        const response = await fetch(itunesUrl, { signal: AbortSignal.timeout(4000) });
+        if (response.ok) {
+            const data = await response.json();
+            if (data.results && data.results.length > 0) {
+                const cleanArt = artist.toLowerCase();
+                const match = data.results.find(r => (r.artistName || '').toLowerCase().includes(cleanArt.split(/[,&]/)[0].trim())) || data.results[0];
+                return res.json({
+                    previewUrl: match.previewUrl || null,
+                    artworkUrl: (match.artworkUrl100 || '').replace('100x100bb.jpg', '400x400bb.jpg'),
+                    trackName: match.trackName,
+                    artistName: match.artistName,
+                    durationSec: match.trackTimeMillis ? Math.round(match.trackTimeMillis / 1000) : null,
+                    releaseDate: match.releaseDate ? match.releaseDate.split('T')[0] : null
+                });
+            }
+        }
+        res.json({ previewUrl: null });
+    } catch(e) {
+        res.json({ previewUrl: null, error: e.message });
+    }
+});
+
+// 3. Radar de Emisoras Españolas de Clásicos (Los 40 Classic en Vivo)
+app.get('/api/retro-hits/radio-radar', async (req, res) => {
+    try {
+        const tritonUrl = 'https://np.tritondigital.com/public/nowplaying?mountName=LOS40_CLASSIC&numberToFetch=50';
+        const tritonRes = await fetch(tritonUrl, { signal: AbortSignal.timeout(5000) });
+        if (!tritonRes.ok) {
+            return res.status(500).json({ error: 'Error conectando con emisión de Los 40 Classic' });
+        }
+
+        const xmlText = await tritonRes.text();
+        const viejunaSet = getViejunaTracksSet();
+
+        const itemRegex = /<nowplaying-info\b[^>]*>([\s\S]*?)<\/nowplaying-info>/gi;
+        const items = [];
+        let match;
+
+        while ((match = itemRegex.exec(xmlText)) !== null) {
+            const block = match[1];
+            const getProp = (propName) => {
+                const pRegex = new RegExp(`<property name="${propName}"><!\[CDATA\[(.*?)\]\]><\/property>`, 'i');
+                const m = block.match(pRegex);
+                return m ? m[1].trim() : '';
+            };
+
+            const title = getProp('cue_title');
+            const artist = getProp('track_artist_name');
+            const album = getProp('track_album_name');
+            const coverUrl = getProp('track_cover_url');
+            const timestamp = getProp('cue_time_start');
+
+            if (title && artist && !title.toLowerCase().includes('publicidad') && !title.toLowerCase().includes('los40 classic')) {
+                const isOwned = isHitOwned(artist, title, viejunaSet);
+                items.push({
+                    artist,
+                    title,
+                    album,
+                    coverUrl,
+                    timestamp: timestamp ? parseInt(timestamp, 10) : null,
+                    isOwned
+                });
+            }
+        }
+
+        const unique = [];
+        const seen = new Set();
+        for (const it of items) {
+            const k = `${it.artist}-${it.title}`.toLowerCase();
+            if (!seen.has(k)) {
+                seen.add(k);
+                unique.push(it);
+            }
+        }
+
+        res.json({
+            station: 'LOS40 Classic',
+            slogan: 'Los Números 1 de Tu Vida',
+            count: unique.length,
+            missingCount: unique.filter(i => !i.isOwned).length,
+            tracks: unique
+        });
+    } catch(e) {
+        console.error('Error en /api/retro-hits/radio-radar:', e.message);
+        res.status(500).json({ error: e.message });
+    }
+});
+
+// 4. Descarga directa en calidad de estudio hacia 'Música viejuna'
+app.post('/api/retro-hits/add-to-viejuna', async (req, res) => {
+    try {
+        const { artist, title, expectedDurationSec } = req.body;
+        if (!artist || !title) {
+            return res.status(400).json({ error: 'Falta artist o title' });
+        }
+
+        const cleanT = cleanTrackTitle(title);
+        const targetFolder = path.join(OMEN_MUSIC_DIR, 'Música viejuna');
+        if (!fs.existsSync(targetFolder)) {
+            try { fs.mkdirSync(targetFolder, { recursive: true }); } catch(e){}
+        }
+
+        const targetFileName = `${artist} - ${cleanT}.mp3`;
+        const targetFilePath = path.join(targetFolder, targetFileName);
+        const tempOutput = path.join(__dirname, 'data', `temp_retro_${Date.now()}.mp3`);
+
+        const { exec } = require('child_process');
+        const binDir = path.join(__dirname, 'bin');
+        const ytdlpBin = fs.existsSync(path.join(binDir, 'yt-dlp.exe')) ? `"${path.join(binDir, 'yt-dlp.exe')}"` : 'python -m yt_dlp';
+        const ffmpegDir = fs.existsSync(path.join(binDir, 'ffmpeg.exe')) ? binDir : 'C:\\Users\\MSI Roberto\\.spotdl';
+
+        console.log(`[RETRO DOWNLOAD] Añadiendo a Viejuna: ${artist} - ${cleanT}`);
+
+        // 1. Duración esperada
+        let expectedDur = expectedDurationSec || null;
+        if (!expectedDur) {
+            try {
+                const itunesRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(artist + ' ' + cleanT)}&entity=song&limit=5`, { signal: AbortSignal.timeout(3500) });
+                if (itunesRes.ok) {
+                    const itunesData = await itunesRes.json();
+                    if (itunesData.results && itunesData.results.length > 0) {
+                        const match = itunesData.results.find(r => (r.artistName || '').toLowerCase().includes(artist.toLowerCase().split(/[,&]/)[0].trim())) || itunesData.results[0];
+                        if (match && match.trackTimeMillis) {
+                            expectedDur = Math.round(match.trackTimeMillis / 1000);
+                        }
+                    }
+                }
+            } catch(e) {}
+        }
+
+        // 2. Búsqueda con yt-dlp
+        const searchQueries = [
+            `scsearch25:${artist} - ${cleanT}`,
+            `scsearch25:${artist} ${cleanT}`,
+            `ytsearch10:${artist} - ${cleanT} audio`
+        ];
+
+        let validCandidates = [];
+        for (const q of searchQueries) {
+            try {
+                const dumpCmd = `${ytdlpBin} --dump-json --flat-playlist "${q}"`;
+                const dumpOutput = await new Promise((resolve) => {
+                    exec(dumpCmd, { maxBuffer: 10 * 1024 * 1024, timeout: 15000, windowsHide: true }, (err, stdout) => {
+                        resolve(stdout || '');
+                    });
+                });
+
+                if (!dumpOutput) continue;
+                const lines = dumpOutput.trim().split('\n');
+
+                for (const line of lines) {
+                    try {
+                        const item = JSON.parse(line);
+                        const dur = item.duration;
+                        if (!dur || dur < 50) continue;
+
+                        const itemTitle = (item.title || '').toLowerCase();
+                        if (itemTitle.includes('remix') || itemTitle.includes('extended') || 
+                            itemTitle.includes('cover') || itemTitle.includes('tribute') || 
+                            itemTitle.includes('karaoke') || itemTitle.includes('parody')) {
+                            continue;
+                        }
+
+                        let diff = 0;
+                        if (expectedDur) {
+                            diff = Math.abs(dur - expectedDur);
+                            if (diff > 12) continue; // Tolerancia estricta de 12 segundos
+                        }
+
+                        validCandidates.push({
+                            id: item.id,
+                            url: item.url || item.webpage_url || item.id,
+                            title: item.title,
+                            duration: dur,
+                            diff: diff
+                        });
+                    } catch(e) {}
+                }
+
+                if (validCandidates.length > 0) break;
+            } catch(e) {}
+        }
+
+        if (validCandidates.length === 0) {
+            return res.status(404).json({ error: `No se encontró versión de estudio limpia (±10s de duración oficial)` });
+        }
+
+        validCandidates.sort((a, b) => a.diff - b.diff);
+        const bestCandidate = validCandidates[0];
+
+        // 3. Descargar candidato
+        const downloadUrl = bestCandidate.url.startsWith('http') ? bestCandidate.url : `https://www.youtube.com/watch?v=${bestCandidate.id}`;
+        const dlCmd = `${ytdlpBin} --ffmpeg-location "${ffmpegDir}" -x --audio-format mp3 --audio-quality 0 -o "${tempOutput}" "${downloadUrl}"`;
+
+        const dlSuccess = await new Promise((resolve) => {
+            exec(dlCmd, { maxBuffer: 10 * 1024 * 1024, timeout: 45000, windowsHide: true }, (err) => {
+                if (!err && fs.existsSync(tempOutput)) {
+                    const stats = fs.statSync(tempOutput);
+                    if (stats.size >= 800000) return resolve(true);
+                }
+                resolve(false);
+            });
+        });
+
+        if (!dlSuccess) {
+            return res.status(500).json({ error: 'Error durante la descarga o archivo corrupto' });
+        }
+
+        fs.copyFileSync(tempOutput, targetFilePath);
+        try { fs.unlinkSync(tempOutput); } catch(e){}
+
+        console.log(`✅ [RETRO DOWNLOAD] Canción guardada exitosamente en Viejuna: ${targetFilePath}`);
+
+        // Invalida la caché del catálogo
+        cachedRetroHits = null;
+
+        res.json({
+            success: true,
+            fileName: targetFileName,
+            artist,
+            title: cleanT,
+            duration: bestCandidate.duration
+        });
+    } catch(e) {
+        console.error('Error en /api/retro-hits/add-to-viejuna:', e.message);
+        res.status(500).json({ error: e.message });
+    }
+});
+
 const PORT = 8087;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Servidor de Música corriendo en http://localhost:${PORT}`);

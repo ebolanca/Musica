@@ -1,0 +1,3341 @@
+[
+  {
+    "year": 1970,
+    "artist": "The Beatles",
+    "title": "Let It Be",
+    "peak": "Nº 1 Los 40",
+    "genre": "Rock"
+  },
+  {
+    "year": 1970,
+    "artist": "Simon & Garfunkel",
+    "title": "Bridge over Troubled Water",
+    "peak": "Nº 1 Los 40",
+    "genre": "Folk Rock"
+  },
+  {
+    "year": 1970,
+    "artist": "Simon & Garfunkel",
+    "title": "El Cóndor Pasa (If I Could)",
+    "peak": "Nº 1 España",
+    "genre": "Folk"
+  },
+  {
+    "year": 1970,
+    "artist": "Creedence Clearwater Revival",
+    "title": "Have You Ever Seen the Rain",
+    "peak": "Top 5 España",
+    "genre": "Rock"
+  },
+  {
+    "year": 1970,
+    "artist": "Creedence Clearwater Revival",
+    "title": "Up Around the Bend",
+    "peak": "Top España",
+    "genre": "Rock"
+  },
+  {
+    "year": 1970,
+    "artist": "Black Sabbath",
+    "title": "Paranoid",
+    "peak": "Top España",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1970,
+    "artist": "Mungo Jerry",
+    "title": "In the Summertime",
+    "peak": "Nº 1 España",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1970,
+    "artist": "Shocking Blue",
+    "title": "Venus",
+    "peak": "Nº 1 España",
+    "genre": "Psychedelic Rock"
+  },
+  {
+    "year": 1970,
+    "artist": "Deep Purple",
+    "title": "Black Night",
+    "peak": "Top 5 España",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1970,
+    "artist": "The Jackson 5",
+    "title": "I Want You Back",
+    "peak": "Top España",
+    "genre": "Soul / Pop"
+  },
+  {
+    "year": 1971,
+    "artist": "John Lennon",
+    "title": "Imagine",
+    "peak": "Nº 1 España",
+    "genre": "Rock / Ballad"
+  },
+  {
+    "year": 1971,
+    "artist": "George Harrison",
+    "title": "My Sweet Lord",
+    "peak": "Nº 1 Los 40",
+    "genre": "Rock"
+  },
+  {
+    "year": 1971,
+    "artist": "Led Zeppelin",
+    "title": "Stairway to Heaven",
+    "peak": "Clásico M80",
+    "genre": "Rock"
+  },
+  {
+    "year": 1971,
+    "artist": "Rod Stewart",
+    "title": "Maggie May",
+    "peak": "Nº 1 Los 40",
+    "genre": "Rock"
+  },
+  {
+    "year": 1971,
+    "artist": "The Rolling Stones",
+    "title": "Brown Sugar",
+    "peak": "Top España",
+    "genre": "Rock"
+  },
+  {
+    "year": 1971,
+    "artist": "T. Rex",
+    "title": "Get It On",
+    "peak": "Top España",
+    "genre": "Glam Rock"
+  },
+  {
+    "year": 1971,
+    "artist": "Middle of the Road",
+    "title": "Chirpy Chirpy Cheep Cheep",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1971,
+    "artist": "Pop-Tops",
+    "title": "Mamy Blue",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1971,
+    "artist": "Cat Stevens",
+    "title": "Wild World",
+    "peak": "Top España",
+    "genre": "Folk Rock"
+  },
+  {
+    "year": 1971,
+    "artist": "The Doors",
+    "title": "Riders on the Storm",
+    "peak": "Top España",
+    "genre": "Rock"
+  },
+  {
+    "year": 1972,
+    "artist": "Deep Purple",
+    "title": "Smoke on the Water",
+    "peak": "Himno España",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1972,
+    "artist": "Elton John",
+    "title": "Rocket Man",
+    "peak": "Top Los 40",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1972,
+    "artist": "Neil Young",
+    "title": "Heart of Gold",
+    "peak": "Nº 1 Los 40",
+    "genre": "Folk Rock"
+  },
+  {
+    "year": 1972,
+    "artist": "David Bowie",
+    "title": "Starman",
+    "peak": "Top España",
+    "genre": "Glam Rock"
+  },
+  {
+    "year": 1972,
+    "artist": "Alice Cooper",
+    "title": "School's Out",
+    "peak": "Top España",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1972,
+    "artist": "The Temptations",
+    "title": "Papa Was a Rollin' Stone",
+    "peak": "Top España",
+    "genre": "Funk / Soul"
+  },
+  {
+    "year": 1972,
+    "artist": "Al Green",
+    "title": "Let's Stay Together",
+    "peak": "Top España",
+    "genre": "Soul"
+  },
+  {
+    "year": 1972,
+    "artist": "Don McLean",
+    "title": "American Pie",
+    "peak": "Top España",
+    "genre": "Folk Rock"
+  },
+  {
+    "year": 1972,
+    "artist": "Gilbert O'Sullivan",
+    "title": "Alone Again (Naturally)",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop"
+  },
+  {
+    "year": 1973,
+    "artist": "The Rolling Stones",
+    "title": "Angie",
+    "peak": "Nº 1 Los 40",
+    "genre": "Rock Ballad"
+  },
+  {
+    "year": 1973,
+    "artist": "Pink Floyd",
+    "title": "Money",
+    "peak": "Top España",
+    "genre": "Progressive Rock"
+  },
+  {
+    "year": 1973,
+    "artist": "Paul McCartney & Wings",
+    "title": "Live and Let Die",
+    "peak": "Top Los 40",
+    "genre": "Rock"
+  },
+  {
+    "year": 1973,
+    "artist": "Stevie Wonder",
+    "title": "Superstition",
+    "peak": "Top España",
+    "genre": "Funk"
+  },
+  {
+    "year": 1973,
+    "artist": "Elton John",
+    "title": "Goodbye Yellow Brick Road",
+    "peak": "Top Los 40",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1973,
+    "artist": "Lou Reed",
+    "title": "Walk on the Wild Side",
+    "peak": "Clásico M80",
+    "genre": "Rock"
+  },
+  {
+    "year": 1973,
+    "artist": "Barry White",
+    "title": "I'm Gonna Love You Just a Little More Baby",
+    "peak": "Top España",
+    "genre": "Soul"
+  },
+  {
+    "year": 1973,
+    "artist": "Billy Joel",
+    "title": "Piano Man",
+    "peak": "Clásico M80",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1973,
+    "artist": "Roberta Flack",
+    "title": "Killing Me Softly with His Song",
+    "peak": "Nº 1 Los 40",
+    "genre": "Soul"
+  },
+  {
+    "year": 1974,
+    "artist": "ABBA",
+    "title": "Waterloo",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1974,
+    "artist": "George McCrae",
+    "title": "Rock Your Baby",
+    "peak": "Nº 1 España",
+    "genre": "Disco"
+  },
+  {
+    "year": 1974,
+    "artist": "Barry White",
+    "title": "You're the First, the Last, My Everything",
+    "peak": "Nº 1 España",
+    "genre": "Soul / Disco"
+  },
+  {
+    "year": 1974,
+    "artist": "Carl Douglas",
+    "title": "Kung Fu Fighting",
+    "peak": "Nº 1 España",
+    "genre": "Disco"
+  },
+  {
+    "year": 1974,
+    "artist": "Queen",
+    "title": "Killer Queen",
+    "peak": "Top Los 40",
+    "genre": "Rock"
+  },
+  {
+    "year": 1974,
+    "artist": "Eric Clapton",
+    "title": "I Shot the Sheriff",
+    "peak": "Top Los 40",
+    "genre": "Rock / Reggae"
+  },
+  {
+    "year": 1974,
+    "artist": "Sweet",
+    "title": "The Ballroom Blitz",
+    "peak": "Top España",
+    "genre": "Glam Rock"
+  },
+  {
+    "year": 1975,
+    "artist": "Queen",
+    "title": "Bohemian Rhapsody",
+    "peak": "Himno Los 40",
+    "genre": "Rock"
+  },
+  {
+    "year": 1975,
+    "artist": "ABBA",
+    "title": "SOS",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop"
+  },
+  {
+    "year": 1975,
+    "artist": "David Bowie",
+    "title": "Fame",
+    "peak": "Top España",
+    "genre": "Funk Rock"
+  },
+  {
+    "year": 1975,
+    "artist": "KC & The Sunshine Band",
+    "title": "That's the Way (I Like It)",
+    "peak": "Nº 1 España",
+    "genre": "Disco"
+  },
+  {
+    "year": 1975,
+    "artist": "Pink Floyd",
+    "title": "Wish You Were Here",
+    "peak": "Clásico M80",
+    "genre": "Rock"
+  },
+  {
+    "year": 1975,
+    "artist": "Silver Convention",
+    "title": "Fly, Robin, Fly",
+    "peak": "Nº 1 España",
+    "genre": "Disco"
+  },
+  {
+    "year": 1975,
+    "artist": "Van McCoy",
+    "title": "The Hustle",
+    "peak": "Top Disco España",
+    "genre": "Disco"
+  },
+  {
+    "year": 1975,
+    "artist": "10cc",
+    "title": "I'm Not in Love",
+    "peak": "Clásico Kiss FM",
+    "genre": "Soft Rock"
+  },
+  {
+    "year": 1976,
+    "artist": "Eagles",
+    "title": "Hotel California",
+    "peak": "Nº 1 Los 40",
+    "genre": "Rock"
+  },
+  {
+    "year": 1976,
+    "artist": "ABBA",
+    "title": "Dancing Queen",
+    "peak": "Nº 1 España",
+    "genre": "Disco / Pop"
+  },
+  {
+    "year": 1976,
+    "artist": "Boney M.",
+    "title": "Daddy Cool",
+    "peak": "Nº 1 España",
+    "genre": "Disco"
+  },
+  {
+    "year": 1976,
+    "artist": "Boston",
+    "title": "More Than a Feeling",
+    "peak": "Top Rock España",
+    "genre": "Rock"
+  },
+  {
+    "year": 1976,
+    "artist": "Rod Stewart",
+    "title": "Tonight's the Night (Gonna Be Alright)",
+    "peak": "Top Los 40",
+    "genre": "Rock Ballad"
+  },
+  {
+    "year": 1976,
+    "artist": "Elton John & Kiki Dee",
+    "title": "Don't Go Breaking My Heart",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop"
+  },
+  {
+    "year": 1976,
+    "artist": "Stevie Wonder",
+    "title": "Isn't She Lovely",
+    "peak": "Top España",
+    "genre": "Soul / Pop"
+  },
+  {
+    "year": 1976,
+    "artist": "Donna Summer",
+    "title": "Love to Love You Baby",
+    "peak": "Top Disco España",
+    "genre": "Disco"
+  },
+  {
+    "year": 1977,
+    "artist": "Bee Gees",
+    "title": "Stayin' Alive",
+    "peak": "Nº 1 España",
+    "genre": "Disco"
+  },
+  {
+    "year": 1977,
+    "artist": "Bee Gees",
+    "title": "Night Fever",
+    "peak": "Nº 1 España",
+    "genre": "Disco"
+  },
+  {
+    "year": 1977,
+    "artist": "Bee Gees",
+    "title": "How Deep Is Your Love",
+    "peak": "Nº 1 España",
+    "genre": "Ballad"
+  },
+  {
+    "year": 1977,
+    "artist": "Queen",
+    "title": "We Will Rock You",
+    "peak": "Himno España",
+    "genre": "Rock"
+  },
+  {
+    "year": 1977,
+    "artist": "Queen",
+    "title": "We Are the Champions",
+    "peak": "Nº 1 España",
+    "genre": "Rock"
+  },
+  {
+    "year": 1977,
+    "artist": "Boney M.",
+    "title": "Ma Baker",
+    "peak": "Nº 1 España",
+    "genre": "Disco"
+  },
+  {
+    "year": 1977,
+    "artist": "Baccara",
+    "title": "Yes Sir, I Can Boogie",
+    "peak": "Nº 1 España",
+    "genre": "Disco"
+  },
+  {
+    "year": 1977,
+    "artist": "Fleetwood Mac",
+    "title": "Go Your Own Way",
+    "peak": "Clásico M80",
+    "genre": "Rock"
+  },
+  {
+    "year": 1977,
+    "artist": "Fleetwood Mac",
+    "title": "Dreams",
+    "peak": "Clásico M80",
+    "genre": "Soft Rock"
+  },
+  {
+    "year": 1977,
+    "artist": "Donna Summer",
+    "title": "I Feel Love",
+    "peak": "Nº 1 España",
+    "genre": "Disco / Synth"
+  },
+  {
+    "year": 1977,
+    "artist": "Santa Esmeralda",
+    "title": "Don't Let Me Be Misunderstood",
+    "peak": "Nº 1 España",
+    "genre": "Disco Flamenco"
+  },
+  {
+    "year": 1977,
+    "artist": "ABBA",
+    "title": "Knowing Me, Knowing You",
+    "peak": "Top Los 40",
+    "genre": "Pop"
+  },
+  {
+    "year": 1978,
+    "artist": "John Travolta & Olivia Newton-John",
+    "title": "You're the One That I Want",
+    "peak": "Nº 1 Absoluto España",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1978,
+    "artist": "John Travolta & Olivia Newton-John",
+    "title": "Summer Nights",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1978,
+    "artist": "Boney M.",
+    "title": "Rivers of Babylon",
+    "peak": "Nº 1 España (12 sem)",
+    "genre": "Disco / Pop"
+  },
+  {
+    "year": 1978,
+    "artist": "Boney M.",
+    "title": "Rasputin",
+    "peak": "Nº 1 España",
+    "genre": "Disco"
+  },
+  {
+    "year": 1978,
+    "artist": "Village People",
+    "title": "Y.M.C.A.",
+    "peak": "Nº 1 España",
+    "genre": "Disco"
+  },
+  {
+    "year": 1978,
+    "artist": "Gloria Gaynor",
+    "title": "I Will Survive",
+    "peak": "Himno España",
+    "genre": "Disco"
+  },
+  {
+    "year": 1978,
+    "artist": "Dire Straits",
+    "title": "Sultans of Swing",
+    "peak": "Nº 1 Los 40",
+    "genre": "Rock"
+  },
+  {
+    "year": 1978,
+    "artist": "Blondie",
+    "title": "Heart of Glass",
+    "peak": "Nº 1 Los 40",
+    "genre": "New Wave / Disco"
+  },
+  {
+    "year": 1978,
+    "artist": "Chic",
+    "title": "Le Freak",
+    "peak": "Top Disco España",
+    "genre": "Disco / Funk"
+  },
+  {
+    "year": 1978,
+    "artist": "The Police",
+    "title": "Roxanne",
+    "peak": "Top España",
+    "genre": "Rock / Reggae"
+  },
+  {
+    "year": 1978,
+    "artist": "Gerry Rafferty",
+    "title": "Baker Street",
+    "peak": "Clásico M80",
+    "genre": "Soft Rock"
+  },
+  {
+    "year": 1978,
+    "artist": "Earth, Wind & Fire",
+    "title": "September",
+    "peak": "Himno Fiesta España",
+    "genre": "Funk / Disco"
+  },
+  {
+    "year": 1979,
+    "artist": "Pink Floyd",
+    "title": "Another Brick in the Wall (Part 2)",
+    "peak": "Nº 1 España",
+    "genre": "Rock"
+  },
+  {
+    "year": 1979,
+    "artist": "The Buggles",
+    "title": "Video Killed the Radio Star",
+    "peak": "Nº 1 España",
+    "genre": "Synth-pop"
+  },
+  {
+    "year": 1979,
+    "artist": "Supertramp",
+    "title": "The Logical Song",
+    "peak": "Nº 1 Los 40",
+    "genre": "Progressive Pop"
+  },
+  {
+    "year": 1979,
+    "artist": "Supertramp",
+    "title": "Breakfast in America",
+    "peak": "Top España",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1979,
+    "artist": "Supertramp",
+    "title": "Goodbye Stranger",
+    "peak": "Clásico M80",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1979,
+    "artist": "The Police",
+    "title": "Message in a Bottle",
+    "peak": "Nº 1 Los 40",
+    "genre": "Rock"
+  },
+  {
+    "year": 1979,
+    "artist": "ABBA",
+    "title": "Chiquitita",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1979,
+    "artist": "ABBA",
+    "title": "Voulez-Vous",
+    "peak": "Top Los 40",
+    "genre": "Disco"
+  },
+  {
+    "year": 1979,
+    "artist": "Donna Summer",
+    "title": "Hot Stuff",
+    "peak": "Nº 1 España",
+    "genre": "Disco Rock"
+  },
+  {
+    "year": 1979,
+    "artist": "The Knack",
+    "title": "My Sharona",
+    "peak": "Nº 1 España",
+    "genre": "Power Pop"
+  },
+  {
+    "year": 1979,
+    "artist": "Earth, Wind & Fire",
+    "title": "Boogie Wonderland",
+    "peak": "Top Disco España",
+    "genre": "Disco"
+  },
+  {
+    "year": 1979,
+    "artist": "KISS",
+    "title": "I Was Made for Lovin' You",
+    "peak": "Himno España",
+    "genre": "Hard Rock / Disco"
+  },
+  {
+    "year": 1979,
+    "artist": "Electric Light Orchestra",
+    "title": "Don't Bring Me Down",
+    "peak": "Nº 1 Los 40",
+    "genre": "Rock"
+  },
+  {
+    "year": 1980,
+    "artist": "Queen",
+    "title": "Another One Bites the Dust",
+    "peak": "Nº 1 España",
+    "genre": "Funk Rock"
+  },
+  {
+    "year": 1980,
+    "artist": "John Lennon",
+    "title": "(Just Like) Starting Over",
+    "peak": "Nº 1 Los 40",
+    "genre": "Rock"
+  },
+  {
+    "year": 1980,
+    "artist": "John Lennon",
+    "title": "Woman",
+    "peak": "Nº 1 España",
+    "genre": "Ballad"
+  },
+  {
+    "year": 1980,
+    "artist": "The Police",
+    "title": "Don't Stand So Close to Me",
+    "peak": "Nº 1 Los 40",
+    "genre": "Rock"
+  },
+  {
+    "year": 1980,
+    "artist": "Blondie",
+    "title": "Call Me",
+    "peak": "Nº 1 Los 40",
+    "genre": "New Wave"
+  },
+  {
+    "year": 1980,
+    "artist": "Barbra Streisand",
+    "title": "Woman in Love",
+    "peak": "Nº 1 España",
+    "genre": "Pop Ballad"
+  },
+  {
+    "year": 1980,
+    "artist": "AC/DC",
+    "title": "You Shook Me All Night Long",
+    "peak": "Top Rock España",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1980,
+    "artist": "Lipps Inc.",
+    "title": "Funkytown",
+    "peak": "Nº 1 España",
+    "genre": "Disco"
+  },
+  {
+    "year": 1980,
+    "artist": "Diana Ross",
+    "title": "Upside Down",
+    "peak": "Nº 1 Los 40",
+    "genre": "Disco / Pop"
+  },
+  {
+    "year": 1980,
+    "artist": "Kool & The Gang",
+    "title": "Celebration",
+    "peak": "Top Fiesta España",
+    "genre": "Funk / Pop"
+  },
+  {
+    "year": 1980,
+    "artist": "Air Supply",
+    "title": "All Out of Love",
+    "peak": "Clásico Kiss FM",
+    "genre": "Soft Rock"
+  },
+  {
+    "year": 1980,
+    "artist": "Bob Marley & The Wailers",
+    "title": "Could You Be Loved",
+    "peak": "Nº 1 España",
+    "genre": "Reggae"
+  },
+  {
+    "year": 1981,
+    "artist": "Queen & David Bowie",
+    "title": "Under Pressure",
+    "peak": "Nº 1 España",
+    "genre": "Rock"
+  },
+  {
+    "year": 1981,
+    "artist": "Soft Cell",
+    "title": "Tainted Love",
+    "peak": "Nº 1 España",
+    "genre": "Synth-pop"
+  },
+  {
+    "year": 1981,
+    "artist": "The Police",
+    "title": "Every Little Thing She Does Is Magic",
+    "peak": "Nº 1 Los 40",
+    "genre": "Rock"
+  },
+  {
+    "year": 1981,
+    "artist": "Kim Carnes",
+    "title": "Bette Davis Eyes",
+    "peak": "Nº 1 España",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1981,
+    "artist": "Foreigner",
+    "title": "Waiting for a Girl Like You",
+    "peak": "Top Los 40",
+    "genre": "Rock Ballad"
+  },
+  {
+    "year": 1981,
+    "artist": "Phil Collins",
+    "title": "In the Air Tonight",
+    "peak": "Nº 1 Los 40",
+    "genre": "Art Rock"
+  },
+  {
+    "year": 1981,
+    "artist": "Rod Stewart",
+    "title": "Young Turks",
+    "peak": "Top Los 40",
+    "genre": "New Wave"
+  },
+  {
+    "year": 1981,
+    "artist": "Stars on 45",
+    "title": "Stars on 45 Medley",
+    "peak": "Nº 1 España",
+    "genre": "Disco Medley"
+  },
+  {
+    "year": 1981,
+    "artist": "Journey",
+    "title": "Don't Stop Believin'",
+    "peak": "Clásico Rock FM",
+    "genre": "Arena Rock"
+  },
+  {
+    "year": 1981,
+    "artist": "OMD (Orchestral Manoeuvres in the Dark)",
+    "title": "Enola Gay",
+    "peak": "Nº 1 España",
+    "genre": "Synth-pop"
+  },
+  {
+    "year": 1981,
+    "artist": "Human League",
+    "title": "Don't You Want Me",
+    "peak": "Nº 1 España",
+    "genre": "Synth-pop"
+  },
+  {
+    "year": 1981,
+    "artist": "Earth, Wind & Fire",
+    "title": "Let's Groove",
+    "peak": "Top Disco España",
+    "genre": "Disco"
+  },
+  {
+    "year": 1982,
+    "artist": "Michael Jackson",
+    "title": "Billie Jean",
+    "peak": "Nº 1 Absoluto España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1982,
+    "artist": "Michael Jackson",
+    "title": "Beat It",
+    "peak": "Nº 1 España",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1982,
+    "artist": "Survivor",
+    "title": "Eye of the Tiger",
+    "peak": "Nº 1 España",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1982,
+    "artist": "Toto",
+    "title": "Africa",
+    "peak": "Nº 1 Los 40",
+    "genre": "Soft Rock"
+  },
+  {
+    "year": 1982,
+    "artist": "Toto",
+    "title": "Rosanna",
+    "peak": "Top Los 40",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1982,
+    "artist": "F.R. David",
+    "title": "Words",
+    "peak": "Nº 1 España (Superventas)",
+    "genre": "Synth-pop / Italo"
+  },
+  {
+    "year": 1982,
+    "artist": "Daryl Hall & John Oates",
+    "title": "Maneater",
+    "peak": "Top Los 40",
+    "genre": "Pop"
+  },
+  {
+    "year": 1982,
+    "artist": "Men at Work",
+    "title": "Down Under",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1982,
+    "artist": "Dire Straits",
+    "title": "Private Investigations",
+    "peak": "Top España",
+    "genre": "Rock"
+  },
+  {
+    "year": 1982,
+    "artist": "The Clash",
+    "title": "Should I Stay or Should I Go",
+    "peak": "Top España",
+    "genre": "Punk Rock"
+  },
+  {
+    "year": 1982,
+    "artist": "Culture Club",
+    "title": "Do You Really Want to Hurt Me",
+    "peak": "Nº 1 España",
+    "genre": "Pop / Reggae"
+  },
+  {
+    "year": 1982,
+    "artist": "Joe Cocker & Jennifer Warnes",
+    "title": "Up Where We Belong",
+    "peak": "Nº 1 Los 40",
+    "genre": "Ballad"
+  },
+  {
+    "year": 1982,
+    "artist": "Imagination",
+    "title": "Just an Illusion",
+    "peak": "Nº 1 Discotecas España",
+    "genre": "Post-disco"
+  },
+  {
+    "year": 1983,
+    "artist": "The Police",
+    "title": "Every Breath You Take",
+    "peak": "Nº 1 España",
+    "genre": "Rock"
+  },
+  {
+    "year": 1983,
+    "artist": "Michael Jackson",
+    "title": "Thriller",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1983,
+    "artist": "David Bowie",
+    "title": "Let's Dance",
+    "peak": "Nº 1 Los 40",
+    "genre": "Post-disco / Funk"
+  },
+  {
+    "year": 1983,
+    "artist": "Eurythmics",
+    "title": "Sweet Dreams (Are Made of This)",
+    "peak": "Nº 1 España",
+    "genre": "Synth-pop"
+  },
+  {
+    "year": 1983,
+    "artist": "Bonnie Tyler",
+    "title": "Total Eclipse of the Heart",
+    "peak": "Nº 1 España",
+    "genre": "Power Ballad"
+  },
+  {
+    "year": 1983,
+    "artist": "Gazebo",
+    "title": "I Like Chopin",
+    "peak": "Nº 1 Superventas España",
+    "genre": "Italo Disco"
+  },
+  {
+    "year": 1983,
+    "artist": "Ryan Paris",
+    "title": "Dolce Vita",
+    "peak": "Nº 1 España",
+    "genre": "Italo Disco"
+  },
+  {
+    "year": 1983,
+    "artist": "Spandau Ballet",
+    "title": "True",
+    "peak": "Nº 1 Los 40",
+    "genre": "Sophisti-pop"
+  },
+  {
+    "year": 1983,
+    "artist": "Culture Club",
+    "title": "Karma Chameleon",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1983,
+    "artist": "Lionel Richie",
+    "title": "All Night Long (All Night)",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop"
+  },
+  {
+    "year": 1983,
+    "artist": "Irene Cara",
+    "title": "Flashdance... What a Feeling",
+    "peak": "Nº 1 España",
+    "genre": "Pop / Dance"
+  },
+  {
+    "year": 1983,
+    "artist": "Kenny Loggins",
+    "title": "Footloose",
+    "peak": "Top Los 40",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1983,
+    "artist": "Mike Oldfield",
+    "title": "Moonlight Shadow",
+    "peak": "Nº 1 España",
+    "genre": "Pop Folk"
+  },
+  {
+    "year": 1983,
+    "artist": "Yes",
+    "title": "Owner of a Lonely Heart",
+    "peak": "Top Los 40",
+    "genre": "Prog Pop"
+  },
+  {
+    "year": 1983,
+    "artist": "Paul Young",
+    "title": "Come Back and Stay",
+    "peak": "Top Los 40",
+    "genre": "New Wave"
+  },
+  {
+    "year": 1984,
+    "artist": "Wham!",
+    "title": "Wake Me Up Before You Go-Go",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1984,
+    "artist": "George Michael",
+    "title": "Careless Whisper",
+    "peak": "Nº 1 España (Superventas)",
+    "genre": "Pop Ballad"
+  },
+  {
+    "year": 1984,
+    "artist": "Cyndi Lauper",
+    "title": "Girls Just Want to Have Fun",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop"
+  },
+  {
+    "year": 1984,
+    "artist": "Cyndi Lauper",
+    "title": "Time After Time",
+    "peak": "Top Los 40",
+    "genre": "Ballad"
+  },
+  {
+    "year": 1984,
+    "artist": "Alphaville",
+    "title": "Big in Japan",
+    "peak": "Nº 1 España",
+    "genre": "Synth-pop"
+  },
+  {
+    "year": 1984,
+    "artist": "Alphaville",
+    "title": "Forever Young",
+    "peak": "Himno M80 España",
+    "genre": "Synth-pop"
+  },
+  {
+    "year": 1984,
+    "artist": "Stevie Wonder",
+    "title": "I Just Called to Say I Love You",
+    "peak": "Nº 1 Absoluto España (15 sem)",
+    "genre": "Pop"
+  },
+  {
+    "year": 1984,
+    "artist": "Ray Parker Jr.",
+    "title": "Ghostbusters",
+    "peak": "Nº 1 España",
+    "genre": "Pop Funk"
+  },
+  {
+    "year": 1984,
+    "artist": "Queen",
+    "title": "Radio Ga Ga",
+    "peak": "Nº 1 España",
+    "genre": "Rock"
+  },
+  {
+    "year": 1984,
+    "artist": "Queen",
+    "title": "I Want to Break Free",
+    "peak": "Nº 1 España",
+    "genre": "Rock"
+  },
+  {
+    "year": 1984,
+    "artist": "Van Halen",
+    "title": "Jump",
+    "peak": "Nº 1 Los 40",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1984,
+    "artist": "Tina Turner",
+    "title": "What's Love Got to Do with It",
+    "peak": "Top Los 40",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1984,
+    "artist": "Prince",
+    "title": "Purple Rain",
+    "peak": "Top España",
+    "genre": "Rock Ballad"
+  },
+  {
+    "year": 1984,
+    "artist": "Frankie Goes to Hollywood",
+    "title": "Relax",
+    "peak": "Nº 1 Discotecas España",
+    "genre": "Hi-NRG / Synth"
+  },
+  {
+    "year": 1984,
+    "artist": "Limahl",
+    "title": "The NeverEnding Story",
+    "peak": "Nº 1 España",
+    "genre": "Synth-pop"
+  },
+  {
+    "year": 1984,
+    "artist": "Talk Talk",
+    "title": "It's My Life",
+    "peak": "Top España",
+    "genre": "Synth-pop"
+  },
+  {
+    "year": 1984,
+    "artist": "Talk Talk",
+    "title": "Such a Shame",
+    "peak": "Top España",
+    "genre": "Synth-pop"
+  },
+  {
+    "year": 1984,
+    "artist": "Laura Branigan",
+    "title": "Self Control",
+    "peak": "Nº 1 España",
+    "genre": "Italo / Pop"
+  },
+  {
+    "year": 1984,
+    "artist": "P. Lion",
+    "title": "Happy Children",
+    "peak": "Nº 1 Discotecas España",
+    "genre": "Italo Disco"
+  },
+  {
+    "year": 1984,
+    "artist": "Scorpions",
+    "title": "Still Loving You",
+    "peak": "Nº 1 Lentas España",
+    "genre": "Rock Ballad"
+  },
+  {
+    "year": 1984,
+    "artist": "Foreigner",
+    "title": "I Want to Know What Love Is",
+    "peak": "Nº 1 España",
+    "genre": "Rock Ballad"
+  },
+  {
+    "year": 1985,
+    "artist": "a-ha",
+    "title": "Take on Me",
+    "peak": "Nº 1 Los 40",
+    "genre": "Synth-pop"
+  },
+  {
+    "year": 1985,
+    "artist": "Dire Straits",
+    "title": "Money for Nothing",
+    "peak": "Nº 1 España",
+    "genre": "Rock"
+  },
+  {
+    "year": 1985,
+    "artist": "Dire Straits",
+    "title": "Walk of Life",
+    "peak": "Nº 1 Los 40",
+    "genre": "Rock"
+  },
+  {
+    "year": 1985,
+    "artist": "Dire Straits",
+    "title": "Brothers in Arms",
+    "peak": "Clásico M80",
+    "genre": "Rock Ballad"
+  },
+  {
+    "year": 1985,
+    "artist": "Tears for Fears",
+    "title": "Shout",
+    "peak": "Nº 1 España",
+    "genre": "New Wave"
+  },
+  {
+    "year": 1985,
+    "artist": "Tears for Fears",
+    "title": "Everybody Wants to Rule the World",
+    "peak": "Top Los 40",
+    "genre": "New Wave"
+  },
+  {
+    "year": 1985,
+    "artist": "USA for Africa",
+    "title": "We Are the World",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1985,
+    "artist": "Simple Minds",
+    "title": "Don't You (Forget About Me)",
+    "peak": "Top Los 40",
+    "genre": "Rock"
+  },
+  {
+    "year": 1985,
+    "artist": "Simple Minds",
+    "title": "Alive and Kicking",
+    "peak": "Top Los 40",
+    "genre": "Rock"
+  },
+  {
+    "year": 1985,
+    "artist": "Madonna",
+    "title": "Like a Virgin",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1985,
+    "artist": "Madonna",
+    "title": "Material Girl",
+    "peak": "Top Los 40",
+    "genre": "Pop"
+  },
+  {
+    "year": 1985,
+    "artist": "Modern Talking",
+    "title": "You're My Heart, You're My Soul",
+    "peak": "Nº 1 Absoluto España",
+    "genre": "Euro Disco"
+  },
+  {
+    "year": 1985,
+    "artist": "Modern Talking",
+    "title": "Cheri, Cheri Lady",
+    "peak": "Nº 1 España",
+    "genre": "Euro Disco"
+  },
+  {
+    "year": 1985,
+    "artist": "Silver Pozzoli",
+    "title": "Around My Dream",
+    "peak": "Nº 1 Max Mix España",
+    "genre": "Italo Disco"
+  },
+  {
+    "year": 1985,
+    "artist": "Bryan Adams",
+    "title": "Heaven",
+    "peak": "Top Los 40",
+    "genre": "Rock Ballad"
+  },
+  {
+    "year": 1985,
+    "artist": "Bryan Adams",
+    "title": "Summer of '69",
+    "peak": "Clásico Rock FM",
+    "genre": "Rock"
+  },
+  {
+    "year": 1985,
+    "artist": "Baltimora",
+    "title": "Tarzan Boy",
+    "peak": "Nº 1 España",
+    "genre": "Italo Disco"
+  },
+  {
+    "year": 1985,
+    "artist": "Opus",
+    "title": "Live Is Life",
+    "peak": "Nº 1 España",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1985,
+    "artist": "Sandra",
+    "title": "(I'll Never Be) Maria Magdalena",
+    "peak": "Nº 1 España",
+    "genre": "Euro Disco"
+  },
+  {
+    "year": 1985,
+    "artist": "Whitney Houston",
+    "title": "Saving All My Love for You",
+    "peak": "Top Los 40",
+    "genre": "Soul / Pop"
+  },
+  {
+    "year": 1985,
+    "artist": "Marillion",
+    "title": "Kayleigh",
+    "peak": "Top Los 40",
+    "genre": "Prog Rock"
+  },
+  {
+    "year": 1986,
+    "artist": "Europe",
+    "title": "The Final Countdown",
+    "peak": "Nº 1 Absoluto España",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1986,
+    "artist": "Europe",
+    "title": "Carrie",
+    "peak": "Top Los 40",
+    "genre": "Power Ballad"
+  },
+  {
+    "year": 1986,
+    "artist": "Queen",
+    "title": "A Kind of Magic",
+    "peak": "Nº 1 España",
+    "genre": "Rock"
+  },
+  {
+    "year": 1986,
+    "artist": "Queen",
+    "title": "Friends Will Be Friends",
+    "peak": "Nº 1 Los 40",
+    "genre": "Rock"
+  },
+  {
+    "year": 1986,
+    "artist": "Bon Jovi",
+    "title": "Livin' on a Prayer",
+    "peak": "Nº 1 Los 40",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1986,
+    "artist": "Bon Jovi",
+    "title": "You Give Love a Bad Name",
+    "peak": "Top España",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1986,
+    "artist": "Madonna",
+    "title": "Papa Don't Preach",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1986,
+    "artist": "Madonna",
+    "title": "La Isla Bonita",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1986,
+    "artist": "Berlin",
+    "title": "Take My Breath Away",
+    "peak": "Nº 1 España",
+    "genre": "Ballad"
+  },
+  {
+    "year": 1986,
+    "artist": "Chris de Burgh",
+    "title": "The Lady in Red",
+    "peak": "Nº 1 España",
+    "genre": "Pop Ballad"
+  },
+  {
+    "year": 1986,
+    "artist": "Bangles",
+    "title": "Walk Like an Egyptian",
+    "peak": "Nº 1 España",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1986,
+    "artist": "Modern Talking",
+    "title": "Brother Louie",
+    "peak": "Nº 1 España",
+    "genre": "Euro Disco"
+  },
+  {
+    "year": 1986,
+    "artist": "Status Quo",
+    "title": "In the Army Now",
+    "peak": "Nº 1 España",
+    "genre": "Rock"
+  },
+  {
+    "year": 1986,
+    "artist": "Cutting Crew",
+    "title": "(I Just) Died in Your Arms",
+    "peak": "Top Los 40",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1986,
+    "artist": "Genesis",
+    "title": "Invisible Touch",
+    "peak": "Top Los 40",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1986,
+    "artist": "Peter Gabriel",
+    "title": "Sledgehammer",
+    "peak": "Nº 1 Los 40",
+    "genre": "Art Rock"
+  },
+  {
+    "year": 1986,
+    "artist": "Falco",
+    "title": "Rock Me Amadeus",
+    "peak": "Nº 1 España",
+    "genre": "Pop / Rap"
+  },
+  {
+    "year": 1986,
+    "artist": "Spagna",
+    "title": "Easy Lady",
+    "peak": "Nº 1 Superventas España",
+    "genre": "Italo Disco"
+  },
+  {
+    "year": 1986,
+    "artist": "Lionel Richie",
+    "title": "Say You, Say Me",
+    "peak": "Nº 1 España",
+    "genre": "Ballad"
+  },
+  {
+    "year": 1987,
+    "artist": "Michael Jackson",
+    "title": "Bad",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1987,
+    "artist": "Michael Jackson",
+    "title": "Smooth Criminal",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1987,
+    "artist": "Michael Jackson",
+    "title": "The Way You Make Me Feel",
+    "peak": "Top Los 40",
+    "genre": "Pop"
+  },
+  {
+    "year": 1987,
+    "artist": "U2",
+    "title": "With or Without You",
+    "peak": "Nº 1 España",
+    "genre": "Rock"
+  },
+  {
+    "year": 1987,
+    "artist": "U2",
+    "title": "I Still Haven't Found What I'm Looking For",
+    "peak": "Nº 1 Los 40",
+    "genre": "Rock"
+  },
+  {
+    "year": 1987,
+    "artist": "U2",
+    "title": "Where the Streets Have No Name",
+    "peak": "Top Los 40",
+    "genre": "Rock"
+  },
+  {
+    "year": 1987,
+    "artist": "George Michael",
+    "title": "Faith",
+    "peak": "Nº 1 España",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1987,
+    "artist": "Rick Astley",
+    "title": "Never Gonna Give You Up",
+    "peak": "Nº 1 España",
+    "genre": "Dance-pop"
+  },
+  {
+    "year": 1987,
+    "artist": "Pet Shop Boys",
+    "title": "It's a Sin",
+    "peak": "Nº 1 España",
+    "genre": "Synth-pop"
+  },
+  {
+    "year": 1987,
+    "artist": "Pet Shop Boys",
+    "title": "Always on My Mind",
+    "peak": "Nº 1 España",
+    "genre": "Synth-pop"
+  },
+  {
+    "year": 1987,
+    "artist": "Whitney Houston",
+    "title": "I Wanna Dance with Somebody (Who Loves Me)",
+    "peak": "Nº 1 España",
+    "genre": "Pop / Dance"
+  },
+  {
+    "year": 1987,
+    "artist": "Bill Medley & Jennifer Warnes",
+    "title": "(I've Had) The Time of My Life",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1987,
+    "artist": "Guns N' Roses",
+    "title": "Sweet Child O' Mine",
+    "peak": "Himno Rock España",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1987,
+    "artist": "Def Leppard",
+    "title": "Pour Some Sugar on Me",
+    "peak": "Top Rock España",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1987,
+    "artist": "Spagna",
+    "title": "Call Me",
+    "peak": "Nº 1 Superventas España",
+    "genre": "Italo Disco"
+  },
+  {
+    "year": 1987,
+    "artist": "Sabrina",
+    "title": "Boys (Summertime Love)",
+    "peak": "Fenómeno Nacional España",
+    "genre": "Italo Disco"
+  },
+  {
+    "year": 1987,
+    "artist": "Desireless",
+    "title": "Voyage Voyage",
+    "peak": "Nº 1 España (Superventas)",
+    "genre": "Synth-pop"
+  },
+  {
+    "year": 1987,
+    "artist": "Terence Trent D'Arby",
+    "title": "Sign Your Name",
+    "peak": "Top Los 40",
+    "genre": "Soul / Pop"
+  },
+  {
+    "year": 1987,
+    "artist": "Black",
+    "title": "Wonderful Life",
+    "peak": "Nº 1 España",
+    "genre": "Sophisti-pop"
+  },
+  {
+    "year": 1987,
+    "artist": "Whitesnake",
+    "title": "Here I Go Again",
+    "peak": "Top Rock España",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1987,
+    "artist": "Whitesnake",
+    "title": "Is This Love",
+    "peak": "Top Los 40",
+    "genre": "Power Ballad"
+  },
+  {
+    "year": 1987,
+    "artist": "Suzanne Vega",
+    "title": "Luka",
+    "peak": "Top Los 40",
+    "genre": "Folk Pop"
+  },
+  {
+    "year": 1988,
+    "artist": "Bobby McFerrin",
+    "title": "Don't Worry Be Happy",
+    "peak": "Nº 1 España",
+    "genre": "A cappella / Pop"
+  },
+  {
+    "year": 1988,
+    "artist": "Tracy Chapman",
+    "title": "Fast Car",
+    "peak": "Top Los 40",
+    "genre": "Folk Rock"
+  },
+  {
+    "year": 1988,
+    "artist": "Womack & Womack",
+    "title": "Teardrops",
+    "peak": "Nº 1 España",
+    "genre": "Soul / Dance"
+  },
+  {
+    "year": 1988,
+    "artist": "INXS",
+    "title": "Never Tear Us Apart",
+    "peak": "Top Los 40",
+    "genre": "Rock"
+  },
+  {
+    "year": 1988,
+    "artist": "INXS",
+    "title": "Need You Tonight",
+    "peak": "Top Los 40",
+    "genre": "Funk Rock"
+  },
+  {
+    "year": 1988,
+    "artist": "Bangles",
+    "title": "Eternal Flame",
+    "peak": "Nº 1 España",
+    "genre": "Pop Ballad"
+  },
+  {
+    "year": 1988,
+    "artist": "Fairground Attraction",
+    "title": "Perfect",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop"
+  },
+  {
+    "year": 1988,
+    "artist": "Milli Vanilli",
+    "title": "Girl You Know It's True",
+    "peak": "Nº 1 España",
+    "genre": "Pop / Dance"
+  },
+  {
+    "year": 1988,
+    "artist": "Tanita Tikaram",
+    "title": "Twist in My Sobriety",
+    "peak": "Top España",
+    "genre": "Pop Folk"
+  },
+  {
+    "year": 1988,
+    "artist": "Enya",
+    "title": "Orinoco Flow",
+    "peak": "Nº 1 España",
+    "genre": "New Age / Pop"
+  },
+  {
+    "year": 1988,
+    "artist": "Phil Collins",
+    "title": "A Groovy Kind of Love",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop Ballad"
+  },
+  {
+    "year": 1988,
+    "artist": "Ofra Haza",
+    "title": "Im Nin'alu",
+    "peak": "Nº 1 España",
+    "genre": "Worldbeat / Dance"
+  },
+  {
+    "year": 1988,
+    "artist": "Eddy Grant",
+    "title": "Gimme Hope Jo'anna",
+    "peak": "Nº 1 España",
+    "genre": "Reggae Pop"
+  },
+  {
+    "year": 1988,
+    "artist": "Cheap Trick",
+    "title": "The Flame",
+    "peak": "Top Los 40",
+    "genre": "Power Ballad"
+  },
+  {
+    "year": 1988,
+    "artist": "Yazz",
+    "title": "The Only Way Is Up",
+    "peak": "Nº 1 España",
+    "genre": "Dance-pop"
+  },
+  {
+    "year": 1988,
+    "artist": "Kylie Minogue",
+    "title": "I Should Be So Lucky",
+    "peak": "Nº 1 España",
+    "genre": "Dance-pop"
+  },
+  {
+    "year": 1988,
+    "artist": "Guns N' Roses",
+    "title": "Paradise City",
+    "peak": "Top Rock España",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1989,
+    "artist": "Madonna",
+    "title": "Like a Prayer",
+    "peak": "Nº 1 España",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1989,
+    "artist": "Roxette",
+    "title": "The Look",
+    "peak": "Nº 1 España",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1989,
+    "artist": "Roxette",
+    "title": "Listen to Your Heart",
+    "peak": "Nº 1 España",
+    "genre": "Power Ballad"
+  },
+  {
+    "year": 1989,
+    "artist": "Kaoma",
+    "title": "Lambada (Chorando Se Foi)",
+    "peak": "Nº 1 Absoluto España (Verano)",
+    "genre": "Lambada"
+  },
+  {
+    "year": 1989,
+    "artist": "Technotronic",
+    "title": "Pump Up the Jam",
+    "peak": "Nº 1 Superventas España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1989,
+    "artist": "Jive Bunny and the Mastermixers",
+    "title": "Swing the Mood",
+    "peak": "Nº 1 España",
+    "genre": "Rock & Roll Medley"
+  },
+  {
+    "year": 1989,
+    "artist": "Phil Collins",
+    "title": "Another Day in Paradise",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1989,
+    "artist": "Richard Marx",
+    "title": "Right Here Waiting",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop Ballad"
+  },
+  {
+    "year": 1989,
+    "artist": "Tears for Fears",
+    "title": "Sowing the Seeds of Love",
+    "peak": "Top Los 40",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1989,
+    "artist": "Tina Turner",
+    "title": "The Best",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1989,
+    "artist": "Simple Minds",
+    "title": "Belfast Child",
+    "peak": "Top Los 40",
+    "genre": "Celtic Rock"
+  },
+  {
+    "year": 1989,
+    "artist": "Alice Cooper",
+    "title": "Poison",
+    "peak": "Top España",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1989,
+    "artist": "Elton John",
+    "title": "Sacrifice",
+    "peak": "Nº 1 España",
+    "genre": "Pop Ballad"
+  },
+  {
+    "year": 1989,
+    "artist": "Texas",
+    "title": "I Don't Want a Lover",
+    "peak": "Top Los 40",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1989,
+    "artist": "Alannah Myles",
+    "title": "Black Velvet",
+    "peak": "Top Los 40",
+    "genre": "Rock / Blues"
+  },
+  {
+    "year": 1989,
+    "artist": "Lisa Stansfield",
+    "title": "All Around the World",
+    "peak": "Nº 1 Los 40",
+    "genre": "Soul / Pop"
+  },
+  {
+    "year": 1989,
+    "artist": "Depeche Mode",
+    "title": "Personal Jesus",
+    "peak": "Nº 1 España",
+    "genre": "Synth-pop / Rock"
+  },
+  {
+    "year": 1990,
+    "artist": "Sinéad O'Connor",
+    "title": "Nothing Compares 2 U",
+    "peak": "Nº 1 España",
+    "genre": "Ballad"
+  },
+  {
+    "year": 1990,
+    "artist": "Depeche Mode",
+    "title": "Enjoy the Silence",
+    "peak": "Nº 1 España",
+    "genre": "Synth-pop"
+  },
+  {
+    "year": 1990,
+    "artist": "Snap!",
+    "title": "The Power",
+    "peak": "Nº 1 Superventas España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1990,
+    "artist": "Snap!",
+    "title": "Oops Up",
+    "peak": "Top Discotecas España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1990,
+    "artist": "MC Hammer",
+    "title": "U Can't Touch This",
+    "peak": "Nº 1 España",
+    "genre": "Hip Hop / Pop"
+  },
+  {
+    "year": 1990,
+    "artist": "Vanilla Ice",
+    "title": "Ice Ice Baby",
+    "peak": "Nº 1 España",
+    "genre": "Hip Hop / Pop"
+  },
+  {
+    "year": 1990,
+    "artist": "Madonna",
+    "title": "Vogue",
+    "peak": "Nº 1 España",
+    "genre": "Dance-pop"
+  },
+  {
+    "year": 1990,
+    "artist": "Roxette",
+    "title": "It Must Have Been Love",
+    "peak": "Nº 1 España",
+    "genre": "Power Ballad"
+  },
+  {
+    "year": 1990,
+    "artist": "Jon Bon Jovi",
+    "title": "Blaze of Glory",
+    "peak": "Nº 1 Los 40",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1990,
+    "artist": "INXS",
+    "title": "Suicide Blonde",
+    "peak": "Top Los 40",
+    "genre": "Rock"
+  },
+  {
+    "year": 1990,
+    "artist": "George Michael",
+    "title": "Freedom! '90",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop / Dance"
+  },
+  {
+    "year": 1990,
+    "artist": "Londonbeat",
+    "title": "I've Been Thinking About You",
+    "peak": "Nº 1 España",
+    "genre": "Dance-pop"
+  },
+  {
+    "year": 1990,
+    "artist": "Enigma",
+    "title": "Sadeness (Part I)",
+    "peak": "Nº 1 España",
+    "genre": "New Age / Downtempo"
+  },
+  {
+    "year": 1990,
+    "artist": "AC/DC",
+    "title": "Thunderstruck",
+    "peak": "Himno Rock España",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1990,
+    "artist": "Pet Shop Boys",
+    "title": "Being Boring",
+    "peak": "Top Los 40",
+    "genre": "Synth-pop"
+  },
+  {
+    "year": 1990,
+    "artist": "Scorpions",
+    "title": "Wind of Change",
+    "peak": "Nº 1 España",
+    "genre": "Rock Ballad"
+  },
+  {
+    "year": 1990,
+    "artist": "Twenty 4 Seven",
+    "title": "I Can't Stand It",
+    "peak": "Nº 1 España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1990,
+    "artist": "The Black Crowes",
+    "title": "Hard to Handle",
+    "peak": "Top Rock FM",
+    "genre": "Southern Rock"
+  },
+  {
+    "year": 1991,
+    "artist": "Bryan Adams",
+    "title": "(Everything I Do) I Do It for You",
+    "peak": "Nº 1 Absoluto España (12 sem)",
+    "genre": "Power Ballad"
+  },
+  {
+    "year": 1991,
+    "artist": "Bryan Adams",
+    "title": "Can't Stop This Thing We Started",
+    "peak": "Top Los 40",
+    "genre": "Rock"
+  },
+  {
+    "year": 1991,
+    "artist": "R.E.M.",
+    "title": "Losing My Religion",
+    "peak": "Nº 1 España",
+    "genre": "Alternative Rock"
+  },
+  {
+    "year": 1991,
+    "artist": "R.E.M.",
+    "title": "Shiny Happy People",
+    "peak": "Top Los 40",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1991,
+    "artist": "Queen",
+    "title": "The Show Must Go On",
+    "peak": "Himno España",
+    "genre": "Rock"
+  },
+  {
+    "year": 1991,
+    "artist": "Queen",
+    "title": "Innuendo",
+    "peak": "Nº 1 España",
+    "genre": "Progressive Rock"
+  },
+  {
+    "year": 1991,
+    "artist": "Nirvana",
+    "title": "Smells Like Teen Spirit",
+    "peak": "Nº 1 Generacional España",
+    "genre": "Grunge"
+  },
+  {
+    "year": 1991,
+    "artist": "Metallica",
+    "title": "Enter Sandman",
+    "peak": "Nº 1 Rock España",
+    "genre": "Heavy Metal"
+  },
+  {
+    "year": 1991,
+    "artist": "Metallica",
+    "title": "Nothing Else Matters",
+    "peak": "Himno Lentas España",
+    "genre": "Metal Ballad"
+  },
+  {
+    "year": 1991,
+    "artist": "Guns N' Roses",
+    "title": "You Could Be Mine",
+    "peak": "Nº 1 España",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1991,
+    "artist": "Guns N' Roses",
+    "title": "Don't Cry",
+    "peak": "Nº 1 Los 40",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1991,
+    "artist": "Guns N' Roses",
+    "title": "November Rain",
+    "peak": "Himno España",
+    "genre": "Power Ballad"
+  },
+  {
+    "year": 1991,
+    "artist": "Roxette",
+    "title": "Joyride",
+    "peak": "Nº 1 España",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1991,
+    "artist": "Roxette",
+    "title": "Fading Like a Flower",
+    "peak": "Top Los 40",
+    "genre": "Power Ballad"
+  },
+  {
+    "year": 1991,
+    "artist": "Michael Jackson",
+    "title": "Black or White",
+    "peak": "Nº 1 España",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1991,
+    "artist": "Extreme",
+    "title": "More Than Words",
+    "peak": "Nº 1 Los 40",
+    "genre": "Acoustic Ballad"
+  },
+  {
+    "year": 1991,
+    "artist": "Chesney Hawkes",
+    "title": "The One and Only",
+    "peak": "Nº 1 España",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1991,
+    "artist": "Crystal Waters",
+    "title": "Gypsy Woman (She's Homeless)",
+    "peak": "Nº 1 Discotecas España",
+    "genre": "House"
+  },
+  {
+    "year": 1991,
+    "artist": "Seal",
+    "title": "Crazy",
+    "peak": "Top Los 40",
+    "genre": "Pop / Soul"
+  },
+  {
+    "year": 1991,
+    "artist": "U2",
+    "title": "One",
+    "peak": "Clásico M80",
+    "genre": "Rock"
+  },
+  {
+    "year": 1991,
+    "artist": "U2",
+    "title": "Mysterious Ways",
+    "peak": "Top Los 40",
+    "genre": "Rock"
+  },
+  {
+    "year": 1991,
+    "artist": "Crowded House",
+    "title": "Weather with You",
+    "peak": "Top Los 40",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1991,
+    "artist": "Red Hot Chili Peppers",
+    "title": "Under the Bridge",
+    "peak": "Top Los 40",
+    "genre": "Alternative Rock"
+  },
+  {
+    "year": 1992,
+    "artist": "Whitney Houston",
+    "title": "I Will Always Love You",
+    "peak": "Nº 1 Absoluto España",
+    "genre": "Power Ballad"
+  },
+  {
+    "year": 1992,
+    "artist": "Snap!",
+    "title": "Rhythm Is a Dancer",
+    "peak": "Nº 1 Superventas España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1992,
+    "artist": "2 Unlimited",
+    "title": "Twilight Zone",
+    "peak": "Nº 1 Discotecas España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1992,
+    "artist": "2 Unlimited",
+    "title": "Get Ready for This",
+    "peak": "Top España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1992,
+    "artist": "Dr. Alban",
+    "title": "It's My Life",
+    "peak": "Nº 1 España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1992,
+    "artist": "Double You",
+    "title": "Please Don't Go",
+    "peak": "Nº 1 España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1992,
+    "artist": "Mr. Big",
+    "title": "To Be with You",
+    "peak": "Nº 1 Los 40",
+    "genre": "Acoustic Rock"
+  },
+  {
+    "year": 1992,
+    "artist": "George Michael & Elton John",
+    "title": "Don't Let the Sun Go Down on Me",
+    "peak": "Nº 1 España",
+    "genre": "Ballad"
+  },
+  {
+    "year": 1992,
+    "artist": "Tasmin Archer",
+    "title": "Sleeping Satellite",
+    "peak": "Nº 1 Los 40",
+    "genre": "Sophisti-pop"
+  },
+  {
+    "year": 1992,
+    "artist": "Ugly Kid Joe",
+    "title": "Cats in the Cradle",
+    "peak": "Top Los 40",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1992,
+    "artist": "Spin Doctors",
+    "title": "Two Princes",
+    "peak": "Top Los 40",
+    "genre": "Alternative Rock"
+  },
+  {
+    "year": 1992,
+    "artist": "Eric Clapton",
+    "title": "Tears in Heaven",
+    "peak": "Nº 1 Los 40",
+    "genre": "Acoustic"
+  },
+  {
+    "year": 1992,
+    "artist": "Genesis",
+    "title": "Hold on My Heart",
+    "peak": "Top Los 40",
+    "genre": "Pop Ballad"
+  },
+  {
+    "year": 1992,
+    "artist": "Charles & Eddie",
+    "title": "Would I Lie to You?",
+    "peak": "Nº 1 España",
+    "genre": "Soul / Pop"
+  },
+  {
+    "year": 1992,
+    "artist": "Bon Jovi",
+    "title": "Keep the Faith",
+    "peak": "Top Los 40",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1992,
+    "artist": "Informer",
+    "title": "Snow",
+    "peak": "Nº 1 España",
+    "genre": "Reggae Fusion"
+  },
+  {
+    "year": 1992,
+    "artist": "Roxette",
+    "title": "How Do You Do!",
+    "peak": "Nº 1 España",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1993,
+    "artist": "4 Non Blondes",
+    "title": "What's Up?",
+    "peak": "Nº 1 España",
+    "genre": "Alternative Rock"
+  },
+  {
+    "year": 1993,
+    "artist": "Ace of Base",
+    "title": "All That She Wants",
+    "peak": "Nº 1 Superventas España",
+    "genre": "Eurodance / Pop"
+  },
+  {
+    "year": 1993,
+    "artist": "Ace of Base",
+    "title": "The Sign",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1993,
+    "artist": "Meat Loaf",
+    "title": "I'd Do Anything for Love (But I Won't Do That)",
+    "peak": "Nº 1 España",
+    "genre": "Rock Opera"
+  },
+  {
+    "year": 1993,
+    "artist": "Haddaway",
+    "title": "What Is Love",
+    "peak": "Nº 1 Superventas España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1993,
+    "artist": "Haddaway",
+    "title": "Life",
+    "peak": "Nº 1 Discotecas España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1993,
+    "artist": "2 Unlimited",
+    "title": "No Limit",
+    "peak": "Nº 1 Discotecas España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1993,
+    "artist": "Culture Beat",
+    "title": "Mr. Vain",
+    "peak": "Nº 1 Discotecas España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1993,
+    "artist": "Soul Asylum",
+    "title": "Runaway Train",
+    "peak": "Nº 1 Los 40",
+    "genre": "Alternative Rock"
+  },
+  {
+    "year": 1993,
+    "artist": "Bryan Adams, Rod Stewart & Sting",
+    "title": "All for Love",
+    "peak": "Nº 1 España",
+    "genre": "Power Ballad"
+  },
+  {
+    "year": 1993,
+    "artist": "Aerosmith",
+    "title": "Cryin'",
+    "peak": "Nº 1 Los 40",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1993,
+    "artist": "Aerosmith",
+    "title": "Amazing",
+    "peak": "Top Los 40",
+    "genre": "Power Ballad"
+  },
+  {
+    "year": 1993,
+    "artist": "Blind Melon",
+    "title": "No Rain",
+    "peak": "Top Los 40",
+    "genre": "Alternative Rock"
+  },
+  {
+    "year": 1993,
+    "artist": "Lenny Kravitz",
+    "title": "Are You Gonna Go My Way",
+    "peak": "Top Rock España",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1993,
+    "artist": "Duran Duran",
+    "title": "Ordinary World",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1993,
+    "artist": "Pet Shop Boys",
+    "title": "Go West",
+    "peak": "Nº 1 España",
+    "genre": "Synth-pop"
+  },
+  {
+    "year": 1993,
+    "artist": "Crash Test Dummies",
+    "title": "Mmm Mmm Mmm Mmm",
+    "peak": "Nº 1 España",
+    "genre": "Folk Rock"
+  },
+  {
+    "year": 1993,
+    "artist": "UB40",
+    "title": "(I Can't Help) Falling in Love with You",
+    "peak": "Nº 1 España",
+    "genre": "Reggae Pop"
+  },
+  {
+    "year": 1993,
+    "artist": "Freddie Mercury",
+    "title": "Living on My Own (No More Brothers Mix)",
+    "peak": "Nº 1 España",
+    "genre": "Dance-pop"
+  },
+  {
+    "year": 1993,
+    "artist": "The Cranberries",
+    "title": "Linger",
+    "peak": "Top Los 40",
+    "genre": "Dream Pop"
+  },
+  {
+    "year": 1994,
+    "artist": "The Cranberries",
+    "title": "Zombie",
+    "peak": "Nº 1 Absoluto España",
+    "genre": "Alternative Rock"
+  },
+  {
+    "year": 1994,
+    "artist": "Bon Jovi",
+    "title": "Always",
+    "peak": "Nº 1 España",
+    "genre": "Power Ballad"
+  },
+  {
+    "year": 1994,
+    "artist": "Corona",
+    "title": "The Rhythm of the Night",
+    "peak": "Nº 1 Superventas España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1994,
+    "artist": "Corona",
+    "title": "Baby Baby",
+    "peak": "Top España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1994,
+    "artist": "Whigfield",
+    "title": "Saturday Night",
+    "peak": "Nº 1 Verano España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1994,
+    "artist": "Ice MC",
+    "title": "Think About the Way",
+    "peak": "Nº 1 Discotecas España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1994,
+    "artist": "Ice MC",
+    "title": "It's a Rainy Day",
+    "peak": "Top Discotecas España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1994,
+    "artist": "La Bouche",
+    "title": "Sweet Dreams",
+    "peak": "Nº 1 España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1994,
+    "artist": "Wet Wet Wet",
+    "title": "Love Is All Around",
+    "peak": "Nº 1 España",
+    "genre": "Pop Ballad"
+  },
+  {
+    "year": 1994,
+    "artist": "All-4-One",
+    "title": "I Swear",
+    "peak": "Nº 1 España",
+    "genre": "R&B / Ballad"
+  },
+  {
+    "year": 1994,
+    "artist": "Youssou N'Dour & Neneh Cherry",
+    "title": "7 Seconds",
+    "peak": "Nº 1 España",
+    "genre": "Worldbeat / Pop"
+  },
+  {
+    "year": 1994,
+    "artist": "Roxette",
+    "title": "Sleeping in My Car",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1994,
+    "artist": "Green Day",
+    "title": "Basket Case",
+    "peak": "Himno Punk Rock España",
+    "genre": "Punk Rock"
+  },
+  {
+    "year": 1994,
+    "artist": "The Offspring",
+    "title": "Self Esteem",
+    "peak": "Nº 1 Rock España",
+    "genre": "Punk Rock"
+  },
+  {
+    "year": 1994,
+    "artist": "Sheryl Crow",
+    "title": "All I Wanna Do",
+    "peak": "Top Los 40",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1994,
+    "artist": "Bruce Springsteen",
+    "title": "Streets of Philadelphia",
+    "peak": "Nº 1 España",
+    "genre": "Rock"
+  },
+  {
+    "year": 1994,
+    "artist": "Aerosmith",
+    "title": "Crazy",
+    "peak": "Top Los 40",
+    "genre": "Hard Rock"
+  },
+  {
+    "year": 1994,
+    "artist": "Seal",
+    "title": "Kiss from a Rose",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop / Soul"
+  },
+  {
+    "year": 1994,
+    "artist": "Warren G ft. Nate Dogg",
+    "title": "Regulate",
+    "peak": "Top Los 40",
+    "genre": "G-Funk"
+  },
+  {
+    "year": 1994,
+    "artist": "Take That",
+    "title": "Back for Good",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop"
+  },
+  {
+    "year": 1995,
+    "artist": "Coolio ft. L.V.",
+    "title": "Gangsta's Paradise",
+    "peak": "Nº 1 España",
+    "genre": "Hip Hop"
+  },
+  {
+    "year": 1995,
+    "artist": "Scatman John",
+    "title": "Scatman (Ski-Ba-Bop-Ba-Dop-Bop)",
+    "peak": "Nº 1 Superventas España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1995,
+    "artist": "Scatman John",
+    "title": "Scatman's World",
+    "peak": "Top España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1995,
+    "artist": "Oasis",
+    "title": "Wonderwall",
+    "peak": "Himno Britpop España",
+    "genre": "Britpop"
+  },
+  {
+    "year": 1995,
+    "artist": "Oasis",
+    "title": "Don't Look Back in Anger",
+    "peak": "Nº 1 Los 40",
+    "genre": "Britpop"
+  },
+  {
+    "year": 1995,
+    "artist": "Blur",
+    "title": "Country House",
+    "peak": "Top Los 40",
+    "genre": "Britpop"
+  },
+  {
+    "year": 1995,
+    "artist": "The Connells",
+    "title": "'74-'75",
+    "peak": "Nº 1 España",
+    "genre": "Alternative Pop"
+  },
+  {
+    "year": 1995,
+    "artist": "Alanis Morissette",
+    "title": "You Oughta Know",
+    "peak": "Nº 1 Rock España",
+    "genre": "Alternative Rock"
+  },
+  {
+    "year": 1995,
+    "artist": "Alanis Morissette",
+    "title": "Ironic",
+    "peak": "Nº 1 España",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1995,
+    "artist": "Alanis Morissette",
+    "title": "Hand in My Pocket",
+    "peak": "Top Los 40",
+    "genre": "Alternative Rock"
+  },
+  {
+    "year": 1995,
+    "artist": "La Bouche",
+    "title": "Be My Lover",
+    "peak": "Nº 1 Superventas España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1995,
+    "artist": "Michael Jackson",
+    "title": "You Are Not Alone",
+    "peak": "Nº 1 España",
+    "genre": "R&B Ballad"
+  },
+  {
+    "year": 1995,
+    "artist": "Michael Jackson",
+    "title": "Earth Song",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1995,
+    "artist": "Everything But The Girl",
+    "title": "Missing (Todd Terry Remix)",
+    "peak": "Nº 1 Discotecas España",
+    "genre": "House / Pop"
+  },
+  {
+    "year": 1995,
+    "artist": "Shaggy",
+    "title": "Boombastic",
+    "peak": "Nº 1 España",
+    "genre": "Reggae Fusion"
+  },
+  {
+    "year": 1995,
+    "artist": "The Rembrandts",
+    "title": "I'll Be There for You (Friends Theme)",
+    "peak": "Nº 1 España",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1995,
+    "artist": "Joan Osborne",
+    "title": "One of Us",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1995,
+    "artist": "Simply Red",
+    "title": "Fairground",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop Dance"
+  },
+  {
+    "year": 1995,
+    "artist": "Robert Miles",
+    "title": "Children",
+    "peak": "Nº 1 Absoluto España (Dream)",
+    "genre": "Dream House"
+  },
+  {
+    "year": 1995,
+    "artist": "TLC",
+    "title": "Waterfalls",
+    "peak": "Top Los 40",
+    "genre": "R&B"
+  },
+  {
+    "year": 1996,
+    "artist": "Spice Girls",
+    "title": "Wannabe",
+    "peak": "Nº 1 Absoluto España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1996,
+    "artist": "Spice Girls",
+    "title": "Say You'll Be There",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1996,
+    "artist": "Spice Girls",
+    "title": "2 Become 1",
+    "peak": "Nº 1 España",
+    "genre": "Pop Ballad"
+  },
+  {
+    "year": 1996,
+    "artist": "The Fugees",
+    "title": "Killing Me Softly",
+    "peak": "Nº 1 España",
+    "genre": "Hip Hop / Soul"
+  },
+  {
+    "year": 1996,
+    "artist": "Gala",
+    "title": "Freed from Desire",
+    "peak": "Nº 1 Superventas España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1996,
+    "artist": "Gala",
+    "title": "Come Into My Life",
+    "peak": "Top España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1996,
+    "artist": "Faithless",
+    "title": "Insomnia",
+    "peak": "Himno Dance España",
+    "genre": "Dance / Electronic"
+  },
+  {
+    "year": 1996,
+    "artist": "No Doubt",
+    "title": "Don't Speak",
+    "peak": "Nº 1 Absoluto España",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1996,
+    "artist": "The Cranberries",
+    "title": "Salvation",
+    "peak": "Nº 1 España",
+    "genre": "Alternative Rock"
+  },
+  {
+    "year": 1996,
+    "artist": "The Cardigans",
+    "title": "Lovefool",
+    "peak": "Top Los 40",
+    "genre": "Pop"
+  },
+  {
+    "year": 1996,
+    "artist": "Jamiroquai",
+    "title": "Cosmic Girl",
+    "peak": "Nº 1 Los 40",
+    "genre": "Acid Jazz / Funk"
+  },
+  {
+    "year": 1996,
+    "artist": "Jamiroquai",
+    "title": "Virtual Insanity",
+    "peak": "Top Los 40",
+    "genre": "Funk"
+  },
+  {
+    "year": 1996,
+    "artist": "George Michael",
+    "title": "Fastlove",
+    "peak": "Nº 1 España",
+    "genre": "Dance-pop"
+  },
+  {
+    "year": 1996,
+    "artist": "George Michael",
+    "title": "Jesus to a Child",
+    "peak": "Nº 1 España",
+    "genre": "Ballad"
+  },
+  {
+    "year": 1996,
+    "artist": "Underworld",
+    "title": "Born Slippy (.NUXX)",
+    "peak": "Himno Pistas España",
+    "genre": "Techno / Dance"
+  },
+  {
+    "year": 1996,
+    "artist": "Robert Miles",
+    "title": "Fable",
+    "peak": "Nº 1 España",
+    "genre": "Dream House"
+  },
+  {
+    "year": 1996,
+    "artist": "Donna Lewis",
+    "title": "I Love You Always Forever",
+    "peak": "Top Los 40",
+    "genre": "Pop"
+  },
+  {
+    "year": 1996,
+    "artist": "Fools Garden",
+    "title": "Lemon Tree",
+    "peak": "Nº 1 España",
+    "genre": "Britpop / Folk Pop"
+  },
+  {
+    "year": 1996,
+    "artist": "Toni Braxton",
+    "title": "Un-Break My Heart",
+    "peak": "Nº 1 Los 40",
+    "genre": "R&B Ballad"
+  },
+  {
+    "year": 1996,
+    "artist": "Babylon Zoo",
+    "title": "Spaceman",
+    "peak": "Nº 1 España",
+    "genre": "Space Rock"
+  },
+  {
+    "year": 1997,
+    "artist": "Elton John",
+    "title": "Candle in the Wind 1997",
+    "peak": "Nº 1 Mundial y España",
+    "genre": "Ballad"
+  },
+  {
+    "year": 1997,
+    "artist": "The Verve",
+    "title": "Bitter Sweet Symphony",
+    "peak": "Himno España",
+    "genre": "Britpop"
+  },
+  {
+    "year": 1997,
+    "artist": "The Verve",
+    "title": "The Drugs Don't Work",
+    "peak": "Top Los 40",
+    "genre": "Britpop"
+  },
+  {
+    "year": 1997,
+    "artist": "Chumbawamba",
+    "title": "Tubthumping",
+    "peak": "Nº 1 España",
+    "genre": "Anarcho-pop"
+  },
+  {
+    "year": 1997,
+    "artist": "Aqua",
+    "title": "Barbie Girl",
+    "peak": "Nº 1 Superventas España",
+    "genre": "Bubblegum Dance"
+  },
+  {
+    "year": 1997,
+    "artist": "Backstreet Boys",
+    "title": "Everybody (Backstreet's Back)",
+    "peak": "Nº 1 España",
+    "genre": "Boyband Pop"
+  },
+  {
+    "year": 1997,
+    "artist": "Backstreet Boys",
+    "title": "As Long as You Love Me",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop"
+  },
+  {
+    "year": 1997,
+    "artist": "Backstreet Boys",
+    "title": "Quit Playing Games (with My Heart)",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1997,
+    "artist": "Natalie Imbruglia",
+    "title": "Torn",
+    "peak": "Nº 1 Absoluto España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1997,
+    "artist": "Sash!",
+    "title": "Ecuador",
+    "peak": "Nº 1 Superventas España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1997,
+    "artist": "Sash!",
+    "title": "Encore Une Fois",
+    "peak": "Nº 1 Discotecas España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1997,
+    "artist": "Paradisio",
+    "title": "Bailando",
+    "peak": "Nº 1 Verano España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1997,
+    "artist": "Will Smith",
+    "title": "Men in Black",
+    "peak": "Nº 1 España",
+    "genre": "Hip Hop / Pop"
+  },
+  {
+    "year": 1997,
+    "artist": "Robbie Williams",
+    "title": "Angels",
+    "peak": "Himno España",
+    "genre": "Pop Ballad"
+  },
+  {
+    "year": 1997,
+    "artist": "Radiohead",
+    "title": "Karma Police",
+    "peak": "Clásico M80",
+    "genre": "Alternative Rock"
+  },
+  {
+    "year": 1997,
+    "artist": "Radiohead",
+    "title": "Paranoid Android",
+    "peak": "Top Los 40",
+    "genre": "Alternative Rock"
+  },
+  {
+    "year": 1997,
+    "artist": "Hanson",
+    "title": "MMMBop",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1997,
+    "artist": "Meredith Brooks",
+    "title": "Bitch",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1997,
+    "artist": "All Saints",
+    "title": "Never Ever",
+    "peak": "Nº 1 España",
+    "genre": "Pop / R&B"
+  },
+  {
+    "year": 1997,
+    "artist": "Puff Daddy ft. Faith Evans",
+    "title": "I'll Be Missing You",
+    "peak": "Nº 1 España",
+    "genre": "Hip Hop"
+  },
+  {
+    "year": 1997,
+    "artist": "Gala",
+    "title": "Let a Boy Cry",
+    "peak": "Nº 1 España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1997,
+    "artist": "Bellini",
+    "title": "Samba de Janeiro",
+    "peak": "Nº 1 Verano España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1997,
+    "artist": "Blur",
+    "title": "Song 2",
+    "peak": "Himno Rock España",
+    "genre": "Alternative Rock"
+  },
+  {
+    "year": 1998,
+    "artist": "Céline Dion",
+    "title": "My Heart Will Go On",
+    "peak": "Nº 1 Absoluto Titanic España",
+    "genre": "Ballad"
+  },
+  {
+    "year": 1998,
+    "artist": "Cher",
+    "title": "Believe",
+    "peak": "Nº 1 España (Superventas)",
+    "genre": "Dance-pop"
+  },
+  {
+    "year": 1998,
+    "artist": "Aerosmith",
+    "title": "I Don't Want to Miss a Thing",
+    "peak": "Nº 1 España",
+    "genre": "Power Ballad"
+  },
+  {
+    "year": 1998,
+    "artist": "Madonna",
+    "title": "Frozen",
+    "peak": "Nº 1 España",
+    "genre": "Ambient Pop"
+  },
+  {
+    "year": 1998,
+    "artist": "Madonna",
+    "title": "Ray of Light",
+    "peak": "Nº 1 España",
+    "genre": "Electronic Dance"
+  },
+  {
+    "year": 1998,
+    "artist": "The Offspring",
+    "title": "Pretty Fly (for a White Guy)",
+    "peak": "Nº 1 España",
+    "genre": "Punk Rock"
+  },
+  {
+    "year": 1998,
+    "artist": "Goo Goo Dolls",
+    "title": "Iris",
+    "peak": "Clásico M80",
+    "genre": "Alternative Rock"
+  },
+  {
+    "year": 1998,
+    "artist": "Des'ree",
+    "title": "Life",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1998,
+    "artist": "Eagle-Eye Cherry",
+    "title": "Save Tonight",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1998,
+    "artist": "Cornershop",
+    "title": "Brimful of Asha (Norman Cook Remix)",
+    "peak": "Nº 1 Los 40",
+    "genre": "Big Beat / Indie"
+  },
+  {
+    "year": 1998,
+    "artist": "Fatboy Slim",
+    "title": "The Rockafeller Skank",
+    "peak": "Top Discotecas España",
+    "genre": "Big Beat"
+  },
+  {
+    "year": 1998,
+    "artist": "Stardust",
+    "title": "Music Sounds Better with You",
+    "peak": "Nº 1 French Touch España",
+    "genre": "French House"
+  },
+  {
+    "year": 1998,
+    "artist": "Vengaboys",
+    "title": "Up and Down",
+    "peak": "Nº 1 Discotecas España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1998,
+    "artist": "Vengaboys",
+    "title": "Boom, Boom, Boom, Boom!!",
+    "peak": "Nº 1 España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1998,
+    "artist": "Vengaboys",
+    "title": "We Like to Party! (The Vengabus)",
+    "peak": "Top España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1998,
+    "artist": "Brandy & Monica",
+    "title": "The Boy Is Mine",
+    "peak": "Top Los 40",
+    "genre": "R&B"
+  },
+  {
+    "year": 1998,
+    "artist": "Fastball",
+    "title": "The Way",
+    "peak": "Top Los 40",
+    "genre": "Pop Rock"
+  },
+  {
+    "year": 1998,
+    "artist": "Manic Street Preachers",
+    "title": "If You Tolerate This Your Children Will Be Next",
+    "peak": "Top España",
+    "genre": "Alternative Rock"
+  },
+  {
+    "year": 1998,
+    "artist": "Savage Garden",
+    "title": "Truly Madly Deeply",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop Ballad"
+  },
+  {
+    "year": 1998,
+    "artist": "Semisonic",
+    "title": "Closing Time",
+    "peak": "Clásico M80",
+    "genre": "Alternative Rock"
+  },
+  {
+    "year": 1999,
+    "artist": "Britney Spears",
+    "title": "...Baby One More Time",
+    "peak": "Nº 1 Absoluto España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1999,
+    "artist": "Britney Spears",
+    "title": "(You Drive Me) Crazy",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1999,
+    "artist": "Britney Spears",
+    "title": "Sometimes",
+    "peak": "Top Los 40",
+    "genre": "Pop"
+  },
+  {
+    "year": 1999,
+    "artist": "Backstreet Boys",
+    "title": "I Want It That Way",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1999,
+    "artist": "Backstreet Boys",
+    "title": "Larger Than Life",
+    "peak": "Top Los 40",
+    "genre": "Pop"
+  },
+  {
+    "year": 1999,
+    "artist": "Lou Bega",
+    "title": "Mambo No. 5 (A Little Bit of...)",
+    "peak": "Nº 1 Verano España",
+    "genre": "Mambo Pop"
+  },
+  {
+    "year": 1999,
+    "artist": "Eiffel 65",
+    "title": "Blue (Da Ba Dee)",
+    "peak": "Nº 1 Superventas España",
+    "genre": "Eurodance / Italo"
+  },
+  {
+    "year": 1999,
+    "artist": "Eiffel 65",
+    "title": "Move Your Body",
+    "peak": "Top Discotecas España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1999,
+    "artist": "Santana ft. Rob Thomas",
+    "title": "Smooth",
+    "peak": "Nº 1 España",
+    "genre": "Latin Rock"
+  },
+  {
+    "year": 1999,
+    "artist": "The Offspring",
+    "title": "Why Don't You Get a Job?",
+    "peak": "Nº 1 España",
+    "genre": "Ska Punk"
+  },
+  {
+    "year": 1999,
+    "artist": "Red Hot Chili Peppers",
+    "title": "Scar Tissue",
+    "peak": "Nº 1 Los 40",
+    "genre": "Alternative Rock"
+  },
+  {
+    "year": 1999,
+    "artist": "Red Hot Chili Peppers",
+    "title": "Otherside",
+    "peak": "Clásico Rock FM",
+    "genre": "Alternative Rock"
+  },
+  {
+    "year": 1999,
+    "artist": "Red Hot Chili Peppers",
+    "title": "Californication",
+    "peak": "Himno España",
+    "genre": "Alternative Rock"
+  },
+  {
+    "year": 1999,
+    "artist": "Blink-182",
+    "title": "All the Small Things",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop Punk"
+  },
+  {
+    "year": 1999,
+    "artist": "Blink-182",
+    "title": "What's My Age Again?",
+    "peak": "Top Rock España",
+    "genre": "Pop Punk"
+  },
+  {
+    "year": 1999,
+    "artist": "Christina Aguilera",
+    "title": "Genie in a Bottle",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
+  },
+  {
+    "year": 1999,
+    "artist": "Ronan Keating",
+    "title": "When You Say Nothing at All",
+    "peak": "Nº 1 Los 40",
+    "genre": "Country Pop"
+  },
+  {
+    "year": 1999,
+    "artist": "Ann Lee",
+    "title": "2 Times",
+    "peak": "Nº 1 Superventas España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1999,
+    "artist": "Shania Twain",
+    "title": "Man! I Feel Like a Woman!",
+    "peak": "Top Los 40",
+    "genre": "Country Pop"
+  },
+  {
+    "year": 1999,
+    "artist": "TLC",
+    "title": "No Scrubs",
+    "peak": "Nº 1 Los 40",
+    "genre": "R&B"
+  },
+  {
+    "year": 1999,
+    "artist": "Bloodhound Gang",
+    "title": "The Bad Touch",
+    "peak": "Nº 1 España",
+    "genre": "Eurodance / Pop"
+  },
+  {
+    "year": 1999,
+    "artist": "Gigi D'Agostino",
+    "title": "L'Amour Toujours",
+    "peak": "Himno Discotecas España",
+    "genre": "Italo Dance"
+  },
+  {
+    "year": 1999,
+    "artist": "Gigi D'Agostino",
+    "title": "Bla Bla Bla",
+    "peak": "Nº 1 Discotecas España",
+    "genre": "Italo Dance"
+  },
+  {
+    "year": 1999,
+    "artist": "Gigi D'Agostino",
+    "title": "The Riddle",
+    "peak": "Top España",
+    "genre": "Italo Dance"
+  },
+  {
+    "year": 1999,
+    "artist": "Alice Deejay",
+    "title": "Better Off Alone",
+    "peak": "Nº 1 Dance España",
+    "genre": "Eurodance"
+  },
+  {
+    "year": 1999,
+    "artist": "Sixpence None the Richer",
+    "title": "Kiss Me",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop"
+  },
+  {
+    "year": 1999,
+    "artist": "Moby",
+    "title": "Porcelain",
+    "peak": "Clásico M80",
+    "genre": "Downtempo"
+  },
+  {
+    "year": 1999,
+    "artist": "Travis",
+    "title": "Why Does It Always Rain on Me?",
+    "peak": "Top Los 40",
+    "genre": "Britpop"
+  },
+  {
+    "year": 1999,
+    "artist": "Tom Jones ft. Mousse T.",
+    "title": "Sex Bomb",
+    "peak": "Nº 1 España",
+    "genre": "Pop Dance"
+  }
+]
