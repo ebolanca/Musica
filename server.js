@@ -543,29 +543,44 @@ function loadMetadataCache() {
 }
 loadMetadataCache();
 
+function cleanSoundtrackTitle(title) {
+    if (!title) return '';
+    return title
+        .replace(/\s*[\(\[][^)\]]*(from\s+[\"“].*?[\"”]|from\s+the\s+|from\s+[\"“]|theme\s+from|love\s+theme\s+from|music\s+from|original\s+song\s+from|soundtrack|motion\s+picture|original\s+motion\s+picture|bso\b|b\.s\.o\.|ost\b)[^)\]]*[\)\]]/gi, '')
+        .replace(/\s*[\(\[]\s*from\s+[^)\]]+[\)\]]/gi, '')
+        .replace(/\s*-\s*(from\s+[\"“].*?[\"”]|from\s+the\s+.*|theme\s+from\s+.*|soundtrack\b|original\s+soundtrack\b|ost\b|bso\b).*/gi, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
 function cleanTrackTitle(rawTitle) {
     if (!rawTitle) return '';
     let clean = rawTitle
         // Quitar colaboraciones/features
         .replace(/\s*-\s*[A-Za-z0-9\s]+\s+featuring\s+.*$/i, '')
         .replace(/\s*-\s*[A-Za-z0-9\s]+\s+feat\.?\s+.*$/i, '')
-        .replace(/\s*\([A-Za-z0-9\s]+\s+featuring\s+.*\)$/i, '')
-        .replace(/\s*\([A-Za-z0-9\s]+\s+feat\.?\s+.*\)$/i, '')
-        .replace(/\s*\(feat\.?\s+.*\)$/i, '')
-        .replace(/\s*\(featuring\s+.*\)$/i, '')
-        .replace(/\s*\(with\s+.*\)$/i, '')
+        .replace(/\s*\([A-Za-z0-9\s]+\s+featuring\s+.*\)/gi, '')
+        .replace(/\s*\([A-Za-z0-9\s]+\s+feat\.?\s+.*\)/gi, '')
+        .replace(/\s*\(feat\.?\s+.*\)/gi, '')
+        .replace(/\s*\(featuring\s+.*\)/gi, '')
+        .replace(/\s*\(with\s+.*\)/gi, '')
         .replace(/^\s*\.\.\.\s*/, '')
-        // Quitar cualquier sufijo entre paréntesis que sea versión, remaster, edit, mix, etc.
-        .replace(/\s*\([^)]*(radio version|album version|single version|\d{4} version|short version|extended version|original version|version)[^)]*\)/gi, '')
+        // Quitar Bandas Sonoras / Soundtracks / Films / BSO / OST
+        .replace(/\s*[\(\[][^)\]]*(from\s+[\"“].*?[\"”]|from\s+the\s+|from\s+[\"“]|theme\s+from|love\s+theme\s+from|music\s+from|original\s+song\s+from|soundtrack|motion\s+picture|original\s+motion\s+picture|bso\b|b\.s\.o\.|ost\b)[^)\]]*[\)\]]/gi, '')
+        .replace(/\s*[\(\[]\s*from\s+[^)\]]+[\)\]]/gi, '')
+        .replace(/\s*-\s*(from\s+[\"“].*?[\"”]|from\s+the\s+.*|theme\s+from\s+.*|soundtrack\b|original\s+soundtrack\b|ost\b|bso\b).*/gi, '')
+        // Quitar cualquier sufijo entre paréntesis que sea versión, remaster, edit, mix, directo, sinfónico, etc.
+        .replace(/\s*\([^)]*(radio version|album version|single version|\d{4} version|short version|extended version|original version|versión|version)[^)]*\)/gi, '')
+        .replace(/\s*\([^)]*(en vivo|en directo|en concierto|directo|sinfónico|sinfonico|acústico|acustico)[^)]*\)/gi, '')
         .replace(/\s*\([^)]*(radio edit|club edit|extended mix|club mix|radio mix|dance vault|re-edit|edit|mixed)[^)]*\)/gi, '')
         .replace(/\s*\([^)]*(remastered|\d{4} remaster|remaster|20\d\d remaster|19\d\d remaster)[^)]*\)/gi, '')
         .replace(/\s*\([^)]*(remix|revisited|dub|vip mix|acoustic|unplugged|live|demo|deluxe|evolutions)[^)]*\)/gi, '')
         // Quitar sufijos precedidos por guión
-        .replace(/\s*-\s*(radio version|album version|single version|\d{4} version|short version|original version|version).*/gi, '')
+        .replace(/\s*-\s*(radio version|album version|single version|\d{4} version|short version|original version|versión|version).*/gi, '')
+        .replace(/\s*-\s*(en vivo|en directo|directo|sinfónico|sinfonico|acústico|acustico|live).*/gi, '')
         .replace(/\s*-\s*(radio edit|club edit|extended mix|club mix|radio mix|edit).*/gi, '')
         .replace(/\s*-\s*(remastered|\d{4} remaster|remaster|20\d\d remaster|19\d\d remaster).*/gi, '')
         .replace(/\s*-\s*(remix|acoustic|unplugged|live|demo|extended|mono|stereo|original).*/gi, '')
-        .replace(/\s*-\s*From\s+".*?".*/i, '')
         .trim();
 
     clean = clean.replace(/^[(\[]+([^)]+)[)\]]\s*/, '$1 ');
@@ -1000,7 +1015,7 @@ app.get('/api/playlists', (req, res) => {
 
             enrichedTracks.push({
                 artist: artist,
-                title: (/dance/i.test(listName)) ? (meta.displayTitle || cleanTitle) : cleanTrackTitle(meta.displayTitle || cleanTitle),
+                title: (/dance/i.test(listName)) ? cleanSoundtrackTitle(meta.displayTitle || cleanTitle) : cleanTrackTitle(meta.displayTitle || cleanTitle),
                 rawTitle: title,
                 album: (/dance/i.test(listName)) ? (meta.album || 'Álbum Desconocido') : cleanAlbumTitle(meta.album),
                 coverUrl: meta.coverUrl || null,
@@ -1368,7 +1383,7 @@ app.get('/api/track/detail', async (req, res) => {
 
     res.json({
         artist: artist,
-        title: meta.displayTitle || cleanTrackTitle(title),
+        title: cleanTrackTitle(meta.displayTitle || title),
         album: cleanAlbumTitle(meta.album),
         releaseDate: finalDate,
         releaseYear: finalYear,
@@ -2034,7 +2049,7 @@ app.get('/api/track/detail', async (req, res) => {
 
     res.json({
         artist: artist,
-        title: meta.displayTitle || cleanTrackTitle(title),
+        title: cleanTrackTitle(meta.displayTitle || title),
         album: cleanAlbumTitle(meta.album),
         releaseDate: finalDate,
         releaseYear: finalYear,
