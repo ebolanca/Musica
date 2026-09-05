@@ -1862,10 +1862,11 @@ app.post('/api/lyrics/cycle-version', async (req, res) => {
 // 🔄 Reemplazar pista por Versión Limpia Oficial de Estudio
 // ==========================================================================
 let versionCycleIndex = {};
+let activeCleanVersion = {}; // TrackKey -> URL actual para saber cuál descartar si el usuario pulsa "Versión" de nuevo
 
 app.post('/api/track/replace-clean-audio', async (req, res) => {
     try {
-        const { artist, title, category } = req.body;
+        const { artist, title, category, discardCurrent } = req.body;
         if (!artist || !title) {
             return res.status(400).json({ error: 'Faltan parámetros requeridos (artist, title)' });
         }
@@ -1889,6 +1890,15 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
 
         console.log(`[CLEAN DOWNLOAD] Buscando versión limpia y exacta de estudio para: ${artist} - ${cleanT}`);
 
+        const trackCycleKey = `${cleanTrackKey(artist)}_${cleanTrackKey(cleanT)}`;
+
+        // Si se solicita cambio de versión, descartar de inmediato la versión activa anterior
+        if (discardCurrent && activeCleanVersion[trackCycleKey]) {
+            const oldVersion = activeCleanVersion[trackCycleKey];
+            addDiscardedVersion(artist, cleanT, oldVersion);
+            console.log(`[CLEAN DOWNLOAD] 🗑️ Descartada versión anterior por petición del usuario: ${oldVersion}`);
+        }
+
         // 1. Obtener duración esperada de estudio (en segundos)
         let expectedDurationSec = null;
         const meta = getTrackMetadata(artist, title);
@@ -1909,16 +1919,19 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
             } catch(e) {}
         }
 
-        console.log(`[CLEAN DOWNLOAD] Duración oficial de estudio esperada: ${expectedDurationSec ? expectedDurationSec + 's (' + Math.floor(expectedDurationSec/60) + ':' + (expectedDurationSec%60).toString().padStart(2, '0') + ')' : 'No especificada'}`);
+        console.log(`[CLEAN DOWNLOAD] Duración oficial esperada: ${expectedDurationSec ? expectedDurationSec + 's (' + Math.floor(expectedDurationSec/60) + ':' + (expectedDurationSec%60).toString().padStart(2, '0') + ')' : 'No especificada'}`);
 
-        // 2. Buscar candidatos en SoundCloud y YouTube con yt-dlp dump-json
+        // 2. Buscar candidatos en SoundCloud con múltiples queries variadas
         const searchQueries = [
-            `scsearch25:${artist} - ${cleanT}`,
-            `scsearch25:${artist} ${cleanT}`
+            `scsearch30:${artist} ${cleanT}`,
+            `scsearch30:${cleanT} ${artist}`,
+            `scsearch30:"${cleanT}" ${artist}`,
+            `scsearch30:${artist} - ${cleanT}`
         ];
 
         let bestCandidate = null;
         let allValidCandidates = [];
+        const seenUrls = new Set();
 
         for (const q of searchQueries) {
             try {
@@ -1936,81 +1949,73 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
                 for (const line of lines) {
                     try {
                         const item = JSON.parse(line);
+                        const candUrl = item.webpage_url || item.url;
+                        if (!candUrl || seenUrls.has(candUrl)) continue;
+
                         const dur = item.duration;
                         if (!dur || dur < 60) continue;
 
                         const itemTitle = (item.title || '').toLowerCase();
-                        if (itemTitle.includes('preview') || itemTitle.includes('teaser') || itemTitle.includes('trailer') || itemTitle.includes('snippet')) continue;
+                        const itemUploader = (item.uploader || '').toLowerCase();
 
-                        // Descartar remixes, mashups, covers o sped up si el tema original no los tiene
-                        const isRemixWord = /remix|club mix|extended|tribute|cover by|sped up|slowed|mashup|parody/i.test(itemTitle);
-                        if (isRemixWord && !/remix|club/i.test(title)) continue;
+                        // Ignorar teasers, previews, trailers
+                        if (/preview|teaser|trailer|snippet/i.test(itemTitle)) continue;
 
-                        // Penalizar o descartar colaboradores ajenos
-                        let collabPenalty = 0;
-                        const hasOriginalCollab = title.toLowerCase().includes('feat') || title.toLowerCase().includes('con ') || title.toLowerCase().includes('ft.');
-                        if (!hasOriginalCollab && (itemTitle.includes('feat.') || itemTitle.includes('ft.') || itemTitle.includes(' con '))) {
-                            collabPenalty = 15;
+                        // FILTRO ESTRICTO ANTI-COVERS: Si la pista original no es cover, descartar cualquier cover
+                        const isCover = /\b(cover|acoustic cover|guitar cover|piano cover|metal cover|rock cover|tribute|tributo|karaoke|fan made|parody|versi[oó]n ac[uú]stica)\b/i.test(itemTitle)
+                                     || /\b(cover|karaoke|tribute)\b/i.test(itemUploader);
+                        if (isCover && !/cover/i.test(title)) {
+                            continue;
                         }
 
-                        // REGLA ESTRICTA SOLICITADA POR EL USUARIO: solo aceptar diferencia de +- 10 segundos
+                        // Descartar remixes, mashups, slowed, sped up si el tema original no los tiene
+                        const isRemix = /\b(remix|bootleg|mashup|sped up|slowed|nightcore|chopped|reverb|club mix|extended mix)\b/i.test(itemTitle);
+                        if (isRemix && !/remix|club|extended/i.test(title)) {
+                            continue;
+                        }
+
+                        // Descartar si el candidato ya fue descartado / blacklisteado para esta pista
+                        if (isVersionDiscarded(artist, cleanT, candUrl) || (item.id && isVersionDiscarded(artist, cleanT, String(item.id)))) {
+                            continue;
+                        }
+
+                        // Comprobar diferencia con duración esperada (+- 12s)
+                        let diff = 0;
                         if (expectedDurationSec) {
-                            const rawDiff = Math.abs(dur - expectedDurationSec);
-                            if (rawDiff > 10) {
-                                continue; // Descartado por no estar dentro de +-10s
-                            }
+                            diff = Math.abs(dur - expectedDurationSec);
+                            if (diff > 12) continue; // Descartado por duración lejana a la versión de estudio
                         }
 
-                        const diff = (expectedDurationSec ? Math.abs(dur - expectedDurationSec) : 0) + collabPenalty;
-
+                        seenUrls.add(candUrl);
                         allValidCandidates.push({
-                            url: item.webpage_url || item.url,
+                            url: candUrl,
+                            id: item.id,
                             duration: dur,
                             title: item.title,
+                            uploader: item.uploader,
                             diff: diff
                         });
                     } catch(e) {}
                 }
 
-                if (allValidCandidates.length >= 3) break;
+                if (allValidCandidates.length >= 25) break;
             } catch(e) {
                 console.warn(`Aviso buscando con ${q}:`, e.message);
             }
         }
 
-        // Eliminar duplicados por URL
-        const uniqueCandidates = [];
-        const seenUrls = new Set();
-        for (const c of allValidCandidates) {
-            if (!seenUrls.has(c.url)) {
-                seenUrls.add(c.url);
-                uniqueCandidates.push(c);
-            }
-        }
+        // 3. Probar candidatos uno a uno en orden de mejor coincidencia
+        let downloadedSuccess = false;
+        let finalStats = null;
 
-        if (uniqueCandidates.length > 0) {
-            uniqueCandidates.sort((a, b) => a.diff - b.diff);
+        if (allValidCandidates.length > 0) {
+            allValidCandidates.sort((a, b) => a.diff - b.diff);
 
-            // ROTACIÓN DE VERSIONES: ordenar candidatos empezando por la siguiente opción
-            const trackCycleKey = `${artist} - ${cleanT}`.toLowerCase();
-            const cycle = versionCycleIndex[trackCycleKey] || 0;
-            const startIdx = cycle % uniqueCandidates.length;
-            versionCycleIndex[trackCycleKey] = cycle + 1;
+            console.log(`[CLEAN DOWNLOAD] Probando ${allValidCandidates.length} candidatos válidos no descartados...`);
 
-            // Reorganizar lista para probar primero la opción elegida por rotación, luego las demás como fallback
-            const orderedCandidates = [
-                ...uniqueCandidates.slice(startIdx),
-                ...uniqueCandidates.slice(0, startIdx)
-            ];
-
-            console.log(`[CLEAN DOWNLOAD] Probando ${orderedCandidates.length} candidatos válidos (iniciando en opción ${startIdx + 1})...`);
-
-            let downloadedSuccess = false;
-            let finalStats = null;
-
-            for (let i = 0; i < orderedCandidates.length; i++) {
-                const cand = orderedCandidates[i];
-                console.log(`[CLEAN DOWNLOAD] Intentando candidato [${i + 1}/${orderedCandidates.length}]: "${cand.title}" (${cand.duration}s) -> ${cand.url}`);
+            for (let i = 0; i < allValidCandidates.length; i++) {
+                const cand = allValidCandidates[i];
+                console.log(`[CLEAN DOWNLOAD] Intentando candidato [${i + 1}/${allValidCandidates.length}]: "${cand.title}" (${cand.duration}s) de ${cand.uploader} -> ${cand.url}`);
 
                 const downloadCmd = `${ytdlpBin} --ffmpeg-location "${ffmpegDir}" "${cand.url}" -x --audio-format mp3 --audio-quality 0 -o "${tempOutput}"`;
 
@@ -2026,7 +2031,9 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
                                 }
                             } catch(e) {}
                         }
-                        console.warn(`⚠️ Candidato "${cand.title}" falló (DRM/bloqueo/peso inválido). Probando siguiente...`);
+                        // Si falla, agregarlo inmediatamente a la lista de versiones descartadas
+                        addDiscardedVersion(artist, cleanT, cand.url);
+                        console.warn(`⚠️ Candidato "${cand.title}" falló o bloqueado por DRM. Descartado y probando siguiente...`);
                         resolve({ success: false });
                     });
                 });
@@ -2035,51 +2042,101 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
                     downloadedSuccess = true;
                     finalStats = result.stats;
                     bestCandidate = cand;
+                    activeCleanVersion[trackCycleKey] = cand.url;
                     break;
                 }
             }
+        }
 
-            if (!downloadedSuccess || !finalStats) {
-                return res.status(500).json({ error: 'Ninguno de los candidatos disponibles pudo descargarse (posible protección DRM o restricción).' });
-            }
+        // 4. Si ningún candidato de SoundCloud se pudo descargar (ej. bloqueo DRM de discográfica),
+        // verificar si existe una versión videoclip con intro en la biblioteca y recortar la intro automáticamente
+        if (!downloadedSuccess) {
+            const possibleVideoFiles = [
+                path.join(targetFolder, `${artist} - ${title}.mp3`),
+                path.join(targetFolder, `${artist.replace(',', '')} - ${title}.mp3`),
+                path.join(targetFolder, `${artist} - ${cleanT}.mp3`)
+            ];
 
-            try {
-                fs.copyFileSync(tempOutput, targetFilePath);
-                fs.unlinkSync(tempOutput);
-                console.log(`✅ [CLEAN DOWNLOAD] Pista reemplazada con éxito (${finalStats.size} bytes) en: ${targetFilePath}`);
+            for (const pFile of possibleVideoFiles) {
+                if (fs.existsSync(pFile) && expectedDurationSec) {
+                    try {
+                        const checkFfmpeg = fs.existsSync(path.join(binDir, 'ffmpeg.exe')) ? `"${path.join(binDir, 'ffmpeg.exe')}"` : 'ffmpeg';
+                        const durProbe = await new Promise((resolve) => {
+                            exec(`${checkFfmpeg} -i "${pFile}" 2>&1`, { timeout: 5000 }, (err, stdout, stderr) => {
+                                const out = (stdout || '') + (stderr || '');
+                                const m = out.match(/Duration:\s*(\d+):(\d+):([\d.]+)/);
+                                if (m) {
+                                    const totalSec = parseInt(m[1], 10)*3600 + parseInt(m[2], 10)*60 + parseFloat(m[3]);
+                                    resolve(totalSec);
+                                } else resolve(null);
+                            });
+                        });
 
-                // Restablecer retardo a 0.0s y sincronizar letras limpias
-                try {
-                    const lrcurl = `https://lrclib.net/api/get?artist_name=${encodeURIComponent(artist)}&track_name=${encodeURIComponent(cleanT)}`;
-                    const lrcres = await fetch(lrcurl, { signal: AbortSignal.timeout(3000) });
-                    if (lrcres.ok) {
-                        const lrcdata = await lrcres.json();
-                        if (lrcdata.syncedLyrics) {
-                            let freshLyrics = parseLrc(lrcdata.syncedLyrics);
-                            if (freshLyrics) {
-                                freshLyrics = await translateLyricsBatch(freshLyrics);
-                                cachedLyricsDb[`${artist} - ${title}`] = freshLyrics;
-                                cachedLyricsDb[`${artist} - ${cleanT}`] = freshLyrics;
-                                cachedLyricsDb[cleanT] = freshLyrics;
-                                fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
-                                console.log(`✅ Letras sincronizadas restablecidas automáticamente a 0.0s para ${artist} - ${cleanT}`);
+                        if (durProbe && durProbe > (expectedDurationSec + 25)) {
+                            // Tiene una intro hablada o de videoclip significativa. Calcular inicio de la música
+                            const introOffsetSec = Math.max(0, durProbe - expectedDurationSec - 6);
+                            console.log(`[CLEAN AUTOCUT] Detectada pista con intro de videoclip (${durProbe}s vs ${expectedDurationSec}s de estudio). Recortando intro desde segundo ${introOffsetSec}s...`);
+
+                            const cutCmd = `${checkFfmpeg} -ss ${introOffsetSec} -t ${expectedDurationSec + 3} -i "${pFile}" -c copy "${tempOutput}" -y`;
+                            const cutOk = await new Promise((resolve) => {
+                                exec(cutCmd, { timeout: 10000 }, (err) => {
+                                    if (fs.existsSync(tempOutput) && fs.statSync(tempOutput).size >= 900000) {
+                                        resolve(true);
+                                    } else resolve(false);
+                                });
+                            });
+
+                            if (cutOk) {
+                                downloadedSuccess = true;
+                                finalStats = fs.statSync(tempOutput);
+                                bestCandidate = { title: `${artist} - ${cleanT} (Versión de estudio recortada sin intro)`, duration: expectedDurationSec };
+                                break;
                             }
                         }
-                    }
-                } catch(e) {}
-
-                const relUrl = `/media-music/${encodeURIComponent(targetCategory)}/${encodeURIComponent(targetFileName)}`;
-                return res.json({
-                    success: true,
-                    size: finalStats.size,
-                    candidate: bestCandidate,
-                    relUrl: relUrl
-                });
-            } catch (copyErr) {
-                return res.status(500).json({ error: 'Error guardando archivo reemplazado: ' + copyErr.message });
+                    } catch(e) {}
+                }
             }
-        } else {
-            return res.status(404).json({ error: 'No se encontraron candidatos válidos dentro de +-10s.' });
+        }
+
+        if (!downloadedSuccess || !finalStats) {
+            return res.status(404).json({ error: 'No se encontraron más versiones viables disponibles (todas descartadas o con bloqueo DRM).' });
+        }
+
+        try {
+            fs.copyFileSync(tempOutput, targetFilePath);
+            fs.unlinkSync(tempOutput);
+            console.log(`✅ [CLEAN DOWNLOAD] Pista reemplazada con éxito (${finalStats.size} bytes) en: ${targetFilePath}`);
+
+            // Restablecer retardo a 0.0s y sincronizar letras limpias
+            try {
+                const lrcurl = `https://lrclib.net/api/get?artist_name=${encodeURIComponent(artist)}&track_name=${encodeURIComponent(cleanT)}`;
+                const lrcres = await fetch(lrcurl, { signal: AbortSignal.timeout(3000) });
+                if (lrcres.ok) {
+                    const lrcdata = await lrcres.json();
+                    if (lrcdata.syncedLyrics) {
+                        let freshLyrics = parseLrc(lrcdata.syncedLyrics);
+                        if (freshLyrics) {
+                            freshLyrics = await translateLyricsBatch(freshLyrics);
+                            cachedLyricsDb[`${artist} - ${title}`] = freshLyrics;
+                            cachedLyricsDb[`${artist} - ${cleanT}`] = freshLyrics;
+                            cachedLyricsDb[cleanT] = freshLyrics;
+                            fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
+                            console.log(`✅ Letras sincronizadas restablecidas automáticamente a 0.0s para ${artist} - ${cleanT}`);
+                        }
+                    }
+                }
+            } catch(e) {}
+
+            const relUrl = `/media-music/${encodeURIComponent(targetCategory)}/${encodeURIComponent(targetFileName)}`;
+            return res.json({
+                success: true,
+                size: finalStats.size,
+                candidate: bestCandidate,
+                versionDesc: bestCandidate.title || 'Versión de estudio',
+                relUrl: relUrl
+            });
+        } catch (copyErr) {
+            return res.status(500).json({ error: 'Error guardando archivo reemplazado: ' + copyErr.message });
         }
     } catch(e) {
         console.error('Error en replace-clean-audio:', e);

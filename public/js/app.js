@@ -1134,8 +1134,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!confirmDownload) return;
 
             btnCinemaReplaceClean.disabled = true;
-            btnCinemaReplaceClean.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Descargando...';
-            showSyncNotification('⏳ Descargando versión limpia oficial de estudio...');
+            btnCinemaReplaceClean.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Probando versión...';
+            showSyncNotification('🗑️ Descartando versión anterior y probando siguiente opción de estudio...');
 
             try {
                 const res = await fetch('/api/track/replace-clean-audio', {
@@ -1144,7 +1144,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify({
                         artist: currentSong.artist,
                         title: currentSong.rawTitle || currentSong.title,
-                        category: currentSong.playlistName || currentTab
+                        category: currentSong.playlistName || currentTab,
+                        discardCurrent: true
                     })
                 });
 
@@ -1185,7 +1186,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         renderCinemaTrack(currentSong);
                     }
 
-                    showSyncNotification('✨ ¡Pista reemplazada! Reproduciendo desde el inicio para verificar subtítulos...');
+                    const desc = data.versionDesc || (data.candidate && data.candidate.title) || 'Versión de estudio';
+                    showSyncNotification(`✨ ¡Pista cambiada! (${desc}). Descartada la anterior.`);
                     btnCinemaReplaceClean.innerHTML = '<i class="fa-solid fa-check"></i> Reemplazada';
                     setTimeout(() => {
                         btnCinemaReplaceClean.disabled = false;
