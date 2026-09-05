@@ -2815,7 +2815,8 @@ async function scanMyRadioOnline(slug) {
         const regex = /<span[^>]*itemprop="byArtist"[^>]*>([^<]+)<\/span>\s*-\s*<span[^>]*itemprop="name"[^>]*>([^<]+)<\/span>/gi;
         const matches = [...html.matchAll(regex)];
 
-        for (const m of matches) {
+        const now = Date.now();
+        matches.forEach((m, idx) => {
             const artist = m[1].replace(/&amp;/g, '&').replace(/&#39;/g, "'").trim();
             const title = m[2].replace(/&amp;/g, '&').replace(/&#39;/g, "'").trim();
             if (isValidRadioSong(artist, title)) {
@@ -2824,10 +2825,10 @@ async function scanMyRadioOnline(slug) {
                     title,
                     album: null,
                     coverUrl: null,
-                    timestamp: null
+                    timestamp: now - (idx * 3.5 * 60 * 1000)
                 });
             }
-        }
+        });
         return items;
     } catch(e) {
         console.warn(`[RADIO SCAN] Error en MyRadioOnline (${slug}):`, e.message);
@@ -2846,17 +2847,24 @@ async function scanOnlineRadioBoxUrl(fullUrl) {
         const html = await res.text();
         const items = [];
         const matches = [...html.matchAll(/<td class="track_history_item">[\s\S]*?<a [^>]*class="ajax">([^<]+)<\/a>/g)];
-        for (const m of matches) {
+        const now = Date.now();
+        matches.forEach((m, idx) => {
             const raw = m[1].replace(/&amp;/g, '&').replace(/&#39;/g, "'").trim();
             const parts = raw.split(' - ');
             if (parts.length >= 2) {
                 const artist = parts[0].trim();
                 const title = parts.slice(1).join(' - ').trim();
                 if (isValidRadioSong(artist, title)) {
-                    items.push({ artist, title, album: null, coverUrl: null, timestamp: null });
+                    items.push({
+                        artist,
+                        title,
+                        album: null,
+                        coverUrl: null,
+                        timestamp: now - (idx * 4 * 60 * 1000)
+                    });
                 }
             }
-        }
+        });
         return items;
     } catch(e) {
         console.warn(`[RADIO SCAN] Error en OnlineRadioBox:`, e.message);
@@ -3048,6 +3056,20 @@ async function handleRecommendationsRadioRadar(req, res) {
             }
         }
 
+        // 1. Registrar primero las emisiones en el historial persistente
+        recordRadioPlays(allTracks);
+
+        // 2. Contabilizar repeticiones directas en el lote escaneado actual
+        const batchSongCounts = {};
+        for (const it of allTracks) {
+            if (!isValidRadioSong(it.artist, it.title)) continue;
+            const cleanArt = normalizeSearchText(it.artist);
+            const cleanTit = normalizeSearchText(cleanSongTitle(it.title));
+            if (!cleanArt || !cleanTit) continue;
+            const k = `${cleanArt}_${cleanTit}`;
+            batchSongCounts[k] = (batchSongCounts[k] || 0) + 1;
+        }
+
         const unique = [];
         const seen = new Set();
         for (const it of allTracks) {
@@ -3064,17 +3086,21 @@ async function handleRecommendationsRadioRadar(req, res) {
                 }
                 const isOwned = isSongInCollection(it.artist, it.title);
                 const airplay = getTrackAirplayInfo(it.artist, it.title);
+                // El número de repeticiones es el máximo entre el historial semanal y las repeticiones del lote
+                const playCount = Math.max(airplay.playCount || 1, batchSongCounts[k] || 1);
+                let rotationLevel = 'light';
+                if (playCount >= 5) rotationLevel = 'heavy';
+                else if (playCount >= 2) rotationLevel = 'medium';
+
                 unique.push({
                     ...it,
                     playlist,
                     isOwned,
-                    playCount: airplay.playCount,
-                    rotationLevel: airplay.level
+                    playCount,
+                    rotationLevel
                 });
             }
         }
-
-        recordRadioPlays(allTracks);
 
         // Contabilizar repeticiones y rotaciones por emisora
         const stationStats = {};
@@ -3111,14 +3137,18 @@ async function handleRecommendationsRadioRadar(req, res) {
         }
 
         // Ordenar canciones:
-        // 1. Canciones faltantes en colección primero
-        // 2. Mayor número de repeticiones de la canción
+        // 1. CRITERIO PRINCIPAL ESTRICTO: Mayor número de repeticiones (5, 4, 3, 2, 1...)
+        // 2. A igual número de repeticiones: Canciones faltantes en colección primero
         // 3. Emisora con mayor volumen de repeticiones
         // 4. Momento de emisión más reciente
         unique.sort((a, b) => {
-            if (a.isOwned !== b.isOwned) return a.isOwned ? 1 : -1;
-            if ((b.playCount || 1) !== (a.playCount || 1)) {
-                return (b.playCount || 1) - (a.playCount || 1);
+            const countA = a.playCount || 1;
+            const countB = b.playCount || 1;
+            if (countB !== countA) {
+                return countB - countA;
+            }
+            if (a.isOwned !== b.isOwned) {
+                return a.isOwned ? 1 : -1;
             }
             const stA = stationStats[a.stationId] ? stationStats[a.stationId].totalHistoryPlays : 0;
             const stB = stationStats[b.stationId] ? stationStats[b.stationId].totalHistoryPlays : 0;

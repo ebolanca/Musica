@@ -2664,6 +2664,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mode: 'timeline', // 'timeline' o 'radar'
         selectedYear: null,
         selectedStation: 'ALL',
+        radarAirplayFilter: 'all',
         filter: 'missing', // 'missing', 'all', 'owned', 'dismissed'
         cachedCatalog: null,
         previewAudio: new Audio(),
@@ -3208,10 +3209,19 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!grid) return;
             grid.innerHTML = '';
 
-            let displayRadarTracks = data.tracks || [];
+            let displayRadarTracks = [...(data.tracks || [])];
             if (retroState.radarAirplayFilter === 'frequent') {
                 displayRadarTracks = displayRadarTracks.filter(t => (t.playCount || 1) >= 2);
             }
+
+            // Ordenación garantizada por repeticiones descendente (las más repetidas arriba de todo)
+            displayRadarTracks.sort((a, b) => {
+                const countA = a.playCount || 1;
+                const countB = b.playCount || 1;
+                if (countB !== countA) return countB - countA;
+                if (a.isOwned !== b.isOwned) return a.isOwned ? 1 : -1;
+                return (b.timestamp || 0) - (a.timestamp || 0);
+            });
 
             if (displayRadarTracks.length === 0) {
                 if (retroState.radarAirplayFilter === 'frequent' && data.tracks && data.tracks.length > 0) {
