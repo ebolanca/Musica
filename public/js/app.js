@@ -3210,11 +3210,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     <i class="fa-solid fa-rotate-right"></i> Actualizar Emisión
                 </button>
             </div>
-            <!-- Filtro de emisoras disponibles para esta lista -->
-            <div id="radar-stations-filter-bar" style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center;">
-                <button class="retro-switch-btn ${curStation === 'ALL' ? 'active' : ''}" data-station="ALL" style="font-size:0.8rem;padding:5px 12px;">
-                    <i class="fa-solid fa-layer-group"></i> Todas las emisoras
-                </button>
+            <!-- Filtros de Emisoras y de Calidad / Frecuencia de Rotación -->
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:12px;">
+                <div id="radar-stations-filter-bar" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+                    <button class="retro-switch-btn ${curStation === 'ALL' ? 'active' : ''}" data-station="ALL" style="font-size:0.8rem;padding:5px 12px;">
+                        <i class="fa-solid fa-layer-group"></i> Todas las emisoras
+                    </button>
+                </div>
+                <div id="radar-airplay-filter-bar" style="display:flex;gap:8px;align-items:center;">
+                    <button class="retro-switch-btn ${retroState.radarAirplayFilter === 'frequent' ? 'active' : ''}" id="btn-radar-filter-frequent" style="font-size:0.8rem;padding:5px 12px;border-color:rgba(249,115,22,0.4);color:${retroState.radarAirplayFilter === 'frequent' ? '#fff' : '#fb923c'};background:${retroState.radarAirplayFilter === 'frequent' ? '#ea580c' : 'rgba(234,88,12,0.1)'};" title="Ocultar temas de relleno puntual y mostrar solo éxitos con 2 o más emisiones">
+                        <i class="fa-solid fa-fire"></i> Solo Éxitos Frecuentes (≥2)
+                    </button>
+                    <button class="retro-switch-btn ${retroState.radarAirplayFilter === 'all' ? 'active' : ''}" id="btn-radar-filter-all" style="font-size:0.8rem;padding:5px 12px;" title="Ver todas las canciones emitidas en antena">
+                        <i class="fa-solid fa-list-ul"></i> Todas
+                    </button>
+                </div>
             </div>
             <div id="radar-tracks-grid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:16px;">
                 <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted);">
@@ -3263,16 +3273,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
+            // Listeners de filtro de rotación
+            document.getElementById('btn-radar-filter-frequent')?.addEventListener('click', () => {
+                retroState.radarAirplayFilter = 'frequent';
+                renderRetroRadarView();
+            });
+            document.getElementById('btn-radar-filter-all')?.addEventListener('click', () => {
+                retroState.radarAirplayFilter = 'all';
+                renderRetroRadarView();
+            });
+
             const grid = document.getElementById('radar-tracks-grid');
             if (!grid) return;
             grid.innerHTML = '';
 
-            if (!data.tracks || data.tracks.length === 0) {
-                grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted);"><p>No se encontraron canciones activas en la emisión en este momento.</p></div>';
+            let displayRadarTracks = data.tracks || [];
+            if (retroState.radarAirplayFilter === 'frequent') {
+                displayRadarTracks = displayRadarTracks.filter(t => (t.playCount || 1) >= 2);
+            }
+
+            if (displayRadarTracks.length === 0) {
+                if (retroState.radarAirplayFilter === 'frequent' && data.tracks && data.tracks.length > 0) {
+                    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted);">
+                        <p style="font-weight:600;font-size:1.05rem;color:#fb923c;"><i class="fa-solid fa-fire"></i> Aún no hay temas con rotación repetida (+2 emisiones) en esta emisora.</p>
+                        <p style="margin-top:6px;font-size:0.86rem;">El radar sigue muestreando en segundo plano. Puedes pulsar en "Todas" para ver todas las emisiones actuales.</p>
+                    </div>`;
+                } else {
+                    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted);"><p>No se encontraron canciones activas en la emisión en este momento.</p></div>';
+                }
                 return;
             }
 
-            data.tracks.forEach(track => {
+            displayRadarTracks.forEach(track => {
                 const card = document.createElement('div');
                 card.className = track.isOwned ? 'retro-card owned' : 'retro-card';
 
@@ -3295,6 +3327,16 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <span class="retro-badge-peak" style="border-color:#38bdf8;color:#38bdf8;background:rgba(56,189,248,0.12);">
                                     <i class="fa-solid fa-radio"></i> ${stationLabel}
                                 </span>
+                                ${(function() {
+                                    const pc = track.playCount || 1;
+                                    if (pc >= 5) {
+                                        return `<span class="retro-badge-peak" style="border-color:#ea580c;color:#fb923c;background:rgba(234,88,12,0.18);" title="Super Éxito en Alta Rotación: Ha sonado ${pc} veces en antena"><i class="fa-solid fa-fire"></i> ${pc} emisiones (Hit)</span>`;
+                                    } else if (pc >= 2) {
+                                        return `<span class="retro-badge-peak" style="border-color:#0284c7;color:#38bdf8;background:rgba(2,132,199,0.15);" title="Rotación Frecuente: Ha sonado ${pc} veces en antena"><i class="fa-solid fa-rotate"></i> ${pc} emisiones</span>`;
+                                    } else {
+                                        return `<span class="retro-badge-peak" style="border-color:rgba(255,255,255,0.12);color:var(--text-muted);background:rgba(255,255,255,0.04);" title="Detectada 1 vez en antena recientemente"><i class="fa-regular fa-clock"></i> 1 emisión</span>`;
+                                    }
+                                })()}
                             </div>
                         </div>
                     </div>

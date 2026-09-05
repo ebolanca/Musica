@@ -2258,6 +2258,148 @@ function saveDismissedRecommendations() {
     }
 }
 
+// 📻 SEGUIMIENTO DE ROTACIÓN / AIRPLAY DE EMISORAS (Frecuencia semanal)
+const RADIO_AIRPLAY_FILE = path.join(__dirname, 'data', 'radio_airplay_history.json');
+let cachedAirplayHistory = null;
+
+function loadAirplayHistory() {
+    if (cachedAirplayHistory) return cachedAirplayHistory;
+    cachedAirplayHistory = {};
+    if (fs.existsSync(RADIO_AIRPLAY_FILE)) {
+        try {
+            cachedAirplayHistory = JSON.parse(fs.readFileSync(RADIO_AIRPLAY_FILE, 'utf8'));
+        } catch(e){}
+    }
+    return cachedAirplayHistory;
+}
+
+function saveAirplayHistory() {
+    try {
+        fs.writeFileSync(RADIO_AIRPLAY_FILE, JSON.stringify(cachedAirplayHistory || {}, null, 2), 'utf8');
+    } catch(e) {
+        console.error('Error guardando radio_airplay_history.json:', e.message);
+    }
+}
+
+function recordRadioPlays(tracks) {
+    if (!Array.isArray(tracks) || tracks.length === 0) return;
+    const history = loadAirplayHistory();
+    const now = Date.now();
+    const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
+    let modified = false;
+
+    for (const tr of tracks) {
+        const cleanArt = normalizeSearchText(tr.artist);
+        const cleanTit = normalizeSearchText(cleanSongTitle(tr.title));
+        if (!cleanArt || !cleanTit) continue;
+        const k = `${cleanArt}_${cleanTit}`;
+        const playTime = tr.timestamp || now;
+
+        if (!history[k]) {
+            history[k] = {
+                artist: tr.artist,
+                title: tr.title,
+                stations: tr.stationId ? [tr.stationId] : [],
+                plays: [playTime],
+                playCount7d: 1,
+                firstSeen: new Date(playTime).toISOString(),
+                lastSeen: new Date(playTime).toISOString()
+            };
+            modified = true;
+        } else {
+            const item = history[k];
+            // Purga de emisiones de hace más de 7 días
+            item.plays = (item.plays || []).filter(ts => (now - ts) < SEVEN_DAYS_MS);
+            // Deduplicación en la misma emisora dentro de 40 minutos para no duplicar la misma canción en antena
+            const isDuplicate = item.plays.some(ts => Math.abs(ts - playTime) < 2400000);
+            if (!isDuplicate) {
+                item.plays.push(playTime);
+                if (tr.stationId && !item.stations.includes(tr.stationId)) {
+                    item.stations.push(tr.stationId);
+                }
+                item.playCount7d = item.plays.length;
+                item.lastSeen = new Date(playTime).toISOString();
+                modified = true;
+            }
+        }
+    }
+
+    if (modified) {
+        saveAirplayHistory();
+    }
+}
+
+function getTrackAirplayInfo(artist, title) {
+    const history = loadAirplayHistory();
+    const cleanArt = normalizeSearchText(artist);
+    const cleanTit = normalizeSearchText(cleanSongTitle(title));
+    const k = `${cleanArt}_${cleanTit}`;
+
+    let item = history[k];
+    if (!item) {
+        const cleanT = cleanTit;
+        const tokens = getArtistTokens(artist);
+        for (const [key, val] of Object.entries(history)) {
+            const vTit = normalizeSearchText(cleanSongTitle(val.title || ''));
+            if (vTit === cleanT) {
+                const vTokens = getArtistTokens(val.artist || '');
+                if (tokens.some(t => vTokens.includes(t)) || tokens.length === 0 || vTokens.length === 0) {
+                    item = val;
+                    break;
+                }
+            }
+        }
+    }
+
+    const count = item ? (item.playCount7d || (item.plays ? item.plays.length : 1)) : 1;
+    let level = 'light';
+    if (count >= 5) level = 'heavy';
+    else if (count >= 2) level = 'medium';
+
+    return {
+        playCount: count,
+        level,
+        stations: item ? item.stations : []
+    };
+}
+
+async function autoCollectRadioAirplayInBackground() {
+    try {
+        console.log("📻 [AIRPLAY TRACKER] Muestreando emisiones de todas las emisoras para calcular rotación...");
+        const allScans = Object.values(RADAR_STATIONS_CONFIG).map(async (st) => {
+            let list = [];
+            try {
+                if (st.type === 'triton') {
+                    list = await scanTritonStation(st.mount);
+                } else if (st.type === 'emisora') {
+                    list = await scanEmisoraOrg(st.emisoraSlug);
+                } else if (st.type === 'hybrid') {
+                    const [orb, em] = await Promise.allSettled([
+                        scanOnlineRadioBox(st.orbSlug),
+                        scanEmisoraOrg(st.emisoraSlug)
+                    ]);
+                    list = (orb.status === 'fulfilled' ? orb.value : []).concat(em.status === 'fulfilled' ? em.value : []);
+                }
+            } catch(e) {}
+            return list.map(item => ({ ...item, stationId: st.id, stationName: st.name }));
+        });
+
+        const results = await Promise.allSettled(allScans);
+        let collected = [];
+        for (const r of results) {
+            if (r.status === 'fulfilled' && Array.isArray(r.value)) {
+                collected = collected.concat(r.value);
+            }
+        }
+        if (collected.length > 0) {
+            recordRadioPlays(collected);
+            console.log(`📻 [AIRPLAY TRACKER] Historial actualizado: ${collected.length} emisiones procesadas.`);
+        }
+    } catch(e) {
+        console.error("Error en autoCollectRadioAirplayInBackground:", e.message);
+    }
+}
+
 function getRecommendationDismissedKey(artist, title) {
     const cleanArt = normalizeSearchText(artist);
     const cleanTit = normalizeSearchText(cleanSongTitle(title));
@@ -2734,16 +2876,24 @@ async function handleRecommendationsRadioRadar(req, res) {
                     continue;
                 }
                 const isOwned = isSongInCollection(it.artist, it.title);
+                const airplay = getTrackAirplayInfo(it.artist, it.title);
                 unique.push({
                     ...it,
                     playlist,
-                    isOwned
+                    isOwned,
+                    playCount: airplay.playCount,
+                    rotationLevel: airplay.level
                 });
             }
         }
 
+        recordRadioPlays(allTracks);
+
         unique.sort((a, b) => {
             if (a.isOwned !== b.isOwned) return a.isOwned ? 1 : -1;
+            if ((b.playCount || 1) !== (a.playCount || 1)) {
+                return (b.playCount || 1) - (a.playCount || 1);
+            }
             return (b.timestamp || 0) - (a.timestamp || 0);
         });
 
@@ -2758,6 +2908,7 @@ async function handleRecommendationsRadioRadar(req, res) {
             availableStations,
             count: unique.length,
             missingCount: unique.filter(i => !i.isOwned).length,
+            frequentCount: unique.filter(i => !i.isOwned && (i.playCount || 1) >= 2).length,
             tracks: unique
         });
     } catch(e) {
