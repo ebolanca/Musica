@@ -18,7 +18,7 @@
             </div>
             <div class="logo-title">
                 <h1>Música</h1>
-                <p>Plataforma de Videoclips & Análisis Sónico v1.5.23</p>
+                <p>Plataforma de Videoclips & Análisis Sónico v1.5.24</p>
             </div>
         </div>
 
@@ -41,43 +41,19 @@
 
     <!-- Main Content -->
     <main class="main-container">
-        <!-- Playlist Tabs -->
-        <nav class="nav-tabs" id="playlist-tabs">
-            <button class="tab-button active" data-tab="Música viejuna">
-                <i class="fa-solid fa-radio"></i> Música viejuna
-                <span class="tab-badge" id="badge-viejuna">0</span>
-            </button>
-            <button class="tab-button" data-tab="Siglo XXI">
-                <i class="fa-solid fa-rocket"></i> Siglo XXI
-                <span class="tab-badge" id="badge-siglo">0</span>
-            </button>
-            <button class="tab-button" data-tab="Dance">
-                <i class="fa-solid fa-headphones"></i> Dance
-                <span class="tab-badge" id="badge-dance">0</span>
-            </button>
-            <button class="tab-button" data-tab="Española">
-                <i class="fa-solid fa-guitar"></i> Española
-                <span class="tab-badge" id="badge-espanola">0</span>
-            </button>
-            <button class="tab-button" data-tab="Música latina">
-                <i class="fa-solid fa-fire"></i> Música latina
-                <span class="tab-badge" id="badge-latina">0</span>
-            </button>
-            <button class="tab-button" data-tab="Radio">
-                <i class="fa-solid fa-tower-broadcast"></i> Radio
-                <span class="tab-badge" id="badge-radio">16</span>
-            </button>
-            <button class="tab-button tab-retro-btn" data-tab="Éxitos España" id="tab-btn-retro" style="border: 1px solid rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.08);">
-                <i class="fa-solid fa-trophy" style="color: #f59e0b;"></i> Éxitos España
-                <span class="tab-badge badge-retro-count" id="badge-retro" style="background: #f59e0b; color: #000; font-weight: 700;">477</span>
-            </button>
-        </nav>
-
-        <!-- Controls Bar: Ordering & View Mode Toggle -->
+        <!-- Controls Bar con Botón Lateral de Listas -->
         <div class="controls-bar">
+            <button class="btn-sidebar-toggle" id="btn-open-sidebar" title="Abrir selector de Listas y Radios">
+                <i class="fa-solid fa-bars-staggered"></i>
+                <span class="btn-sidebar-text">Listas & Radios</span>
+                <span class="sidebar-active-chip" id="sidebar-active-chip">
+                    <i class="fa-solid fa-radio"></i> Música viejuna
+                </span>
+            </button>
+
             <div class="quick-filter-box">
                 <i class="fa-solid fa-filter"></i>
-                <input type="text" id="quick-filter-input" placeholder="Filtrar...">
+                <input type="text" id="quick-filter-input" placeholder="Filtrar en esta lista...">
             </div>
             <div class="sort-controls">
                 <label for="sort-select"><i class="fa-solid fa-arrow-down-short-wide"></i> Ordenar por:</label>
@@ -105,8 +81,7 @@
             </div>
         </div>
 
-        <!-- Quick Pills Bar: Decades & Features Filter -->
-        <div class="quick-pills-bar" id="quick-pills-bar"></div>
+
 
         <!-- Section Title Bar -->
         <div class="section-bar">
@@ -397,6 +372,128 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Ventana Lateral de Listas y Fuentes Musicales -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+    <aside class="sidebar-drawer" id="sidebar-drawer">
+        <div class="sidebar-header">
+            <div class="sidebar-brand">
+                <div class="sidebar-brand-icon">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <div class="sidebar-brand-text">
+                    <h3>Bibliotecas & Listas</h3>
+                    <p>Selecciona una lista o fuente</p>
+                </div>
+            </div>
+            <button class="btn-close-sidebar" id="btn-close-sidebar" title="Cerrar ventana lateral">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="sidebar-content">
+            <div class="sidebar-category-header">
+                <span><i class="fa-solid fa-compact-disc"></i> Colecciones Principales</span>
+            </div>
+            <nav class="sidebar-nav-list" id="sidebar-playlist-tabs">
+                <button class="tab-button sidebar-tab active" data-tab="Música viejuna">
+                    <div class="sidebar-tab-info">
+                        <div class="sidebar-tab-icon-box viejuna-box">
+                            <i class="fa-solid fa-radio"></i>
+                        </div>
+                        <div class="sidebar-tab-meta">
+                            <span class="sidebar-tab-title">Música viejuna</span>
+                            <span class="sidebar-tab-sub">Clásicos anteriores a 2003</span>
+                        </div>
+                    </div>
+                    <span class="tab-badge" id="badge-viejuna">0</span>
+                </button>
+
+                <button class="tab-button sidebar-tab" data-tab="Siglo XXI">
+                    <div class="sidebar-tab-info">
+                        <div class="sidebar-tab-icon-box siglo-box">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <div class="sidebar-tab-meta">
+                            <span class="sidebar-tab-title">Siglo XXI</span>
+                            <span class="sidebar-tab-sub">Temas modernos (2000 - Hoy)</span>
+                        </div>
+                    </div>
+                    <span class="tab-badge" id="badge-siglo">0</span>
+                </button>
+
+                <button class="tab-button sidebar-tab" data-tab="Dance">
+                    <div class="sidebar-tab-info">
+                        <div class="sidebar-tab-icon-box dance-box">
+                            <i class="fa-solid fa-headphones"></i>
+                        </div>
+                        <div class="sidebar-tab-meta">
+                            <span class="sidebar-tab-title">Dance</span>
+                            <span class="sidebar-tab-sub">Electrónica, Eurodance & Club</span>
+                        </div>
+                    </div>
+                    <span class="tab-badge" id="badge-dance">0</span>
+                </button>
+
+                <button class="tab-button sidebar-tab" data-tab="Española">
+                    <div class="sidebar-tab-info">
+                        <div class="sidebar-tab-icon-box espanola-box">
+                            <i class="fa-solid fa-guitar"></i>
+                        </div>
+                        <div class="sidebar-tab-meta">
+                            <span class="sidebar-tab-title">Española</span>
+                            <span class="sidebar-tab-sub">Pop/Rock en castellano</span>
+                        </div>
+                    </div>
+                    <span class="tab-badge" id="badge-espanola">0</span>
+                </button>
+
+                <button class="tab-button sidebar-tab" data-tab="Música latina">
+                    <div class="sidebar-tab-info">
+                        <div class="sidebar-tab-icon-box latina-box">
+                            <i class="fa-solid fa-fire"></i>
+                        </div>
+                        <div class="sidebar-tab-meta">
+                            <span class="sidebar-tab-title">Música latina</span>
+                            <span class="sidebar-tab-sub">Ritmos latinos y fusión</span>
+                        </div>
+                    </div>
+                    <span class="tab-badge" id="badge-latina">0</span>
+                </button>
+
+                <div class="sidebar-category-header" style="margin-top: 22px;">
+                    <span><i class="fa-solid fa-tower-broadcast"></i> Emisión y Archivo</span>
+                </div>
+
+                <button class="tab-button sidebar-tab" data-tab="Radio">
+                    <div class="sidebar-tab-info">
+                        <div class="sidebar-tab-icon-box radio-box">
+                            <i class="fa-solid fa-tower-broadcast"></i>
+                        </div>
+                        <div class="sidebar-tab-meta">
+                            <span class="sidebar-tab-title">Radio En Directo</span>
+                            <span class="sidebar-tab-sub">16 emisoras FM en streaming</span>
+                        </div>
+                    </div>
+                    <span class="tab-badge" id="badge-radio">16</span>
+                </button>
+
+                <button class="tab-button sidebar-tab tab-retro-btn" data-tab="Éxitos España" id="tab-btn-retro">
+                    <div class="sidebar-tab-info">
+                        <div class="sidebar-tab-icon-box retro-box">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <div class="sidebar-tab-meta">
+                            <span class="sidebar-tab-title">Éxitos España</span>
+                            <span class="sidebar-tab-sub">Top Histórico AFYVE (1980-2024)</span>
+                        </div>
+                    </div>
+                    <span class="tab-badge badge-retro-count" id="badge-retro">477</span>
+                </button>
+            </nav>
+        </div>
+    </aside>
 
 </body>
 </html>

@@ -362,7 +362,42 @@ document.addEventListener('DOMContentLoaded', () => {
         'Éxitos España': 'fa-trophy'
     };
 
+    const btnOpenSidebar = document.getElementById('btn-open-sidebar');
+    const btnCloseSidebar = document.getElementById('btn-close-sidebar');
+    const sidebarDrawer = document.getElementById('sidebar-drawer');
+    const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+    const sidebarActiveChip = document.getElementById('sidebar-active-chip');
+
+    function updateSidebarActiveBadge(tabName) {
+        if (!sidebarActiveChip) return;
+        const iconClass = playlistIcons[tabName] || 'fa-compact-disc';
+        sidebarActiveChip.innerHTML = `<i class="fa-solid ${iconClass}"></i> ${tabName}`;
+    }
+
+    function openSidebar() {
+        if (sidebarDrawer) sidebarDrawer.classList.add('open');
+        if (sidebarBackdrop) sidebarBackdrop.classList.add('open');
+        document.body.classList.add('sidebar-open');
+    }
+
+    function closeSidebar() {
+        if (sidebarDrawer) sidebarDrawer.classList.remove('open');
+        if (sidebarBackdrop) sidebarBackdrop.classList.remove('open');
+        document.body.classList.remove('sidebar-open');
+    }
+
+    if (btnOpenSidebar) btnOpenSidebar.addEventListener('click', openSidebar);
+    if (btnCloseSidebar) btnCloseSidebar.addEventListener('click', closeSidebar);
+    if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', closeSidebar);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && sidebarDrawer && sidebarDrawer.classList.contains('open')) {
+            closeSidebar();
+        }
+    });
+
+
     // Load initial data
+    updateSidebarActiveBadge(currentTab);
     fetchPlaylists();
     renderQuickPills();
 
@@ -420,6 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 b.classList.remove('active');
             }
         });
+        updateSidebarActiveBadge(tabName);
     }
 
     function getSortKey(str) {
@@ -1894,7 +1930,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Eventos de Pestañas
+    // Eventos de Pestañas (Ventana Lateral)
     document.querySelectorAll('.tab-button').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
@@ -1903,6 +1939,8 @@ document.addEventListener('DOMContentLoaded', () => {
             activeQuickPill = 'all'; 
             quickFilterQuery = ''; 
             if(quickFilterInput) quickFilterInput.value = ''; 
+            updateSidebarActiveBadge(currentTab);
+            closeSidebar();
             renderQuickPills();
             renderSongs();
         });
