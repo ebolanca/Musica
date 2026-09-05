@@ -2656,18 +2656,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-// ==========================================================================
-    // 📻 MOTOR DESCUBRIDOR DE ÉXITOS DE ESPAÑA & RADAR EN VIVO
+    // ==========================================================================
+    // 📻 MOTOR DESCUBRIDOR DE ÉXITOS MULTI-LISTA & RADAR EN VIVO
     // ==========================================================================
 
     const retroState = {
+        selectedList: 'Música viejuna',
         mode: 'timeline', // 'timeline' o 'radar'
         selectedYear: null,
-        filter: 'missing', // 'missing', 'all', 'owned'
+        selectedStation: 'ALL',
+        filter: 'missing', // 'missing', 'all', 'owned', 'dismissed'
         cachedCatalog: null,
         previewAudio: new Audio(),
         currentPreviewTrack: null
     };
+
+    const recommendationPlaylists = [
+        { id: 'Música viejuna', label: 'Música viejuna', icon: 'fa-radio', sub: 'Clásicos 1970-1999' },
+        { id: 'Siglo XXI', label: 'Siglo XXI', icon: 'fa-rocket', sub: 'Hits 2000-2025' },
+        { id: 'Dance', label: 'Dance', icon: 'fa-headphones', sub: 'Electrónica & EDM' },
+        { id: 'Española', label: 'Española', icon: 'fa-guitar', sub: 'Pop & Rock Nacional' },
+        { id: 'Música latina', label: 'Música latina', icon: 'fa-fire', sub: 'Latino & Urban' }
+    ];
 
     retroState.previewAudio.addEventListener('ended', () => {
         retroState.currentPreviewTrack = null;
@@ -2678,6 +2688,19 @@ document.addEventListener('DOMContentLoaded', () => {
         retroState.currentPreviewTrack = null;
         updatePreviewButtonsUi();
     });
+
+    // Botón de cabecera para abrir Recomendaciones de la lista actual
+    const btnOpenRecommendations = document.getElementById('btn-open-recommendations');
+    if (btnOpenRecommendations) {
+        btnOpenRecommendations.addEventListener('click', () => {
+            if (currentTab !== 'Radio' && currentTab !== 'Éxitos España') {
+                retroState.selectedList = currentTab;
+            }
+            currentTab = 'Éxitos España';
+            selectPlaylistTab('Éxitos España');
+            renderSongs();
+        });
+    }
 
     function updatePreviewButtonsUi() {
         document.querySelectorAll('.btn-retro-preview').forEach(btn => {
@@ -2695,7 +2718,6 @@ document.addEventListener('DOMContentLoaded', () => {
     async function toggleRetroPreview(artist, title, btnEl) {
         const trackKey = `${artist} - ${title}`;
 
-        // Si ya está sonando esta misma, pausar
         if (retroState.currentPreviewTrack === trackKey && !retroState.previewAudio.paused) {
             retroState.previewAudio.pause();
             retroState.currentPreviewTrack = null;
@@ -2703,14 +2725,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Si hay música principal o radio sonando, pausarla
         if (mainMusicAudio && !mainMusicAudio.paused) mainMusicAudio.pause();
         if (liveRadioAudio && !liveRadioAudio.paused) liveRadioAudio.pause();
 
         btnEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Cargando...';
 
         try {
-            const res = await fetch(`/api/retro-hits/preview?artist=${encodeURIComponent(artist)}&title=${encodeURIComponent(title)}`);
+            const res = await fetch(`/api/recommendations/preview?artist=${encodeURIComponent(artist)}&title=${encodeURIComponent(title)}`);
             if (!res.ok) throw new Error('Error buscando preescucha');
             const data = await res.json();
 
@@ -2721,7 +2742,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 retroState.currentPreviewTrack = trackKey;
                 updatePreviewButtonsUi();
             } else {
-                alert(`No se encontró fragmento de audio para "${title}".`);
+                alert(`No se encontró fragmento oficial para "${title}".`);
                 updatePreviewButtonsUi();
             }
         } catch(e) {
@@ -2734,10 +2755,10 @@ document.addEventListener('DOMContentLoaded', () => {
     async function dismissRetroHit(artist, title, cardEl) {
         cardEl.classList.add('dismissing');
         try {
-            const res = await fetch('/api/retro-hits/dismiss', {
+            const res = await fetch('/api/recommendations/dismiss', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ artist, title })
+                body: JSON.stringify({ artist, title, playlist: retroState.selectedList })
             });
             const data = await res.json();
             if (res.ok && data.success) {
@@ -2746,7 +2767,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     renderRetroHitsView();
                 }, 300);
                 showToastNotification(`🗑️ "${title}" omitida. No volverá a sugerirse.`);
-                // Actualizar badge
                 const bRetro = document.getElementById('badge-retro');
                 if (bRetro && parseInt(bRetro.textContent, 10) > 0) {
                     bRetro.textContent = parseInt(bRetro.textContent, 10) - 1;
@@ -2763,10 +2783,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function restoreRetroHit(artist, title, cardEl) {
         try {
-            const res = await fetch('/api/retro-hits/undismiss', {
+            const res = await fetch('/api/recommendations/undismiss', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ artist, title })
+                body: JSON.stringify({ artist, title, playlist: retroState.selectedList })
             });
             const data = await res.json();
             if (res.ok && data.success) {
@@ -2781,18 +2801,17 @@ document.addEventListener('DOMContentLoaded', () => {
     async function downloadRetroHit(artist, title, cardEl, btnEl) {
         const origHtml = btnEl.innerHTML;
         btnEl.classList.add('loading');
-        btnEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Descargando versión oficial...';
+        btnEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Descargando versión de estudio...';
 
         try {
-            const res = await fetch('/api/retro-hits/add-to-viejuna', {
+            const res = await fetch('/api/recommendations/download', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ artist, title })
+                body: JSON.stringify({ artist, title, playlist: retroState.selectedList })
             });
 
             const data = await res.json();
             if (res.ok && data.success) {
-                // Actualizar tarjeta a "En tu colección"
                 cardEl.classList.add('owned');
                 const actionsBox = cardEl.querySelector('.retro-card-actions');
                 if (actionsBox) {
@@ -2808,10 +2827,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
 
-                // Notificación visual
-                showToastNotification(`🎉 "${title}" añadida con éxito a Música viejuna`);
-
-                // Recargar playlists en background para sincronizar
+                showToastNotification(`🎉 "${title}" añadida con éxito a ${retroState.selectedList}`);
                 fetchPlaylists();
             } else {
                 alert('No se pudo descargar la pista: ' + (data.error || 'Error desconocido'));
@@ -2844,69 +2860,96 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function renderRetroHitsView() {
-        currentSectionTitle.innerHTML = '<i class="fa-solid fa-trophy" style="color: #f59e0b;"></i> Éxitos en España (1970–1999)';
-        resultsCountText.textContent = 'Cargando archivo histórico de España...';
-        songsGrid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-muted);"><i class="fa-solid fa-spinner fa-spin" style="font-size:2.5rem;color:#f59e0b;margin-bottom:16px;"></i><p>Sincronizando con Los 40 Principales y ventas de España...</p></div>';
+        const curList = retroState.selectedList || 'Música viejuna';
+        currentSectionTitle.innerHTML = `<i class="fa-solid fa-satellite-dish" style="color: #10b981;"></i> Recomendaciones & Radar: ${curList}`;
+        resultsCountText.textContent = `Consultando sugerencias para ${curList}...`;
+        songsGrid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-muted);"><i class="fa-solid fa-spinner fa-spin" style="font-size:2.5rem;color:#10b981;margin-bottom:16px;"></i><p>Contrastando catálogo contra tu biblioteca musical...</p></div>';
 
         try {
-            const res = await fetch('/api/retro-hits/catalog');
+            const res = await fetch(`/api/recommendations/catalog?playlist=${encodeURIComponent(curList)}`);
             if (!res.ok) throw new Error('Error cargando catálogo');
             const data = await res.json();
             retroState.cachedCatalog = data;
 
-            resultsCountText.textContent = `${data.summary.totalHits} grandes éxitos contrastados en España`;
+            resultsCountText.textContent = `${data.summary.totalHits} grandes éxitos catalogados para ${curList}`;
 
-            // Construir vista interactiva
             songsGrid.className = 'songs-grid';
             songsGrid.innerHTML = '';
 
             const wrapper = document.createElement('div');
             wrapper.style.gridColumn = '1 / -1';
 
-            // 1. Banner Superior con Estadísticas
+            // 1. Selector de Lista / Género Musical (Chips Superiores)
+            let playlistChipsHtml = '<div class="recommendation-playlists-bar" style="display:flex;gap:10px;margin-bottom:16px;overflow-x:auto;padding-bottom:6px;">';
+            recommendationPlaylists.forEach(pl => {
+                const isActive = pl.id === curList;
+                playlistChipsHtml += `
+                    <button class="rec-playlist-chip ${isActive ? 'active' : ''}" data-rec-list="${pl.id}" style="display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:24px;border:1px solid ${isActive ? '#10b981' : 'rgba(255,255,255,0.12)'};background:${isActive ? 'rgba(16,185,129,0.18)' : 'rgba(255,255,255,0.04)'};color:${isActive ? '#10b981' : '#fff'};font-weight:600;font-size:0.86rem;cursor:pointer;white-space:nowrap;transition:all 0.2s ease;">
+                        <i class="fa-solid ${pl.icon}"></i>
+                        <span>${pl.label}</span>
+                    </button>
+                `;
+            });
+            playlistChipsHtml += '</div>';
+
+            // 2. Banner con Estadísticas y Progreso de la Lista Seleccionada
             const summary = data.summary;
             const bannerHtml = `
-                <div class="retro-banner">
+                ${playlistChipsHtml}
+                <div class="retro-banner" style="background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(2,132,199,0.08)); border-color: rgba(16,185,129,0.3);">
                     <div class="retro-banner-top">
                         <div class="retro-banner-title">
-                            <i class="fa-solid fa-trophy"></i>
-                            <span>Descubridor de Éxitos en España (Viejuna)</span>
+                            <i class="fa-solid fa-satellite-dish" style="color:#10b981;"></i>
+                            <span>Descubridor de Éxitos: ${curList}</span>
                         </div>
-                        <div class="radar-live-indicator">
-                            <div class="radar-live-dot"></div>
-                            <span>Canon Los 40 & AFYVE España</span>
+                        <div class="radar-live-indicator" style="border-color:#10b981;background:rgba(16,185,129,0.1);">
+                            <div class="radar-live-dot" style="background:#10b981;"></div>
+                            <span style="color:#10b981;">Deduplicación Activa de Biblioteca</span>
                         </div>
                     </div>
                     <div class="retro-banner-desc">
-                        Colección exhaustiva de los mayores éxitos internacionales que triunfaron en las radios y discotecas de España entre 1970 y 1999.
+                        Grandes canciones icónicas recomendadas para tu lista de <strong>${curList}</strong>.
                         <div style="margin-top: 6px; font-size: 0.84rem; color: #38bdf8;">
-                            <i class="fa-brands fa-spotify" style="color:#1db954;"></i> <strong>Flujo recomendado:</strong> Escucha la preescucha y pulsa <strong>Spotify</strong> para añadir la canción a tu playlist habitual. Tras añadirla, pulsa <strong>Sincronizar</strong> en la cabecera para importarla a la web. Si no te gusta un tema, pulsa <strong>Omitir</strong> para que no vuelva a sugerirse.
+                            <i class="fa-brands fa-spotify" style="color:#1db954;"></i> <strong>Recomendación:</strong> Escucha la preescucha y pulsa <strong>Spotify</strong> para añadirla a tu lista, o usa <strong>Directo</strong> para descargarla directamente a la carpeta de ${curList}.
                         </div>
                     </div>
                     <div class="retro-progress-container">
                         <div class="retro-progress-labels">
-                            <span style="color: #fff;"><i class="fa-solid fa-chart-pie" style="color: #f59e0b; margin-right: 6px;"></i> Progreso de tu colección de Viejuna:</span>
+                            <span style="color: #fff;"><i class="fa-solid fa-chart-pie" style="color: #10b981; margin-right: 6px;"></i> Progreso en ${curList}:</span>
                             <span style="color: #34d399;">${summary.totalOwned} de ${summary.totalHits} conseguidos (${summary.globalPercentage}%) • ${summary.totalMissing} por descubrir</span>
                         </div>
                         <div class="retro-progress-track">
-                            <div class="retro-progress-fill" style="width: ${summary.globalPercentage}%;"></div>
+                            <div class="retro-progress-fill" style="width: ${summary.globalPercentage}%; background: linear-gradient(90deg, #10b981, #0284c7);"></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Selector de Modo: Archivo Histórico vs Radar en Vivo -->
-                <div class="retro-view-switch">
+                <!-- Selector de Modo: Catálogo de Éxitos vs Radar de Emisoras -->
+                <div class="retro-view-switch" style="margin-top:18px;">
                     <button class="retro-switch-btn ${retroState.mode === 'timeline' ? 'active' : ''}" id="btn-mode-timeline">
-                        <i class="fa-solid fa-calendar-days"></i> Archivo por Años (1970-1999)
+                        <i class="fa-solid fa-calendar-days"></i> Catálogo de Éxitos (${curList})
                     </button>
                     <button class="retro-switch-btn ${retroState.mode === 'radar' ? 'active' : ''}" id="btn-mode-radar">
-                        <i class="fa-solid fa-tower-broadcast"></i> Radar de Emisoras (Los 40 Classic)
+                        <i class="fa-solid fa-tower-broadcast"></i> Radar de Emisoras FM en Vivo
                     </button>
                 </div>
             `;
 
             wrapper.innerHTML = bannerHtml;
             songsGrid.appendChild(wrapper);
+
+            // Listeners de los chips de lista
+            wrapper.querySelectorAll('.rec-playlist-chip').forEach(chip => {
+                chip.addEventListener('click', () => {
+                    const chosen = chip.getAttribute('data-rec-list');
+                    if (chosen && chosen !== retroState.selectedList) {
+                        retroState.selectedList = chosen;
+                        retroState.selectedYear = null;
+                        retroState.selectedStation = 'ALL';
+                        renderRetroHitsView();
+                    }
+                });
+            });
 
             // Listeners de los botones de modo
             document.getElementById('btn-mode-timeline').addEventListener('click', () => {
@@ -2920,45 +2963,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (retroState.mode === 'timeline') {
                 renderTimelineContent(data, wrapper);
+            } else {
+                renderRetroRadarView();
             }
 
         } catch(e) {
-            console.error('Error renderizando éxitos España:', e);
-            songsGrid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:#ef4444;"><i class="fa-solid fa-triangle-exclamation" style="font-size:2rem;margin-bottom:12px;"></i><p>Error cargando éxitos de España: ${e.message}</p></div>`;
+            console.error('Error renderizando recomendaciones:', e);
+            songsGrid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:#ef4444;"><i class="fa-solid fa-triangle-exclamation" style="font-size:2rem;margin-bottom:12px;"></i><p>Error cargando recomendaciones: ${e.message}</p></div>`;
         }
     }
 
     function renderTimelineContent(data, container) {
-        // Scroller horizontal de Años
-        const yearsBox = document.createElement('div');
-        yearsBox.className = 'retro-years-scroller';
+        // Scroller horizontal de Años si hay datos por año
+        if (data.yearsStats && data.yearsStats.length > 0) {
+            const yearsBox = document.createElement('div');
+            yearsBox.className = 'retro-years-scroller';
 
-        // Opción: Todos los años
-        const allYearsChip = document.createElement('div');
-        allYearsChip.className = retroState.selectedYear === null ? 'retro-year-chip active' : 'retro-year-chip';
-        allYearsChip.innerHTML = `<span>Todos</span><span class="retro-year-pct">${data.summary.globalPercentage}%</span>`;
-        allYearsChip.addEventListener('click', () => {
-            retroState.selectedYear = null;
-            renderRetroHitsView();
-        });
-        yearsBox.appendChild(allYearsChip);
-
-        // Años individuales
-        data.yearsStats.forEach(stat => {
-            const chip = document.createElement('div');
-            chip.className = retroState.selectedYear === stat.year ? 'retro-year-chip active' : 'retro-year-chip';
-            chip.innerHTML = `<span>${stat.year}</span><span class="retro-year-pct">${stat.percentage}%</span>`;
-            chip.title = `${stat.year}: ${stat.owned} de ${stat.total} en tu colección (${stat.missing} faltantes)`;
-            chip.addEventListener('click', () => {
-                retroState.selectedYear = stat.year;
+            const allYearsChip = document.createElement('div');
+            allYearsChip.className = retroState.selectedYear === null ? 'retro-year-chip active' : 'retro-year-chip';
+            allYearsChip.innerHTML = `<span>Todos</span><span class="retro-year-pct">${data.summary.globalPercentage}%</span>`;
+            allYearsChip.addEventListener('click', () => {
+                retroState.selectedYear = null;
                 renderRetroHitsView();
             });
-            yearsBox.appendChild(chip);
-        });
+            yearsBox.appendChild(allYearsChip);
 
-        container.appendChild(yearsBox);
+            data.yearsStats.forEach(stat => {
+                const chip = document.createElement('div');
+                chip.className = retroState.selectedYear === stat.year ? 'retro-year-chip active' : 'retro-year-chip';
+                chip.innerHTML = `<span>${stat.year}</span><span class="retro-year-pct">${stat.percentage}%</span>`;
+                chip.title = `${stat.year}: ${stat.owned} de ${stat.total} en tu colección (${stat.missing} faltantes)`;
+                chip.addEventListener('click', () => {
+                    retroState.selectedYear = stat.year;
+                    renderRetroHitsView();
+                });
+                yearsBox.appendChild(chip);
+            });
 
-        // Barra de Filtro de Estado (Faltantes / Todos / Colección)
+            container.appendChild(yearsBox);
+        }
+
+        // Barra de Filtro de Estado (Faltantes / Todos / Colección / Omitidas)
         const filterBar = document.createElement('div');
         filterBar.style.cssText = 'display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;align-items:center;';
 
@@ -2990,7 +3035,7 @@ document.addEventListener('DOMContentLoaded', () => {
         refreshRetroBtn.style.color = '#38bdf8';
         refreshRetroBtn.style.borderColor = 'rgba(56, 189, 248, 0.4)';
         refreshRetroBtn.innerHTML = '<i class="fa-solid fa-rotate"></i> Refrescar sugerencias';
-        refreshRetroBtn.title = 'Volver a contrastar contra tu colección y Spotify';
+        refreshRetroBtn.title = 'Volver a contrastar contra tu colección y archivos';
         refreshRetroBtn.addEventListener('click', () => {
             refreshRetroBtn.disabled = true;
             refreshRetroBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Contrastando...';
@@ -3003,7 +3048,7 @@ document.addEventListener('DOMContentLoaded', () => {
         container.appendChild(filterBar);
 
         // Filtrar hits a mostrar
-        let displayHits = data.hits;
+        let displayHits = data.hits || [];
         if (retroState.selectedYear) {
             displayHits = displayHits.filter(h => h.year === retroState.selectedYear);
         }
@@ -3015,7 +3060,6 @@ document.addEventListener('DOMContentLoaded', () => {
             displayHits = displayHits.filter(h => h.isDismissed);
         }
 
-        // Filtro de texto rápido si hay búsqueda
         if (quickFilterQuery && quickFilterQuery.trim().length > 0) {
             const q = quickFilterQuery.toLowerCase();
             displayHits = displayHits.filter(h => 
@@ -3025,15 +3069,14 @@ document.addEventListener('DOMContentLoaded', () => {
             );
         }
 
-        // Renderizar cuadrícula de tarjetas
         const gridBox = document.createElement('div');
         gridBox.style.cssText = 'display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:16px;';
 
         if (displayHits.length === 0) {
             gridBox.innerHTML = `
                 <div style="grid-column: 1 / -1; text-align: center; padding: 50px 20px; color: var(--text-muted);">
-                    <i class="fa-solid fa-trophy" style="font-size: 2.8rem; color: #f59e0b; opacity: 0.4; margin-bottom: 12px;"></i>
-                    <p style="font-size: 1.1rem; font-weight: 600;">¡Genial! Tienes todos los éxitos seleccionados en tu colección.</p>
+                    <i class="fa-solid fa-trophy" style="font-size: 2.8rem; color: #10b981; opacity: 0.4; margin-bottom: 12px;"></i>
+                    <p style="font-size: 1.1rem; font-weight: 600;">¡Genial! Tienes todas las canciones seleccionadas en tu colección.</p>
                 </div>
             `;
         } else {
@@ -3052,8 +3095,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="retro-title" title="${hit.title}">${hit.title}</div>
                             <div class="retro-artist" title="${hit.artist}">${hit.artist}</div>
                             <div class="retro-meta-row">
-                                <span class="retro-badge-peak"><i class="fa-solid fa-crown"></i> ${hit.peak}</span>
-                                <span class="retro-badge-year">${hit.year}</span>
+                                ${hit.peak ? `<span class="retro-badge-peak"><i class="fa-solid fa-crown"></i> ${hit.peak}</span>` : ''}
+                                ${hit.year ? `<span class="retro-badge-year">${hit.year}</span>` : ''}
                             </div>
                         </div>
                     </div>
@@ -3084,7 +3127,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
 
-                // Listener de preescucha
                 const previewBtn = card.querySelector('.btn-retro-preview');
                 if (previewBtn) {
                     previewBtn.addEventListener('click', () => {
@@ -3092,7 +3134,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
 
-                // Listener de descarga directa
                 const addBtn = card.querySelector('.btn-retro-add');
                 if (addBtn) {
                     addBtn.addEventListener('click', () => {
@@ -3100,7 +3141,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
 
-                // Listener de omitir
                 const dismissBtn = card.querySelector('.btn-retro-dismiss');
                 if (dismissBtn) {
                     dismissBtn.addEventListener('click', () => {
@@ -3108,7 +3148,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
 
-                // Listener de restaurar
                 const restoreBtn = card.querySelector('.btn-retro-restore');
                 if (restoreBtn) {
                     restoreBtn.addEventListener('click', () => {
@@ -3127,7 +3166,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const wrapper = document.querySelector('.retro-banner')?.parentNode;
         if (!wrapper) return;
 
-        // Limpiar contenido posterior a botones de modo
+        const curList = retroState.selectedList || 'Música viejuna';
+        const curStation = retroState.selectedStation || 'ALL';
+
         const switchBox = wrapper.querySelector('.retro-view-switch');
         while (switchBox && switchBox.nextSibling) {
             wrapper.removeChild(switchBox.nextSibling);
@@ -3135,24 +3176,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const radarContainer = document.createElement('div');
         radarContainer.innerHTML = `
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
                 <div>
                     <h3 style="color:#fff;font-size:1.15rem;font-weight:700;display:flex;align-items:center;gap:8px;">
-                        <i class="fa-solid fa-tower-broadcast" style="color:#f59e0b;"></i>
-                        Emisión en Vivo: Los 40 Classic
+                        <i class="fa-solid fa-tower-broadcast" style="color:#10b981;"></i>
+                        Emisión en Vivo: Radar de Emisoras (${curList})
                     </h3>
                     <p style="color:var(--text-muted);font-size:0.86rem;margin-top:2px;">
-                        Canciones que están pinchando en antena ahora mismo, contrastadas con tu lista de Música viejuna.
+                        Música en emisión en directo contrastada en tiempo real contra tu colección completa.
                     </p>
                 </div>
-                <button class="retro-switch-btn" id="btn-refresh-radar" style="font-size:0.82rem;padding:6px 14px;">
+                <button class="retro-switch-btn" id="btn-refresh-radar" style="font-size:0.82rem;padding:6px 14px;color:#10b981;border-color:rgba(16,185,129,0.4);">
                     <i class="fa-solid fa-rotate-right"></i> Actualizar Emisión
+                </button>
+            </div>
+            <!-- Filtro de emisoras disponibles para esta lista -->
+            <div id="radar-stations-filter-bar" style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center;">
+                <button class="retro-switch-btn ${curStation === 'ALL' ? 'active' : ''}" data-station="ALL" style="font-size:0.8rem;padding:5px 12px;">
+                    <i class="fa-solid fa-layer-group"></i> Todas las emisoras
                 </button>
             </div>
             <div id="radar-tracks-grid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:16px;">
                 <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted);">
-                    <i class="fa-solid fa-spinner fa-spin" style="font-size:2rem;color:#f59e0b;margin-bottom:12px;"></i>
-                    <p>Capturando emisión en directo...</p>
+                    <i class="fa-solid fa-spinner fa-spin" style="font-size:2rem;color:#10b981;margin-bottom:12px;"></i>
+                    <p>Capturando emisión en directo de emisoras...</p>
                 </div>
             </div>
         `;
@@ -3162,9 +3209,39 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('btn-refresh-radar')?.addEventListener('click', renderRetroRadarView);
 
         try {
-            const res = await fetch('/api/retro-hits/radio-radar');
+            const res = await fetch(`/api/recommendations/radio-radar?playlist=${encodeURIComponent(curList)}&station=${encodeURIComponent(curStation)}`);
             if (!res.ok) throw new Error('Error consultando radar');
             const data = await res.json();
+
+            // Renderizar selector de emisoras
+            const stBar = document.getElementById('radar-stations-filter-bar');
+            if (stBar && data.availableStations && data.availableStations.length > 0) {
+                stBar.innerHTML = `
+                    <button class="retro-switch-btn ${curStation === 'ALL' ? 'active' : ''}" data-station="ALL" style="font-size:0.8rem;padding:5px 12px;">
+                        <i class="fa-solid fa-layer-group"></i> Todas las emisoras
+                    </button>
+                `;
+                data.availableStations.forEach(st => {
+                    const active = curStation === st.id;
+                    const b = document.createElement('button');
+                    b.className = active ? 'retro-switch-btn active' : 'retro-switch-btn';
+                    b.style.fontSize = '0.8rem';
+                    b.style.padding = '5px 12px';
+                    b.innerHTML = `<i class="fa-solid fa-radio"></i> ${st.name}`;
+                    b.addEventListener('click', () => {
+                        retroState.selectedStation = st.id;
+                        renderRetroRadarView();
+                    });
+                    stBar.appendChild(b);
+                });
+                const allBtn = stBar.querySelector('button[data-station="ALL"]');
+                if (allBtn) {
+                    allBtn.addEventListener('click', () => {
+                        retroState.selectedStation = 'ALL';
+                        renderRetroRadarView();
+                    });
+                }
+            }
 
             const grid = document.getElementById('radar-tracks-grid');
             if (!grid) return;
@@ -3184,6 +3261,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     : '<i class="fa-solid fa-record-vinyl retro-cover-icon"></i>';
 
                 const trackKey = `${track.artist} - ${track.title}`;
+                const stationLabel = track.stationName || 'Radio FM';
 
                 card.innerHTML = `
                     <div class="retro-card-header">
@@ -3195,7 +3273,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="retro-artist" title="${track.artist}">${track.artist}</div>
                             <div class="retro-meta-row">
                                 <span class="retro-badge-peak" style="border-color:#38bdf8;color:#38bdf8;background:rgba(56,189,248,0.12);">
-                                    <i class="fa-solid fa-radio"></i> Los 40 Classic
+                                    <i class="fa-solid fa-radio"></i> ${stationLabel}
                                 </span>
                             </div>
                         </div>
@@ -3212,7 +3290,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div style="display: flex; gap: 8px; align-items: center;">
                             ${track.isOwned 
                                 ? '<span class="badge-owned-tag"><i class="fa-solid fa-check-circle"></i> En tu colección</span>' 
-                                : `<button class="btn-retro-add" title="Descargar directamente a tu biblioteca sin pasar por Spotify">
+                                : `<button class="btn-retro-add" title="Descargar directamente a tu biblioteca en ${curList}">
                                        <i class="fa-solid fa-cloud-arrow-down"></i> Directo
                                    </button>
                                    <button class="btn-retro-dismiss" title="Omitir sugerencia">
@@ -3252,6 +3330,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (grid) grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:30px;color:#ef4444;"><p>Error de conexión con la radio: ${e.message}</p></div>`;
         }
     }
+
 });
 
 

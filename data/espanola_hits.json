@@ -1,0 +1,227 @@
+[
+  {
+    "year": 1980,
+    "artist": "Nacha Pop",
+    "title": "La Chica de Ayer"
+  },
+  {
+    "year": 1982,
+    "artist": "Los Secretos",
+    "title": "Déjame"
+  },
+  {
+    "year": 1984,
+    "artist": "Radio Futura",
+    "title": "Escuela de Calor"
+  },
+  {
+    "year": 1986,
+    "artist": "Hombres G",
+    "title": "Devuélveme a mi chica"
+  },
+  {
+    "year": 1986,
+    "artist": "Duncan Dhu",
+    "title": "Cien gaviotas"
+  },
+  {
+    "year": 1987,
+    "artist": "El Último de la Fila",
+    "title": "Insurrección"
+  },
+  {
+    "year": 1988,
+    "artist": "Mecano",
+    "title": "Mujer contra mujer"
+  },
+  {
+    "year": 1990,
+    "artist": "Héroes del Silencio",
+    "title": "Entre dos tierras"
+  },
+  {
+    "year": 1990,
+    "artist": "Seguridad Social",
+    "title": "Chiquilla"
+  },
+  {
+    "year": 1991,
+    "artist": "Mecano",
+    "title": "El 7 de septiembre"
+  },
+  {
+    "year": 1992,
+    "artist": "Los Rodríguez",
+    "title": "Sin documentos"
+  },
+  {
+    "year": 1995,
+    "artist": "Jarabe de Palo",
+    "title": "La Flaca"
+  },
+  {
+    "year": 1996,
+    "artist": "Ella Baila Sola",
+    "title": "Lo echamos a suertes"
+  },
+  {
+    "year": 1998,
+    "artist": "La Oreja de Van Gogh",
+    "title": "Cuéntame al oído"
+  },
+  {
+    "year": 1998,
+    "artist": "Fito & Fitipaldis",
+    "title": "Rojitas las orejas"
+  },
+  {
+    "year": 1999,
+    "artist": "Estopa",
+    "title": "La raja de tu falda"
+  },
+  {
+    "year": 1999,
+    "artist": "M-Clan",
+    "title": "Llamando a la tierra"
+  },
+  {
+    "year": 2000,
+    "artist": "El Canto del Loco",
+    "title": "Pequeñita"
+  },
+  {
+    "year": 2000,
+    "artist": "La Oreja de Van Gogh",
+    "title": "La playa"
+  },
+  {
+    "year": 2001,
+    "artist": "Estopa",
+    "title": "Vino tinto"
+  },
+  {
+    "year": 2002,
+    "artist": "Amaral",
+    "title": "Sin ti no soy nada"
+  },
+  {
+    "year": 2002,
+    "artist": "Álex Ubago",
+    "title": "Sin miedo a nada"
+  },
+  {
+    "year": 2003,
+    "artist": "El Canto del Loco",
+    "title": "La madre de José"
+  },
+  {
+    "year": 2003,
+    "artist": "La Oreja de Van Gogh",
+    "title": "Rosas"
+  },
+  {
+    "year": 2003,
+    "artist": "Fito & Fitipaldis",
+    "title": "Soldadito marinero"
+  },
+  {
+    "year": 2004,
+    "artist": "Melendi",
+    "title": "Caminando por la vida"
+  },
+  {
+    "year": 2004,
+    "artist": "Bebe",
+    "title": "Malo"
+  },
+  {
+    "year": 2005,
+    "artist": "El Canto del Loco",
+    "title": "Zapatillas"
+  },
+  {
+    "year": 2005,
+    "artist": "Amaral",
+    "title": "Días de verano"
+  },
+  {
+    "year": 2005,
+    "artist": "Pereza",
+    "title": "Princesas"
+  },
+  {
+    "year": 2006,
+    "artist": "Fito & Fitipaldis",
+    "title": "Por la boca vive el pez"
+  },
+  {
+    "year": 2006,
+    "artist": "La Oreja de Van Gogh",
+    "title": "Muñeca de trapo"
+  },
+  {
+    "year": 2007,
+    "artist": "Pereza",
+    "title": "Estrella polar"
+  },
+  {
+    "year": 2007,
+    "artist": "El Sueño de Morfeo",
+    "title": "Para toda la vida"
+  },
+  {
+    "year": 2008,
+    "artist": "El Canto del Loco",
+    "title": "Peter Pan"
+  },
+  {
+    "year": 2009,
+    "artist": "Fito & Fitipaldis",
+    "title": "Antes de que cuente diez"
+  },
+  {
+    "year": 2010,
+    "artist": "Maldita Nerea",
+    "title": "El secreto de las tortugas"
+  },
+  {
+    "year": 2011,
+    "artist": "Pablo Alborán",
+    "title": "Solamente tú"
+  },
+  {
+    "year": 2012,
+    "artist": "Vetusta Morla",
+    "title": "Copenhague"
+  },
+  {
+    "year": 2013,
+    "artist": "Leiva",
+    "title": "Terriblemente cruel"
+  },
+  {
+    "year": 2014,
+    "artist": "Izal",
+    "title": "La mujer de verde"
+  },
+  {
+    "year": 2016,
+    "artist": "Love of Lesbian",
+    "title": "Bajo el volcán"
+  },
+  {
+    "year": 2018,
+    "artist": "Rosalía",
+    "title": "Malamente"
+  },
+  {
+    "year": 2020,
+    "artist": "C. Tangana",
+    "title": "Tú me dejaste de querer"
+  },
+  {
+    "year": 2022,
+    "artist": "Quevedo",
+    "title": "Quédate"
+  }
+]
