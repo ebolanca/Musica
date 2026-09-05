@@ -1130,12 +1130,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentSong = currentPlayingSong || (cinemaCurrentTrackList ? cinemaCurrentTrackList[cinemaCurrentIndex] : null);
             if (!currentSong) return;
 
-            const confirmDownload = confirm(`¿Deseas descartar el audio actual de "${currentSong.title}" y descargar la versión limpia oficial de estudio (sin intros de videoclip ni diálogos)?`);
-            if (!confirmDownload) return;
-
             btnCinemaReplaceClean.disabled = true;
-            btnCinemaReplaceClean.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Probando versión...';
-            showSyncNotification('🗑️ Descartando versión anterior y probando siguiente opción de estudio...');
+            btnCinemaReplaceClean.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Descargando...';
+            showSyncNotification('⏳ Descargando versión oficial de estudio...');
 
             try {
                 const res = await fetch('/api/track/replace-clean-audio', {

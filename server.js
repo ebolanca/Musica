@@ -1879,8 +1879,25 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
             try { fs.mkdirSync(targetFolder, { recursive: true }); } catch(e){}
         }
 
-        const targetFileName = `${artist} - ${title}.mp3`;
-        const targetFilePath = path.join(targetFolder, targetFileName);
+        let targetFileName = `${artist} - ${title}.mp3`;
+        let targetFilePath = path.join(targetFolder, targetFileName);
+
+        // Si ya existe un archivo con nombre similar en la carpeta (ej. sin paréntesis o caracteres especiales), reutilizar su nombre exacto
+        if (!fs.existsSync(targetFilePath) && fs.existsSync(targetFolder)) {
+            const files = fs.readdirSync(targetFolder);
+            const wantedNorm = cleanTrackKey(artist) + '_' + cleanTrackKey(cleanT);
+            const matchFile = files.find(f => {
+                if (!f.toLowerCase().endsWith('.mp3')) return false;
+                const fBase = f.replace(/\.mp3$/i, '');
+                const fNorm = cleanTrackKey(fBase);
+                return fNorm === wantedNorm || (fNorm.includes(cleanTrackKey(cleanT)) && fNorm.includes(cleanTrackKey(artist.split(/[,&]/)[0])));
+            });
+            if (matchFile) {
+                targetFileName = matchFile;
+                targetFilePath = path.join(targetFolder, matchFile);
+                console.log(`[CLEAN DOWNLOAD] Archivo existente detectado en disco para sobrescribir: "${matchFile}"`);
+            }
+        }
         const tempOutput = path.join(__dirname, 'data', `temp_clean_${Date.now()}.mp3`);
 
         const { exec } = require('child_process');
@@ -1921,12 +1938,10 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
 
         console.log(`[CLEAN DOWNLOAD] Duración oficial esperada: ${expectedDurationSec ? expectedDurationSec + 's (' + Math.floor(expectedDurationSec/60) + ':' + (expectedDurationSec%60).toString().padStart(2, '0') + ')' : 'No especificada'}`);
 
-        // 2. Buscar candidatos en SoundCloud con múltiples queries variadas
+        // 2. Buscar candidatos en SoundCloud (priorizar búsqueda rápida directa)
         const searchQueries = [
             `scsearch30:${artist} ${cleanT}`,
-            `scsearch30:${cleanT} ${artist}`,
-            `scsearch30:"${cleanT}" ${artist}`,
-            `scsearch30:${artist} - ${cleanT}`
+            `scsearch30:${cleanT} ${artist}`
         ];
 
         let bestCandidate = null;
@@ -1998,7 +2013,7 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
                     } catch(e) {}
                 }
 
-                if (allValidCandidates.length >= 25) break;
+                if (allValidCandidates.length >= 5) break;
             } catch(e) {
                 console.warn(`Aviso buscando con ${q}:`, e.message);
             }
