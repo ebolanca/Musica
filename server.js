@@ -3329,23 +3329,36 @@ async function handleRecommendationsDownload(req, res) {
         }
 
         validCandidates.sort((a, b) => a.diff - b.diff);
-        const bestCandidate = validCandidates[0];
 
-        const downloadUrl = bestCandidate.url.startsWith('http') ? bestCandidate.url : `https://www.youtube.com/watch?v=${bestCandidate.id}`;
-        const dlCmd = `${ytdlpBin} --ffmpeg-location "${ffmpegDir}" -x --audio-format mp3 --audio-quality 0 -o "${tempOutput}" "${downloadUrl}"`;
+        let dlSuccess = false;
+        let downloadedCandidate = null;
 
-        const dlSuccess = await new Promise((resolve) => {
-            exec(dlCmd, { maxBuffer: 10 * 1024 * 1024, timeout: 45000, windowsHide: true }, (err) => {
-                if (!err && fs.existsSync(tempOutput)) {
-                    const stats = fs.statSync(tempOutput);
-                    if (stats.size >= 800000) return resolve(true);
-                }
-                resolve(false);
+        for (let i = 0; i < validCandidates.length; i++) {
+            const cand = validCandidates[i];
+            const downloadUrl = cand.url.startsWith('http') ? cand.url : `https://www.youtube.com/watch?v=${cand.id}`;
+            const dlCmd = `${ytdlpBin} --ffmpeg-location "${ffmpegDir}" -x --audio-format mp3 --audio-quality 0 -o "${tempOutput}" "${downloadUrl}"`;
+
+            console.log(`[RECOMMENDATION DOWNLOAD] Probando candidato [${i + 1}/${validCandidates.length}]: "${cand.title}"`);
+            const ok = await new Promise((resolve) => {
+                exec(dlCmd, { maxBuffer: 10 * 1024 * 1024, timeout: 45000, windowsHide: true }, (err) => {
+                    if (!err && fs.existsSync(tempOutput)) {
+                        const stats = fs.statSync(tempOutput);
+                        if (stats.size >= 800000) return resolve(true);
+                    }
+                    try { if (fs.existsSync(tempOutput)) fs.unlinkSync(tempOutput); } catch(e){}
+                    resolve(false);
+                });
             });
-        });
+
+            if (ok) {
+                dlSuccess = true;
+                downloadedCandidate = cand;
+                break;
+            }
+        }
 
         if (!dlSuccess) {
-            return res.status(500).json({ error: 'Error durante la descarga o archivo corrupto' });
+            return res.status(500).json({ error: 'No se pudo descargar ninguna de las versiones disponibles (bloqueo DRM o protegida)' });
         }
 
         fs.copyFileSync(tempOutput, targetFilePath);
@@ -3356,13 +3369,16 @@ async function handleRecommendationsDownload(req, res) {
         invalidateCollectionIndex();
         delete cachedPlaylistsCatalogs[targetPlaylist];
 
+        const relUrl = `/media-music/${encodeURIComponent(targetPlaylist)}/${encodeURIComponent(targetFileName)}`;
+
         res.json({
             success: true,
             playlist: targetPlaylist,
             fileName: targetFileName,
+            relUrl,
             artist,
             title: cleanT,
-            duration: bestCandidate.duration
+            duration: downloadedCandidate ? downloadedCandidate.duration : null
         });
     } catch(e) {
         console.error('Error en /api/recommendations/download:', e.message);

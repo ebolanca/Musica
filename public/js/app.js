@@ -805,7 +805,15 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         } else {
             console.log('Track has no audio file in library:', track.title);
+            // 🛑 Limpiar src y pausar inmediatamente para no reproducir jamás la pista previa
+            mainMusicAudio.pause();
+            mainMusicAudio.src = '';
+            mainMusicAudio.removeAttribute('src');
             updateMusicBarState(false);
+
+            // 🚀 Auto-descarga bajo demanda de la versión de estudio
+            showSyncNotification(`⏳ Descargando versión de estudio para "${track.title}"...`);
+            autoDownloadMissingTrack(track);
         }
 
         // Update Floating Player Bar
@@ -1640,8 +1648,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    async function autoDownloadMissingTrack(track) {
+        if (!track) return;
+        try {
+            const res = await fetch('/api/track/replace-clean-audio', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    artist: track.artist,
+                    title: track.rawTitle || track.title,
+                    category: track.playlistName || currentTab || 'Siglo XXI'
+                })
+            });
+            const data = await res.json();
+            if (data.success && data.relUrl) {
+                track.audioUrl = data.relUrl;
+                if (track.videoItem) track.videoItem.streamUrl = data.relUrl;
+                if (currentPlayingSong && currentPlayingSong.title === track.title) {
+                    mainMusicAudio.src = `${data.relUrl}?t=${Date.now()}`;
+                    mainMusicAudio.currentTime = 0;
+                    mainMusicAudio.play().then(() => updateMusicBarState(true)).catch(() => {});
+                    showSyncNotification(`✨ ¡Audio listo para "${track.title}"!`);
+                }
+                fetchPlaylists();
+            } else {
+                showSyncNotification(`❌ No se pudo descargar audio para "${track.title}"`);
+            }
+        } catch(e) {
+            console.error('Error en autoDownloadMissingTrack:', e);
+        }
+    }
+
     if (musicBtnPlay && mainMusicAudio) {
         musicBtnPlay.addEventListener('click', () => {
+            if (!currentPlayingSong || (!currentPlayingSong.audioUrl && (!mainMusicAudio.src || mainMusicAudio.src === '' || mainMusicAudio.src === window.location.href))) {
+                if (currentPlayingSong) {
+                    showSyncNotification(`⏳ Descargando versión de estudio para "${currentPlayingSong.title}"...`);
+                    autoDownloadMissingTrack(currentPlayingSong);
+                }
+                return;
+            }
             if (mainMusicAudio.paused) {
                 mainMusicAudio.play();
                 updateMusicBarState(true);
@@ -2604,6 +2650,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (cinemaPlay && mainMusicAudio) {
         cinemaPlay.addEventListener('click', () => {
+            if (!currentPlayingSong || (!currentPlayingSong.audioUrl && (!mainMusicAudio.src || mainMusicAudio.src === '' || mainMusicAudio.src === window.location.href))) {
+                if (currentPlayingSong) {
+                    showSyncNotification(`⏳ Descargando versión de estudio para "${currentPlayingSong.title}"...`);
+                    autoDownloadMissingTrack(currentPlayingSong);
+                }
+                return;
+            }
             if (mainMusicAudio.paused) {
                 mainMusicAudio.play();
                 updateMusicBarState(true);
