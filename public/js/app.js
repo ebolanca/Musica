@@ -2879,87 +2879,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function renderRetroHitsView() {
         const curList = retroState.selectedList || 'Música viejuna';
-        currentSectionTitle.innerHTML = `<i class="fa-solid fa-satellite-dish" style="color: #10b981;"></i> Recomendaciones & Radar: ${curList}`;
-        resultsCountText.textContent = `Consultando sugerencias para ${curList}...`;
-        songsGrid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-muted);"><i class="fa-solid fa-spinner fa-spin" style="font-size:2.5rem;color:#10b981;margin-bottom:16px;"></i><p>Contrastando catálogo contra tu biblioteca musical...</p></div>';
+        currentSectionTitle.innerHTML = `<i class="fa-solid fa-tower-broadcast" style="color: #10b981;"></i> Radar de Emisoras FM: ${curList}`;
+        resultsCountText.textContent = `Radar en vivo para ${curList}...`;
+        songsGrid.className = 'songs-grid';
+        songsGrid.innerHTML = '';
 
-        try {
-            const res = await fetch(`/api/recommendations/catalog?playlist=${encodeURIComponent(curList)}`);
-            if (!res.ok) throw new Error('Error cargando catálogo');
-            const data = await res.json();
-            retroState.cachedCatalog = data;
+        const wrapper = document.createElement('div');
+        wrapper.id = 'retro-hits-main-wrapper';
+        wrapper.style.gridColumn = '1 / -1';
 
-            resultsCountText.textContent = `${data.summary.totalHits} grandes éxitos catalogados para ${curList}`;
-
-            songsGrid.className = 'songs-grid';
-            songsGrid.innerHTML = '';
-
-            const wrapper = document.createElement('div');
-            wrapper.id = 'retro-hits-main-wrapper';
-            wrapper.style.gridColumn = '1 / -1';
-
-            // 1. Selector de Lista / Género Musical (Chips Superiores)
-            let playlistChipsHtml = '<div class="recommendation-playlists-bar" style="display:flex;gap:10px;margin-bottom:14px;overflow-x:auto;padding-bottom:6px;">';
-            recommendationPlaylists.forEach(pl => {
-                const isActive = pl.id === curList;
-                playlistChipsHtml += `
-                    <button class="rec-playlist-chip ${isActive ? 'active' : ''}" data-rec-list="${pl.id}" style="display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:24px;border:1px solid ${isActive ? '#10b981' : 'rgba(255,255,255,0.12)'};background:${isActive ? 'rgba(16,185,129,0.18)' : 'rgba(255,255,255,0.04)'};color:${isActive ? '#10b981' : '#fff'};font-weight:600;font-size:0.86rem;cursor:pointer;white-space:nowrap;transition:all 0.2s ease;">
-                        <i class="fa-solid ${pl.icon}"></i>
-                        <span>${pl.label}</span>
-                    </button>
-                `;
-            });
-            playlistChipsHtml += '</div>';
-
-            const topHtml = `
-                ${playlistChipsHtml}
-                <!-- Selector de Modo: Catálogo de Éxitos vs Radar de Emisoras -->
-                <div class="retro-view-switch" style="margin-top:4px;margin-bottom:14px;">
-                    <button class="retro-switch-btn ${retroState.mode === 'timeline' ? 'active' : ''}" id="btn-mode-timeline">
-                        <i class="fa-solid fa-calendar-days"></i> Catálogo de Éxitos (${curList})
-                    </button>
-                    <button class="retro-switch-btn ${retroState.mode === 'radar' ? 'active' : ''}" id="btn-mode-radar">
-                        <i class="fa-solid fa-tower-broadcast"></i> Radar de Emisoras FM en Vivo
-                    </button>
-                </div>
+        // Selector de Lista / Género Musical (Chips Superiores)
+        let playlistChipsHtml = '<div class="recommendation-playlists-bar" style="display:flex;gap:10px;margin-bottom:14px;overflow-x:auto;padding-bottom:6px;">';
+        recommendationPlaylists.forEach(pl => {
+            const isActive = pl.id === curList;
+            playlistChipsHtml += `
+                <button class="rec-playlist-chip ${isActive ? 'active' : ''}" data-rec-list="${pl.id}" style="display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:24px;border:1px solid ${isActive ? '#10b981' : 'rgba(255,255,255,0.12)'};background:${isActive ? 'rgba(16,185,129,0.18)' : 'rgba(255,255,255,0.04)'};color:${isActive ? '#10b981' : '#fff'};font-weight:600;font-size:0.86rem;cursor:pointer;white-space:nowrap;transition:all 0.2s ease;">
+                    <i class="fa-solid ${pl.icon}"></i>
+                    <span>${pl.label}</span>
+                </button>
             `;
+        });
+        playlistChipsHtml += '</div>';
 
-            wrapper.innerHTML = topHtml;
-            songsGrid.appendChild(wrapper);
+        wrapper.innerHTML = playlistChipsHtml;
+        songsGrid.appendChild(wrapper);
 
-            // Listeners de los chips de lista
-            wrapper.querySelectorAll('.rec-playlist-chip').forEach(chip => {
-                chip.addEventListener('click', () => {
-                    const chosen = chip.getAttribute('data-rec-list');
-                    if (chosen && chosen !== retroState.selectedList) {
-                        retroState.selectedList = chosen;
-                        retroState.selectedYear = null;
-                        retroState.selectedStation = 'ALL';
-                        renderRetroHitsView();
-                    }
-                });
+        // Listeners de los chips de lista
+        wrapper.querySelectorAll('.rec-playlist-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                const chosen = chip.getAttribute('data-rec-list');
+                if (chosen && chosen !== retroState.selectedList) {
+                    retroState.selectedList = chosen;
+                    retroState.selectedStation = 'ALL';
+                    renderRetroHitsView();
+                }
             });
+        });
 
-            // Listeners de los botones de modo
-            document.getElementById('btn-mode-timeline').addEventListener('click', () => {
-                retroState.mode = 'timeline';
-                renderRetroHitsView();
-            });
-            document.getElementById('btn-mode-radar').addEventListener('click', () => {
-                retroState.mode = 'radar';
-                renderRetroRadarView();
-            });
-
-            if (retroState.mode === 'timeline') {
-                renderTimelineContent(data, wrapper);
-            } else {
-                renderRetroRadarView();
-            }
-
-        } catch(e) {
-            console.error('Error renderizando recomendaciones:', e);
-            songsGrid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:#ef4444;"><i class="fa-solid fa-triangle-exclamation" style="font-size:2rem;margin-bottom:12px;"></i><p>Error cargando recomendaciones: ${e.message}</p></div>`;
-        }
+        renderRetroRadarView();
     }
 
     function renderTimelineContent(data, container) {
@@ -3160,37 +3117,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const curList = retroState.selectedList || 'Música viejuna';
         const curStation = retroState.selectedStation || 'ALL';
 
-        const switchBox = wrapper.querySelector('.retro-view-switch');
-        while (switchBox && switchBox.nextSibling) {
-            wrapper.removeChild(switchBox.nextSibling);
+        const chipsBar = wrapper.querySelector('.recommendation-playlists-bar');
+        while (chipsBar && chipsBar.nextSibling) {
+            wrapper.removeChild(chipsBar.nextSibling);
         }
 
         const radarContainer = document.createElement('div');
         radarContainer.innerHTML = `
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
-                <div>
-                    <h3 style="color:#fff;font-size:1.15rem;font-weight:700;display:flex;align-items:center;gap:8px;">
-                        <i class="fa-solid fa-tower-broadcast" style="color:#10b981;"></i>
-                        Emisión en Vivo: Radar de Emisoras (${curList})
-                    </h3>
-                    <p style="color:var(--text-muted);font-size:0.86rem;margin-top:2px;">
-                        Música en emisión en directo contrastada en tiempo real contra tu colección completa.
-                    </p>
-                </div>
-                <button class="retro-switch-btn" id="btn-refresh-radar" style="font-size:0.82rem;padding:6px 14px;color:#10b981;border-color:rgba(16,185,129,0.4);">
-                    <i class="fa-solid fa-rotate-right"></i> Actualizar Emisión
-                </button>
-            </div>
-            <!-- Filtros de Emisoras y de Calidad / Frecuencia de Rotación -->
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:12px;">
+            <!-- Barra de Filtros: Emisoras (izq) y Acciones/Frecuencia (der) -->
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;margin-bottom:16px;flex-wrap:wrap;gap:12px;">
                 <div id="radar-stations-filter-bar" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
                     <button class="retro-switch-btn ${curStation === 'ALL' ? 'active' : ''}" data-station="ALL" style="font-size:0.8rem;padding:5px 12px;">
                         <i class="fa-solid fa-layer-group"></i> Todas las emisoras
                     </button>
                 </div>
                 <div id="radar-airplay-filter-bar" style="display:flex;gap:8px;align-items:center;">
-                    <button class="retro-switch-btn ${retroState.radarAirplayFilter === 'frequent' ? 'active' : ''}" id="btn-radar-filter-frequent" style="font-size:0.8rem;padding:5px 12px;border-color:rgba(249,115,22,0.4);color:${retroState.radarAirplayFilter === 'frequent' ? '#fff' : '#fb923c'};background:${retroState.radarAirplayFilter === 'frequent' ? '#ea580c' : 'rgba(234,88,12,0.1)'};" title="Ocultar temas de relleno puntual y mostrar solo éxitos con 2 o más emisiones">
-                        <i class="fa-solid fa-fire"></i> Solo Éxitos Frecuentes (≥2)
+                    <button class="retro-switch-btn" id="btn-refresh-radar" style="font-size:0.8rem;padding:5px 12px;color:#10b981;border-color:rgba(16,185,129,0.4);" title="Actualizar emisión en directo de la radio">
+                        <i class="fa-solid fa-rotate-right"></i> Actualizar
+                    </button>
+                    <button class="retro-switch-btn ${retroState.radarAirplayFilter === 'frequent' ? 'active' : ''}" id="btn-radar-filter-frequent" style="font-size:0.8rem;padding:5px 12px;border-color:rgba(249,115,22,0.4);color:${retroState.radarAirplayFilter === 'frequent' ? '#fff' : '#fb923c'};background:${retroState.radarAirplayFilter === 'frequent' ? '#ea580c' : 'rgba(234,88,12,0.1)'};" title="Ocultar temas de relleno puntual y mostrar solo canciones con rotación frecuente (2 o más emisiones)">
+                        <i class="fa-solid fa-fire"></i> Frecuentes
                     </button>
                     <button class="retro-switch-btn ${retroState.radarAirplayFilter === 'all' ? 'active' : ''}" id="btn-radar-filter-all" style="font-size:0.8rem;padding:5px 12px;" title="Ver todas las canciones emitidas en antena">
                         <i class="fa-solid fa-list-ul"></i> Todas
