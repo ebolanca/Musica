@@ -3085,6 +3085,10 @@ async function handleRecommendationsRadioRadar(req, res) {
                     continue;
                 }
                 const isOwned = isSongInCollection(it.artist, it.title);
+                // Si la canción ya está en la colección del usuario, descartarla del radar
+                if (isOwned) {
+                    continue;
+                }
                 const airplay = getTrackAirplayInfo(it.artist, it.title);
                 // El número de repeticiones es el máximo entre el historial semanal y las repeticiones del lote
                 const playCount = Math.max(airplay.playCount || 1, batchSongCounts[k] || 1);

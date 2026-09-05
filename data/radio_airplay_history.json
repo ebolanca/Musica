@@ -304,14 +304,16 @@
     "artist": "Cher",
     "title": "The shoop shoop song (It's in his kiss)",
     "stations": [
-      "LOS40_CLASSIC"
+      "LOS40_CLASSIC",
+      "KISSFM"
     ],
     "plays": [
-      1788597162959
+      1788597162959,
+      1788622905548
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-05T08:32:42.959Z",
-    "lastSeen": "2026-09-05T08:32:42.959Z"
+    "lastSeen": "2026-09-05T15:41:45.548Z"
   },
   "hoobastank_thereason": {
     "artist": "Hoobastank",
@@ -395,14 +397,16 @@
     "artist": "The Communards",
     "title": "Don't leave me this way",
     "stations": [
-      "LOS40_CLASSIC"
+      "LOS40_CLASSIC",
+      "KISSFM"
     ],
     "plays": [
-      1788595225015
+      1788595225015,
+      1788624375548
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-05T08:00:25.015Z",
-    "lastSeen": "2026-09-05T08:00:25.015Z"
+    "lastSeen": "2026-09-05T16:06:15.548Z"
   },
   "gloriaestefan_dontwannaloseyou": {
     "artist": "Gloria Estefan",
@@ -3555,15 +3559,17 @@
     "artist": "Gabrielle",
     "title": "Out of reach",
     "stations": [
-      "CADENA100"
+      "CADENA100",
+      "LOS40_CLASSIC"
     ],
     "plays": [
       1788626920185,
-      1788618245612
+      1788618245612,
+      1788622295281
     ],
-    "playCount7d": 2,
+    "playCount7d": 3,
     "firstSeen": "2026-09-05T16:48:40.185Z",
-    "lastSeen": "2026-09-05T14:24:05.612Z"
+    "lastSeen": "2026-09-05T15:31:35.281Z"
   },
   "veintiuno_troya": {
     "artist": "Veintiuno",
@@ -14980,5 +14986,1555 @@
     "playCount7d": 1,
     "firstSeen": "2026-09-05T16:58:05.612Z",
     "lastSeen": "2026-09-05T16:58:05.612Z"
+  },
+  "anatorroja_losamantes": {
+    "artist": "Ana Torroja",
+    "title": "Los amantes",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788628745743
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T17:19:05.743Z",
+    "lastSeen": "2026-09-05T17:19:05.743Z"
+  },
+  "samanthafox_ionlywannabewithyou": {
+    "artist": "Samantha Fox",
+    "title": "I only wanna be with you",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788628584108
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T17:16:24.108Z",
+    "lastSeen": "2026-09-05T17:16:24.108Z"
+  },
+  "beegees_stayinalive": {
+    "artist": "Bee Gees",
+    "title": "Stayin' alive",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788628299688
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T17:11:39.688Z",
+    "lastSeen": "2026-09-05T17:11:39.688Z"
+  },
+  "laguardia_milcallesllevanhaciati": {
+    "artist": "La Guardia",
+    "title": "Mil calles llevan hacia ti",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788628074618
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T17:07:54.618Z",
+    "lastSeen": "2026-09-05T17:07:54.618Z"
+  },
+  "bigfun_blameitontheboogie": {
+    "artist": "Big Fun",
+    "title": "Blame it on the boogie",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788627845618
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T17:04:05.618Z",
+    "lastSeen": "2026-09-05T17:04:05.618Z"
+  },
+  "bonjovi_yougiveloveabadname": {
+    "artist": "Bon Jovi",
+    "title": "You give love a bad name",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788627624725
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T17:00:24.725Z",
+    "lastSeen": "2026-09-05T17:00:24.725Z"
+  },
+  "petshopboys_suburbia": {
+    "artist": "Pet Shop Boys",
+    "title": "Suburbia",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788627170593
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:52:50.593Z",
+    "lastSeen": "2026-09-05T16:52:50.593Z"
+  },
+  "thecranberries_odetomyfamily": {
+    "artist": "The Cranberries",
+    "title": "Ode to my family",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788626886464
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:48:06.464Z",
+    "lastSeen": "2026-09-05T16:48:06.464Z"
+  },
+  "tinaturner_wedontneedanotherherothunderdome": {
+    "artist": "Tina Turner",
+    "title": "We don't need another hero (Thunderdome)",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788626640442
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:44:00.442Z",
+    "lastSeen": "2026-09-05T16:44:00.442Z"
+  },
+  "djboboirenecara_whatafeeling": {
+    "artist": "DJ Bobo,Irene Cara",
+    "title": "What a feeling",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788626105036
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:35:05.036Z",
+    "lastSeen": "2026-09-05T16:35:05.036Z"
+  },
+  "complices_esporti": {
+    "artist": "Cómplices",
+    "title": "Es por ti",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788625827629
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:30:27.629Z",
+    "lastSeen": "2026-09-05T16:30:27.629Z"
+  },
+  "ericcarmen_hungryeyes": {
+    "artist": "Eric Carmen",
+    "title": "Hungry eyes",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788625556700
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:25:56.700Z",
+    "lastSeen": "2026-09-05T16:25:56.700Z"
+  },
+  "backstreetboys_everybodybackstreetsback": {
+    "artist": "Backstreet Boys",
+    "title": "Everybody (Backstreet's back)",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788625393363
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:23:13.363Z",
+    "lastSeen": "2026-09-05T16:23:13.363Z"
+  },
+  "fitofitipaldis_antesdequecuentediez": {
+    "artist": "Fito & Fitipaldis",
+    "title": "Antes de que cuente diez",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788625101254
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:18:21.254Z",
+    "lastSeen": "2026-09-05T16:18:21.254Z"
+  },
+  "robertpalmer_johnnymary": {
+    "artist": "Robert Palmer",
+    "title": "Johnny & Mary",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788624863617
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:14:23.617Z",
+    "lastSeen": "2026-09-05T16:14:23.617Z"
+  },
+  "johntravoltaolivianewtonjohn_youretheonethatiwant": {
+    "artist": "John Travolta,Olivia Newton-John",
+    "title": "You're the one that I want",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788624685097
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:11:25.097Z",
+    "lastSeen": "2026-09-05T16:11:25.097Z"
+  },
+  "gabinetecaligari_cuatrorosas": {
+    "artist": "Gabinete Caligari",
+    "title": "Cuatro rosas",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788624481198
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:08:01.198Z",
+    "lastSeen": "2026-09-05T16:08:01.198Z"
+  },
+  "gala_freedfromdesire": {
+    "artist": "Gala",
+    "title": "Freed from desire",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788624251622
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:04:11.622Z",
+    "lastSeen": "2026-09-05T16:04:11.622Z"
+  },
+  "aha_takeonme": {
+    "artist": "a-ha",
+    "title": "Take on me",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788624025477
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:00:25.477Z",
+    "lastSeen": "2026-09-05T16:00:25.477Z"
+  },
+  "davidguettakellyrowland_whenlovetakesover": {
+    "artist": "David Guetta,Kelly Rowland",
+    "title": "When love takes over",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788623819186
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:56:59.186Z",
+    "lastSeen": "2026-09-05T15:56:59.186Z"
+  },
+  "bananarama_venus": {
+    "artist": "Bananarama",
+    "title": "Venus",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788623573002
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:52:53.002Z",
+    "lastSeen": "2026-09-05T15:52:53.002Z"
+  },
+  "rem_everybodyhurts": {
+    "artist": "R.E.M.",
+    "title": "Everybody hurts",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788623259753
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:47:39.753Z",
+    "lastSeen": "2026-09-05T15:47:39.753Z"
+  },
+  "freddiemercury_thegreatpretender": {
+    "artist": "Freddie Mercury",
+    "title": "The great pretender",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788623063275
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:44:23.275Z",
+    "lastSeen": "2026-09-05T15:44:23.275Z"
+  },
+  "softcell_taintedlove": {
+    "artist": "Soft Cell",
+    "title": "Tainted love",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788622490384
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:34:50.384Z",
+    "lastSeen": "2026-09-05T15:34:50.384Z"
+  },
+  "alaskaydinarama_elreydelglam": {
+    "artist": "Alaska y Dinarama",
+    "title": "El rey del glam",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788622034887
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:27:14.887Z",
+    "lastSeen": "2026-09-05T15:27:14.887Z"
+  },
+  "aceofbase_allthatshewants": {
+    "artist": "Ace of Base",
+    "title": "All that she wants",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788621828729
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:23:48.729Z",
+    "lastSeen": "2026-09-05T15:23:48.729Z"
+  },
+  "usaforafrica_wearetheworld": {
+    "artist": "USA for Africa",
+    "title": "We are the world",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788621528550
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:18:48.550Z",
+    "lastSeen": "2026-09-05T15:18:48.550Z"
+  },
+  "manologarcia_asanfernandounratitoapieyotrocaminando": {
+    "artist": "Manolo García",
+    "title": "A San Fernando, un ratito a pie y otro caminando",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788621290375
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:14:50.375Z",
+    "lastSeen": "2026-09-05T15:14:50.375Z"
+  },
+  "davidbowie_starman": {
+    "artist": "David Bowie",
+    "title": "Starman",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788621045126
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:10:45.126Z",
+    "lastSeen": "2026-09-05T15:10:45.126Z"
+  },
+  "whitneyhouston_iwannadancewithsomebodywholovesme": {
+    "artist": "Whitney Houston",
+    "title": "I wanna dance with somebody (who loves me)",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788620754049
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:05:54.049Z",
+    "lastSeen": "2026-09-05T15:05:54.049Z"
+  },
+  "elcantodelloco_yanadavolveraasercomoantes": {
+    "artist": "El Canto del Loco",
+    "title": "Ya nada volverá a ser como antes",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788620584125
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:03:04.125Z",
+    "lastSeen": "2026-09-05T15:03:04.125Z"
+  },
+  "eiffel65_bluedabadee": {
+    "artist": "Eiffel 65",
+    "title": "Blue (Da ba dee)",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788620427526
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:00:27.526Z",
+    "lastSeen": "2026-09-05T15:00:27.526Z"
+  },
+  "therighteousbrothers_unchainedmelody": {
+    "artist": "The Righteous Brothers",
+    "title": "Unchained melody",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788620191745
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T14:56:31.745Z",
+    "lastSeen": "2026-09-05T14:56:31.745Z"
+  },
+  "sylvester_youmakemefeelmightyreal": {
+    "artist": "Sylvester",
+    "title": "You make me feel (mighty real)",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788619973561
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T14:52:53.561Z",
+    "lastSeen": "2026-09-05T14:52:53.561Z"
+  },
+  "tonibraxtonfrankieknuckles_unbreakmyheart": {
+    "artist": "Toni Braxton,Frankie Knuckles",
+    "title": "Un-break my heart",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788619706930
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T14:48:26.930Z",
+    "lastSeen": "2026-09-05T14:48:26.930Z"
+  },
+  "eurythmics_sweetdreamsaremadeofthis": {
+    "artist": "Eurythmics",
+    "title": "Sweet dreams (are made of this)",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788619451463
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T14:44:11.463Z",
+    "lastSeen": "2026-09-05T14:44:11.463Z"
+  },
+  "coldplay_clocks": {
+    "artist": "Coldplay",
+    "title": "Clocks",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788618895265
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T14:34:55.265Z",
+    "lastSeen": "2026-09-05T14:34:55.265Z"
+  },
+  "antonioflores_cuerpodemujer": {
+    "artist": "Antonio Flores",
+    "title": "Cuerpo de mujer",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788618682397
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T14:31:22.397Z",
+    "lastSeen": "2026-09-05T14:31:22.397Z"
+  },
+  "michaelsembello_maniac": {
+    "artist": "Michael Sembello",
+    "title": "Maniac",
+    "stations": [
+      "LOS40_CLASSIC",
+      "KISSFM"
+    ],
+    "plays": [
+      1788618458455,
+      1788627945548
+    ],
+    "playCount7d": 2,
+    "firstSeen": "2026-09-05T14:27:38.455Z",
+    "lastSeen": "2026-09-05T17:05:45.548Z"
+  },
+  "cher_strongenough": {
+    "artist": "Cher",
+    "title": "Strong enough",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788618253487
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T14:24:13.487Z",
+    "lastSeen": "2026-09-05T14:24:13.487Z"
+  },
+  "amaral_moririaporvos": {
+    "artist": "Amaral",
+    "title": "Moriría por vos",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788618006115
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T14:20:06.115Z",
+    "lastSeen": "2026-09-05T14:20:06.115Z"
+  },
+  "spandauballet_true": {
+    "artist": "Spandau Ballet",
+    "title": "True",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1788617731223
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T14:15:31.223Z",
+    "lastSeen": "2026-09-05T14:15:31.223Z"
+  },
+  "gunsnroses_paradisecity": {
+    "artist": "Guns N' Roses",
+    "title": "Paradise City",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788628785553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T17:19:45.553Z",
+    "lastSeen": "2026-09-05T17:19:45.553Z"
+  },
+  "oasis_rollwithit": {
+    "artist": "Oasis",
+    "title": "Roll With It",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788628575553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T17:16:15.553Z",
+    "lastSeen": "2026-09-05T17:16:15.553Z"
+  },
+  "queen_wearethechampions": {
+    "artist": "Queen",
+    "title": "We Are The Champions",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788628365553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T17:12:45.553Z",
+    "lastSeen": "2026-09-05T17:12:45.553Z"
+  },
+  "acdc_youshookmeallnightlong": {
+    "artist": "Ac/dc",
+    "title": "You Shook Me All Night Long",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788628155553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T17:09:15.553Z",
+    "lastSeen": "2026-09-05T17:09:15.553Z"
+  },
+  "eagles_hotelcalifornia": {
+    "artist": "Eagles",
+    "title": "Hotel California",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788627945553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T17:05:45.553Z",
+    "lastSeen": "2026-09-05T17:05:45.553Z"
+  },
+  "dover_serenade": {
+    "artist": "Dover",
+    "title": "Serenade",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788627735553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T17:02:15.553Z",
+    "lastSeen": "2026-09-05T17:02:15.553Z"
+  },
+  "joecocker_unchainmyheart": {
+    "artist": "Joe Cocker",
+    "title": "Unchain My Heart",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788627525553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:58:45.553Z",
+    "lastSeen": "2026-09-05T16:58:45.553Z"
+  },
+  "chadkroeger_hero": {
+    "artist": "Chad Kroeger",
+    "title": "Hero",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788627315553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:55:15.553Z",
+    "lastSeen": "2026-09-05T16:55:15.553Z"
+  },
+  "ironmaiden_runtothehills": {
+    "artist": "Iron Maiden",
+    "title": "Run To The Hills",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788627105553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:51:45.553Z",
+    "lastSeen": "2026-09-05T16:51:45.553Z"
+  },
+  "thecranberries_zombie": {
+    "artist": "The Cranberries",
+    "title": "Zombie",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788626895553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:48:15.553Z",
+    "lastSeen": "2026-09-05T16:48:15.553Z"
+  },
+  "vanhalen_ohprettywoman": {
+    "artist": "Van Halen",
+    "title": "(oh) Pretty Woman",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788626685553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:44:45.553Z",
+    "lastSeen": "2026-09-05T16:44:45.553Z"
+  },
+  "pattismith_becausethenight": {
+    "artist": "Patti Smith",
+    "title": "Because The Night",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788626475553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:41:15.553Z",
+    "lastSeen": "2026-09-05T16:41:15.553Z"
+  },
+  "statusquo_inthearmynow": {
+    "artist": "Status Quo",
+    "title": "In The Army Now",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788626265553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:37:45.553Z",
+    "lastSeen": "2026-09-05T16:37:45.553Z"
+  },
+  "boston_rockandrollband": {
+    "artist": "Boston",
+    "title": "Rock And Roll Band",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788626055553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:34:15.553Z",
+    "lastSeen": "2026-09-05T16:34:15.553Z"
+  },
+  "plateroytu_situtevas": {
+    "artist": "Platero Y Tu",
+    "title": "Si Tu Te Vas",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788625845553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:30:45.553Z",
+    "lastSeen": "2026-09-05T16:30:45.553Z"
+  },
+  "genesis_invisibletouch": {
+    "artist": "Genesis",
+    "title": "Invisible Touch",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788625635553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:27:15.553Z",
+    "lastSeen": "2026-09-05T16:27:15.553Z"
+  },
+  "linkinpark_whativedone": {
+    "artist": "Linkin Park",
+    "title": "What I've Done",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788625425553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:23:45.553Z",
+    "lastSeen": "2026-09-05T16:23:45.553Z"
+  },
+  "yes_ownerofalonelyheart": {
+    "artist": "Yes",
+    "title": "Owner Of A Lonely Heart",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788625215553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:20:15.553Z",
+    "lastSeen": "2026-09-05T16:20:15.553Z"
+  },
+  "theoffspring_prettyflyforawhiteguy": {
+    "artist": "The Offspring",
+    "title": "Pretty Fly (for A White Guy)",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788625005553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:16:45.553Z",
+    "lastSeen": "2026-09-05T16:16:45.553Z"
+  },
+  "mikeoldfield_moonlightshadow": {
+    "artist": "Mike Oldfield",
+    "title": "Moonlight Shadow",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788624795553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:13:15.553Z",
+    "lastSeen": "2026-09-05T16:13:15.553Z"
+  },
+  "thewho_whoareyou": {
+    "artist": "The Who",
+    "title": "Who Are You",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788624585553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:09:45.553Z",
+    "lastSeen": "2026-09-05T16:09:45.553Z"
+  },
+  "lennykravitz_flyaway": {
+    "artist": "Lenny Kravitz",
+    "title": "Fly Away",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788624375553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:06:15.553Z",
+    "lastSeen": "2026-09-05T16:06:15.553Z"
+  },
+  "texas_idontwantalover": {
+    "artist": "Texas",
+    "title": "I Don't Want A Lover",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788624165553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:02:45.553Z",
+    "lastSeen": "2026-09-05T16:02:45.553Z"
+  },
+  "muse_uprising": {
+    "artist": "Muse",
+    "title": "Uprising",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788623955553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:59:15.553Z",
+    "lastSeen": "2026-09-05T15:59:15.553Z"
+  },
+  "blur_song2": {
+    "artist": "Blur",
+    "title": "Song 2",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788623745553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:55:45.553Z",
+    "lastSeen": "2026-09-05T15:55:45.553Z"
+  },
+  "blacksabbath_heavenandhell": {
+    "artist": "Black Sabbath",
+    "title": "Heaven And Hell",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788623535553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:52:15.553Z",
+    "lastSeen": "2026-09-05T15:52:15.553Z"
+  },
+  "thedarkness_ibelieveinathingcalledlove": {
+    "artist": "The Darkness",
+    "title": "I Believe In A Thing Called Love",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788623115553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:45:15.553Z",
+    "lastSeen": "2026-09-05T15:45:15.553Z"
+  },
+  "queen_anotheronebitesthedust": {
+    "artist": "Queen",
+    "title": "Another One Bites The Dust",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788622905553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:41:45.553Z",
+    "lastSeen": "2026-09-05T15:41:45.553Z"
+  },
+  "kiss_rockandrollallnite": {
+    "artist": "Kiss",
+    "title": "Rock And Roll All Nite",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788622695553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:38:15.553Z",
+    "lastSeen": "2026-09-05T15:38:15.553Z"
+  },
+  "lemonheads_mrsrobinson": {
+    "artist": "Lemonheads",
+    "title": "Mrs.robinson",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788622485553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:34:45.553Z",
+    "lastSeen": "2026-09-05T15:34:45.553Z"
+  },
+  "direstraits_walkoflife": {
+    "artist": "Dire Straits",
+    "title": "Walk Of Life",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788622275553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:31:15.553Z",
+    "lastSeen": "2026-09-05T15:31:15.553Z"
+  },
+  "withintemptation_standmyground": {
+    "artist": "Within Temptation",
+    "title": "Stand My Ground",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788622065553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:27:45.553Z",
+    "lastSeen": "2026-09-05T15:27:45.553Z"
+  },
+  "therollingstones_jumpinjackflash": {
+    "artist": "The Rolling Stones",
+    "title": "Jumpin' Jack Flash",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788621855553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:24:15.553Z",
+    "lastSeen": "2026-09-05T15:24:15.553Z"
+  },
+  "metallica_nothingelsematters": {
+    "artist": "Metallica",
+    "title": "Nothing Else Matters",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788621645553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:20:45.553Z",
+    "lastSeen": "2026-09-05T15:20:45.553Z"
+  },
+  "beastieboys_fightforyouright": {
+    "artist": "Beastie Boys",
+    "title": "Fight For You Right",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788621435553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:17:15.553Z",
+    "lastSeen": "2026-09-05T15:17:15.553Z"
+  },
+  "mumfordsons_iwillwait": {
+    "artist": "Mumford & Sons",
+    "title": "I Will Wait",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788621225553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:13:45.553Z",
+    "lastSeen": "2026-09-05T15:13:45.553Z"
+  },
+  "alannahmyles_blackvelvet": {
+    "artist": "Alannah Myles",
+    "title": "Black Velvet",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788621015553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:10:15.553Z",
+    "lastSeen": "2026-09-05T15:10:15.553Z"
+  },
+  "journey_dontstopbelievinescapevers": {
+    "artist": "Journey",
+    "title": "Don't Stop Believin' (escape Vers.)",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788620805553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:06:45.553Z",
+    "lastSeen": "2026-09-05T15:06:45.553Z"
+  },
+  "thecranberries_dreams": {
+    "artist": "The Cranberries",
+    "title": "Dreams",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788620595553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:03:15.553Z",
+    "lastSeen": "2026-09-05T15:03:15.553Z"
+  },
+  "rosendo_agradecido": {
+    "artist": "Rosendo",
+    "title": "Agradecido",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788620385553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T14:59:45.553Z",
+    "lastSeen": "2026-09-05T14:59:45.553Z"
+  },
+  "ramones_blitzkriegbop": {
+    "artist": "Ramones",
+    "title": "Blitzkrieg Bop",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788620175553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T14:56:15.553Z",
+    "lastSeen": "2026-09-05T14:56:15.553Z"
+  },
+  "genesis_icantdance": {
+    "artist": "Genesis",
+    "title": "I Can't Dance",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788619965553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T14:52:45.553Z",
+    "lastSeen": "2026-09-05T14:52:45.553Z"
+  },
+  "bonjovi_runaway": {
+    "artist": "Bon Jovi",
+    "title": "Runaway",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788619755553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T14:49:15.553Z",
+    "lastSeen": "2026-09-05T14:49:15.553Z"
+  },
+  "vanhalen_youreallygotme": {
+    "artist": "Van Halen",
+    "title": "You Really Got Me",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1788619545553
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T14:45:45.553Z",
+    "lastSeen": "2026-09-05T14:45:45.553Z"
+  },
+  "alexycristina_chasyaparezcoatulado": {
+    "artist": "álex Y Cristina",
+    "title": "Chas! Y Aparezco A Tu Lado",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788628785548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T17:19:45.548Z",
+    "lastSeen": "2026-09-05T17:19:45.548Z"
+  },
+  "thejacksons_blameitontheboogie": {
+    "artist": "The Jacksons",
+    "title": "Blame It On The Boogie",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788628575548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T17:16:15.548Z",
+    "lastSeen": "2026-09-05T17:16:15.548Z"
+  },
+  "anastacia_onedayinyourlifeanastacia": {
+    "artist": "Anastacia",
+    "title": "One Day In Your Life (anastacia)",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788628365548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T17:12:45.548Z",
+    "lastSeen": "2026-09-05T17:12:45.548Z"
+  },
+  "aceofbase_thesign": {
+    "artist": "Ace Of Base",
+    "title": "The Sign",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788628155548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T17:09:15.548Z",
+    "lastSeen": "2026-09-05T17:09:15.548Z"
+  },
+  "menatwork_downunder": {
+    "artist": "Men At Work",
+    "title": "Down Under",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788627525548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:58:45.548Z",
+    "lastSeen": "2026-09-05T16:58:45.548Z"
+  },
+  "keane_thisisthelasttime": {
+    "artist": "Keane",
+    "title": "This Is The Last Time",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788627315548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:55:15.548Z",
+    "lastSeen": "2026-09-05T16:55:15.548Z"
+  },
+  "nena_99redballoons": {
+    "artist": "Nena",
+    "title": "99 Red Balloons",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788627105548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:51:45.548Z",
+    "lastSeen": "2026-09-05T16:51:45.548Z"
+  },
+  "madonna_frozen": {
+    "artist": "Madonna",
+    "title": "Frozen",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788626895548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:48:15.548Z",
+    "lastSeen": "2026-09-05T16:48:15.548Z"
+  },
+  "celinedion_idroveallnight": {
+    "artist": "Celine Dion",
+    "title": "I Drove All Night",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788626685548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:44:45.548Z",
+    "lastSeen": "2026-09-05T16:44:45.548Z"
+  },
+  "donnasummer_sheworkshardforthemoney": {
+    "artist": "Donna Summer",
+    "title": "She Works Hard For The Money",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788626475548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:41:15.548Z",
+    "lastSeen": "2026-09-05T16:41:15.548Z"
+  },
+  "kissfm_elmegakiss": {
+    "artist": "Kiss Fm",
+    "title": "El Megakiss",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788626265548,
+      1788623115548
+    ],
+    "playCount7d": 2,
+    "firstSeen": "2026-09-05T16:37:45.548Z",
+    "lastSeen": "2026-09-05T15:45:15.548Z"
+  },
+  "glennmedeiros_nothingsgonnachangemyloveforyou": {
+    "artist": "Glenn Medeiros",
+    "title": "Nothing's Gonna Change My Love For You",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788626055548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:34:15.548Z",
+    "lastSeen": "2026-09-05T16:34:15.548Z"
+  },
+  "vanessaparadis_bemybaby": {
+    "artist": "Vanessa Paradis",
+    "title": "Be My Baby",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788625845548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:30:45.548Z",
+    "lastSeen": "2026-09-05T16:30:45.548Z"
+  },
+  "fitofitipaldis_lacasaporeltejado": {
+    "artist": "Fito & Fitipaldis",
+    "title": "La Casa Por El Tejado",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788625635548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:27:15.548Z",
+    "lastSeen": "2026-09-05T16:27:15.548Z"
+  },
+  "pink_try": {
+    "artist": "Pink",
+    "title": "Try",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788625215548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:20:15.548Z",
+    "lastSeen": "2026-09-05T16:20:15.548Z"
+  },
+  "shaniatwain_manifeellikeawoman": {
+    "artist": "Shania Twain",
+    "title": "Man I Feel Like A Woman",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788625005548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:16:45.548Z",
+    "lastSeen": "2026-09-05T16:16:45.548Z"
+  },
+  "wham_wakemeupbeforeyougogo": {
+    "artist": "Wham!",
+    "title": "Wake Me Up Before You Go-go",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788624795548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:13:15.548Z",
+    "lastSeen": "2026-09-05T16:13:15.548Z"
+  },
+  "amywinehouse_rehab": {
+    "artist": "Amy Winehouse",
+    "title": "Rehab",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788624165548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T16:02:45.548Z",
+    "lastSeen": "2026-09-05T16:02:45.548Z"
+  },
+  "chumbawamba_tubthumping": {
+    "artist": "Chumbawamba",
+    "title": "Tubthumping",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788623955548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:59:15.548Z",
+    "lastSeen": "2026-09-05T15:59:15.548Z"
+  },
+  "cultureclub_karmachameleon": {
+    "artist": "Culture Club",
+    "title": "Karma Chameleon",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788623745548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:55:45.548Z",
+    "lastSeen": "2026-09-05T15:55:45.548Z"
+  },
+  "sia_unstoppable": {
+    "artist": "Sia",
+    "title": "Unstoppable",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788623535548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:52:15.548Z",
+    "lastSeen": "2026-09-05T15:52:15.548Z"
+  },
+  "kimcarnes_bettedaviseyes": {
+    "artist": "Kim Carnes",
+    "title": "Bette Davis Eyes",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788623325548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:48:45.548Z",
+    "lastSeen": "2026-09-05T15:48:45.548Z"
+  },
+  "thebeatles_heyjude": {
+    "artist": "The Beatles",
+    "title": "Hey Jude",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788622695548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:38:15.548Z",
+    "lastSeen": "2026-09-05T15:38:15.548Z"
+  },
+  "elcantodelloco_insoportable": {
+    "artist": "El Canto Del Loco",
+    "title": "Insoportable",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788622485548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:34:45.548Z",
+    "lastSeen": "2026-09-05T15:34:45.548Z"
+  },
+  "stevewinwood_valerie": {
+    "artist": "Steve Winwood",
+    "title": "Valerie",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788622275548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:31:15.548Z",
+    "lastSeen": "2026-09-05T15:31:15.548Z"
+  },
+  "luciesilvas_whatyouaremadeof": {
+    "artist": "Lucie Silvas",
+    "title": "What You Are Made Of",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788622065548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:27:45.548Z",
+    "lastSeen": "2026-09-05T15:27:45.548Z"
+  },
+  "spindoctors_twoprinces": {
+    "artist": "Spin Doctors",
+    "title": "Two Princes",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788621855548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:24:15.548Z",
+    "lastSeen": "2026-09-05T15:24:15.548Z"
+  },
+  "theronettes_bemybaby": {
+    "artist": "The Ronettes",
+    "title": "Be My Baby",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788621645548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:20:45.548Z",
+    "lastSeen": "2026-09-05T15:20:45.548Z"
+  },
+  "thebangles_walklikeanegyptian": {
+    "artist": "The Bangles",
+    "title": "Walk Like An Egyptian",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788621225548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:13:45.548Z",
+    "lastSeen": "2026-09-05T15:13:45.548Z"
+  },
+  "katyperry_hotncold": {
+    "artist": "Katy Perry",
+    "title": "Hot 'n' Cold",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788621015548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:10:15.548Z",
+    "lastSeen": "2026-09-05T15:10:15.548Z"
+  },
+  "limahl_neverendingstory": {
+    "artist": "Limahl",
+    "title": "Never Ending Story",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788620805548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:06:45.548Z",
+    "lastSeen": "2026-09-05T15:06:45.548Z"
+  },
+  "alanismorissette_handinmypocket": {
+    "artist": "Alanis Morissette",
+    "title": "Hand In My Pocket",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788620595548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T15:03:15.548Z",
+    "lastSeen": "2026-09-05T15:03:15.548Z"
+  },
+  "modjo_lady": {
+    "artist": "Modjo",
+    "title": "Lady",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1788620385548
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-05T14:59:45.548Z",
+    "lastSeen": "2026-09-05T14:59:45.548Z"
   }
 }

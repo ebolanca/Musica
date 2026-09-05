@@ -3209,7 +3209,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!grid) return;
             grid.innerHTML = '';
 
-            let displayRadarTracks = [...(data.tracks || [])];
+            // Descartar de la vista cualquier canción que ya esté en la colección
+            let displayRadarTracks = (data.tracks || []).filter(t => !t.isOwned);
             if (retroState.radarAirplayFilter === 'frequent') {
                 displayRadarTracks = displayRadarTracks.filter(t => (t.playCount || 1) >= 2);
             }
