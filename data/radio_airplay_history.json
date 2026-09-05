@@ -728,19 +728,6 @@
     "firstSeen": "2026-09-05T08:14:51.514Z",
     "lastSeen": "2026-09-05T08:14:51.514Z"
   },
-  "2_del40al1": {
-    "artist": "2",
-    "title": "Del 40 al 1",
-    "stations": [
-      "LOS40"
-    ],
-    "plays": [
-      1788595200762
-    ],
-    "playCount7d": 1,
-    "firstSeen": "2026-09-05T08:00:00.762Z",
-    "lastSeen": "2026-09-05T08:00:00.762Z"
-  },
   "snowpatrol_chasingcars": {
     "artist": "Snow Patrol",
     "title": "Chasing cars",
@@ -1460,21 +1447,6 @@
     "firstSeen": "2026-09-05T08:01:59.691Z",
     "lastSeen": "2026-09-05T08:01:59.691Z"
   },
-  "7504_climax": {
-    "artist": "7504",
-    "title": "Clímax",
-    "stations": [
-      "LOS40_DANCE"
-    ],
-    "plays": [
-      1788591600665,
-      1788588000757,
-      1788584400474
-    ],
-    "playCount7d": 3,
-    "firstSeen": "2026-09-05T07:00:00.665Z",
-    "lastSeen": "2026-09-05T05:00:00.474Z"
-  },
   "miguelbose_nena": {
     "artist": "Miguel Bosé",
     "title": "Nena",
@@ -1514,20 +1486,6 @@
     "playCount7d": 2,
     "firstSeen": "2026-09-05T10:09:44.576Z",
     "lastSeen": "2026-09-05T08:52:40.050Z"
-  },
-  "entraenwwwcadenadialcomparasaberdondeactuantusartistasfavoritos_dialbaladasporquehaymomentosenlosquesenecesitaromanticismo": {
-    "artist": "Entra en www.cadenadial.com para saber dónde actúan tus artistas favoritos",
-    "title": "Dial Baladas - Porque hay momentos en los que se necesita romanticismo",
-    "stations": [
-      "CADENADIAL"
-    ],
-    "plays": [
-      1788602684567,
-      1788597788267
-    ],
-    "playCount7d": 2,
-    "firstSeen": "2026-09-05T10:04:44.567Z",
-    "lastSeen": "2026-09-05T08:43:08.267Z"
   },
   "laurapausini_porquetevas": {
     "artist": "Laura Pausini",
@@ -1751,19 +1709,6 @@
     "playCount7d": 1,
     "firstSeen": "2026-09-05T08:01:32.843Z",
     "lastSeen": "2026-09-05T08:01:32.843Z"
-  },
-  "12_dialtalcual": {
-    "artist": "12",
-    "title": "Dial tal cual",
-    "stations": [
-      "CADENADIAL"
-    ],
-    "plays": [
-      1788595200810
-    ],
-    "playCount7d": 1,
-    "firstSeen": "2026-09-05T08:00:00.810Z",
-    "lastSeen": "2026-09-05T08:00:00.810Z"
   },
   "funambulista_laultimacancion": {
     "artist": "Funambulista",
@@ -2037,19 +1982,6 @@
     "playCount7d": 1,
     "firstSeen": "2026-09-05T08:03:02.412Z",
     "lastSeen": "2026-09-05T08:03:02.412Z"
-  },
-  "9012_olemigente": {
-    "artist": "9012",
-    "title": "¡Olé mi Gente!",
-    "stations": [
-      "RADIOLE"
-    ],
-    "plays": [
-      1788595200850
-    ],
-    "playCount7d": 1,
-    "firstSeen": "2026-09-05T08:00:00.850Z",
-    "lastSeen": "2026-09-05T08:00:00.850Z"
   },
   "josuerarujo_yanosomosninos": {
     "artist": "Josue Rarujo",

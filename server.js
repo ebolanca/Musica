@@ -2289,6 +2289,7 @@ function recordRadioPlays(tracks) {
     let modified = false;
 
     for (const tr of tracks) {
+        if (!isValidRadioSong(tr.artist, tr.title)) continue;
         const cleanArt = normalizeSearchText(tr.artist);
         const cleanTit = normalizeSearchText(cleanSongTitle(tr.title));
         if (!cleanArt || !cleanTit) continue;
@@ -2644,6 +2645,45 @@ const PLAYLIST_RADAR_MAP = {
     'Música latina': ['LOS40_URBAN', 'CADENADIAL']
 };
 
+// Validador estricto de canciones reales de radio (filtra programas, IDs y cuñas)
+function isValidRadioSong(artist, title) {
+    if (!artist || !title) return false;
+    const art = artist.trim();
+    const tit = title.trim();
+    if (art.length < 2 || tit.length < 2) return false;
+
+    // 1. Descartar si el artista es sólo números o códigos de emisión (ej: '7504', '2', '12', '9012')
+    if (/^\d+$/.test(art) || !/[a-zA-ZáéíóúÁÉÍÓÚñÑ]/.test(art)) return false;
+
+    // 2. Descartar si el título es sólo números o códigos
+    if (/^\d+$/.test(tit)) return false;
+
+    const artL = art.toLowerCase();
+    const titL = tit.toLowerCase();
+
+    // 3. Descartar cuñas publicitarias, menciones web y boletines
+    const promoKeywords = [
+        'www.', '.com', '.es', 'http', 'https', 'entra en', 'publicidad',
+        'sintoniza', 'boletin', 'boletín', 'noticias', 'podcast', 'descarga',
+        'dial baladas', 'redes sociales', 'app oficial', 'whatsapp', 'teléfono',
+        'servicios informativos', 'sintonizanos'
+    ];
+    if (promoKeywords.some(w => artL.includes(w) || titL.includes(w))) return false;
+
+    // 4. Descartar nombres de programas de radio y jingles conocidos
+    const radioPrograms = [
+        'climax', 'clímax', 'del 40 al 1', 'dial tal cual', 'olé mi gente', 'ole mi gente',
+        'anda ya', 'atrevete', 'atrévete', 'wls', 'cabecera', 'identificador', 'jingle',
+        'morning box', 'el gallo maximo', 'los40 dance club', 'formula dial', 'fórmula dial',
+        'we love sound', 'sesion especial', 'sesión especial', 'radio formula', 'radio fórmula'
+    ];
+    if (radioPrograms.some(p => titL === p || artL === p || titL.startsWith(p + ' ') || titL.endsWith(' ' + p) || titL.startsWith(p + ':') || titL.startsWith(p + ' -'))) {
+        return false;
+    }
+
+    return true;
+}
+
 // Escaneador Triton Digital (Prisa)
 async function scanTritonStation(mountName) {
     const tritonUrl = `https://np.tritondigital.com/public/nowplaying?mountName=${mountName}&numberToFetch=50`;
@@ -2671,8 +2711,7 @@ async function scanTritonStation(mountName) {
         const coverUrl = getXmlProp(block, 'track_cover_url');
         const timestamp = getXmlProp(block, 'cue_time_start');
 
-        const titleL = (title || '').toLowerCase();
-        if (title && artist && !titleL.includes('publicidad') && !titleL.includes('los40') && !titleL.includes('cadena dial') && !titleL.includes('radiole')) {
+        if (isValidRadioSong(artist, title)) {
             items.push({
                 artist,
                 title,
@@ -2702,7 +2741,7 @@ async function scanEmisoraOrg(slug) {
             if (parts.length >= 2) {
                 const artist = parts[0].trim();
                 const title = parts.slice(1).join(' - ').trim();
-                if (artist && title && !artist.toLowerCase().includes('rockfm') && !title.toLowerCase().includes('rockfm')) {
+                if (isValidRadioSong(artist, title) && !artist.toLowerCase().includes('rockfm') && !title.toLowerCase().includes('rockfm')) {
                     items.push({ artist, title, album: null, coverUrl, timestamp: null });
                 }
             }
@@ -2737,7 +2776,9 @@ async function scanOnlineRadioBox(slug) {
             if (parts.length >= 2) {
                 const artist = parts[0].trim();
                 const title = parts.slice(1).join(' - ').trim();
-                items.push({ artist, title, album: null, coverUrl: null, timestamp: null });
+                if (isValidRadioSong(artist, title)) {
+                    items.push({ artist, title, album: null, coverUrl: null, timestamp: null });
+                }
             }
         }
         return items;
@@ -2865,6 +2906,7 @@ async function handleRecommendationsRadioRadar(req, res) {
         const unique = [];
         const seen = new Set();
         for (const it of allTracks) {
+            if (!isValidRadioSong(it.artist, it.title)) continue;
             const cleanArt = normalizeSearchText(it.artist);
             const cleanTit = normalizeSearchText(cleanSongTitle(it.title));
             if (!cleanArt || !cleanTit) continue;
