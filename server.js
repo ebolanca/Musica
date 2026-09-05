@@ -2227,153 +2227,405 @@ app.get('/api/track/detail', async (req, res) => {
 });
 
 // ==========================================================================
-// 📻 DESCUBRIDOR DE ÉXITOS DE ESPAÑA (1970-1999) & RADAR DE RADIO CLÁSICA
+// 📻 DESCUBRIDOR DE ÉXITOS MULTI-LISTA & RADAR DE EMISORAS NACIONALES
 // ==========================================================================
 
-const SPANISH_RETRO_HITS_FILE = path.join(__dirname, 'data', 'spanish_retro_hits.json');
+const RECOMMENDATIONS_DISMISSED_FILE = path.join(__dirname, 'data', 'recommendations_dismissed.json');
 const RETRO_DISMISSED_FILE = path.join(__dirname, 'data', 'retro_hits_dismissed.json');
-let cachedRetroHits = null;
-let cachedDismissed = null;
+let cachedDismissedRecommendations = null;
 
-function loadDismissedRetroHits() {
+function loadDismissedRecommendations() {
+    if (cachedDismissedRecommendations) return cachedDismissedRecommendations;
+    cachedDismissedRecommendations = {};
     if (fs.existsSync(RETRO_DISMISSED_FILE)) {
         try {
-            cachedDismissed = JSON.parse(fs.readFileSync(RETRO_DISMISSED_FILE, 'utf8'));
-        } catch(e) {
-            cachedDismissed = {};
-        }
-    } else {
-        cachedDismissed = {};
+            Object.assign(cachedDismissedRecommendations, JSON.parse(fs.readFileSync(RETRO_DISMISSED_FILE, 'utf8')));
+        } catch(e){}
     }
-    return cachedDismissed;
+    if (fs.existsSync(RECOMMENDATIONS_DISMISSED_FILE)) {
+        try {
+            Object.assign(cachedDismissedRecommendations, JSON.parse(fs.readFileSync(RECOMMENDATIONS_DISMISSED_FILE, 'utf8')));
+        } catch(e){}
+    }
+    return cachedDismissedRecommendations;
 }
 
-function saveDismissedRetroHits() {
+function saveDismissedRecommendations() {
     try {
-        fs.writeFileSync(RETRO_DISMISSED_FILE, JSON.stringify(cachedDismissed || {}, null, 2), 'utf8');
+        fs.writeFileSync(RECOMMENDATIONS_DISMISSED_FILE, JSON.stringify(cachedDismissedRecommendations || {}, null, 2), 'utf8');
     } catch(e) {
-        console.error('Error guardando retro_hits_dismissed.json:', e.message);
+        console.error('Error guardando recommendations_dismissed.json:', e.message);
     }
 }
 
-function getDismissedKey(artist, title) {
-    const cleanArt = (artist || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
-    const cleanTit = (title || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+function getRecommendationDismissedKey(artist, title) {
+    const cleanArt = normalizeSearchText(artist);
+    const cleanTit = normalizeSearchText(cleanSongTitle(title));
     return `${cleanArt}_${cleanTit}`;
 }
 
-function isHitDismissed(artist, title) {
-    const d = loadDismissedRetroHits();
-    const k = getDismissedKey(artist, title);
+function isRecommendationDismissed(artist, title) {
+    const d = loadDismissedRecommendations();
+    const k = getRecommendationDismissedKey(artist, title);
     return !!d[k];
 }
 
-function loadSpanishRetroHits() {
-    if (!cachedRetroHits && fs.existsSync(SPANISH_RETRO_HITS_FILE)) {
-        try {
-            cachedRetroHits = JSON.parse(fs.readFileSync(SPANISH_RETRO_HITS_FILE, 'utf8'));
-        } catch(e) {
-            console.error('Error cargando spanish_retro_hits.json:', e.message);
-            cachedRetroHits = [];
-        }
-    }
-    return cachedRetroHits || [];
+function normalizeSearchText(str) {
+    if (!str) return '';
+    return str.toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]/g, '');
 }
 
-function getViejunaTracksSet() {
-    const set = new Set();
-    // 1. Archivos físicos en disco (Música viejuna y posibles variantes)
-    const folderNames = ['Música viejuna', 'Música viejuna Roberto'];
-    for (const fName of folderNames) {
-        const folder = path.join(OMEN_MUSIC_DIR, fName);
-        if (fs.existsSync(folder)) {
-            try {
-                const files = fs.readdirSync(folder);
-                for (const f of files) {
-                    const ext = path.extname(f).toLowerCase();
-                    if (ext === '.mp3' || ext === '.m4a' || ext === '.flac') {
-                        const cleanName = f.replace(/\.[^.]+$/, '')
-                            .toLowerCase()
-                            .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-                            .replace(/[^a-z0-9]/g, '');
-                        set.add(cleanName);
-                    }
-                }
-            } catch(e){}
-        }
+function cleanSongTitle(rawTitle) {
+    if (!rawTitle) return '';
+    return rawTitle
+        .replace(/\s*[\(\[][^)\]]*(feat\.?|featuring|with|version|remaster|remastered|edit|mix|live|en vivo|directo|album|single|radio|soundtrack|bso|ost)[^)\]]*[\)\]]/gi, '')
+        .replace(/\s*-\s*.*(version|remaster|edit|mix|live|directo|remix).*/gi, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function getArtistTokens(rawArtist) {
+    if (!rawArtist) return [];
+    const parts = rawArtist.split(/[,&\/\\;]|\b(?:feat\.?|ft\.?|featuring|with|y|and)\b/i);
+    const tokens = [];
+    for (const p of parts) {
+        const clean = normalizeSearchText(p);
+        if (clean.length >= 2) tokens.push(clean);
     }
-    // 2. Caché de playlists de Spotify (tracks_cache.json) para reconocer canciones recién añadidas
+    const full = normalizeSearchText(rawArtist);
+    if (full.length >= 2 && !tokens.includes(full)) tokens.push(full);
+    return tokens;
+}
+
+// 📦 Catálogo Global de Colección (Caché con TTL de 60s)
+let cachedGlobalCollectionIndex = null;
+let lastCollectionIndexTime = 0;
+
+function invalidateCollectionIndex() {
+    cachedGlobalCollectionIndex = null;
+    lastCollectionIndexTime = 0;
+}
+
+function getGlobalCollectionIndex() {
+    const now = Date.now();
+    if (cachedGlobalCollectionIndex && (now - lastCollectionIndexTime < 60000)) {
+        return cachedGlobalCollectionIndex;
+    }
+
+    const rawSet = new Set();
+    const structured = [];
+
+    // 1. Archivos reales en disco en todas las carpetas
+    try {
+        const audioMap = scanAudioFiles();
+        for (const [baseName, item] of audioMap.entries()) {
+            rawSet.add(baseName);
+            const cleanBase = normalizeSearchText(item.fileName.replace(/\.[^.]+$/, ''));
+            if (cleanBase) rawSet.add(cleanBase);
+
+            const parts = item.fileName.replace(/\.[^.]+$/, '').split('-');
+            if (parts.length >= 2) {
+                const art = parts[0].trim();
+                const tit = parts.slice(1).join('-').trim();
+                structured.push({
+                    artistTokens: getArtistTokens(art),
+                    cleanTitle: normalizeSearchText(cleanSongTitle(tit)),
+                    rawFile: cleanBase
+                });
+            } else {
+                structured.push({
+                    artistTokens: [],
+                    cleanTitle: cleanBase,
+                    rawFile: cleanBase
+                });
+            }
+        }
+    } catch(e) {
+        console.error("Error escaneando disco para colección global:", e.message);
+    }
+
+    // 2. Caché de playlists de Spotify (tracks_cache.json)
     if (fs.existsSync(OMEN_CACHE_PATH)) {
         try {
             const cache = JSON.parse(fs.readFileSync(OMEN_CACHE_PATH, 'utf8'));
-            for (const key of ['Música viejuna Roberto', 'Música viejuna']) {
-                if (Array.isArray(cache[key])) {
-                    for (const [art, tit] of cache[key]) {
-                        const ca = (art || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
-                        const ct = (tit || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
-                        set.add(ca + ct);
-                        set.add(ct + ca);
+            for (const [plName, tracks] of Object.entries(cache)) {
+                if (Array.isArray(tracks)) {
+                    for (const item of tracks) {
+                        if (Array.isArray(item) && item.length >= 2) {
+                            const [art, tit] = item;
+                            const ca = normalizeSearchText(art);
+                            const ct = normalizeSearchText(cleanSongTitle(tit));
+                            if (ca && ct) {
+                                rawSet.add(ca + ct);
+                                rawSet.add(ct + ca);
+                                structured.push({
+                                    artistTokens: getArtistTokens(art),
+                                    cleanTitle: ct,
+                                    rawFile: ca + ct
+                                });
+                            }
+                        }
                     }
                 }
             }
-        } catch(e){}
+        } catch(e) {
+            console.error("Error leyendo tracks_cache.json para colección:", e.message);
+        }
     }
-    return set;
+
+    // 3. Metadata Cache
+    try {
+        if (!metadataCache || Object.keys(metadataCache).length === 0) loadMetadataCache();
+        for (const k of Object.keys(metadataCache)) {
+            const normK = normalizeSearchText(k);
+            if (normK) rawSet.add(normK);
+        }
+    } catch(e){}
+
+    cachedGlobalCollectionIndex = { rawSet, structured };
+    lastCollectionIndexTime = now;
+    return cachedGlobalCollectionIndex;
 }
 
-function isHitOwned(artist, title, viejunaSet) {
-    const cleanArt = (artist || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
-    const cleanTit = (title || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
-    const combo = cleanArt + cleanTit;
-    const comboRev = cleanTit + cleanArt;
+function isSongInCollection(artist, title) {
+    const index = getGlobalCollectionIndex();
+    const cleanT = normalizeSearchText(cleanSongTitle(title));
+    if (!cleanT || cleanT.length < 2) return false;
 
-    for (const owned of viejunaSet) {
-        if (owned.includes(combo) || owned.includes(comboRev)) return true;
-        if (cleanArt.length >= 4 && cleanTit.length >= 4 && owned.includes(cleanArt) && owned.includes(cleanTit)) return true;
+    const artistTokens = getArtistTokens(artist);
+
+    // 1. Coincidencia rápida en rawSet (con cada token de artista)
+    for (const artToken of artistTokens) {
+        if (index.rawSet.has(artToken + cleanT) || index.rawSet.has(cleanT + artToken)) {
+            return true;
+        }
     }
+
+    // 2. Búsqueda estructurada
+    for (const item of index.structured) {
+        let titleMatches = (item.cleanTitle === cleanT);
+        if (!titleMatches && cleanT.length >= 4 && item.cleanTitle.length >= 4) {
+            titleMatches = (item.cleanTitle.includes(cleanT) || cleanT.includes(item.cleanTitle));
+        }
+
+        if (titleMatches) {
+            for (const inToken of artistTokens) {
+                for (const colToken of item.artistTokens) {
+                    if (inToken === colToken || 
+                        (inToken.length >= 3 && colToken.length >= 3 && (inToken.includes(colToken) || colToken.includes(inToken)))) {
+                        return true;
+                    }
+                }
+            }
+
+            if (item.rawFile && item.rawFile.includes(cleanT)) {
+                for (const inToken of artistTokens) {
+                    if (item.rawFile.includes(inToken)) return true;
+                }
+            }
+        }
+    }
+
     return false;
 }
 
-// 1. Catálogo histórico de éxitos con estadísticas por año
-app.get('/api/retro-hits/catalog', (req, res) => {
+// 📚 Catálogos de Éxitos por Lista
+const PLAYLIST_CATALOG_FILES = {
+    'Música viejuna': path.join(__dirname, 'data', 'spanish_retro_hits.json'),
+    'Siglo XXI': path.join(__dirname, 'data', 'siglo_xxi_hits.json'),
+    'Dance': path.join(__dirname, 'data', 'dance_hits.json'),
+    'Española': path.join(__dirname, 'data', 'espanola_hits.json'),
+    'Música latina': path.join(__dirname, 'data', 'musica_latina_hits.json')
+};
+
+const cachedPlaylistsCatalogs = {};
+
+function loadPlaylistHits(playlistName) {
+    const norm = normalizePlaylistKey(playlistName);
+    if (cachedPlaylistsCatalogs[norm]) return cachedPlaylistsCatalogs[norm];
+
+    const filePath = PLAYLIST_CATALOG_FILES[norm] || PLAYLIST_CATALOG_FILES['Música viejuna'];
+    if (fs.existsSync(filePath)) {
+        try {
+            const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+            cachedPlaylistsCatalogs[norm] = data;
+            return data;
+        } catch(e) {
+            console.error(`Error cargando catálogo para ${norm}:`, e.message);
+        }
+    }
+    return [];
+}
+
+// 📻 Configuración del Radar de Emisoras
+const RADAR_STATIONS_CONFIG = {
+    // Música viejuna
+    'LOS40_CLASSIC': { id: 'LOS40_CLASSIC', name: 'LOS40 Classic', genre: 'Música viejuna', type: 'triton', mount: 'LOS40_CLASSIC', orbSlug: 'los40classic' },
+    'ROCKFM': { id: 'ROCKFM', name: 'Rock FM', genre: 'Música viejuna', type: 'hybrid', emisoraSlug: 'rock-fm', orbSlug: 'rockfm' },
+    'KISSFM': { id: 'KISSFM', name: 'Kiss FM', genre: 'Música viejuna', type: 'emisora', emisoraSlug: 'kiss-fm' },
+    // Siglo XXI
+    'LOS40': { id: 'LOS40', name: 'LOS40', genre: 'Siglo XXI', type: 'triton', mount: 'LOS40', orbSlug: 'los40' },
+    'HITFM': { id: 'HITFM', name: 'Hit FM', genre: 'Siglo XXI', type: 'emisora', emisoraSlug: 'hit-fm' },
+    'CADENA100': { id: 'CADENA100', name: 'Cadena 100', genre: 'Siglo XXI', type: 'emisora', emisoraSlug: 'cadena-100' },
+    // Dance
+    'LOS40_DANCE': { id: 'LOS40_DANCE', name: 'LOS40 Dance', genre: 'Dance', type: 'triton', mount: 'LOS40_DANCE' },
+    'LOCAFM': { id: 'LOCAFM', name: 'Loca FM', genre: 'Dance', type: 'emisora', emisoraSlug: 'loca-fm' },
+    // Española
+    'CADENADIAL': { id: 'CADENADIAL', name: 'Cadena Dial', genre: 'Española', type: 'triton', mount: 'CADENADIAL', orbSlug: 'cadenadial' },
+    'RADIOLE': { id: 'RADIOLE', name: 'Radiolé', genre: 'Española', type: 'triton', mount: 'RADIOLE' },
+    // Música latina
+    'LOS40_URBAN': { id: 'LOS40_URBAN', name: 'LOS40 Urban', genre: 'Música latina', type: 'triton', mount: 'LOS40_URBAN' }
+};
+
+const PLAYLIST_RADAR_MAP = {
+    'Música viejuna': ['LOS40_CLASSIC', 'ROCKFM', 'KISSFM'],
+    'Siglo XXI': ['LOS40', 'HITFM', 'CADENA100'],
+    'Dance': ['LOS40_DANCE', 'LOCAFM'],
+    'Española': ['CADENADIAL', 'RADIOLE', 'CADENA100'],
+    'Música latina': ['LOS40_URBAN', 'CADENADIAL']
+};
+
+// Escaneador Triton Digital (Prisa)
+async function scanTritonStation(mountName) {
+    const tritonUrl = `https://np.tritondigital.com/public/nowplaying?mountName=${mountName}&numberToFetch=50`;
+    const res = await fetch(tritonUrl, { signal: AbortSignal.timeout(4500) });
+    if (!res.ok) return [];
+
+    const xmlText = await res.text();
+    function getXmlProp(block, propName) {
+        const startTag = `<property name="${propName}"><![CDATA[`;
+        const endTag = ']]></property>';
+        const sIdx = block.indexOf(startTag);
+        if (sIdx === -1) return '';
+        const eIdx = block.indexOf(endTag, sIdx + startTag.length);
+        if (eIdx === -1) return '';
+        return block.substring(sIdx + startTag.length, eIdx).trim();
+    }
+
+    const items = [];
+    const blocks = xmlText.split('</nowplaying-info>');
+    for (const block of blocks) {
+        if (!block.includes('<nowplaying-info')) continue;
+        const title = getXmlProp(block, 'cue_title');
+        const artist = getXmlProp(block, 'track_artist_name');
+        const album = getXmlProp(block, 'track_album_name');
+        const coverUrl = getXmlProp(block, 'track_cover_url');
+        const timestamp = getXmlProp(block, 'cue_time_start');
+
+        const titleL = (title || '').toLowerCase();
+        if (title && artist && !titleL.includes('publicidad') && !titleL.includes('los40') && !titleL.includes('cadena dial') && !titleL.includes('radiole')) {
+            items.push({
+                artist,
+                title,
+                album,
+                coverUrl: coverUrl || null,
+                timestamp: timestamp ? parseInt(timestamp, 10) : null
+            });
+        }
+    }
+    return items;
+}
+
+// Escaneador Emisora.org.es (ACRCloud Live feed para Kiss FM, Hit FM, Loca FM, Cadena 100, Rock FM)
+async function scanEmisoraOrg(slug) {
     try {
-        const hits = loadSpanishRetroHits();
-        const viejunaSet = getViejunaTracksSet();
-        const { year, filter } = req.query; // filter: 'missing', 'owned', or undefined
+        const url = `https://emisora.org.es/${slug}/`;
+        const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' }, signal: AbortSignal.timeout(4500) });
+        if (!res.ok) return [];
+        const html = await res.text();
+
+        const items = [];
+        const matches = [...html.matchAll(/class="playlist__item"[^>]*title="([^"]+)"[\s\S]*?(?:<img[^>]*class="playlist__img"[^>]*src="([^"]+)")?/g)];
+        for (const m of matches) {
+            const raw = m[1].replace(/&amp;/g, '&').replace(/&#39;/g, "'").trim();
+            const coverUrl = m[2] && !m[2].includes('default') ? m[2] : null;
+            const parts = raw.split(' - ');
+            if (parts.length >= 2) {
+                const artist = parts[0].trim();
+                const title = parts.slice(1).join(' - ').trim();
+                if (artist && title && !artist.toLowerCase().includes('rockfm') && !title.toLowerCase().includes('rockfm')) {
+                    items.push({ artist, title, album: null, coverUrl, timestamp: null });
+                }
+            }
+        }
+        // Canción actual en vivo
+        const curMatch = html.match(/data-playlist-current-song[\s\S]*?<a [^>]*>([^<]+)<\/a>[\s\S]*?class="playlist__artist-name">([^<]+)<\/span>/);
+        if (curMatch) {
+            const artist = curMatch[2].trim();
+            const title = curMatch[1].trim();
+            if (artist && title) {
+                items.unshift({ artist, title, album: null, coverUrl: null, timestamp: Date.now() });
+            }
+        }
+        return items;
+    } catch(e) {
+        return [];
+    }
+}
+
+// Escaneador OnlineRadioBox (Rock FM, Cadena Dial, LOS40 Classic, etc.)
+async function scanOnlineRadioBox(slug) {
+    try {
+        const url = `https://onlineradiobox.com/es/${slug}/playlist/`;
+        const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' }, signal: AbortSignal.timeout(4500) });
+        if (!res.ok) return [];
+        const html = await res.text();
+        const items = [];
+        const matches = [...html.matchAll(/<td class="track_history_item">[\s\S]*?<a [^>]*class="ajax">([^<]+)<\/a>/g)];
+        for (const m of matches) {
+            const raw = m[1].replace(/&amp;/g, '&').replace(/&#39;/g, "'").trim();
+            const parts = raw.split(' - ');
+            if (parts.length >= 2) {
+                const artist = parts[0].trim();
+                const title = parts.slice(1).join(' - ').trim();
+                items.push({ artist, title, album: null, coverUrl: null, timestamp: null });
+            }
+        }
+        return items;
+    } catch(e) {
+        return [];
+    }
+}
+
+// Handlers de Controladores Reutilizables
+function handleRecommendationsCatalog(req, res) {
+    try {
+        const playlist = normalizePlaylistKey(req.query.playlist || 'Música viejuna');
+        const hits = loadPlaylistHits(playlist);
+        const { year, filter } = req.query;
 
         const yearsStats = {};
-        for (let y = 1970; y <= 1999; y++) {
-            yearsStats[y] = { year: y, total: 0, owned: 0, missing: 0, percentage: 0 };
-        }
-
         let totalHits = 0;
         let totalOwned = 0;
-
-        const dismissedMap = loadDismissedRetroHits();
         let totalDismissed = 0;
 
         const enrichedHits = hits.map(h => {
-            const owned = isHitOwned(h.artist, h.title, viejunaSet);
-            const dismissed = isHitDismissed(h.artist, h.title);
+            const owned = isSongInCollection(h.artist, h.title);
+            const dismissed = isRecommendationDismissed(h.artist, h.title);
 
             if (dismissed) totalDismissed++;
+            if (owned) totalOwned++;
+            totalHits++;
 
-            if (yearsStats[h.year]) {
+            if (h.year) {
+                if (!yearsStats[h.year]) {
+                    yearsStats[h.year] = { year: h.year, total: 0, owned: 0, missing: 0, percentage: 0 };
+                }
                 yearsStats[h.year].total++;
                 if (owned) yearsStats[h.year].owned++;
                 else if (!dismissed) yearsStats[h.year].missing++;
             }
-            totalHits++;
-            if (owned) totalOwned++;
 
             return {
                 ...h,
+                playlist,
                 isOwned: owned,
                 isDismissed: dismissed
             };
         });
 
-        // Calcular porcentajes
         Object.values(yearsStats).forEach(s => {
             s.percentage = s.total > 0 ? Math.round((s.owned / s.total) * 100) : 0;
         });
@@ -2394,6 +2646,7 @@ app.get('/api/retro-hits/catalog', (req, res) => {
         const effectiveMissing = Math.max(0, totalHits - totalOwned - totalDismissed);
 
         res.json({
+            playlist,
             summary: {
                 totalHits,
                 totalOwned,
@@ -2401,62 +2654,106 @@ app.get('/api/retro-hits/catalog', (req, res) => {
                 totalMissing: effectiveMissing,
                 globalPercentage: totalHits > 0 ? Math.round((totalOwned / totalHits) * 100) : 0
             },
-            yearsStats: Object.values(yearsStats),
+            yearsStats: Object.values(yearsStats).sort((a,b) => a.year - b.year),
             hits: filteredHits
         });
     } catch(e) {
-        console.error('Error en /api/retro-hits/catalog:', e.message);
+        console.error('Error en /api/recommendations/catalog:', e.message);
         res.status(500).json({ error: e.message });
     }
-});
+}
 
-// Endpoint para omitir / descartar una sugerencia permanentemente
-app.post('/api/retro-hits/dismiss', (req, res) => {
+async function handleRecommendationsRadioRadar(req, res) {
     try {
-        const { artist, title } = req.body;
-        if (!artist || !title) return res.status(400).json({ error: 'Faltan parámetros' });
+        const playlist = normalizePlaylistKey(req.query.playlist || 'Música viejuna');
+        const stationParam = (req.query.station || 'ALL').toUpperCase();
 
-        const d = loadDismissedRetroHits();
-        const k = getDismissedKey(artist, title);
-        d[k] = {
-            artist,
-            title,
-            dismissedAt: new Date().toISOString()
-        };
-        saveDismissedRetroHits();
-        console.log(`🚫 [RETRO DISMISS] Sugerencia descartada: ${artist} - ${title}`);
-        res.json({ success: true, key: k, totalDismissed: Object.keys(d).length });
-    } catch(e) {
-        res.status(500).json({ error: e.message });
-    }
-});
+        const availableStationKeys = PLAYLIST_RADAR_MAP[playlist] || PLAYLIST_RADAR_MAP['Música viejuna'];
+        const stationsToScan = [];
 
-// Endpoint para restaurar una sugerencia previamente omitida
-app.post('/api/retro-hits/undismiss', (req, res) => {
-    try {
-        const { artist, title } = req.body;
-        if (!artist || !title) return res.status(400).json({ error: 'Faltan parámetros' });
-
-        const d = loadDismissedRetroHits();
-        const k = getDismissedKey(artist, title);
-        if (d[k]) {
-            delete d[k];
-            saveDismissedRetroHits();
-            console.log(`↩️ [RETRO UNDISMISS] Sugerencia restaurada: ${artist} - ${title}`);
+        if (stationParam !== 'ALL' && RADAR_STATIONS_CONFIG[stationParam]) {
+            stationsToScan.push(RADAR_STATIONS_CONFIG[stationParam]);
+        } else {
+            for (const key of availableStationKeys) {
+                if (RADAR_STATIONS_CONFIG[key]) stationsToScan.push(RADAR_STATIONS_CONFIG[key]);
+            }
         }
-        res.json({ success: true, totalDismissed: Object.keys(d).length });
+
+        const scanPromises = stationsToScan.map(async (st) => {
+            let list = [];
+            try {
+                if (st.type === 'triton') {
+                    list = await scanTritonStation(st.mount);
+                } else if (st.type === 'emisora') {
+                    list = await scanEmisoraOrg(st.emisoraSlug);
+                } else if (st.type === 'hybrid') {
+                    const [orb, em] = await Promise.allSettled([
+                        scanOnlineRadioBox(st.orbSlug),
+                        scanEmisoraOrg(st.emisoraSlug)
+                    ]);
+                    list = (orb.status === 'fulfilled' ? orb.value : []).concat(em.status === 'fulfilled' ? em.value : []);
+                }
+            } catch(e) {}
+            return list.map(item => ({ ...item, stationId: st.id, stationName: st.name }));
+        });
+
+        const results = await Promise.allSettled(scanPromises);
+        let allTracks = [];
+        for (const r of results) {
+            if (r.status === 'fulfilled' && Array.isArray(r.value)) {
+                allTracks = allTracks.concat(r.value);
+            }
+        }
+
+        const unique = [];
+        const seen = new Set();
+        for (const it of allTracks) {
+            const cleanArt = normalizeSearchText(it.artist);
+            const cleanTit = normalizeSearchText(cleanSongTitle(it.title));
+            if (!cleanArt || !cleanTit) continue;
+            const k = `${cleanArt}_${cleanTit}`;
+            if (!seen.has(k)) {
+                seen.add(k);
+                const isOwned = isSongInCollection(it.artist, it.title);
+                unique.push({
+                    ...it,
+                    playlist,
+                    isOwned
+                });
+            }
+        }
+
+        unique.sort((a, b) => {
+            if (a.isOwned !== b.isOwned) return a.isOwned ? 1 : -1;
+            return (b.timestamp || 0) - (a.timestamp || 0);
+        });
+
+        const availableStations = availableStationKeys.map(k => ({
+            id: k,
+            name: RADAR_STATIONS_CONFIG[k] ? RADAR_STATIONS_CONFIG[k].name : k
+        }));
+
+        res.json({
+            playlist,
+            station: stationParam,
+            availableStations,
+            count: unique.length,
+            missingCount: unique.filter(i => !i.isOwned).length,
+            tracks: unique
+        });
     } catch(e) {
+        console.error('Error en /api/recommendations/radio-radar:', e.message);
         res.status(500).json({ error: e.message });
     }
-});
+}
 
-// 2. Preescucha instantánea oficial (iTunes Search API 30s)
-app.get('/api/retro-hits/preview', async (req, res) => {
+async function handleRecommendationsPreview(req, res) {
     try {
         const { artist, title } = req.query;
         if (!artist || !title) return res.status(400).json({ error: 'Falta artist o title' });
 
-        const query = encodeURIComponent(`${artist} ${cleanTrackTitle(title)}`);
+        const cleanT = cleanSongTitle(title);
+        const query = encodeURIComponent(`${artist} ${cleanT}`);
         const itunesUrl = `https://itunes.apple.com/search?term=${query}&media=music&limit=5`;
 
         const response = await fetch(itunesUrl, { signal: AbortSignal.timeout(4000) });
@@ -2479,102 +2776,33 @@ app.get('/api/retro-hits/preview', async (req, res) => {
     } catch(e) {
         res.json({ previewUrl: null, error: e.message });
     }
-});
+}
 
-// 3. Radar de Emisoras Españolas de Clásicos (Los 40 Classic en Vivo)
-app.get('/api/retro-hits/radio-radar', async (req, res) => {
+async function handleRecommendationsDownload(req, res) {
     try {
-        const tritonUrl = 'https://np.tritondigital.com/public/nowplaying?mountName=LOS40_CLASSIC&numberToFetch=50';
-        const tritonRes = await fetch(tritonUrl, { signal: AbortSignal.timeout(5000) });
-        if (!tritonRes.ok) {
-            return res.status(500).json({ error: 'Error conectando con emisión de Los 40 Classic' });
-        }
-
-        const xmlText = await tritonRes.text();
-        const viejunaSet = getViejunaTracksSet();
-
-        function getXmlProp(block, propName) {
-            const startTag = `<property name="${propName}"><![CDATA[`;
-            const endTag = ']]></property>';
-            const sIdx = block.indexOf(startTag);
-            if (sIdx === -1) return '';
-            const eIdx = block.indexOf(endTag, sIdx + startTag.length);
-            if (eIdx === -1) return '';
-            return block.substring(sIdx + startTag.length, eIdx).trim();
-        }
-
-        const items = [];
-        const blocks = xmlText.split('</nowplaying-info>');
-        for (const block of blocks) {
-            if (!block.includes('<nowplaying-info')) continue;
-            const title = getXmlProp(block, 'cue_title');
-            const artist = getXmlProp(block, 'track_artist_name');
-            const album = getXmlProp(block, 'track_album_name');
-            const coverUrl = getXmlProp(block, 'track_cover_url');
-            const timestamp = getXmlProp(block, 'cue_time_start');
-
-            if (title && artist && !title.toLowerCase().includes('publicidad') && !title.toLowerCase().includes('los40 classic')) {
-                const isOwned = isHitOwned(artist, title, viejunaSet);
-                items.push({
-                    artist,
-                    title,
-                    album,
-                    coverUrl,
-                    timestamp: timestamp ? parseInt(timestamp, 10) : null,
-                    isOwned
-                });
-            }
-        }
-
-        const unique = [];
-        const seen = new Set();
-        for (const it of items) {
-            const k = `${it.artist}-${it.title}`.toLowerCase();
-            if (!seen.has(k)) {
-                seen.add(k);
-                unique.push(it);
-            }
-        }
-
-        res.json({
-            station: 'LOS40 Classic',
-            slogan: 'Los Números 1 de Tu Vida',
-            count: unique.length,
-            missingCount: unique.filter(i => !i.isOwned).length,
-            tracks: unique
-        });
-    } catch(e) {
-        console.error('Error en /api/retro-hits/radio-radar:', e.message);
-        res.status(500).json({ error: e.message });
-    }
-});
-
-// 4. Descarga directa en calidad de estudio hacia 'Música viejuna'
-app.post('/api/retro-hits/add-to-viejuna', async (req, res) => {
-    try {
-        const { artist, title, expectedDurationSec } = req.body;
+        const { artist, title, playlist, expectedDurationSec } = req.body;
         if (!artist || !title) {
             return res.status(400).json({ error: 'Falta artist o title' });
         }
 
+        const targetPlaylist = normalizePlaylistKey(playlist || 'Música viejuna');
         const cleanT = cleanTrackTitle(title);
-        const targetFolder = path.join(OMEN_MUSIC_DIR, 'Música viejuna');
+        const targetFolder = path.join(OMEN_MUSIC_DIR, targetPlaylist);
         if (!fs.existsSync(targetFolder)) {
             try { fs.mkdirSync(targetFolder, { recursive: true }); } catch(e){}
         }
 
         const targetFileName = `${artist} - ${cleanT}.mp3`;
         const targetFilePath = path.join(targetFolder, targetFileName);
-        const tempOutput = path.join(__dirname, 'data', `temp_retro_${Date.now()}.mp3`);
+        const tempOutput = path.join(__dirname, 'data', `temp_rec_${Date.now()}.mp3`);
 
         const { exec } = require('child_process');
         const binDir = path.join(__dirname, 'bin');
         const ytdlpBin = fs.existsSync(path.join(binDir, 'yt-dlp.exe')) ? `"${path.join(binDir, 'yt-dlp.exe')}"` : 'python -m yt_dlp';
         const ffmpegDir = fs.existsSync(path.join(binDir, 'ffmpeg.exe')) ? binDir : 'C:\\Users\\MSI Roberto\\.spotdl';
 
-        console.log(`[RETRO DOWNLOAD] Añadiendo a Viejuna: ${artist} - ${cleanT}`);
+        console.log(`[RECOMMENDATION DOWNLOAD] Añadiendo a [${targetPlaylist}]: ${artist} - ${cleanT}`);
 
-        // 1. Duración esperada
         let expectedDur = expectedDurationSec || null;
         if (!expectedDur) {
             try {
@@ -2591,7 +2819,6 @@ app.post('/api/retro-hits/add-to-viejuna', async (req, res) => {
             } catch(e) {}
         }
 
-        // 2. Búsqueda con yt-dlp
         const searchQueries = [
             `scsearch25:${artist} - ${cleanT}`,
             `scsearch25:${artist} ${cleanT}`,
@@ -2627,7 +2854,7 @@ app.post('/api/retro-hits/add-to-viejuna', async (req, res) => {
                         let diff = 0;
                         if (expectedDur) {
                             diff = Math.abs(dur - expectedDur);
-                            if (diff > 12) continue; // Tolerancia estricta de 12 segundos
+                            if (diff > 12) continue;
                         }
 
                         validCandidates.push({
@@ -2651,7 +2878,6 @@ app.post('/api/retro-hits/add-to-viejuna', async (req, res) => {
         validCandidates.sort((a, b) => a.diff - b.diff);
         const bestCandidate = validCandidates[0];
 
-        // 3. Descargar candidato
         const downloadUrl = bestCandidate.url.startsWith('http') ? bestCandidate.url : `https://www.youtube.com/watch?v=${bestCandidate.id}`;
         const dlCmd = `${ytdlpBin} --ffmpeg-location "${ffmpegDir}" -x --audio-format mp3 --audio-quality 0 -o "${tempOutput}" "${downloadUrl}"`;
 
@@ -2672,23 +2898,88 @@ app.post('/api/retro-hits/add-to-viejuna', async (req, res) => {
         fs.copyFileSync(tempOutput, targetFilePath);
         try { fs.unlinkSync(tempOutput); } catch(e){}
 
-        console.log(`✅ [RETRO DOWNLOAD] Canción guardada exitosamente en Viejuna: ${targetFilePath}`);
+        console.log(`✅ [RECOMMENDATION DOWNLOAD] Canción guardada exitosamente en [${targetPlaylist}]: ${targetFilePath}`);
 
-        // Invalida la caché del catálogo
-        cachedRetroHits = null;
+        invalidateCollectionIndex();
+        delete cachedPlaylistsCatalogs[targetPlaylist];
 
         res.json({
             success: true,
+            playlist: targetPlaylist,
             fileName: targetFileName,
             artist,
             title: cleanT,
             duration: bestCandidate.duration
         });
     } catch(e) {
-        console.error('Error en /api/retro-hits/add-to-viejuna:', e.message);
+        console.error('Error en /api/recommendations/download:', e.message);
         res.status(500).json({ error: e.message });
     }
+}
+
+function handleRecommendationsDismiss(req, res) {
+    try {
+        const { artist, title } = req.body;
+        if (!artist || !title) return res.status(400).json({ error: 'Faltan parámetros' });
+
+        const d = loadDismissedRecommendations();
+        const k = getRecommendationDismissedKey(artist, title);
+        d[k] = {
+            artist,
+            title,
+            dismissedAt: new Date().toISOString()
+        };
+        saveDismissedRecommendations();
+        console.log(`🚫 [RECOMMENDATION DISMISS] Sugerencia descartada: ${artist} - ${title}`);
+        res.json({ success: true, key: k, totalDismissed: Object.keys(d).length });
+    } catch(e) {
+        res.status(500).json({ error: e.message });
+    }
+}
+
+function handleRecommendationsUndismiss(req, res) {
+    try {
+        const { artist, title } = req.body;
+        if (!artist || !title) return res.status(400).json({ error: 'Faltan parámetros' });
+
+        const d = loadDismissedRecommendations();
+        const k = getRecommendationDismissedKey(artist, title);
+        if (d[k]) {
+            delete d[k];
+            saveDismissedRecommendations();
+            console.log(`↩️ [RECOMMENDATION UNDISMISS] Sugerencia restaurada: ${artist} - ${title}`);
+        }
+        res.json({ success: true, totalDismissed: Object.keys(d).length });
+    } catch(e) {
+        res.status(500).json({ error: e.message });
+    }
+}
+
+// Registro de Rutas
+app.get('/api/recommendations/catalog', handleRecommendationsCatalog);
+app.get('/api/recommendations/radio-radar', handleRecommendationsRadioRadar);
+app.get('/api/recommendations/preview', handleRecommendationsPreview);
+app.post('/api/recommendations/download', handleRecommendationsDownload);
+app.post('/api/recommendations/dismiss', handleRecommendationsDismiss);
+app.post('/api/recommendations/undismiss', handleRecommendationsUndismiss);
+
+// Compatibilidad retro retro-hits
+app.get('/api/retro-hits/catalog', (req, res) => {
+    req.query.playlist = req.query.playlist || 'Música viejuna';
+    return handleRecommendationsCatalog(req, res);
 });
+app.get('/api/retro-hits/radio-radar', (req, res) => {
+    req.query.playlist = req.query.playlist || 'Música viejuna';
+    return handleRecommendationsRadioRadar(req, res);
+});
+app.get('/api/retro-hits/preview', handleRecommendationsPreview);
+app.post('/api/retro-hits/dismiss', handleRecommendationsDismiss);
+app.post('/api/retro-hits/undismiss', handleRecommendationsUndismiss);
+app.post('/api/retro-hits/add-to-viejuna', (req, res) => {
+    req.body.playlist = 'Música viejuna';
+    return handleRecommendationsDownload(req, res);
+});
+
 
 const PORT = 8087;
 app.listen(PORT, '0.0.0.0', () => {

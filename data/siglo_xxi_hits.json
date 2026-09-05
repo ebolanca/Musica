@@ -1,0 +1,477 @@
+[
+  {
+    "year": 2000,
+    "artist": "Coldplay",
+    "title": "Yellow"
+  },
+  {
+    "year": 2000,
+    "artist": "Bon Jovi",
+    "title": "It's My Life"
+  },
+  {
+    "year": 2000,
+    "artist": "Eminem",
+    "title": "The Real Slim Shady"
+  },
+  {
+    "year": 2000,
+    "artist": "Madonna",
+    "title": "Music"
+  },
+  {
+    "year": 2000,
+    "artist": "U2",
+    "title": "Beautiful Day"
+  },
+  {
+    "year": 2000,
+    "artist": "Destiny's Child",
+    "title": "Say My Name"
+  },
+  {
+    "year": 2000,
+    "artist": "Britney Spears",
+    "title": "Oops!... I Did It Again"
+  },
+  {
+    "year": 2001,
+    "artist": "The Strokes",
+    "title": "Last Nite"
+  },
+  {
+    "year": 2001,
+    "artist": "Alicia Keys",
+    "title": "Fallin'"
+  },
+  {
+    "year": 2001,
+    "artist": "Gorillaz",
+    "title": "Clint Eastwood"
+  },
+  {
+    "year": 2001,
+    "artist": "Kylie Minogue",
+    "title": "Can't Get You Out of My Head"
+  },
+  {
+    "year": 2001,
+    "artist": "Daft Punk",
+    "title": "One More Time"
+  },
+  {
+    "year": 2001,
+    "artist": "Train",
+    "title": "Drops of Jupiter"
+  },
+  {
+    "year": 2002,
+    "artist": "Coldplay",
+    "title": "The Scientist"
+  },
+  {
+    "year": 2002,
+    "artist": "Eminem",
+    "title": "Lose Yourself"
+  },
+  {
+    "year": 2002,
+    "artist": "Avril Lavigne",
+    "title": "Complicated"
+  },
+  {
+    "year": 2002,
+    "artist": "Red Hot Chili Peppers",
+    "title": "By the Way"
+  },
+  {
+    "year": 2002,
+    "artist": "Norah Jones",
+    "title": "Don't Know Why"
+  },
+  {
+    "year": 2002,
+    "artist": "Justin Timberlake",
+    "title": "Cry Me a River"
+  },
+  {
+    "year": 2003,
+    "artist": "The White Stripes",
+    "title": "Seven Nation Army"
+  },
+  {
+    "year": 2003,
+    "artist": "Evanescence",
+    "title": "Bring Me to Life"
+  },
+  {
+    "year": 2003,
+    "artist": "Black Eyed Peas",
+    "title": "Where Is the Love?"
+  },
+  {
+    "year": 2003,
+    "artist": "Linkin Park",
+    "title": "Numb"
+  },
+  {
+    "year": 2003,
+    "artist": "Outkast",
+    "title": "Hey Ya!"
+  },
+  {
+    "year": 2003,
+    "artist": "Beyoncé",
+    "title": "Crazy in Love"
+  },
+  {
+    "year": 2004,
+    "artist": "Green Day",
+    "title": "Boulevard of Broken Dreams"
+  },
+  {
+    "year": 2004,
+    "artist": "The Killers",
+    "title": "Mr. Brightside"
+  },
+  {
+    "year": 2004,
+    "artist": "Maroon 5",
+    "title": "This Love"
+  },
+  {
+    "year": 2004,
+    "artist": "Franz Ferdinand",
+    "title": "Take Me Out"
+  },
+  {
+    "year": 2004,
+    "artist": "Keane",
+    "title": "Somewhere Only We Know"
+  },
+  {
+    "year": 2004,
+    "artist": "Usher",
+    "title": "Yeah!"
+  },
+  {
+    "year": 2005,
+    "artist": "Gorillaz",
+    "title": "Feel Good Inc."
+  },
+  {
+    "year": 2005,
+    "artist": "James Blunt",
+    "title": "You're Beautiful"
+  },
+  {
+    "year": 2005,
+    "artist": "Coldplay",
+    "title": "Fix You"
+  },
+  {
+    "year": 2005,
+    "artist": "Kanye West",
+    "title": "Gold Digger"
+  },
+  {
+    "year": 2005,
+    "artist": "Foo Fighters",
+    "title": "Best of You"
+  },
+  {
+    "year": 2006,
+    "artist": "Amy Winehouse",
+    "title": "Rehab"
+  },
+  {
+    "year": 2006,
+    "artist": "Snow Patrol",
+    "title": "Chasing Cars"
+  },
+  {
+    "year": 2006,
+    "artist": "The Fray",
+    "title": "How to Save a Life"
+  },
+  {
+    "year": 2006,
+    "artist": "Gnarls Barkley",
+    "title": "Crazy"
+  },
+  {
+    "year": 2006,
+    "artist": "Justin Timberlake",
+    "title": "SexyBack"
+  },
+  {
+    "year": 2006,
+    "artist": "The Killers",
+    "title": "When You Were Young"
+  },
+  {
+    "year": 2007,
+    "artist": "Rihanna",
+    "title": "Umbrella"
+  },
+  {
+    "year": 2007,
+    "artist": "Timbaland",
+    "title": "Apologize"
+  },
+  {
+    "year": 2007,
+    "artist": "Mika",
+    "title": "Grace Kelly"
+  },
+  {
+    "year": 2007,
+    "artist": "Foo Fighters",
+    "title": "The Pretender"
+  },
+  {
+    "year": 2007,
+    "artist": "Linkin Park",
+    "title": "What I've Done"
+  },
+  {
+    "year": 2008,
+    "artist": "Coldplay",
+    "title": "Viva La Vida"
+  },
+  {
+    "year": 2008,
+    "artist": "The Killers",
+    "title": "Human"
+  },
+  {
+    "year": 2008,
+    "artist": "Katy Perry",
+    "title": "I Kissed a Girl"
+  },
+  {
+    "year": 2008,
+    "artist": "Kings of Leon",
+    "title": "Use Somebody"
+  },
+  {
+    "year": 2008,
+    "artist": "Lady Gaga",
+    "title": "Poker Face"
+  },
+  {
+    "year": 2008,
+    "artist": "Beyoncé",
+    "title": "Single Ladies (Put a Ring on It)"
+  },
+  {
+    "year": 2009,
+    "artist": "Black Eyed Peas",
+    "title": "I Gotta Feeling"
+  },
+  {
+    "year": 2009,
+    "artist": "Lady Gaga",
+    "title": "Bad Romance"
+  },
+  {
+    "year": 2009,
+    "artist": "Kings of Leon",
+    "title": "Sex on Fire"
+  },
+  {
+    "year": 2009,
+    "artist": "David Guetta",
+    "title": "When Love Takes Over"
+  },
+  {
+    "year": 2009,
+    "artist": "Muse",
+    "title": "Uprising"
+  },
+  {
+    "year": 2010,
+    "artist": "Eminem",
+    "title": "Love the Way You Lie"
+  },
+  {
+    "year": 2010,
+    "artist": "Bruno Mars",
+    "title": "Just the Way You Are"
+  },
+  {
+    "year": 2010,
+    "artist": "Katy Perry",
+    "title": "Firework"
+  },
+  {
+    "year": 2010,
+    "artist": "Rihanna",
+    "title": "Only Girl (In the World)"
+  },
+  {
+    "year": 2010,
+    "artist": "CeeLo Green",
+    "title": "Forget You"
+  },
+  {
+    "year": 2011,
+    "artist": "Adele",
+    "title": "Rolling in the Deep"
+  },
+  {
+    "year": 2011,
+    "artist": "Gotye",
+    "title": "Somebody That I Used to Know"
+  },
+  {
+    "year": 2011,
+    "artist": "Maroon 5",
+    "title": "Moves Like Jagger"
+  },
+  {
+    "year": 2011,
+    "artist": "Foster the People",
+    "title": "Pumped Up Kicks"
+  },
+  {
+    "year": 2011,
+    "artist": "Coldplay",
+    "title": "Paradise"
+  },
+  {
+    "year": 2012,
+    "artist": "Imagine Dragons",
+    "title": "Radioactive"
+  },
+  {
+    "year": 2012,
+    "artist": "The Lumineers",
+    "title": "Ho Hey"
+  },
+  {
+    "year": 2012,
+    "artist": "fun.",
+    "title": "We Are Young"
+  },
+  {
+    "year": 2012,
+    "artist": "Passenger",
+    "title": "Let Her Go"
+  },
+  {
+    "year": 2013,
+    "artist": "Daft Punk",
+    "title": "Get Lucky"
+  },
+  {
+    "year": 2013,
+    "artist": "Avicii",
+    "title": "Wake Me Up"
+  },
+  {
+    "year": 2013,
+    "artist": "Lorde",
+    "title": "Royals"
+  },
+  {
+    "year": 2013,
+    "artist": "OneRepublic",
+    "title": "Counting Stars"
+  },
+  {
+    "year": 2013,
+    "artist": "Arctic Monkeys",
+    "title": "Do I Wanna Know?"
+  },
+  {
+    "year": 2014,
+    "artist": "Mark Ronson",
+    "title": "Uptown Funk"
+  },
+  {
+    "year": 2014,
+    "artist": "Ed Sheeran",
+    "title": "Thinking Out Loud"
+  },
+  {
+    "year": 2014,
+    "artist": "Sia",
+    "title": "Chandelier"
+  },
+  {
+    "year": 2014,
+    "artist": "Hozier",
+    "title": "Take Me to Church"
+  },
+  {
+    "year": 2014,
+    "artist": "Sam Smith",
+    "title": "Stay With Me"
+  },
+  {
+    "year": 2015,
+    "artist": "Adele",
+    "title": "Hello"
+  },
+  {
+    "year": 2015,
+    "artist": "The Weeknd",
+    "title": "Can't Feel My Face"
+  },
+  {
+    "year": 2015,
+    "artist": "Justin Bieber",
+    "title": "Sorry"
+  },
+  {
+    "year": 2016,
+    "artist": "The Chainsmokers",
+    "title": "Closer"
+  },
+  {
+    "year": 2017,
+    "artist": "Ed Sheeran",
+    "title": "Shape of You"
+  },
+  {
+    "year": 2017,
+    "artist": "Dua Lipa",
+    "title": "New Rules"
+  },
+  {
+    "year": 2019,
+    "artist": "Billie Eilish",
+    "title": "Bad Guy"
+  },
+  {
+    "year": 2020,
+    "artist": "The Weeknd",
+    "title": "Blinding Lights"
+  },
+  {
+    "year": 2020,
+    "artist": "Dua Lipa",
+    "title": "Don't Start Now"
+  },
+  {
+    "year": 2021,
+    "artist": "Coldplay",
+    "title": "Higher Power"
+  },
+  {
+    "year": 2022,
+    "artist": "Harry Styles",
+    "title": "As It Was"
+  },
+  {
+    "year": 2023,
+    "artist": "Miley Cyrus",
+    "title": "Flowers"
+  },
+  {
+    "year": 2024,
+    "artist": "Djo",
+    "title": "End of Beginning"
+  }
+]

@@ -18,7 +18,7 @@
             </div>
             <div class="logo-title">
                 <h1>Música</h1>
-                <p>Plataforma de Videoclips & Análisis Sónico v1.5.24</p>
+                <p>Plataforma de Videoclips & Análisis Sónico v1.5.25</p>
             </div>
         </div>
 
@@ -91,9 +91,14 @@
                 </h2>
                 <span class="results-count" id="results-count-text">Cargando canciones...</span>
             </div>
-            <button class="btn-action btn-playlist-shuffle" id="btn-playlist-shuffle" title="Reproducir esta lista en modo aleatorio continuo">
-                <i class="fa-solid fa-shuffle"></i> Reproducción Aleatoria
-            </button>
+            <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                <button class="btn-action btn-recommendations" id="btn-open-recommendations" title="Descubridor de Éxitos & Radar de Emisoras en Vivo" style="background: linear-gradient(135deg, #10b981, #0284c7); color: #fff; border: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-satellite-dish"></i> Recomendaciones & Radar
+                </button>
+                <button class="btn-action btn-playlist-shuffle" id="btn-playlist-shuffle" title="Reproducir esta lista en modo aleatorio continuo">
+                    <i class="fa-solid fa-shuffle"></i> Reproducción Aleatoria
+                </button>
+            </div>
         </div>
 
         <!-- Songs Grid -->
@@ -485,8 +490,8 @@
                             <i class="fa-solid fa-trophy"></i>
                         </div>
                         <div class="sidebar-tab-meta">
-                            <span class="sidebar-tab-title">Éxitos España</span>
-                            <span class="sidebar-tab-sub">Top Histórico AFYVE (1980-2024)</span>
+                            <span class="sidebar-tab-title">Recomendaciones & Radar</span>
+                            <span class="sidebar-tab-sub">Descubridor de Éxitos & Emisoras FM</span>
                         </div>
                     </div>
                     <span class="tab-badge badge-retro-count" id="badge-retro">477</span>
