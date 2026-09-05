@@ -123,5 +123,210 @@
     "artist": "Stevie Wonder",
     "title": "Superstition",
     "dismissedAt": "2026-09-04T11:43:54.966Z"
+  },
+  "eminem_therealslimshady": {
+    "artist": "Eminem",
+    "title": "The Real Slim Shady",
+    "dismissedAt": "2026-09-05T09:26:42.125Z"
+  },
+  "britneyspears_oopsididitagain": {
+    "artist": "Britney Spears",
+    "title": "Oops!... I Did It Again",
+    "dismissedAt": "2026-09-05T09:26:59.303Z"
+  },
+  "thestrokes_lastnite": {
+    "artist": "The Strokes",
+    "title": "Last Nite",
+    "dismissedAt": "2026-09-05T09:27:13.009Z"
+  },
+  "gorillaz_clinteastwood": {
+    "artist": "Gorillaz",
+    "title": "Clint Eastwood",
+    "dismissedAt": "2026-09-05T09:27:33.106Z"
+  },
+  "coldplay_thescientist": {
+    "artist": "Coldplay",
+    "title": "The Scientist",
+    "dismissedAt": "2026-09-05T09:28:48.331Z"
+  },
+  "norahjones_dontknowwhy": {
+    "artist": "Norah Jones",
+    "title": "Don't Know Why",
+    "dismissedAt": "2026-09-05T09:31:18.462Z"
+  },
+  "thewhitestripes_sevennationarmy": {
+    "artist": "The White Stripes",
+    "title": "Seven Nation Army",
+    "dismissedAt": "2026-09-05T09:32:03.414Z"
+  },
+  "thekillers_mrbrightside": {
+    "artist": "The Killers",
+    "title": "Mr. Brightside",
+    "dismissedAt": "2026-09-05T09:32:19.662Z"
+  },
+  "franzferdinand_takemeout": {
+    "artist": "Franz Ferdinand",
+    "title": "Take Me Out",
+    "dismissedAt": "2026-09-05T09:32:34.790Z"
+  },
+  "gorillaz_feelgoodinc": {
+    "artist": "Gorillaz",
+    "title": "Feel Good Inc.",
+    "dismissedAt": "2026-09-05T09:32:50.068Z"
+  },
+  "coldplay_fixyou": {
+    "artist": "Coldplay",
+    "title": "Fix You",
+    "dismissedAt": "2026-09-05T09:32:59.369Z"
+  },
+  "kanyewest_golddigger": {
+    "artist": "Kanye West",
+    "title": "Gold Digger",
+    "dismissedAt": "2026-09-05T09:33:09.031Z"
+  },
+  "foofighters_bestofyou": {
+    "artist": "Foo Fighters",
+    "title": "Best of You",
+    "dismissedAt": "2026-09-05T09:33:24.239Z"
+  },
+  "thekillers_whenyouwereyoung": {
+    "artist": "The Killers",
+    "title": "When You Were Young",
+    "dismissedAt": "2026-09-05T09:34:08.825Z"
+  },
+  "foofighters_thepretender": {
+    "artist": "Foo Fighters",
+    "title": "The Pretender",
+    "dismissedAt": "2026-09-05T09:34:42.480Z"
+  },
+  "kingsofleon_usesomebody": {
+    "artist": "Kings of Leon",
+    "title": "Use Somebody",
+    "dismissedAt": "2026-09-05T09:35:03.083Z"
+  },
+  "muse_uprising": {
+    "artist": "Muse",
+    "title": "Uprising",
+    "dismissedAt": "2026-09-05T09:35:21.918Z"
+  },
+  "fosterthepeople_pumpedupkicks": {
+    "artist": "Foster the People",
+    "title": "Pumped Up Kicks",
+    "dismissedAt": "2026-09-05T09:35:41.218Z"
+  },
+  "arcticmonkeys_doiwannaknow": {
+    "artist": "Arctic Monkeys",
+    "title": "Do I Wanna Know?",
+    "dismissedAt": "2026-09-05T09:36:14.773Z"
+  },
+  "coldplay_higherpower": {
+    "artist": "Coldplay",
+    "title": "Higher Power",
+    "dismissedAt": "2026-09-05T09:36:19.723Z"
+  },
+  "djo_endofbeginning": {
+    "artist": "Djo",
+    "title": "End of Beginning",
+    "dismissedAt": "2026-09-05T09:36:33.546Z"
+  },
+  "bellini_sambadejaneiro": {
+    "artist": "Bellini",
+    "title": "Samba de Janeiro",
+    "dismissedAt": "2026-09-05T09:37:07.536Z"
+  },
+  "stardust_musicsoundsbetterwithyou": {
+    "artist": "Stardust",
+    "title": "Music Sounds Better with You",
+    "dismissedAt": "2026-09-05T09:37:18.914Z"
+  },
+  "daftpunk_harderbetterfasterstronger": {
+    "artist": "Daft Punk",
+    "title": "Harder, Better, Faster, Stronger",
+    "dismissedAt": "2026-09-05T09:38:18.757Z"
+  },
+  "rogersanchez_anotherchance": {
+    "artist": "Roger Sanchez",
+    "title": "Another Chance",
+    "dismissedAt": "2026-09-05T09:38:36.660Z"
+  },
+  "axwell_feelthevibe": {
+    "artist": "Axwell",
+    "title": "Feel the Vibe",
+    "dismissedAt": "2026-09-05T09:39:46.641Z"
+  },
+  "ericprydz_pjanoo": {
+    "artist": "Eric Prydz",
+    "title": "Pjanoo",
+    "dismissedAt": "2026-09-05T09:41:13.040Z"
+  },
+  "swedishhousemafia_oneyourname": {
+    "artist": "Swedish House Mafia",
+    "title": "One (Your Name)",
+    "dismissedAt": "2026-09-05T09:41:33.094Z"
+  },
+  "avicii_seekbromance": {
+    "artist": "Avicii",
+    "title": "Seek Bromance",
+    "dismissedAt": "2026-09-05T09:41:58.635Z"
+  },
+  "dimitrivegaslikemike_mammoth": {
+    "artist": "Dimitri Vegas & Like Mike",
+    "title": "Mammoth",
+    "dismissedAt": "2026-09-05T09:42:50.207Z"
+  },
+  "oliverheldens_geckooverdrive": {
+    "artist": "Oliver Heldens",
+    "title": "Gecko (Overdrive)",
+    "dismissedAt": "2026-09-05T09:44:16.389Z"
+  },
+  "camelphat_cola": {
+    "artist": "CamelPhat",
+    "title": "Cola",
+    "dismissedAt": "2026-09-05T09:44:28.102Z"
+  },
+  "acraze_doittoit": {
+    "artist": "Acraze",
+    "title": "Do It to It",
+    "dismissedAt": "2026-09-05T09:45:02.921Z"
+  },
+  "vetustamorla_copenhague": {
+    "artist": "Vetusta Morla",
+    "title": "Copenhague",
+    "dismissedAt": "2026-09-05T09:48:37.001Z"
+  },
+  "izal_lamujerdeverde": {
+    "artist": "Izal",
+    "title": "La mujer de verde",
+    "dismissedAt": "2026-09-05T09:48:53.118Z"
+  },
+  "loveoflesbian_bajoelvolcan": {
+    "artist": "Love of Lesbian",
+    "title": "Bajo el volcán",
+    "dismissedAt": "2026-09-05T09:49:06.540Z"
+  },
+  "marcanthony_hastaqueteconoci": {
+    "artist": "Marc Anthony",
+    "title": "Hasta que te conocí",
+    "dismissedAt": "2026-09-05T09:51:03.222Z"
+  },
+  "maluma_feliceslos4": {
+    "artist": "Maluma",
+    "title": "Felices los 4",
+    "dismissedAt": "2026-09-05T09:55:58.488Z"
+  },
+  "farrukogreeicysteveaoki_yapaque": {
+    "artist": "Farruko,Greeicy,Steve Aoki",
+    "title": "Yapaque",
+    "dismissedAt": "2026-09-05T10:01:25.888Z"
+  },
+  "laurapausini_porquetevas": {
+    "artist": "Laura Pausini",
+    "title": "Porque te vas",
+    "dismissedAt": "2026-09-05T10:01:38.746Z"
+  },
+  "guilletoledano_milmariposas": {
+    "artist": "Guille Toledano",
+    "title": "Mil mariposas",
+    "dismissedAt": "2026-09-05T10:03:07.359Z"
   }
 }
