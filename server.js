@@ -2889,18 +2889,80 @@ async function handleRecommendationsRadioRadar(req, res) {
 
         recordRadioPlays(allTracks);
 
+        // Contabilizar repeticiones y rotaciones por emisora
+        const stationStats = {};
+        for (const k of availableStationKeys) {
+            stationStats[k] = {
+                frequentCount: 0,
+                totalPlays: 0,
+                trackCount: 0,
+                totalHistoryPlays: 0
+            };
+        }
+
+        for (const t of unique) {
+            if (t.stationId && stationStats[t.stationId]) {
+                stationStats[t.stationId].trackCount++;
+                const pc = t.playCount || 1;
+                stationStats[t.stationId].totalPlays += pc;
+                if (pc >= 2) {
+                    stationStats[t.stationId].frequentCount++;
+                }
+            }
+        }
+
+        // Sumar también el volumen del historial acumulado de 7 días para cada emisora
+        const history = loadAirplayHistory();
+        for (const item of Object.values(history)) {
+            if (item.stations && Array.isArray(item.stations)) {
+                for (const stId of item.stations) {
+                    if (stationStats[stId]) {
+                        stationStats[stId].totalHistoryPlays += (item.playCount7d || 1);
+                    }
+                }
+            }
+        }
+
+        // Ordenar canciones:
+        // 1. Canciones faltantes en colección primero
+        // 2. Mayor número de repeticiones de la canción
+        // 3. Emisora con mayor volumen de repeticiones
+        // 4. Momento de emisión más reciente
         unique.sort((a, b) => {
             if (a.isOwned !== b.isOwned) return a.isOwned ? 1 : -1;
             if ((b.playCount || 1) !== (a.playCount || 1)) {
                 return (b.playCount || 1) - (a.playCount || 1);
             }
+            const stA = stationStats[a.stationId] ? stationStats[a.stationId].totalHistoryPlays : 0;
+            const stB = stationStats[b.stationId] ? stationStats[b.stationId].totalHistoryPlays : 0;
+            if (stB !== stA) {
+                return stB - stA;
+            }
             return (b.timestamp || 0) - (a.timestamp || 0);
         });
 
-        const availableStations = availableStationKeys.map(k => ({
-            id: k,
-            name: RADAR_STATIONS_CONFIG[k] ? RADAR_STATIONS_CONFIG[k].name : k
-        }));
+        const availableStations = availableStationKeys.map(k => {
+            const st = stationStats[k] || { frequentCount: 0, totalPlays: 0, trackCount: 0, totalHistoryPlays: 0 };
+            return {
+                id: k,
+                name: RADAR_STATIONS_CONFIG[k] ? RADAR_STATIONS_CONFIG[k].name : k,
+                frequentCount: st.frequentCount,
+                totalPlays: st.totalPlays,
+                trackCount: st.trackCount,
+                totalHistoryPlays: st.totalHistoryPlays
+            };
+        });
+
+        // Colocar las emisoras ordenadas por número de repeticiones de mayor a menor
+        availableStations.sort((a, b) => {
+            if (b.frequentCount !== a.frequentCount) {
+                return b.frequentCount - a.frequentCount;
+            }
+            if (b.totalHistoryPlays !== a.totalHistoryPlays) {
+                return b.totalHistoryPlays - a.totalHistoryPlays;
+            }
+            return b.totalPlays - a.totalPlays;
+        });
 
         res.json({
             playlist,

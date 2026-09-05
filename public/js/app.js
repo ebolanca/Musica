@@ -2895,10 +2895,11 @@ document.addEventListener('DOMContentLoaded', () => {
             songsGrid.innerHTML = '';
 
             const wrapper = document.createElement('div');
+            wrapper.id = 'retro-hits-main-wrapper';
             wrapper.style.gridColumn = '1 / -1';
 
             // 1. Selector de Lista / Género Musical (Chips Superiores)
-            let playlistChipsHtml = '<div class="recommendation-playlists-bar" style="display:flex;gap:10px;margin-bottom:16px;overflow-x:auto;padding-bottom:6px;">';
+            let playlistChipsHtml = '<div class="recommendation-playlists-bar" style="display:flex;gap:10px;margin-bottom:14px;overflow-x:auto;padding-bottom:6px;">';
             recommendationPlaylists.forEach(pl => {
                 const isActive = pl.id === curList;
                 playlistChipsHtml += `
@@ -2910,40 +2911,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             playlistChipsHtml += '</div>';
 
-            // 2. Banner con Estadísticas y Progreso de la Lista Seleccionada
-            const summary = data.summary;
-            const bannerHtml = `
+            const topHtml = `
                 ${playlistChipsHtml}
-                <div class="retro-banner" style="background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(2,132,199,0.08)); border-color: rgba(16,185,129,0.3);">
-                    <div class="retro-banner-top">
-                        <div class="retro-banner-title">
-                            <i class="fa-solid fa-satellite-dish" style="color:#10b981;"></i>
-                            <span>Descubridor de Éxitos: ${curList}</span>
-                        </div>
-                        <div class="radar-live-indicator" style="border-color:#10b981;background:rgba(16,185,129,0.1);">
-                            <div class="radar-live-dot" style="background:#10b981;"></div>
-                            <span style="color:#10b981;">Deduplicación Activa de Biblioteca</span>
-                        </div>
-                    </div>
-                    <div class="retro-banner-desc">
-                        Grandes canciones icónicas recomendadas para tu lista de <strong>${curList}</strong>.
-                        <div style="margin-top: 6px; font-size: 0.84rem; color: #38bdf8;">
-                            <i class="fa-brands fa-spotify" style="color:#1db954;"></i> <strong>Recomendación:</strong> Escucha la preescucha y pulsa <strong>Spotify</strong> para añadirla a tu lista, o usa <strong>Directo</strong> para descargarla directamente a la carpeta de ${curList}.
-                        </div>
-                    </div>
-                    <div class="retro-progress-container">
-                        <div class="retro-progress-labels">
-                            <span style="color: #fff;"><i class="fa-solid fa-chart-pie" style="color: #10b981; margin-right: 6px;"></i> Progreso en ${curList}:</span>
-                            <span style="color: #34d399;">${summary.totalOwned} de ${summary.totalHits} conseguidos (${summary.globalPercentage}%) • ${summary.totalMissing} por descubrir</span>
-                        </div>
-                        <div class="retro-progress-track">
-                            <div class="retro-progress-fill" style="width: ${summary.globalPercentage}%; background: linear-gradient(90deg, #10b981, #0284c7);"></div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Selector de Modo: Catálogo de Éxitos vs Radar de Emisoras -->
-                <div class="retro-view-switch" style="margin-top:18px;">
+                <div class="retro-view-switch" style="margin-top:4px;margin-bottom:14px;">
                     <button class="retro-switch-btn ${retroState.mode === 'timeline' ? 'active' : ''}" id="btn-mode-timeline">
                         <i class="fa-solid fa-calendar-days"></i> Catálogo de Éxitos (${curList})
                     </button>
@@ -2953,7 +2924,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
 
-            wrapper.innerHTML = bannerHtml;
+            wrapper.innerHTML = topHtml;
             songsGrid.appendChild(wrapper);
 
             // Listeners de los chips de lista
@@ -3183,7 +3154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function renderRetroRadarView() {
-        const wrapper = document.querySelector('.retro-banner')?.parentNode;
+        const wrapper = document.getElementById('retro-hits-main-wrapper') || document.querySelector('.retro-view-switch')?.parentNode || songsGrid.firstElementChild;
         if (!wrapper) return;
 
         const curList = retroState.selectedList || 'Música viejuna';
@@ -3243,12 +3214,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!res.ok) throw new Error('Error consultando radar');
             const data = await res.json();
 
-            // Renderizar selector de emisoras
+            // Renderizar selector de emisoras ordenadas por repeticiones
             const stBar = document.getElementById('radar-stations-filter-bar');
             if (stBar && data.availableStations && data.availableStations.length > 0) {
+                const totalFrequentAll = data.availableStations.reduce((sum, s) => sum + (s.frequentCount || 0), 0);
                 stBar.innerHTML = `
-                    <button class="retro-switch-btn ${curStation === 'ALL' ? 'active' : ''}" data-station="ALL" style="font-size:0.8rem;padding:5px 12px;">
-                        <i class="fa-solid fa-layer-group"></i> Todas las emisoras
+                    <button class="retro-switch-btn ${curStation === 'ALL' ? 'active' : ''}" data-station="ALL" style="font-size:0.8rem;padding:5px 12px;" title="Todas las emisoras ordenadas por frecuencia de repetición">
+                        <i class="fa-solid fa-layer-group"></i> Todas las emisoras ${totalFrequentAll > 0 ? `<span style="background:rgba(16,185,129,0.25);color:#10b981;padding:1px 6px;border-radius:10px;font-size:0.75rem;margin-left:4px;font-weight:700;">${totalFrequentAll}</span>` : ''}
                     </button>
                 `;
                 data.availableStations.forEach(st => {
@@ -3257,7 +3229,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     b.className = active ? 'retro-switch-btn active' : 'retro-switch-btn';
                     b.style.fontSize = '0.8rem';
                     b.style.padding = '5px 12px';
-                    b.innerHTML = `<i class="fa-solid fa-radio"></i> ${st.name}`;
+                    const repBadge = (st.frequentCount && st.frequentCount > 0)
+                        ? ` <span style="background:${active ? '#ea580c' : 'rgba(249,115,22,0.2)'};color:${active ? '#fff' : '#fb923c'};padding:1px 6px;border-radius:10px;font-size:0.75rem;margin-left:4px;font-weight:700;" title="${st.frequentCount} canciones en rotación frecuente"><i class="fa-solid fa-fire"></i> ${st.frequentCount}</span>`
+                        : '';
+                    b.innerHTML = `<i class="fa-solid fa-radio"></i> ${st.name}${repBadge}`;
+                    b.title = `${st.name}: ${st.frequentCount || 0} éxitos repetidos, ${st.trackCount || 0} temas detectados`;
                     b.addEventListener('click', () => {
                         retroState.selectedStation = st.id;
                         renderRetroRadarView();
