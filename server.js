@@ -2692,29 +2692,34 @@ function loadPlaylistHits(playlistName) {
 // 📻 Configuración del Radar de Emisoras
 const RADAR_STATIONS_CONFIG = {
     // Música viejuna
-    'LOS40_CLASSIC': { id: 'LOS40_CLASSIC', name: 'LOS40 Classic', genre: 'Música viejuna', type: 'triton', mount: 'LOS40_CLASSIC', orbSlug: 'los40classic' },
-    'ROCKFM': { id: 'ROCKFM', name: 'Rock FM', genre: 'Música viejuna', type: 'hybrid', emisoraSlug: 'rock-fm', orbSlug: 'rockfm' },
-    'KISSFM': { id: 'KISSFM', name: 'Kiss FM', genre: 'Música viejuna', type: 'emisora', emisoraSlug: 'kiss-fm' },
+    'LOS40_CLASSIC': { id: 'LOS40_CLASSIC', name: 'LOS40 Classic', genre: 'Música viejuna', type: 'triton', mount: 'LOS40_CLASSIC' },
+    'ROCKFM': { id: 'ROCKFM', name: 'Rock FM', genre: 'Música viejuna', type: 'myradio', myRadioSlug: 'rock-fm' },
+    'KISSFM': { id: 'KISSFM', name: 'Kiss FM', genre: 'Música viejuna', type: 'myradio', myRadioSlug: 'kiss-fm' },
     // Siglo XXI
-    'LOS40': { id: 'LOS40', name: 'LOS40', genre: 'Siglo XXI', type: 'triton', mount: 'LOS40', orbSlug: 'los40' },
-    'HITFM': { id: 'HITFM', name: 'Hit FM', genre: 'Siglo XXI', type: 'emisora', emisoraSlug: 'hit-fm' },
-    'CADENA100': { id: 'CADENA100', name: 'Cadena 100', genre: 'Siglo XXI', type: 'emisora', emisoraSlug: 'cadena-100' },
+    'LOS40': { id: 'LOS40', name: 'LOS40', genre: 'Siglo XXI', type: 'triton', mount: 'LOS40' },
+    'HITFM': { id: 'HITFM', name: 'Hit FM', genre: 'Siglo XXI', type: 'myradio', myRadioSlug: 'hit-fm' },
+    'CADENA100': { id: 'CADENA100', name: 'Cadena 100', genre: 'Siglo XXI', type: 'myradio', myRadioSlug: 'cadena-100' },
     // Dance
     'LOS40_DANCE': { id: 'LOS40_DANCE', name: 'LOS40 Dance', genre: 'Dance', type: 'triton', mount: 'LOS40_DANCE' },
-    'LOCAFM': { id: 'LOCAFM', name: 'Loca FM', genre: 'Dance', type: 'emisora', emisoraSlug: 'loca-fm' },
+    'FLAIXFM': { id: 'FLAIXFM', name: 'Flaix FM', genre: 'Dance', type: 'myradio', myRadioSlug: 'flaix-fm' },
     // Española
-    'CADENADIAL': { id: 'CADENADIAL', name: 'Cadena Dial', genre: 'Española', type: 'triton', mount: 'CADENADIAL', orbSlug: 'cadenadial' },
+    'CADENADIAL': { id: 'CADENADIAL', name: 'Cadena Dial', genre: 'Española', type: 'triton', mount: 'CADENADIAL' },
     'RADIOLE': { id: 'RADIOLE', name: 'Radiolé', genre: 'Española', type: 'triton', mount: 'RADIOLE' },
-    // Música latina
+    'CADENA100_ESP': { id: 'CADENA100_ESP', name: 'Cadena 100', genre: 'Española', type: 'myradio', myRadioSlug: 'cadena-100' },
+    // Música latina (Bachata, Merengue, Salsa, Tropical, Urbana)
+    'BACHATA_RADIO': { id: 'BACHATA_RADIO', name: 'Bachata Radio', genre: 'Música latina', type: 'orb_url', orbUrl: 'https://onlineradiobox.com/us/bachata/playlist/' },
+    'SALSA_RADIO': { id: 'SALSA_RADIO', name: 'Tropical Salsa', genre: 'Música latina', type: 'orb_url', orbUrl: 'https://onlineradiobox.com/us/tropical100salsa/playlist/' },
+    'MERENGUE_RADIO': { id: 'MERENGUE_RADIO', name: 'Tropical Merengue', genre: 'Música latina', type: 'orb_url', orbUrl: 'https://onlineradiobox.com/us/tropical100merengue/playlist/' },
+    'LATINA_104': { id: 'LATINA_104', name: 'Latina 104', genre: 'Música latina', type: 'orb_url', orbUrl: 'https://onlineradiobox.com/do/latina104/playlist/' },
     'LOS40_URBAN': { id: 'LOS40_URBAN', name: 'LOS40 Urban', genre: 'Música latina', type: 'triton', mount: 'LOS40_URBAN' }
 };
 
 const PLAYLIST_RADAR_MAP = {
     'Música viejuna': ['LOS40_CLASSIC', 'ROCKFM', 'KISSFM'],
     'Siglo XXI': ['LOS40', 'HITFM', 'CADENA100'],
-    'Dance': ['LOS40_DANCE', 'LOCAFM'],
-    'Española': ['CADENADIAL', 'RADIOLE', 'CADENA100'],
-    'Música latina': ['LOS40_URBAN', 'CADENADIAL']
+    'Dance': ['LOS40_DANCE', 'FLAIXFM'],
+    'Española': ['CADENADIAL', 'RADIOLE', 'CADENA100_ESP'],
+    'Música latina': ['BACHATA_RADIO', 'SALSA_RADIO', 'MERENGUE_RADIO', 'LATINA_104', 'LOS40_URBAN']
 };
 
 // Validador estricto de canciones reales de radio (filtra programas, IDs y cuñas)
@@ -2794,6 +2799,69 @@ async function scanTritonStation(mountName) {
         }
     }
     return items;
+}
+
+// Escaneador MyRadioOnline.es (en tiempo real para Hit FM, Cadena 100, Kiss FM, Rock FM, Flaix FM)
+async function scanMyRadioOnline(slug) {
+    try {
+        const url = `https://myradioonline.es/${slug}/listas`;
+        const res = await fetch(url, {
+            headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' },
+            signal: AbortSignal.timeout(5000)
+        });
+        if (!res.ok) return [];
+        const html = await res.text();
+        const items = [];
+        const regex = /<span[^>]*itemprop="byArtist"[^>]*>([^<]+)<\/span>\s*-\s*<span[^>]*itemprop="name"[^>]*>([^<]+)<\/span>/gi;
+        const matches = [...html.matchAll(regex)];
+
+        for (const m of matches) {
+            const artist = m[1].replace(/&amp;/g, '&').replace(/&#39;/g, "'").trim();
+            const title = m[2].replace(/&amp;/g, '&').replace(/&#39;/g, "'").trim();
+            if (isValidRadioSong(artist, title)) {
+                items.push({
+                    artist,
+                    title,
+                    album: null,
+                    coverUrl: null,
+                    timestamp: null
+                });
+            }
+        }
+        return items;
+    } catch(e) {
+        console.warn(`[RADIO SCAN] Error en MyRadioOnline (${slug}):`, e.message);
+        return [];
+    }
+}
+
+// Escaneador OnlineRadioBox por URL completa (Bachata, Salsa, Merengue, etc.)
+async function scanOnlineRadioBoxUrl(fullUrl) {
+    try {
+        const res = await fetch(fullUrl, {
+            headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' },
+            signal: AbortSignal.timeout(5000)
+        });
+        if (!res.ok) return [];
+        const html = await res.text();
+        const items = [];
+        const matches = [...html.matchAll(/<td class="track_history_item">[\s\S]*?<a [^>]*class="ajax">([^<]+)<\/a>/g)];
+        for (const m of matches) {
+            const raw = m[1].replace(/&amp;/g, '&').replace(/&#39;/g, "'").trim();
+            const parts = raw.split(' - ');
+            if (parts.length >= 2) {
+                const artist = parts[0].trim();
+                const title = parts.slice(1).join(' - ').trim();
+                if (isValidRadioSong(artist, title)) {
+                    items.push({ artist, title, album: null, coverUrl: null, timestamp: null });
+                }
+            }
+        }
+        return items;
+    } catch(e) {
+        console.warn(`[RADIO SCAN] Error en OnlineRadioBox:`, e.message);
+        return [];
+    }
 }
 
 // Escaneador Emisora.org.es (ACRCloud Live feed para Kiss FM, Hit FM, Loca FM, Cadena 100, Rock FM)
@@ -2954,14 +3022,19 @@ async function handleRecommendationsRadioRadar(req, res) {
             try {
                 if (st.type === 'triton') {
                     list = await scanTritonStation(st.mount);
+                } else if (st.type === 'myradio') {
+                    list = await scanMyRadioOnline(st.myRadioSlug);
+                } else if (st.type === 'orb_url') {
+                    list = await scanOnlineRadioBoxUrl(st.orbUrl);
                 } else if (st.type === 'emisora') {
-                    list = await scanEmisoraOrg(st.emisoraSlug);
+                    list = await scanMyRadioOnline(st.emisoraSlug || st.myRadioSlug);
+                    if (!list || list.length === 0) list = await scanEmisoraOrg(st.emisoraSlug);
                 } else if (st.type === 'hybrid') {
-                    const [orb, em] = await Promise.allSettled([
+                    const [orb, myr] = await Promise.allSettled([
                         scanOnlineRadioBox(st.orbSlug),
-                        scanEmisoraOrg(st.emisoraSlug)
+                        scanMyRadioOnline(st.myRadioSlug || st.emisoraSlug)
                     ]);
-                    list = (orb.status === 'fulfilled' ? orb.value : []).concat(em.status === 'fulfilled' ? em.value : []);
+                    list = (orb.status === 'fulfilled' ? orb.value : []).concat(myr.status === 'fulfilled' ? myr.value : []);
                 }
             } catch(e) {}
             return list.map(item => ({ ...item, stationId: st.id, stationName: st.name }));
