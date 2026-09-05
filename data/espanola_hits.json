@@ -2,226 +2,316 @@
   {
     "year": 1980,
     "artist": "Nacha Pop",
-    "title": "La Chica de Ayer"
+    "title": "La Chica de Ayer",
+    "peak": "Himno Pop Español",
+    "genre": "Pop Rock"
   },
   {
     "year": 1982,
     "artist": "Los Secretos",
-    "title": "Déjame"
+    "title": "Déjame",
+    "peak": "Clásico La Movida",
+    "genre": "Pop Rock"
   },
   {
     "year": 1984,
     "artist": "Radio Futura",
-    "title": "Escuela de Calor"
+    "title": "Escuela de Calor",
+    "peak": "Nº 1 Los 40",
+    "genre": "Rock Latino"
   },
   {
     "year": 1986,
     "artist": "Hombres G",
-    "title": "Devuélveme a mi chica"
+    "title": "Devuélveme a mi chica",
+    "peak": "Nº 1 España",
+    "genre": "Pop Rock"
   },
   {
     "year": 1986,
     "artist": "Duncan Dhu",
-    "title": "Cien gaviotas"
+    "title": "Cien gaviotas",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop Acústico"
   },
   {
     "year": 1987,
     "artist": "El Último de la Fila",
-    "title": "Insurrección"
+    "title": "Insurrección",
+    "peak": "Himno Rock Español",
+    "genre": "Rock"
   },
   {
     "year": 1988,
     "artist": "Mecano",
-    "title": "Mujer contra mujer"
+    "title": "Mujer contra mujer",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
   },
   {
     "year": 1990,
     "artist": "Héroes del Silencio",
-    "title": "Entre dos tierras"
+    "title": "Entre dos tierras",
+    "peak": "Nº 1 Rock España",
+    "genre": "Hard Rock"
   },
   {
     "year": 1990,
     "artist": "Seguridad Social",
-    "title": "Chiquilla"
+    "title": "Chiquilla",
+    "peak": "Nº 1 Los 40",
+    "genre": "Rock / Rumba"
   },
   {
     "year": 1991,
     "artist": "Mecano",
-    "title": "El 7 de septiembre"
+    "title": "El 7 de septiembre",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
   },
   {
     "year": 1992,
     "artist": "Los Rodríguez",
-    "title": "Sin documentos"
+    "title": "Sin documentos",
+    "peak": "Nº 1 Cadena Dial",
+    "genre": "Rock"
   },
   {
     "year": 1995,
     "artist": "Jarabe de Palo",
-    "title": "La Flaca"
+    "title": "La Flaca",
+    "peak": "Nº 1 España",
+    "genre": "Rock Latino"
   },
   {
     "year": 1996,
     "artist": "Ella Baila Sola",
-    "title": "Lo echamos a suertes"
+    "title": "Lo echamos a suertes",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop"
   },
   {
     "year": 1998,
     "artist": "La Oreja de Van Gogh",
-    "title": "Cuéntame al oído"
+    "title": "Cuéntame al oído",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop"
   },
   {
     "year": 1998,
     "artist": "Fito & Fitipaldis",
-    "title": "Rojitas las orejas"
+    "title": "Rojitas las orejas",
+    "peak": "Clásico Rock Español",
+    "genre": "Rock & Blues"
   },
   {
     "year": 1999,
     "artist": "Estopa",
-    "title": "La raja de tu falda"
+    "title": "La raja de tu falda",
+    "peak": "Nº 1 España",
+    "genre": "Rumba Rock"
   },
   {
     "year": 1999,
     "artist": "M-Clan",
-    "title": "Llamando a la tierra"
+    "title": "Llamando a la tierra",
+    "peak": "Nº 1 Los 40",
+    "genre": "Southern Rock"
   },
   {
     "year": 2000,
     "artist": "El Canto del Loco",
-    "title": "Pequeñita"
+    "title": "Pequeñita",
+    "peak": "Top 5 España",
+    "genre": "Pop Rock"
   },
   {
     "year": 2000,
     "artist": "La Oreja de Van Gogh",
-    "title": "La playa"
+    "title": "La playa",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
   },
   {
     "year": 2001,
     "artist": "Estopa",
-    "title": "Vino tinto"
+    "title": "Vino tinto",
+    "peak": "Nº 1 Cadena Dial",
+    "genre": "Rumba Rock"
   },
   {
     "year": 2002,
     "artist": "Amaral",
-    "title": "Sin ti no soy nada"
+    "title": "Sin ti no soy nada",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop Rock"
   },
   {
     "year": 2002,
     "artist": "Álex Ubago",
-    "title": "Sin miedo a nada"
+    "title": "Sin miedo a nada",
+    "peak": "Nº 1 España",
+    "genre": "Balada Pop"
   },
   {
     "year": 2003,
     "artist": "El Canto del Loco",
-    "title": "La madre de José"
+    "title": "La madre de José",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop Punk"
   },
   {
     "year": 2003,
     "artist": "La Oreja de Van Gogh",
-    "title": "Rosas"
+    "title": "Rosas",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
   },
   {
     "year": 2003,
     "artist": "Fito & Fitipaldis",
-    "title": "Soldadito marinero"
+    "title": "Soldadito marinero",
+    "peak": "Himno del Rock Español",
+    "genre": "Rock"
   },
   {
     "year": 2004,
     "artist": "Melendi",
-    "title": "Caminando por la vida"
+    "title": "Caminando por la vida",
+    "peak": "Nº 1 Los 40",
+    "genre": "Rumba Pop"
   },
   {
     "year": 2004,
     "artist": "Bebe",
-    "title": "Malo"
+    "title": "Malo",
+    "peak": "Nº 1 España",
+    "genre": "Flamenco Fusión"
   },
   {
     "year": 2005,
     "artist": "El Canto del Loco",
-    "title": "Zapatillas"
+    "title": "Zapatillas",
+    "peak": "Nº 1 España",
+    "genre": "Pop Rock"
   },
   {
     "year": 2005,
     "artist": "Amaral",
-    "title": "Días de verano"
+    "title": "Días de verano",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop Rock"
   },
   {
     "year": 2005,
     "artist": "Pereza",
-    "title": "Princesas"
+    "title": "Princesas",
+    "peak": "Nº 1 Los 40",
+    "genre": "Rock Urbano"
   },
   {
     "year": 2006,
     "artist": "Fito & Fitipaldis",
-    "title": "Por la boca vive el pez"
+    "title": "Por la boca vive el pez",
+    "peak": "Nº 1 España",
+    "genre": "Rock"
   },
   {
     "year": 2006,
     "artist": "La Oreja de Van Gogh",
-    "title": "Muñeca de trapo"
+    "title": "Muñeca de trapo",
+    "peak": "Nº 1 Cadena Dial",
+    "genre": "Pop Rock"
   },
   {
     "year": 2007,
     "artist": "Pereza",
-    "title": "Estrella polar"
+    "title": "Estrella polar",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop Rock"
   },
   {
     "year": 2007,
     "artist": "El Sueño de Morfeo",
-    "title": "Para toda la vida"
+    "title": "Para toda la vida",
+    "peak": "Top 5 España",
+    "genre": "Folk Pop"
   },
   {
     "year": 2008,
     "artist": "El Canto del Loco",
-    "title": "Peter Pan"
+    "title": "Peter Pan",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop Rock"
   },
   {
     "year": 2009,
     "artist": "Fito & Fitipaldis",
-    "title": "Antes de que cuente diez"
+    "title": "Antes de que cuente diez",
+    "peak": "Nº 1 España",
+    "genre": "Rock"
   },
   {
     "year": 2010,
     "artist": "Maldita Nerea",
-    "title": "El secreto de las tortugas"
+    "title": "El secreto de las tortugas",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop"
   },
   {
     "year": 2011,
     "artist": "Pablo Alborán",
-    "title": "Solamente tú"
+    "title": "Solamente tú",
+    "peak": "Nº 1 España",
+    "genre": "Balada Pop"
   },
   {
     "year": 2012,
     "artist": "Vetusta Morla",
-    "title": "Copenhague"
+    "title": "Copenhague",
+    "peak": "Himno Indie Nacional",
+    "genre": "Indie Rock"
   },
   {
     "year": 2013,
     "artist": "Leiva",
-    "title": "Terriblemente cruel"
+    "title": "Terriblemente cruel",
+    "peak": "Nº 1 Los 40",
+    "genre": "Rock"
   },
   {
     "year": 2014,
     "artist": "Izal",
-    "title": "La mujer de verde"
+    "title": "La mujer de verde",
+    "peak": "Top Indie España",
+    "genre": "Indie Pop"
   },
   {
     "year": 2016,
     "artist": "Love of Lesbian",
-    "title": "Bajo el volcán"
+    "title": "Bajo el volcán",
+    "peak": "Top Indie España",
+    "genre": "Indie Rock"
   },
   {
     "year": 2018,
     "artist": "Rosalía",
-    "title": "Malamente"
+    "title": "Malamente",
+    "peak": "Nº 1 España",
+    "genre": "Flamenco Pop"
   },
   {
     "year": 2020,
     "artist": "C. Tangana",
-    "title": "Tú me dejaste de querer"
+    "title": "Tú me dejaste de querer",
+    "peak": "Nº 1 España",
+    "genre": "Rumba / Urban"
   },
   {
     "year": 2022,
     "artist": "Quevedo",
-    "title": "Quédate"
+    "title": "Quédate",
+    "peak": "Nº 1 Mundial",
+    "genre": "Urban Latino"
   }
 ]

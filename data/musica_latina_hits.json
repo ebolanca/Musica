@@ -2,196 +2,274 @@
   {
     "year": 1990,
     "artist": "Juan Luis Guerra",
-    "title": "Burbujas de amor"
+    "title": "Burbujas de amor",
+    "peak": "Nº 1 Billboard Latino",
+    "genre": "Bachata"
   },
   {
     "year": 1991,
     "artist": "Juan Luis Guerra",
-    "title": "La bilirrubina"
+    "title": "La bilirrubina",
+    "peak": "Nº 1 España",
+    "genre": "Merengue"
   },
   {
     "year": 1993,
     "artist": "Marc Anthony",
-    "title": "Hasta que te conocí"
+    "title": "Hasta que te conocí",
+    "peak": "Clásico Salsa",
+    "genre": "Salsa"
   },
   {
     "year": 1995,
     "artist": "Ricky Martin",
-    "title": "María"
+    "title": "María",
+    "peak": "Nº 1 España",
+    "genre": "Pop Latino"
   },
   {
     "year": 1995,
     "artist": "Shakira",
-    "title": "Estoy aquí"
+    "title": "Estoy aquí",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop Latino"
   },
   {
     "year": 1998,
     "artist": "Chayanne",
-    "title": "Salomé"
+    "title": "Salomé",
+    "peak": "Nº 1 España",
+    "genre": "Pop / Baile"
   },
   {
     "year": 1998,
     "artist": "Elvis Crespo",
-    "title": "Suavemente"
+    "title": "Suavemente",
+    "peak": "Himno Merengue Mundial",
+    "genre": "Merengue"
   },
   {
     "year": 1998,
     "artist": "Ricky Martin",
-    "title": "La copa de la vida"
+    "title": "La copa de la vida",
+    "peak": "Nº 1 Mundial",
+    "genre": "Pop Latino"
   },
   {
     "year": 1999,
     "artist": "Marc Anthony",
-    "title": "I Need to Know"
+    "title": "I Need to Know",
+    "peak": "Nº 1 Billboard",
+    "genre": "Salsa / Pop"
   },
   {
     "year": 1999,
     "artist": "Enrique Iglesias",
-    "title": "Bailamos"
+    "title": "Bailamos",
+    "peak": "Nº 1 España",
+    "genre": "Pop Latino"
   },
   {
     "year": 1999,
     "artist": "Carlos Vives",
-    "title": "Fruta fresca"
+    "title": "Fruta fresca",
+    "peak": "Nº 1 Cadena Dial",
+    "genre": "Vallenato Pop"
   },
   {
     "year": 2001,
     "artist": "Shakira",
-    "title": "Suerte (Whenever, Wherever)"
+    "title": "Suerte (Whenever, Wherever)",
+    "peak": "Nº 1 España",
+    "genre": "Pop Latino"
   },
   {
     "year": 2001,
     "artist": "Juanes",
-    "title": "A Dios le pido"
+    "title": "A Dios le pido",
+    "peak": "Nº 1 Los 40",
+    "genre": "Rock Latino"
   },
   {
     "year": 2002,
     "artist": "Chayanne",
-    "title": "Torero"
+    "title": "Torero",
+    "peak": "Nº 1 España",
+    "genre": "Pop / Baile"
   },
   {
     "year": 2002,
     "artist": "Bacilos",
-    "title": "Caraluna"
+    "title": "Caraluna",
+    "peak": "Nº 1 Cadena Dial",
+    "genre": "Pop Fusión"
   },
   {
     "year": 2004,
     "artist": "Daddy Yankee",
-    "title": "Gasolina"
+    "title": "Gasolina",
+    "peak": "Himno Reggaeton Mundial",
+    "genre": "Reggaeton"
   },
   {
     "year": 2004,
     "artist": "Juanes",
-    "title": "La camisa negra"
+    "title": "La camisa negra",
+    "peak": "Nº 1 España",
+    "genre": "Pop Latino"
   },
   {
     "year": 2005,
     "artist": "Shakira",
-    "title": "La tortura"
+    "title": "La tortura",
+    "peak": "Nº 1 España",
+    "genre": "Reggaeton Pop"
   },
   {
     "year": 2005,
     "artist": "Don Omar",
-    "title": "Dile"
+    "title": "Dile",
+    "peak": "Clásico Reggaeton",
+    "genre": "Reggaeton"
   },
   {
     "year": 2005,
     "artist": "Aventura",
-    "title": "Obsesión"
+    "title": "Obsesión",
+    "peak": "Nº 1 España",
+    "genre": "Bachata"
   },
   {
     "year": 2006,
     "artist": "Calle 13",
-    "title": "Atrévete-te-te"
+    "title": "Atrévete-te-te",
+    "peak": "Nº 1 Los 40 Urban",
+    "genre": "Urban"
   },
   {
     "year": 2006,
     "artist": "Don Omar",
-    "title": "Pobre diabla"
+    "title": "Pobre diabla",
+    "peak": "Top 5 España",
+    "genre": "Reggaeton"
   },
   {
     "year": 2009,
     "artist": "Don Omar",
-    "title": "Danza Kuduro"
+    "title": "Danza Kuduro",
+    "peak": "Nº 1 España",
+    "genre": "Kuduro / Latino"
   },
   {
     "year": 2010,
     "artist": "Shakira",
-    "title": "Waka Waka (Esto es África)"
+    "title": "Waka Waka (Esto es África)",
+    "peak": "Nº 1 Mundial",
+    "genre": "Pop Fusión"
   },
   {
     "year": 2013,
     "artist": "Marc Anthony",
-    "title": "Vivir mi vida"
+    "title": "Vivir mi vida",
+    "peak": "Nº 1 España",
+    "genre": "Salsa"
   },
   {
     "year": 2014,
     "artist": "Enrique Iglesias",
-    "title": "Bailando"
+    "title": "Bailando",
+    "peak": "Nº 1 España",
+    "genre": "Pop Latino"
   },
   {
     "year": 2015,
     "artist": "Gente de Zona",
-    "title": "La Gozadera"
+    "title": "La Gozadera",
+    "peak": "Nº 1 España",
+    "genre": "Salsa / Cubatón"
   },
   {
     "year": 2015,
     "artist": "J Balvin",
-    "title": "Ginza"
+    "title": "Ginza",
+    "peak": "Nº 1 Los 40 Urban",
+    "genre": "Reggaeton"
   },
   {
     "year": 2017,
     "artist": "Luis Fonsi",
-    "title": "Despacito"
+    "title": "Despacito",
+    "peak": "Nº 1 Mundial Histórico",
+    "genre": "Pop Latino"
   },
   {
     "year": 2017,
     "artist": "J Balvin",
-    "title": "Mi Gente"
+    "title": "Mi Gente",
+    "peak": "Nº 1 España",
+    "genre": "Reggaeton"
   },
   {
     "year": 2017,
     "artist": "Maluma",
-    "title": "Felices los 4"
+    "title": "Felices los 4",
+    "peak": "Nº 1 Los 40 Urban",
+    "genre": "Pop Urbano"
   },
   {
     "year": 2019,
     "artist": "Daddy Yankee",
-    "title": "Con Calma"
+    "title": "Con Calma",
+    "peak": "Nº 1 España",
+    "genre": "Reggaeton"
   },
   {
     "year": 2020,
     "artist": "Bad Bunny",
-    "title": "Safaera"
+    "title": "Safaera",
+    "peak": "Himno Urbano",
+    "genre": "Reggaeton"
   },
   {
     "year": 2020,
     "artist": "Camilo",
-    "title": "Vida de Rico"
+    "title": "Vida de Rico",
+    "peak": "Nº 1 Cadena Dial",
+    "genre": "Cumbia Pop"
   },
   {
     "year": 2021,
     "artist": "Rauw Alejandro",
-    "title": "Todo de Ti"
+    "title": "Todo de Ti",
+    "peak": "Nº 1 España",
+    "genre": "Synth-Pop Latino"
   },
   {
     "year": 2022,
     "artist": "Bad Bunny",
-    "title": "Tití Me Preguntó"
+    "title": "Tití Me Preguntó",
+    "peak": "Nº 1 Mundial",
+    "genre": "Dembow / Trap"
   },
   {
     "year": 2022,
     "artist": "Bizarrap & Quevedo",
-    "title": "Bzrp Music Sessions, Vol. 52"
+    "title": "Bzrp Music Sessions, Vol. 52",
+    "peak": "Nº 1 Global Spotify",
+    "genre": "EDM / Trap"
   },
   {
     "year": 2023,
     "artist": "Bizarrap & Shakira",
-    "title": "Bzrp Music Sessions, Vol. 53"
+    "title": "Bzrp Music Sessions, Vol. 53",
+    "peak": "Nº 1 España",
+    "genre": "Pop / Electrónica"
   },
   {
     "year": 2023,
     "artist": "Karol G & Shakira",
-    "title": "TQG"
+    "title": "TQG",
+    "peak": "Nº 1 Billboard Latino",
+    "genre": "Reggaeton"
   }
 ]
