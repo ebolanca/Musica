@@ -123,50 +123,5 @@
     "artist": "Stevie Wonder",
     "title": "Superstition",
     "dismissedAt": "2026-09-04T11:43:54.966Z"
-  },
-  "eminem_therealslimshady": {
-    "artist": "Eminem",
-    "title": "The Real Slim Shady",
-    "dismissedAt": "2026-09-05T09:26:42.125Z"
-  },
-  "britneyspears_oopsididitagain": {
-    "artist": "Britney Spears",
-    "title": "Oops!... I Did It Again",
-    "dismissedAt": "2026-09-05T09:26:59.303Z"
-  },
-  "thestrokes_lastnite": {
-    "artist": "The Strokes",
-    "title": "Last Nite",
-    "dismissedAt": "2026-09-05T09:27:13.009Z"
-  },
-  "gorillaz_clinteastwood": {
-    "artist": "Gorillaz",
-    "title": "Clint Eastwood",
-    "dismissedAt": "2026-09-05T09:27:33.106Z"
-  },
-  "coldplay_thescientist": {
-    "artist": "Coldplay",
-    "title": "The Scientist",
-    "dismissedAt": "2026-09-05T09:28:48.331Z"
-  },
-  "norahjones_dontknowwhy": {
-    "artist": "Norah Jones",
-    "title": "Don't Know Why",
-    "dismissedAt": "2026-09-05T09:31:18.462Z"
-  },
-  "thewhitestripes_sevennationarmy": {
-    "artist": "The White Stripes",
-    "title": "Seven Nation Army",
-    "dismissedAt": "2026-09-05T09:32:03.414Z"
-  },
-  "thekillers_mrbrightside": {
-    "artist": "The Killers",
-    "title": "Mr. Brightside",
-    "dismissedAt": "2026-09-05T09:32:19.662Z"
-  },
-  "franzferdinand_takemeout": {
-    "artist": "Franz Ferdinand",
-    "title": "Take Me Out",
-    "dismissedAt": "2026-09-05T09:32:34.790Z"
   }
 }

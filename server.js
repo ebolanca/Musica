@@ -2267,7 +2267,22 @@ function getRecommendationDismissedKey(artist, title) {
 function isRecommendationDismissed(artist, title) {
     const d = loadDismissedRecommendations();
     const k = getRecommendationDismissedKey(artist, title);
-    return !!d[k];
+    if (d[k]) return true;
+
+    // Búsqueda inteligente por tokens si el artista o el formato difieren ligeramente (comas, feats, etc.)
+    const cleanTit = normalizeSearchText(cleanSongTitle(title));
+    if (!cleanTit || cleanTit.length < 2) return false;
+    const tokens = getArtistTokens(artist);
+
+    for (const [key, item] of Object.entries(d)) {
+        const itemTit = normalizeSearchText(cleanSongTitle(item.title || ''));
+        if (itemTit === cleanTit) {
+            const itemTokens = getArtistTokens(item.artist || '');
+            if (tokens.length === 0 || itemTokens.length === 0) return true;
+            if (tokens.some(t => itemTokens.includes(t))) return true;
+        }
+    }
+    return false;
 }
 
 function normalizeSearchText(str) {
@@ -2714,6 +2729,10 @@ async function handleRecommendationsRadioRadar(req, res) {
             const k = `${cleanArt}_${cleanTit}`;
             if (!seen.has(k)) {
                 seen.add(k);
+                // Si la canción ha sido omitida por el usuario, no mostrarla en el radar
+                if (isRecommendationDismissed(it.artist, it.title)) {
+                    continue;
+                }
                 const isOwned = isSongInCollection(it.artist, it.title);
                 unique.push({
                     ...it,
@@ -2944,8 +2963,26 @@ function handleRecommendationsUndismiss(req, res) {
 
         const d = loadDismissedRecommendations();
         const k = getRecommendationDismissedKey(artist, title);
+        let removed = false;
         if (d[k]) {
             delete d[k];
+            removed = true;
+        }
+
+        const cleanTit = normalizeSearchText(cleanSongTitle(title));
+        const tokens = getArtistTokens(artist);
+        for (const [key, item] of Object.entries(d)) {
+            const itemTit = normalizeSearchText(cleanSongTitle(item.title || ''));
+            if (itemTit === cleanTit) {
+                const itemTokens = getArtistTokens(item.artist || '');
+                if (tokens.some(t => itemTokens.includes(t)) || tokens.length === 0 || itemTokens.length === 0) {
+                    delete d[key];
+                    removed = true;
+                }
+            }
+        }
+
+        if (removed) {
             saveDismissedRecommendations();
             console.log(`↩️ [RECOMMENDATION UNDISMISS] Sugerencia restaurada: ${artist} - ${title}`);
         }

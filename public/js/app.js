@@ -2762,22 +2762,40 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             const data = await res.json();
             if (res.ok && data.success) {
-                setTimeout(() => {
-                    cardEl.remove();
-                    renderRetroHitsView();
-                }, 300);
-                showToastNotification(`🗑️ "${title}" omitida. No volverá a sugerirse.`);
+                if (retroState.mode === 'radar') {
+                    // En Radar: animación visual y retirada directa del DOM sin recargar la pantalla
+                    cardEl.style.transition = 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)';
+                    cardEl.style.opacity = '0';
+                    cardEl.style.transform = 'scale(0.85) translateY(20px)';
+                    setTimeout(() => {
+                        cardEl.remove();
+                        const grid = document.getElementById('radar-tracks-grid');
+                        if (grid && grid.querySelectorAll('.retro-card').length === 0) {
+                            grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted);"><p>No quedan más canciones en la emisión de esta emisora.</p></div>';
+                        }
+                    }, 350);
+                    showToastNotification(`🗑️ "${title}" omitida del radar.`);
+                } else {
+                    // En Catálogo (timeline)
+                    setTimeout(() => {
+                        cardEl.remove();
+                        renderRetroHitsView();
+                    }, 300);
+                    showToastNotification(`🗑️ "${title}" omitida. No volverá a sugerirse.`);
+                }
+
                 const bRetro = document.getElementById('badge-retro');
                 if (bRetro && parseInt(bRetro.textContent, 10) > 0) {
                     bRetro.textContent = parseInt(bRetro.textContent, 10) - 1;
                 }
             } else {
                 cardEl.classList.remove('dismissing');
-                alert('No se pudo omitir la sugerencia.');
+                alert('No se pudo omitir la sugerencia: ' + (data?.error || 'Error desconocido'));
             }
         } catch(e) {
             cardEl.classList.remove('dismissing');
             console.error('Error omitiendo:', e);
+            alert('Error al omitir la pista: ' + e.message);
         }
     }
 
@@ -3143,7 +3161,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const dismissBtn = card.querySelector('.btn-retro-dismiss');
                 if (dismissBtn) {
-                    dismissBtn.addEventListener('click', () => {
+                    dismissBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
                         dismissRetroHit(hit.artist, hit.title, card);
                     });
                 }
@@ -3317,7 +3337,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const dismissBtn = card.querySelector('.btn-retro-dismiss');
                 if (dismissBtn) {
-                    dismissBtn.addEventListener('click', () => {
+                    dismissBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
                         dismissRetroHit(track.artist, track.title, card);
                     });
                 }
