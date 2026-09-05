@@ -39860,5 +39860,1743 @@
       }
     ],
     "_aiModel": "gemini-3.1-flash-lite"
+  },
+  "Pablo Alborán - Quién": {
+    "title": "Quién",
+    "artist": "Pablo Alborán",
+    "year": "2013",
+    "album": "Tanto",
+    "synopsis": "Obra de pop melódico con tintes de balada orquestal, caracterizada por una producción pulida que prioriza la dinámica vocal sobre la instrumentación. La tesis sónica se centra en la transición de una base acústica íntima hacia un clímax cinematográfico, consolidando el sello de identidad del artista en su etapa de mayor proyección internacional.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción, liderada por Manuel Illán, se basa en una estructura de piano vertical con una técnica de microfoneo de proximidad (posiblemente un par estéreo Neumann KM184) que captura los armónicos superiores y el ruido mecánico de las teclas. La sección rítmica es programada con una cuantización precisa, combinando percusión orgánica y sintética. En el espectro de frecuencias, los subgraves (40-60 Hz) están controlados mediante compresión side-chain para dejar espacio a la voz. Los medios (500 Hz - 2 kHz) presentan una saturación armónica sutil en las guitarras acústicas, mientras que la voz principal utiliza una cadena de procesamiento con compresión tipo FET (1176) para mantener la consistencia en los saltos dinámicos. La reverberación es de tipo 'Plate' con un decay medio, otorgando una profundidad espacial que evita el enmascaramiento de las frecuencias agudas."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra explora la incertidumbre post-ruptura y la disonancia cognitiva. Fragmento clave: '¿Quién va a quererte como yo te quiero? / ¿Quién va a cuidarte si yo no estoy?'. El uso de la interrogación retórica funciona como un mecanismo de negación. Vocabulario: 'Desdibujar' (perder los contornos de la identidad propia en el otro). El doble sentido reside en la palabra 'Quién', que actúa como un pronombre interrogativo pero también como una sombra de la sustitución emocional. La estructura lírica sigue un patrón de ascenso emocional, donde el verso inicial es introspectivo y el estribillo se expande hacia una demanda de validación afectiva."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial, dirigido por Salvador Palacios, utiliza una estética de alto contraste y desaturación selectiva. La narrativa visual se apoya en el simbolismo de la soledad en espacios urbanos y el uso de espejos como metáfora de la fragmentación del 'yo'. La fotografía emplea lentes de gran apertura para aislar al sujeto del fondo, enfatizando la vulnerabilidad del artista. No hay una trama lineal, sino una sucesión de planos detalle que refuerzan la angustia lírica."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "El tema fue un éxito comercial masivo en España y Latinoamérica, alcanzando el número 1 en las listas de ventas de PROMUSICAE. Es una pieza fundamental en la discografía de Alborán, marcando su transición de artista revelación a estrella consolidada. A diferencia de otros temas de nicho, 'Quién' tuvo una rotación radial intensiva, convirtiéndose en un estándar del pop en español de la década de 2010. No existen registros de controversias técnicas, siendo una pieza técnica de manual sobre cómo producir una balada pop comercialmente efectiva."
+      }
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
+  },
+  "Ariana Grande - we can't be friends (wait for your love)": {
+    "title": "we can't be friends (wait for your love)",
+    "artist": "Ariana Grande",
+    "year": "2024",
+    "album": "we can't be friends (wait for your love)",
+    "synopsis": "\"we can't be friends (wait for your love)\" (2024) de Ariana Grande: \"We Can't Be Friends (Wait for Your Love)\" is a song by American singer-songwriter Ariana Grande. Un tema indispensable que marcó una etapa definitoria en la evolución musical de su época.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Ariana Grande",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Ariana Grande, \"we can't be friends (wait for your love)\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"we can't be friends (wait for your love)\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"we can't be friends (wait for your love)\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Ariana Grande aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"we can't be friends (wait for your love)\" se mantiene como un himno atemporal dentro de la discografía de Ariana Grande y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Ariana Grande."
+          }
+        ]
+      }
+    ]
+  },
+  "Lady Gaga, Bruno Mars - Die With A Smile": {
+    "title": "Die With A Smile",
+    "artist": "Lady Gaga, Bruno Mars",
+    "year": "2026",
+    "album": "Super Bowl LX Halftime Show (Live) - EP",
+    "synopsis": "\"Die With A Smile\" (2026) de Lady Gaga, Bruno Mars: \"Die with a Smile\" is a song by American singer-songwriters Lady Gaga and Bruno Mars. Un tema indispensable que marcó una etapa definitoria en la evolución musical de su época.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Lady Gaga, Bruno Mars",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Lady Gaga, Bruno Mars, \"Die With A Smile\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Die With A Smile\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Die With A Smile\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Lady Gaga, Bruno Mars aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Die With A Smile\" se mantiene como un himno atemporal dentro de la discografía de Lady Gaga, Bruno Mars y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Lady Gaga, Bruno Mars."
+          }
+        ]
+      }
+    ]
+  },
+  "Taylor Swift - The Fate of Ophelia": {
+    "title": "The Fate of Ophelia",
+    "artist": "Taylor Swift",
+    "year": "2025",
+    "album": "The Life of a Showgirl (Track by Track Version)",
+    "synopsis": "\"The Fate of Ophelia\" (2025) de Taylor Swift: \"The Fate of Ophelia\" is a song by the American singer-songwriter Taylor Swift and the lead single from her twelfth studio album, The Life of a Showgirl. Un tema indispensable que marcó una etapa definitoria en la evolución musical de su época.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Taylor Swift",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Taylor Swift, \"The Fate of Ophelia\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"The Fate of Ophelia\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"The Fate of Ophelia\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Taylor Swift aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"The Fate of Ophelia\" se mantiene como un himno atemporal dentro de la discografía de Taylor Swift y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Taylor Swift."
+          }
+        ]
+      }
+    ]
+  },
+  "Lana Del Rey, Cedric Gervais - Summertime Sadness (Lana Del Rey Vs. Cedric Gervais) - Cedric Gervais Remix": {
+    "title": "Summertime Sadness (Lana Del Rey Vs. Cedric Gervais) - Cedric Gervais Remix",
+    "artist": "Lana Del Rey, Cedric Gervais",
+    "year": "2013",
+    "album": "Born to Die",
+    "synopsis": "\"Summertime Sadness (Lana Del Rey Vs. Cedric Gervais) - Cedric Gervais Remix\" (2013) de Lana Del Rey, Cedric Gervais: Elizabeth Woolridge Grant (born June 21, 1985), known professionally as Lana Del Rey, is an American singer-songwriter. Un tema indispensable que marcó una etapa definitoria en la evolución musical de su época.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Lana Del Rey, Cedric Gervais",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Lana Del Rey, Cedric Gervais, \"Summertime Sadness (Lana Del Rey Vs. Cedric Gervais) - Cedric Gervais Remix\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Summertime Sadness (Lana Del Rey Vs. Cedric Gervais) - Cedric Gervais Remix\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Summertime Sadness (Lana Del Rey Vs. Cedric Gervais) - Cedric Gervais Remix\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Lana Del Rey, Cedric Gervais aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Summertime Sadness (Lana Del Rey Vs. Cedric Gervais) - Cedric Gervais Remix\" se mantiene como un himno atemporal dentro de la discografía de Lana Del Rey, Cedric Gervais y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Lana Del Rey, Cedric Gervais."
+          }
+        ]
+      }
+    ]
+  },
+  "Shakira - Whenever, Wherever": {
+    "title": "Whenever, Wherever",
+    "artist": "Shakira",
+    "year": "2002",
+    "album": "Laundry Service",
+    "synopsis": "\"Whenever, Wherever\" (2002) de Shakira: \"Whenever, Wherever\" is a song recorded by Colombian singer-songwriter Shakira for her debut English-language studio album, Laundry Service (2001), her fifth overall. Un tema indispensable que marcó una etapa definitoria en la evolución musical de su época.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Shakira",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Shakira, \"Whenever, Wherever\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Whenever, Wherever\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Whenever, Wherever\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Shakira aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Whenever, Wherever\" se mantiene como un himno atemporal dentro de la discografía de Shakira y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Shakira."
+          }
+        ]
+      }
+    ]
+  },
+  "A.R. Rahman, The Pussycat Dolls, Nicole Scherzinger - Jai Ho! (You Are My Destiny)": {
+    "title": "Jai Ho! (You Are My Destiny)",
+    "artist": "A.R. Rahman, The Pussycat Dolls, Nicole Scherzinger",
+    "year": "2009",
+    "album": "The Master Collection",
+    "synopsis": "\"Jai Ho! (You Are My Destiny)\" (2009) de A.R. Rahman, The Pussycat Dolls, Nicole Scherzinger es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de A.R. Rahman, The Pussycat Dolls, Nicole Scherzinger",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de A.R. Rahman, The Pussycat Dolls, Nicole Scherzinger, \"Jai Ho! (You Are My Destiny)\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Jai Ho! (You Are My Destiny)\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Jai Ho! (You Are My Destiny)\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de A.R. Rahman, The Pussycat Dolls, Nicole Scherzinger aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Jai Ho! (You Are My Destiny)\" se mantiene como un himno atemporal dentro de la discografía de A.R. Rahman, The Pussycat Dolls, Nicole Scherzinger y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de A.R. Rahman, The Pussycat Dolls, Nicole Scherzinger."
+          }
+        ]
+      }
+    ]
+  },
+  "Kid Cudi, Crookers - Day 'N' Nite - Crookers Remix": {
+    "title": "Day 'N' Nite - Crookers Remix",
+    "artist": "Kid Cudi, Crookers",
+    "year": "2008",
+    "album": "Man On the Moon: The End of Day",
+    "synopsis": "\"Day 'N' Nite - Crookers Remix\" (2008) de Kid Cudi, Crookers es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Kid Cudi, Crookers",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Kid Cudi, Crookers, \"Day 'N' Nite - Crookers Remix\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Day 'N' Nite - Crookers Remix\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Day 'N' Nite - Crookers Remix\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Kid Cudi, Crookers aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Day 'N' Nite - Crookers Remix\" se mantiene como un himno atemporal dentro de la discografía de Kid Cudi, Crookers y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Kid Cudi, Crookers."
+          }
+        ]
+      }
+    ]
+  },
+  "Purple Disco Machine, Sophie and the Giants - Hypnotized": {
+    "title": "Hypnotized",
+    "artist": "Purple Disco Machine, Sophie and the Giants",
+    "year": "2023",
+    "album": "Paradise",
+    "synopsis": "\"Hypnotized\" (2023) de Purple Disco Machine, Sophie and the Giants es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Purple Disco Machine, Sophie and the Giants",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Purple Disco Machine, Sophie and the Giants, \"Hypnotized\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Hypnotized\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Hypnotized\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Purple Disco Machine, Sophie and the Giants aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Hypnotized\" se mantiene como un himno atemporal dentro de la discografía de Purple Disco Machine, Sophie and the Giants y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Purple Disco Machine, Sophie and the Giants."
+          }
+        ]
+      }
+    ]
+  },
+  "Matt Simons, Deepend - Catch & Release - Deepend Remix": {
+    "title": "Catch & Release - Deepend Remix",
+    "artist": "Matt Simons, Deepend",
+    "year": "2015",
+    "album": "Catch & Release (Deluxe Edition)",
+    "synopsis": "\"Catch & Release - Deepend Remix\" (2015) de Matt Simons, Deepend es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Matt Simons, Deepend",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Matt Simons, Deepend, \"Catch & Release - Deepend Remix\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Catch & Release - Deepend Remix\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Catch & Release - Deepend Remix\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Matt Simons, Deepend aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Catch & Release - Deepend Remix\" se mantiene como un himno atemporal dentro de la discografía de Matt Simons, Deepend y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Matt Simons, Deepend."
+          }
+        ]
+      }
+    ]
+  },
+  "Zedd, Hayley Williams - Stay The Night - Featuring Hayley Williams Of Paramore": {
+    "title": "Stay The Night - Featuring Hayley Williams Of Paramore",
+    "artist": "Zedd, Hayley Williams",
+    "year": "2014",
+    "album": "Clarity (Deluxe)",
+    "synopsis": "\"Stay The Night - Featuring Hayley Williams Of Paramore\" (2014) de Zedd, Hayley Williams es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Zedd, Hayley Williams",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Zedd, Hayley Williams, \"Stay The Night - Featuring Hayley Williams Of Paramore\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Stay The Night - Featuring Hayley Williams Of Paramore\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Stay The Night - Featuring Hayley Williams Of Paramore\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Zedd, Hayley Williams aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Stay The Night - Featuring Hayley Williams Of Paramore\" se mantiene como un himno atemporal dentro de la discografía de Zedd, Hayley Williams y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Zedd, Hayley Williams."
+          }
+        ]
+      }
+    ]
+  },
+  "Dua Lipa - Training Season": {
+    "title": "Training Season",
+    "artist": "Dua Lipa",
+    "year": "2024",
+    "album": "Training Season (Chloé Caillet Mix) - Single",
+    "synopsis": "\"Training Season\" (2024) de Dua Lipa es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Dua Lipa",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Dua Lipa, \"Training Season\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Training Season\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Training Season\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Dua Lipa aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Training Season\" se mantiene como un himno atemporal dentro de la discografía de Dua Lipa y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Dua Lipa."
+          }
+        ]
+      }
+    ]
+  },
+  "Disturbed, CYRIL - The Sound of Silence - CYRIL Remix": {
+    "title": "The Sound of Silence - CYRIL Remix",
+    "artist": "Disturbed, CYRIL",
+    "year": "2024",
+    "album": "Immortalized",
+    "synopsis": "\"The Sound of Silence - CYRIL Remix\" (2024) de Disturbed, CYRIL es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Disturbed, CYRIL",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Disturbed, CYRIL, \"The Sound of Silence - CYRIL Remix\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"The Sound of Silence - CYRIL Remix\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"The Sound of Silence - CYRIL Remix\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Disturbed, CYRIL aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"The Sound of Silence - CYRIL Remix\" se mantiene como un himno atemporal dentro de la discografía de Disturbed, CYRIL y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Disturbed, CYRIL."
+          }
+        ]
+      }
+    ]
+  },
+  "Shakira, Freshlyground - Waka Waka (This Time for Africa) [The Official 2010 FIFA World Cup (TM) Song]": {
+    "title": "Waka Waka (This Time for Africa) [The Official 2010 FIFA World Cup (TM) Song]",
+    "artist": "Shakira, Freshlyground",
+    "year": "2013",
+    "album": "Party Hits: Summer Edition",
+    "synopsis": "\"Waka Waka (This Time for Africa) [The Official 2010 FIFA World Cup (TM) Song]\" (2013) de Shakira, Freshlyground es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Shakira, Freshlyground",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Shakira, Freshlyground, \"Waka Waka (This Time for Africa) [The Official 2010 FIFA World Cup (TM) Song]\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Waka Waka (This Time for Africa) [The Official 2010 FIFA World Cup (TM) Song]\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Waka Waka (This Time for Africa) [The Official 2010 FIFA World Cup (TM) Song]\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Shakira, Freshlyground aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Waka Waka (This Time for Africa) [The Official 2010 FIFA World Cup (TM) Song]\" se mantiene como un himno atemporal dentro de la discografía de Shakira, Freshlyground y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Shakira, Freshlyground."
+          }
+        ]
+      }
+    ]
+  },
+  "Shakira, Freshlyground - Waka Waka (This Time for Africa) [The Official 2010 FIFA World Cup (TM) Song] (feat. Freshlyground)": {
+    "title": "Waka Waka (This Time for Africa) [The Official 2010 FIFA World Cup (TM) Song]",
+    "artist": "Shakira, Freshlyground",
+    "year": "2013",
+    "album": "Party Hits: Summer Edition",
+    "synopsis": "\"Waka Waka (This Time for Africa) [The Official 2010 FIFA World Cup (TM) Song]\" (2013) de Shakira, Freshlyground es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Shakira, Freshlyground",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Shakira, Freshlyground, \"Waka Waka (This Time for Africa) [The Official 2010 FIFA World Cup (TM) Song]\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Waka Waka (This Time for Africa) [The Official 2010 FIFA World Cup (TM) Song]\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Waka Waka (This Time for Africa) [The Official 2010 FIFA World Cup (TM) Song]\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Shakira, Freshlyground aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Waka Waka (This Time for Africa) [The Official 2010 FIFA World Cup (TM) Song]\" se mantiene como un himno atemporal dentro de la discografía de Shakira, Freshlyground y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Shakira, Freshlyground."
+          }
+        ]
+      }
+    ]
+  },
+  "Riton, Nightcrawlers, Mufasa & Hypeman, Mufasa, Dopamine - Friday - Dopamine Re": {
+    "title": "Friday - Dopamine Re",
+    "artist": "Riton, Nightcrawlers, Mufasa & Hypeman, Mufasa, Dopamine",
+    "year": "2021",
+    "album": "Friday (feat. Mufasa & Hypeman) (Dopamine Re-Edit)",
+    "synopsis": "\"Friday - Dopamine Re\" (2021) de Riton, Nightcrawlers, Mufasa & Hypeman, Mufasa, Dopamine es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Riton, Nightcrawlers, Mufasa & Hypeman, Mufasa, Dopamine",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Riton, Nightcrawlers, Mufasa & Hypeman, Mufasa, Dopamine, \"Friday - Dopamine Re\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Friday - Dopamine Re\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Friday - Dopamine Re\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Riton, Nightcrawlers, Mufasa & Hypeman, Mufasa, Dopamine aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Friday - Dopamine Re\" se mantiene como un himno atemporal dentro de la discografía de Riton, Nightcrawlers, Mufasa & Hypeman, Mufasa, Dopamine y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Riton, Nightcrawlers, Mufasa & Hypeman, Mufasa, Dopamine."
+          }
+        ]
+      }
+    ]
+  },
+  "Riton, Nightcrawlers, Mufasa & Hypeman, Mufasa, Dopamine - Friday (feat. Mufasa & Hypeman) - Dopamine Re-Edit": {
+    "title": "Friday - Dopamine Re",
+    "artist": "Riton, Nightcrawlers, Mufasa & Hypeman, Mufasa, Dopamine",
+    "year": "2021",
+    "album": "Friday (feat. Mufasa & Hypeman) (Dopamine Re-Edit)",
+    "synopsis": "\"Friday - Dopamine Re\" (2021) de Riton, Nightcrawlers, Mufasa & Hypeman, Mufasa, Dopamine es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Riton, Nightcrawlers, Mufasa & Hypeman, Mufasa, Dopamine",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Riton, Nightcrawlers, Mufasa & Hypeman, Mufasa, Dopamine, \"Friday - Dopamine Re\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Friday - Dopamine Re\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Friday - Dopamine Re\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Riton, Nightcrawlers, Mufasa & Hypeman, Mufasa, Dopamine aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Friday - Dopamine Re\" se mantiene como un himno atemporal dentro de la discografía de Riton, Nightcrawlers, Mufasa & Hypeman, Mufasa, Dopamine y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Riton, Nightcrawlers, Mufasa & Hypeman, Mufasa, Dopamine."
+          }
+        ]
+      }
+    ]
+  },
+  "Nea, felix jaehn - Some Say - Felix Jaehn Remix": {
+    "title": "Some Say - Felix Jaehn Remix",
+    "artist": "Nea, felix jaehn",
+    "year": "2020",
+    "album": "Some Say - Single",
+    "synopsis": "\"Some Say - Felix Jaehn Remix\" (2020) de Nea, felix jaehn es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Nea, felix jaehn",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Nea, felix jaehn, \"Some Say - Felix Jaehn Remix\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Some Say - Felix Jaehn Remix\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Some Say - Felix Jaehn Remix\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Nea, felix jaehn aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Some Say - Felix Jaehn Remix\" se mantiene como un himno atemporal dentro de la discografía de Nea, felix jaehn y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Nea, felix jaehn."
+          }
+        ]
+      }
+    ]
+  },
+  "Imagine Dragons, JID, Arcane, League of Legends - Enemy": {
+    "title": "Enemy",
+    "artist": "Imagine Dragons, JID, Arcane, League of Legends",
+    "year": "2021",
+    "album": "Enemy (from the series Arcane League of Legends)",
+    "synopsis": "\"Enemy\" (2021) de Imagine Dragons, JID, Arcane, League of Legends es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Imagine Dragons, JID, Arcane, League of Legends",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Imagine Dragons, JID, Arcane, League of Legends, \"Enemy\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Enemy\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Enemy\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Imagine Dragons, JID, Arcane, League of Legends aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Enemy\" se mantiene como un himno atemporal dentro de la discografía de Imagine Dragons, JID, Arcane, League of Legends y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Imagine Dragons, JID, Arcane, League of Legends."
+          }
+        ]
+      }
+    ]
+  },
+  "Imagine Dragons, JID, Arcane, League of Legends - Enemy (with JID) - from the series Arcane League of Legends": {
+    "title": "Enemy",
+    "artist": "Imagine Dragons, JID, Arcane, League of Legends",
+    "year": "2021",
+    "album": "Enemy (from the series Arcane League of Legends)",
+    "synopsis": "\"Enemy\" (2021) de Imagine Dragons, JID, Arcane, League of Legends es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Imagine Dragons, JID, Arcane, League of Legends",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Imagine Dragons, JID, Arcane, League of Legends, \"Enemy\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Enemy\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Enemy\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Imagine Dragons, JID, Arcane, League of Legends aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Enemy\" se mantiene como un himno atemporal dentro de la discografía de Imagine Dragons, JID, Arcane, League of Legends y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Imagine Dragons, JID, Arcane, League of Legends."
+          }
+        ]
+      }
+    ]
+  },
+  "Elton John, Dua Lipa, PNAU - Cold Heart - PNAU Remix": {
+    "title": "Cold Heart - PNAU Remix",
+    "artist": "Elton John, Dua Lipa, PNAU",
+    "year": "2021",
+    "album": "Cold Heart (PNAU Remix) - Single",
+    "synopsis": "\"Cold Heart - PNAU Remix\" (2021) de Elton John, Dua Lipa, PNAU es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Elton John, Dua Lipa, PNAU",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Elton John, Dua Lipa, PNAU, \"Cold Heart - PNAU Remix\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Cold Heart - PNAU Remix\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Cold Heart - PNAU Remix\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Elton John, Dua Lipa, PNAU aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Cold Heart - PNAU Remix\" se mantiene como un himno atemporal dentro de la discografía de Elton John, Dua Lipa, PNAU y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Elton John, Dua Lipa, PNAU."
+          }
+        ]
+      }
+    ]
+  },
+  "Olly Alexander (Years & Years) - King": {
+    "title": "King",
+    "artist": "Olly Alexander (Years & Years)",
+    "year": "2016",
+    "album": "Communion (Deluxe)",
+    "synopsis": "\"King\" (2016) de Olly Alexander (Years & Years) es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Olly Alexander (Years & Years)",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Olly Alexander (Years & Years), \"King\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"King\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"King\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Olly Alexander (Years & Years) aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"King\" se mantiene como un himno atemporal dentro de la discografía de Olly Alexander (Years & Years) y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Olly Alexander (Years & Years)."
+          }
+        ]
+      }
+    ]
+  },
+  "Enrique Iglesias, Descemer Bueno, Gente De Zona - Bailando": {
+    "title": "Bailando",
+    "artist": "Enrique Iglesias, Descemer Bueno, Gente De Zona",
+    "year": "2014",
+    "album": "Bailando (Karaoke Version)",
+    "synopsis": "\"Bailando\" (2014) de Enrique Iglesias, Descemer Bueno, Gente De Zona es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Enrique Iglesias, Descemer Bueno, Gente De Zona",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Enrique Iglesias, Descemer Bueno, Gente De Zona, \"Bailando\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Bailando\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Bailando\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Enrique Iglesias, Descemer Bueno, Gente De Zona aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Bailando\" se mantiene como un himno atemporal dentro de la discografía de Enrique Iglesias, Descemer Bueno, Gente De Zona y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Enrique Iglesias, Descemer Bueno, Gente De Zona."
+          }
+        ]
+      }
+    ]
+  },
+  "Enrique Iglesias, Descemer Bueno, Gente De Zona - Bailando - Spanish Version": {
+    "title": "Bailando",
+    "artist": "Enrique Iglesias, Descemer Bueno, Gente De Zona",
+    "year": "2014",
+    "album": "Bailando (Karaoke Version)",
+    "synopsis": "\"Bailando\" (2014) de Enrique Iglesias, Descemer Bueno, Gente De Zona es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Enrique Iglesias, Descemer Bueno, Gente De Zona",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Enrique Iglesias, Descemer Bueno, Gente De Zona, \"Bailando\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Bailando\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Bailando\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Enrique Iglesias, Descemer Bueno, Gente De Zona aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Bailando\" se mantiene como un himno atemporal dentro de la discografía de Enrique Iglesias, Descemer Bueno, Gente De Zona y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Enrique Iglesias, Descemer Bueno, Gente De Zona."
+          }
+        ]
+      }
+    ]
+  },
+  "Sheppard - Geronimo": {
+    "title": "Geronimo",
+    "artist": "Sheppard",
+    "year": "2025",
+    "album": "Geronimo 2025",
+    "synopsis": "\"Geronimo\" (2025) de Sheppard es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Sheppard",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Sheppard, \"Geronimo\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Geronimo\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Geronimo\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Sheppard aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Geronimo\" se mantiene como un himno atemporal dentro de la discografía de Sheppard y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Sheppard."
+          }
+        ]
+      }
+    ]
+  },
+  "Naughty Boy, Sam Smith - La La La": {
+    "title": "La La La",
+    "artist": "Naughty Boy, Sam Smith",
+    "year": "2014",
+    "album": "Elements",
+    "synopsis": "\"La La La\" (2014) de Naughty Boy, Sam Smith es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Naughty Boy, Sam Smith",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Naughty Boy, Sam Smith, \"La La La\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"La La La\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"La La La\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Naughty Boy, Sam Smith aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"La La La\" se mantiene como un himno atemporal dentro de la discografía de Naughty Boy, Sam Smith y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Naughty Boy, Sam Smith."
+          }
+        ]
+      }
+    ]
+  },
+  "Edward Maya, Vika Jigulina - Stereo Love": {
+    "title": "Stereo Love",
+    "artist": "Edward Maya, Vika Jigulina",
+    "year": "2025",
+    "album": "Love Me More - Single",
+    "synopsis": "\"Stereo Love\" (2025) de Edward Maya, Vika Jigulina es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Edward Maya, Vika Jigulina",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Edward Maya, Vika Jigulina, \"Stereo Love\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Stereo Love\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Stereo Love\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Edward Maya, Vika Jigulina aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Stereo Love\" se mantiene como un himno atemporal dentro de la discografía de Edward Maya, Vika Jigulina y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Edward Maya, Vika Jigulina."
+          }
+        ]
+      }
+    ]
+  },
+  "Edward Maya, Vika Jigulina - Stereo Love - Edit": {
+    "title": "Stereo Love",
+    "artist": "Edward Maya, Vika Jigulina",
+    "year": "2025",
+    "album": "Love Me More - Single",
+    "synopsis": "\"Stereo Love\" (2025) de Edward Maya, Vika Jigulina es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Edward Maya, Vika Jigulina",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Edward Maya, Vika Jigulina, \"Stereo Love\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Stereo Love\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Stereo Love\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Edward Maya, Vika Jigulina aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Stereo Love\" se mantiene como un himno atemporal dentro de la discografía de Edward Maya, Vika Jigulina y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Edward Maya, Vika Jigulina."
+          }
+        ]
+      }
+    ]
+  },
+  "CeeLo Green - Forget You": {
+    "title": "Forget You",
+    "artist": "CeeLo Green",
+    "year": "2010",
+    "album": "Fuck You",
+    "synopsis": "\"Forget You\" (2010) de CeeLo Green es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de CeeLo Green",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de CeeLo Green, \"Forget You\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Forget You\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Forget You\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de CeeLo Green aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Forget You\" se mantiene como un himno atemporal dentro de la discografía de CeeLo Green y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de CeeLo Green."
+          }
+        ]
+      }
+    ]
   }
 }

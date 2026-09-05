@@ -32,6 +32,51 @@ if (fs.existsSync(ENV_PATH)) {
 }
 
 const LYRICS_DB_PATH = path.join(__dirname, 'data', 'lyrics_db.json');
+const METADATA_CACHE_FILE = path.join(__dirname, 'data', 'metadata_cache.json');
+const ANALYSES_DB_PATH = path.join(__dirname, 'data', 'analyses_db.json');
+
+let metadataCache = {};
+function loadMetadataCache() {
+    if (fs.existsSync(METADATA_CACHE_FILE)) {
+        try { metadataCache = JSON.parse(fs.readFileSync(METADATA_CACHE_FILE, 'utf8')); } catch(e){}
+    }
+}
+loadMetadataCache();
+function saveMetadataCache() {
+    try {
+        fs.writeFileSync(METADATA_CACHE_FILE, JSON.stringify(metadataCache, null, 2), 'utf8');
+    } catch(e) {
+        console.error("Error guardando metadata_cache local:", e.message);
+    }
+    const REMOTE_METADATA_CACHE = "\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\metadata_cache.json";
+    if (fs.existsSync(path.dirname(REMOTE_METADATA_CACHE)) && METADATA_CACHE_FILE !== REMOTE_METADATA_CACHE) {
+        try {
+            fs.writeFileSync(REMOTE_METADATA_CACHE, JSON.stringify(metadataCache, null, 2), 'utf8');
+        } catch(e) {}
+    }
+}
+
+let cachedAnalyses = {};
+function loadAnalysesDb() {
+    if (fs.existsSync(ANALYSES_DB_PATH)) {
+        try { cachedAnalyses = JSON.parse(fs.readFileSync(ANALYSES_DB_PATH, 'utf8')); } catch(e){}
+    }
+}
+loadAnalysesDb();
+
+function saveAnalysesDb() {
+    try {
+        fs.writeFileSync(ANALYSES_DB_PATH, JSON.stringify(cachedAnalyses, null, 2), 'utf8');
+    } catch(e) {
+        console.error("Error guardando analyses_db local:", e.message);
+    }
+    const REMOTE_ANALYSES_DB = "\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\analyses_db.json";
+    if (fs.existsSync(path.dirname(REMOTE_ANALYSES_DB)) && ANALYSES_DB_PATH !== REMOTE_ANALYSES_DB) {
+        try {
+            fs.writeFileSync(REMOTE_ANALYSES_DB, JSON.stringify(cachedAnalyses, null, 2), 'utf8');
+        } catch(e) {}
+    }
+}
 let cachedLyricsDb = {};
 
 function cleanTrackKey(str) {
@@ -359,6 +404,121 @@ function generateDeepModularAnalysis(artist, title, album, year, wikiExtract) {
     };
 }
 
+async function resolveTrackMetadataOnline(artist, rawTitle) {
+    const cleanT = cleanTrackTitle(rawTitle);
+    const primaryArtist = (artist || '').split(',')[0].split('&')[0].trim();
+    
+    let deezerMeta = null;
+    let itunesMeta = null;
+
+    // 1. Consultar Deezer (Carátulas HD 1000x1000 y álbum oficial)
+    try {
+        const q = encodeURIComponent(`${primaryArtist} ${cleanT}`);
+        const dzRes = await fetch(`https://api.deezer.com/search?q=${q}&limit=5`, { signal: AbortSignal.timeout(5000) });
+        if (dzRes.ok) {
+            const dzData = await dzRes.json();
+            if (dzData.data && dzData.data.length > 0) {
+                const item = dzData.data[0];
+                let albTitle = item.album ? cleanAlbumTitle(item.album.title) : null;
+                let cover = item.album ? (item.album.cover_xl || item.album.cover_big || item.album.cover_medium) : null;
+                let rDate = null;
+                let rYear = null;
+                if (item.album && item.album.id) {
+                    try {
+                        const albRes = await fetch(`https://api.deezer.com/album/${item.album.id}`, { signal: AbortSignal.timeout(4000) });
+                        if (albRes.ok) {
+                            const albData = await albRes.json();
+                            if (albData.release_date) {
+                                rDate = albData.release_date;
+                                rYear = rDate.split('-')[0];
+                            }
+                        }
+                    } catch(e) {}
+                }
+                if (cover && albTitle) {
+                    deezerMeta = {
+                        title: cleanT,
+                        displayTitle: cleanT,
+                        artist: artist,
+                        album: albTitle,
+                        year: rYear,
+                        date: rDate,
+                        coverUrl: cover,
+                        durationMs: (item.duration || 210) * 1000,
+                        source: 'Deezer API'
+                    };
+                }
+            }
+        }
+    } catch(e) {}
+
+    // 2. Consultar Apple Music / iTunes (Fechas originales y respaldo)
+    try {
+        const q = encodeURIComponent(`${primaryArtist} ${cleanT}`);
+        const itRes = await fetch(`https://itunes.apple.com/search?term=${q}&entity=song&limit=5`, { signal: AbortSignal.timeout(5000) });
+        if (itRes.ok) {
+            const itData = await itRes.json();
+            if (itData.results && itData.results.length > 0) {
+                const best = itData.results[0];
+                const rDate = (best.releaseDate || '').split('T')[0] || null;
+                const rYear = rDate ? rDate.split('-')[0] : null;
+                itunesMeta = {
+                    title: cleanT,
+                    displayTitle: cleanT,
+                    artist: artist,
+                    album: cleanAlbumTitle(best.collectionName || ''),
+                    year: rYear,
+                    date: rDate,
+                    coverUrl: best.artworkUrl100 ? best.artworkUrl100.replace('100x100bb', '1000x1000bb') : null,
+                    durationMs: best.trackTimeMillis || 210000,
+                    source: 'Apple Music / iTunes'
+                };
+            }
+        }
+    } catch(e) {}
+
+    if (!deezerMeta && !itunesMeta) return null;
+
+    const coverUrl = (deezerMeta && deezerMeta.coverUrl) || (itunesMeta && itunesMeta.coverUrl);
+    let album = (deezerMeta && deezerMeta.album && deezerMeta.album !== 'Álbum Desconocido') ? deezerMeta.album : (itunesMeta ? itunesMeta.album : 'Álbum Oficial');
+    
+    // Para el año, si iTunes tiene un año más antiguo (lanzamiento original vs remaster moderno), priorizarlo
+    let year = '2000';
+    let date = '2000-01-01';
+    const dzYear = deezerMeta && deezerMeta.year ? parseInt(deezerMeta.year, 10) : 9999;
+    const itYear = itunesMeta && itunesMeta.year ? parseInt(itunesMeta.year, 10) : 9999;
+    
+    if (itYear < dzYear && itYear >= 1950) {
+        year = String(itYear);
+        date = itunesMeta.date || `${year}-01-01`;
+    } else if (dzYear <= itYear && dzYear >= 1950 && dzYear < 9999) {
+        year = String(dzYear);
+        date = deezerMeta.date || `${year}-01-01`;
+    } else if (itunesMeta && itunesMeta.year) {
+        year = itunesMeta.year;
+        date = itunesMeta.date || `${year}-01-01`;
+    } else if (deezerMeta && deezerMeta.year) {
+        year = deezerMeta.year;
+        date = deezerMeta.date || `${year}-01-01`;
+    }
+
+    const durationMs = (itunesMeta && itunesMeta.durationMs) || (deezerMeta && deezerMeta.durationMs) || 210000;
+
+    return {
+        title: cleanT,
+        displayTitle: cleanT,
+        artist: artist,
+        album: album,
+        year: year,
+        date: date,
+        releaseYear: year,
+        releaseDate: date,
+        coverUrl: coverUrl,
+        durationMs: durationMs,
+        source: deezerMeta ? 'Deezer + Apple Music Resolver' : 'Apple Music Resolver'
+    };
+}
+
 let isEnrichingCatalog = false;
 async function autoEnrichCatalogInBackground() {
     if (isEnrichingCatalog) return;
@@ -366,73 +526,74 @@ async function autoEnrichCatalogInBackground() {
     try {
         let playlistsData = {};
         if (fs.existsSync(OMEN_CACHE_PATH)) {
-            playlistsData = JSON.parse(fs.readFileSync(OMEN_CACHE_PATH, 'utf8'));
+            try {
+                playlistsData = JSON.parse(fs.readFileSync(OMEN_CACHE_PATH, 'utf8'));
+            } catch(e){}
         }
         
-        let newEntriesCount = 0;
+        let enrichedCount = 0;
+        let analyzedCount = 0;
+
         for (const [listName, tracks] of Object.entries(playlistsData)) {
+            if (!Array.isArray(tracks)) continue;
             for (const item of tracks) {
                 const artist = Array.isArray(item) ? item[0] : item.artist;
                 const rawTitle = Array.isArray(item) ? item[1] : item.title;
+                if (!artist || !rawTitle) continue;
+
                 const cleanT = cleanTrackTitle(rawTitle);
+                const meta = getTrackMetadata(artist, rawTitle);
                 
-                if (!findAnalysisForTrack(artist, rawTitle) && !findAnalysisForTrack(artist, cleanT)) {
-                    const wiki = await fetchWikiSummary(artist, cleanT);
-                    const analysis = generateDeepModularAnalysis(artist, cleanT, "Álbum", "2000", wiki);
-                    
-                    const key = `${artist} - ${cleanT}`;
-                    cachedAnalyses[key] = analysis;
-                    cachedAnalyses[`${artist} - ${rawTitle}`] = analysis;
-                    newEntriesCount++;
+                const needsMetadata = !meta || !meta.coverUrl || !meta.album || meta.album === 'Álbum Desconocido' || meta.year === '2000' || !meta.date;
+                const needsAnalysis = !findAnalysisForTrack(artist, rawTitle) && !findAnalysisForTrack(artist, cleanT);
 
-                    // Auto-resolver fecha de lanzamiento con Apple Music / iTunes si la canción es nueva
-                    const mKey1 = `${artist} - ${rawTitle}`.toLowerCase();
-                    const mKey2 = `${artist} - ${cleanT}`.toLowerCase();
-                    if (!metadataCache[mKey1] && !metadataCache[mKey2]) {
-                        try {
-                            const q = encodeURIComponent(`${artist} ${cleanT}`.trim());
-                            const itRes = await fetch(`https://itunes.apple.com/search?term=${q}&entity=song&limit=5`, { signal: AbortSignal.timeout(4000) });
-                            if (itRes.ok) {
-                                const itData = await itRes.json();
-                                if (itData.results && itData.results.length > 0) {
-                                    const best = itData.results[0];
-                                    const rDate = (best.releaseDate || '').split('T')[0];
-                                    const rYear = rDate.split('-')[0];
-                                    const metaObj = {
-                                        title: cleanT,
-                                        displayTitle: cleanT,
-                                        artist: artist,
-                                        album: best.collectionName || 'Álbum',
-                                        year: rYear,
-                                        date: rDate,
-                                        releaseYear: rYear,
-                                        releaseDate: rDate,
-                                        coverUrl: best.artworkUrl100 ? best.artworkUrl100.replace('100x100bb', '600x600bb') : null,
-                                        durationMs: best.trackTimeMillis || 0,
-                                        source: 'Apple Music / iTunes Auto-Resolver'
-                                    };
-                                    metadataCache[mKey1] = metaObj;
-                                    metadataCache[mKey2] = metaObj;
-                                    try { fs.writeFileSync(METADATA_CACHE_FILE, JSON.stringify(metadataCache, null, 2), 'utf8'); } catch(e){}
-                                }
+                if (needsMetadata) {
+                    try {
+                        const resolved = await resolveTrackMetadataOnline(artist, rawTitle);
+                        if (resolved) {
+                            const mKey1 = `${artist} - ${rawTitle}`.toLowerCase();
+                            const mKey2 = `${artist} - ${cleanT}`.toLowerCase();
+                            const mKey3 = `${cleanT}`.toLowerCase();
+                            metadataCache[mKey1] = resolved;
+                            metadataCache[mKey2] = resolved;
+                            metadataCache[mKey3] = resolved;
+                            enrichedCount++;
+
+                            if (needsAnalysis || isGenericAnalysis(findAnalysisForTrack(artist, cleanT))) {
+                                const wiki = await fetchWikiSummary(artist, cleanT);
+                                const analysis = generateDeepModularAnalysis(artist, cleanT, resolved.album, resolved.year, wiki);
+                                cachedAnalyses[`${artist} - ${cleanT}`] = analysis;
+                                cachedAnalyses[`${artist} - ${rawTitle}`] = analysis;
+                                analyzedCount++;
                             }
-                        } catch(e) {}
+                        }
+                    } catch(e) {
+                        console.error(`Error auto-resolviendo metadata para ${artist} - ${rawTitle}:`, e.message);
                     }
-
-                    // Save batch every 20 entries
-                    if (newEntriesCount % 20 === 0) {
-                        try {
-                            fs.writeFileSync(ANALYSES_DB_PATH, JSON.stringify(cachedAnalyses, null, 2), 'utf8');
-                        } catch(e) {}
-                    }
+                    await new Promise(r => setTimeout(r, 250));
+                } else if (needsAnalysis) {
+                    try {
+                        const wiki = await fetchWikiSummary(artist, cleanT);
+                        const analysis = generateDeepModularAnalysis(artist, cleanT, meta.album || 'Álbum', meta.year || '2000', wiki);
+                        cachedAnalyses[`${artist} - ${cleanT}`] = analysis;
+                        cachedAnalyses[`${artist} - ${rawTitle}`] = analysis;
+                        analyzedCount++;
+                    } catch(e) {}
                     await new Promise(r => setTimeout(r, 200));
+                }
+
+                // Persistir progreso cada 10 canciones procesadas
+                if ((enrichedCount + analyzedCount) > 0 && (enrichedCount + analyzedCount) % 10 === 0) {
+                    saveMetadataCache();
+                    saveAnalysesDb();
                 }
             }
         }
 
-        if (newEntriesCount > 0) {
-            fs.writeFileSync(ANALYSES_DB_PATH, JSON.stringify(cachedAnalyses, null, 2), 'utf8');
-            console.log(`✅ Auto-enriquecimiento de fondo finalizado: ${newEntriesCount} nuevas canciones analizadas e integradas.`);
+        if (enrichedCount > 0 || analyzedCount > 0) {
+            saveMetadataCache();
+            saveAnalysesDb();
+            console.log(`✨ [AUTO-ENRICHER] Catálogo actualizado: ${enrichedCount} canciones enriquecidas con metadatos/carátula y ${analyzedCount} nuevos análisis.`);
         }
     } catch(e) {
         console.error("Error en autoEnrichCatalogInBackground:", e.message);
@@ -534,14 +695,7 @@ function getTrackMetadata(artist, title) {
 
 
 
-let metadataCache = {};
-function loadMetadataCache() {
-    const METADATA_CACHE_FILE = path.join(__dirname, 'data', 'metadata_cache.json');
-    if (fs.existsSync(METADATA_CACHE_FILE)) {
-        try { metadataCache = JSON.parse(fs.readFileSync(METADATA_CACHE_FILE, 'utf8')); } catch(e){}
-    }
-}
-loadMetadataCache();
+
 
 function cleanSoundtrackTitle(title) {
     if (!title) return '';
@@ -569,21 +723,23 @@ function cleanTrackTitle(rawTitle) {
         .replace(/\s*[\(\[][^)\]]*(from\s+[\"“].*?[\"”]|from\s+the\s+|from\s+[\"“]|theme\s+from|love\s+theme\s+from|music\s+from|original\s+song\s+from|soundtrack|motion\s+picture|original\s+motion\s+picture|bso\b|b\.s\.o\.|ost\b)[^)\]]*[\)\]]/gi, '')
         .replace(/\s*[\(\[]\s*from\s+[^)\]]+[\)\]]/gi, '')
         .replace(/\s*-\s*(from\s+[\"“].*?[\"”]|from\s+the\s+.*|theme\s+from\s+.*|soundtrack\b|original\s+soundtrack\b|ost\b|bso\b).*/gi, '')
-        // Quitar cualquier sufijo entre paréntesis que sea versión, remaster, edit, mix, directo, sinfónico, etc.
-        .replace(/\s*\([^)]*(radio version|album version|single version|\d{4} version|short version|extended version|original version|versión|version)[^)]*\)/gi, '')
+        // Quitar cualquier sufijo entre paréntesis o corchetes que sea versión, remaster, edit, mix, directo, sinfónico, etc.
+        .replace(/\s*[\(\[]\s*[^)\]]*\b(non-film|film|radio|album|single|\d{4}|short|extended|original|deluxe|anniversary|acoustic|live|en vivo|directo|sinfónico|remaster|remastered|edit|mix)\b[^)\]]*version[^)\]]*[\)\]]/gi, '')
+        .replace(/\s*[\(\[]\s*[^)\]]*\b(version|versión)\b[^)\]]*[\)\]]/gi, '')
         .replace(/\s*\([^)]*(en vivo|en directo|en concierto|directo|sinfónico|sinfonico|acústico|acustico)[^)]*\)/gi, '')
         .replace(/\s*\([^)]*(radio edit|club edit|extended mix|club mix|radio mix|dance vault|re-edit|edit|mixed)[^)]*\)/gi, '')
         .replace(/\s*\([^)]*(remastered|\d{4} remaster|remaster|20\d\d remaster|19\d\d remaster)[^)]*\)/gi, '')
         .replace(/\s*\([^)]*(remix|revisited|dub|vip mix|acoustic|unplugged|live|demo|deluxe|evolutions)[^)]*\)/gi, '')
         // Quitar sufijos precedidos por guión
-        .replace(/\s*-\s*(radio version|album version|single version|\d{4} version|short version|original version|versión|version).*/gi, '')
+        .replace(/\s*-\s*[^-\n]*\b(non-film|film|radio|album|single|\d{4}|short|extended|original|deluxe|anniversary|acoustic|live|en vivo|directo|sinfónico|remaster|remastered|edit|mix)\b[^-\n]*version.*/gi, '')
+        .replace(/\s*-\s*.*version.*/gi, '')
         .replace(/\s*-\s*(en vivo|en directo|directo|sinfónico|sinfonico|acústico|acustico|live).*/gi, '')
         .replace(/\s*-\s*(radio edit|club edit|extended mix|club mix|radio mix|edit).*/gi, '')
         .replace(/\s*-\s*(remastered|\d{4} remaster|remaster|20\d\d remaster|19\d\d remaster).*/gi, '')
         .replace(/\s*-\s*(remix|acoustic|unplugged|live|demo|extended|mono|stereo|original).*/gi, '')
         .trim();
 
-    clean = clean.replace(/^[(\[]+([^)]+)[)\]]\s*/, '$1 ');
+    clean = clean.replace(/^[(\[]+([^)\]]+)[)\]]\s*/, '$1 ');
     return clean.replace(/\s+/g, ' ').trim();
 }
 
@@ -658,20 +814,10 @@ function scanAudioFiles() {
 const LOCAL_OMEN_VIDEOS = "D:\\media-library\\music-videos";
 const REMOTE_OMEN_VIDEOS = "\\\\100.95.217.45\\omen D\\media-library\\music-videos";
 const OMEN_VIDEOS_DIR = fs.existsSync(LOCAL_OMEN_VIDEOS) ? LOCAL_OMEN_VIDEOS : REMOTE_OMEN_VIDEOS;
-const ANALYSES_DB_PATH = path.join(__dirname, 'data', 'analyses_db.json');
 
 // Servir la carpeta de videoclips de OMEN como estática si está disponible
 if (fs.existsSync(OMEN_VIDEOS_DIR)) {
     app.use('/media-videos', express.static(OMEN_VIDEOS_DIR));
-}
-
-let cachedAnalyses = {};
-if (fs.existsSync(ANALYSES_DB_PATH)) {
-    try {
-        cachedAnalyses = JSON.parse(fs.readFileSync(ANALYSES_DB_PATH, 'utf8'));
-    } catch (e) {
-        console.error("Error cargando analyses_db.json:", e.message);
-    }
 }
 
 // Función auxiliar para escanear archivos de vídeo y letras
@@ -901,6 +1047,7 @@ app.get('/api/playlists', (req, res) => {
     const hasViejunaRoberto = plKeys.some(k => /viejuna.*roberto/i.test(k));
     const hasSigloRoberto = plKeys.some(k => /siglo.*xxi.*roberto/i.test(k));
 
+    let catalogNeedsEnrichment = false;
     for (const [rawListName, rawTracks] of Object.entries(playlistsData)) {
         if (hasViejunaRoberto && /^música viejuna$/i.test(rawListName.trim())) continue;
         if (hasSigloRoberto && /^siglo xxi$/i.test(rawListName.trim())) continue;
@@ -979,6 +1126,9 @@ app.get('/api/playlists', (req, res) => {
 
             const meta = getTrackMetadata(artist, title);
             const analysis = findAnalysisForTrack(artist, title);
+            if (!meta || !meta.coverUrl || meta.album === 'Álbum Desconocido' || meta.year === '2000' || !analysis) {
+                catalogNeedsEnrichment = true;
+            }
 
             let releaseYear = meta.releaseYear || meta.year || '2000';
             let releaseDate = meta.releaseDate || meta.date || `${releaseYear}-01-01`;
@@ -1044,6 +1194,12 @@ app.get('/api/playlists', (req, res) => {
         }
 
         if (!response[listName]) { response[listName] = []; } response[listName] = response[listName].concat(enrichedTracks);
+    }
+
+    if (catalogNeedsEnrichment && !isEnrichingCatalog) {
+        setImmediate(() => {
+            autoEnrichCatalogInBackground().catch(e => console.error("Error en autoEnrichCatalogInBackground:", e.message));
+        });
     }
 
     res.json(response);
@@ -1116,15 +1272,7 @@ function findAnalysisForTrack(artist, title) {
     return null;
 }
 
-function loadAnalysesDb() {
-    if (fs.existsSync(ANALYSES_DB_PATH)) {
-        try {
-            cachedAnalyses = JSON.parse(fs.readFileSync(ANALYSES_DB_PATH, 'utf8'));
-        } catch (e) {
-            console.error("Error cargando analyses_db.json:", e.message);
-        }
-    }
-}
+
 
 // API: Obtener detalle completo de una canción (Créditos, Letras, Análisis Sónico Profundo)
 
@@ -2545,4 +2693,11 @@ app.post('/api/retro-hits/add-to-viejuna', async (req, res) => {
 const PORT = 8087;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Servidor de Música corriendo en http://localhost:${PORT}`);
+    // Auto-enriquecedor autónomo de fondo: arranque inicial a los 4s y periódico cada 15 min
+    setTimeout(() => {
+        autoEnrichCatalogInBackground().catch(e => console.error("Error en auto-enriquecimiento de inicio:", e.message));
+    }, 4000);
+    setInterval(() => {
+        autoEnrichCatalogInBackground().catch(e => console.error("Error en auto-enriquecimiento periódico:", e.message));
+    }, 15 * 60 * 1000);
 });
