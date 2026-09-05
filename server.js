@@ -625,6 +625,7 @@ function scanAudioFiles() {
 
     try {
         const folders = fs.readdirSync(OMEN_MUSIC_DIR, { withFileTypes: true });
+        folders.sort((a, b) => (/roberto/i.test(b.name) ? 1 : 0) - (/roberto/i.test(a.name) ? 1 : 0));
         for (const folder of folders) {
             if (!folder.isDirectory()) continue;
             const category = folder.name;
@@ -693,6 +694,7 @@ function scanAudioFilesAndVideos() {
 
     try {
         const folders = fs.readdirSync(OMEN_VIDEOS_DIR, { withFileTypes: true });
+        folders.sort((a, b) => (/roberto/i.test(b.name) ? 1 : 0) - (/roberto/i.test(a.name) ? 1 : 0));
         for (const folder of folders) {
             if (!folder.isDirectory()) continue;
             const category = folder.name;
@@ -724,6 +726,7 @@ function scanVideoFiles() {
 
     try {
         const folders = fs.readdirSync(OMEN_VIDEOS_DIR, { withFileTypes: true });
+        folders.sort((a, b) => (/roberto/i.test(b.name) ? 1 : 0) - (/roberto/i.test(a.name) ? 1 : 0));
         for (const folder of folders) {
             if (!folder.isDirectory()) continue;
             const category = folder.name;
@@ -894,7 +897,13 @@ app.get('/api/playlists', (req, res) => {
 
     // Enriquecer cada canción con el estado del videoclip, letras y DEDUPLICACIÓN
     const response = {};
+    const plKeys = Object.keys(playlistsData);
+    const hasViejunaRoberto = plKeys.some(k => /viejuna.*roberto/i.test(k));
+    const hasSigloRoberto = plKeys.some(k => /siglo.*xxi.*roberto/i.test(k));
+
     for (const [rawListName, rawTracks] of Object.entries(playlistsData)) {
+        if (hasViejunaRoberto && /^música viejuna$/i.test(rawListName.trim())) continue;
+        if (hasSigloRoberto && /^siglo xxi$/i.test(rawListName.trim())) continue;
         const listName = normalizePlaylistKey(rawListName);
         const seenKeys = new Set();
         const enrichedTracks = [];
