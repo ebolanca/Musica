@@ -2,476 +2,666 @@
   {
     "year": 2000,
     "artist": "Coldplay",
-    "title": "Yellow"
+    "title": "Yellow",
+    "peak": "Nº 1 Los 40",
+    "genre": "Alternative Rock"
   },
   {
     "year": 2000,
     "artist": "Bon Jovi",
-    "title": "It's My Life"
+    "title": "It's My Life",
+    "peak": "Nº 1 España",
+    "genre": "Rock"
   },
   {
     "year": 2000,
     "artist": "Eminem",
-    "title": "The Real Slim Shady"
+    "title": "The Real Slim Shady",
+    "peak": "Top 5 España",
+    "genre": "Hip-Hop"
   },
   {
     "year": 2000,
     "artist": "Madonna",
-    "title": "Music"
+    "title": "Music",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop / Dance"
   },
   {
     "year": 2000,
     "artist": "U2",
-    "title": "Beautiful Day"
+    "title": "Beautiful Day",
+    "peak": "Nº 1 Los 40",
+    "genre": "Rock"
   },
   {
     "year": 2000,
     "artist": "Destiny's Child",
-    "title": "Say My Name"
+    "title": "Say My Name",
+    "peak": "Top España",
+    "genre": "R&B"
   },
   {
     "year": 2000,
     "artist": "Britney Spears",
-    "title": "Oops!... I Did It Again"
+    "title": "Oops!... I Did It Again",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
   },
   {
     "year": 2001,
     "artist": "The Strokes",
-    "title": "Last Nite"
+    "title": "Last Nite",
+    "peak": "Top Indie España",
+    "genre": "Indie Rock"
   },
   {
     "year": 2001,
     "artist": "Alicia Keys",
-    "title": "Fallin'"
+    "title": "Fallin'",
+    "peak": "Nº 1 Los 40",
+    "genre": "Soul / R&B"
   },
   {
     "year": 2001,
     "artist": "Gorillaz",
-    "title": "Clint Eastwood"
+    "title": "Clint Eastwood",
+    "peak": "Top España",
+    "genre": "Alternative"
   },
   {
     "year": 2001,
     "artist": "Kylie Minogue",
-    "title": "Can't Get You Out of My Head"
+    "title": "Can't Get You Out of My Head",
+    "peak": "Nº 1 España",
+    "genre": "Dance Pop"
   },
   {
     "year": 2001,
     "artist": "Daft Punk",
-    "title": "One More Time"
+    "title": "One More Time",
+    "peak": "Nº 1 Los 40",
+    "genre": "Electronic"
   },
   {
     "year": 2001,
     "artist": "Train",
-    "title": "Drops of Jupiter"
+    "title": "Drops of Jupiter",
+    "peak": "Top 5 España",
+    "genre": "Pop Rock"
   },
   {
     "year": 2002,
     "artist": "Coldplay",
-    "title": "The Scientist"
+    "title": "The Scientist",
+    "peak": "Nº 1 Los 40",
+    "genre": "Alternative"
   },
   {
     "year": 2002,
     "artist": "Eminem",
-    "title": "Lose Yourself"
+    "title": "Lose Yourself",
+    "peak": "Nº 1 España",
+    "genre": "Hip-Hop"
   },
   {
     "year": 2002,
     "artist": "Avril Lavigne",
-    "title": "Complicated"
+    "title": "Complicated",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop Rock"
   },
   {
     "year": 2002,
     "artist": "Red Hot Chili Peppers",
-    "title": "By the Way"
+    "title": "By the Way",
+    "peak": "Nº 1 España",
+    "genre": "Rock"
   },
   {
     "year": 2002,
     "artist": "Norah Jones",
-    "title": "Don't Know Why"
+    "title": "Don't Know Why",
+    "peak": "Top España",
+    "genre": "Jazz / Pop"
   },
   {
     "year": 2002,
     "artist": "Justin Timberlake",
-    "title": "Cry Me a River"
+    "title": "Cry Me a River",
+    "peak": "Top 5 España",
+    "genre": "Pop"
   },
   {
     "year": 2003,
     "artist": "The White Stripes",
-    "title": "Seven Nation Army"
+    "title": "Seven Nation Army",
+    "peak": "Himno Rock Mundial",
+    "genre": "Garage Rock"
   },
   {
     "year": 2003,
     "artist": "Evanescence",
-    "title": "Bring Me to Life"
+    "title": "Bring Me to Life",
+    "peak": "Nº 1 España",
+    "genre": "Rock"
   },
   {
     "year": 2003,
     "artist": "Black Eyed Peas",
-    "title": "Where Is the Love?"
+    "title": "Where Is the Love?",
+    "peak": "Nº 1 Los 40",
+    "genre": "Hip-Hop"
   },
   {
     "year": 2003,
     "artist": "Linkin Park",
-    "title": "Numb"
+    "title": "Numb",
+    "peak": "Nº 1 Los 40",
+    "genre": "Nu Metal"
   },
   {
     "year": 2003,
     "artist": "Outkast",
-    "title": "Hey Ya!"
+    "title": "Hey Ya!",
+    "peak": "Nº 1 España",
+    "genre": "Funk / Pop"
   },
   {
     "year": 2003,
     "artist": "Beyoncé",
-    "title": "Crazy in Love"
+    "title": "Crazy in Love",
+    "peak": "Nº 1 Los 40",
+    "genre": "R&B / Pop"
   },
   {
     "year": 2004,
     "artist": "Green Day",
-    "title": "Boulevard of Broken Dreams"
+    "title": "Boulevard of Broken Dreams",
+    "peak": "Nº 1 Los 40",
+    "genre": "Punk Rock"
   },
   {
     "year": 2004,
     "artist": "The Killers",
-    "title": "Mr. Brightside"
+    "title": "Mr. Brightside",
+    "peak": "Himno Siglo XXI",
+    "genre": "Indie Rock"
   },
   {
     "year": 2004,
     "artist": "Maroon 5",
-    "title": "This Love"
+    "title": "This Love",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop Rock"
   },
   {
     "year": 2004,
     "artist": "Franz Ferdinand",
-    "title": "Take Me Out"
+    "title": "Take Me Out",
+    "peak": "Top 5 España",
+    "genre": "Post-Punk"
   },
   {
     "year": 2004,
     "artist": "Keane",
-    "title": "Somewhere Only We Know"
+    "title": "Somewhere Only We Know",
+    "peak": "Nº 1 Los 40",
+    "genre": "Piano Rock"
   },
   {
     "year": 2004,
     "artist": "Usher",
-    "title": "Yeah!"
+    "title": "Yeah!",
+    "peak": "Nº 1 España",
+    "genre": "R&B"
   },
   {
     "year": 2005,
     "artist": "Gorillaz",
-    "title": "Feel Good Inc."
+    "title": "Feel Good Inc.",
+    "peak": "Top España",
+    "genre": "Alternative"
   },
   {
     "year": 2005,
     "artist": "James Blunt",
-    "title": "You're Beautiful"
+    "title": "You're Beautiful",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
   },
   {
     "year": 2005,
     "artist": "Coldplay",
-    "title": "Fix You"
+    "title": "Fix You",
+    "peak": "Nº 1 Los 40",
+    "genre": "Alternative"
   },
   {
     "year": 2005,
     "artist": "Kanye West",
-    "title": "Gold Digger"
+    "title": "Gold Digger",
+    "peak": "Top 5 España",
+    "genre": "Hip-Hop"
   },
   {
     "year": 2005,
     "artist": "Foo Fighters",
-    "title": "Best of You"
+    "title": "Best of You",
+    "peak": "Top Rock España",
+    "genre": "Rock"
   },
   {
     "year": 2006,
     "artist": "Amy Winehouse",
-    "title": "Rehab"
+    "title": "Rehab",
+    "peak": "Nº 1 Los 40",
+    "genre": "Soul"
   },
   {
     "year": 2006,
     "artist": "Snow Patrol",
-    "title": "Chasing Cars"
+    "title": "Chasing Cars",
+    "peak": "Top España",
+    "genre": "Indie Pop"
   },
   {
     "year": 2006,
     "artist": "The Fray",
-    "title": "How to Save a Life"
+    "title": "How to Save a Life",
+    "peak": "Top 5 España",
+    "genre": "Pop Rock"
   },
   {
     "year": 2006,
     "artist": "Gnarls Barkley",
-    "title": "Crazy"
+    "title": "Crazy",
+    "peak": "Nº 1 España",
+    "genre": "Soul / Pop"
   },
   {
     "year": 2006,
     "artist": "Justin Timberlake",
-    "title": "SexyBack"
+    "title": "SexyBack",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop"
   },
   {
     "year": 2006,
     "artist": "The Killers",
-    "title": "When You Were Young"
+    "title": "When You Were Young",
+    "peak": "Top 5 España",
+    "genre": "Indie Rock"
   },
   {
     "year": 2007,
     "artist": "Rihanna",
-    "title": "Umbrella"
+    "title": "Umbrella",
+    "peak": "Nº 1 España",
+    "genre": "Pop / R&B"
   },
   {
     "year": 2007,
     "artist": "Timbaland",
-    "title": "Apologize"
+    "title": "Apologize",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop"
   },
   {
     "year": 2007,
     "artist": "Mika",
-    "title": "Grace Kelly"
+    "title": "Grace Kelly",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
   },
   {
     "year": 2007,
     "artist": "Foo Fighters",
-    "title": "The Pretender"
+    "title": "The Pretender",
+    "peak": "Nº 1 Rock España",
+    "genre": "Rock"
   },
   {
     "year": 2007,
     "artist": "Linkin Park",
-    "title": "What I've Done"
+    "title": "What I've Done",
+    "peak": "Top 5 España",
+    "genre": "Alternative"
   },
   {
     "year": 2008,
     "artist": "Coldplay",
-    "title": "Viva La Vida"
+    "title": "Viva La Vida",
+    "peak": "Nº 1 España",
+    "genre": "Pop Rock"
   },
   {
     "year": 2008,
     "artist": "The Killers",
-    "title": "Human"
+    "title": "Human",
+    "peak": "Nº 1 Los 40",
+    "genre": "Synth-Pop"
   },
   {
     "year": 2008,
     "artist": "Katy Perry",
-    "title": "I Kissed a Girl"
+    "title": "I Kissed a Girl",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
   },
   {
     "year": 2008,
     "artist": "Kings of Leon",
-    "title": "Use Somebody"
+    "title": "Use Somebody",
+    "peak": "Nº 1 Los 40",
+    "genre": "Rock"
   },
   {
     "year": 2008,
     "artist": "Lady Gaga",
-    "title": "Poker Face"
+    "title": "Poker Face",
+    "peak": "Nº 1 España",
+    "genre": "Electropop"
   },
   {
     "year": 2008,
     "artist": "Beyoncé",
-    "title": "Single Ladies (Put a Ring on It)"
+    "title": "Single Ladies (Put a Ring on It)",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop"
   },
   {
     "year": 2009,
     "artist": "Black Eyed Peas",
-    "title": "I Gotta Feeling"
+    "title": "I Gotta Feeling",
+    "peak": "Nº 1 España",
+    "genre": "Dance Pop"
   },
   {
     "year": 2009,
     "artist": "Lady Gaga",
-    "title": "Bad Romance"
+    "title": "Bad Romance",
+    "peak": "Nº 1 España",
+    "genre": "Dance Pop"
   },
   {
     "year": 2009,
     "artist": "Kings of Leon",
-    "title": "Sex on Fire"
+    "title": "Sex on Fire",
+    "peak": "Nº 1 Los 40",
+    "genre": "Rock"
   },
   {
     "year": 2009,
     "artist": "David Guetta",
-    "title": "When Love Takes Over"
+    "title": "When Love Takes Over",
+    "peak": "Nº 1 Los 40",
+    "genre": "Dance"
   },
   {
     "year": 2009,
     "artist": "Muse",
-    "title": "Uprising"
+    "title": "Uprising",
+    "peak": "Top 5 España",
+    "genre": "Alternative Rock"
   },
   {
     "year": 2010,
     "artist": "Eminem",
-    "title": "Love the Way You Lie"
+    "title": "Love the Way You Lie",
+    "peak": "Nº 1 España",
+    "genre": "Hip-Hop / Pop"
   },
   {
     "year": 2010,
     "artist": "Bruno Mars",
-    "title": "Just the Way You Are"
+    "title": "Just the Way You Are",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop"
   },
   {
     "year": 2010,
     "artist": "Katy Perry",
-    "title": "Firework"
+    "title": "Firework",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
   },
   {
     "year": 2010,
     "artist": "Rihanna",
-    "title": "Only Girl (In the World)"
+    "title": "Only Girl (In the World)",
+    "peak": "Nº 1 Los 40",
+    "genre": "Dance Pop"
   },
   {
     "year": 2010,
     "artist": "CeeLo Green",
-    "title": "Forget You"
+    "title": "Forget You",
+    "peak": "Top 5 España",
+    "genre": "Soul / Pop"
   },
   {
     "year": 2011,
     "artist": "Adele",
-    "title": "Rolling in the Deep"
+    "title": "Rolling in the Deep",
+    "peak": "Nº 1 España",
+    "genre": "Soul / Pop"
   },
   {
     "year": 2011,
     "artist": "Gotye",
-    "title": "Somebody That I Used to Know"
+    "title": "Somebody That I Used to Know",
+    "peak": "Nº 1 España",
+    "genre": "Indie Pop"
   },
   {
     "year": 2011,
     "artist": "Maroon 5",
-    "title": "Moves Like Jagger"
+    "title": "Moves Like Jagger",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop"
   },
   {
     "year": 2011,
     "artist": "Foster the People",
-    "title": "Pumped Up Kicks"
+    "title": "Pumped Up Kicks",
+    "peak": "Top 5 España",
+    "genre": "Indie Pop"
   },
   {
     "year": 2011,
     "artist": "Coldplay",
-    "title": "Paradise"
+    "title": "Paradise",
+    "peak": "Nº 1 Los 40",
+    "genre": "Alternative"
   },
   {
     "year": 2012,
     "artist": "Imagine Dragons",
-    "title": "Radioactive"
+    "title": "Radioactive",
+    "peak": "Nº 1 Los 40",
+    "genre": "Alternative"
   },
   {
     "year": 2012,
     "artist": "The Lumineers",
-    "title": "Ho Hey"
+    "title": "Ho Hey",
+    "peak": "Top España",
+    "genre": "Folk Pop"
   },
   {
     "year": 2012,
     "artist": "fun.",
-    "title": "We Are Young"
+    "title": "We Are Young",
+    "peak": "Nº 1 España",
+    "genre": "Indie Pop"
   },
   {
     "year": 2012,
     "artist": "Passenger",
-    "title": "Let Her Go"
+    "title": "Let Her Go",
+    "peak": "Nº 1 España",
+    "genre": "Folk"
   },
   {
     "year": 2013,
     "artist": "Daft Punk",
-    "title": "Get Lucky"
+    "title": "Get Lucky",
+    "peak": "Nº 1 España",
+    "genre": "Funk / Disco"
   },
   {
     "year": 2013,
     "artist": "Avicii",
-    "title": "Wake Me Up"
+    "title": "Wake Me Up",
+    "peak": "Nº 1 España",
+    "genre": "EDM / Folk"
   },
   {
     "year": 2013,
     "artist": "Lorde",
-    "title": "Royals"
+    "title": "Royals",
+    "peak": "Nº 1 Los 40",
+    "genre": "Art Pop"
   },
   {
     "year": 2013,
     "artist": "OneRepublic",
-    "title": "Counting Stars"
+    "title": "Counting Stars",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop Rock"
   },
   {
     "year": 2013,
     "artist": "Arctic Monkeys",
-    "title": "Do I Wanna Know?"
+    "title": "Do I Wanna Know?",
+    "peak": "Himno Rock Mundial",
+    "genre": "Indie Rock"
   },
   {
     "year": 2014,
     "artist": "Mark Ronson",
-    "title": "Uptown Funk"
+    "title": "Uptown Funk",
+    "peak": "Nº 1 España",
+    "genre": "Funk / Pop"
   },
   {
     "year": 2014,
     "artist": "Ed Sheeran",
-    "title": "Thinking Out Loud"
+    "title": "Thinking Out Loud",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
   },
   {
     "year": 2014,
     "artist": "Sia",
-    "title": "Chandelier"
+    "title": "Chandelier",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop"
   },
   {
     "year": 2014,
     "artist": "Hozier",
-    "title": "Take Me to Church"
+    "title": "Take Me to Church",
+    "peak": "Top 5 España",
+    "genre": "Soul / Rock"
   },
   {
     "year": 2014,
     "artist": "Sam Smith",
-    "title": "Stay With Me"
+    "title": "Stay With Me",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop / Soul"
   },
   {
     "year": 2015,
     "artist": "Adele",
-    "title": "Hello"
+    "title": "Hello",
+    "peak": "Nº 1 España",
+    "genre": "Soul / Pop"
   },
   {
     "year": 2015,
     "artist": "The Weeknd",
-    "title": "Can't Feel My Face"
+    "title": "Can't Feel My Face",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop / R&B"
   },
   {
     "year": 2015,
     "artist": "Justin Bieber",
-    "title": "Sorry"
+    "title": "Sorry",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
   },
   {
     "year": 2016,
     "artist": "The Chainsmokers",
-    "title": "Closer"
+    "title": "Closer",
+    "peak": "Nº 1 Los 40",
+    "genre": "EDM / Pop"
   },
   {
     "year": 2017,
     "artist": "Ed Sheeran",
-    "title": "Shape of You"
+    "title": "Shape of You",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
   },
   {
     "year": 2017,
     "artist": "Dua Lipa",
-    "title": "New Rules"
+    "title": "New Rules",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop"
   },
   {
     "year": 2019,
     "artist": "Billie Eilish",
-    "title": "Bad Guy"
+    "title": "Bad Guy",
+    "peak": "Nº 1 España",
+    "genre": "Electropop"
   },
   {
     "year": 2020,
     "artist": "The Weeknd",
-    "title": "Blinding Lights"
+    "title": "Blinding Lights",
+    "peak": "Nº 1 España",
+    "genre": "Synth-Pop"
   },
   {
     "year": 2020,
     "artist": "Dua Lipa",
-    "title": "Don't Start Now"
+    "title": "Don't Start Now",
+    "peak": "Nº 1 Los 40",
+    "genre": "Nu-Disco"
   },
   {
     "year": 2021,
     "artist": "Coldplay",
-    "title": "Higher Power"
+    "title": "Higher Power",
+    "peak": "Nº 1 Los 40",
+    "genre": "Pop Rock"
   },
   {
     "year": 2022,
     "artist": "Harry Styles",
-    "title": "As It Was"
+    "title": "As It Was",
+    "peak": "Nº 1 España",
+    "genre": "Synth-Pop"
   },
   {
     "year": 2023,
     "artist": "Miley Cyrus",
-    "title": "Flowers"
+    "title": "Flowers",
+    "peak": "Nº 1 España",
+    "genre": "Pop"
   },
   {
     "year": 2024,
     "artist": "Djo",
-    "title": "End of Beginning"
+    "title": "End of Beginning",
+    "peak": "Top 5 España",
+    "genre": "Indie Pop"
   }
 ]

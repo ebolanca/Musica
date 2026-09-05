@@ -2,346 +2,484 @@
   {
     "year": 1993,
     "artist": "Haddaway",
-    "title": "What Is Love"
+    "title": "What Is Love",
+    "peak": "Nº 1 Eurodance",
+    "genre": "Eurodance"
   },
   {
     "year": 1993,
     "artist": "Culture Beat",
-    "title": "Mr. Vain"
+    "title": "Mr. Vain",
+    "peak": "Nº 1 Los 40",
+    "genre": "Eurodance"
   },
   {
     "year": 1993,
     "artist": "Robin S.",
-    "title": "Show Me Love"
+    "title": "Show Me Love",
+    "peak": "Clásico House",
+    "genre": "House"
   },
   {
     "year": 1994,
     "artist": "Corona",
-    "title": "The Rhythm of the Night"
+    "title": "The Rhythm of the Night",
+    "peak": "Nº 1 España",
+    "genre": "Eurodance"
   },
   {
     "year": 1994,
     "artist": "La Bouche",
-    "title": "Sweet Dreams"
+    "title": "Sweet Dreams",
+    "peak": "Top 5 España",
+    "genre": "Eurodance"
   },
   {
     "year": 1994,
     "artist": "Snap!",
-    "title": "Rhythm Is a Dancer"
+    "title": "Rhythm Is a Dancer",
+    "peak": "Himno Dance",
+    "genre": "Eurodance"
   },
   {
     "year": 1995,
     "artist": "Scatman John",
-    "title": "Scatman (Ski-Ba-Bop-Ba-Dop-Bop)"
+    "title": "Scatman (Ski-Ba-Bop-Ba-Dop-Bop)",
+    "peak": "Nº 1 España",
+    "genre": "Eurodance"
   },
   {
     "year": 1995,
     "artist": "Nightcrawlers",
-    "title": "Push the Feeling On"
+    "title": "Push the Feeling On",
+    "peak": "Himno Club",
+    "genre": "House"
   },
   {
     "year": 1995,
     "artist": "Faithless",
-    "title": "Insomnia"
+    "title": "Insomnia",
+    "peak": "Himno Trance Mundial",
+    "genre": "Trance"
   },
   {
     "year": 1996,
     "artist": "Robert Miles",
-    "title": "Children"
+    "title": "Children",
+    "peak": "Nº 1 España",
+    "genre": "Dream House"
   },
   {
     "year": 1996,
     "artist": "Gala",
-    "title": "Freed from Desire"
+    "title": "Freed from Desire",
+    "peak": "Nº 1 Los 40",
+    "genre": "Eurodance"
   },
   {
     "year": 1997,
     "artist": "Sash!",
-    "title": "Ecuador"
+    "title": "Ecuador",
+    "peak": "Nº 1 Dance España",
+    "genre": "Trance"
   },
   {
     "year": 1997,
     "artist": "Bellini",
-    "title": "Samba de Janeiro"
+    "title": "Samba de Janeiro",
+    "peak": "Top Verano España",
+    "genre": "Eurodance"
   },
   {
     "year": 1998,
     "artist": "Cher",
-    "title": "Believe"
+    "title": "Believe",
+    "peak": "Nº 1 España",
+    "genre": "Dance Pop"
   },
   {
     "year": 1998,
     "artist": "Stardust",
-    "title": "Music Sounds Better with You"
+    "title": "Music Sounds Better with You",
+    "peak": "Clásico French House",
+    "genre": "House"
   },
   {
     "year": 1998,
     "artist": "ATB",
-    "title": "9 PM (Till I Come)"
+    "title": "9 PM (Till I Come)",
+    "peak": "Nº 1 Trance",
+    "genre": "Trance"
   },
   {
     "year": 1999,
     "artist": "Gigi D'Agostino",
-    "title": "L'Amour Toujours"
+    "title": "L'Amour Toujours",
+    "peak": "Himno Italodance",
+    "genre": "Italodance"
   },
   {
     "year": 1999,
     "artist": "Darude",
-    "title": "Sandstorm"
+    "title": "Sandstorm",
+    "peak": "Himno Electrónico",
+    "genre": "Trance"
   },
   {
     "year": 1999,
     "artist": "Alice Deejay",
-    "title": "Better Off Alone"
+    "title": "Better Off Alone",
+    "peak": "Nº 1 Los 40",
+    "genre": "Eurodance"
   },
   {
     "year": 1999,
     "artist": "Eiffel 65",
-    "title": "Blue (Da Ba Dee)"
+    "title": "Blue (Da Ba Dee)",
+    "peak": "Nº 1 España",
+    "genre": "Eurodance"
   },
   {
     "year": 2000,
     "artist": "Modjo",
-    "title": "Lady (Hear Me Tonight)"
+    "title": "Lady (Hear Me Tonight)",
+    "peak": "Nº 1 España",
+    "genre": "French House"
   },
   {
     "year": 2000,
     "artist": "Spiller",
-    "title": "Groovejet (If This Ain't Love)"
+    "title": "Groovejet (If This Ain't Love)",
+    "peak": "Top 5 España",
+    "genre": "Disco House"
   },
   {
     "year": 2000,
     "artist": "Sonique",
-    "title": "It Feels So Good"
+    "title": "It Feels So Good",
+    "peak": "Nº 1 Los 40",
+    "genre": "Trance Pop"
   },
   {
     "year": 2001,
     "artist": "Safri Duo",
-    "title": "Played-A-Live (The Bongo Song)"
+    "title": "Played-A-Live (The Bongo Song)",
+    "peak": "Nº 1 España",
+    "genre": "Percussion / Dance"
   },
   {
     "year": 2001,
     "artist": "Daft Punk",
-    "title": "Harder, Better, Faster, Stronger"
+    "title": "Harder, Better, Faster, Stronger",
+    "peak": "Clásico Electrónica",
+    "genre": "French House"
   },
   {
     "year": 2001,
     "artist": "Roger Sanchez",
-    "title": "Another Chance"
+    "title": "Another Chance",
+    "peak": "Nº 1 Dance",
+    "genre": "House"
   },
   {
     "year": 2002,
     "artist": "Mad'House",
-    "title": "Like a Prayer"
+    "title": "Like a Prayer",
+    "peak": "Top 5 España",
+    "genre": "Eurodance"
   },
   {
     "year": 2002,
     "artist": "In-Grid",
-    "title": "Tu Es Foutu"
+    "title": "Tu Es Foutu",
+    "peak": "Nº 1 Los 40",
+    "genre": "Dance Pop"
   },
   {
     "year": 2003,
     "artist": "Benny Benassi",
-    "title": "Satisfaction"
+    "title": "Satisfaction",
+    "peak": "Himno Electro House",
+    "genre": "Electro House"
   },
   {
     "year": 2004,
     "artist": "Eric Prydz",
-    "title": "Call on Me"
+    "title": "Call on Me",
+    "peak": "Nº 1 España",
+    "genre": "House"
   },
   {
     "year": 2004,
     "artist": "O-Zone",
-    "title": "Dragostea Din Tei"
+    "title": "Dragostea Din Tei",
+    "peak": "Nº 1 España",
+    "genre": "Eurodance"
   },
   {
     "year": 2005,
     "artist": "Bob Sinclar",
-    "title": "Love Generation"
+    "title": "Love Generation",
+    "peak": "Nº 1 Los 40",
+    "genre": "House"
   },
   {
     "year": 2005,
     "artist": "Axwell",
-    "title": "Feel the Vibe"
+    "title": "Feel the Vibe",
+    "peak": "Top Club España",
+    "genre": "House"
   },
   {
     "year": 2006,
     "artist": "Fedde Le Grand",
-    "title": "Put Your Hands Up for Detroit"
+    "title": "Put Your Hands Up for Detroit",
+    "peak": "Nº 1 Dance",
+    "genre": "Electro House"
   },
   {
     "year": 2006,
     "artist": "Cascada",
-    "title": "Everytime We Touch"
+    "title": "Everytime We Touch",
+    "peak": "Top 5 España",
+    "genre": "Eurodance"
   },
   {
     "year": 2007,
     "artist": "David Guetta",
-    "title": "Love Is Gone"
+    "title": "Love Is Gone",
+    "peak": "Nº 1 Los 40 Dance",
+    "genre": "Electro Pop"
   },
   {
     "year": 2008,
     "artist": "Guru Josh Project",
-    "title": "Infinity 2008"
+    "title": "Infinity 2008",
+    "peak": "Nº 1 Máxima FM",
+    "genre": "Dance"
   },
   {
     "year": 2008,
     "artist": "Laurent Wolf",
-    "title": "No Stress"
+    "title": "No Stress",
+    "peak": "Top España",
+    "genre": "House"
   },
   {
     "year": 2008,
     "artist": "Eric Prydz",
-    "title": "Pjanoo"
+    "title": "Pjanoo",
+    "peak": "Himno Clubbing",
+    "genre": "Progressive House"
   },
   {
     "year": 2009,
     "artist": "Edward Maya",
-    "title": "Stereo Love"
+    "title": "Stereo Love",
+    "peak": "Nº 1 España",
+    "genre": "Dance Pop"
   },
   {
     "year": 2009,
     "artist": "David Guetta",
-    "title": "Sexy Bitch"
+    "title": "Sexy Bitch",
+    "peak": "Nº 1 Los 40",
+    "genre": "Dance Pop"
   },
   {
     "year": 2010,
     "artist": "Swedish House Mafia",
-    "title": "One (Your Name)"
+    "title": "One (Your Name)",
+    "peak": "Himno EDM",
+    "genre": "EDM"
   },
   {
     "year": 2010,
     "artist": "Duck Sauce",
-    "title": "Barbra Streisand"
+    "title": "Barbra Streisand",
+    "peak": "Nº 1 España",
+    "genre": "Nu-Disco"
   },
   {
     "year": 2010,
     "artist": "Avicii",
-    "title": "Seek Bromance"
+    "title": "Seek Bromance",
+    "peak": "Top 5 España",
+    "genre": "Progressive House"
   },
   {
     "year": 2011,
     "artist": "Avicii",
-    "title": "Levels"
+    "title": "Levels",
+    "peak": "Himno EDM Mundial",
+    "genre": "EDM"
   },
   {
     "year": 2011,
     "artist": "Calvin Harris",
-    "title": "Feel So Close"
+    "title": "Feel So Close",
+    "peak": "Nº 1 Los 40",
+    "genre": "Electro House"
   },
   {
     "year": 2011,
     "artist": "David Guetta",
-    "title": "Titanium"
+    "title": "Titanium",
+    "peak": "Nº 1 España",
+    "genre": "Dance Pop"
   },
   {
     "year": 2011,
     "artist": "Martin Solveig",
-    "title": "Hello"
+    "title": "Hello",
+    "peak": "Nº 1 Los 40",
+    "genre": "Dance Pop"
   },
   {
     "year": 2012,
     "artist": "Swedish House Mafia",
-    "title": "Don't You Worry Child"
+    "title": "Don't You Worry Child",
+    "peak": "Nº 1 España",
+    "genre": "EDM"
   },
   {
     "year": 2012,
     "artist": "Calvin Harris",
-    "title": "Sweet Nothing"
+    "title": "Sweet Nothing",
+    "peak": "Top 5 España",
+    "genre": "Electro House"
   },
   {
     "year": 2012,
     "artist": "Otto Knows",
-    "title": "Million Voices"
+    "title": "Million Voices",
+    "peak": "Nº 1 Máxima FM",
+    "genre": "Progressive House"
   },
   {
     "year": 2013,
     "artist": "Martin Garrix",
-    "title": "Animals"
+    "title": "Animals",
+    "peak": "Nº 1 EDM Mundial",
+    "genre": "Big Room House"
   },
   {
     "year": 2013,
     "artist": "Dimitri Vegas & Like Mike",
-    "title": "Mammoth"
+    "title": "Mammoth",
+    "peak": "Top Tomorrowland",
+    "genre": "EDM"
   },
   {
     "year": 2013,
     "artist": "Armin van Buuren",
-    "title": "This Is What It Feels Like"
+    "title": "This Is What It Feels Like",
+    "peak": "Top 5 España",
+    "genre": "Trance"
   },
   {
     "year": 2014,
     "artist": "Calvin Harris",
-    "title": "Summer"
+    "title": "Summer",
+    "peak": "Nº 1 España",
+    "genre": "Dance"
   },
   {
     "year": 2014,
     "artist": "Oliver Heldens",
-    "title": "Gecko (Overdrive)"
+    "title": "Gecko (Overdrive)",
+    "peak": "Nº 1 Future House",
+    "genre": "Future House"
   },
   {
     "year": 2014,
     "artist": "Robin Schulz",
-    "title": "Prayer in C"
+    "title": "Prayer in C",
+    "peak": "Nº 1 Los 40",
+    "genre": "Deep House"
   },
   {
     "year": 2015,
     "artist": "Major Lazer",
-    "title": "Lean On"
+    "title": "Lean On",
+    "peak": "Nº 1 España",
+    "genre": "Moombahton / Dance"
   },
   {
     "year": 2015,
     "artist": "Kygo",
-    "title": "Firestone"
+    "title": "Firestone",
+    "peak": "Nº 1 Tropical House",
+    "genre": "Tropical House"
   },
   {
     "year": 2015,
     "artist": "Lost Frequencies",
-    "title": "Are You with Me"
+    "title": "Are You with Me",
+    "peak": "Nº 1 Los 40",
+    "genre": "Deep House"
   },
   {
     "year": 2016,
     "artist": "Alan Walker",
-    "title": "Faded"
+    "title": "Faded",
+    "peak": "Nº 1 España",
+    "genre": "EDM"
   },
   {
     "year": 2016,
     "artist": "Kungs",
-    "title": "This Girl"
+    "title": "This Girl",
+    "peak": "Nº 1 Los 40",
+    "genre": "Deep House"
   },
   {
     "year": 2017,
     "artist": "CamelPhat",
-    "title": "Cola"
+    "title": "Cola",
+    "peak": "Nº 1 Tech House",
+    "genre": "Tech House"
   },
   {
     "year": 2018,
     "artist": "Dynoro",
-    "title": "In My Mind"
+    "title": "In My Mind",
+    "peak": "Nº 1 España",
+    "genre": "Slap House"
   },
   {
     "year": 2019,
     "artist": "Meduza",
-    "title": "Piece of Your Heart"
+    "title": "Piece of Your Heart",
+    "peak": "Nº 1 Dance",
+    "genre": "Deep House"
   },
   {
     "year": 2020,
     "artist": "Topic",
-    "title": "Breaking Me"
+    "title": "Breaking Me",
+    "peak": "Nº 1 Los 40",
+    "genre": "Slap House"
   },
   {
     "year": 2021,
     "artist": "Acraze",
-    "title": "Do It to It"
+    "title": "Do It to It",
+    "peak": "Nº 1 Clubbing",
+    "genre": "Tech House"
   },
   {
     "year": 2022,
     "artist": "David Guetta",
-    "title": "I'm Good (Blue)"
+    "title": "I'm Good (Blue)",
+    "peak": "Nº 1 Los 40 Dance",
+    "genre": "Dance Pop"
   },
   {
     "year": 2023,
     "artist": "Peggy Gou",
-    "title": "(It Goes Like) Nanana"
+    "title": "(It Goes Like) Nanana",
+    "peak": "Nº 1 Ibiza",
+    "genre": "House"
   }
 ]
