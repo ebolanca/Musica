@@ -1938,10 +1938,12 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
 
         console.log(`[CLEAN DOWNLOAD] Duración oficial esperada: ${expectedDurationSec ? expectedDurationSec + 's (' + Math.floor(expectedDurationSec/60) + ':' + (expectedDurationSec%60).toString().padStart(2, '0') + ')' : 'No especificada'}`);
 
-        // 2. Buscar candidatos en SoundCloud (priorizar búsqueda rápida directa)
+        // 2. Buscar candidatos en YouTube y SoundCloud con coincidencia limpia de estudio
         const searchQueries = [
-            `scsearch30:${artist} ${cleanT}`,
-            `scsearch30:${cleanT} ${artist}`
+            `ytsearch20:${artist} ${cleanT} audio`,
+            `ytsearch20:${artist} ${cleanT}`,
+            `scsearch20:${artist} ${cleanT}`,
+            `scsearch20:${cleanT} ${artist}`
         ];
 
         let bestCandidate = null;
@@ -1964,27 +1966,27 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
                 for (const line of lines) {
                     try {
                         const item = JSON.parse(line);
-                        const candUrl = item.webpage_url || item.url;
+                        const candUrl = item.webpage_url || item.url || (item.id ? `https://www.youtube.com/watch?v=${item.id}` : null);
                         if (!candUrl || seenUrls.has(candUrl)) continue;
 
                         const dur = item.duration;
-                        if (!dur || dur < 60) continue;
+                        if (!dur || dur < 50) continue;
 
                         const itemTitle = (item.title || '').toLowerCase();
                         const itemUploader = (item.uploader || '').toLowerCase();
 
-                        // Ignorar teasers, previews, trailers
-                        if (/preview|teaser|trailer|snippet/i.test(itemTitle)) continue;
+                        // Ignorar teasers, previews, trailers, snippets
+                        if (/preview|teaser|trailer|snippet|recortada|short/i.test(itemTitle)) continue;
 
-                        // FILTRO ESTRICTO ANTI-COVERS: Si la pista original no es cover, descartar cualquier cover
-                        const isCover = /\b(cover|acoustic cover|guitar cover|piano cover|metal cover|rock cover|tribute|tributo|karaoke|fan made|parody|versi[oó]n ac[uú]stica)\b/i.test(itemTitle)
-                                     || /\b(cover|karaoke|tribute)\b/i.test(itemUploader);
-                        if (isCover && !/cover/i.test(title)) {
+                        // FILTRO ESTRICTO ANTI-COVERS Y ANTI-HOMENAJES: Si la pista original no es cover/homenaje, descartarlos
+                        const isCoverOrTribute = /\b(cover|acoustic cover|guitar cover|piano cover|metal cover|rock cover|tribute|tributo|homenaje|karaoke|fan made|parody|parodia|versi[oó]n ac[uú]stica|acustico|acustica|directo|en vivo|live|concierto|gira|festival|sinf[oó]nico)\b/i.test(itemTitle)
+                                     || /\b(cover|karaoke|tribute|homenaje)\b/i.test(itemUploader);
+                        if (isCoverOrTribute && !/cover|tribute|homenaje|live|directo/i.test(title)) {
                             continue;
                         }
 
                         // Descartar remixes, mashups, slowed, sped up si el tema original no los tiene
-                        const isRemix = /\b(remix|bootleg|mashup|sped up|slowed|nightcore|chopped|reverb|club mix|extended mix)\b/i.test(itemTitle);
+                        const isRemix = /\b(remix|bootleg|mashup|sped up|slowed|nightcore|chopped|reverb|club mix|extended mix|radio edit)\b/i.test(itemTitle);
                         if (isRemix && !/remix|club|extended/i.test(title)) {
                             continue;
                         }
@@ -2013,7 +2015,7 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
                     } catch(e) {}
                 }
 
-                if (allValidCandidates.length >= 5) break;
+                if (allValidCandidates.length >= 8) break;
             } catch(e) {
                 console.warn(`Aviso buscando con ${q}:`, e.message);
             }
@@ -3279,12 +3281,15 @@ async function handleRecommendationsDownload(req, res) {
         }
 
         const searchQueries = [
-            `scsearch25:${artist} - ${cleanT}`,
-            `scsearch25:${artist} ${cleanT}`,
-            `ytsearch10:${artist} - ${cleanT} audio`
+            `ytsearch20:${artist} ${cleanT} audio`,
+            `ytsearch20:${artist} ${cleanT}`,
+            `scsearch20:${artist} - ${cleanT}`,
+            `scsearch20:${artist} ${cleanT}`
         ];
 
         let validCandidates = [];
+        const seenUrls = new Set();
+
         for (const q of searchQueries) {
             try {
                 const dumpCmd = `${ytdlpBin} --dump-json --flat-playlist "${q}"`;
@@ -3300,13 +3305,25 @@ async function handleRecommendationsDownload(req, res) {
                 for (const line of lines) {
                     try {
                         const item = JSON.parse(line);
+                        const candUrl = item.webpage_url || item.url || (item.id ? `https://www.youtube.com/watch?v=${item.id}` : null);
+                        if (!candUrl || seenUrls.has(candUrl)) continue;
+
                         const dur = item.duration;
                         if (!dur || dur < 50) continue;
 
                         const itemTitle = (item.title || '').toLowerCase();
-                        if (itemTitle.includes('remix') || itemTitle.includes('extended') || 
-                            itemTitle.includes('cover') || itemTitle.includes('tribute') || 
-                            itemTitle.includes('karaoke') || itemTitle.includes('parody')) {
+                        const itemUploader = (item.uploader || '').toLowerCase();
+
+                        if (/preview|teaser|trailer|snippet|recortada|short/i.test(itemTitle)) continue;
+
+                        const isCoverOrTribute = /\b(cover|acoustic cover|guitar cover|piano cover|metal cover|rock cover|tribute|tributo|homenaje|karaoke|fan made|parody|parodia|versi[oó]n ac[uú]stica|acustico|acustica|directo|en vivo|live|concierto|gira|festival|sinf[oó]nico)\b/i.test(itemTitle)
+                                     || /\b(cover|karaoke|tribute|homenaje)\b/i.test(itemUploader);
+                        if (isCoverOrTribute && !/cover|tribute|homenaje|live|directo/i.test(title)) {
+                            continue;
+                        }
+
+                        const isRemix = /\b(remix|bootleg|mashup|sped up|slowed|nightcore|chopped|reverb|club mix|extended mix|radio edit)\b/i.test(itemTitle);
+                        if (isRemix && !/remix|club|extended/i.test(title)) {
                             continue;
                         }
 
@@ -3316,9 +3333,10 @@ async function handleRecommendationsDownload(req, res) {
                             if (diff > 12) continue;
                         }
 
+                        seenUrls.add(candUrl);
                         validCandidates.push({
                             id: item.id,
-                            url: item.url || item.webpage_url || item.id,
+                            url: candUrl,
                             title: item.title,
                             duration: dur,
                             diff: diff
@@ -3326,7 +3344,7 @@ async function handleRecommendationsDownload(req, res) {
                     } catch(e) {}
                 }
 
-                if (validCandidates.length > 0) break;
+                if (validCandidates.length >= 8) break;
             } catch(e) {}
         }
 
