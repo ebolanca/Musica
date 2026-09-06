@@ -1122,6 +1122,18 @@ document.addEventListener('DOMContentLoaded', () => {
             btnCinemaReplaceClean.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Descargando...';
             showSyncNotification('⏳ Descargando versión oficial de estudio...');
 
+            let subsSec = null;
+            if (cinemaParsedLyrics && cinemaParsedLyrics.length > 0) {
+                const lastLine = cinemaParsedLyrics[cinemaParsedLyrics.length - 1];
+                if (lastLine) {
+                    if (typeof lastLine.seconds === 'number') subsSec = Math.round(lastLine.seconds);
+                    else if (lastLine.time) {
+                        const p = lastLine.time.split(':');
+                        subsSec = Math.round(parseInt(p[0], 10) * 60 + parseFloat(p[1] || 0));
+                    }
+                }
+            }
+
             try {
                 const res = await fetch('/api/track/replace-clean-audio', {
                     method: 'POST',
@@ -1130,7 +1142,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         artist: currentSong.artist,
                         title: currentSong.rawTitle || currentSong.title,
                         category: currentSong.playlistName || currentTab,
-                        discardCurrent: true
+                        discardCurrent: true,
+                        expectedDurationSec: subsSec
                     })
                 });
 

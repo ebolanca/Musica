@@ -1916,18 +1916,37 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
             console.log(`[CLEAN DOWNLOAD] 🗑️ Descartada versión anterior por petición del usuario: ${oldVersion}`);
         }
 
-        // 1. Obtener duración esperada de estudio (en segundos)
-        let expectedDurationSec = null;
-        const meta = getTrackMetadata(artist, title);
-        if (meta && meta.durationMs) {
-            expectedDurationSec = Math.round(meta.durationMs / 1000);
-        } else {
+        // 1. Obtener duración esperada de estudio (en segundos) de forma infalible
+        let expectedDurationSec = req.body.expectedDurationSec || req.body.subsDurationSec || null;
+        if (!expectedDurationSec || isNaN(expectedDurationSec)) {
+            const meta = getTrackMetadata(artist, title);
+            if (meta && meta.durationMs) {
+                expectedDurationSec = Math.round(meta.durationMs / 1000);
+            }
+        }
+        if (!expectedDurationSec || isNaN(expectedDurationSec)) {
+            const lyrics = findLyricsForTrack(artist, title);
+            if (lyrics && Array.isArray(lyrics) && lyrics.length > 0) {
+                const lastLine = lyrics[lyrics.length - 1];
+                if (lastLine) {
+                    let sec = 0;
+                    if (typeof lastLine.seconds === 'number') sec = lastLine.seconds;
+                    else if (lastLine.time) {
+                        const p = lastLine.time.split(':');
+                        sec = parseInt(p[0], 10) * 60 + parseFloat(p[1] || 0);
+                    }
+                    if (sec > 60) expectedDurationSec = Math.round(sec);
+                }
+            }
+        }
+        if (!expectedDurationSec || isNaN(expectedDurationSec)) {
             try {
-                const itunesRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(artist + ' ' + cleanT)}&entity=song&limit=5`, { signal: AbortSignal.timeout(3500) });
+                const mainArtist = artist.split(/[,&]/)[0].trim();
+                const itunesRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(mainArtist + ' ' + cleanT)}&entity=song&limit=5`, { signal: AbortSignal.timeout(3500) });
                 if (itunesRes.ok) {
                     const itunesData = await itunesRes.json();
                     if (itunesData.results && itunesData.results.length > 0) {
-                        const match = itunesData.results.find(r => (r.artistName || '').toLowerCase().includes(artist.toLowerCase().split(/[,&]/)[0].trim())) || itunesData.results[0];
+                        const match = itunesData.results[0];
                         if (match && match.trackTimeMillis) {
                             expectedDurationSec = Math.round(match.trackTimeMillis / 1000);
                         }
@@ -1949,6 +1968,7 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
         let bestCandidate = null;
         let allValidCandidates = [];
         const seenUrls = new Set();
+        const MAX_DURATION_DIFF = 10; // Tolerancia máxima estricta de ±10 segundos
 
         for (const q of searchQueries) {
             try {
@@ -1996,11 +2016,14 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
                             continue;
                         }
 
-                        // Comprobar diferencia con duración esperada (+- 12s)
+                        // Comprobar diferencia con duración esperada (MÁXIMO ±10 SEGUNDOS ESTRICTOS)
                         let diff = 0;
                         if (expectedDurationSec) {
                             diff = Math.abs(dur - expectedDurationSec);
-                            if (diff > 12) continue; // Descartado por duración lejana a la versión de estudio
+                            if (diff > MAX_DURATION_DIFF) {
+                                console.log(`[CLEAN DOWNLOAD] 🚫 Descartado por diferencia de duración: "${item.title}" (${dur}s vs esperada ${expectedDurationSec}s, diff=${diff}s > ${MAX_DURATION_DIFF}s)`);
+                                continue;
+                            }
                         }
 
                         seenUrls.add(candUrl);
@@ -3330,7 +3353,7 @@ async function handleRecommendationsDownload(req, res) {
                         let diff = 0;
                         if (expectedDur) {
                             diff = Math.abs(dur - expectedDur);
-                            if (diff > 12) continue;
+                            if (diff > 10) continue; // Descartar si supera ±10 segundos de la duración oficial
                         }
 
                         seenUrls.add(candUrl);
