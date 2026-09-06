@@ -1957,12 +1957,14 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
 
         console.log(`[CLEAN DOWNLOAD] Duración oficial esperada: ${expectedDurationSec ? expectedDurationSec + 's (' + Math.floor(expectedDurationSec/60) + ':' + (expectedDurationSec%60).toString().padStart(2, '0') + ')' : 'No especificada'}`);
 
-        // 2. Buscar candidatos en YouTube y SoundCloud con coincidencia limpia de estudio
+        // 2. Buscar candidatos en YouTube y SoundCloud con coincidencia limpia de estudio (priorizar lyrics/audio)
+        const mainArtist = artist.split(/[,&]/)[0].trim();
         const searchQueries = [
-            `ytsearch20:${artist} ${cleanT} audio`,
-            `ytsearch20:${artist} ${cleanT}`,
-            `scsearch20:${artist} ${cleanT}`,
-            `scsearch20:${cleanT} ${artist}`
+            `ytsearch20:${mainArtist} ${cleanT} lyrics`,
+            `ytsearch20:${mainArtist} ${cleanT} audio`,
+            `ytsearch20:${mainArtist} ${cleanT} letra`,
+            `ytsearch20:${mainArtist} ${cleanT}`,
+            `scsearch20:${mainArtist} ${cleanT}`
         ];
 
         let bestCandidate = null;
@@ -3303,11 +3305,13 @@ async function handleRecommendationsDownload(req, res) {
             } catch(e) {}
         }
 
+        const mainArtist = artist.split(/[,&]/)[0].trim();
         const searchQueries = [
-            `ytsearch20:${artist} ${cleanT} audio`,
-            `ytsearch20:${artist} ${cleanT}`,
-            `scsearch20:${artist} - ${cleanT}`,
-            `scsearch20:${artist} ${cleanT}`
+            `ytsearch20:${mainArtist} ${cleanT} lyrics`,
+            `ytsearch20:${mainArtist} ${cleanT} audio`,
+            `ytsearch20:${mainArtist} ${cleanT} letra`,
+            `ytsearch20:${mainArtist} ${cleanT}`,
+            `scsearch20:${mainArtist} ${cleanT}`
         ];
 
         let validCandidates = [];
