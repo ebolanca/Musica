@@ -1882,6 +1882,21 @@ function getYtDlpCookiesArg() {
 }
 
 let versionCycleIndex = {};
+const discardedVersionsStore = {};
+
+function addDiscardedVersion(artist, title, urlOrId) {
+    if (!artist || !title || !urlOrId) return;
+    const k = `${cleanTrackKey(artist)}_${cleanTrackKey(title)}`;
+    if (!discardedVersionsStore[k]) discardedVersionsStore[k] = new Set();
+    discardedVersionsStore[k].add(String(urlOrId).trim());
+}
+
+function isVersionDiscarded(artist, title, urlOrId) {
+    if (!artist || !title || !urlOrId) return false;
+    const k = `${cleanTrackKey(artist)}_${cleanTrackKey(title)}`;
+    return discardedVersionsStore[k] ? discardedVersionsStore[k].has(String(urlOrId).trim()) : false;
+}
+
 let activeCleanVersion = {}; // TrackKey -> URL actual para saber cuál descartar si el usuario pulsa "Versión" de nuevo
 
 app.post('/api/track/replace-clean-audio', async (req, res) => {
