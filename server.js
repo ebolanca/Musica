@@ -1861,6 +1861,24 @@ app.post('/api/lyrics/cycle-version', async (req, res) => {
 // ==========================================================================
 // 🔄 Reemplazar pista por Versión Limpia Oficial de Estudio
 // ==========================================================================
+
+function getYtDlpCookiesArg() {
+    const candidates = [
+        path.join(__dirname, 'bin', 'cookies.txt'),
+        path.join(__dirname, 'cookies.txt'),
+        '\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\bin\\cookies.txt',
+        '\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\cookies.txt'
+    ];
+    for (const c of candidates) {
+        try {
+            if (fs.existsSync(c)) {
+                return `--cookies "${c}"`;
+            }
+        } catch(e) {}
+    }
+    return '';
+}
+
 let versionCycleIndex = {};
 let activeCleanVersion = {}; // TrackKey -> URL actual para saber cuál descartar si el usuario pulsa "Versión" de nuevo
 
@@ -1974,7 +1992,8 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
 
         for (const q of searchQueries) {
             try {
-                const dumpCmd = `${ytdlpBin} --dump-json --flat-playlist "${q}"`;
+                const cookiesArg = getYtDlpCookiesArg();
+                const dumpCmd = `${ytdlpBin} ${cookiesArg} --dump-json --flat-playlist "${q}"`.replace(/\s+/g, " ");
                 const dumpOutput = await new Promise((resolve) => {
                     exec(dumpCmd, { maxBuffer: 10 * 1024 * 1024, timeout: 15000, windowsHide: true }, (err, stdout) => {
                         resolve(stdout || '');
@@ -2066,7 +2085,8 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
                 const cand = allValidCandidates[i];
                 console.log(`[CLEAN DOWNLOAD] Intentando candidato [${i + 1}/${allValidCandidates.length}]: "${cand.title}" (${cand.duration}s) de ${cand.uploader} -> ${cand.url}`);
 
-                const downloadCmd = `${ytdlpBin} --ffmpeg-location "${ffmpegDir}" "${cand.url}" -x --audio-format mp3 --audio-quality 0 -o "${tempOutput}"`;
+                const cookiesArg = getYtDlpCookiesArg();
+                const downloadCmd = `${ytdlpBin} ${cookiesArg} --ffmpeg-location "${ffmpegDir}" "${cand.url}" -x --audio-format mp3 --audio-quality 0 -o "${tempOutput}"`.replace(/\s+/g, " ");
 
                 const result = await new Promise((resolve) => {
                     exec(downloadCmd, { timeout: 45000, windowsHide: true }, (err, stdout, stderr) => {
@@ -3326,7 +3346,8 @@ async function handleRecommendationsDownload(req, res) {
 
         for (const q of searchQueries) {
             try {
-                const dumpCmd = `${ytdlpBin} --dump-json --flat-playlist "${q}"`;
+                const cookiesArg = getYtDlpCookiesArg();
+                const dumpCmd = `${ytdlpBin} ${cookiesArg} --dump-json --flat-playlist "${q}"`.replace(/\s+/g, " ");
                 const dumpOutput = await new Promise((resolve) => {
                     exec(dumpCmd, { maxBuffer: 10 * 1024 * 1024, timeout: 15000, windowsHide: true }, (err, stdout) => {
                         resolve(stdout || '');
@@ -3401,7 +3422,8 @@ async function handleRecommendationsDownload(req, res) {
         for (let i = 0; i < validCandidates.length; i++) {
             const cand = validCandidates[i];
             const downloadUrl = cand.url.startsWith('http') ? cand.url : `https://www.youtube.com/watch?v=${cand.id}`;
-            const dlCmd = `${ytdlpBin} --ffmpeg-location "${ffmpegDir}" -x --audio-format mp3 --audio-quality 0 -o "${tempOutput}" "${downloadUrl}"`;
+            const cookiesArg = getYtDlpCookiesArg();
+            const dlCmd = `${ytdlpBin} ${cookiesArg} --ffmpeg-location "${ffmpegDir}" -x --audio-format mp3 --audio-quality 0 -o "${tempOutput}" "${downloadUrl}"`.replace(/\s+/g, " ");
 
             console.log(`[RECOMMENDATION DOWNLOAD] Probando candidato [${i + 1}/${validCandidates.length}]: "${cand.title}"`);
             const ok = await new Promise((resolve) => {
