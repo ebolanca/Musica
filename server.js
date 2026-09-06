@@ -1960,11 +1960,11 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
         // 2. Buscar candidatos en YouTube y SoundCloud con coincidencia limpia de estudio (priorizar lyrics/audio)
         const mainArtist = artist.split(/[,&]/)[0].trim();
         const searchQueries = [
+            `scsearch20:${mainArtist} ${cleanT}`,
             `ytsearch20:${mainArtist} ${cleanT} lyrics`,
             `ytsearch20:${mainArtist} ${cleanT} audio`,
             `ytsearch20:${mainArtist} ${cleanT} letra`,
-            `ytsearch20:${mainArtist} ${cleanT}`,
-            `scsearch20:${mainArtist} ${cleanT}`
+            `ytsearch20:${mainArtist} ${cleanT}`
         ];
 
         let bestCandidate = null;
@@ -2051,7 +2051,14 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
         let finalStats = null;
 
         if (allValidCandidates.length > 0) {
-            allValidCandidates.sort((a, b) => a.diff - b.diff);
+            allValidCandidates.sort((a, b) => {
+                const aIsSc = a.url.includes('soundcloud.com') ? 1 : 0;
+                const bIsSc = b.url.includes('soundcloud.com') ? 1 : 0;
+                if (Math.abs(a.diff - b.diff) <= 3 && aIsSc !== bIsSc) {
+                    return bIsSc - aIsSc;
+                }
+                return a.diff - b.diff;
+            });
 
             console.log(`[CLEAN DOWNLOAD] Probando ${allValidCandidates.length} candidatos válidos no descartados...`);
 
@@ -3307,11 +3314,11 @@ async function handleRecommendationsDownload(req, res) {
 
         const mainArtist = artist.split(/[,&]/)[0].trim();
         const searchQueries = [
+            `scsearch20:${mainArtist} ${cleanT}`,
             `ytsearch20:${mainArtist} ${cleanT} lyrics`,
             `ytsearch20:${mainArtist} ${cleanT} audio`,
             `ytsearch20:${mainArtist} ${cleanT} letra`,
-            `ytsearch20:${mainArtist} ${cleanT}`,
-            `scsearch20:${mainArtist} ${cleanT}`
+            `ytsearch20:${mainArtist} ${cleanT}`
         ];
 
         let validCandidates = [];
@@ -3379,7 +3386,14 @@ async function handleRecommendationsDownload(req, res) {
             return res.status(404).json({ error: `No se encontró versión de estudio limpia (±10s de duración oficial)` });
         }
 
-        validCandidates.sort((a, b) => a.diff - b.diff);
+        validCandidates.sort((a, b) => {
+            const aIsSc = a.url.includes('soundcloud.com') ? 1 : 0;
+            const bIsSc = b.url.includes('soundcloud.com') ? 1 : 0;
+            if (Math.abs(a.diff - b.diff) <= 3 && aIsSc !== bIsSc) {
+                return bIsSc - aIsSc;
+            }
+            return a.diff - b.diff;
+        });
 
         let dlSuccess = false;
         let downloadedCandidate = null;

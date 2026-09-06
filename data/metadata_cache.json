@@ -92688,5 +92688,31 @@
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/d2b29dc2818c950c42bcdc221dcf9f0b/1000x1000-000000-80-0-0.jpg",
     "durationMs": 201293,
     "source": "Deezer + Apple Music Resolver"
+  },
+  "romeo santos, prince royce - dardos": {
+    "title": "Dardos",
+    "displayTitle": "Dardos",
+    "artist": "Romeo Santos, Prince Royce",
+    "album": "Better Late Than Never",
+    "year": "2025",
+    "date": "2025-11-28",
+    "releaseYear": "2025",
+    "releaseDate": "2025-11-28",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4fa4486790013698c966ed7789f8a2aa/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 243071,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "dardos": {
+    "title": "Dardos",
+    "displayTitle": "Dardos",
+    "artist": "Romeo Santos, Prince Royce",
+    "album": "Better Late Than Never",
+    "year": "2025",
+    "date": "2025-11-28",
+    "releaseYear": "2025",
+    "releaseDate": "2025-11-28",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4fa4486790013698c966ed7789f8a2aa/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 243071,
+    "source": "Deezer + Apple Music Resolver"
   }
 }
