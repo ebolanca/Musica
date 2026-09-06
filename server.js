@@ -1869,14 +1869,16 @@ function getYtDlpCookiesArg() {
         '\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\bin\\cookies.txt',
         '\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\cookies.txt'
     ];
+    let cookieArg = '';
     for (const c of candidates) {
         try {
             if (fs.existsSync(c)) {
-                return `--cookies "${c}"`;
+                cookieArg = `--cookies "${c}"`;
+                break;
             }
         } catch(e) {}
     }
-    return '';
+    return `--js-runtimes node ${cookieArg}`.trim();
 }
 
 let versionCycleIndex = {};

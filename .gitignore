@@ -6,3 +6,5 @@ node_modules/
 
 bin/
 *.log
+
+*cookies*.txt
