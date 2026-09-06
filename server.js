@@ -1951,12 +1951,30 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
             console.log(`[CLEAN DOWNLOAD] 🗑️ Descartada versión anterior por petición del usuario: ${oldVersion}`);
         }
 
-        // 1. Obtener duración esperada de estudio (en segundos) de forma infalible
-        let expectedDurationSec = req.body.expectedDurationSec || req.body.subsDurationSec || null;
+        // 1. Obtener duración esperada oficial de estudio (en segundos) con máxima fidelidad
+        let expectedDurationSec = null;
+        const meta = getTrackMetadata(artist, title);
+        if (meta && meta.durationMs) {
+            expectedDurationSec = Math.round(meta.durationMs / 1000);
+        }
         if (!expectedDurationSec || isNaN(expectedDurationSec)) {
-            const meta = getTrackMetadata(artist, title);
-            if (meta && meta.durationMs) {
-                expectedDurationSec = Math.round(meta.durationMs / 1000);
+            try {
+                const mainArtist = artist.split(/[,&]/)[0].trim();
+                const itunesRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(mainArtist + ' ' + cleanT)}&entity=song&limit=5`, { signal: AbortSignal.timeout(3500) });
+                if (itunesRes.ok) {
+                    const itunesData = await itunesRes.json();
+                    if (itunesData.results && itunesData.results.length > 0) {
+                        const match = itunesData.results[0];
+                        if (match && match.trackTimeMillis) {
+                            expectedDurationSec = Math.round(match.trackTimeMillis / 1000);
+                        }
+                    }
+                }
+            } catch(e) {}
+        }
+        if (!expectedDurationSec || isNaN(expectedDurationSec)) {
+            if (req.body.expectedDurationSec && !isNaN(req.body.expectedDurationSec) && req.body.expectedDurationSec > 30) {
+                expectedDurationSec = Number(req.body.expectedDurationSec);
             }
         }
         if (!expectedDurationSec || isNaN(expectedDurationSec)) {
@@ -1974,38 +1992,23 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
                 }
             }
         }
-        if (!expectedDurationSec || isNaN(expectedDurationSec)) {
-            try {
-                const mainArtist = artist.split(/[,&]/)[0].trim();
-                const itunesRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(mainArtist + ' ' + cleanT)}&entity=song&limit=5`, { signal: AbortSignal.timeout(3500) });
-                if (itunesRes.ok) {
-                    const itunesData = await itunesRes.json();
-                    if (itunesData.results && itunesData.results.length > 0) {
-                        const match = itunesData.results[0];
-                        if (match && match.trackTimeMillis) {
-                            expectedDurationSec = Math.round(match.trackTimeMillis / 1000);
-                        }
-                    }
-                }
-            } catch(e) {}
-        }
 
         console.log(`[CLEAN DOWNLOAD] Duración oficial esperada: ${expectedDurationSec ? expectedDurationSec + 's (' + Math.floor(expectedDurationSec/60) + ':' + (expectedDurationSec%60).toString().padStart(2, '0') + ')' : 'No especificada'}`);
 
         // 2. Buscar candidatos en YouTube y SoundCloud con coincidencia limpia de estudio (priorizar lyrics/audio)
         const mainArtist = artist.split(/[,&]/)[0].trim();
         const searchQueries = [
-            `scsearch20:${mainArtist} ${cleanT}`,
-            `ytsearch20:${mainArtist} ${cleanT} lyrics`,
             `ytsearch20:${mainArtist} ${cleanT} audio`,
+            `ytsearch20:${mainArtist} ${cleanT} lyrics`,
             `ytsearch20:${mainArtist} ${cleanT} letra`,
-            `ytsearch20:${mainArtist} ${cleanT}`
+            `ytsearch20:${mainArtist} ${cleanT}`,
+            `scsearch20:${mainArtist} ${cleanT}`
         ];
 
         let bestCandidate = null;
         let allValidCandidates = [];
         const seenUrls = new Set();
-        const MAX_DURATION_DIFF = 10; // Tolerancia máxima estricta de ±10 segundos
+        const MAX_DURATION_DIFF = 18; // Tolerancia de ±18 segundos para acomodar silencios de pista y outros oficiales
 
         for (const q of searchQueries) {
             try {
@@ -2044,7 +2047,7 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
                         }
 
                         // Descartar remixes, mashups, slowed, sped up si el tema original no los tiene
-                        const isRemix = /\b(remix|bootleg|mashup|sped up|slowed|nightcore|chopped|reverb|club mix|extended mix|radio edit)\b/i.test(itemTitle);
+                        const isRemix = /\b(remix|bootleg|mashup|sped up|slowed|nightcore|chopped|reverb|club mix|extended mix|radio edit|dj\s*edit|edit\s*intro|intro\s*simple|\bbpm\b|private mix)\b/i.test(itemTitle) || /\b(dvj|djtato|dj\s+[a-z]+)\b/i.test(itemUploader);
                         if (isRemix && !/remix|club|extended/i.test(title)) {
                             continue;
                         }

@@ -1143,7 +1143,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         title: currentSong.rawTitle || currentSong.title,
                         category: currentSong.playlistName || currentTab,
                         discardCurrent: true,
-                        expectedDurationSec: subsSec
+                        expectedDurationSec: (mainMusicAudio && !isNaN(mainMusicAudio.duration) && mainMusicAudio.duration > 30) ? Math.round(mainMusicAudio.duration) : subsSec
                     })
                 });
 
