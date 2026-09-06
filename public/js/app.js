@@ -291,16 +291,6 @@ document.addEventListener('DOMContentLoaded', () => {
             streamUrl: 'https://liveradio.ondacero.es/live/europafm.mp3'
         },
         {
-            id: 'flaixfm',
-            name: 'FLAIX FM',
-            slogan: 'El Ritme que No Para',
-            genre: 'Dance / Electronic / Hits',
-            quality: '128 kbps HD',
-            logoUrl: 'img/radios/flaixfm.svg',
-            webUrl: 'https://flaixfm.cat/',
-            streamUrl: 'https://stream.flaixfm.cat/icecast'
-        },
-        {
             id: 'megastar',
             name: 'MEGASTAR FM',
             slogan: 'Solo Temazos',
@@ -319,16 +309,6 @@ document.addEventListener('DOMContentLoaded', () => {
             logoUrl: 'img/radios/cadenadial.svg',
             webUrl: 'https://cadenadial.com/',
             streamUrl: 'https://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3'
-        },
-        {
-            id: 'los40urban',
-            name: 'LOS40 URBAN',
-            slogan: 'El Ritmo de la Calle',
-            genre: 'Reggaeton / Trap / Latino',
-            quality: '128 kbps HD',
-            logoUrl: 'img/radios/los40urban.svg',
-            webUrl: 'https://los40.com/los40_urban/',
-            streamUrl: 'https://playerservices.streamtheworld.com/api/livestream-redirect/LOS40_URBAN.mp3'
         },
         {
             id: 'radiole',
@@ -2724,12 +2704,28 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPreviewTrack: null
     };
 
+    function normalizeSearchText(str) {
+        if (!str) return '';
+        return str.toLowerCase()
+            .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^a-z0-9]/g, '');
+    }
+
+    function cleanSongTitle(rawTitle) {
+        if (!rawTitle) return '';
+        return rawTitle
+            .replace(/\s*[\(\[][^)\]]*(feat\.?|featuring|with|version|remaster|remastered|edit|mix|live|en vivo|directo|album|single|radio|soundtrack|bso|ost|video|oficial|official|audio|lyric|lyrics|letra|clip|hd|4k|exclusivo|estreno|full)[^)\]]*[\)\]]/gi, '')
+            .replace(/\s*-\s*.*(version|remaster|edit|mix|live|directo|remix|video|oficial|official|audio|lyric|lyrics|letra|clip).*/gi, '')
+            .replace(/\s+/g, ' ')
+            .trim();
+    }
+
     const recommendationPlaylists = [
         { id: 'Música viejuna', label: 'Música viejuna', icon: 'fa-radio', sub: 'Clásicos 1970-1999' },
         { id: 'Siglo XXI', label: 'Siglo XXI', icon: 'fa-rocket', sub: 'Hits 2000-2025' },
         { id: 'Dance', label: 'Dance', icon: 'fa-headphones', sub: 'Electrónica & EDM' },
         { id: 'Española', label: 'Española', icon: 'fa-guitar', sub: 'Pop & Rock Nacional' },
-        { id: 'Música latina', label: 'Música latina', icon: 'fa-fire', sub: 'Latino & Urban' }
+        { id: 'Música latina', label: 'Música latina', icon: 'fa-fire', sub: 'Salsa, Bachata & Latino' }
     ];
 
     retroState.previewAudio.addEventListener('ended', () => {
@@ -2815,31 +2811,45 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             const data = await res.json();
             if (res.ok && data.success) {
-                if (retroState.mode === 'radar') {
-                    // En Radar: animación visual y retirada directa del DOM sin recargar la pantalla
-                    cardEl.style.transition = 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)';
-                    cardEl.style.opacity = '0';
-                    cardEl.style.transform = 'scale(0.85) translateY(20px)';
+                // Eliminar del DOM TODAS las tarjetas coincidentes con esta canción (independientemente de la emisora o lista)
+                const targetNormArt = normalizeSearchText(artist);
+                const targetNormTit = normalizeSearchText(cleanSongTitle(title));
+
+                const matchingCards = [];
+                document.querySelectorAll('.retro-card').forEach(c => {
+                    const cardArt = c.querySelector('.retro-artist')?.textContent || '';
+                    const cardTit = c.querySelector('.retro-title')?.textContent || '';
+                    const cNormArt = normalizeSearchText(cardArt);
+                    const cNormTit = normalizeSearchText(cleanSongTitle(cardTit));
+
+                    const titleMatches = (cNormTit === targetNormTit) || 
+                        (targetNormTit.length >= 4 && cNormTit.length >= 4 && (cNormTit.includes(targetNormTit) || targetNormTit.includes(cNormTit)));
+                    
+                    if (titleMatches) {
+                        matchingCards.push(c);
+                    }
+                });
+
+                if (matchingCards.length === 0) matchingCards.push(cardEl);
+
+                matchingCards.forEach(c => {
+                    c.style.transition = 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)';
+                    c.style.opacity = '0';
+                    c.style.transform = 'scale(0.85) translateY(20px)';
                     setTimeout(() => {
-                        cardEl.remove();
+                        c.remove();
                         const grid = document.getElementById('radar-tracks-grid');
                         if (grid && grid.querySelectorAll('.retro-card').length === 0) {
-                            grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted);"><p>No quedan más canciones en la emisión de esta emisora.</p></div>';
+                            grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted);"><p>No quedan más canciones en las sugerencias de esta vista.</p></div>';
                         }
                     }, 350);
-                    showToastNotification(`🗑️ "${title}" omitida del radar.`);
-                } else {
-                    // En Catálogo (timeline)
-                    setTimeout(() => {
-                        cardEl.remove();
-                        renderRetroHitsView();
-                    }, 300);
-                    showToastNotification(`🗑️ "${title}" omitida. No volverá a sugerirse.`);
-                }
+                });
+
+                showToastNotification(`🗑️ "${title}" omitida globalmente de todas las emisoras y sugerencias.`);
 
                 const bRetro = document.getElementById('badge-retro');
                 if (bRetro && parseInt(bRetro.textContent, 10) > 0) {
-                    bRetro.textContent = parseInt(bRetro.textContent, 10) - 1;
+                    bRetro.textContent = Math.max(0, parseInt(bRetro.textContent, 10) - matchingCards.length);
                 }
             } else {
                 cardEl.classList.remove('dismissing');

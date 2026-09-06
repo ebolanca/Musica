@@ -2484,17 +2484,25 @@ function isRecommendationDismissed(artist, title) {
     const k = getRecommendationDismissedKey(artist, title);
     if (d[k]) return true;
 
-    // Búsqueda inteligente por tokens si el artista o el formato difieren ligeramente (comas, feats, etc.)
+    // Búsqueda inteligente por tokens si el artista o el formato difieren ligeramente (comas, feats, extras en título)
     const cleanTit = normalizeSearchText(cleanSongTitle(title));
     if (!cleanTit || cleanTit.length < 2) return false;
     const tokens = getArtistTokens(artist);
 
     for (const [key, item] of Object.entries(d)) {
         const itemTit = normalizeSearchText(cleanSongTitle(item.title || ''));
-        if (itemTit === cleanTit) {
+        if (!itemTit || itemTit.length < 2) continue;
+
+        // Coincidencia exacta o coincidencia parcial de títulos si la longitud es suficiente
+        const titleMatches = (itemTit === cleanTit) || 
+            (cleanTit.length >= 4 && itemTit.length >= 4 && (cleanTit.includes(itemTit) || itemTit.includes(cleanTit)));
+
+        if (titleMatches) {
             const itemTokens = getArtistTokens(item.artist || '');
             if (tokens.length === 0 || itemTokens.length === 0) return true;
-            if (tokens.some(t => itemTokens.includes(t))) return true;
+            if (tokens.some(t => itemTokens.includes(t)) || itemTokens.some(t => tokens.includes(t))) {
+                return true;
+            }
         }
     }
     return false;
@@ -2510,8 +2518,8 @@ function normalizeSearchText(str) {
 function cleanSongTitle(rawTitle) {
     if (!rawTitle) return '';
     return rawTitle
-        .replace(/\s*[\(\[][^)\]]*(feat\.?|featuring|with|version|remaster|remastered|edit|mix|live|en vivo|directo|album|single|radio|soundtrack|bso|ost)[^)\]]*[\)\]]/gi, '')
-        .replace(/\s*-\s*.*(version|remaster|edit|mix|live|directo|remix).*/gi, '')
+        .replace(/\s*[\(\[][^)\]]*(feat\.?|featuring|with|version|remaster|remastered|edit|mix|live|en vivo|directo|album|single|radio|soundtrack|bso|ost|video|oficial|official|audio|lyric|lyrics|letra|clip|hd|4k|exclusivo|estreno|full)[^)\]]*[\)\]]/gi, '')
+        .replace(/\s*-\s*.*(version|remaster|edit|mix|live|directo|remix|video|oficial|official|audio|lyric|lyrics|letra|clip).*/gi, '')
         .replace(/\s+/g, ' ')
         .trim();
 }
@@ -2701,25 +2709,23 @@ const RADAR_STATIONS_CONFIG = {
     'CADENA100': { id: 'CADENA100', name: 'Cadena 100', genre: 'Siglo XXI', type: 'myradio', myRadioSlug: 'cadena-100' },
     // Dance
     'LOS40_DANCE': { id: 'LOS40_DANCE', name: 'LOS40 Dance', genre: 'Dance', type: 'triton', mount: 'LOS40_DANCE' },
-    'FLAIXFM': { id: 'FLAIXFM', name: 'Flaix FM', genre: 'Dance', type: 'myradio', myRadioSlug: 'flaix-fm' },
     // Española
     'CADENADIAL': { id: 'CADENADIAL', name: 'Cadena Dial', genre: 'Española', type: 'triton', mount: 'CADENADIAL' },
     'RADIOLE': { id: 'RADIOLE', name: 'Radiolé', genre: 'Española', type: 'triton', mount: 'RADIOLE' },
     'CADENA100_ESP': { id: 'CADENA100_ESP', name: 'Cadena 100', genre: 'Española', type: 'myradio', myRadioSlug: 'cadena-100' },
-    // Música latina (Bachata, Merengue, Salsa, Tropical, Urbana)
+    // Música latina (Bachata, Merengue, Salsa, Tropical)
     'BACHATA_RADIO': { id: 'BACHATA_RADIO', name: 'Bachata Radio', genre: 'Música latina', type: 'orb_url', orbUrl: 'https://onlineradiobox.com/us/bachata/playlist/' },
     'SALSA_RADIO': { id: 'SALSA_RADIO', name: 'Tropical Salsa', genre: 'Música latina', type: 'orb_url', orbUrl: 'https://onlineradiobox.com/us/tropical100salsa/playlist/' },
     'MERENGUE_RADIO': { id: 'MERENGUE_RADIO', name: 'Tropical Merengue', genre: 'Música latina', type: 'orb_url', orbUrl: 'https://onlineradiobox.com/us/tropical100merengue/playlist/' },
-    'LATINA_104': { id: 'LATINA_104', name: 'Latina 104', genre: 'Música latina', type: 'orb_url', orbUrl: 'https://onlineradiobox.com/do/latina104/playlist/' },
-    'LOS40_URBAN': { id: 'LOS40_URBAN', name: 'LOS40 Urban', genre: 'Música latina', type: 'triton', mount: 'LOS40_URBAN' }
+    'LATINA_104': { id: 'LATINA_104', name: 'Latina 104', genre: 'Música latina', type: 'orb_url', orbUrl: 'https://onlineradiobox.com/do/latina104/playlist/' }
 };
 
 const PLAYLIST_RADAR_MAP = {
     'Música viejuna': ['LOS40_CLASSIC', 'ROCKFM', 'KISSFM'],
     'Siglo XXI': ['LOS40', 'HITFM', 'CADENA100'],
-    'Dance': ['LOS40_DANCE', 'FLAIXFM'],
+    'Dance': ['LOS40_DANCE'],
     'Española': ['CADENADIAL', 'RADIOLE', 'CADENA100_ESP'],
-    'Música latina': ['BACHATA_RADIO', 'SALSA_RADIO', 'MERENGUE_RADIO', 'LATINA_104', 'LOS40_URBAN']
+    'Música latina': ['BACHATA_RADIO', 'SALSA_RADIO', 'MERENGUE_RADIO', 'LATINA_104']
 };
 
 // Validador estricto de canciones reales de radio (filtra programas, IDs y cuñas)
