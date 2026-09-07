@@ -1998,11 +1998,11 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
         // 2. Buscar candidatos en YouTube y SoundCloud con coincidencia limpia de estudio (priorizar lyrics/audio)
         const mainArtist = artist.split(/[,&]/)[0].trim();
         const searchQueries = [
+            `scsearch20:${mainArtist} ${cleanT}`,
             `ytsearch20:${mainArtist} ${cleanT} audio`,
             `ytsearch20:${mainArtist} ${cleanT} lyrics`,
             `ytsearch20:${mainArtist} ${cleanT} letra`,
-            `ytsearch20:${mainArtist} ${cleanT}`,
-            `scsearch20:${mainArtist} ${cleanT}`
+            `ytsearch20:${mainArtist} ${cleanT}`
         ];
 
         let bestCandidate = null;
@@ -2137,7 +2137,44 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
             }
         }
 
-        // 4. Si ningún candidato de SoundCloud se pudo descargar (ej. bloqueo DRM de discográfica),
+        // 4. REFUERZO DE SPOTIFY (spotdl): Si YouTube / SoundCloud directo fallan o están bloqueados
+        if (!downloadedSuccess) {
+            console.log(`[SPOTIFY REINFORCEMENT] Activando refuerzo de Spotify con SpotDL para: ${artist} - ${cleanT}...`);
+            const spotdlDir = path.join(__dirname, 'data', `spotdl_refuerzo_${Date.now()}`);
+            try {
+                fs.mkdirSync(spotdlDir, { recursive: true });
+                const spotCmd = `spotdl download "${artist} - ${cleanT}" --audio soundcloud --output "${spotdlDir}"`;
+                const spotRes = await new Promise((resolve) => {
+                    exec(spotCmd, { timeout: 45000, windowsHide: true }, (err) => {
+                        try {
+                            if (fs.existsSync(spotdlDir)) {
+                                const files = fs.readdirSync(spotdlDir).filter(f => f.endsWith('.mp3'));
+                                if (files.length > 0) {
+                                    const downloadedF = path.join(spotdlDir, files[0]);
+                                    const st = fs.statSync(downloadedF);
+                                    if (st.size >= 900000) {
+                                        fs.copyFileSync(downloadedF, tempOutput);
+                                        return resolve({ success: true, stats: fs.statSync(tempOutput), file: files[0] });
+                                    }
+                                }
+                            }
+                        } catch(e) {}
+                        resolve({ success: false });
+                    });
+                });
+                try { fs.rmSync(spotdlDir, { recursive: true, force: true }); } catch(e){}
+                if (spotRes.success) {
+                    downloadedSuccess = true;
+                    finalStats = spotRes.stats;
+                    bestCandidate = { title: `${artist} - ${cleanT} (Refuerzo Spotify / Estudio)`, duration: expectedDurationSec };
+                    console.log(`✅ [SPOTIFY REINFORCEMENT] Descarga exitosa mediante Spotify (${finalStats.size} bytes): "${spotRes.file}"`);
+                }
+            } catch(spotErr) {
+                console.warn('[SPOTIFY REINFORCEMENT] Error:', spotErr.message);
+            }
+        }
+
+        // 5. Si ningún candidato se pudo descargar,
         // verificar si existe una versión videoclip con intro en la biblioteca y recortar la intro automáticamente
         if (!downloadedSuccess) {
             const possibleVideoFiles = [
