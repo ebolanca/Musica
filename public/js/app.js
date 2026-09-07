@@ -750,6 +750,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================================================
+    // ⚡ Motor de Precarga Proactiva (Audio + Subtítulos/Letras de la siguiente canción)
+    // ==========================================================================
+    const preloadedDetailsCache = new Map();
+    const nextTrackAudioPreloader = new Audio();
+    nextTrackAudioPreloader.preload = 'auto';
+    nextTrackAudioPreloader.volume = 0;
+
+    function getTrackPreloadKey(track) {
+        if (!track) return '';
+        return `${normalizeText(track.artist)}__${normalizeText(track.rawTitle || track.title)}`;
+    }
+
+    function triggerPreloadNextTracks() {
+        if (!activePlaylistQueue || activePlaylistQueue.length <= 1) return;
+
+        const nextIndex = (currentQueueIndex + 1) % activePlaylistQueue.length;
+        const nextTrack = activePlaylistQueue[nextIndex];
+        if (!nextTrack) return;
+
+        // 1. Precarga silenciosa del audio en memoria/buffer del navegador (Zero Latency)
+        const nextUrl = nextTrack.audioUrl || (nextTrack.videoItem ? nextTrack.videoItem.streamUrl : null) || nextTrack.videoPath;
+        if (nextUrl && nextTrackAudioPreloader.src !== nextUrl) {
+            nextTrackAudioPreloader.src = nextUrl;
+            nextTrackAudioPreloader.load();
+        }
+
+        // 2. Precarga de carátula
+        if (nextTrack.coverUrl) {
+            const img = new Image();
+            img.src = nextTrack.coverUrl;
+        }
+
+        // 3. Precarga de letras sincronizadas y análisis detallado
+        const key = getTrackPreloadKey(nextTrack);
+        if (!preloadedDetailsCache.has(key)) {
+            const trackTitleQuery = nextTrack.rawTitle || nextTrack.title;
+            fetch(`/api/track/detail?artist=${encodeURIComponent(nextTrack.artist)}&title=${encodeURIComponent(trackTitleQuery)}`)
+                .then(r => r.json())
+                .then(d => {
+                    if (d) preloadedDetailsCache.set(key, d);
+                })
+                .catch(() => {});
+        }
+    }
+
+    // ==========================================================================
     // 🎵 Smart Music Playback Engine & Queue Management
     // ==========================================================================
     function playQueueTrack(track, modeLabel = null) {
@@ -819,6 +865,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         renderSongs();
+        triggerPreloadNextTracks();
     }
 
     function updateMusicBarState(isPlaying) {
@@ -2536,57 +2583,70 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-        // Fetch detailed lyrics with Karaoke timestamp mapping & Jellyfin video
+        // Renderizado instantáneo con caché o carga con precarga
         if (cinemaLyrics) {
-            cinemaLyrics.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);"><i class="fa-solid fa-spinner fa-spin"></i> Cargando letra sincronizada...</div>';
             currentCinemaActiveLine = -1;
             cinemaParsedLyrics = [];
 
-            const trackTitleQuery = track.rawTitle || track.title;
-            fetch(`/api/track/detail?artist=${encodeURIComponent(track.artist)}&title=${encodeURIComponent(trackTitleQuery)}`)
-                .then(r => r.json())
-                .then(d => {
+            const key = getTrackPreloadKey(track);
+            const cachedDetail = preloadedDetailsCache.get(key);
 
-                    if (d.lyrics && d.lyrics.length > 0) {
-                        const hasRealTimestamps = d.lyrics.some(l => (typeof l.seconds === 'number' && l.seconds > 0) || (l.time && l.time !== '00:00'));
-                        cinemaParsedLyrics = d.lyrics.map((l, idx) => {
-                            let sec = null;
-                            if (typeof l.seconds === 'number') sec = l.seconds;
-                            else if (l.time) {
-                                const parts = l.time.split(':');
-                                sec = parseInt(parts[0], 10) * 60 + parseFloat(parts[1] || 0);
-                            } else if (!hasRealTimestamps) {
-                                sec = null; // Letra plana sin marcas de tiempo
-                            }
-                            return { ...l, seconds: sec, index: idx, hasTimestamp: sec !== null };
-                        });
-
-                        renderCinemaLyricLines();
-                        updateCinemaSubsDurationBadge();
-
-                        // Detección de scroll manual con retorno automático a los 5 segundos
-                        if (cinemaLyrics) {
-                            const handleUserScroll = () => {
-                                isUserScrollingCinema = true;
-                                clearTimeout(userScrollTimer);
-                                userScrollTimer = setTimeout(() => {
-                                    isUserScrollingCinema = false;
-                                }, 5000);
-                            };
-
-                            cinemaLyrics.addEventListener('wheel', handleUserScroll, { passive: true });
-                            cinemaLyrics.addEventListener('touchmove', handleUserScroll, { passive: true });
-                            cinemaLyrics.addEventListener('scroll', handleUserScroll, { passive: true });
+            const applyLyricsData = (d) => {
+                if (d && d.lyrics && d.lyrics.length > 0) {
+                    const hasRealTimestamps = d.lyrics.some(l => (typeof l.seconds === 'number' && l.seconds > 0) || (l.time && l.time !== '00:00'));
+                    cinemaParsedLyrics = d.lyrics.map((l, idx) => {
+                        let sec = null;
+                        if (typeof l.seconds === 'number') sec = l.seconds;
+                        else if (l.time) {
+                            const parts = l.time.split(':');
+                            sec = parseInt(parts[0], 10) * 60 + parseFloat(parts[1] || 0);
+                        } else if (!hasRealTimestamps) {
+                            sec = null;
                         }
-                    } else {
-                        updateCinemaSubsDurationBadge();
-                        cinemaLyrics.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);"><i class="fa-solid fa-microphone-slash" style="font-size:2rem;margin-bottom:12px;opacity:0.4;"></i><p>No hay letra sincronizada disponible para esta canción.</p></div>';
+                        return { ...l, seconds: sec, index: idx, hasTimestamp: sec !== null };
+                    });
+
+                    renderCinemaLyricLines();
+                    updateCinemaSubsDurationBadge();
+
+                    if (cinemaLyrics) {
+                        const handleUserScroll = () => {
+                            isUserScrollingCinema = true;
+                            clearTimeout(userScrollTimer);
+                            userScrollTimer = setTimeout(() => {
+                                isUserScrollingCinema = false;
+                            }, 5000);
+                        };
+
+                        cinemaLyrics.addEventListener('wheel', handleUserScroll, { passive: true });
+                        cinemaLyrics.addEventListener('touchmove', handleUserScroll, { passive: true });
+                        cinemaLyrics.addEventListener('scroll', handleUserScroll, { passive: true });
                     }
-                })
-                .catch((err) => {
-                    console.error('Error detallado en renderCinemaTrack:', err);
-                    cinemaLyrics.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);"><i class="fa-solid fa-triangle-exclamation" style="font-size:2rem;margin-bottom:12px;opacity:0.4;"></i><p>No se pudo cargar la letra para esta canción.</p></div>';
-                });
+                } else {
+                    updateCinemaSubsDurationBadge();
+                    cinemaLyrics.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);"><i class="fa-solid fa-microphone-slash" style="font-size:2rem;margin-bottom:12px;opacity:0.4;"></i><p>No hay letra sincronizada disponible para esta canción.</p></div>';
+                }
+            };
+
+            if (cachedDetail) {
+                // ⚡ ¡Letras precargadas! Visualización instantánea sin spinner ni esperas
+                applyLyricsData(cachedDetail);
+            } else {
+                cinemaLyrics.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);"><i class="fa-solid fa-spinner fa-spin"></i> Cargando letra sincronizada...</div>';
+                const trackTitleQuery = track.rawTitle || track.title;
+                fetch(`/api/track/detail?artist=${encodeURIComponent(track.artist)}&title=${encodeURIComponent(trackTitleQuery)}`)
+                    .then(r => r.json())
+                    .then(d => {
+                        if (d) preloadedDetailsCache.set(key, d);
+                        if (currentPlayingSong && getTrackPreloadKey(currentPlayingSong) === key) {
+                            applyLyricsData(d);
+                        }
+                    })
+                    .catch((err) => {
+                        console.error('Error detallado en renderCinemaTrack:', err);
+                        cinemaLyrics.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);"><i class="fa-solid fa-triangle-exclamation" style="font-size:2rem;margin-bottom:12px;opacity:0.4;"></i><p>No se pudo cargar la letra para esta canción.</p></div>';
+                    });
+            }
         }
     }
 

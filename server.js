@@ -768,9 +768,11 @@ if (fs.existsSync(OMEN_MUSIC_DIR)) {
         if (req.method === 'OPTIONS') return res.sendStatus(200);
         next();
     }, express.static(OMEN_MUSIC_DIR, {
+        maxAge: '7d',
         setHeaders: (res) => {
             res.set('Access-Control-Allow-Origin', '*');
             res.set('Accept-Ranges', 'bytes');
+            res.set('Cache-Control', 'public, max-age=604800, immutable');
         }
     }));
 }
