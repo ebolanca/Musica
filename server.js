@@ -1901,6 +1901,64 @@ function isVersionDiscarded(artist, title, urlOrId) {
 
 let activeCleanVersion = {}; // TrackKey -> URL actual para saber cuál descartar si el usuario pulsa "Versión" de nuevo
 
+async function downloadFromOnlineConverter(youtubeUrl, outputPath) {
+    try {
+        console.log(`[CONVERTER API] Solicitando conversión en la nube para: ${youtubeUrl}...`);
+        const apiUrl = 'https://loader.to/ajax/download.php?button=1&start=1&end=1&format=mp3&url=' + encodeURIComponent(youtubeUrl);
+        const headers = { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36' };
+        
+        const initRes = await fetch(apiUrl, { headers, signal: AbortSignal.timeout(10000) });
+        if (!initRes.ok) return false;
+        const initData = await initRes.json();
+        if (!initData || !initData.progress_url) return false;
+        
+        const progressUrl = initData.progress_url;
+        let downloadUrl = null;
+        
+        for (let attempt = 0; attempt < 12; attempt++) {
+            await new Promise(r => setTimeout(r, 2000));
+            try {
+                const progRes = await fetch(progressUrl, { headers, signal: AbortSignal.timeout(6000) });
+                if (progRes.ok) {
+                    const progData = await progRes.json();
+                    if (progData.success === 1 && progData.download_url) {
+                        downloadUrl = progData.download_url;
+                        break;
+                    }
+                }
+            } catch(e) {}
+        }
+        
+        if (!downloadUrl) return false;
+        
+        console.log(`[CONVERTER API] Enlace directo de audio obtenido. Descargando MP3...`);
+        const dlRes = await fetch(downloadUrl, { headers, signal: AbortSignal.timeout(45000) });
+        if (!dlRes.ok) return false;
+        
+        const { Readable } = require('stream');
+        const fileStream = fs.createWriteStream(outputPath);
+        await new Promise((resolve, reject) => {
+            Readable.fromWeb(dlRes.body).pipe(fileStream);
+            fileStream.on('finish', resolve);
+            fileStream.on('error', reject);
+        });
+        
+        if (fs.existsSync(outputPath)) {
+            const stats = fs.statSync(outputPath);
+            if (stats.size >= 900000) {
+                console.log(`✅ [CONVERTER API] Descarga en la nube completada con éxito (${stats.size} bytes).`);
+                return true;
+            } else {
+                try { fs.unlinkSync(outputPath); } catch(e){}
+            }
+        }
+        return false;
+    } catch(err) {
+        console.warn(`[CONVERTER API] Aviso:`, err.message);
+        return false;
+    }
+}
+
 app.post('/api/track/replace-clean-audio', async (req, res) => {
     try {
         const { artist, title, category, discardCurrent } = req.body;
@@ -2107,36 +2165,86 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
                 const cand = allValidCandidates[i];
                 console.log(`[CLEAN DOWNLOAD] Intentando candidato [${i + 1}/${allValidCandidates.length}]: "${cand.title}" (${cand.duration}s) de ${cand.uploader} -> ${cand.url}`);
 
-                const cookiesArg = getYtDlpCookiesArg();
-                const downloadCmd = `${ytdlpBin} ${cookiesArg} --ffmpeg-location "${ffmpegDir}" "${cand.url}" -x --audio-format mp3 --audio-quality 0 -o "${tempOutput}"`.replace(/\s+/g, " ");
+                let candSuccess = false;
 
-                const result = await new Promise((resolve) => {
-                    exec(downloadCmd, { timeout: 45000, windowsHide: true }, (err, stdout, stderr) => {
-                        if (fs.existsSync(tempOutput)) {
-                            try {
-                                const stats = fs.statSync(tempOutput);
-                                if (stats.size >= 900000) {
-                                    return resolve({ success: true, stats });
-                                } else {
-                                    try { fs.unlinkSync(tempOutput); } catch(e){}
-                                }
-                            } catch(e) {}
-                        }
-                        // Si falla, agregarlo inmediatamente a la lista de versiones descartadas
-                        addDiscardedVersion(artist, cleanT, cand.url);
-                        console.warn(`⚠️ Candidato "${cand.title}" falló o bloqueado por DRM. Descartado y probando siguiente...`);
-                        resolve({ success: false });
-                    });
-                });
-
-                if (result.success) {
-                    downloadedSuccess = true;
-                    finalStats = result.stats;
-                    bestCandidate = cand;
-                    activeCleanVersion[trackCycleKey] = cand.url;
-                    break;
+                // Si es YouTube, probar primero el motor de conversión en la nube para saltar bot-blocks
+                if (cand.url.includes('youtube.com') || cand.url.includes('youtu.be')) {
+                    try {
+                        const convertedOk = await downloadFromOnlineConverter(cand.url, tempOutput);
+                        if (convertedOk) candSuccess = true;
+                    } catch(e) {}
                 }
+
+                // Si no se convirtió o es SoundCloud, intentar con yt-dlp local
+                if (!candSuccess) {
+                    const cookiesArg = getYtDlpCookiesArg();
+                    const downloadCmd = `${ytdlpBin} ${cookiesArg} --ffmpeg-location "${ffmpegDir}" "${cand.url}" -x --audio-format mp3 --audio-quality 0 -o "${tempOutput}"`.replace(/\s+/g, " ");
+
+                    const result = await new Promise((resolve) => {
+                        exec(downloadCmd, { timeout: 45000, windowsHide: true }, (err, stdout, stderr) => {
+                            if (fs.existsSync(tempOutput)) {
+                                try {
+                                    const stats = fs.statSync(tempOutput);
+                                    if (stats.size >= 900000) {
+                                        return resolve({ success: true, stats });
+                                    } else {
+                                        try { fs.unlinkSync(tempOutput); } catch(e){}
+                                    }
+                                } catch(e) {}
+                            }
+                            resolve({ success: false });
+                        });
+                    });
+                    if (result.success) candSuccess = true;
+                }
+
+                if (candSuccess && fs.existsSync(tempOutput)) {
+                    const stats = fs.statSync(tempOutput);
+                    if (stats.size >= 900000) {
+                        downloadedSuccess = true;
+                        finalStats = stats;
+                        bestCandidate = cand;
+                        activeCleanVersion[trackCycleKey] = cand.url;
+                        break;
+                    }
+                }
+
+                addDiscardedVersion(artist, cleanT, cand.url);
+                console.warn(`⚠️ Candidato "${cand.title}" falló o bloqueado por DRM. Descartado y probando siguiente...`);
             }
+        }
+
+        // 4.1 IMPORTACIÓN DESDE DESCARGAS: Si fallaron las descargas remotas, verificar si el usuario tiene el MP3 en Descargas
+        if (!downloadedSuccess) {
+            try {
+                const userDownloads = path.join(process.env.USERPROFILE || 'C:\\Users\\MSI Roberto', 'Downloads');
+                if (fs.existsSync(userDownloads)) {
+                    const dlFiles = fs.readdirSync(userDownloads);
+                    const now = Date.now();
+                    const matchingDl = dlFiles.find(f => {
+                        if (!f.toLowerCase().endsWith('.mp3')) return false;
+                        const fNorm = cleanTrackKey(f);
+                        const artistNorm = cleanTrackKey(artist);
+                        const titleNorm = cleanTrackKey(cleanT);
+                        const isMatch = fNorm.includes(titleNorm) && (fNorm.includes(artistNorm) || fNorm.includes('y2mate') || fNorm.includes('lyrics'));
+                        if (!isMatch) return false;
+                        try {
+                            const st = fs.statSync(path.join(userDownloads, f));
+                            return (now - st.mtimeMs) < 7200000; // últimas 2 horas
+                        } catch(e) { return false; }
+                    });
+                    if (matchingDl) {
+                        const dlPath = path.join(userDownloads, matchingDl);
+                        fs.copyFileSync(dlPath, tempOutput);
+                        if (fs.existsSync(tempOutput) && fs.statSync(tempOutput).size >= 900000) {
+                            downloadedSuccess = true;
+                            finalStats = fs.statSync(tempOutput);
+                            bestCandidate = { title: `${artist} - ${cleanT} (Importado desde Descargas)`, duration: expectedDurationSec };
+                            console.log(`📥 [DOWNLOADS IMPORT] Detectado y utilizado archivo reciente de Descargas: "${matchingDl}"`);
+                        }
+                    }
+                }
+            } catch(e) {}
         }
 
         // 4. REFUERZO DE SPOTIFY (spotdl): Si YouTube / SoundCloud directo fallan o están bloqueados
