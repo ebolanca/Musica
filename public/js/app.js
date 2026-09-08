@@ -2622,6 +2622,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderCinemaTrack(track) {
         if (!track) return;
+        currentPlayingSong = track;
+        if (cinemaCurrentTrackList && cinemaCurrentTrackList.length > 0) {
+            const trackMatchIdx = cinemaCurrentTrackList.findIndex(t => t.title === track.title && t.artist === track.artist);
+            if (trackMatchIdx !== -1) cinemaCurrentIndex = trackMatchIdx;
+        }
         loadTrackSyncOffset(track);
         const cover = track.coverUrl || 'img/radios/hitfm.svg';
         if (cinemaBg) cinemaBg.style.backgroundImage = `url('${cover}')`;
@@ -3524,12 +3529,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let selectedAudioFile = null;
 
     function getCurrentTargetTrack() {
-        if (cinemaOverlay && cinemaOverlay.style.display === 'flex') {
-            if (cinemaCurrentTrackList && cinemaCurrentTrackList.length > 0) {
-                return cinemaCurrentTrackList[cinemaCurrentIndex];
-            }
-        }
-        return currentPlayingSong || currentModalSong;
+        return currentPlayingSong || currentModalSong || (cinemaCurrentTrackList && cinemaCurrentTrackList[cinemaCurrentIndex]) || null;
     }
 
     function openReplaceAudioModal(track) {
@@ -3582,6 +3582,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Botón YouTube en Modo Cine
+    
+    // Botón directo a Y2Mate en Modo Cine
+    const btnCinemaY2mate = document.getElementById('btn-cinema-y2mate');
+    if (btnCinemaY2mate) {
+        btnCinemaY2mate.addEventListener('click', async () => {
+            let clipText = '';
+            try {
+                if (navigator.clipboard && navigator.clipboard.readText) {
+                    clipText = (await navigator.clipboard.readText() || '').trim();
+                }
+            } catch(e) {}
+
+            if (clipText && (clipText.includes('youtube.com') || clipText.includes('youtu.be'))) {
+                window.open(`https://en2.y2mate.is/app-xeio/?url=${encodeURIComponent(clipText)}`, '_blank');
+                showSyncNotification('⚡ Abriendo Y2Mate con tu enlace copiado de YouTube');
+            } else {
+                window.open('https://en2.y2mate.is/app-xeio/', '_blank');
+                showSyncNotification('↗️ Abriendo Y2Mate para convertir a MP3');
+            }
+        });
+    }
+
     const btnCinemaYtSearch = document.getElementById('btn-cinema-yt-search');
     if (btnCinemaYtSearch) {
         btnCinemaYtSearch.addEventListener('click', () => launchYouTubeSearch());

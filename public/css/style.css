@@ -4860,3 +4860,18 @@ video {
 .cinema-toolbar-subs {
   justify-content: center !important;
 }
+
+
+/* Botón directo Y2Mate en Modo Cine */
+.btn-sync-y2mate {
+  background: rgba(245, 158, 11, 0.12) !important;
+  border-color: rgba(245, 158, 11, 0.35) !important;
+  color: #fcd34d !important;
+}
+
+.btn-sync-y2mate:hover {
+  background: rgba(245, 158, 11, 0.25) !important;
+  border-color: #f59e0b !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+}
