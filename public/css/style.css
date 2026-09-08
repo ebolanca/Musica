@@ -4827,3 +4827,36 @@ video {
   line-height: 1.45 !important;
   opacity: 1 !important;
 }
+
+
+/* Centrado total de ambas filas en Modo Cine */
+.cinema-top-toolbars-panel {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.cinema-toolbar-row {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  flex-wrap: nowrap !important;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.cinema-toolbar-audio {
+  padding-bottom: 8px !important;
+  margin-bottom: 8px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  justify-content: center !important;
+}
+
+.cinema-toolbar-subs {
+  justify-content: center !important;
+}
