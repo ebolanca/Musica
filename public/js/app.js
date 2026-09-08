@@ -110,6 +110,35 @@ document.addEventListener('DOMContentLoaded', () => {
     let isUserScrollingCinema = false;
     let userScrollTimer = null;
 
+    // Función centralizada para centrar suavemente la línea de karaoke activa con su traducción
+    function scrollCinemaActiveLyric(el) {
+        if (!cinemaLyrics || !el) return;
+        if (isUserScrollingCinema) return;
+
+        requestAnimationFrame(() => {
+            if (!cinemaLyrics || !el) return;
+            const containerRect = cinemaLyrics.getBoundingClientRect();
+            const elRect = el.getBoundingClientRect();
+            const currentScroll = cinemaLyrics.scrollTop;
+
+            // Posición absoluta de la frase dentro del scroll
+            const elTopInScroll = elRect.top - containerRect.top + currentScroll;
+            const containerHeight = containerRect.height;
+            const elHeight = elRect.height;
+
+            // Situar el bloque completo (original + traducción) a ~35% de la parte superior:
+            // Esto asegura que la traducción SIEMPRE quede totalmente dentro del campo de visión
+            // con amplio margen y nunca quede cortada en la parte inferior.
+            const targetScroll = Math.max(0, elTopInScroll - (containerHeight * 0.35));
+
+            cinemaLyrics.scrollTo({
+                top: targetScroll,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+
     // DOM Elements
     const songsGrid = document.getElementById('songs-grid');
     const searchInput = document.getElementById('search-input');
@@ -167,6 +196,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const cinemaTimeDur = document.getElementById('cinema-time-dur');
     const cinemaSeekSlider = document.getElementById('cinema-seek-slider');
     const cinemaLyrics = document.getElementById('cinema-lyrics');
+
+    if (cinemaLyrics) {
+        const handleManualUserScroll = () => {
+            isUserScrollingCinema = true;
+            clearTimeout(userScrollTimer);
+            userScrollTimer = setTimeout(() => {
+                isUserScrollingCinema = false;
+                const activeEl = cinemaLyrics.querySelector('.cinema-lyric-line.active');
+                if (activeEl) scrollCinemaActiveLyric(activeEl);
+            }, 2500);
+        };
+        cinemaLyrics.addEventListener('wheel', handleManualUserScroll, { passive: true });
+        cinemaLyrics.addEventListener('touchmove', handleManualUserScroll, { passive: true });
+    }
+
     const cinemaPlay = document.getElementById('cinema-play');
     const cinemaPrev = document.getElementById('cinema-prev');
     const cinemaNext = document.getElementById('cinema-next');
@@ -1634,25 +1678,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (activeIdx !== currentCinemaActiveLine) {
                     currentCinemaActiveLine = activeIdx;
+                    let targetActiveEl = null;
                     document.querySelectorAll('.cinema-lyric-line').forEach((el, idx) => {
                         if (idx === activeIdx) {
                             el.classList.add('active');
-                            if (cinemaLyrics && !isUserScrollingCinema) {
-                                const containerHeight = cinemaLyrics.clientHeight;
-                                const elTop = el.offsetTop;
-                                const elHeight = el.clientHeight;
-                                const targetScroll = elTop - (containerHeight / 2) + (elHeight / 2);
-                                cinemaLyrics.scrollTo({
-                                    top: Math.max(0, targetScroll),
-                                    behavior: 'smooth'
-                                });
-                            }
+                            targetActiveEl = el;
                         } else {
                             el.classList.remove('active');
                         }
                     });
 
-
+                    if (targetActiveEl && cinemaLyrics && !isUserScrollingCinema) {
+                        scrollCinemaActiveLyric(targetActiveEl);
+                    }
                 }
             }
         });
@@ -2609,19 +2647,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     renderCinemaLyricLines();
                     updateCinemaSubsDurationBadge();
 
-                    if (cinemaLyrics) {
-                        const handleUserScroll = () => {
-                            isUserScrollingCinema = true;
-                            clearTimeout(userScrollTimer);
-                            userScrollTimer = setTimeout(() => {
-                                isUserScrollingCinema = false;
-                            }, 5000);
-                        };
-
-                        cinemaLyrics.addEventListener('wheel', handleUserScroll, { passive: true });
-                        cinemaLyrics.addEventListener('touchmove', handleUserScroll, { passive: true });
-                        cinemaLyrics.addEventListener('scroll', handleUserScroll, { passive: true });
-                    }
+                    // Listeners de desplazamiento manual gestionados globalmente
                 } else {
                     updateCinemaSubsDurationBadge();
                     cinemaLyrics.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);"><i class="fa-solid fa-microphone-slash" style="font-size:2rem;margin-bottom:12px;opacity:0.4;"></i><p>No hay letra sincronizada disponible para esta canción.</p></div>';

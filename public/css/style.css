@@ -4798,3 +4798,32 @@ video {
   position: relative !important;
   z-index: 10 !important;
 }
+
+
+/* ==========================================================================
+   🎤 Fix Desplazamiento y Visibilidad Completa de Traducción en Karaoke
+   ========================================================================== */
+.cinema-lyrics-container {
+  padding: 24px 14px 60vh 14px !important;
+  scroll-behavior: smooth !important;
+}
+
+.cinema-lyric-line {
+  margin-bottom: 26px !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+}
+
+.cinema-lyric-line.active {
+  padding: 14px 20px !important;
+  margin-bottom: 28px !important;
+}
+
+.cinema-lyric-line.active .cinema-lyric-trans {
+  display: block !important;
+  font-size: 1.08rem !important;
+  color: #86efac !important;
+  margin-top: 8px !important;
+  line-height: 1.45 !important;
+  opacity: 1 !important;
+}
