@@ -18,7 +18,7 @@
             </div>
             <div class="logo-title">
                 <h1>Música</h1>
-                <p>Plataforma de Videoclips & Análisis Sónico v1.5.51</p>
+                <p>Plataforma de Videoclips & Análisis Sónico v1.5.52</p>
             </div>
         </div>
 
@@ -305,37 +305,47 @@
                 </div>
             </div>
             <div class="cinema-right">
-                <div class="cinema-lyrics-header-row">
-                    <div class="cinema-lyrics-header"><i class="fa-solid fa-microphone-lines"></i> Letra Sincronizada</div>
-                    <div class="cinema-sync-control" title="Ajuste fino y anclaje de subtítulos">
-                        <button class="btn-sync-clean btn-sync-yt" id="btn-cinema-yt-search" title="Buscar este tema en YouTube (abre la búsqueda directamente para elegir la pista)">
-                            <i class="fa-brands fa-youtube" style="color: #ff3333;"></i> YouTube
-                        </button>
-                        <button class="btn-sync-clean btn-sync-change" id="btn-cinema-open-replace-modal" title="Cambiar audio: Convertir en Y2Mate o subir archivo de música">
-                            <i class="fa-solid fa-cloud-arrow-up" style="color: #38bdf8;"></i> Cambiar Audio
-                        </button>
-                        <button class="btn-sync-clean" id="btn-cinema-replace-clean" title="Descartar audio con intro y descargar versión oficial limpia de estudio">
-                            <i class="fa-solid fa-arrows-rotate"></i> Versión
-                        </button>
+                <!-- Panel Superior de Controles (Separado: Audio arriba y Subtítulos abajo) -->
+                <div class="cinema-top-toolbars-panel" id="cinema-top-toolbars-panel">
+                    <!-- Fila 1: Todo lo referente al Audio -->
+                    <div class="cinema-toolbar-row cinema-toolbar-audio">
+                        <div class="cinema-toolbar-label">
+                            <i class="fa-solid fa-music" style="color: #38bdf8;"></i> Audio
+                        </div>
+                        <div class="cinema-toolbar-group">
+                            <button class="btn-sync-clean btn-sync-yt" id="btn-cinema-yt-search" title="Buscar este tema en YouTube (abre la búsqueda directamente para elegir la pista)">
+                                <i class="fa-brands fa-youtube" style="color: #ff3333;"></i> YouTube
+                            </button>
+                            <button class="btn-sync-clean btn-sync-change" id="btn-cinema-open-replace-modal" title="Cambiar audio: Convertir en Y2Mate o subir archivo de música">
+                                <i class="fa-solid fa-cloud-arrow-up" style="color: #38bdf8;"></i> Cambiar Audio
+                            </button>
+                            <button class="btn-sync-clean" id="btn-cinema-replace-clean" title="Descartar audio con intro y descargar versión oficial limpia de estudio">
+                                <i class="fa-solid fa-arrows-rotate"></i> Versión Estudio
+                            </button>
+                        </div>
+                    </div>
 
-                        <div class="sync-divider-ver"></div>
-                        <button class="btn-sync-step" id="btn-sync-minus" title="Retrasar subtítulos (-0.1s)"><i class="fa-solid fa-chevron-down"></i></button>
-                        <input type="range" id="cinema-sync-slider" min="-60.0" max="60.0" step="0.1" value="0.0" class="cinema-sync-slider">
-                        <button class="btn-sync-step" id="btn-sync-plus" title="Avanzar subtítulos (+0.1s)"><i class="fa-solid fa-chevron-up"></i></button>
-                        <span id="cinema-sync-value" class="sync-value-badge" title="Pulsar para restablecer a 0.0s">0.0s</span>
-                        <button class="btn-sync-save" id="btn-sync-save" title="Grabar desfase de forma permanente en la base de datos de subtítulos">
-                            <i class="fa-solid fa-floppy-disk"></i>
-                        </button>
+                    <!-- Fila 2: Todo lo referente a los Subtítulos -->
+                    <div class="cinema-toolbar-row cinema-toolbar-subs">
+                        <div class="cinema-toolbar-label">
+                            <i class="fa-solid fa-closed-captioning" style="color: var(--spotify-green);"></i> Subtítulos
+                        </div>
+                        <div class="cinema-toolbar-group">
+                            <button class="btn-sync-subs" id="btn-cinema-replace-subs" title="Buscar y rotar a otra versión de subtítulos en la base de datos">
+                                <i class="fa-solid fa-rotate"></i> Versión Subs
+                            </button>
+                            <span id="cinema-subs-duration" class="subs-dur-badge" title="Duración estimada del último subtítulo">
+                                <i class="fa-regular fa-clock"></i> <span id="cinema-subs-dur-text">--:--</span>
+                            </span>
 
-                        <div class="sync-divider-ver"></div>
+                            <div class="sync-divider-ver"></div>
 
-                        <span id="cinema-subs-duration" class="subs-dur-badge" title="Duración estimada del último subtítulo">
-                            <i class="fa-regular fa-clock"></i> <span id="cinema-subs-dur-text">--:--</span>
-                        </span>
-
-                        <button class="btn-sync-subs" id="btn-cinema-replace-subs" title="Buscar y rotar a otra versión de subtítulos en la base de datos">
-                            <i class="fa-solid fa-closed-captioning"></i> Versión Subs
-                        </button>
+                            <button class="btn-sync-step" id="btn-sync-minus" title="Retrasar subtítulos (-0.1s)"><i class="fa-solid fa-chevron-down"></i></button>
+                            <input type="range" id="cinema-sync-slider" min="-60.0" max="60.0" step="0.1" value="0.0" class="cinema-sync-slider" title="Desfase de subtítulos">
+                            <button class="btn-sync-step" id="btn-sync-plus" title="Avanzar subtítulos (+0.1s)"><i class="fa-solid fa-chevron-up"></i></button>
+                            <span id="cinema-sync-value" class="sync-value-badge" title="Pulsar para restablecer a 0.0s">0.0s</span>
+                            <button class="btn-sync-save" id="btn-sync-save" title="Grabar desfase permanentemente en la base de datos"><i class="fa-solid fa-floppy-disk"></i></button>
+                        </div>
                     </div>
                 </div>
                 <div class="cinema-lyrics-container" id="cinema-lyrics">
