@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let userScrollTimer = null;
 
     // Función centralizada para centrar suavemente la línea de karaoke activa con su traducción
-    function scrollCinemaActiveLyric(el) {
+    function scrollCinemaActiveLyric(el, instant = false) {
         if (!cinemaLyrics || !el) return;
         if (isUserScrollingCinema) return;
 
@@ -121,19 +121,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const elRect = el.getBoundingClientRect();
             const currentScroll = cinemaLyrics.scrollTop;
 
-            // Posición absoluta de la frase dentro del scroll
             const elTopInScroll = elRect.top - containerRect.top + currentScroll;
             const containerHeight = containerRect.height;
             const elHeight = elRect.height;
 
-            // Situar el bloque completo (original + traducción) a ~35% de la parte superior:
-            // Esto asegura que la traducción SIEMPRE quede totalmente dentro del campo de visión
-            // con amplio margen y nunca quede cortada en la parte inferior.
-            const targetScroll = Math.max(0, elTopInScroll - (containerHeight * 0.35));
+            const idx = parseInt(el.getAttribute('data-index') || '-1', 10);
+            // Para las líneas iniciales del tema, mantener arriba del todo sin movimientos bruscos
+            const targetScroll = (idx <= 1 || elTopInScroll < 80)
+                ? 0
+                : Math.max(0, elTopInScroll - (containerHeight * 0.35));
 
             cinemaLyrics.scrollTo({
                 top: targetScroll,
-                behavior: 'smooth'
+                behavior: instant ? 'instant' : 'smooth'
             });
         });
     }
@@ -860,6 +860,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         currentPlayingSong = track;
+        if (cinemaLyrics) {
+            currentCinemaActiveLine = -1;
+            cinemaLyrics.scrollTo({ top: 0, behavior: 'instant' });
+        }
 
         const playableUrl = track.audioUrl || (track.videoItem ? track.videoItem.streamUrl : null) || track.videoPath;
         if (playableUrl) {
@@ -1128,8 +1132,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
     // Función reutilizable para renderizar las líneas del karaoke
-    function renderCinemaLyricLines() {
+    function renderCinemaLyricLines(keepPosition = false) {
         if (!cinemaLyrics || !cinemaParsedLyrics || cinemaParsedLyrics.length === 0) return;
+        const prevScroll = cinemaLyrics.scrollTop;
         cinemaLyrics.innerHTML = cinemaParsedLyrics.map(l => {
             const hasTrans = l.translation && typeof l.translation === 'string' && l.translation.trim().length > 0;
             const isSame = hasTrans ? (normalizeText(l.translation) === normalizeText(l.text)) : true;
@@ -1141,6 +1146,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
         }).join('');
+        if (keepPosition) {
+            cinemaLyrics.scrollTop = prevScroll;
+        } else {
+            cinemaLyrics.scrollTo({ top: 0, behavior: 'instant' });
+        }
 
         // Enlazar clicks en frases: Si no tiene marcas, las genera en tiempo real; si ya tiene, ajusta el desfase
         document.querySelectorAll('.cinema-lyric-line').forEach(lineEl => {
@@ -1186,7 +1196,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     isUserScrollingCinema = false;
                     clearTimeout(userScrollTimer);
 
-                    renderCinemaLyricLines();
+                    renderCinemaLyricLines(true);
                     showSyncNotification(`🎙️ ¡Karaoke activado desde esta estrofa! Pulsa 💾 para guardarlo permanentemente.`);
                 } else {
                     // --- SINCRONIZACIÓN FINA CON MARCAS EXISTENTES ---
@@ -2572,6 +2582,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.style.overflow = 'hidden';
         window.scrollTo(0, 0);
         cinemaOverlay.style.display = 'flex';
+        if (cinemaLyrics) cinemaLyrics.scrollTo({ top: 0, behavior: 'instant' });
         requestWakeLock();
 
         // Activar Pantalla Completa Nativa de Hardware (Oculta navegador, pestañas y barra de tareas)
@@ -2625,6 +2636,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cinemaLyrics) {
             currentCinemaActiveLine = -1;
             cinemaParsedLyrics = [];
+            cinemaLyrics.scrollTo({ top: 0, behavior: 'instant' });
 
             const key = getTrackPreloadKey(track);
             const cachedDetail = preloadedDetailsCache.get(key);
