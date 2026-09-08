@@ -4519,3 +4519,162 @@ video {
   color: #000;
   border-color: #f59e0b;
 }
+
+
+/* ==========================================================================
+   🎵 Modal Cambiar Audio & Integración Y2Mate / Subida de Archivo
+   ========================================================================== */
+.replace-audio-modal-card {
+  max-width: 680px !important;
+  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(56, 189, 248, 0.15) !important;
+}
+
+.replace-box-panel {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 14px;
+  padding: 16px 18px;
+  transition: border-color 0.2s ease;
+}
+
+.replace-box-panel:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.replace-panel-title {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.replace-panel-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.replace-input-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.replace-text-input {
+  flex: 1;
+  min-width: 220px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  padding: 9px 14px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.replace-text-input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.file-drop-zone {
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  padding: 24px 16px;
+  text-align: center;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.2);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.file-drop-zone:hover {
+  border-color: var(--spotify-green);
+  background: rgba(29, 185, 84, 0.06);
+  transform: translateY(-2px);
+}
+
+.file-zone-icon {
+  font-size: 2.2rem;
+  color: var(--spotify-green);
+  margin-bottom: 8px;
+  transition: transform 0.2s ease;
+}
+
+.file-drop-zone:hover .file-zone-icon {
+  transform: scale(1.1);
+}
+
+.selected-file-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: rgba(29, 185, 84, 0.12);
+  border: 1px solid rgba(29, 185, 84, 0.35);
+  border-radius: 10px;
+  font-size: 0.86rem;
+  color: #fff;
+}
+
+.btn-upload-execute {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  justify-content: center;
+  font-weight: 800;
+  background: linear-gradient(135deg, #10b981, #0284c7);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-upload-execute:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(0.8);
+}
+
+.btn-upload-execute:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+}
+
+.replace-progress-box {
+  text-align: center;
+  padding: 14px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.replace-progress-box #replace-progress-text {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #38bdf8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-sync-yt:hover {
+  background: rgba(239, 68, 68, 0.25) !important;
+  border-color: rgba(239, 68, 68, 0.6) !important;
+  color: #ff6666 !important;
+}
+
+.btn-sync-change:hover {
+  background: rgba(56, 189, 248, 0.25) !important;
+  border-color: rgba(56, 189, 248, 0.6) !important;
+  color: #38bdf8 !important;
+}

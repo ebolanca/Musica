@@ -1423,6 +1423,122 @@ app.post('/api/analysis/generate', async (req, res) => {
     }
 });
 
+
+app.post('/api/track/upload-replace', (req, res) => {
+    try {
+        const { artist, title, category } = req.query;
+        if (!artist || !title) {
+            return res.status(400).json({ error: 'Faltan parámetros requeridos (artist, title)' });
+        }
+
+        const cleanT = cleanTrackTitle(title);
+        const targetCategory = category || 'Siglo XXI';
+        const targetFolder = path.join(OMEN_MUSIC_DIR, targetCategory);
+
+        if (!fs.existsSync(targetFolder)) {
+            try { fs.mkdirSync(targetFolder, { recursive: true }); } catch(e){}
+        }
+
+        let targetFileName = `${artist} - ${cleanT}.mp3`;
+        let targetFilePath = path.join(targetFolder, targetFileName);
+
+        if (fs.existsSync(targetFolder)) {
+            const files = fs.readdirSync(targetFolder);
+            const wantedNorm = cleanTrackKey(artist) + '_' + cleanTrackKey(cleanT);
+            const matchFile = files.find(f => {
+                if (!f.toLowerCase().endsWith('.mp3')) return false;
+                const fBase = f.replace(/\.mp3$/i, '');
+                const fNorm = cleanTrackKey(fBase);
+                return fNorm === wantedNorm || (fNorm.includes(cleanTrackKey(cleanT)) && fNorm.includes(cleanTrackKey(artist.split(/[,&]/)[0])));
+            });
+            if (matchFile) {
+                targetFileName = matchFile;
+                targetFilePath = path.join(targetFolder, matchFile);
+            }
+        }
+
+        const tempDir = path.join(__dirname, 'data');
+        if (!fs.existsSync(tempDir)) try { fs.mkdirSync(tempDir, { recursive: true }); } catch(e){}
+        const tempUploadPath = path.join(tempDir, `upload_${Date.now()}_temp.raw`);
+        const fileStream = fs.createWriteStream(tempUploadPath);
+
+        req.pipe(fileStream);
+
+        fileStream.on('finish', async () => {
+            try {
+                if (!fs.existsSync(tempUploadPath)) {
+                    return res.status(400).json({ error: 'No se recibió ningún dato de audio' });
+                }
+                const stats = fs.statSync(tempUploadPath);
+                if (stats.size < 50000) {
+                    try { fs.unlinkSync(tempUploadPath); } catch(e){}
+                    return res.status(400).json({ error: 'El archivo subido es demasiado pequeño o inválido (' + stats.size + ' bytes).' });
+                }
+
+                const binDir = path.join(__dirname, 'bin');
+                const ffmpegBin = fs.existsSync(path.join(binDir, 'ffmpeg.exe')) ? `"${path.join(binDir, 'ffmpeg.exe')}"` : 'ffmpeg';
+                const finalTempMp3 = path.join(tempDir, `final_converted_${Date.now()}.mp3`);
+
+                // Normalización y conversión limpia a MP3 320k
+                const convertCmd = `${ffmpegBin} -y -i "${tempUploadPath}" -vn -c:a libmp3lame -b:a 320k "${finalTempMp3}"`;
+                await new Promise((resolve) => {
+                    const { exec } = require('child_process');
+                    exec(convertCmd, { timeout: 40000, windowsHide: true }, () => resolve());
+                });
+
+                const pathToCopy = (fs.existsSync(finalTempMp3) && fs.statSync(finalTempMp3).size >= 50000)
+                    ? finalTempMp3
+                    : tempUploadPath;
+
+                fs.copyFileSync(pathToCopy, targetFilePath);
+                try { fs.unlinkSync(tempUploadPath); } catch(e){}
+                try { if (fs.existsSync(finalTempMp3)) fs.unlinkSync(finalTempMp3); } catch(e){}
+
+                // Restablecer sincronización de letras a 0.0s
+                try {
+                    const lrcurl = `https://lrclib.net/api/get?artist_name=${encodeURIComponent(artist)}&track_name=${encodeURIComponent(cleanT)}`;
+                    const lrcres = await fetch(lrcurl, { signal: AbortSignal.timeout(3000) });
+                    if (lrcres.ok) {
+                        const lrcdata = await lrcres.json();
+                        if (lrcdata.syncedLyrics) {
+                            let freshLyrics = parseLrc(lrcdata.syncedLyrics);
+                            if (freshLyrics) {
+                                freshLyrics = await translateLyricsBatch(freshLyrics);
+                                cachedLyricsDb[`${artist} - ${title}`] = freshLyrics;
+                                cachedLyricsDb[`${artist} - ${cleanT}`] = freshLyrics;
+                                cachedLyricsDb[cleanT] = freshLyrics;
+                                fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
+                            }
+                        }
+                    }
+                } catch(e) {}
+
+                invalidateCollectionIndex();
+
+                const relUrl = `/media-music/${encodeURIComponent(targetCategory)}/${encodeURIComponent(targetFileName)}`;
+                console.log(`✅ [UPLOAD REPLACE] Audio subido con éxito para "${artist} - ${cleanT}" en: ${targetFilePath}`);
+                return res.json({
+                    success: true,
+                    message: 'Pista de audio reemplazada con éxito',
+                    relUrl: relUrl,
+                    fileName: targetFileName
+                });
+            } catch(err) {
+                console.error('Error procesando archivo subido:', err);
+                return res.status(500).json({ error: 'Error procesando archivo: ' + err.message });
+            }
+        });
+
+        fileStream.on('error', (err) => {
+            console.error('Error escribiendo stream:', err);
+            res.status(500).json({ error: err.message });
+        });
+    } catch(e) {
+        console.error('Error en upload-replace:', e);
+        res.status(500).json({ error: e.message });
+    }
+});
+
 app.get('/api/track/detail', async (req, res) => {
     const { artist, title } = req.query;
     if (!artist || !title) {
@@ -2214,75 +2330,7 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
             }
         }
 
-        // 4.1 IMPORTACIÓN DESDE DESCARGAS: Si fallaron las descargas remotas, verificar si el usuario tiene el MP3 en Descargas
-        if (!downloadedSuccess) {
-            try {
-                const userDownloads = path.join(process.env.USERPROFILE || 'C:\\Users\\MSI Roberto', 'Downloads');
-                if (fs.existsSync(userDownloads)) {
-                    const dlFiles = fs.readdirSync(userDownloads);
-                    const now = Date.now();
-                    const matchingDl = dlFiles.find(f => {
-                        if (!f.toLowerCase().endsWith('.mp3')) return false;
-                        const fNorm = cleanTrackKey(f);
-                        const artistNorm = cleanTrackKey(artist);
-                        const titleNorm = cleanTrackKey(cleanT);
-                        const isMatch = fNorm.includes(titleNorm) && (fNorm.includes(artistNorm) || fNorm.includes('y2mate') || fNorm.includes('lyrics'));
-                        if (!isMatch) return false;
-                        try {
-                            const st = fs.statSync(path.join(userDownloads, f));
-                            return (now - st.mtimeMs) < 7200000; // últimas 2 horas
-                        } catch(e) { return false; }
-                    });
-                    if (matchingDl) {
-                        const dlPath = path.join(userDownloads, matchingDl);
-                        fs.copyFileSync(dlPath, tempOutput);
-                        if (fs.existsSync(tempOutput) && fs.statSync(tempOutput).size >= 900000) {
-                            downloadedSuccess = true;
-                            finalStats = fs.statSync(tempOutput);
-                            bestCandidate = { title: `${artist} - ${cleanT} (Importado desde Descargas)`, duration: expectedDurationSec };
-                            console.log(`📥 [DOWNLOADS IMPORT] Detectado y utilizado archivo reciente de Descargas: "${matchingDl}"`);
-                        }
-                    }
-                }
-            } catch(e) {}
-        }
-
-        // 4. REFUERZO DE SPOTIFY (spotdl): Si YouTube / SoundCloud directo fallan o están bloqueados
-        if (!downloadedSuccess) {
-            console.log(`[SPOTIFY REINFORCEMENT] Activando refuerzo de Spotify con SpotDL para: ${artist} - ${cleanT}...`);
-            const spotdlDir = path.join(__dirname, 'data', `spotdl_refuerzo_${Date.now()}`);
-            try {
-                fs.mkdirSync(spotdlDir, { recursive: true });
-                const spotCmd = `spotdl download "${artist} - ${cleanT}" --audio soundcloud --output "${spotdlDir}"`;
-                const spotRes = await new Promise((resolve) => {
-                    exec(spotCmd, { timeout: 45000, windowsHide: true }, (err) => {
-                        try {
-                            if (fs.existsSync(spotdlDir)) {
-                                const files = fs.readdirSync(spotdlDir).filter(f => f.endsWith('.mp3'));
-                                if (files.length > 0) {
-                                    const downloadedF = path.join(spotdlDir, files[0]);
-                                    const st = fs.statSync(downloadedF);
-                                    if (st.size >= 900000) {
-                                        fs.copyFileSync(downloadedF, tempOutput);
-                                        return resolve({ success: true, stats: fs.statSync(tempOutput), file: files[0] });
-                                    }
-                                }
-                            }
-                        } catch(e) {}
-                        resolve({ success: false });
-                    });
-                });
-                try { fs.rmSync(spotdlDir, { recursive: true, force: true }); } catch(e){}
-                if (spotRes.success) {
-                    downloadedSuccess = true;
-                    finalStats = spotRes.stats;
-                    bestCandidate = { title: `${artist} - ${cleanT} (Refuerzo Spotify / Estudio)`, duration: expectedDurationSec };
-                    console.log(`✅ [SPOTIFY REINFORCEMENT] Descarga exitosa mediante Spotify (${finalStats.size} bytes): "${spotRes.file}"`);
-                }
-            } catch(spotErr) {
-                console.warn('[SPOTIFY REINFORCEMENT] Error:', spotErr.message);
-            }
-        }
+        // [DESCARGAS Y SPOTIFY EN SEGUNDO PLANO DESACTIVADOS POR RENDIMIENTO]
 
         // 5. Si ningún candidato se pudo descargar,
         // verificar si existe una versión videoclip con intro en la biblioteca y recortar la intro automáticamente

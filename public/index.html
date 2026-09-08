@@ -18,7 +18,7 @@
             </div>
             <div class="logo-title">
                 <h1>Música</h1>
-                <p>Plataforma de Videoclips & Análisis Sónico v1.5.50</p>
+                <p>Plataforma de Videoclips & Análisis Sónico v1.5.51</p>
             </div>
         </div>
 
@@ -116,6 +116,12 @@
                     <p id="modal-artist-text">Cargando artista...</p>
                 </div>
                 <div style="display: flex; align-items: center; gap: 10px;">
+                    <button class="btn-action" id="btn-modal-yt-search" style="padding: 6px 12px; font-size: 0.82rem; background: rgba(239,68,68,0.15); border-color: rgba(239,68,68,0.4);" title="Buscar este tema en YouTube">
+                        <i class="fa-brands fa-youtube" style="color: #ff3333;"></i> YouTube
+                    </button>
+                    <button class="btn-action" id="btn-modal-change-audio" style="padding: 6px 12px; font-size: 0.82rem; background: rgba(56,189,248,0.15); border-color: rgba(56,189,248,0.4);" title="Cambiar audio: Y2Mate o seleccionar archivo">
+                        <i class="fa-solid fa-cloud-arrow-up" style="color: #38bdf8;"></i> Cambiar Audio
+                    </button>
                     <button class="btn-action" id="btn-modal-cinema" style="padding: 6px 14px; font-size: 0.82rem;" title="Abrir en Modo Cine / Pantalla Completa">
                         <i class="fa-solid fa-tv"></i> Modo Cine
                     </button>
@@ -302,6 +308,12 @@
                 <div class="cinema-lyrics-header-row">
                     <div class="cinema-lyrics-header"><i class="fa-solid fa-microphone-lines"></i> Letra Sincronizada</div>
                     <div class="cinema-sync-control" title="Ajuste fino y anclaje de subtítulos">
+                        <button class="btn-sync-clean btn-sync-yt" id="btn-cinema-yt-search" title="Buscar este tema en YouTube (abre la búsqueda directamente para elegir la pista)">
+                            <i class="fa-brands fa-youtube" style="color: #ff3333;"></i> YouTube
+                        </button>
+                        <button class="btn-sync-clean btn-sync-change" id="btn-cinema-open-replace-modal" title="Cambiar audio: Convertir en Y2Mate o subir archivo de música">
+                            <i class="fa-solid fa-cloud-arrow-up" style="color: #38bdf8;"></i> Cambiar Audio
+                        </button>
                         <button class="btn-sync-clean" id="btn-cinema-replace-clean" title="Descartar audio con intro y descargar versión oficial limpia de estudio">
                             <i class="fa-solid fa-arrows-rotate"></i> Versión
                         </button>
@@ -499,6 +511,82 @@
             </nav>
         </div>
     </aside>
+
+
+    <!-- Modal: Cambiar Audio de Canción (YouTube / Y2Mate / Subida de Archivo) -->
+    <div class="modal-backdrop" id="modal-replace-audio" style="display: none;">
+        <div class="modal-container replace-audio-modal-card">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <h3 class="modal-title" style="color:#fff; font-size:1.25rem; font-weight:800; display:flex; align-items:center; gap:10px;">
+                        <i class="fa-solid fa-file-audio" style="color: var(--spotify-green);"></i> Cambiar Pista de Audio
+                    </h3>
+                    <p class="modal-subtitle" id="replace-audio-track-name" style="color:var(--text-muted); font-size:0.86rem; margin-top:3px;">
+                        Cargando pista...
+                    </p>
+                </div>
+                <button class="btn-close-modal" id="btn-close-replace-audio" title="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" style="padding: 22px 24px; display: flex; flex-direction: column; gap: 18px;">
+                
+                <!-- Sección 1: Enlace a YouTube & Convertidor Y2Mate -->
+                <div class="replace-box-panel">
+                    <div class="replace-panel-title">
+                        <i class="fa-brands fa-youtube" style="color: #ff3333;"></i> 1. Buscar en YouTube y Convertir con Y2Mate
+                    </div>
+                    <p class="replace-panel-desc">
+                        Busca la canción en YouTube o pega su enlace aquí. Al pulsar <strong>Abrir en Y2Mate</strong>, se abrirá la web con el enlace ya puesto para descargar el MP3 al instante.
+                    </p>
+                    <div class="replace-input-row">
+                        <button class="btn-action" id="btn-replace-search-yt" style="background: rgba(239,68,68,0.18); border: 1px solid rgba(239,68,68,0.5); color: #fff;" title="Abrir búsqueda en YouTube">
+                            <i class="fa-brands fa-youtube" style="color: #ff3333;"></i> Buscar en YouTube ↗
+                        </button>
+                        <input type="text" id="input-replace-yt-url" placeholder="Pega aquí el enlace de YouTube (https://youtu.be/...)" class="replace-text-input">
+                        <button class="btn-action" id="btn-replace-open-y2mate" style="background: linear-gradient(135deg, #10b981, #0284c7); color: #fff; font-weight: 700;">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir en Y2Mate ↗
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sección 2: Subir archivo descargado (MP3, M4A, etc.) -->
+                <div class="replace-box-panel">
+                    <div class="replace-panel-title">
+                        <i class="fa-solid fa-upload" style="color: var(--spotify-green);"></i> 2. Subir Archivo Descargado
+                    </div>
+                    <p class="replace-panel-desc">
+                        Selecciona el archivo de música que descargaste en tu equipo. Se copiará automáticamente al servidor OMEN, se renombrará con el nombre oficial y se sincronizará a 0.0s.
+                    </p>
+
+                    <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 12px;">
+                        <input type="file" id="input-replace-file" accept=".mp3,.m4a,.flac,.ogg,.wav" style="display: none;">
+                        <div class="file-drop-zone" id="btn-trigger-file-select">
+                            <i class="fa-solid fa-folder-open file-zone-icon"></i>
+                            <div style="font-weight: 700; color: #fff; font-size: 0.95rem;">Haz clic para seleccionar el archivo de música</div>
+                            <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">Archivos compatibles: MP3, M4A, FLAC, WAV, OGG</div>
+                        </div>
+
+                        <div id="replace-selected-file-info" style="display: none;" class="selected-file-badge">
+                            <i class="fa-solid fa-file-audio" style="color: var(--spotify-green);"></i>
+                            <span id="replace-file-name-text" style="font-weight: 600;">archivo.mp3</span>
+                            <span id="replace-file-size-text" style="color: var(--text-muted); font-size: 0.8rem;">(0 MB)</span>
+                        </div>
+
+                        <button class="btn-action btn-upload-execute" id="btn-replace-execute-upload" disabled>
+                            <i class="fa-solid fa-cloud-arrow-up"></i> Reemplazar Audio en Biblioteca
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Estado del proceso -->
+                <div id="replace-upload-progress" style="display: none;" class="replace-progress-box">
+                    <div id="replace-progress-text">
+                        <i class="fa-solid fa-spinner fa-spin"></i> Subiendo y procesando audio en el servidor...
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

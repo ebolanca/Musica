@@ -3463,6 +3463,232 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+
+    // ==========================================================================
+    // 🎥 Integración YouTube & Modal Cambiar Audio (Y2Mate & Carga de Archivos)
+    // ==========================================================================
+    const modalReplaceAudio = document.getElementById('modal-replace-audio');
+    const btnCloseReplaceAudio = document.getElementById('btn-close-replace-audio');
+    const replaceAudioTrackName = document.getElementById('replace-audio-track-name');
+    const btnReplaceSearchYt = document.getElementById('btn-replace-search-yt');
+    const inputReplaceYtUrl = document.getElementById('input-replace-yt-url');
+    const btnReplaceOpenY2mate = document.getElementById('btn-replace-open-y2mate');
+    const btnTriggerFileSelect = document.getElementById('btn-trigger-file-select');
+    const inputReplaceFile = document.getElementById('input-replace-file');
+    const replaceSelectedFileInfo = document.getElementById('replace-selected-file-info');
+    const replaceFileNameText = document.getElementById('replace-file-name-text');
+    const replaceFileSizeText = document.getElementById('replace-file-size-text');
+    const btnReplaceExecuteUpload = document.getElementById('btn-replace-execute-upload');
+    const replaceUploadProgress = document.getElementById('replace-upload-progress');
+    const replaceProgressText = document.getElementById('replace-progress-text');
+
+    let trackToReplace = null;
+    let selectedAudioFile = null;
+
+    function getCurrentTargetTrack() {
+        if (cinemaOverlay && cinemaOverlay.style.display === 'flex') {
+            if (cinemaCurrentTrackList && cinemaCurrentTrackList.length > 0) {
+                return cinemaCurrentTrackList[cinemaCurrentIndex];
+            }
+        }
+        return currentPlayingSong || currentModalSong;
+    }
+
+    function openReplaceAudioModal(track) {
+        trackToReplace = track || getCurrentTargetTrack();
+        if (!trackToReplace) {
+            showSyncNotification('⚠️ No hay ninguna canción seleccionada');
+            return;
+        }
+
+        const tTitle = trackToReplace.rawTitle || trackToReplace.title;
+        const tArtist = trackToReplace.artist;
+        const tCategory = trackToReplace.playlistName || currentTab || 'Siglo XXI';
+
+        if (replaceAudioTrackName) {
+            replaceAudioTrackName.textContent = `${tArtist} - ${tTitle} (${tCategory})`;
+        }
+        if (inputReplaceYtUrl) inputReplaceYtUrl.value = '';
+        if (inputReplaceFile) inputReplaceFile.value = '';
+        selectedAudioFile = null;
+        if (replaceSelectedFileInfo) replaceSelectedFileInfo.style.display = 'none';
+        if (btnReplaceExecuteUpload) btnReplaceExecuteUpload.disabled = true;
+        if (replaceUploadProgress) replaceUploadProgress.style.display = 'none';
+
+        if (modalReplaceAudio) {
+            modalReplaceAudio.style.display = 'flex';
+            setTimeout(() => modalReplaceAudio.classList.add('active'), 10);
+        }
+    }
+
+    function closeReplaceAudioModal() {
+        if (modalReplaceAudio) {
+            modalReplaceAudio.classList.remove('active');
+            setTimeout(() => {
+                if (!modalReplaceAudio.classList.contains('active')) {
+                    modalReplaceAudio.style.display = 'none';
+                }
+            }, 250);
+        }
+        trackToReplace = null;
+        selectedAudioFile = null;
+    }
+
+    function launchYouTubeSearch(track) {
+        const target = track || getCurrentTargetTrack();
+        if (!target) return;
+        const tTitle = target.rawTitle || target.title;
+        const query = `${target.artist} ${tTitle} audio`;
+        window.open(`https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`, '_blank');
+        showSyncNotification(`🔍 Búsqueda de "${target.title}" abierta en YouTube`);
+    }
+
+    // Botón YouTube en Modo Cine
+    const btnCinemaYtSearch = document.getElementById('btn-cinema-yt-search');
+    if (btnCinemaYtSearch) {
+        btnCinemaYtSearch.addEventListener('click', () => launchYouTubeSearch());
+    }
+
+    // Botón Cambiar Audio en Modo Cine
+    const btnCinemaOpenReplaceModal = document.getElementById('btn-cinema-open-replace-modal');
+    if (btnCinemaOpenReplaceModal) {
+        btnCinemaOpenReplaceModal.addEventListener('click', () => openReplaceAudioModal());
+    }
+
+    // Botones en el Modal de Detalles de Canción
+    const btnModalYtSearch = document.getElementById('btn-modal-yt-search');
+    if (btnModalYtSearch) {
+        btnModalYtSearch.addEventListener('click', () => launchYouTubeSearch(currentModalSong));
+    }
+
+    const btnModalChangeAudio = document.getElementById('btn-modal-change-audio');
+    if (btnModalChangeAudio) {
+        btnModalChangeAudio.addEventListener('click', () => openReplaceAudioModal(currentModalSong));
+    }
+
+    // Acciones dentro del Modal de Reemplazo
+    if (btnCloseReplaceAudio) {
+        btnCloseReplaceAudio.addEventListener('click', closeReplaceAudioModal);
+    }
+    if (modalReplaceAudio) {
+        modalReplaceAudio.addEventListener('click', (e) => {
+            if (e.target === modalReplaceAudio) closeReplaceAudioModal();
+        });
+    }
+
+    if (btnReplaceSearchYt) {
+        btnReplaceSearchYt.addEventListener('click', () => launchYouTubeSearch(trackToReplace));
+    }
+
+    if (btnReplaceOpenY2mate) {
+        btnReplaceOpenY2mate.addEventListener('click', () => {
+            const rawVal = inputReplaceYtUrl ? inputReplaceYtUrl.value.trim() : '';
+            if (rawVal) {
+                // Al pasar ?url= a Y2Mate, convert.js rellena txtUrl y arranca la conversión directamente
+                window.open(`https://en2.y2mate.is/app-xeio/?url=${encodeURIComponent(rawVal)}`, '_blank');
+                showSyncNotification('⚡ Abriendo Y2Mate con tu enlace de YouTube listo para convertir');
+            } else {
+                window.open('https://en2.y2mate.is/app-xeio/', '_blank');
+                showSyncNotification('↗️ Abriendo Y2Mate');
+            }
+        });
+    }
+
+    // Selección de archivo local
+    if (btnTriggerFileSelect && inputReplaceFile) {
+        btnTriggerFileSelect.addEventListener('click', () => inputReplaceFile.click());
+    }
+
+    if (inputReplaceFile) {
+        inputReplaceFile.addEventListener('change', (e) => {
+            const files = e.target.files;
+            if (files && files.length > 0) {
+                selectedAudioFile = files[0];
+                const sizeMb = (selectedAudioFile.size / (1024 * 1024)).toFixed(2);
+                if (replaceFileNameText) replaceFileNameText.textContent = selectedAudioFile.name;
+                if (replaceFileSizeText) replaceFileSizeText.textContent = `(${sizeMb} MB)`;
+                if (replaceSelectedFileInfo) replaceSelectedFileInfo.style.display = 'flex';
+                if (btnReplaceExecuteUpload) btnReplaceExecuteUpload.disabled = false;
+            }
+        });
+    }
+
+    // Subir y reemplazar en la biblioteca
+    if (btnReplaceExecuteUpload) {
+        btnReplaceExecuteUpload.addEventListener('click', async () => {
+            if (!selectedAudioFile || !trackToReplace) return;
+
+            btnReplaceExecuteUpload.disabled = true;
+            if (replaceUploadProgress) replaceUploadProgress.style.display = 'block';
+            if (replaceProgressText) replaceProgressText.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Subiendo archivo al servidor OMEN...';
+
+            const tArtist = trackToReplace.artist;
+            const tTitle = trackToReplace.rawTitle || trackToReplace.title;
+            const tCategory = trackToReplace.playlistName || currentTab || 'Siglo XXI';
+
+            try {
+                const uploadUrl = `/api/track/upload-replace?artist=${encodeURIComponent(tArtist)}&title=${encodeURIComponent(tTitle)}&category=${encodeURIComponent(tCategory)}`;
+                const response = await fetch(uploadUrl, {
+                    method: 'POST',
+                    body: selectedAudioFile,
+                    headers: {
+                        'Content-Type': 'application/octet-stream'
+                    }
+                });
+
+                const data = await response.json();
+                if (data.success && data.relUrl) {
+                    if (replaceProgressText) replaceProgressText.innerHTML = '<i class="fa-solid fa-check" style="color:var(--spotify-green);"></i> ¡Audio guardado y sincronizado!';
+
+                    // 1. Restablecer desfase a 0.0s en memoria y almacenamiento local
+                    const key = `offset_${normalizeText(tArtist)}_${normalizeText(trackToReplace.title)}`;
+                    safeStorage.setItem(key, '0.0');
+                    lyricsSyncOffset = 0.0;
+                    updateLyricsSyncOffset(0.0);
+
+                    // 2. Actualizar referencia de la canción
+                    trackToReplace.audioUrl = data.relUrl;
+                    if (trackToReplace.videoItem) trackToReplace.videoItem.streamUrl = data.relUrl;
+
+                    // 3. Recargar inmediatamente la reproducción si es la canción actual
+                    if (mainMusicAudio) {
+                        mainMusicAudio.pause();
+                        mainMusicAudio.src = `${data.relUrl}?t=${Date.now()}`;
+                        mainMusicAudio.currentTime = 0;
+                        mainMusicAudio.load();
+                        try {
+                            await mainMusicAudio.play();
+                            updateMusicBarState(true);
+                        } catch(err) {
+                            setTimeout(() => {
+                                mainMusicAudio.play().then(() => updateMusicBarState(true)).catch(()=>{});
+                            }, 150);
+                        }
+                    }
+
+                    // 4. Si estamos en Modo Cine, recargar pantalla
+                    if (cinemaOverlay && cinemaOverlay.style.display === 'flex') {
+                        renderCinemaTrack(trackToReplace);
+                    }
+
+                    renderSongs();
+                    showSyncNotification(`✨ ¡Audio reemplazado correctamente con tu archivo para "${trackToReplace.title}"!`);
+
+                    setTimeout(() => {
+                        closeReplaceAudioModal();
+                    }, 1200);
+                } else {
+                    throw new Error(data.error || 'Error al procesar el archivo');
+                }
+            } catch(uploadErr) {
+                console.error('Error subiendo audio:', uploadErr);
+                if (replaceProgressText) replaceProgressText.innerHTML = `<span style="color:#ef4444;"><i class="fa-solid fa-triangle-exclamation"></i> ${uploadErr.message}</span>`;
+                btnReplaceExecuteUpload.disabled = false;
+                showSyncNotification(`❌ Error: ${uploadErr.message}`);
+            }
+        });
+    }
+
 });
 
 
