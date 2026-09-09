@@ -1623,77 +1623,68 @@ function formatTime(seconds) {
     }
 
     if (btnSyncSave) {
-        btnSyncSave.addEventListener('click', async () => {
+        btnSyncSave.addEventListener('click', () => {
             const currentSong = currentPlayingSong || (cinemaCurrentTrackList ? cinemaCurrentTrackList[cinemaCurrentIndex] : null);
             if (!currentSong || !cinemaParsedLyrics || cinemaParsedLyrics.length === 0) return;
 
-            btnSyncSave.disabled = true;
-            btnSyncSave.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
-
-            try {
-                const res = await fetch('/api/lyrics/save-offset', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        artist: currentSong.artist,
-                        title: currentSong.rawTitle || currentSong.title,
-                        offsetSec: lyricsSyncOffset,
-                        lyricsArray: cinemaParsedLyrics
-                    })
-                });
-
-                if (res.ok) {
-                    const data = await res.json();
-                    if (data.success && data.lyrics) {
-                        cinemaParsedLyrics = data.lyrics.map((l, idx) => {
-                            return { ...l, index: idx, hasTimestamp: true };
-                        });
-
-                        const key = `offset_${normalizeText(currentSong.artist)}_${normalizeText(currentSong.title)}`;
-                        safeStorage.setItem(key, '0.0');
-                        updateLyricsSyncOffset(0.0);
-
-                        renderCinemaLyricLines();
-
-                        // Si la letra no tiene traducciones todavía, re-consultar en 3s para mostrarlas cuando termine la traducción en segundo plano
-                        const currentArtist = currentSong.artist;
-                        const currentTit = currentSong.rawTitle || currentSong.title;
-                        const needsTrans = cinemaParsedLyrics.some(l => (l.text || '').trim().length > 3 && !l.translation);
-                        if (needsTrans) {
-                            setTimeout(() => {
-                                fetch(`/api/track/detail?artist=${encodeURIComponent(currentArtist)}&title=${encodeURIComponent(currentTit)}`)
-                                    .then(r => r.json())
-                                    .then(freshData => {
-                                        if (freshData && freshData.lyrics && freshData.lyrics.some(l => l.translation)) {
-                                            cinemaParsedLyrics = cinemaParsedLyrics.map((l, idx) => ({
-                                                ...l,
-                                                translation: freshData.lyrics[idx] ? freshData.lyrics[idx].translation : l.translation
-                                            }));
-                                            renderCinemaLyricLines(true);
-                                        }
-                                    }).catch(()=>{});
-                            }, 3000);
-                        }
-
-                        btnSyncSave.classList.add('saved');
-                        btnSyncSave.innerHTML = '<i class="fa-solid fa-check"></i>';
-                        showSyncNotification('💾 ¡Karaoke y marcas de tiempo grabadas permanentemente en la base de datos!');
-
-                        setTimeout(() => {
-                            btnSyncSave.disabled = false;
-                            btnSyncSave.classList.remove('saved');
-                            btnSyncSave.innerHTML = '<i class="fa-solid fa-floppy-disk"></i>';
-                        }, 2500);
-                    }
-                } else {
-                    throw new Error('Error en el servidor');
+            // 1. Aplicación INSTANTÁNEA en memoria (0ms, feedback inmediato)
+            const effOffset = lyricsSyncOffset || 0;
+            cinemaParsedLyrics = cinemaParsedLyrics.map((l, idx) => {
+                let currSec = 0;
+                if (typeof l.seconds === 'number') currSec = l.seconds;
+                else if (l.time) {
+                    const parts = l.time.split(':');
+                    currSec = parseInt(parts[0], 10) * 60 + parseFloat(parts[1] || 0);
                 }
-            } catch(e) {
-                console.error('Error guardando karaoke permanente:', e);
-                btnSyncSave.disabled = false;
+                const newSec = Math.max(0, parseFloat((currSec - effOffset).toFixed(2)));
+                const mins = Math.floor(newSec / 60);
+                const secs = Math.floor(newSec % 60);
+                return {
+                    ...l,
+                    index: idx,
+                    seconds: newSec,
+                    time: `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`,
+                    hasTimestamp: true
+                };
+            });
+
+            // Restablecer offset y almacenamiento local
+            const key = `offset_${normalizeText(currentSong.artist)}_${normalizeText(currentSong.title)}`;
+            safeStorage.setItem(key, '0.0');
+            updateLyricsSyncOffset(0.0);
+            renderCinemaLyricLines(true);
+
+            // Icono de guardado instantáneo sin esperas
+            btnSyncSave.classList.add('saved');
+            btnSyncSave.innerHTML = '<i class="fa-solid fa-check"></i>';
+            showSyncNotification('💾 ¡Karaoke y marcas de tiempo grabadas!');
+
+            setTimeout(() => {
+                btnSyncSave.classList.remove('saved');
                 btnSyncSave.innerHTML = '<i class="fa-solid fa-floppy-disk"></i>';
-                showSyncNotification('❌ Error al grabar karaoke permanente');
-            }
+            }, 1500);
+
+            // 2. Persistencia en segundo plano al servidor (no bloqueante)
+            fetch('/api/lyrics/save-offset', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    artist: currentSong.artist,
+                    title: currentSong.rawTitle || currentSong.title,
+                    offsetSec: effOffset,
+                    lyricsArray: cinemaParsedLyrics
+                })
+            }).then(r => r.json()).then(data => {
+                if (data && data.success && data.lyrics) {
+                    cinemaParsedLyrics = data.lyrics.map((l, idx) => ({
+                        ...l,
+                        index: idx,
+                        hasTimestamp: true
+                    }));
+                }
+            }).catch(err => {
+                console.error('Error guardando sincronización en servidor:', err);
+            });
         });
     }
 

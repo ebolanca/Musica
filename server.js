@@ -4054,11 +4054,5 @@ app.post('/api/retro-hits/add-to-viejuna', (req, res) => {
 const PORT = 8087;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Servidor de Música corriendo en http://localhost:${PORT}`);
-    // Auto-enriquecedor autónomo de fondo: arranque inicial a los 4s y periódico cada 15 min
-    setTimeout(() => {
-        autoEnrichCatalogInBackground().catch(e => console.error("Error en auto-enriquecimiento de inicio:", e.message));
-    }, 4000);
-    setInterval(() => {
-        autoEnrichCatalogInBackground().catch(e => console.error("Error en auto-enriquecimiento periódico:", e.message));
-    }, 15 * 60 * 1000);
+    // Auto-enriquecedor: en segundo plano a demanda (sin saturar inicio ni I/O)
 });
