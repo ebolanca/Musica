@@ -1461,6 +1461,219 @@ app.post('/api/analysis/generate', async (req, res) => {
 });
 
 
+
+// ==========================================================================
+// 🖼️ Búsqueda de Carátulas Alternativas (Deezer + iTunes)
+// ==========================================================================
+app.get('/api/covers/search', async (req, res) => {
+    try {
+        const query = (req.query.q || '').trim();
+        if (!query) {
+            return res.status(400).json({ error: 'Parámetro de búsqueda (q) requerido' });
+        }
+
+        const cleanQ = cleanTrackTitle(query);
+        const searchTerms = [query];
+        if (cleanQ && cleanQ.toLowerCase() !== query.toLowerCase()) {
+            searchTerms.push(cleanQ);
+        }
+
+        const results = [];
+        const seenCovers = new Set();
+
+        const addResult = (coverUrl, album, source) => {
+            if (!coverUrl || typeof coverUrl !== 'string') return;
+            const normUrl = coverUrl.trim();
+            if (normUrl.startsWith('http') && !seenCovers.has(normUrl)) {
+                seenCovers.add(normUrl);
+                results.push({ coverUrl: normUrl, album: album || 'Álbum Oficial', source });
+            }
+        };
+
+        // 1. Deezer API (Pistas y Álbumes)
+        const fetchDeezer = async (term) => {
+            try {
+                const encoded = encodeURIComponent(term);
+                const [trackRes, albumRes] = await Promise.allSettled([
+                    fetch(`https://api.deezer.com/search?q=${encoded}&limit=15`, { signal: AbortSignal.timeout(4000) }),
+                    fetch(`https://api.deezer.com/search/album?q=${encoded}&limit=10`, { signal: AbortSignal.timeout(4000) })
+                ]);
+
+                if (trackRes.status === 'fulfilled' && trackRes.value.ok) {
+                    const data = await trackRes.value.json();
+                    if (data.data) {
+                        data.data.forEach(t => {
+                            if (t.album && (t.album.cover_xl || t.album.cover_big)) {
+                                addResult(t.album.cover_xl || t.album.cover_big, t.album.title, 'Deezer');
+                            }
+                        });
+                    }
+                }
+
+                if (albumRes.status === 'fulfilled' && albumRes.value.ok) {
+                    const data = await albumRes.value.json();
+                    if (data.data) {
+                        data.data.forEach(a => {
+                            if (a.cover_xl || a.cover_big) {
+                                addResult(a.cover_xl || a.cover_big, a.title, 'Deezer');
+                            }
+                        });
+                    }
+                }
+            } catch (e) {}
+        };
+
+        // 2. iTunes API (Canciones y Álbumes)
+        const fetchITunes = async (term) => {
+            try {
+                const encoded = encodeURIComponent(term);
+                const [songRes, albumRes] = await Promise.allSettled([
+                    fetch(`https://itunes.apple.com/search?term=${encoded}&entity=song&limit=15`, { signal: AbortSignal.timeout(4000) }),
+                    fetch(`https://itunes.apple.com/search?term=${encoded}&entity=album&limit=10`, { signal: AbortSignal.timeout(4000) })
+                ]);
+
+                if (songRes.status === 'fulfilled' && songRes.value.ok) {
+                    const data = await songRes.value.json();
+                    if (data.results) {
+                        data.results.forEach(r => {
+                            if (r.artworkUrl100) {
+                                const hdUrl = r.artworkUrl100.replace('100x100bb', '1000x1000bb');
+                                addResult(hdUrl, r.collectionName, 'iTunes / Apple Music');
+                            }
+                        });
+                    }
+                }
+
+                if (albumRes.status === 'fulfilled' && albumRes.value.ok) {
+                    const data = await albumRes.value.json();
+                    if (data.results) {
+                        data.results.forEach(r => {
+                            if (r.artworkUrl100) {
+                                const hdUrl = r.artworkUrl100.replace('100x100bb', '1000x1000bb');
+                                addResult(hdUrl, r.collectionName, 'iTunes / Apple Music');
+                            }
+                        });
+                    }
+                }
+            } catch (e) {}
+        };
+
+        await Promise.allSettled([
+            fetchDeezer(searchTerms[0]),
+            fetchITunes(searchTerms[0]),
+            searchTerms[1] ? fetchDeezer(searchTerms[1]) : Promise.resolve(),
+            searchTerms[1] ? fetchITunes(searchTerms[1]) : Promise.resolve()
+        ]);
+
+        res.json({ success: true, count: results.length, results });
+    } catch(err) {
+        console.error('Error en /api/covers/search:', err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// ==========================================================================
+// 💾 Guardar Carátula Elegida para una Canción
+// ==========================================================================
+app.post('/api/covers/save', (req, res) => {
+    try {
+        const { artist, title, rawTitle, coverUrl, album } = req.body;
+        if (!artist || !title || !coverUrl) {
+            return res.status(400).json({ error: 'artist, title y coverUrl son obligatorios' });
+        }
+
+        if (!metadataCache || Object.keys(metadataCache).length === 0) {
+            loadMetadataCache();
+        }
+
+        const cleanT = cleanTrackTitle(title);
+        const keysToUpdate = [
+            `${artist} - ${title}`.toLowerCase(),
+            `${artist} - ${cleanT}`.toLowerCase(),
+            rawTitle ? `${artist} - ${rawTitle}`.toLowerCase() : null
+        ].filter(Boolean);
+
+        const normArt = (artist || '').toLowerCase().replace(/,/g, ' ').replace(/&/g, ' ').replace(/[^a-z0-9]/g, '');
+        const normTit = cleanT.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const normTarget = `${normArt}${normTit}`;
+
+        let existingMeta = null;
+        for (const k of keysToUpdate) {
+            if (metadataCache[k]) {
+                existingMeta = metadataCache[k];
+                break;
+            }
+        }
+        if (!existingMeta) {
+            for (const [k, meta] of Object.entries(metadataCache)) {
+                let normK = k.toLowerCase().replace(/,/g, ' ').replace(/&/g, ' ').replace(/[^a-z0-9]/g, '');
+                if (normK === normTarget || (normK.length > 5 && (normK.includes(normTarget) || normTarget.includes(normK)))) {
+                    existingMeta = meta;
+                    break;
+                }
+            }
+        }
+
+        const newMeta = existingMeta ? { ...existingMeta } : {
+            title: cleanT,
+            artist: artist,
+            album: album || 'Álbum',
+            displayTitle: title
+        };
+
+        let effectiveCoverUrl = coverUrl;
+
+        // Si es una imagen base64 (subida localmente), guardarla en disco
+        if (coverUrl.startsWith('data:image/')) {
+            const coversDir = path.join(__dirname, 'public/img/covers');
+            if (!fs.existsSync(coversDir)) fs.mkdirSync(coversDir, { recursive: true });
+            const ext = coverUrl.includes('png') ? 'png' : 'jpg';
+            const filename = `cover_${Date.now()}.${ext}`;
+            const base64Data = coverUrl.replace(/^data:image\/\w+;base64,/, '');
+            fs.writeFileSync(path.join(coversDir, filename), Buffer.from(base64Data, 'base64'));
+            effectiveCoverUrl = `/img/covers/${filename}`;
+
+            // Copiar al OMEN si aplica
+            const remoteCoversDir = '\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\public\\img\\covers';
+            if (fs.existsSync(path.dirname(remoteCoversDir))) {
+                try {
+                    if (!fs.existsSync(remoteCoversDir)) fs.mkdirSync(remoteCoversDir, { recursive: true });
+                    fs.copyFileSync(path.join(coversDir, filename), path.join(remoteCoversDir, filename));
+                } catch(e){}
+            }
+        }
+
+        newMeta.coverUrl = effectiveCoverUrl;
+        if (album && album.trim()) {
+            newMeta.album = album.trim();
+        }
+
+        // Actualizar en todas las variantes de clave
+        keysToUpdate.forEach(k => {
+            metadataCache[k] = newMeta;
+        });
+        if (normTarget) {
+            metadataCache[normTarget] = newMeta;
+        }
+
+        // Buscar variantes adicionales que contengan normTarget
+        for (const [k, meta] of Object.entries(metadataCache)) {
+            let normK = k.toLowerCase().replace(/,/g, ' ').replace(/&/g, ' ').replace(/[^a-z0-9]/g, '');
+            if (normK === normTarget || (normK.length > 6 && normK.includes(normTarget))) {
+                metadataCache[k] = newMeta;
+            }
+        }
+
+        saveMetadataCache();
+        console.log(`[COVER UPDATE] Nueva carátula asignada para "${artist} - ${title}": ${effectiveCoverUrl} (${newMeta.album})`);
+
+        res.json({ success: true, coverUrl: effectiveCoverUrl, album: newMeta.album });
+    } catch(err) {
+        console.error('Error en /api/covers/save:', err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
 app.post('/api/track/upload-replace', (req, res) => {
     try {
         const { artist, title, category } = req.query;
