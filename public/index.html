@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Música - Plataforma de Videoclips & Análisis Sónico</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=1.5.60">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -18,7 +18,7 @@
             </div>
             <div class="logo-title">
                 <h1>Música</h1>
-                <p>Plataforma de Videoclips & Análisis Sónico v1.5.59</p>
+                <p>Plataforma de Videoclips & Análisis Sónico v1.5.60</p>
             </div>
         </div>
 
@@ -211,7 +211,7 @@
         </div>
     </div>
 
-    <script src="js/app.js"></script>
+    <script src="js/app.js?v=1.5.60"></script>
 
     <!-- Persistent Live Radio Player Bar -->
     <div id="radio-player-bar" class="radio-player-bar" style="display: none;">
@@ -282,11 +282,13 @@
         <div class="cinema-content">
             <div class="cinema-left">
                 <div class="cinema-vinyl-wrap" id="cinema-vinyl-wrap">
-                    <img src="" alt="" id="cinema-cover" class="cinema-cover">
+                    <div class="cinema-cover-container">
+                        <img src="" alt="" id="cinema-cover" class="cinema-cover">
+                        <button class="btn-cinema-change-cover" id="btn-cinema-change-cover" title="Cambiar carátula del álbum">
+                            <i class="fa-solid fa-rotate"></i>
+                        </button>
+                    </div>
                     <div class="cinema-vinyl-record" id="cinema-vinyl"></div>
-                    <button class="btn-cinema-change-cover" id="btn-cinema-change-cover" title="Buscar y cambiar carátula del álbum">
-                        <i class="fa-solid fa-rotate"></i>
-                    </button>
                 </div>
 
                 <div class="cinema-track-info">
@@ -320,6 +322,9 @@
                         </button>
                         <button class="btn-sync-clean btn-sync-change" id="btn-cinema-open-replace-modal" title="Subir el archivo MP3 descargado y asignarlo a la canción">
                             <i class="fa-solid fa-cloud-arrow-up" style="color: #38bdf8;"></i> Subir MP3
+                        </button>
+                        <button class="btn-sync-clean btn-sync-cover-btn" id="btn-cinema-toolbar-cover" title="Buscar otra carátula en Google / Deezer / iTunes" style="background: rgba(29, 185, 84, 0.15); border-color: rgba(29, 185, 84, 0.5); color: #22c55e;">
+                            <i class="fa-solid fa-image"></i> Carátula
                         </button>
                         <button class="btn-sync-clean" id="btn-cinema-replace-clean" title="Descartar audio con intro y descargar automáticamente otra versión oficial de estudio">
                             <i class="fa-solid fa-arrows-rotate"></i> Versión Auto

@@ -4991,3 +4991,54 @@ video {
     font-size: 0.68rem;
     color: var(--text-muted, #888);
 }
+
+
+/* Contenedor relativo de la carátula */
+.cinema-cover-container {
+    position: relative !important;
+    width: 220px !important;
+    height: 220px !important;
+    z-index: 5 !important;
+    display: block !important;
+}
+
+.cinema-cover-container .cinema-cover {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    border-radius: 14px !important;
+}
+
+/* Botón flotante visible sobre la carátula */
+.btn-cinema-change-cover {
+    position: absolute !important;
+    top: 8px !important;
+    right: 8px !important;
+    z-index: 25 !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    background: rgba(10, 10, 10, 0.88) !important;
+    border: 2px solid var(--spotify-green, #1db954) !important;
+    color: #fff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    font-size: 14px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.8), 0 0 10px rgba(29, 185, 84, 0.6) !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.btn-cinema-change-cover:hover {
+    background: var(--spotify-green, #1db954) !important;
+    color: #000 !important;
+    transform: scale(1.15) rotate(90deg) !important;
+    box-shadow: 0 0 20px rgba(29, 185, 84, 0.9) !important;
+}
+
+.btn-sync-cover-btn:hover {
+    background: rgba(29, 185, 84, 0.3) !important;
+    border-color: #1db954 !important;
+    color: #fff !important;
+}

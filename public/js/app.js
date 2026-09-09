@@ -264,6 +264,15 @@ function formatTime(seconds) {
     }
 
     // Listeners
+    
+    const btnCinemaToolbarCover = document.getElementById('btn-cinema-toolbar-cover');
+    if (btnCinemaToolbarCover) {
+        btnCinemaToolbarCover.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openCoverModal();
+        });
+    }
+
     if (btnCinemaChangeCover) {
         btnCinemaChangeCover.addEventListener('click', (e) => {
             e.stopPropagation();
