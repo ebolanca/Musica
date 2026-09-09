@@ -14330,7 +14330,7 @@
     "releaseYear": "2000",
     "releaseDate": "2000-05-23",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/db5cfc7572fdbb83fae973a8406e5a6c/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 240253,
+    "durationMs": 253000,
     "source": "Deezer + Apple Music Resolver"
   },
   "nicky jam, enrique iglesias - el perdón (with enrique iglesias)": {
@@ -26393,7 +26393,7 @@
     "releaseYear": "2000",
     "releaseDate": "2000-07-01",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/de8963982bf9db7c0abdb5c41d41d10b/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 488253,
+    "durationMs": 216427,
     "source": "Deezer + Apple Music Resolver"
   },
   "barthezz - on the move": {
@@ -26406,7 +26406,7 @@
     "releaseYear": "2000",
     "releaseDate": "2000-07-01",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/de8963982bf9db7c0abdb5c41d41d10b/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 488253,
+    "durationMs": 216427,
     "source": "Deezer + Apple Music Resolver"
   },
   "sylver - forgiven - original mix": {
@@ -46502,7 +46502,7 @@
     "releaseYear": "2000",
     "releaseDate": "2000-07-10",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/68584c77b232bb1c615ec5beda169c40/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 493467,
+    "durationMs": 171973,
     "source": "Deezer + Apple Music Resolver"
   },
   "dagon - boom chaka": {
@@ -90879,7 +90879,7 @@
     "releaseYear": "2000",
     "releaseDate": "2000-05-23",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/db5cfc7572fdbb83fae973a8406e5a6c/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 240253,
+    "durationMs": 253000,
     "source": "Deezer + Apple Music Resolver"
   },
   "mediterraneo": {
@@ -91217,7 +91217,7 @@
     "releaseYear": "2000",
     "releaseDate": "2000-07-01",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/de8963982bf9db7c0abdb5c41d41d10b/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 488253,
+    "durationMs": 216427,
     "source": "Deezer + Apple Music Resolver"
   },
   "sweet sleep": {
@@ -91256,7 +91256,7 @@
     "releaseYear": "2000",
     "releaseDate": "2000-07-10",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/68584c77b232bb1c615ec5beda169c40/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 493467,
+    "durationMs": 171973,
     "source": "Deezer + Apple Music Resolver"
   },
   "summer is crazy": {
@@ -91360,7 +91360,7 @@
     "releaseYear": "2000",
     "releaseDate": "2000-08-14",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8e060e432d4480bfd8e383eec75261f9/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 523989,
+    "durationMs": 227619,
     "source": "Deezer + Apple Music Resolver"
   },
   "groovejet (if this ain't love)": {
@@ -91373,7 +91373,7 @@
     "releaseYear": "2000",
     "releaseDate": "2000-08-14",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8e060e432d4480bfd8e383eec75261f9/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 523989,
+    "durationMs": 227619,
     "source": "Deezer + Apple Music Resolver"
   },
   "in-grid - tu es foutu - radio edit": {
@@ -93207,6 +93207,32 @@
     "releaseDate": "2004-10-22",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4b835969f1c7c15a9c7c944b050126f5/1000x1000-000000-80-0-0.jpg",
     "durationMs": 261115,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "el gran combo de puerto rico - la muerte": {
+    "title": "La Muerte",
+    "displayTitle": "La Muerte",
+    "artist": "El Gran Combo De Puerto Rico",
+    "album": "45 Years of Music- From the Beginning (1962-2007)",
+    "year": "1992",
+    "date": "1992-06-10",
+    "releaseYear": "1992",
+    "releaseDate": "1992-06-10",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a063b71d8f7a019a606cc5eaab74d7cc/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 263307,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "la muerte": {
+    "title": "La Muerte",
+    "displayTitle": "La Muerte",
+    "artist": "El Gran Combo De Puerto Rico",
+    "album": "45 Years of Music- From the Beginning (1962-2007)",
+    "year": "1992",
+    "date": "1992-06-10",
+    "releaseYear": "1992",
+    "releaseDate": "1992-06-10",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a063b71d8f7a019a606cc5eaab74d7cc/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 263307,
     "source": "Deezer + Apple Music Resolver"
   }
 }

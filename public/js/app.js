@@ -1418,10 +1418,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         renderCinemaLyricLines();
 
                         // Si la letra no tiene traducciones todavía, re-consultar en 3s para mostrarlas cuando termine la traducción en segundo plano
+                        const currentArtist = currentSong.artist;
+                        const currentTit = currentSong.rawTitle || currentSong.title;
                         const needsTrans = cinemaParsedLyrics.some(l => (l.text || '').trim().length > 3 && !l.translation);
                         if (needsTrans) {
                             setTimeout(() => {
-                                fetch(`/api/track/detail?artist=${encodeURIComponent(track.artist)}&title=${encodeURIComponent(trackTitleQuery)}`)
+                                fetch(`/api/track/detail?artist=${encodeURIComponent(currentArtist)}&title=${encodeURIComponent(currentTit)}`)
                                     .then(r => r.json())
                                     .then(freshData => {
                                         if (freshData && freshData.lyrics && freshData.lyrics.some(l => l.translation)) {
@@ -1429,7 +1431,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                                 ...l,
                                                 translation: freshData.lyrics[idx] ? freshData.lyrics[idx].translation : l.translation
                                             }));
-                                            renderCinemaLyricLines();
+                                            renderCinemaLyricLines(true);
                                         }
                                     }).catch(()=>{});
                             }, 3000);
@@ -2663,6 +2665,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     renderCinemaLyricLines();
                     updateCinemaSubsDurationBadge();
+
+                    // Si hay líneas pendientes de traducir, auto-refrescar en 1.5s sin interrumpir la reproducción
+                    const hasUntranslatedLines = d.lyrics.some(l => (l.text || '').trim().length > 3 && (!l.translation || l.translation.trim().length === 0));
+                    if (hasUntranslatedLines) {
+                        const trackTitleQuery = track.rawTitle || track.title;
+                        setTimeout(() => {
+                            if (currentPlayingSong && getTrackPreloadKey(currentPlayingSong) === key) {
+                                fetch(`/api/track/detail?artist=${encodeURIComponent(track.artist)}&title=${encodeURIComponent(trackTitleQuery)}`)
+                                    .then(r => r.json())
+                                    .then(freshD => {
+                                        if (freshD && freshD.lyrics && currentPlayingSong && getTrackPreloadKey(currentPlayingSong) === key) {
+                                            preloadedDetailsCache.set(key, freshD);
+                                            // Actualizar traducciones preservando la posición de scroll
+                                            cinemaParsedLyrics = cinemaParsedLyrics.map((l, idx) => ({
+                                                ...l,
+                                                translation: freshD.lyrics[idx] ? freshD.lyrics[idx].translation : l.translation
+                                            }));
+                                            renderCinemaLyricLines(true);
+                                        }
+                                    }).catch(()=>{});
+                            }
+                        }, 1500);
+                    }
 
                     // Listeners de desplazamiento manual gestionados globalmente
                 } else {

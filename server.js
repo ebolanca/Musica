@@ -1,4 +1,20 @@
 
+let lyricsSaveDebounceTimer = null;
+function saveLyricsDbDebounced() {
+    if (lyricsSaveDebounceTimer) clearTimeout(lyricsSaveDebounceTimer);
+    lyricsSaveDebounceTimer = setTimeout(() => {
+        try {
+            fs.writeFile(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb), 'utf8', (err) => {
+                if (err) console.error('Error guardando LYRICS_DB_PATH:', err.message);
+                else console.log('💾 [LYRICS DB] Base de datos guardada en disco en segundo plano.');
+            });
+        } catch(e) {
+            console.error('Error en saveLyricsDbDebounced:', e.message);
+        }
+    }, 300);
+}
+
+
 function normalizePlaylistKey(name) {
     if (!name) return 'Música viejuna';
     const clean = name.trim();
@@ -124,59 +140,80 @@ async function translateLyricsBatch(lines) {
     if (!lines || lines.length === 0) return lines;
     
     // Check if song is already in Spanish
-    const fullSample = lines.slice(0, 15).map(l => l.text).join(' ').toLowerCase();
-    const spanishWords = fullSample.match(/\b(que|para|estoy|corazón|noche|nada|amor|vida|todo|cuando|tiempo|quiero|tengo|hacer|siento|solo)\b/gi) || [];
+    const fullSample = lines.slice(0, 15).map(l => l.text || '').join(' ').toLowerCase();
+    const spanishWords = fullSample.match(/\b(que|para|estoy|corazón|noche|nada|amor|vida|todo|cuando|tiempo|quiero|tengo|hacer|siento|solo|esta|pero|como|por|mas|bien|ella|este|aqui|donde)\b/gi) || [];
     if (spanishWords.length >= 4) {
         return lines;
     }
 
-    // Primero: aplicar instantáneamente desde la caché en memoria (0ms)
+    // 1. Primero: aplicar instantáneamente desde la caché en memoria (0ms)
     lines.forEach(l => {
         const t = (l.text || '').trim();
-        if (!l.translation && lyricsTransCache[t]) {
+        if ((!l.translation || l.translation.trim().length === 0) && lyricsTransCache[t]) {
             l.translation = lyricsTransCache[t];
         }
     });
 
-    const needsTrans = lines.some(l => {
-        const t = (l.text || '').trim();
-        return t.length > 1 && !l.translation;
-    });
+    // 2. Extraer textos únicos que realmente necesitan traducción
+    const uniqueToTranslate = Array.from(new Set(
+        lines
+            .map(l => (l.text || '').trim())
+            .filter(t => t.length > 1 && (!lyricsTransCache[t] || lyricsTransCache[t].trim().length === 0))
+    ));
 
-    if (!needsTrans) return lines;
+    if (uniqueToTranslate.length === 0) {
+        lines.forEach(l => {
+            const t = (l.text || '').trim();
+            if (lyricsTransCache[t]) l.translation = lyricsTransCache[t];
+        });
+        return lines;
+    }
 
-    // Traducir las líneas pendientes en 1 o 2 llamadas ultra-rápidas a Google Translate
-    const blockSize = 30;
-    for (let i = 0; i < lines.length; i += blockSize) {
-        const block = lines.slice(i, i + blockSize);
-        const blockText = block.map(l => (l.text || '').trim()).join('\n');
+    // 3. Traducir en lotes usando múltiples parámetros &q= (garantiza correspondencia 1 a 1 exacta sin desajustes)
+    const BATCH_SIZE = 25;
+    for (let i = 0; i < uniqueToTranslate.length; i += BATCH_SIZE) {
+        const chunk = uniqueToTranslate.slice(i, i + BATCH_SIZE);
+        const qParams = chunk.map(txt => `q=${encodeURIComponent(txt)}`).join('&');
+        const url = `https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=auto&tl=es&${qParams}`;
+        
         try {
-            const url = `https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=auto&tl=es&q=${encodeURIComponent(blockText)}`;
             const res = await fetch(url, {
                 headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' },
-                signal: AbortSignal.timeout(2000)
+                signal: AbortSignal.timeout(6000)
             });
             if (res.ok) {
                 const data = await res.json();
-                if (Array.isArray(data) && data[0]) {
-                    const raw = Array.isArray(data[0]) ? data[0][0] : String(data[0]);
-                    const cleanRaw = raw.replace(/,[a-zA-Z-]{2,5}$/, '').trim();
-                    const transLines = cleanRaw.split('\n');
-                    
-                    block.forEach((item, idx) => {
-                        const orig = (item.text || '').trim();
-                        const trans = (transLines[idx] || '').trim();
+                if (Array.isArray(data)) {
+                    data.forEach((item, idx) => {
+                        const orig = chunk[idx];
+                        if (!orig) return;
+                        let trans = '';
+                        if (Array.isArray(item) && item[0]) {
+                            trans = String(item[0]).trim();
+                        } else if (typeof item === 'string') {
+                            trans = item.trim();
+                        }
                         if (trans && trans.length > 0) {
-                            item.translation = trans;
                             lyricsTransCache[orig] = trans;
-                        } else if (lyricsTransCache[orig]) {
-                            item.translation = lyricsTransCache[orig];
                         }
                     });
                 }
             }
-        } catch(e) {}
+        } catch(e) {
+            console.warn('[TRANSLATE] Error traduciendo bloque:', e.message);
+        }
+        if (i + BATCH_SIZE < uniqueToTranslate.length) {
+            await new Promise(r => setTimeout(r, 80));
+        }
     }
+
+    // 4. Mapear todas las traducciones a todas las líneas
+    lines.forEach(l => {
+        const t = (l.text || '').trim();
+        if (lyricsTransCache[t]) {
+            l.translation = lyricsTransCache[t];
+        }
+    });
 
     try {
         fs.writeFileSync(LYRICS_CACHE_FILE, JSON.stringify(lyricsTransCache, null, 2), 'utf8');
@@ -1507,7 +1544,7 @@ app.post('/api/track/upload-replace', (req, res) => {
                                 cachedLyricsDb[`${artist} - ${title}`] = freshLyrics;
                                 cachedLyricsDb[`${artist} - ${cleanT}`] = freshLyrics;
                                 cachedLyricsDb[cleanT] = freshLyrics;
-                                fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
+                                saveLyricsDbDebounced();
                             }
                         }
                     }
@@ -1622,7 +1659,7 @@ app.get('/api/track/detail', async (req, res) => {
             cachedLyricsDb[`${artist} - ${cleanT}`] = parsedLyrics;
             cachedLyricsDb[cleanT] = parsedLyrics;
             try {
-                fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
+                saveLyricsDbDebounced();
             } catch(e){}
         }
     }
@@ -1637,7 +1674,7 @@ app.get('/api/track/detail', async (req, res) => {
                 cachedLyricsDb[`${artist} - ${cleanT}`] = parsedLyrics;
                 cachedLyricsDb[cleanT] = parsedLyrics;
                 try {
-                    fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
+                    saveLyricsDbDebounced();
                 } catch(e){}
             } catch(e){}
         }
@@ -1853,15 +1890,12 @@ app.post('/api/lyrics/save-offset', (req, res) => {
         cachedLyricsDb[`${artist} - ${cleanT}`] = updatedLyrics;
         cachedLyricsDb[cleanT] = updatedLyrics;
 
-        // Guardar permanentemente en disco
-        try {
-            fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
-        } catch(e) {
-            console.error('Error escribiendo en LYRICS_DB_PATH:', e.message);
-        }
-
-        console.log(`[LYRICS SYNC] Desfase de ${offsetSec}s guardado permanentemente para ${artist} - ${title}`);
+        // Responder de inmediato (< 5ms) sin bloquear la interfaz del usuario
         res.json({ success: true, lyrics: updatedLyrics });
+        console.log(`[LYRICS SYNC] Desfase de ${offsetSec}s guardado al instante para ${artist} - ${title}`);
+
+        // Persistir a disco en segundo plano de forma no bloqueante
+        saveLyricsDbDebounced();
     } catch(err) {
         console.error('Error en /api/lyrics/save-offset:', err);
         res.status(500).json({ error: err.message });
@@ -1938,7 +1972,7 @@ app.post('/api/lyrics/cycle-version', async (req, res) => {
         cachedLyricsDb[title] = parsedLyrics;
 
         try {
-            fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
+            saveLyricsDbDebounced();
         } catch(e) {
             console.error('Error escribiendo en LYRICS_DB_PATH:', e.message);
         }
@@ -2404,7 +2438,7 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
                             cachedLyricsDb[`${artist} - ${title}`] = freshLyrics;
                             cachedLyricsDb[`${artist} - ${cleanT}`] = freshLyrics;
                             cachedLyricsDb[cleanT] = freshLyrics;
-                            fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
+                            saveLyricsDbDebounced();
                             console.log(`✅ Letras sincronizadas restablecidas automáticamente a 0.0s para ${artist} - ${cleanT}`);
                         }
                     }
@@ -2511,7 +2545,7 @@ app.get('/api/track/detail', async (req, res) => {
             cachedLyricsDb[`${artist} - ${cleanT}`] = parsedLyrics;
             cachedLyricsDb[cleanT] = parsedLyrics;
             try {
-                fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
+                saveLyricsDbDebounced();
             } catch(e){}
         }
     }
@@ -2526,7 +2560,7 @@ app.get('/api/track/detail', async (req, res) => {
                 cachedLyricsDb[`${artist} - ${cleanT}`] = parsedLyrics;
                 cachedLyricsDb[cleanT] = parsedLyrics;
                 try {
-                    fs.writeFileSync(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb, null, 2), 'utf8');
+                    saveLyricsDbDebounced();
                 } catch(e){}
             } catch(e){}
         }
