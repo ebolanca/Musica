@@ -673,7 +673,7 @@ function formatTime(seconds) {
             })
             .catch(err => {
                 console.error('Error cargando playlists:', err);
-                resultsCountText.textContent = 'Error conectando con el servidor';
+                if (resultsCountText) resultsCountText.textContent = 'Error conectando con el servidor';
             });
     }
 
@@ -1941,8 +1941,19 @@ function formatTime(seconds) {
         mainMusicAudio.addEventListener('ended', () => {
             if (playbackMode === 'playlist_shuffle' || playbackMode === 'party_dj') {
                 if (activePlaylistQueue.length > 0) {
-                    currentQueueIndex = (currentQueueIndex + 1) % activePlaylistQueue.length;
-                    playQueueTrack(activePlaylistQueue[currentQueueIndex]);
+                    const nextIdx = currentQueueIndex + 1;
+                    if (nextIdx < activePlaylistQueue.length) {
+                        // Avanzar a la siguiente canción de la cola
+                        currentQueueIndex = nextIdx;
+                        playQueueTrack(activePlaylistQueue[currentQueueIndex]);
+                    } else if (playbackMode === 'playlist_shuffle') {
+                        // Cola agotada: buscar siguiente tanda de canciones no escuchadas
+                        const playlistName = currentPlayingSong?.playlistName || currentTab;
+                        startPlaylistShuffle(playlistName);
+                    } else {
+                        // Modo Fiesta: renovar pool global de canciones
+                        if (btnSmartDj) btnSmartDj.click();
+                    }
                 }
             } else {
                 updateMusicBarState(false);
