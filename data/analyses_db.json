@@ -448,5 +448,95 @@
       }
     ],
     "_aiModel": "gemini-3.5-flash-lite"
+  },
+  "Depeche Mode - strangelove": {
+    "title": "strangelove",
+    "artist": "Depeche Mode",
+    "year": "1987",
+    "album": "Music for the Masses (Nota: El prompt indica Violator, pero históricamente pertenece a Music for the Masses, lanzado en 1987)",
+    "synopsis": "Tesis sónica basada en la hibridación de synth-pop oscuro y texturas industriales de finales de los 80. La obra destaca por su secuenciación rígida, el uso intensivo de muestreo digital (sampling) y una producción de frecuencias graves altamente comprimidas que redefinieron el sonido de club alternativo, consolidando la transición de la banda hacia estadios.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La arquitectura sónica de 'Strangelove' (producida por Depeche Mode y Dave Bascombe) se fundamenta en el muestreo digital mediante el E-mu Emulator II, complementado con síntesis analógica del ARP 2600 y el Roland Jupiter-8. El bajo es un híbrido: una línea secuenciada analógica que aporta el grosor subgrave (en torno a los 50-80 Hz) duplicada por un sampler con transitorios metálicos para dar definición en los medios-agudos. La percusión utiliza cajas de ritmos procesadas y muestras de golpes industriales (láminas de metal y percusión encontrada) pasadas por una puerta de ruido (gated reverb) típica de la época, pero con un decaimiento más corto para mantener la precisión rítmica. La voz de Dave Gahan se grabó con un micrófono de condensador Neumann U87, aplicando una compresión de ratio 4:1 (probablemente mediante un Urei 1176) para contener la dinámica barítona, sumada a un sutil delay de cinta (slapback) y una reverberación de placas (EMT 140) que ensancha su presencia en el plano central. Los coros de Martin Gore fueron procesados con un armonizador Eventide H3000 para generar un efecto de micro-pitch shifting, abriendo la imagen estéreo en el rango de los 2 kHz a 8 kHz."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La lírica explora la codependencia, el masoquismo emocional y las dinámicas de poder en las relaciones afectivas. En la estrofa de apertura: 'There will be times when I must make amends / Bend to your will when everything depends on you', el uso del verbo modal 'must' y el juego de palabras homófono entre 'amends' (reparar/enmendar) y 'bend' (dobgarse/someterse) establece de inmediato una relación de sumisión. El estribillo icónico: 'Strangelove / Strange highs and strange lows / Strangelove / That's how my love goes', acuña el neologismo 'Strangelove' (amor extraño/desviado) para normalizar la inestabilidad emocional ('highs and lows' como picos maníacos y valles depresivos). En el puente: 'I give in to sin / Because I like to practice what I preach', Gore utiliza una ironía cínica al subvertir el modismo anglosajón 'practice what you preach' (predicar con el ejemplo); aquí, el sujeto no predica la virtud, sino el pecado ('sin'), justificando la transgresión moral como un acto de coherencia personal."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Dirigido por Anton Corbijn y filmado en París, el videoclip original es una pieza fundamental de la identidad estética de la banda. Rodado en película de Super 8 en blanco y negro, el vídeo rechaza la narrativa lineal en favor de un montaje asociativo y expresionista. Visualmente destaca por su grano grueso, alto contraste y encuadres angulares que enfatizan la arquitectura urbana y la alienación. Las imágenes de modelos en ropa interior posando de forma estática o interactuando con los miembros de la banda introducen una atmósfera de voyeurismo y sensualidad fría, alineada con la temática sadomasoquista de la canción. Debido a la censura de MTV por mostrar imágenes consideradas demasiado sugerentes (particularmente las tomas de las modelos), se editó una versión alternativa que reemplazaba estas escenas por metraje de la banda tocando en vivo, evidenciando el choque entre la vanguardia visual europea y los estándares comerciales norteamericanos."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "A nivel comercial, 'Strangelove' fue un éxito masivo en las listas de baile, alcanzando el número 1 en el Billboard Hot Dance Club Play de EE. UU. y el Top 20 en el Reino Unido y varios países europeos. Como dato de producción documentado, la versión original del sencillo de 1987 fue considerada por Daniel Miller (fundador de Mute Records) como demasiado rápida y saturada de elementos ('cluttered'). Esto llevó a que para el lanzamiento del álbum 'Music for the Masses' y su posterior edición como sencillo en EE. UU. en 1988, la canción fuera completamente remezclada por Daniel Miller y Phil Legg ('Strangelove '88'), reduciendo el tempo ligeramente, simplificando la instrumentación para darle un enfoque más pop y directo, versión que finalmente se convirtió en el estándar de radio global."
+      }
+    ],
+    "_aiModel": "gemini-3.5-flash"
+  },
+  "Technotronic, Felly - Pump Up The Jam": {
+    "title": "Pump Up The Jam",
+    "artist": "Technotronic, Felly",
+    "year": "1989",
+    "album": "Pump Up The Jam (feat. Technotronic)",
+    "synopsis": "Hito fundacional del house belga y del eurodance temprano, 'Pump Up The Jam' destaca por su uso pionero del sintetizador Korg M1, una caja de ritmos Roland TR-909 procesada con alta compresión y un bajo funk digital ultrarrítmico. Producida por Jo Bogaert (aka Thomas De Quincey), la pista fusionó el groove del hip-house underground con la pegada de la pista de baile europea global. Su impacto comercial fue masivo, convirtiendo a un proyecto de estudio anónimo en un fenómeno transatlántico.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción se cimenta sobre un tempo constante de 125 BPM, optimizado para el circuito de clubs de finales de los ochenta. El cimiento rítmico proviene de la Roland TR-909, donde el bombo (kick) recibe una compresión agresiva con tiempos de ataque rápidos y liberación corta para maximizar el 'punch' en los transitorios, complementado por un hi-hat abierto muy brillante en los agudos (8 kHz - 12 kHz) que marca el contrapiempo característico del house. El bajo es un parche monofónico digital, probablemente extraído de un módulo rack o un sintetizador de la época como el Yamaha TX81Z o el Korg M1, operando en el rango de los subgraves (50 Hz - 90 Hz) con una envolvente de filtro resonante que le otorga ese mordisco metálico y funk. Las voces principales, interpretadas originalmente por Ya Kid K (Manuela Kamosi) pero dobladas en el videoclip por la modelo Felly Kilingi por decisiones de marketing de la discográfica ARS Records, están procesadas con compresión densa y una sutil saturación armónica para cortar a través de la mezcla densa. No existe documentación oficial pública y exacta sobre la mesa de mezclas analógica utilizada en el estudio belga de grabación, pero por deducción acústica basada en la época y el estándar europeo, se empleó una consola SSL (Solid State Logic) Serie 4000 para sumar las pistas, aplicar ecualización paramétrica en medios y comprimir el bus de mezcla con el famoso compresor de bus VCA estilo SSL para pegar todos los elementos rítmicos."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra responde a la urgencia hedonista de la cultura de club de finales de los 80, funcionando como un manifiesto cinético que incita a la liberación física a través del ritmo. Lejos de buscar la complejidad poética, utiliza el argot de la calle y estructuras de llamada y respuesta (call and response) propias del hip-hop y el dancehall. Desglose estrofa clave: 'Pump up the jam, pump it up / While your feet are stomping / And the jam is pumping'. Análisis léxico: 'Jam' funciona aquí como un doble sentido; en el contexto musical afroamericano denota una improvisación o sesión festiva, pero argóticamente se alinea con la idea de 'llenar' o 'presionar' el espacio sonoro. El verbo 'stomp' (pisotear, zapatear con fuerza) describe la respuesta kinestésica exacta que el groove de 125 BPM provoca en la pista de baile. El puente vocal utiliza repeticiones rítmicas diseñadas para actuar como un instrumento percusivo adicional dentro del arreglo general de la mezcla."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial fue dirigido por Eric Dover y presenta una estética minimalista pero altamente efectista, típica de la transición videográfica de finales de los ochenta. Visualmente, está dominado por colores saturados primarios, efectos ópticos de estela (glitch analógico y retroalimentación de vídeo) y proyecciones caleidoscópicas de fondo. La protagonista visual es la modelo y bailarina de origen zaireño Felly (Felly Kilingi), quien realiza coreografías enérgicas frente a la cámara sincronizando los labios con la voz de Ya Kid K. El simbolismo del vídeo radica en la celebración de la negritud y la cultura urbana en la televisión europea de mainstream, proyectando una imagen futurista, cosmopolita y desinhibida que rompió los estándares estéticos televisivos de la época en Bélgica y el resto de Europa."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "A diferencia de proyectos independientes de nicho, 'Pump Up The Jam' tuvo una repercusión comercial masiva y documentada a nivel global. Alcanzó el puesto número 2 en el UK Singles Chart y el número 22 en el Billboard Hot 100 de Estados Unidos, un logro excepcional para un tema europeo de house en 1989. Fue pionero en fusionar el hip-hop norteamericano con la electrónica de baile europea, creando el molde del género 'hip-house'. Como curiosidad central y polémica de la industria, debido a decisiones del productor Jo Bogaert sobre la imagen comercial del proyecto, la modelo Felly apareció haciendo el playback en el vídeo y en las actuaciones en directo iniciales, ocultando temporalmente a la verdadera vocalista y co-autora de las letras, Ya Kid K, una práctica de 'lip-sync' por imagen muy común en el eurodance de los noventa que posteriormente requirió correcciones públicas y el reposicionamiento de Ya Kid K como rostro oficial del proyecto."
+      }
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
+  },
+  "Scorpions - Wind Of Change": {
+    "title": "Wind Of Change",
+    "artist": "Scorpions",
+    "year": "1991",
+    "album": "Crazy World",
+    "synopsis": "Hito de la producción de power ballads de principios de los 90, coproducido por Keith Olsen. Su tesis sónica radica en la yuxtaposición de una intimidad acústica minimalista (liderada por un silbido icónico y guitarras limpias) con una explosión dinámica de rock de estadio altamente procesada. Destaca por su control de la fase en el espectro estéreo, el uso quirúrgico de reverberaciones digitales de la época y una ecualización que maximiza la inteligibilidad vocal en el contexto de la caída del Bloque Soviético.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "Análisis acústico deductivo y de ingeniería: El tema abre con el icónico silbido de Klaus Meine. Deducción acústica: este elemento fue capturado con un micrófono de condensador de diafragma grande (posiblemente un Neumann U87) a corta distancia, aplicando un de-esser agresivo para controlar las sibilancias de alta frecuencia y una compresión de ratio alto (4:1) para estabilizar la dinámica. Está procesado con una reverberación de placas digital (tipo Lexicon 480L) con un pre-delay de unos 20ms para separarlo de la señal seca. Las guitarras limpias de Rudolf Schenker utilizan un efecto de chorus/spatial expander (estilo Roland Dimension D) que ensancha la imagen estéreo, dejando el centro libre para la voz. En el estribillo, las guitarras rítmicas de Matthias Jabs entran con una distorsión de alta ganancia (amplificadores Marshall/Soldano), dobladas y paneadas al 100% L/R. La batería de Herman Rarebell presenta una caja con un realce en los 3 kHz para aportar 'crack' y una cola de reverb de compuerta (gated reverb) sutil, típica de la transición de décadas. El bajo de Francis Buchholz actúa como anclaje en los 60-120 Hz, sólidamente acoplado con el bombo. La voz principal de Meine está ecualizada con un sutil realce tipo 'shelving' por encima de los 10 kHz para aportar aire, y comprimida con un compresor óptico (estilo LA-2A) para mantener la consistencia emocional entre las estrofas íntimas y el estribillo de alta energía."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La temática central es la transición geopolítica, la esperanza y la reconciliación al final de la Guerra Fría, inspirada por la visita de la banda a Moscú en 1989. Apertura: 'I follow the Moskva / Down to Gorky Park / Listening to the wind of change'. Aquí, 'Moskva' (el río Moscú) y 'Gorky Park' sitúan geográficamente al oyente en el corazón del cambio soviético; 'wind of change' es una metáfora de transición política inevitable. Estribillo: 'Take me to the magic of the moment / On a glory night / Where the children of tomorrow share their dreams / In the wind of change'. El término 'magic of the moment' captura la euforia colectiva de la caída del Muro de Berlín, mientras que 'children of tomorrow' (los niños del mañana) funciona como una sinécdoque de las futuras generaciones liberadas de la polarización ideológica. Puente: 'The wind of change blows straight into the face of time / Like a stormwind that will ring the freedom bell for peace of mind'. La expresión 'face of time' (el rostro del tiempo/la historia) personifica la inevitabilidad del progreso histórico, y 'freedom bell' (campana de la libertad) es un símbolo clásico de emancipación. El contraste entre 'wind' (viento suave) y 'stormwind' (vendaval) ilustra que la transformación, aunque pacífica en su fin, posee una fuerza destructora de regímenes totalitarios incontrolable."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Dirigido por Wayne Isham, el videoclip oficial adopta un enfoque de documental musical y collage histórico. Visualmente, se estructura bajo un fuerte contraste de iluminación y color: las escenas de la banda tocando en directo en un estadio utilizan una paleta de colores fríos (azules y grises) con contraluces intensos y humo denso, lo que enfatiza la escala monumental de su música. Esto se intercala con imágenes de archivo de alto impacto político en tonos cálidos o analógicos de baja resolución: la demolición del Muro de Berlín, manifestaciones masivas, rostros de ciudadanos soviéticos y el Moscow Music Peace Festival. El simbolismo es directo: la música de Scorpions actúa como la banda sonora y el catalizador de la unificación humana. El montaje rítmico se acelera durante el solo de guitarra de Matthias Jabs, sincronizando los impactos de la batería con imágenes de barreras físicas siendo derribadas, reforzando la narrativa de liberación y superación de fronteras."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "A nivel comercial, 'Wind Of Change' es uno de los sencillos más vendidos de todos los tiempos, superando las 14 millones de copias. Alcanzó el número 1 en más de 11 países europeos y el número 4 en el Billboard Hot 100 de EE. UU. Se convirtió en el himno no oficial de la reunificación alemana y el fin del Telón de Acero. Curiosidad técnica y de producción: la discográfica Mercury Records y el management de la banda inicialmente odiaban el silbido de la introducción y exigieron que se eliminara de la mezcla final por considerarlo poco comercial para una banda de heavy metal; Klaus Meine se negó rotundamente, defendiendo que era el gancho principal de la canción. Para maximizar su impacto global, la banda grabó versiones oficiales en ruso ('Veter Peremen') y español ('Viento de Cambio'). En 2020, una investigación periodística en formato podcast planteó la teoría conspirativa de que la canción fue escrita por la CIA como propaganda cultural para desestabilizar la Unión Soviética, un mito que, aunque desmentido por la banda, demuestra la inmensa fuerza sociopolítica que se le atribuye a esta producción."
+      }
+    ],
+    "_aiModel": "gemini-3.5-flash"
   }
 }

@@ -817,9 +817,18 @@ if (fs.existsSync(OMEN_MUSIC_DIR)) {
 let cachedAudioMap = new Map();
 let lastAudioScanTime = 0;
 
+let cachedPlaylistsResponse = null;
+let lastPlaylistsResponseTime = 0;
+
+function invalidatePlaylistsCache() {
+    cachedPlaylistsResponse = null;
+    lastPlaylistsResponseTime = 0;
+}
+
 function invalidateAudioCache() {
     lastAudioScanTime = 0;
     cachedAudioMap.clear();
+    invalidatePlaylistsCache();
 }
 
 function scanAudioFiles(force = false) {
@@ -954,6 +963,11 @@ function scanVideoFiles() {
 
 // API: Obtener todas las playlists y sus canciones
 app.get('/api/playlists', (req, res) => {
+    const now = Date.now();
+    if (cachedPlaylistsResponse && (now - lastPlaylistsResponseTime < 300000)) { // 5 minutos de caché en memoria
+        return res.json(cachedPlaylistsResponse);
+    }
+
     let playlistsData = {};
 
     if (fs.existsSync(OMEN_CACHE_PATH)) {
@@ -1256,6 +1270,8 @@ app.get('/api/playlists', (req, res) => {
         });
     }
 
+    cachedPlaylistsResponse = response;
+    lastPlaylistsResponseTime = Date.now();
     res.json(response);
 });
 
@@ -1680,6 +1696,7 @@ app.post('/api/covers/save', (req, res) => {
         }
 
         saveMetadataCache();
+        invalidatePlaylistsCache();
         console.log(`[COVER UPDATE] Nueva carátula asignada para "${artist} - ${title}": ${effectiveCoverUrl} (${newMeta.album})`);
 
         res.json({ success: true, coverUrl: effectiveCoverUrl, album: newMeta.album });
