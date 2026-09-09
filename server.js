@@ -814,7 +814,20 @@ if (fs.existsSync(OMEN_MUSIC_DIR)) {
     }));
 }
 
-function scanAudioFiles() {
+let cachedAudioMap = new Map();
+let lastAudioScanTime = 0;
+
+function invalidateAudioCache() {
+    lastAudioScanTime = 0;
+    cachedAudioMap.clear();
+}
+
+function scanAudioFiles(force = false) {
+    const now = Date.now();
+    if (!force && cachedAudioMap.size > 0 && (now - lastAudioScanTime < 300000)) { // 5 minutos de caché
+        return cachedAudioMap;
+    }
+
     const audioMap = new Map();
     if (!fs.existsSync(OMEN_MUSIC_DIR)) return audioMap;
 
@@ -844,10 +857,12 @@ function scanAudioFiles() {
                 }
             }
         }
+        cachedAudioMap = audioMap;
+        lastAudioScanTime = now;
     } catch(e) {
         console.error("Error escaneando archivos de audio:", e.message);
     }
-    return audioMap;
+    return cachedAudioMap;
 }
 
 const LOCAL_OMEN_VIDEOS = "D:\\media-library\\music-videos";
@@ -2658,6 +2673,7 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
                 }
             } catch(e) {}
 
+            invalidateAudioCache();
             const relUrl = `/media-music/${encodeURIComponent(targetCategory)}/${encodeURIComponent(targetFileName)}`;
             return res.json({
                 success: true,
@@ -3060,6 +3076,7 @@ let lastCollectionIndexTime = 0;
 function invalidateCollectionIndex() {
     cachedGlobalCollectionIndex = null;
     lastCollectionIndexTime = 0;
+    invalidateAudioCache();
 }
 
 function getGlobalCollectionIndex() {
