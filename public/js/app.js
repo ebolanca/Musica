@@ -192,7 +192,6 @@ function formatTime(seconds) {
         setCinemaTvMode(isTvModeActive, false);
 
         const btnCinemaCastHeader = document.getElementById('btn-cinema-cast-header');
-        const btnCinemaToolbarCast = document.getElementById('btn-cinema-toolbar-cast');
         const btnMusicCast = document.getElementById('music-btn-cast');
         const modalCastOptions = document.getElementById('modal-cast-options');
         const btnCloseCastModal = document.getElementById('btn-close-cast-modal');
@@ -216,7 +215,7 @@ function formatTime(seconds) {
 
         function updateCastVisualState(active) {
             isCastConnected = active;
-            const buttons = [btnCinemaCastHeader, btnCinemaToolbarCast, btnMusicCast];
+            const buttons = [btnCinemaCastHeader, btnMusicCast];
             buttons.forEach(btn => {
                 if (btn) {
                     if (active) {
@@ -357,7 +356,7 @@ function formatTime(seconds) {
         }
 
         // Listeners de los botones de apertura del modal
-        [btnCinemaCastHeader, btnCinemaToolbarCast, btnMusicCast].forEach(btn => {
+        [btnCinemaCastHeader, btnMusicCast].forEach(btn => {
             if (btn) {
                 btn.addEventListener('click', (e) => {
                     e.stopPropagation();
@@ -3175,6 +3174,7 @@ function formatTime(seconds) {
 
     function closeCinemaMode() {
         if (cinemaOverlay) cinemaOverlay.style.display = 'none';
+        stopArtistGallery();
         if (mainMusicAudio && mainMusicAudio.paused) releaseWakeLock();
         document.body.style.overflow = '';
         document.documentElement.style.overflow = '';
@@ -3194,6 +3194,159 @@ function formatTime(seconds) {
         } catch(e) {}
     }
 
+    
+    // ==========================================================================
+    // 🎨 GALERÍA DINÁMICA DE ARTISTAS CON EFECTO KEN BURNS (MODO HÍBRIDO TV)
+    // ==========================================================================
+    let artistGalleryInterval = null;
+    let currentArtistGalleryImages = [];
+    let currentArtistGalleryIndex = 0;
+    let currentGallerySlideActive = 1;
+    let artistGalleryActiveView = safeStorage.getItem('cinema_active_view') || 'gallery';
+    let lastLoadedGalleryArtist = '';
+
+    function setCinemaActiveView(viewMode) {
+        artistGalleryActiveView = viewMode;
+        safeStorage.setItem('cinema_active_view', viewMode);
+
+        const galleryEl = document.getElementById('cinema-artist-gallery');
+        const vinylWrapEl = document.getElementById('cinema-vinyl-wrap');
+        const btnSwitchGallery = document.getElementById('btn-switch-gallery');
+        const btnSwitchVinyl = document.getElementById('btn-switch-vinyl');
+
+        if (viewMode === 'vinyl') {
+            if (galleryEl) galleryEl.style.display = 'none';
+            if (vinylWrapEl) vinylWrapEl.style.display = 'flex';
+            if (btnSwitchGallery) btnSwitchGallery.classList.remove('active');
+            if (btnSwitchVinyl) btnSwitchVinyl.classList.add('active');
+        } else {
+            // Modo galería de fotos
+            if (currentArtistGalleryImages && currentArtistGalleryImages.length > 0) {
+                if (galleryEl) galleryEl.style.display = 'block';
+                if (vinylWrapEl) vinylWrapEl.style.display = 'none';
+                if (btnSwitchGallery) btnSwitchGallery.classList.add('active');
+                if (btnSwitchVinyl) btnSwitchVinyl.classList.remove('active');
+            } else {
+                // Si no hay fotos disponibles, mostrar vinilo como respaldo
+                if (galleryEl) galleryEl.style.display = 'none';
+                if (vinylWrapEl) vinylWrapEl.style.display = 'flex';
+                if (btnSwitchGallery) btnSwitchGallery.classList.remove('active');
+                if (btnSwitchVinyl) btnSwitchVinyl.classList.add('active');
+            }
+        }
+    }
+
+    function switchGallerySlide(imageUrl) {
+        const slide1 = document.getElementById('artist-slide-1');
+        const slide2 = document.getElementById('artist-slide-2');
+        if (!slide1 || !slide2) return;
+
+        const nextSlide = currentGallerySlideActive === 1 ? slide2 : slide1;
+        const currSlide = currentGallerySlideActive === 1 ? slide1 : slide2;
+
+        const preloadImg = new Image();
+        preloadImg.onload = () => {
+            nextSlide.style.backgroundImage = `url('${imageUrl}')`;
+            nextSlide.classList.add('active');
+            currSlide.classList.remove('active');
+            currentGallerySlideActive = currentGallerySlideActive === 1 ? 2 : 1;
+        };
+        preloadImg.onerror = () => {
+            rotateArtistGallerySlide();
+        };
+        preloadImg.src = imageUrl;
+    }
+
+    function rotateArtistGallerySlide() {
+        if (!currentArtistGalleryImages || currentArtistGalleryImages.length <= 1) return;
+        currentArtistGalleryIndex = (currentArtistGalleryIndex + 1) % currentArtistGalleryImages.length;
+        const nextUrl = currentArtistGalleryImages[currentArtistGalleryIndex];
+        switchGallerySlide(nextUrl);
+    }
+
+    function stopArtistGallery() {
+        if (artistGalleryInterval) {
+            clearInterval(artistGalleryInterval);
+            artistGalleryInterval = null;
+        }
+    }
+
+    async function loadArtistGallery(artist, coverUrl) {
+        if (!artist) return;
+
+        const badgeName = document.getElementById('artist-gallery-name');
+        if (badgeName) badgeName.textContent = artist;
+
+        // Si es el mismo artista y ya tenemos fotos cargadas, no recargar
+        if (lastLoadedGalleryArtist === artist && currentArtistGalleryImages.length > 0) {
+            if (!artistGalleryInterval && currentArtistGalleryImages.length > 1) {
+                artistGalleryInterval = setInterval(rotateArtistGallerySlide, 12000);
+            }
+            return;
+        }
+
+        lastLoadedGalleryArtist = artist;
+        stopArtistGallery();
+        currentArtistGalleryImages = [];
+        currentArtistGalleryIndex = 0;
+
+        try {
+            const res = await fetch(`/api/artist/images?artist=${encodeURIComponent(artist)}`);
+            const data = await res.json();
+            if (data.success && data.images && data.images.length > 0) {
+                currentArtistGalleryImages = data.images;
+            }
+        } catch (err) {
+            console.warn('No se pudieron obtener imágenes del artista:', err);
+        }
+
+        // Añadir la carátula al repertorio de imágenes si existe
+        if (coverUrl && !currentArtistGalleryImages.includes(coverUrl)) {
+            currentArtistGalleryImages.push(coverUrl);
+        }
+
+        const slide1 = document.getElementById('artist-slide-1');
+        const slide2 = document.getElementById('artist-slide-2');
+
+        if (currentArtistGalleryImages.length > 0) {
+            if (slide1) {
+                slide1.style.backgroundImage = `url('${currentArtistGalleryImages[0]}')`;
+                slide1.classList.add('active');
+            }
+            if (slide2) {
+                slide2.classList.remove('active');
+            }
+            currentGallerySlideActive = 1;
+
+            if (currentArtistGalleryImages.length > 1) {
+                artistGalleryInterval = setInterval(rotateArtistGallerySlide, 12000);
+            }
+
+            setCinemaActiveView(artistGalleryActiveView);
+        } else {
+            setCinemaActiveView('vinyl');
+        }
+    }
+
+    function initArtistGalleryFeature() {
+        const btnSwitchGallery = document.getElementById('btn-switch-gallery');
+        const btnSwitchVinyl = document.getElementById('btn-switch-vinyl');
+
+        if (btnSwitchGallery) {
+            btnSwitchGallery.addEventListener('click', (e) => {
+                e.stopPropagation();
+                setCinemaActiveView('gallery');
+            });
+        }
+
+        if (btnSwitchVinyl) {
+            btnSwitchVinyl.addEventListener('click', (e) => {
+                e.stopPropagation();
+                setCinemaActiveView('vinyl');
+            });
+        }
+    }
+
     function renderCinemaTrack(track) {
         if (!track) return;
         currentPlayingSong = track;
@@ -3202,6 +3355,7 @@ function formatTime(seconds) {
             if (trackMatchIdx !== -1) cinemaCurrentIndex = trackMatchIdx;
         }
         loadTrackSyncOffset(track);
+        loadArtistGallery(track.artist, track.coverUrl);
         const cover = track.coverUrl || 'img/radios/hitfm.svg';
         if (cinemaBg) cinemaBg.style.backgroundImage = `url('${cover}')`;
         if (cinemaCover) cinemaCover.src = cover;
@@ -4380,6 +4534,7 @@ function formatTime(seconds) {
     // Inicializar características complementarias una vez que todo el DOM está listo
     initCoverChangeFeature();
     initChromecastFeature();
+    initArtistGalleryFeature();
 
 });
 

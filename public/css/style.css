@@ -5229,3 +5229,129 @@ video {
     color: #22c55e !important;
     box-shadow: 0 0 12px rgba(34, 197, 94, 0.5) !important;
 }
+
+
+/* ==========================================================================
+   🖼️ Galería Dinámica del Grupo / Artista (Efecto Ken Burns en Modo TV & Cine)
+   ========================================================================== */
+.cinema-visual-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+.cinema-artist-gallery {
+    position: relative;
+    width: 320px;
+    height: 240px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: #000;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+}
+
+.artist-gallery-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center center;
+    background-repeat: no-repeat;
+}
+
+.artist-gallery-slide.active {
+    opacity: 1;
+    animation: kenBurnsZoom 14s infinite alternate ease-in-out;
+}
+
+@keyframes kenBurnsZoom {
+    0% {
+        transform: scale(1.0);
+    }
+    100% {
+        transform: scale(1.09);
+    }
+}
+
+.artist-gallery-badge {
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    z-index: 5;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    pointer-events: none;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.cinema-view-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(8px);
+    padding: 3px 5px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    margin-bottom: 14px;
+    transition: opacity 0.3s ease;
+}
+
+.btn-switch-view {
+    background: transparent;
+    border: none;
+    color: var(--text-muted, #a1a1aa);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.btn-switch-view:hover {
+    color: #fff;
+}
+
+.btn-switch-view.active {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* En Modo TV: Marco panorámico más grande y espectacular */
+.cinema-overlay.tv-mode .cinema-artist-gallery {
+    width: 440px !important;
+    height: 310px !important;
+    max-width: 92vw !important;
+    border-radius: 22px !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 30px rgba(29, 185, 84, 0.15) !important;
+    margin-bottom: 18px !important;
+}
+
+.cinema-overlay.tv-mode.idle-cursor .cinema-view-switcher {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.8s ease !important;
+}

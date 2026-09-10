@@ -1963,6 +1963,78 @@ app.get('/api/track/detail', async (req, res) => {
 
 
 
+
+// ==========================================================================
+// API: Galería de Imágenes del Artista / Grupo (TheAudioDB + Deezer)
+// ==========================================================================
+const artistImagesCache = new Map();
+
+app.get('/api/artist/images', async (req, res) => {
+    const rawArtist = req.query.artist;
+    if (!rawArtist) return res.json({ images: [] });
+
+    const artistKey = cleanTrackKey(rawArtist);
+    if (artistImagesCache.has(artistKey)) {
+        return res.json({ artist: rawArtist, images: artistImagesCache.get(artistKey) });
+    }
+
+    const images = [];
+    const seenUrls = new Set();
+
+    function addImg(url) {
+        if (!url || typeof url !== 'string') return;
+        const cleanUrl = url.trim();
+        if (!cleanUrl.startsWith('http')) return;
+        if (!seenUrls.has(cleanUrl)) {
+            seenUrls.add(cleanUrl);
+            images.push(cleanUrl);
+        }
+    }
+
+    // Variantes de búsqueda: Nombre completo y Nombre simplificado
+    const cleanPrimary = rawArtist.replace(/\s*4\.40.*/i, '').replace(/\s+feat\..*/i, '').trim();
+    const cleanNoAnd = cleanPrimary.split(/[,&]/)[0].trim();
+    const queryVariants = Array.from(new Set([rawArtist.trim(), cleanPrimary, cleanNoAnd].filter(Boolean)));
+
+    for (const q of queryVariants) {
+        // 1. TheAudioDB
+        try {
+            const tadbUrl = `https://www.theaudiodb.com/api/v1/json/2/search.php?s=${encodeURIComponent(q)}`;
+            const tadbRes = await fetch(tadbUrl, { signal: AbortSignal.timeout(4000) });
+            if (tadbRes.ok) {
+                const data = await tadbRes.json();
+                if (data && data.artists && data.artists.length > 0) {
+                    const a = data.artists[0];
+                    const fields = ['strArtistFanart', 'strArtistFanart2', 'strArtistFanart3', 'strArtistFanart4', 'strArtistThumb', 'strArtistWideThumb'];
+                    for (const f of fields) {
+                        addImg(a[f]);
+                    }
+                }
+            }
+        } catch(e) {}
+
+        // 2. Deezer
+        try {
+            const dzUrl = `https://api.deezer.com/search/artist?q=${encodeURIComponent(q)}&limit=1`;
+            const dzRes = await fetch(dzUrl, { signal: AbortSignal.timeout(4000) });
+            if (dzRes.ok) {
+                const dzData = await dzRes.json();
+                if (dzData && dzData.data && dzData.data.length > 0) {
+                    const da = dzData.data[0];
+                    addImg(da.picture_xl);
+                    addImg(da.picture_big);
+                }
+            }
+        } catch(e) {}
+
+        if (images.length >= 6) break;
+    }
+
+    artistImagesCache.set(artistKey, images);
+    res.json({ artist: rawArtist, images });
+});
+
+
 // ==========================================================================
 // API: Ahora suena en la radio (Extracción de metadatos ICY en tiempo real)
 // ==========================================================================

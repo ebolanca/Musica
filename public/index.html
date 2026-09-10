@@ -19,7 +19,7 @@
             </div>
             <div class="logo-title">
                 <h1>Música</h1>
-                <p>Plataforma de Videoclips & Análisis Sónico v1.5.74</p>
+                <p>Plataforma de Videoclips & Análisis Sónico v1.5.75</p>
             </div>
         </div>
 
@@ -287,12 +287,33 @@
         </div>
         <div class="cinema-content">
             <div class="cinema-left">
-                <div class="cinema-vinyl-wrap" id="cinema-vinyl-wrap">
-                    <div class="cinema-cover-container">
-                        <img src="" alt="" id="cinema-cover" class="cinema-cover">
-
+                <div class="cinema-visual-frame" id="cinema-visual-frame">
+                    <!-- Vista 1: Galería Dinámica de Fotos del Grupo / Artista (Efecto Ken Burns) -->
+                    <div class="cinema-artist-gallery" id="cinema-artist-gallery" style="display: none;">
+                        <div class="artist-gallery-slide active" id="artist-slide-1"></div>
+                        <div class="artist-gallery-slide" id="artist-slide-2"></div>
+                        <div class="artist-gallery-badge" id="artist-gallery-badge">
+                            <i class="fa-solid fa-users"></i> <span id="artist-gallery-name">Artista</span>
+                        </div>
                     </div>
-                    <div class="cinema-vinyl-record" id="cinema-vinyl"></div>
+
+                    <!-- Vista 2: Vinilo Clásico con Carátula -->
+                    <div class="cinema-vinyl-wrap" id="cinema-vinyl-wrap">
+                        <div class="cinema-cover-container">
+                            <img src="" alt="" id="cinema-cover" class="cinema-cover">
+                        </div>
+                        <div class="cinema-vinyl-record" id="cinema-vinyl"></div>
+                    </div>
+
+                    <!-- Selector para alternar entre Galería de Fotos y Vinilo -->
+                    <div class="cinema-view-switcher" id="cinema-view-switcher">
+                        <button class="btn-switch-view active" id="btn-switch-gallery" title="Ver Galería de fotos del Grupo / Artista">
+                            <i class="fa-solid fa-images"></i> Fotos
+                        </button>
+                        <button class="btn-switch-view" id="btn-switch-vinyl" title="Ver Carátula y Vinilo giratorio">
+                            <i class="fa-solid fa-compact-disc"></i> Vinilo
+                        </button>
+                    </div>
                 </div>
 
                 <div class="cinema-track-info">
@@ -333,9 +354,7 @@
                         <button class="btn-sync-clean" id="btn-cinema-replace-clean" title="Descartar audio con intro y descargar automáticamente otra versión oficial de estudio">
                             <i class="fa-solid fa-arrows-rotate"></i> Versión Auto
                         </button>
-                        <button class="btn-sync-clean btn-sync-cast" id="btn-cinema-toolbar-cast" title="Transmitir a Smart TV / Chromecast" style="background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.5); color: #38bdf8;">
-                            <i class="fa-brands fa-chromecast"></i> Transmitir
-                        </button>
+
                     </div>
 
                     <!-- Fila 2: Todo lo referente a los Subtítulos -->
@@ -734,6 +753,6 @@
         </div>
     </div>
 
-    <script src="js/app.js?v=1.5.74"></script>
+    <script src="js/app.js?v=1.5.75"></script>
 </body>
 </html>
