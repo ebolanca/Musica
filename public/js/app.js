@@ -3909,13 +3909,40 @@ function formatTime(seconds) {
         selectedAudioFile = null;
     }
 
+    function getSearchSuffixForTrack(target) {
+        let pName = (target && target.playlistName) ? target.playlistName : '';
+        if (!pName) {
+            const tArtist = normalizeText(target?.artist);
+            const tTitle = normalizeText(target?.title || target?.rawTitle);
+            for (const [name, pTracks] of Object.entries(allPlaylists)) {
+                if (pTracks.some(t => normalizeText(t.artist) === tArtist && normalizeText(t.title || t.rawTitle) === tTitle)) {
+                    pName = name;
+                    break;
+                }
+            }
+        }
+        if (!pName) pName = currentTab || '';
+
+        const norm = normalizeText(pName);
+        // Listas Española y Latina -> 'letra'
+        if (norm.includes('espanol') || norm.includes('latina')) {
+            return 'letra';
+        }
+        // Listas Viejuna, Siglo XXI y Dance -> 'lyrics'
+        if (norm.includes('viejuna') || norm.includes('sigloxxi') || norm.includes('dance')) {
+            return 'lyrics';
+        }
+        return 'letra';
+    }
+
     function launchYouTubeSearch(track) {
         const target = track || getCurrentTargetTrack();
         if (!target) return;
         const tTitle = target.rawTitle || target.title;
-        const query = `${target.artist} ${tTitle} audio`;
+        const suffix = getSearchSuffixForTrack(target);
+        const query = `${target.artist} ${tTitle} ${suffix}`;
         window.open(`https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`, '_blank');
-        showSyncNotification(`🔍 Búsqueda de "${target.title}" abierta en YouTube`);
+        showSyncNotification(`🔍 Búsqueda de "${target.title}" (${suffix}) abierta en YouTube`);
     }
 
     // Botón YouTube en Modo Cine
