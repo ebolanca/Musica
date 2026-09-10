@@ -124,8 +124,7 @@ function formatTime(seconds) {
     let isCastConnected = false;
 
     function initChromecastFeature() {
-
-        // Gestión de Modo TV Limpio (sin botones de retoque)
+        const cinemaOverlayEl = document.getElementById('cinema-overlay');
         const btnCinemaTvToggle = document.getElementById('btn-cinema-tv-toggle');
         let isTvModeActive = safeStorage.getItem('cinema_tv_mode') === 'true' || window.location.hash.includes('tv') || window.location.hash.includes('cinema');
         let tvIdleTimer = null;
@@ -134,12 +133,12 @@ function formatTime(seconds) {
             isTvModeActive = !!active;
             safeStorage.setItem('cinema_tv_mode', isTvModeActive ? 'true' : 'false');
 
-            if (cinemaOverlay) {
+            if (cinemaOverlayEl) {
                 if (isTvModeActive) {
-                    cinemaOverlay.classList.add('tv-mode');
+                    cinemaOverlayEl.classList.add('tv-mode');
                 } else {
-                    cinemaOverlay.classList.remove('tv-mode');
-                    cinemaOverlay.classList.remove('idle-cursor');
+                    cinemaOverlayEl.classList.remove('tv-mode');
+                    cinemaOverlayEl.classList.remove('idle-cursor');
                 }
             }
 
@@ -166,19 +165,20 @@ function formatTime(seconds) {
 
         // Configurar auto-hide de controles tras inactividad en Modo TV
         function resetTvIdleTimer() {
-            if (!cinemaOverlay || !isTvModeActive) return;
-            cinemaOverlay.classList.remove('idle-cursor');
+            if (!cinemaOverlayEl || !isTvModeActive) return;
+            cinemaOverlayEl.classList.remove('idle-cursor');
             if (tvIdleTimer) clearTimeout(tvIdleTimer);
             tvIdleTimer = setTimeout(() => {
-                if (isCinemaModeOpen && isTvModeActive) {
-                    cinemaOverlay.classList.add('idle-cursor');
+                const isCinOpen = cinemaOverlayEl && cinemaOverlayEl.style.display === 'flex';
+                if (isCinOpen && isTvModeActive) {
+                    cinemaOverlayEl.classList.add('idle-cursor');
                 }
             }, 3500);
         }
 
-        if (cinemaOverlay) {
-            cinemaOverlay.addEventListener('mousemove', resetTvIdleTimer);
-            cinemaOverlay.addEventListener('pointerdown', resetTvIdleTimer);
+        if (cinemaOverlayEl) {
+            cinemaOverlayEl.addEventListener('mousemove', resetTvIdleTimer);
+            cinemaOverlayEl.addEventListener('pointerdown', resetTvIdleTimer);
         }
 
         if (btnCinemaTvToggle) {
@@ -281,8 +281,9 @@ function formatTime(seconds) {
                 setCinemaTvMode(true, false);
 
                 // Asegurar que el Modo Cine está abierto
-                if (!isCinemaModeOpen) {
-                    openCinemaMode();
+                const isCinOpen = cinemaOverlayEl && cinemaOverlayEl.style.display === 'flex';
+                if (!isCinOpen && typeof openCinemaMode === 'function') {
+                    openCinemaMode(currentPlayingSong);
                 }
 
                 // Intentar usar Presentation API si el navegador la soporta
@@ -610,8 +611,7 @@ function formatTime(seconds) {
         }
     }
 
-    initCoverChangeFeature();
-        initChromecastFeature();
+// Features inicializadas al final del DOMContentLoaded
 
 
     // Función centralizada para centrar suavemente la línea de karaoke activa con su traducción
@@ -4376,6 +4376,10 @@ function formatTime(seconds) {
             }
         });
     }
+
+    // Inicializar características complementarias una vez que todo el DOM está listo
+    initCoverChangeFeature();
+    initChromecastFeature();
 
 });
 
