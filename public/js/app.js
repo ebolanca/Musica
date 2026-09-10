@@ -117,6 +117,195 @@ function formatTime(seconds) {
     // ==========================================================================
     // 🖼️ Funcionalidad para Cambiar Carátula del Álbum (Modal & Búsqueda)
     // ==========================================================================
+    
+    // ==========================================================================
+    // 📶 Funcionalidad de Transmisión a Smart TV & Chromecast
+    // ==========================================================================
+    let isCastConnected = false;
+
+    function initChromecastFeature() {
+        const btnCinemaCastHeader = document.getElementById('btn-cinema-cast-header');
+        const btnCinemaToolbarCast = document.getElementById('btn-cinema-toolbar-cast');
+        const btnMusicCast = document.getElementById('music-btn-cast');
+        const modalCastOptions = document.getElementById('modal-cast-options');
+        const btnCloseCastModal = document.getElementById('btn-close-cast-modal');
+        const btnCastScreen = document.getElementById('btn-cast-action-screen');
+        const btnCastAudio = document.getElementById('btn-cast-action-audio');
+        const btnCastPopout = document.getElementById('btn-cast-action-popout');
+
+        function openCastModal() {
+            if (modalCastOptions) {
+                modalCastOptions.style.display = 'flex';
+                modalCastOptions.classList.add('show');
+            }
+        }
+
+        function closeCastModal() {
+            if (modalCastOptions) {
+                modalCastOptions.style.display = 'none';
+                modalCastOptions.classList.remove('show');
+            }
+        }
+
+        function updateCastVisualState(active) {
+            isCastConnected = active;
+            const buttons = [btnCinemaCastHeader, btnCinemaToolbarCast, btnMusicCast];
+            buttons.forEach(btn => {
+                if (btn) {
+                    if (active) {
+                        btn.classList.add('cast-active');
+                        btn.title = 'Transmitiendo en directo a Chromecast / Smart TV';
+                    } else {
+                        btn.classList.remove('cast-active');
+                        btn.title = 'Transmitir a Smart TV / Chromecast';
+                    }
+                }
+            });
+        }
+
+        // 1. Escuchar eventos de la Remote Playback API nativa del navegador en mainMusicAudio
+        if (mainMusicAudio && mainMusicAudio.remote) {
+            mainMusicAudio.remote.addEventListener('connecting', () => {
+                showSyncNotification('🔄 Conectando con dispositivo Chromecast...');
+            });
+            mainMusicAudio.remote.addEventListener('connect', () => {
+                updateCastVisualState(true);
+                showSyncNotification('✅ Transmitiendo audio a Chromecast / Smart TV');
+            });
+            mainMusicAudio.remote.addEventListener('disconnect', () => {
+                updateCastVisualState(false);
+                showSyncNotification('ℹ️ Transmisión finalizada');
+            });
+        }
+
+        // 2. Escuchar Google Cast SDK si está disponible
+        window['__onGCastApiAvailable'] = function(isAvailable) {
+            if (isAvailable && window.cast && cast.framework) {
+                try {
+                    cast.framework.CastContext.getInstance().setOptions({
+                        receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
+                        autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
+                    });
+                    const context = cast.framework.CastContext.getInstance();
+                    context.addEventListener(cast.framework.CastContextEventType.SESSION_STATE_CHANGED, (event) => {
+                        switch (event.sessionState) {
+                            case cast.framework.SessionState.SESSION_STARTED:
+                            case cast.framework.SessionState.SESSION_RESUMED:
+                                updateCastVisualState(true);
+                                showSyncNotification('📶 Conectado a Google Cast');
+                                break;
+                            case cast.framework.SessionState.SESSION_ENDED:
+                                updateCastVisualState(false);
+                                break;
+                        }
+                    });
+                } catch(e) {
+                    console.log('Aviso inicializando CastContext:', e.message);
+                }
+            }
+        };
+
+        // 3. Acción 1: Proyectar Pantalla Completa Modo Cine a la TV
+        if (btnCastScreen) {
+            btnCastScreen.addEventListener('click', async () => {
+                closeCastModal();
+                
+                // Asegurar que el Modo Cine está abierto
+                if (!isCinemaModeOpen) {
+                    openCinemaMode();
+                }
+
+                // Intentar usar Presentation API si el navegador la soporta
+                let presentationStarted = false;
+                if (window.PresentationRequest) {
+                    try {
+                        const presentationRequest = new PresentationRequest([window.location.href]);
+                        await presentationRequest.start();
+                        presentationStarted = true;
+                        updateCastVisualState(true);
+                        showSyncNotification('📺 Proyección Modo Cine iniciada en pantalla externa');
+                    } catch(err) {
+                        console.log('Presentation API no completada:', err.message);
+                    }
+                }
+
+                // Si no se inició mediante Presentation API, invocar Remote Playback o indicar cómo transmitir la pestaña
+                if (!presentationStarted) {
+                    if (mainMusicAudio && mainMusicAudio.remote) {
+                        try {
+                            await mainMusicAudio.remote.prompt();
+                            updateCastVisualState(true);
+                        } catch(e) {}
+                    }
+                    showSyncNotification('💡 Pulsa Clic Derecho > "Transmitir..." para enviar la pestaña a tu TV');
+                }
+            });
+        }
+
+        // 4. Acción 2: Transmitir Solo Audio
+        if (btnCastAudio) {
+            btnCastAudio.addEventListener('click', async () => {
+                closeCastModal();
+                let triggered = false;
+
+                // Probar Google Cast SDK
+                if (window.cast && cast.framework) {
+                    try {
+                        const context = cast.framework.CastContext.getInstance();
+                        await context.requestSession();
+                        triggered = true;
+                    } catch(e) {}
+                }
+
+                // Probar Remote Playback API nativa
+                if (!triggered && mainMusicAudio && mainMusicAudio.remote) {
+                    try {
+                        await mainMusicAudio.remote.prompt();
+                        triggered = true;
+                    } catch(err) {
+                        console.log('Remote playback cancelado:', err.message);
+                    }
+                }
+
+                if (!triggered) {
+                    showSyncNotification('ℹ️ Abre el menú de Chrome (tres puntos) > "Transmitir..." para seleccionar tu dispositivo');
+                }
+            });
+        }
+
+        // 5. Acción 3: Ventana Independiente / Pop-out para TV secundaria (HDMI o pantalla inalámbrica)
+        if (btnCastPopout) {
+            btnCastPopout.addEventListener('click', () => {
+                closeCastModal();
+                const popWidth = Math.min(1280, window.screen.availWidth);
+                const popHeight = Math.min(720, window.screen.availHeight);
+                const popUrl = window.location.origin + window.location.pathname + '#cinema';
+                window.open(popUrl, 'MusicaCinemaDisplay', `width=${popWidth},height=${popHeight},menubar=no,toolbar=no,location=no,status=no,resizable=yes`);
+                showSyncNotification('🪟 Ventana Modo Cine abierta. Arrástrala a tu televisor');
+            });
+        }
+
+        // Listeners de los botones de apertura del modal
+        [btnCinemaCastHeader, btnCinemaToolbarCast, btnMusicCast].forEach(btn => {
+            if (btn) {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openCastModal();
+                });
+            }
+        });
+
+        if (btnCloseCastModal) {
+            btnCloseCastModal.addEventListener('click', closeCastModal);
+        }
+
+        if (modalCastOptions) {
+            modalCastOptions.addEventListener('click', (e) => {
+                if (e.target === modalCastOptions) closeCastModal();
+            });
+        }
+    }
+
     function initCoverChangeFeature() {
         const btnCinemaChangeCover = document.getElementById('btn-cinema-change-cover');
         const btnCinemaToolbarCover = document.getElementById('btn-cinema-toolbar-cover');
@@ -352,6 +541,7 @@ function formatTime(seconds) {
     }
 
     initCoverChangeFeature();
+        initChromecastFeature();
 
 
     // Función centralizada para centrar suavemente la línea de karaoke activa con su traducción

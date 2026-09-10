@@ -5016,3 +5016,125 @@ video {
     border-color: #1db954 !important;
     color: #fff !important;
 }
+
+
+/* ==========================================================================
+   📶 Estilos de Transmisión a Smart TV & Chromecast
+   ========================================================================== */
+.btn-cinema-cast-header {
+    background: rgba(56, 189, 248, 0.15) !important;
+    border: 1px solid rgba(56, 189, 248, 0.45) !important;
+    color: #38bdf8 !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    padding: 7px 14px !important;
+    border-radius: 20px !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.btn-cinema-cast-header:hover {
+    background: rgba(56, 189, 248, 0.3) !important;
+    border-color: #38bdf8 !important;
+    color: #fff !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4) !important;
+}
+
+.btn-sync-cast:hover {
+    background: rgba(56, 189, 248, 0.3) !important;
+    border-color: #38bdf8 !important;
+    color: #fff !important;
+}
+
+/* Indicador de transmisión activa */
+.btn-music-icon.cast-active,
+.btn-cinema-cast-header.cast-active,
+.btn-sync-cast.cast-active {
+    background: rgba(34, 197, 94, 0.25) !important;
+    border-color: #22c55e !important;
+    color: #22c55e !important;
+    box-shadow: 0 0 12px rgba(34, 197, 94, 0.6) !important;
+    animation: pulseCast 2s infinite !important;
+}
+
+@keyframes pulseCast {
+    0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
+    70% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+/* Tarjetas de opciones de Cast */
+.cast-option-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.cast-option-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.cast-option-icon {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+}
+
+.cast-option-info {
+    flex: 1;
+}
+
+.cast-option-title {
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cast-option-desc {
+    color: var(--text-muted, #a1a1aa);
+    font-size: 0.82rem;
+    margin-top: 4px;
+    line-height: 1.4;
+}
+
+.badge-recommended {
+    background: rgba(34, 197, 94, 0.2);
+    border: 1px solid rgba(34, 197, 94, 0.5);
+    color: #22c55e;
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 12px;
+    text-transform: uppercase;
+}
+
+.cast-help-box {
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
