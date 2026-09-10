@@ -2044,82 +2044,95 @@ app.get('/api/radio/now-playing', async (req, res) => {
 // ==========================================================================
 app.post('/api/lyrics/save-offset', (req, res) => {
     try {
-        const { artist, title, offsetSec, lyricsArray } = req.body;
+        const { artist, title, rawTitle, offsetSec, lyrics, lyricsArray } = req.body;
         if (!artist || !title) {
             return res.status(400).json({ error: 'Faltan parámetros requeridos (artist, title)' });
         }
 
-        const effectiveOffset = (typeof offsetSec === 'number') ? offsetSec : 0;
+        const incomingLyrics = lyrics || lyricsArray;
+        let updatedLyrics = null;
+
+        if (incomingLyrics && Array.isArray(incomingLyrics) && incomingLyrics.length > 0) {
+            // El cliente ya calculó las marcas de tiempo exactas finales deseadas
+            updatedLyrics = incomingLyrics.map((l, idx) => {
+                let sec = 0;
+                if (typeof l.seconds === 'number') sec = l.seconds;
+                else if (l.time) {
+                    const parts = l.time.split(':');
+                    sec = parseInt(parts[0], 10) * 60 + parseFloat(parts[1] || 0);
+                }
+                const newSec = Math.max(0, parseFloat(sec.toFixed(2)));
+                const mins = Math.floor(newSec / 60);
+                const secs = Math.floor(newSec % 60);
+                return {
+                    text: l.text || '',
+                    translation: l.translation || '',
+                    seconds: newSec,
+                    time: `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`
+                };
+            });
+        } else {
+            const effectiveOffset = (typeof offsetSec === 'number') ? offsetSec : 0;
+            let sourceLyrics = findLyricsForTrack(artist, title);
+            if (!sourceLyrics && rawTitle) sourceLyrics = findLyricsForTrack(artist, rawTitle);
+            if (!sourceLyrics) {
+                return res.status(404).json({ error: 'No se encontraron letras en la base de datos para esta canción' });
+            }
+
+            updatedLyrics = sourceLyrics.map(l => {
+                let currSec = 0;
+                if (typeof l.seconds === 'number') currSec = l.seconds;
+                else if (l.time) {
+                    const parts = l.time.split(':');
+                    currSec = parseInt(parts[0], 10) * 60 + parseFloat(parts[1] || 0);
+                }
+                const newSec = Math.max(0, parseFloat((currSec - effectiveOffset).toFixed(2)));
+                const mins = Math.floor(newSec / 60);
+                const secs = Math.floor(newSec % 60);
+                return {
+                    text: l.text || '',
+                    translation: l.translation || '',
+                    seconds: newSec,
+                    time: `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`
+                };
+            });
+        }
+
         const cleanT = cleanTrackTitle(title);
-        const keysToTry = [
+        const cleanRaw = rawTitle ? cleanTrackTitle(rawTitle) : cleanT;
+        const normTarget = `${artist}${cleanT}`.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const normRawTarget = rawTitle ? `${artist}${cleanRaw}`.toLowerCase().replace(/[^a-z0-9]/g, '') : normTarget;
+
+        // 1. Guardar en todas las variantes directas
+        const directKeys = [
             `${artist} - ${title}`,
             `${artist} - ${cleanT}`,
             cleanT,
             `${artist} ${cleanT}`,
             title
         ];
+        if (rawTitle) {
+            directKeys.push(`${artist} - ${rawTitle}`, `${artist} - ${cleanRaw}`, cleanRaw, `${artist} ${cleanRaw}`, rawTitle);
+        }
 
-        let sourceLyrics = null;
-        if (lyricsArray && Array.isArray(lyricsArray) && lyricsArray.length > 0) {
-            sourceLyrics = lyricsArray;
-        } else {
-            for (const k of keysToTry) {
-                if (cachedLyricsDb[k] && Array.isArray(cachedLyricsDb[k])) {
-                    sourceLyrics = cachedLyricsDb[k];
-                    break;
-                }
-            }
-            if (!sourceLyrics) {
-                const normTarget = `${artist}${cleanT}`.toLowerCase().replace(/[^a-z0-9]/g, '');
-                for (const [k, v] of Object.entries(cachedLyricsDb)) {
-                    const normK = k.toLowerCase().replace(/[^a-z0-9]/g, '');
-                    if (normK === normTarget || (normK.length > 5 && (normK.includes(normTarget) || normTarget.includes(normK)))) {
-                        sourceLyrics = v;
-                        break;
-                    }
-                }
+        directKeys.forEach(k => {
+            if (k) cachedLyricsDb[k] = updatedLyrics;
+        });
+
+        // 2. Buscar y actualizar cualquier clave coincidente por normalización en la BD
+        for (const k of Object.keys(cachedLyricsDb)) {
+            const normK = k.toLowerCase().replace(/[^a-z0-9]/g, '');
+            if (normK === normTarget || normK === normRawTarget || 
+               (normK.length > 5 && (normK.includes(normTarget) || normTarget.includes(normK)))) {
+                cachedLyricsDb[k] = updatedLyrics;
             }
         }
 
-        if (!sourceLyrics) {
-            return res.status(404).json({ error: 'No se encontraron letras en la base de datos para esta canción' });
-        }
-
-        // Aplicar el desfase a todas las líneas y formatear
-        const updatedLyrics = sourceLyrics.map(l => {
-            let currSec = 0;
-            if (typeof l.seconds === 'number') currSec = l.seconds;
-            else if (l.time) {
-                const parts = l.time.split(':');
-                currSec = parseInt(parts[0], 10) * 60 + parseFloat(parts[1] || 0);
-            }
-
-            const newSec = Math.max(0, parseFloat((currSec - effectiveOffset).toFixed(2)));
-            const mins = Math.floor(newSec / 60);
-            const secs = Math.floor(newSec % 60);
-            const newTimeFmt = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-
-            return {
-                text: l.text || '',
-                translation: l.translation || '',
-                seconds: newSec,
-                time: newTimeFmt
-            };
-        });
-
-        // Guardar en todas las variantes de clave en memoria
-        keysToTry.forEach(k => {
-            cachedLyricsDb[k] = updatedLyrics;
-        });
-        cachedLyricsDb[`${artist} - ${title}`] = updatedLyrics;
-        cachedLyricsDb[`${artist} - ${cleanT}`] = updatedLyrics;
-        cachedLyricsDb[cleanT] = updatedLyrics;
-
-        // Responder de inmediato (< 5ms) sin bloquear la interfaz del usuario
+        // 3. Responder de inmediato con las letras actualizadas
         res.json({ success: true, lyrics: updatedLyrics });
-        console.log(`[LYRICS SYNC] Desfase de ${offsetSec}s guardado al instante para ${artist} - ${title}`);
+        console.log(`💾 [LYRICS SYNC] Sincronización guardada al instante para ${artist} - ${title}`);
 
-        // Persistir a disco en segundo plano de forma no bloqueante
+        // 4. Persistir a disco
         saveLyricsDbDebounced();
     } catch(err) {
         console.error('Error en /api/lyrics/save-offset:', err);

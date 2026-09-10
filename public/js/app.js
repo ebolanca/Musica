@@ -1685,13 +1685,31 @@ function formatTime(seconds) {
                 };
             });
 
-            // Restablecer offset y almacenamiento local
-            const key = `offset_${normalizeText(currentSong.artist)}_${normalizeText(currentSong.title)}`;
-            safeStorage.setItem(key, '0.0');
+            // 2. Restablecer offset temporal y safeStorage a 0.0 (ya que el desfase quedó integrado en los segundos)
+            const key1 = `offset_${normalizeText(currentSong.artist)}_${normalizeText(currentSong.title)}`;
+            safeStorage.setItem(key1, '0.0');
+            if (currentSong.rawTitle) {
+                const key2 = `offset_${normalizeText(currentSong.artist)}_${normalizeText(currentSong.rawTitle)}`;
+                safeStorage.setItem(key2, '0.0');
+            }
             updateLyricsSyncOffset(0.0);
             renderCinemaLyricLines(true);
 
-            // Icono de guardado instantáneo sin esperas
+            // 3. Actualizar la caché de precarga del cliente para no revertir a la letra antigua al cambiar de pista o traducir
+            const trackKey1 = getTrackPreloadKey(currentSong);
+            const cached1 = preloadedDetailsCache.get(trackKey1);
+            if (cached1) {
+                cached1.lyrics = cinemaParsedLyrics;
+                preloadedDetailsCache.set(trackKey1, cached1);
+            }
+            const trackKey2 = `${normalizeText(currentSong.artist)}__${normalizeText(currentSong.title)}`;
+            const cached2 = preloadedDetailsCache.get(trackKey2);
+            if (cached2) {
+                cached2.lyrics = cinemaParsedLyrics;
+                preloadedDetailsCache.set(trackKey2, cached2);
+            }
+
+            // 4. Icono de guardado instantáneo sin esperas
             btnSyncSave.classList.add('saved');
             btnSyncSave.innerHTML = '<i class="fa-solid fa-check"></i>';
             showSyncNotification('💾 ¡Karaoke y marcas de tiempo grabadas!');
@@ -1701,15 +1719,15 @@ function formatTime(seconds) {
                 btnSyncSave.innerHTML = '<i class="fa-solid fa-floppy-disk"></i>';
             }, 1500);
 
-            // 2. Persistencia en segundo plano al servidor (no bloqueante)
+            // 5. Persistencia en el servidor (enviando el array final ya calculado para evitar dobles desfases)
             fetch('/api/lyrics/save-offset', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     artist: currentSong.artist,
-                    title: currentSong.rawTitle || currentSong.title,
-                    offsetSec: effOffset,
-                    lyricsArray: cinemaParsedLyrics
+                    title: currentSong.title,
+                    rawTitle: currentSong.rawTitle,
+                    lyrics: cinemaParsedLyrics
                 })
             }).then(r => r.json()).then(data => {
                 if (data && data.success && data.lyrics) {
@@ -1718,6 +1736,10 @@ function formatTime(seconds) {
                         index: idx,
                         hasTimestamp: true
                     }));
+                    // Refrescar caché y DOM con confirmación del servidor
+                    if (cached1) cached1.lyrics = cinemaParsedLyrics;
+                    if (cached2) cached2.lyrics = cinemaParsedLyrics;
+                    renderCinemaLyricLines(true);
                 }
             }).catch(err => {
                 console.error('Error guardando sincronización en servidor:', err);
