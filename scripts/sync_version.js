@@ -30,6 +30,7 @@ const htmlPath = path.join(__dirname, '../public/index.html');
 if (fs.existsSync(htmlPath)) {
     let html = fs.readFileSync(htmlPath, 'utf8');
     html = html.replace(/Plataforma de Videoclips & Análisis Sónico v\d+\.\d+\.\d+/g, `Plataforma de Videoclips & Análisis Sónico v${pkg.version}`);
+    html = html.replace(/js\/app\.js\?v=\d+\.\d+\.\d+/g, `js/app.js?v=${pkg.version}`);
     fs.writeFileSync(htmlPath, html, 'utf8');
 }
 

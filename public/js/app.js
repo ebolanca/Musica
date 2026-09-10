@@ -86,244 +86,248 @@ function formatTime(seconds) {
 }
 
 
+    
     // ==========================================================================
     // 🖼️ Funcionalidad para Cambiar Carátula del Álbum (Modal & Búsqueda)
     // ==========================================================================
-    const btnCinemaChangeCover = document.getElementById('btn-cinema-change-cover');
-    const modalChangeCover = document.getElementById('modal-change-cover');
-    const btnCloseChangeCover = document.getElementById('btn-close-change-cover');
-    const changeCoverTrackName = document.getElementById('change-cover-track-name');
-    const inputCoverSearch = document.getElementById('input-cover-search');
-    const btnCoverSearch = document.getElementById('btn-cover-search');
-    const btnCoverGoogleImages = document.getElementById('btn-cover-google-images');
-    const inputCoverCustomUrl = document.getElementById('input-cover-custom-url');
-    const btnCoverApplyUrl = document.getElementById('btn-cover-apply-url');
-    const coverResultsGrid = document.getElementById('cover-results-grid');
-    const coverResultsCount = document.getElementById('cover-results-count');
-    const coverStatusMsg = document.getElementById('cover-status-msg');
+    function initCoverChangeFeature() {
+        const btnCinemaChangeCover = document.getElementById('btn-cinema-change-cover');
+        const btnCinemaToolbarCover = document.getElementById('btn-cinema-toolbar-cover');
+        const modalChangeCover = document.getElementById('modal-change-cover');
+        const btnCloseChangeCover = document.getElementById('btn-close-change-cover');
+        const changeCoverTrackName = document.getElementById('change-cover-track-name');
+        const inputCoverSearch = document.getElementById('input-cover-search');
+        const btnCoverSearch = document.getElementById('btn-cover-search');
+        const btnCoverGoogleImages = document.getElementById('btn-cover-google-images');
+        const inputCoverCustomUrl = document.getElementById('input-cover-custom-url');
+        const btnCoverApplyUrl = document.getElementById('btn-cover-apply-url');
+        const coverResultsGrid = document.getElementById('cover-results-grid');
+        const coverResultsCount = document.getElementById('cover-results-count');
+        const coverStatusMsg = document.getElementById('cover-status-msg');
 
-    let currentCoverTrack = null;
+        let currentCoverTrack = null;
 
-    function openCoverModal(track) {
-        currentCoverTrack = track || currentPlayingSong || (cinemaCurrentTrackList ? cinemaCurrentTrackList[cinemaCurrentIndex] : null);
-        if (!currentCoverTrack) {
-            showSyncNotification('⚠️ No hay ninguna canción seleccionada');
-            return;
-        }
-
-        const tTitle = currentCoverTrack.title || currentCoverTrack.rawTitle || '';
-        const tArtist = currentCoverTrack.artist || '';
-
-        if (changeCoverTrackName) {
-            changeCoverTrackName.textContent = `${tArtist} • ${tTitle}`;
-        }
-
-        const cleanT = cleanTrackTitle ? cleanTrackTitle(tTitle) : tTitle;
-        const defaultQuery = `${tArtist} ${cleanT}`.trim();
-        if (inputCoverSearch) inputCoverSearch.value = defaultQuery;
-        if (inputCoverCustomUrl) inputCoverCustomUrl.value = '';
-        if (coverStatusMsg) coverStatusMsg.style.display = 'none';
-
-        if (modalChangeCover) {
-            modalChangeCover.style.display = 'flex';
-            setTimeout(() => modalChangeCover.classList.add('active'), 10);
-        }
-
-        // Disparar búsqueda automática
-        triggerCoverSearch(defaultQuery);
-    }
-
-    function closeCoverModal() {
-        if (modalChangeCover) {
-            modalChangeCover.classList.remove('active');
-            setTimeout(() => {
-                if (!modalChangeCover.classList.contains('active')) {
-                    modalChangeCover.style.display = 'none';
-                }
-            }, 250);
-        }
-    }
-
-    async function triggerCoverSearch(query) {
-        if (!query || !coverResultsGrid) return;
-        coverResultsGrid.innerHTML = `
-            <div style="grid-column: 1 / -1; text-align: center; padding: 36px 12px; color: var(--text-muted);">
-                <i class="fa-solid fa-spinner fa-spin fa-2x" style="color: var(--spotify-green, #1db954);"></i>
-                <p style="margin-top: 12px; font-weight: 600; color: #fff;">Buscando carátulas oficiales en HD (Deezer & iTunes)...</p>
-            </div>
-        `;
-        if (coverResultsCount) coverResultsCount.textContent = 'Buscando...';
-
-        try {
-            const res = await fetch(`/api/covers/search?q=${encodeURIComponent(query)}`);
-            const data = await res.json();
-            if (data.success && data.results && data.results.length > 0) {
-                renderCoverResults(data.results);
-            } else {
-                coverResultsGrid.innerHTML = `
-                    <div style="grid-column: 1 / -1; text-align: center; padding: 30px 12px; color: var(--text-muted);">
-                        <i class="fa-regular fa-image fa-2x"></i>
-                        <p style="margin-top: 10px;">No se encontraron carátulas para "${query}". Prueba con otra búsqueda o abre Google Imágenes.</p>
-                    </div>
-                `;
-                if (coverResultsCount) coverResultsCount.textContent = '0 encontradas';
-            }
-        } catch(err) {
-            coverResultsGrid.innerHTML = `
-                <div style="grid-column: 1 / -1; text-align: center; padding: 25px; color: #ef4444;">
-                    <i class="fa-solid fa-triangle-exclamation fa-2x"></i>
-                    <p style="margin-top: 8px;">Error al conectar con el servicio de carátulas.</p>
-                </div>
-            `;
-        }
-    }
-
-    function renderCoverResults(results) {
-        if (!coverResultsGrid) return;
-        if (coverResultsCount) coverResultsCount.textContent = `${results.length} carátulas HD`;
-
-        coverResultsGrid.innerHTML = '';
-        results.forEach(item => {
-            const card = document.createElement('div');
-            card.className = 'cover-result-card';
-            card.title = `Asignar como carátula: ${item.album}`;
-            card.innerHTML = `
-                <img src="${item.coverUrl}" alt="${item.album}" loading="lazy" onerror="this.parentElement.style.display='none';">
-                <div class="cover-result-info">
-                    <strong>${item.album || 'Álbum'}</strong><br>
-                    <span class="cover-result-source">${item.source || 'Oficial'}</span>
-                </div>
-            `;
-            card.addEventListener('click', () => {
-                applyNewCover(item.coverUrl, item.album);
-            });
-            coverResultsGrid.appendChild(card);
-        });
-    }
-
-    async function applyNewCover(coverUrl, album) {
-        if (!currentCoverTrack || !coverUrl) return;
-
-        if (coverStatusMsg) {
-            coverStatusMsg.style.display = 'block';
-            coverStatusMsg.style.background = 'rgba(29, 185, 84, 0.15)';
-            coverStatusMsg.style.color = '#22c55e';
-            coverStatusMsg.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Guardando carátula...';
-        }
-
-        try {
-            const res = await fetch('/api/covers/save', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    artist: currentCoverTrack.artist,
-                    title: currentCoverTrack.title,
-                    rawTitle: currentCoverTrack.rawTitle || currentCoverTrack.title,
-                    coverUrl: coverUrl,
-                    album: album
-                })
-            });
-            const data = await res.json();
-            if (data.success) {
-                // Actualizar pista actual en memoria
-                currentCoverTrack.coverUrl = data.coverUrl;
-                if (data.album) currentCoverTrack.album = data.album;
-
-                // Actualizar interfaz en vivo
-                if (cinemaCover) cinemaCover.src = data.coverUrl;
-                if (cinemaBg) cinemaBg.style.backgroundImage = `url('${data.coverUrl}')`;
-                if (cinemaAlbum && data.album) {
-                    cinemaAlbum.textContent = `${data.album} • ${formatBriefDate(currentCoverTrack.releaseDate, currentCoverTrack.releaseYear)}`;
-                }
-                if (musicBarCover) musicBarCover.src = data.coverUrl;
-
-                // Actualizar imagen en la lista / cuadrícula principal si existe
-                const allCards = document.querySelectorAll('.track-card, .track-item');
-                allCards.forEach(card => {
-                    const cardTitle = card.querySelector('.track-title')?.textContent?.trim();
-                    const cardArtist = card.querySelector('.track-artist')?.textContent?.trim();
-                    if (cardTitle === currentCoverTrack.title && cardArtist === currentCoverTrack.artist) {
-                        const img = card.querySelector('img');
-                        if (img) img.src = data.coverUrl;
-                    }
-                });
-
-                showSyncNotification('✅ Carátula actualizada con éxito');
-                closeCoverModal();
-            } else {
-                throw new Error(data.error || 'Error al guardar');
-            }
-        } catch(err) {
-            if (coverStatusMsg) {
-                coverStatusMsg.style.display = 'block';
-                coverStatusMsg.style.background = 'rgba(239, 68, 68, 0.15)';
-                coverStatusMsg.style.color = '#ef4444';
-                coverStatusMsg.innerHTML = `⚠️ Error: ${err.message}`;
-            }
-        }
-    }
-
-    // Listeners
-    
-    const btnCinemaToolbarCover = document.getElementById('btn-cinema-toolbar-cover');
-    if (btnCinemaToolbarCover) {
-        btnCinemaToolbarCover.addEventListener('click', (e) => {
-            e.stopPropagation();
-            openCoverModal();
-        });
-    }
-
-    if (btnCinemaChangeCover) {
-        btnCinemaChangeCover.addEventListener('click', (e) => {
-            e.stopPropagation();
-            openCoverModal();
-        });
-    }
-
-    if (btnCloseChangeCover) {
-        btnCloseChangeCover.addEventListener('click', closeCoverModal);
-    }
-
-    if (modalChangeCover) {
-        modalChangeCover.addEventListener('click', (e) => {
-            if (e.target === modalChangeCover) closeCoverModal();
-        });
-    }
-
-    if (btnCoverSearch) {
-        btnCoverSearch.addEventListener('click', () => {
-            triggerCoverSearch(inputCoverSearch.value.trim());
-        });
-    }
-
-    if (inputCoverSearch) {
-        inputCoverSearch.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                triggerCoverSearch(inputCoverSearch.value.trim());
-            }
-        });
-    }
-
-    if (btnCoverGoogleImages) {
-        btnCoverGoogleImages.addEventListener('click', () => {
-            const q = (inputCoverSearch ? inputCoverSearch.value.trim() : '') + ' album cover';
-            window.open(`https://www.google.com/search?tbm=isch&q=${encodeURIComponent(q)}`, '_blank');
-        });
-    }
-
-    if (btnCoverApplyUrl) {
-        btnCoverApplyUrl.addEventListener('click', () => {
-            const url = (inputCoverCustomUrl ? inputCoverCustomUrl.value.trim() : '');
-            if (!url || !url.startsWith('http')) {
-                alert('Por favor introduce un enlace de imagen válido (https://...)');
+        function openCoverModal(track) {
+            currentCoverTrack = track || currentPlayingSong || (cinemaCurrentTrackList && cinemaCurrentTrackList.length > 0 ? cinemaCurrentTrackList[cinemaCurrentIndex] : null);
+            if (!currentCoverTrack) {
+                showSyncNotification('⚠️ No hay ninguna canción seleccionada');
                 return;
             }
-            applyNewCover(url, 'Carátula Personalizada');
-        });
+
+            const tTitle = currentCoverTrack.title || currentCoverTrack.rawTitle || '';
+            const tArtist = currentCoverTrack.artist || '';
+
+            if (changeCoverTrackName) {
+                changeCoverTrackName.textContent = `${tArtist} • ${tTitle}`;
+            }
+
+            const cleanT = (typeof cleanTrackTitle === 'function') ? cleanTrackTitle(tTitle) : tTitle;
+            const defaultQuery = `${tArtist} ${cleanT}`.trim();
+            if (inputCoverSearch) inputCoverSearch.value = defaultQuery;
+            if (inputCoverCustomUrl) inputCoverCustomUrl.value = '';
+            if (coverStatusMsg) coverStatusMsg.style.display = 'none';
+
+            if (modalChangeCover) {
+                modalChangeCover.style.display = 'flex';
+                setTimeout(() => modalChangeCover.classList.add('active'), 10);
+            }
+
+            triggerCoverSearch(defaultQuery);
+        }
+
+        function closeCoverModal() {
+            if (modalChangeCover) {
+                modalChangeCover.classList.remove('active');
+                setTimeout(() => {
+                    if (!modalChangeCover.classList.contains('active')) {
+                        modalChangeCover.style.display = 'none';
+                    }
+                }, 250);
+            }
+        }
+
+        async function triggerCoverSearch(query) {
+            if (!query || !coverResultsGrid) return;
+            coverResultsGrid.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; padding: 36px 12px; color: var(--text-muted);">
+                    <i class="fa-solid fa-spinner fa-spin fa-2x" style="color: var(--spotify-green, #1db954);"></i>
+                    <p style="margin-top: 12px; font-weight: 600; color: #fff;">Buscando carátulas oficiales en HD (Deezer & iTunes)...</p>
+                </div>
+            `;
+            if (coverResultsCount) coverResultsCount.textContent = 'Buscando...';
+
+            try {
+                const res = await fetch(`/api/covers/search?q=${encodeURIComponent(query)}`);
+                const data = await res.json();
+                if (data.success && data.results && data.results.length > 0) {
+                    renderCoverResults(data.results);
+                } else {
+                    coverResultsGrid.innerHTML = `
+                        <div style="grid-column: 1 / -1; text-align: center; padding: 30px 12px; color: var(--text-muted);">
+                            <i class="fa-regular fa-image fa-2x"></i>
+                            <p style="margin-top: 10px;">No se encontraron carátulas para "${query}". Prueba con otra búsqueda o abre Google Imágenes.</p>
+                        </div>
+                    `;
+                    if (coverResultsCount) coverResultsCount.textContent = '0 encontradas';
+                }
+            } catch(err) {
+                coverResultsGrid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 25px; color: #ef4444;">
+                        <i class="fa-solid fa-triangle-exclamation fa-2x"></i>
+                        <p style="margin-top: 8px;">Error al conectar con el servicio de carátulas.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function renderCoverResults(results) {
+            if (!coverResultsGrid) return;
+            if (coverResultsCount) coverResultsCount.textContent = `${results.length} carátulas HD`;
+
+            coverResultsGrid.innerHTML = '';
+            results.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'cover-result-card';
+                card.title = `Asignar como carátula: ${item.album}`;
+                card.innerHTML = `
+                    <img src="${item.coverUrl}" alt="${item.album}" loading="lazy" onerror="this.parentElement.style.display='none';">
+                    <div class="cover-result-info">
+                        <strong>${item.album || 'Álbum'}</strong><br>
+                        <span class="cover-result-source">${item.source || 'Oficial'}</span>
+                    </div>
+                `;
+                card.addEventListener('click', () => {
+                    applyNewCover(item.coverUrl, item.album);
+                });
+                coverResultsGrid.appendChild(card);
+            });
+        }
+
+        async function applyNewCover(coverUrl, album) {
+            if (!currentCoverTrack || !coverUrl) return;
+
+            if (coverStatusMsg) {
+                coverStatusMsg.style.display = 'block';
+                coverStatusMsg.style.background = 'rgba(29, 185, 84, 0.15)';
+                coverStatusMsg.style.color = '#22c55e';
+                coverStatusMsg.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Guardando carátula...';
+            }
+
+            try {
+                const res = await fetch('/api/covers/save', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        artist: currentCoverTrack.artist,
+                        title: currentCoverTrack.title,
+                        rawTitle: currentCoverTrack.rawTitle || currentCoverTrack.title,
+                        coverUrl: coverUrl,
+                        album: album
+                    })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    currentCoverTrack.coverUrl = data.coverUrl;
+                    if (data.album) currentCoverTrack.album = data.album;
+
+                    const cinCov = document.getElementById('cinema-cover');
+                    const cinBg = document.getElementById('cinema-bg');
+                    const cinAlb = document.getElementById('cinema-album');
+                    const musCov = document.getElementById('music-bar-cover');
+
+                    if (cinCov) cinCov.src = data.coverUrl;
+                    if (cinBg) cinBg.style.backgroundImage = `url('${data.coverUrl}')`;
+                    if (cinAlb && data.album) {
+                        cinAlb.textContent = `${data.album} • ${formatBriefDate(currentCoverTrack.releaseDate, currentCoverTrack.releaseYear)}`;
+                    }
+                    if (musCov) musCov.src = data.coverUrl;
+
+                    const allCards = document.querySelectorAll('.track-card, .track-item');
+                    allCards.forEach(card => {
+                        const cardTitle = card.querySelector('.track-title')?.textContent?.trim();
+                        const cardArtist = card.querySelector('.track-artist')?.textContent?.trim();
+                        if (cardTitle === currentCoverTrack.title && cardArtist === currentCoverTrack.artist) {
+                            const img = card.querySelector('img');
+                            if (img) img.src = data.coverUrl;
+                        }
+                    });
+
+                    showSyncNotification('✅ Carátula actualizada con éxito');
+                    closeCoverModal();
+                } else {
+                    throw new Error(data.error || 'Error al guardar');
+                }
+            } catch(err) {
+                if (coverStatusMsg) {
+                    coverStatusMsg.style.display = 'block';
+                    coverStatusMsg.style.background = 'rgba(239, 68, 68, 0.15)';
+                    coverStatusMsg.style.color = '#ef4444';
+                    coverStatusMsg.innerHTML = `⚠️ Error: ${err.message}`;
+                }
+            }
+        }
+
+        // Listeners de los dos botones de carátula
+        if (btnCinemaToolbarCover) {
+            btnCinemaToolbarCover.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openCoverModal();
+            });
+        }
+
+        if (btnCinemaChangeCover) {
+            btnCinemaChangeCover.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openCoverModal();
+            });
+        }
+
+        if (btnCloseChangeCover) {
+            btnCloseChangeCover.addEventListener('click', closeCoverModal);
+        }
+
+        if (modalChangeCover) {
+            modalChangeCover.addEventListener('click', (e) => {
+                if (e.target === modalChangeCover) closeCoverModal();
+            });
+        }
+
+        if (btnCoverSearch) {
+            btnCoverSearch.addEventListener('click', () => {
+                triggerCoverSearch(inputCoverSearch.value.trim());
+            });
+        }
+
+        if (inputCoverSearch) {
+            inputCoverSearch.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    triggerCoverSearch(inputCoverSearch.value.trim());
+                }
+            });
+        }
+
+        if (btnCoverGoogleImages) {
+            btnCoverGoogleImages.addEventListener('click', () => {
+                const q = (inputCoverSearch ? inputCoverSearch.value.trim() : '') + ' album cover';
+                window.open(`https://www.google.com/search?tbm=isch&q=${encodeURIComponent(q)}`, '_blank');
+            });
+        }
+
+        if (btnCoverApplyUrl) {
+            btnCoverApplyUrl.addEventListener('click', () => {
+                const url = (inputCoverCustomUrl ? inputCoverCustomUrl.value.trim() : '');
+                if (!url || !url.startsWith('http')) {
+                    alert('Por favor introduce un enlace de imagen válido (https://...)');
+                    return;
+                }
+                applyNewCover(url, 'Carátula Personalizada');
+            });
+        }
     }
 
 
     document.addEventListener('DOMContentLoaded', () => {
+        initCoverChangeFeature();
     let allPlaylists = {};
     let currentTab = 'Música viejuna';
     let searchQuery = '';
