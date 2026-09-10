@@ -124,6 +124,73 @@ function formatTime(seconds) {
     let isCastConnected = false;
 
     function initChromecastFeature() {
+
+        // Gestión de Modo TV Limpio (sin botones de retoque)
+        const btnCinemaTvToggle = document.getElementById('btn-cinema-tv-toggle');
+        let isTvModeActive = safeStorage.getItem('cinema_tv_mode') === 'true' || window.location.hash.includes('tv') || window.location.hash.includes('cinema');
+        let tvIdleTimer = null;
+
+        function setCinemaTvMode(active, notify = true) {
+            isTvModeActive = !!active;
+            safeStorage.setItem('cinema_tv_mode', isTvModeActive ? 'true' : 'false');
+
+            if (cinemaOverlay) {
+                if (isTvModeActive) {
+                    cinemaOverlay.classList.add('tv-mode');
+                } else {
+                    cinemaOverlay.classList.remove('tv-mode');
+                    cinemaOverlay.classList.remove('idle-cursor');
+                }
+            }
+
+            if (btnCinemaTvToggle) {
+                if (isTvModeActive) {
+                    btnCinemaTvToggle.classList.add('active');
+                    btnCinemaTvToggle.innerHTML = '<i class="fa-solid fa-tv"></i> Modo TV: Activo';
+                    btnCinemaTvToggle.title = 'Modo TV limpio activo (sin botones de retoque). Haz clic para volver a ver herramientas';
+                } else {
+                    btnCinemaTvToggle.classList.remove('active');
+                    btnCinemaTvToggle.innerHTML = '<i class="fa-solid fa-tv"></i> Modo TV';
+                    btnCinemaTvToggle.title = 'Alternar Modo TV Limpio (oculta botones de retoque)';
+                }
+            }
+
+            if (notify && isCinemaModeOpen) {
+                if (isTvModeActive) {
+                    showSyncNotification('📺 Modo TV activado: Pantalla limpia sin botones de retoque');
+                } else {
+                    showSyncNotification('🛠️ Herramientas de retoque visibles');
+                }
+            }
+        }
+
+        // Configurar auto-hide de controles tras inactividad en Modo TV
+        function resetTvIdleTimer() {
+            if (!cinemaOverlay || !isTvModeActive) return;
+            cinemaOverlay.classList.remove('idle-cursor');
+            if (tvIdleTimer) clearTimeout(tvIdleTimer);
+            tvIdleTimer = setTimeout(() => {
+                if (isCinemaModeOpen && isTvModeActive) {
+                    cinemaOverlay.classList.add('idle-cursor');
+                }
+            }, 3500);
+        }
+
+        if (cinemaOverlay) {
+            cinemaOverlay.addEventListener('mousemove', resetTvIdleTimer);
+            cinemaOverlay.addEventListener('pointerdown', resetTvIdleTimer);
+        }
+
+        if (btnCinemaTvToggle) {
+            btnCinemaTvToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                setCinemaTvMode(!isTvModeActive, true);
+            });
+        }
+
+        // Estado inicial de Modo TV
+        setCinemaTvMode(isTvModeActive, false);
+
         const btnCinemaCastHeader = document.getElementById('btn-cinema-cast-header');
         const btnCinemaToolbarCast = document.getElementById('btn-cinema-toolbar-cast');
         const btnMusicCast = document.getElementById('music-btn-cast');
@@ -210,6 +277,9 @@ function formatTime(seconds) {
             btnCastScreen.addEventListener('click', async () => {
                 closeCastModal();
                 
+                // Activar automáticamente Modo TV limpio para la proyección
+                setCinemaTvMode(true, false);
+
                 // Asegurar que el Modo Cine está abierto
                 if (!isCinemaModeOpen) {
                     openCinemaMode();

@@ -5138,3 +5138,94 @@ video {
     gap: 12px;
     align-items: flex-start;
 }
+
+
+/* ==========================================================================
+   📺 Modo TV / Chromecast Limpio (Sin botones de retoque ni distracciones)
+   ========================================================================== */
+.cinema-overlay.tv-mode #cinema-top-toolbars-panel {
+    display: none !important;
+}
+
+.cinema-overlay.tv-mode .cinema-right {
+    background: transparent !important;
+    border: none !important;
+    backdrop-filter: none !important;
+    padding: 0 10px !important;
+}
+
+.cinema-overlay.tv-mode .cinema-lyrics-container {
+    padding: 60px 20px 120px 20px !important;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 90%, transparent 100%) !important;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 90%, transparent 100%) !important;
+}
+
+.cinema-overlay.tv-mode .cinema-lyric-line {
+    font-size: 1.55rem !important;
+    margin-bottom: 28px !important;
+    line-height: 1.45 !important;
+    border-radius: 16px !important;
+}
+
+.cinema-overlay.tv-mode .cinema-lyric-line.active {
+    font-size: 2.35rem !important;
+    line-height: 1.35 !important;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.6), 0 0 60px rgba(29, 185, 84, 0.45) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-left-width: 6px !important;
+}
+
+.cinema-overlay.tv-mode .cinema-lyric-line.active .cinema-lyric-trans {
+    font-size: 1.3rem !important;
+}
+
+.cinema-overlay.tv-mode .cinema-lyric-trans {
+    font-size: 1.1rem !important;
+}
+
+/* En Modo TV ocultar controles cuando no hay movimiento */
+.cinema-overlay.tv-mode.idle-cursor {
+    cursor: none !important;
+}
+
+.cinema-overlay.tv-mode.idle-cursor .cinema-header,
+.cinema-overlay.tv-mode.idle-cursor .cinema-controls,
+.cinema-overlay.tv-mode.idle-cursor .cinema-progress-row {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.8s ease !important;
+}
+
+.cinema-overlay.tv-mode .cinema-header,
+.cinema-overlay.tv-mode .cinema-controls,
+.cinema-overlay.tv-mode .cinema-progress-row {
+    transition: opacity 0.3s ease !important;
+}
+
+/* Botón toggle Modo TV */
+.btn-cinema-tv-toggle {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #fff !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    padding: 7px 14px !important;
+    border-radius: 20px !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.btn-cinema-tv-toggle:hover {
+    background: rgba(255, 255, 255, 0.18) !important;
+    transform: translateY(-1px) !important;
+}
+
+.btn-cinema-tv-toggle.active {
+    background: rgba(34, 197, 94, 0.2) !important;
+    border-color: #22c55e !important;
+    color: #22c55e !important;
+    box-shadow: 0 0 12px rgba(34, 197, 94, 0.5) !important;
+}
