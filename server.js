@@ -2187,7 +2187,7 @@ app.post('/api/lyrics/cycle-version', async (req, res) => {
         }
 
         if (allCandidates.length === 0) {
-            return res.status(404).json({ error: 'No se encontraron versiones alternativas de subtítulos' });
+            return res.json({ success: false, candidatesCount: 0, error: 'No se encontraron versiones alternativas de subtítulos' });
         }
 
         const cycleKey = `${artist} - ${cleanT}`.toLowerCase();

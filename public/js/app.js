@@ -1,4 +1,3 @@
-
 const memoryStore = {};
 const safeStorage = {
     getItem(key) {
@@ -85,8 +84,36 @@ function formatTime(seconds) {
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
 }
 
+    document.addEventListener('DOMContentLoaded', () => {
+    let allPlaylists = {};
+    let currentTab = 'Música viejuna';
+    let searchQuery = '';
+    let quickFilterQuery = '';
+    let sortBy = 'title';
+    let sortAsc = true;
+    let viewMode = 'grid';
+    let activeQuickPill = 'all';
 
-    
+    // Playback State Engine
+    let playbackMode = 'idle'; // 'idle' | 'single' | 'playlist_shuffle' | 'party_dj' | 'search_shuffle'
+    let activePlaylistQueue = [];
+    let currentQueueIndex = 0;
+    let currentPlayingSong = null;
+    let currentModalSong = null;
+
+    let currentDisplayedTracks = [];
+    let currentSearchShuffleTracks = [];
+    let currentSearchShuffleLabel = '';
+    let currentSearchShufflePoolKey = '';
+
+    // Cinema state (declaradas explícitamente para evitar globales implícitas)
+    let cinemaCurrentTrackList = [];
+    let cinemaCurrentIndex = 0;
+    let currentCinemaActiveLine = -1;
+    let cinemaParsedLyrics = [];
+    let isUserScrollingCinema = false;
+    let userScrollTimer = null;
+
     // ==========================================================================
     // 🖼️ Funcionalidad para Cambiar Carátula del Álbum (Modal & Búsqueda)
     // ==========================================================================
@@ -141,8 +168,7 @@ function formatTime(seconds) {
                 setTimeout(() => {
                     if (!modalChangeCover.classList.contains('active')) {
                         modalChangeCover.style.display = 'none';
-                    }
-                }, 250);
+                    }} , 250);
             }
         }
 
@@ -325,37 +351,8 @@ function formatTime(seconds) {
         }
     }
 
+    initCoverChangeFeature();
 
-    document.addEventListener('DOMContentLoaded', () => {
-        initCoverChangeFeature();
-    let allPlaylists = {};
-    let currentTab = 'Música viejuna';
-    let searchQuery = '';
-    let quickFilterQuery = '';
-    let sortBy = 'title';
-    let sortAsc = true;
-    let viewMode = 'grid';
-    let activeQuickPill = 'all';
-
-    // Playback State Engine
-    let playbackMode = 'idle'; // 'idle' | 'single' | 'playlist_shuffle' | 'party_dj' | 'search_shuffle'
-    let activePlaylistQueue = [];
-    let currentQueueIndex = 0;
-    let currentPlayingSong = null;
-    let currentModalSong = null;
-
-    let currentDisplayedTracks = [];
-    let currentSearchShuffleTracks = [];
-    let currentSearchShuffleLabel = '';
-    let currentSearchShufflePoolKey = '';
-
-    // Cinema state (declaradas explícitamente para evitar globales implícitas)
-    let cinemaCurrentTrackList = [];
-    let cinemaCurrentIndex = 0;
-    let currentCinemaActiveLine = -1;
-    let cinemaParsedLyrics = [];
-    let isUserScrollingCinema = false;
-    let userScrollTimer = null;
 
     // Función centralizada para centrar suavemente la línea de karaoke activa con su traducción
     function scrollCinemaActiveLyric(el, instant = false) {
