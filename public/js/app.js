@@ -3200,7 +3200,7 @@ function formatTime(seconds) {
     // 🎨 GALERÍA DINÁMICA DE ARTISTAS CON EFECTO KEN BURNS (MODO HÍBRIDO TV)
     // ==========================================================================
     let artistGalleryInterval = null;
-    let currentArtistGalleryImages = [];
+    let currentArtistGalleryItems = [];
     let currentArtistGalleryIndex = 0;
     let currentGallerySlideActive = 1;
     let artistGalleryActiveView = safeStorage.getItem('cinema_active_view') || 'gallery';
@@ -3226,7 +3226,7 @@ function formatTime(seconds) {
             if (btnSwitchVinyl) btnSwitchVinyl.classList.add('active');
         } else {
             // Modo galería de fotos
-            if (currentArtistGalleryImages && currentArtistGalleryImages.length > 0) {
+            if (currentArtistGalleryItems && currentArtistGalleryItems.length > 0) {
                 if (galleryEl) galleryEl.style.display = 'block';
                 if (vinylWrapEl) vinylWrapEl.style.display = 'none';
                 if (btnSwitchGallery) btnSwitchGallery.classList.add('active');
@@ -3241,13 +3241,16 @@ function formatTime(seconds) {
         }
     }
 
-    function switchGallerySlide(imageUrl) {
+    function switchGallerySlide(galleryItem) {
         const slide1 = document.getElementById('artist-slide-1');
         const slide2 = document.getElementById('artist-slide-2');
-        if (!slide1 || !slide2) return;
+        const badgeName = document.getElementById('artist-gallery-name');
+        if (!slide1 || !slide2 || !galleryItem) return;
 
         const nextSlide = currentGallerySlideActive === 1 ? slide2 : slide1;
         const currSlide = currentGallerySlideActive === 1 ? slide1 : slide2;
+        const imageUrl = typeof galleryItem === 'string' ? galleryItem : galleryItem.url;
+        const artistName = typeof galleryItem === 'object' && galleryItem.artist ? galleryItem.artist : lastLoadedGalleryArtist;
 
         const preloadImg = new Image();
         preloadImg.onload = () => {
@@ -3255,6 +3258,10 @@ function formatTime(seconds) {
             nextSlide.classList.add('active');
             currSlide.classList.remove('active');
             currentGallerySlideActive = currentGallerySlideActive === 1 ? 2 : 1;
+            // Actualizar badge con el artista específico que aparece en la foto
+            if (badgeName && artistName) {
+                badgeName.textContent = artistName;
+            }
         };
         preloadImg.onerror = () => {
             rotateArtistGallerySlide();
@@ -3263,10 +3270,10 @@ function formatTime(seconds) {
     }
 
     function rotateArtistGallerySlide() {
-        if (!currentArtistGalleryImages || currentArtistGalleryImages.length <= 1) return;
-        currentArtistGalleryIndex = (currentArtistGalleryIndex + 1) % currentArtistGalleryImages.length;
-        const nextUrl = currentArtistGalleryImages[currentArtistGalleryIndex];
-        switchGallerySlide(nextUrl);
+        if (!currentArtistGalleryItems || currentArtistGalleryItems.length <= 1) return;
+        currentArtistGalleryIndex = (currentArtistGalleryIndex + 1) % currentArtistGalleryItems.length;
+        const nextItem = currentArtistGalleryItems[currentArtistGalleryIndex];
+        switchGallerySlide(nextItem);
     }
 
     function stopArtistGallery() {
@@ -3283,8 +3290,8 @@ function formatTime(seconds) {
         if (badgeName) badgeName.textContent = artist;
 
         // Si es el mismo artista y ya tenemos fotos cargadas, reactivar rotación si hace falta
-        if (lastLoadedGalleryArtist === artist && currentArtistGalleryImages.length > 0) {
-            if (!artistGalleryInterval && currentArtistGalleryImages.length > 1) {
+        if (lastLoadedGalleryArtist === artist && currentArtistGalleryItems.length > 0) {
+            if (!artistGalleryInterval && currentArtistGalleryItems.length > 1) {
                 artistGalleryInterval = setInterval(rotateArtistGallerySlide, 12000);
             }
             const activeView = (artistGalleryActiveView === 'vinyl') ? 'vinyl' : 'gallery';
@@ -3294,7 +3301,7 @@ function formatTime(seconds) {
 
         lastLoadedGalleryArtist = artist;
         stopArtistGallery();
-        currentArtistGalleryImages = [];
+        currentArtistGalleryItems = [];
         currentArtistGalleryIndex = 0;
 
         const slide1 = document.getElementById('artist-slide-1');
@@ -3313,29 +3320,39 @@ function formatTime(seconds) {
         try {
             const res = await fetch(`/api/artist/images?artist=${encodeURIComponent(artist)}`);
             const data = await res.json();
-            if (data && data.images && Array.isArray(data.images) && data.images.length > 0) {
-                currentArtistGalleryImages = data.images;
+            if (data && data.items && Array.isArray(data.items) && data.items.length > 0) {
+                currentArtistGalleryItems = data.items;
+            } else if (data && data.images && Array.isArray(data.images) && data.images.length > 0) {
+                currentArtistGalleryItems = data.images.map(img => ({ url: img, artist }));
             }
         } catch (err) {
             console.warn('No se pudieron obtener imágenes del artista:', err);
         }
 
-        // Añadir la carátula al repertorio de imágenes si existe
-        if (coverUrl && !currentArtistGalleryImages.includes(coverUrl)) {
-            currentArtistGalleryImages.push(coverUrl);
+        // Añadir la carátula al repertorio si existe y no está repetida
+        if (coverUrl) {
+            const hasCover = currentArtistGalleryItems.some(it => (typeof it === 'string' ? it : it.url) === coverUrl);
+            if (!hasCover) {
+                currentArtistGalleryItems.push({ url: coverUrl, artist });
+            }
         }
 
-        if (currentArtistGalleryImages.length > 0) {
+        if (currentArtistGalleryItems.length > 0) {
+            const firstItem = currentArtistGalleryItems[0];
+            const firstUrl = typeof firstItem === 'string' ? firstItem : firstItem.url;
+            const firstArtist = typeof firstItem === 'object' && firstItem.artist ? firstItem.artist : artist;
+
             if (slide1) {
-                slide1.style.backgroundImage = `url('${currentArtistGalleryImages[0]}')`;
+                slide1.style.backgroundImage = `url('${firstUrl}')`;
                 slide1.classList.add('active');
             }
             if (slide2) {
                 slide2.classList.remove('active');
             }
+            if (badgeName) badgeName.textContent = firstArtist;
             currentGallerySlideActive = 1;
 
-            if (currentArtistGalleryImages.length > 1) {
+            if (currentArtistGalleryItems.length > 1) {
                 artistGalleryInterval = setInterval(rotateArtistGallerySlide, 12000);
             }
 

@@ -1969,15 +1969,34 @@ app.get('/api/track/detail', async (req, res) => {
 // ==========================================================================
 const artistImagesCache = new Map();
 
-app.get('/api/artist/images', async (req, res) => {
-    const rawArtist = req.query.artist;
-    if (!rawArtist) return res.json({ success: true, images: [] });
-
-    const artistKey = cleanTrackKey(rawArtist);
-    if (artistImagesCache.has(artistKey)) {
-        return res.json({ success: true, artist: rawArtist, images: artistImagesCache.get(artistKey) });
+function extractArtistsList(rawArtist) {
+    if (!rawArtist || typeof rawArtist !== 'string') return [];
+    
+    const intactArtists = [
+        'Earth, Wind & Fire', 'Crosby, Stills, Nash & Young', 'AC/DC', 
+        'Kool & The Gang', 'Simon & Garfunkel', 'Brooks & Dunn',
+        'Juan Luis Guerra 4.40', 'Juan Luis Guerra 440'
+    ];
+    for (const intact of intactArtists) {
+        if (rawArtist.toLowerCase() === intact.toLowerCase()) {
+            return [rawArtist.trim()];
+        }
     }
 
+    let s = rawArtist;
+    s = s.replace(/\s+(feat\.?|ft\.?|featuring|with|con)\s+/gi, ' _SEP_ ');
+    s = s.replace(/\s+([&+x/])\s+/gi, ' _SEP_ ');
+    s = s.replace(/,\s+/g, ' _SEP_ ');
+    s = s.replace(/\s+y\s+/gi, ' _SEP_ ');
+
+    const parts = s.split(' _SEP_ ')
+        .map(p => p.trim())
+        .filter(p => p.length > 1 && !/^\d+$/.test(p));
+
+    return parts.length > 0 ? Array.from(new Set(parts)) : [rawArtist.trim()];
+}
+
+async function fetchSingleArtistImages(artistName) {
     const images = [];
     const seenUrls = new Set();
 
@@ -1991,51 +2010,88 @@ app.get('/api/artist/images', async (req, res) => {
         }
     }
 
-    // Variantes de búsqueda: Nombre completo y Nombre simplificado
-    const cleanPrimary = rawArtist.replace(/\s*4\.40.*/i, '').replace(/\s+feat\..*/i, '').trim();
-    const cleanNoAnd = cleanPrimary.split(/[,&]/)[0].trim();
-    const queryVariants = Array.from(new Set([rawArtist.trim(), cleanPrimary, cleanNoAnd].filter(Boolean)));
-
-    for (const q of queryVariants) {
-        // 1. TheAudioDB
-        try {
-            const tadbUrl = `https://www.theaudiodb.com/api/v1/json/2/search.php?s=${encodeURIComponent(q)}`;
-            const tadbRes = await fetch(tadbUrl, { signal: AbortSignal.timeout(4000) });
-            if (tadbRes.ok) {
-                const data = await tadbRes.json();
-                if (data && data.artists && data.artists.length > 0) {
-                    const a = data.artists[0];
-                    const fields = ['strArtistFanart', 'strArtistFanart2', 'strArtistFanart3', 'strArtistFanart4', 'strArtistThumb', 'strArtistWideThumb'];
-                    for (const f of fields) {
-                        addImg(a[f]);
-                    }
-                }
+    // 1. TheAudioDB
+    try {
+        const tadbUrl = `https://www.theaudiodb.com/api/v1/json/2/search.php?s=${encodeURIComponent(artistName)}`;
+        const tadbRes = await fetch(tadbUrl, { signal: AbortSignal.timeout(4000) });
+        if (tadbRes.ok) {
+            const data = await tadbRes.json();
+            if (data && data.artists && data.artists.length > 0) {
+                const a = data.artists[0];
+                const fields = ['strArtistFanart', 'strArtistFanart2', 'strArtistFanart3', 'strArtistFanart4', 'strArtistThumb', 'strArtistWideThumb'];
+                for (const f of fields) addImg(a[f]);
             }
-        } catch(e) {}
+        }
+    } catch(e) {}
 
-        // 2. Deezer
-        try {
-            const dzUrl = `https://api.deezer.com/search/artist?q=${encodeURIComponent(q)}&limit=1`;
-            const dzRes = await fetch(dzUrl, { signal: AbortSignal.timeout(4000) });
-            if (dzRes.ok) {
-                const dzData = await dzRes.json();
-                if (dzData && dzData.data && dzData.data.length > 0) {
-                    const da = dzData.data[0];
-                    addImg(da.picture_xl);
-                    addImg(da.picture_big);
-                }
+    // 2. Deezer
+    try {
+        const dzUrl = `https://api.deezer.com/search/artist?q=${encodeURIComponent(artistName)}&limit=1`;
+        const dzRes = await fetch(dzUrl, { signal: AbortSignal.timeout(4000) });
+        if (dzRes.ok) {
+            const dzData = await dzRes.json();
+            if (dzData && dzData.data && dzData.data.length > 0) {
+                const da = dzData.data[0];
+                addImg(da.picture_xl);
+                addImg(da.picture_big);
             }
-        } catch(e) {}
+        }
+    } catch(e) {}
 
-        if (images.length >= 6) break;
+    return images;
+}
+
+app.get('/api/artist/images', async (req, res) => {
+    const rawArtist = req.query.artist;
+    if (!rawArtist) return res.json({ success: true, images: [], items: [] });
+
+    const artistKey = cleanTrackKey(rawArtist);
+    if (artistImagesCache.has(artistKey)) {
+        const cached = artistImagesCache.get(artistKey);
+        return res.json({ success: true, artist: rawArtist, images: cached.images, items: cached.items });
     }
 
-    artistImagesCache.set(artistKey, images);
-    res.json({ success: true, artist: rawArtist, images });
+    const artists = extractArtistsList(rawArtist);
+    let combinedItems = [];
+
+    if (artists.length > 1) {
+        // Múltiples cantantes en colaboración: buscar para cada uno en paralelo
+        const results = await Promise.all(artists.map(a => fetchSingleArtistImages(a)));
+        const maxLen = Math.max(...results.map(r => r.length), 0);
+
+        for (let i = 0; i < maxLen; i++) {
+            for (let aIdx = 0; aIdx < artists.length; aIdx++) {
+                const artistName = artists[aIdx];
+                const imgList = results[aIdx];
+                if (imgList && imgList[i]) {
+                    combinedItems.push({
+                        url: imgList[i],
+                        artist: artistName
+                    });
+                }
+            }
+        }
+    } else {
+        // Artista solista o grupo individual
+        const singleArtist = artists[0] || rawArtist;
+        const images = await fetchSingleArtistImages(singleArtist);
+        combinedItems = images.map(u => ({ url: u, artist: singleArtist }));
+    }
+
+    // Fallback: si no hubo fotos, probar con el rawArtist original completo
+    if (combinedItems.length === 0) {
+        const fallbackImgs = await fetchSingleArtistImages(rawArtist);
+        combinedItems = fallbackImgs.map(u => ({ url: u, artist: rawArtist }));
+    }
+
+    const images = combinedItems.map(item => item.url);
+    const resultPayload = { images, items: combinedItems };
+    artistImagesCache.set(artistKey, resultPayload);
+
+    res.json({ success: true, artist: rawArtist, images, items: combinedItems });
 });
 
 
-// ==========================================================================
 // API: Ahora suena en la radio (Extracción de metadatos ICY en tiempo real)
 // ==========================================================================
 const httpsLib = require('https');
