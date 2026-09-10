@@ -1971,11 +1971,11 @@ const artistImagesCache = new Map();
 
 app.get('/api/artist/images', async (req, res) => {
     const rawArtist = req.query.artist;
-    if (!rawArtist) return res.json({ images: [] });
+    if (!rawArtist) return res.json({ success: true, images: [] });
 
     const artistKey = cleanTrackKey(rawArtist);
     if (artistImagesCache.has(artistKey)) {
-        return res.json({ artist: rawArtist, images: artistImagesCache.get(artistKey) });
+        return res.json({ success: true, artist: rawArtist, images: artistImagesCache.get(artistKey) });
     }
 
     const images = [];
@@ -2031,7 +2031,7 @@ app.get('/api/artist/images', async (req, res) => {
     }
 
     artistImagesCache.set(artistKey, images);
-    res.json({ artist: rawArtist, images });
+    res.json({ success: true, artist: rawArtist, images });
 });
 
 

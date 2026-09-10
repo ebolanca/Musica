@@ -154,7 +154,8 @@ function formatTime(seconds) {
                 }
             }
 
-            if (notify && isCinemaModeOpen) {
+            const isCinOpen = cinemaOverlayEl && cinemaOverlayEl.style.display === 'flex';
+            if (notify && isCinOpen) {
                 if (isTvModeActive) {
                     showSyncNotification('📺 Modo TV activado: Pantalla limpia sin botones de retoque');
                 } else {
@@ -3205,9 +3206,13 @@ function formatTime(seconds) {
     let artistGalleryActiveView = safeStorage.getItem('cinema_active_view') || 'gallery';
     let lastLoadedGalleryArtist = '';
 
-    function setCinemaActiveView(viewMode) {
-        artistGalleryActiveView = viewMode;
-        safeStorage.setItem('cinema_active_view', viewMode);
+    function setCinemaActiveView(viewMode, saveToStorage = false) {
+        if (saveToStorage) {
+            artistGalleryActiveView = viewMode;
+            safeStorage.setItem('cinema_active_view', viewMode);
+        } else {
+            artistGalleryActiveView = viewMode;
+        }
 
         const galleryEl = document.getElementById('cinema-artist-gallery');
         const vinylWrapEl = document.getElementById('cinema-vinyl-wrap');
@@ -3227,7 +3232,7 @@ function formatTime(seconds) {
                 if (btnSwitchGallery) btnSwitchGallery.classList.add('active');
                 if (btnSwitchVinyl) btnSwitchVinyl.classList.remove('active');
             } else {
-                // Si no hay fotos disponibles, mostrar vinilo como respaldo
+                // Si aún no hay fotos cargadas o disponibles, mostrar vinilo temporalmente
                 if (galleryEl) galleryEl.style.display = 'none';
                 if (vinylWrapEl) vinylWrapEl.style.display = 'flex';
                 if (btnSwitchGallery) btnSwitchGallery.classList.remove('active');
@@ -3277,11 +3282,13 @@ function formatTime(seconds) {
         const badgeName = document.getElementById('artist-gallery-name');
         if (badgeName) badgeName.textContent = artist;
 
-        // Si es el mismo artista y ya tenemos fotos cargadas, no recargar
+        // Si es el mismo artista y ya tenemos fotos cargadas, reactivar rotación si hace falta
         if (lastLoadedGalleryArtist === artist && currentArtistGalleryImages.length > 0) {
             if (!artistGalleryInterval && currentArtistGalleryImages.length > 1) {
                 artistGalleryInterval = setInterval(rotateArtistGallerySlide, 12000);
             }
+            const activeView = (artistGalleryActiveView === 'vinyl') ? 'vinyl' : 'gallery';
+            setCinemaActiveView(activeView, false);
             return;
         }
 
@@ -3290,10 +3297,23 @@ function formatTime(seconds) {
         currentArtistGalleryImages = [];
         currentArtistGalleryIndex = 0;
 
+        const slide1 = document.getElementById('artist-slide-1');
+        const slide2 = document.getElementById('artist-slide-2');
+
+        // Mostrar de inmediato la carátula actual en el marco para que no haya esperas
+        if (coverUrl && slide1) {
+            slide1.style.backgroundImage = `url('${coverUrl}')`;
+            slide1.classList.add('active');
+            if (slide2) slide2.classList.remove('active');
+            currentGallerySlideActive = 1;
+            const initView = (artistGalleryActiveView === 'vinyl') ? 'vinyl' : 'gallery';
+            setCinemaActiveView(initView, false);
+        }
+
         try {
             const res = await fetch(`/api/artist/images?artist=${encodeURIComponent(artist)}`);
             const data = await res.json();
-            if (data.success && data.images && data.images.length > 0) {
+            if (data && data.images && Array.isArray(data.images) && data.images.length > 0) {
                 currentArtistGalleryImages = data.images;
             }
         } catch (err) {
@@ -3304,9 +3324,6 @@ function formatTime(seconds) {
         if (coverUrl && !currentArtistGalleryImages.includes(coverUrl)) {
             currentArtistGalleryImages.push(coverUrl);
         }
-
-        const slide1 = document.getElementById('artist-slide-1');
-        const slide2 = document.getElementById('artist-slide-2');
 
         if (currentArtistGalleryImages.length > 0) {
             if (slide1) {
@@ -3322,9 +3339,11 @@ function formatTime(seconds) {
                 artistGalleryInterval = setInterval(rotateArtistGallerySlide, 12000);
             }
 
-            setCinemaActiveView(artistGalleryActiveView);
+            // Preferir siempre galería salvo que el usuario haya seleccionado vinilo
+            const activeView = (artistGalleryActiveView === 'vinyl') ? 'vinyl' : 'gallery';
+            setCinemaActiveView(activeView, false);
         } else {
-            setCinemaActiveView('vinyl');
+            setCinemaActiveView('vinyl', false);
         }
     }
 
@@ -3335,14 +3354,14 @@ function formatTime(seconds) {
         if (btnSwitchGallery) {
             btnSwitchGallery.addEventListener('click', (e) => {
                 e.stopPropagation();
-                setCinemaActiveView('gallery');
+                setCinemaActiveView('gallery', true);
             });
         }
 
         if (btnSwitchVinyl) {
             btnSwitchVinyl.addEventListener('click', (e) => {
                 e.stopPropagation();
-                setCinemaActiveView('vinyl');
+                setCinemaActiveView('vinyl', true);
             });
         }
     }
