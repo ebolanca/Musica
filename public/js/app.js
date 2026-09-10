@@ -334,11 +334,16 @@ function formatTime(seconds) {
     let activeQuickPill = 'all';
 
     // Playback State Engine
-    let playbackMode = 'idle'; // 'idle' | 'single' | 'playlist_shuffle' | 'party_dj'
+    let playbackMode = 'idle'; // 'idle' | 'single' | 'playlist_shuffle' | 'party_dj' | 'search_shuffle'
     let activePlaylistQueue = [];
     let currentQueueIndex = 0;
     let currentPlayingSong = null;
     let currentModalSong = null;
+
+    let currentDisplayedTracks = [];
+    let currentSearchShuffleTracks = [];
+    let currentSearchShuffleLabel = '';
+    let currentSearchShufflePoolKey = '';
 
     // Cinema state (declaradas explícitamente para evitar globales implícitas)
     let cinemaCurrentTrackList = [];
@@ -1089,6 +1094,9 @@ function formatTime(seconds) {
         } else if (playbackMode === 'party_dj') {
             markTrackAsPlayed('global_party', track);
             if (track.playlistName) markTrackAsPlayed(track.playlistName, track);
+        } else if (playbackMode === 'search_shuffle') {
+            if (currentSearchShufflePoolKey) markTrackAsPlayed(currentSearchShufflePoolKey, track);
+            if (track.playlistName) markTrackAsPlayed(track.playlistName, track);
         }
         
         // Stop radio if playing
@@ -1136,6 +1144,8 @@ function formatTime(seconds) {
         if (musicBarMode) {
             if (modeLabel) {
                 musicBarMode.innerHTML = `<i class="fa-solid fa-shuffle"></i> ${modeLabel}`;
+            } else if (playbackMode === 'search_shuffle') {
+                musicBarMode.innerHTML = `<i class="fa-solid fa-shuffle"></i> Búsqueda: "${currentSearchShuffleLabel || 'Resultados'}"`;
             } else if (playbackMode === 'playlist_shuffle') {
                 musicBarMode.innerHTML = `<i class="fa-solid fa-shuffle"></i> ${currentTab}`;
             } else if (playbackMode === 'party_dj') {
@@ -1184,7 +1194,7 @@ function formatTime(seconds) {
         }
 
         // Check if an active playlist queue is currently running
-        if (playbackMode === 'playlist_shuffle' || playbackMode === 'party_dj') {
+        if (playbackMode === 'playlist_shuffle' || playbackMode === 'party_dj' || playbackMode === 'search_shuffle') {
             // Insert this song to play next immediately and then continue with the rest of the queue
             activePlaylistQueue.splice(currentQueueIndex + 1, 0, song);
             currentQueueIndex++;
@@ -1269,10 +1279,37 @@ function formatTime(seconds) {
         playQueueTrack(activePlaylistQueue[0], `${playlistName} (${playedCount + 1}/${total})`);
     }
 
+    function startSearchShuffle(queryLabel, tracks) {
+        if (!tracks || tracks.length === 0) return;
+
+        const poolKey = 'search_' + normalizeText(queryLabel);
+        const { unplayed, playedCount, total } = getUnplayedPool(poolKey, tracks);
+        
+        // Barajar únicamente las pendientes
+        const shuffled = [...unplayed].sort(() => Math.random() - 0.5);
+        playbackMode = 'search_shuffle';
+        activePlaylistQueue = shuffled;
+        currentQueueIndex = 0;
+        currentSearchShufflePoolKey = poolKey;
+        currentSearchShuffleTracks = tracks;
+        currentSearchShuffleLabel = queryLabel;
+
+        playQueueTrack(activePlaylistQueue[0], `Búsqueda "${queryLabel}" (${playedCount + 1}/${total})`);
+    }
+
     if (btnPlaylistShuffle) {
         btnPlaylistShuffle.addEventListener('click', () => {
-            if (currentTab === 'Radio') return;
-            startPlaylistShuffle(currentTab);
+            if (currentTab === 'Radio' || currentTab === 'Éxitos España') return;
+
+            const isGlobalSearch = searchQuery && searchQuery.trim().length > 0;
+            const isQuickFilter = quickFilterQuery && quickFilterQuery.trim().length > 0;
+
+            if ((isGlobalSearch || isQuickFilter) && currentDisplayedTracks && currentDisplayedTracks.length > 0) {
+                const searchLabel = isGlobalSearch ? searchQuery.trim() : quickFilterQuery.trim();
+                startSearchShuffle(searchLabel, currentDisplayedTracks);
+            } else {
+                startPlaylistShuffle(currentTab);
+            }
         });
     }
 
@@ -1939,13 +1976,16 @@ function formatTime(seconds) {
 
 
         mainMusicAudio.addEventListener('ended', () => {
-            if (playbackMode === 'playlist_shuffle' || playbackMode === 'party_dj') {
+            if (playbackMode === 'playlist_shuffle' || playbackMode === 'party_dj' || playbackMode === 'search_shuffle') {
                 if (activePlaylistQueue.length > 0) {
                     const nextIdx = currentQueueIndex + 1;
                     if (nextIdx < activePlaylistQueue.length) {
                         // Avanzar a la siguiente canción de la cola
                         currentQueueIndex = nextIdx;
                         playQueueTrack(activePlaylistQueue[currentQueueIndex]);
+                    } else if (playbackMode === 'search_shuffle') {
+                        // Cola agotada en búsqueda: reiniciar ciclo o buscar tanda no escuchada
+                        startSearchShuffle(currentSearchShuffleLabel, currentSearchShuffleTracks);
                     } else if (playbackMode === 'playlist_shuffle') {
                         // Cola agotada: buscar siguiente tanda de canciones no escuchadas
                         const playlistName = currentPlayingSong?.playlistName || currentTab;
@@ -2124,14 +2164,23 @@ function formatTime(seconds) {
         });
 
         filtered = sortTracks(filtered);
+        currentDisplayedTracks = filtered;
 
         if (isGlobalSearch) {
             currentSectionTitle.innerHTML = `<i class="fa-solid fa-magnifying-glass" style="color: var(--spotify-green);"></i> Búsqueda global: "${searchQuery}"`;
             resultsCountText.textContent = `${filtered.length} canciones encontradas en el catálogo`;
+            if (btnPlaylistShuffle) {
+                btnPlaylistShuffle.title = `Reproducir los ${filtered.length} resultados de la búsqueda en modo aleatorio`;
+            }
         } else {
             const currentIcon = playlistIcons[currentTab] || 'fa-compact-disc';
             currentSectionTitle.innerHTML = `<i class="fa-solid ${currentIcon}" style="color: var(--spotify-green);"></i> ${currentTab}`;
             resultsCountText.textContent = `${filtered.length} canciones encontradas`;
+            if (btnPlaylistShuffle) {
+                btnPlaylistShuffle.title = (quickFilterQuery && quickFilterQuery.trim().length > 0)
+                    ? `Reproducir los ${filtered.length} resultados filtrados en modo aleatorio`
+                    : `Reproducir esta lista en modo aleatorio continuo`;
+            }
         }
 
         songsGrid.className = viewMode === 'list' ? 'songs-grid view-list-mode' : 'songs-grid';
