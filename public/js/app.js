@@ -1518,7 +1518,7 @@ function formatTime(seconds) {
                     body: JSON.stringify({
                         artist: currentSong.artist,
                         title: currentSong.rawTitle || currentSong.title,
-                        category: currentSong.playlistName || currentTab,
+                        category: getTrackPlaylistName(currentSong),
                         discardCurrent: true,
                         expectedDurationSec: (mainMusicAudio && !isNaN(mainMusicAudio.duration) && mainMusicAudio.duration > 30) ? Math.round(mainMusicAudio.duration) : subsSec
                     })
@@ -2050,7 +2050,7 @@ function formatTime(seconds) {
                 body: JSON.stringify({
                     artist: track.artist,
                     title: track.rawTitle || track.title,
-                    category: track.playlistName || currentTab || 'Siglo XXI'
+                    category: getTrackPlaylistName(track)
                 })
             });
             const data = await res.json();
@@ -3909,20 +3909,24 @@ function formatTime(seconds) {
         selectedAudioFile = null;
     }
 
-    function getSearchSuffixForTrack(target) {
+    function getTrackPlaylistName(target) {
         let pName = (target && target.playlistName) ? target.playlistName : '';
-        if (!pName) {
-            const tArtist = normalizeText(target?.artist);
-            const tTitle = normalizeText(target?.title || target?.rawTitle);
+        if (!pName && target) {
+            const tArtist = normalizeText(target.artist);
+            const tTitle = normalizeText(target.title || target.rawTitle);
             for (const [name, pTracks] of Object.entries(allPlaylists)) {
-                if (pTracks.some(t => normalizeText(t.artist) === tArtist && normalizeText(t.title || t.rawTitle) === tTitle)) {
+                if (pTracks && pTracks.some(t => normalizeText(t.artist) === tArtist && normalizeText(t.title || t.rawTitle) === tTitle)) {
                     pName = name;
                     break;
                 }
             }
         }
-        if (!pName) pName = currentTab || '';
+        if (!pName) pName = currentTab || 'Siglo XXI';
+        return pName;
+    }
 
+    function getSearchSuffixForTrack(target) {
+        const pName = getTrackPlaylistName(target);
         const norm = normalizeText(pName);
         // Listas Española y Latina -> 'letra'
         if (norm.includes('espanol') || norm.includes('latina')) {

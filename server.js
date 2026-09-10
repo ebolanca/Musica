@@ -1682,6 +1682,30 @@ app.post('/api/covers/save', (req, res) => {
     }
 });
 
+function resolveTrackCategory(artist, cleanT, category) {
+    let targetCategory = category || 'Siglo XXI';
+    const normInitialCat = (targetCategory || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    if (!normInitialCat.includes('espanol') && !normInitialCat.includes('latina') && !normInitialCat.includes('viejuna') && !normInitialCat.includes('sigloxxi') && !normInitialCat.includes('dance')) {
+        const folders = ['Española', 'Música latina', 'Música viejuna', 'Siglo XXI', 'Dance'];
+        for (const f of folders) {
+            const checkDir = path.join(OMEN_MUSIC_DIR, f);
+            if (fs.existsSync(checkDir)) {
+                const wanted = cleanTrackKey(artist) + '_' + cleanTrackKey(cleanT);
+                try {
+                    const files = fs.readdirSync(checkDir);
+                    if (files.some(file => {
+                        const fb = cleanTrackKey(file.replace(/\.mp3$/i, ''));
+                        return fb === wanted || (fb.includes(cleanTrackKey(cleanT)) && fb.includes(cleanTrackKey(artist.split(/[,&]/)[0])));
+                    })) {
+                        return f;
+                    }
+                } catch(e){}
+            }
+        }
+    }
+    return targetCategory;
+}
+
 app.post('/api/track/upload-replace', (req, res) => {
     try {
         const { artist, title, category } = req.query;
@@ -1690,7 +1714,7 @@ app.post('/api/track/upload-replace', (req, res) => {
         }
 
         const cleanT = cleanTrackTitle(title);
-        const targetCategory = category || 'Siglo XXI';
+        const targetCategory = resolveTrackCategory(artist, cleanT, category);
         const targetFolder = path.join(OMEN_MUSIC_DIR, targetCategory);
 
         if (!fs.existsSync(targetFolder)) {
@@ -2355,7 +2379,7 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
         }
 
         const cleanT = cleanTrackTitle(title);
-        const targetCategory = category || 'Siglo XXI';
+        const targetCategory = resolveTrackCategory(artist, cleanT, category);
         const targetFolder = path.join(OMEN_MUSIC_DIR, targetCategory);
         
         if (!fs.existsSync(targetFolder)) {
@@ -2443,13 +2467,20 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
 
         console.log(`[CLEAN DOWNLOAD] Duración oficial esperada: ${expectedDurationSec ? expectedDurationSec + 's (' + Math.floor(expectedDurationSec/60) + ':' + (expectedDurationSec%60).toString().padStart(2, '0') + ')' : 'No especificada'}`);
 
-        // 2. Buscar candidatos en YouTube y SoundCloud con coincidencia limpia de estudio (priorizar lyrics/audio)
+        // 2. Buscar candidatos en YouTube y SoundCloud con coincidencia limpia de estudio (priorizar letra o lyrics según lista)
+        const effectiveNormCat = (targetCategory || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const isSpanishOrLatin = effectiveNormCat.includes('espanol') || effectiveNormCat.includes('latina');
+        const primaryKw = isSpanishOrLatin ? 'letra' : 'lyrics';
+        const secondaryKw = isSpanishOrLatin ? 'lyrics' : 'letra';
         const mainArtist = artist.split(/[,&]/)[0].trim();
+
+        console.log(`[CLEAN DOWNLOAD] Lista: "${targetCategory}" -> Prioridad de búsqueda: "${primaryKw}" (secundaria: "${secondaryKw}")`);
+
         const searchQueries = [
-            `scsearch20:${mainArtist} ${cleanT}`,
+            `ytsearch20:${mainArtist} ${cleanT} ${primaryKw}`,
             `ytsearch20:${mainArtist} ${cleanT} audio`,
-            `ytsearch20:${mainArtist} ${cleanT} lyrics`,
-            `ytsearch20:${mainArtist} ${cleanT} letra`,
+            `scsearch20:${mainArtist} ${cleanT}`,
+            `ytsearch20:${mainArtist} ${cleanT} ${secondaryKw}`,
             `ytsearch20:${mainArtist} ${cleanT}`
         ];
 
@@ -2539,6 +2570,16 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
 
         if (allValidCandidates.length > 0) {
             allValidCandidates.sort((a, b) => {
+                const aTitle = (a.title || '').toLowerCase();
+                const bTitle = (b.title || '').toLowerCase();
+                const aHasKw = aTitle.includes(primaryKw) ? 1 : 0;
+                const bHasKw = bTitle.includes(primaryKw) ? 1 : 0;
+
+                // Si la diferencia de duración es casi idéntica (<= 3s), preferir la versión con la palabra clave objetivo (letra / lyrics)
+                if (Math.abs(a.diff - b.diff) <= 3 && aHasKw !== bHasKw) {
+                    return bHasKw - aHasKw;
+                }
+
                 const aIsSc = a.url.includes('soundcloud.com') ? 1 : 0;
                 const bIsSc = b.url.includes('soundcloud.com') ? 1 : 0;
                 if (Math.abs(a.diff - b.diff) <= 3 && aIsSc !== bIsSc) {
