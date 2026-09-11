@@ -2308,10 +2308,11 @@ app.post('/api/lyrics/cycle-version', async (req, res) => {
         const cleanT = cleanTrackTitle(title);
         const searchTerms = [
             `${artist} ${cleanT}`,
-            cleanT,
-            `${artist} ${title}`
+            `${artist} ${title}`,
+            `${cleanT} ${artist}`
         ];
 
+        const normArtist = cleanTrackKey(artist);
         let allCandidates = [];
         const seenLrc = new Set();
 
@@ -2323,13 +2324,20 @@ app.post('/api/lyrics/cycle-version', async (req, res) => {
                     const data = await response.json();
                     if (Array.isArray(data)) {
                         for (const item of data) {
-                            if (item.syncedLyrics && item.syncedLyrics.trim().length > 30) {
-                                const firstLine = item.syncedLyrics.split('\n')[0].trim();
-                                const sig = `${item.duration || 0}_${firstLine}`;
-                                if (!seenLrc.has(sig)) {
-                                    seenLrc.add(sig);
-                                    allCandidates.push(item);
-                                }
+                            if (!item.syncedLyrics || item.syncedLyrics.trim().length < 20) continue;
+
+                            // Filtro estricto: Verificar que el resultado pertenezca al mismo artista
+                            const itemArtist = cleanTrackKey(item.artistName || '');
+                            const isSameArtist = itemArtist.includes(normArtist) || normArtist.includes(itemArtist) ||
+                                normArtist.split(' ').some(w => w.length > 3 && itemArtist.includes(w));
+
+                            if (!isSameArtist) continue; // Descartar letras de otros artistas homónimos
+
+                            const firstLine = item.syncedLyrics.split('\n')[0].trim();
+                            const sig = `${item.duration || 0}_${firstLine}`;
+                            if (!seenLrc.has(sig)) {
+                                seenLrc.add(sig);
+                                allCandidates.push(item);
                             }
                         }
                     }
