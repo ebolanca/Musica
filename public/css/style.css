@@ -2057,23 +2057,28 @@ video {
   border-left: 4px solid var(--spotify-green);
 }
 
-/* 🎤 Siguiente estrofa a cantar en el Karaoke (anticipación de lectura) */
+/* 🎤 Siguiente estrofa a cantar en el Karaoke (anticipación de lectura sutil, sin recuadro) */
 .cinema-lyric-line.next-up {
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 1.35rem;
-  font-weight: 800;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  transform: scale(0.98);
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 1.25rem;
+  font-weight: 700;
+  background: transparent;
+  border: none;
+  border-left: 4px solid transparent;
+  transform: scale(0.96);
+  text-shadow: none;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.cinema-lyric-line.next-up:hover {
+  color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.04);
+}
+
 .cinema-lyric-line.next-up .cinema-lyric-trans {
-  color: rgba(134, 239, 172, 0.7);
-  font-size: 0.98rem;
-  font-weight: 600;
-  opacity: 0.85;
+  color: rgba(134, 239, 172, 0.45);
+  font-size: 0.9rem;
+  opacity: 0.8;
 }
 
 .cinema-lyric-line.active .cinema-lyric-trans {
@@ -5195,18 +5200,19 @@ video {
 }
 
 .cinema-overlay.tv-mode .cinema-lyric-line.next-up {
-    color: rgba(255, 255, 255, 0.85) !important;
-    font-size: 1.8rem !important;
-    font-weight: 800 !important;
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 16px !important;
-    transform: scale(0.99) !important;
+    color: rgba(255, 255, 255, 0.60) !important;
+    font-size: 1.55rem !important;
+    font-weight: 700 !important;
+    background: transparent !important;
+    border: none !important;
+    border-left: 6px solid transparent !important;
+    transform: scale(0.96) !important;
+    text-shadow: none !important;
 }
 
 .cinema-overlay.tv-mode .cinema-lyric-line.next-up .cinema-lyric-trans {
-    color: rgba(134, 239, 172, 0.8) !important;
-    font-size: 1.18rem !important;
+    color: rgba(134, 239, 172, 0.5) !important;
+    font-size: 1.1rem !important;
 }
 
 .cinema-overlay.tv-mode .cinema-lyric-line.active .cinema-lyric-trans {
