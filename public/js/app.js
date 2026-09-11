@@ -642,6 +642,32 @@ function formatTime(seconds) {
         });
     }
 
+    // Actualiza tanto la línea en curso (.active) como la siguiente (.next-up) para anticipar lectura de karaoke
+    function updateCinemaActiveLines(activeIdx) {
+        currentCinemaActiveLine = activeIdx;
+        let targetActiveEl = null;
+        const total = (cinemaParsedLyrics && cinemaParsedLyrics.length) ? cinemaParsedLyrics.length : 0;
+        const nextIdx = (activeIdx === -1) ? (total > 0 ? 0 : -1) : ((activeIdx + 1 < total) ? (activeIdx + 1) : -1);
+
+        document.querySelectorAll('.cinema-lyric-line').forEach((el, idx) => {
+            if (idx === activeIdx) {
+                el.classList.add('active');
+                el.classList.remove('next-up');
+                targetActiveEl = el;
+            } else if (idx === nextIdx) {
+                el.classList.remove('active');
+                el.classList.add('next-up');
+            } else {
+                el.classList.remove('active');
+                el.classList.remove('next-up');
+            }
+        });
+
+        if (targetActiveEl && cinemaLyrics && !isUserScrollingCinema) {
+            scrollCinemaActiveLyric(targetActiveEl);
+        }
+    }
+
 
     // DOM Elements
     const songsGrid = document.getElementById('songs-grid');
@@ -1687,6 +1713,7 @@ function formatTime(seconds) {
         } else {
             cinemaLyrics.scrollTo({ top: 0, behavior: 'instant' });
         }
+        updateCinemaActiveLines(currentCinemaActiveLine);
 
         // Enlazar clicks en frases: Si no tiene marcas, las genera en tiempo real; si ya tiene, ajusta el desfase
         document.querySelectorAll('.cinema-lyric-line').forEach(lineEl => {
@@ -2238,20 +2265,7 @@ function formatTime(seconds) {
                 }
 
                 if (activeIdx !== currentCinemaActiveLine) {
-                    currentCinemaActiveLine = activeIdx;
-                    let targetActiveEl = null;
-                    document.querySelectorAll('.cinema-lyric-line').forEach((el, idx) => {
-                        if (idx === activeIdx) {
-                            el.classList.add('active');
-                            targetActiveEl = el;
-                        } else {
-                            el.classList.remove('active');
-                        }
-                    });
-
-                    if (targetActiveEl && cinemaLyrics && !isUserScrollingCinema) {
-                        scrollCinemaActiveLyric(targetActiveEl);
-                    }
+                    updateCinemaActiveLines(activeIdx);
                 }
             }
         });

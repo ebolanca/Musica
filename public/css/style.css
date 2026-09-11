@@ -2057,6 +2057,25 @@ video {
   border-left: 4px solid var(--spotify-green);
 }
 
+/* 🎤 Siguiente estrofa a cantar en el Karaoke (anticipación de lectura) */
+.cinema-lyric-line.next-up {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.35rem;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  transform: scale(0.98);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cinema-lyric-line.next-up .cinema-lyric-trans {
+  color: rgba(134, 239, 172, 0.7);
+  font-size: 0.98rem;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
 .cinema-lyric-line.active .cinema-lyric-trans {
   color: #86efac;
   font-size: 1.05rem;
@@ -5173,6 +5192,21 @@ video {
     text-shadow: 0 0 30px rgba(255, 255, 255, 0.6), 0 0 60px rgba(29, 185, 84, 0.45) !important;
     background: rgba(255, 255, 255, 0.08) !important;
     border-left-width: 6px !important;
+}
+
+.cinema-overlay.tv-mode .cinema-lyric-line.next-up {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 1.8rem !important;
+    font-weight: 800 !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    transform: scale(0.99) !important;
+}
+
+.cinema-overlay.tv-mode .cinema-lyric-line.next-up .cinema-lyric-trans {
+    color: rgba(134, 239, 172, 0.8) !important;
+    font-size: 1.18rem !important;
 }
 
 .cinema-overlay.tv-mode .cinema-lyric-line.active .cinema-lyric-trans {
