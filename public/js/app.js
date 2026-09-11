@@ -203,14 +203,20 @@ function formatTime(seconds) {
         function openCastModal() {
             if (modalCastOptions) {
                 modalCastOptions.style.display = 'flex';
-                modalCastOptions.classList.add('show');
+                setTimeout(() => {
+                    modalCastOptions.classList.add('active');
+                    modalCastOptions.classList.add('show');
+                }, 10);
             }
         }
 
         function closeCastModal() {
             if (modalCastOptions) {
-                modalCastOptions.style.display = 'none';
+                modalCastOptions.classList.remove('active');
                 modalCastOptions.classList.remove('show');
+                setTimeout(() => {
+                    modalCastOptions.style.display = 'none';
+                }, 200);
             }
         }
 
@@ -2854,8 +2860,8 @@ function formatTime(seconds) {
         });
     }
 
-    function populateAnalysisTab(detail, trackArtist, trackTitle) {
-        const container = document.getElementById('tab-microscope');
+    function populateAnalysisTab(detail, trackArtist, trackTitle, targetContainer = null) {
+        const container = targetContainer || document.getElementById('tab-microscope');
         const artist = trackArtist || (currentModalTrack ? currentModalTrack.artist : '') || (detail && detail.analysis ? detail.analysis.artist : '');
         const title = trackTitle || (currentModalTrack ? currentModalTrack.title : '') || (detail && detail.analysis ? detail.analysis.title : '');
 
@@ -3142,6 +3148,105 @@ function formatTime(seconds) {
     // ==========================================================================
     // 📺 Modo Cine / Pantalla Completa
     // ==========================================================================
+    
+    // ==========================================================================
+    // 🔬 VISTA DE ANÁLISIS MUSICAL EN MODO CINE (ALTERNATIVA A SUBTÍTULOS)
+    // ==========================================================================
+    let isCinemaAnalysisOpen = false;
+
+    function toggleCinemaAnalysis(forceState = null) {
+        isCinemaAnalysisOpen = (forceState !== null) ? forceState : !isCinemaAnalysisOpen;
+        const btnAnalysis = document.getElementById('btn-cinema-analysis');
+        const container = document.getElementById('cinema-analysis-container');
+        const topToolbars = document.getElementById('cinema-top-toolbars-panel');
+        const lyrics = document.getElementById('cinema-lyrics');
+
+        if (isCinemaAnalysisOpen) {
+            if (btnAnalysis) btnAnalysis.classList.add('active');
+            if (container) container.style.display = 'flex';
+            if (topToolbars) topToolbars.style.display = 'none';
+            if (lyrics) lyrics.style.display = 'none';
+
+            const currTrack = currentPlayingSong || (cinemaCurrentTrackList ? cinemaCurrentTrackList[cinemaCurrentIndex] : null);
+            if (currTrack) {
+                loadCinemaAnalysis(currTrack);
+            }
+        } else {
+            if (btnAnalysis) btnAnalysis.classList.remove('active');
+            if (container) container.style.display = 'none';
+            const isTv = cinemaOverlay && cinemaOverlay.classList.contains('tv-mode');
+            if (topToolbars) topToolbars.style.display = isTv ? 'none' : 'flex';
+            if (lyrics) {
+                lyrics.style.display = 'block';
+                const activeEl = document.querySelector('.cinema-lyric-line.active');
+                if (activeEl) scrollCinemaActiveLyric(activeEl, true);
+            }
+        }
+    }
+
+    function loadCinemaAnalysis(track) {
+        const bodyEl = document.getElementById('cinema-analysis-body');
+        if (!bodyEl || !track) return;
+
+        bodyEl.innerHTML = `
+            <div style="text-align: center; padding: 50px 20px; color: var(--text-muted);">
+                <i class="fa-solid fa-spinner fa-spin" style="font-size: 2.2rem; margin-bottom: 14px; color: #f59e0b;"></i>
+                <p style="font-size: 0.95rem;">Cargando análisis sónico de "${track.title}"...</p>
+            </div>
+        `;
+
+        const key = getTrackPreloadKey(track);
+        const cachedDetail = preloadedDetailsCache.get(key);
+
+        const applyData = (d) => {
+            if (!d || !d.analysis) {
+                bodyEl.innerHTML = `
+                    <div style="text-align: center; padding: 40px 20px; color: var(--text-muted); background: rgba(15, 23, 42, 0.5); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.08);">
+                        <i class="fa-solid fa-microscope" style="font-size: 2.8rem; margin-bottom: 16px; opacity: 0.4; color: #f59e0b;"></i>
+                        <h4 style="color: #fff; margin-bottom: 8px; font-size: 1.15rem;">Sin análisis sónico registrado</h4>
+                        <p style="margin-bottom: 20px; font-size: 0.92rem;">¿Deseas que Gemini AI analice esta pista en profundidad ahora mismo?</p>
+                        <button class="btn-reanalyze-ai" id="btn-cinema-trigger-ai" style="padding: 10px 20px; font-size: 0.95rem;">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> Analizar con Gemini AI
+                        </button>
+                    </div>
+                `;
+                const triggerBtn = document.getElementById('btn-cinema-trigger-ai');
+                if (triggerBtn) {
+                    triggerBtn.addEventListener('click', async () => {
+                        triggerBtn.disabled = true;
+                        triggerBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Analizando con Gemini AI...';
+                        await triggerReanalysis(track.artist, track.title);
+                        const freshKey = getTrackPreloadKey(track);
+                        const freshDetail = preloadedDetailsCache.get(freshKey);
+                        if (freshDetail) applyData(freshDetail);
+                    });
+                }
+                return;
+            }
+            populateAnalysisTab(d, track.artist, track.title, bodyEl);
+        };
+
+        if (cachedDetail && cachedDetail.analysis) {
+            applyData(cachedDetail);
+        } else {
+            const trackTitleQuery = track.rawTitle || track.title;
+            fetch(`/api/track/detail?artist=${encodeURIComponent(track.artist)}&title=${encodeURIComponent(trackTitleQuery)}`)
+                .then(r => r.json())
+                .then(d => {
+                    if (d) preloadedDetailsCache.set(key, d);
+                    applyData(d);
+                })
+                .catch(() => {
+                    bodyEl.innerHTML = `
+                        <div style="text-align: center; padding: 40px; color: var(--text-muted);">
+                            <i class="fa-solid fa-triangle-exclamation" style="font-size: 2rem; color: #ef4444; margin-bottom: 12px;"></i>
+                            <p>No se pudo cargar el análisis sónico para esta pista.</p>
+                        </div>
+                    `;
+                });
+        }
+    }
+
     function openCinemaMode(track, trackList = null) {
         if (!cinemaOverlay) return;
         
@@ -3190,6 +3295,7 @@ function formatTime(seconds) {
     function closeCinemaMode() {
         if (cinemaOverlay) cinemaOverlay.style.display = 'none';
         stopArtistGallery();
+        toggleCinemaAnalysis(false);
         if (mainMusicAudio && mainMusicAudio.paused) releaseWakeLock();
         document.body.style.overflow = '';
         document.documentElement.style.overflow = '';
@@ -3406,6 +3512,7 @@ function formatTime(seconds) {
         }
         loadTrackSyncOffset(track);
         loadArtistGallery(track.artist, track.coverUrl);
+        if (isCinemaAnalysisOpen) loadCinemaAnalysis(track);
         const cover = track.coverUrl || 'img/radios/hitfm.svg';
         if (cinemaBg) cinemaBg.style.backgroundImage = `url('${cover}')`;
         if (cinemaCover) cinemaCover.src = cover;
@@ -4583,6 +4690,22 @@ function formatTime(seconds) {
 
     // Inicializar características complementarias una vez que todo el DOM está listo
     initCoverChangeFeature();
+        // Inicializar botón de análisis en Modo Cine
+    const btnCinemaAnalysis = document.getElementById('btn-cinema-analysis');
+    const btnCinemaCloseAnalysis = document.getElementById('btn-cinema-close-analysis');
+    if (btnCinemaAnalysis) {
+        btnCinemaAnalysis.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleCinemaAnalysis();
+        });
+    }
+    if (btnCinemaCloseAnalysis) {
+        btnCinemaCloseAnalysis.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleCinemaAnalysis(false);
+        });
+    }
+
     initChromecastFeature();
     initArtistGalleryFeature();
 

@@ -19,7 +19,7 @@
             </div>
             <div class="logo-title">
                 <h1>Música</h1>
-                <p>Plataforma de Videoclips & Análisis Sónico v1.5.79</p>
+                <p>Plataforma de Videoclips & Análisis Sónico v1.5.80</p>
             </div>
         </div>
 
@@ -276,6 +276,9 @@
         <div class="cinema-header">
             <div class="cinema-badge"><span class="live-dot" style="background:#22c55e;"></span> EN REPRODUCCIÓN</div>
             <div style="display: flex; gap: 10px; align-items: center;">
+                <button class="btn-cinema-analysis" id="btn-cinema-analysis" title="Ver análisis musical y sónico de la canción">
+                    <i class="fa-solid fa-microscope" style="color: #f59e0b;"></i> Análisis
+                </button>
                 <button class="btn-cinema-tv-toggle" id="btn-cinema-tv-toggle" title="Alternar Modo TV Limpio (oculta botones de retoque)">
                     <i class="fa-solid fa-tv"></i> Modo TV
                 </button>
@@ -377,6 +380,21 @@
                 </div>
                 <div class="cinema-lyrics-container" id="cinema-lyrics">
                     <!-- Letra sincronizada en grande -->
+                </div>
+
+                <!-- Panel de Análisis Musical en Modo Cine (alternativa a los subtítulos) -->
+                <div class="cinema-analysis-container" id="cinema-analysis-container" style="display: none;">
+                    <div class="cinema-analysis-header">
+                        <div class="cinema-analysis-title">
+                            <i class="fa-solid fa-microscope" style="color: #f59e0b;"></i> Análisis Musical & Sónico
+                        </div>
+                        <button class="btn-cinema-close-analysis" id="btn-cinema-close-analysis" title="Cerrar análisis y volver a la letra del karaoke">
+                            <i class="fa-solid fa-xmark"></i> Cerrar
+                        </button>
+                    </div>
+                    <div class="cinema-analysis-body" id="cinema-analysis-body">
+                        <!-- Renderizado modular del análisis -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -753,6 +771,6 @@
         </div>
     </div>
 
-    <script src="js/app.js?v=1.5.79"></script>
+    <script src="js/app.js?v=1.5.80"></script>
 </body>
 </html>
