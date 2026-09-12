@@ -4090,9 +4090,4 @@ app.post('/api/retro-hits/add-to-viejuna', (req, res) => {
 const PORT = 8087;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Servidor de Música corriendo en http://localhost:${PORT}`);
-    // Iniciar muestreador automático de radio en segundo plano (24/7 cada 35 minutos)
-    setTimeout(() => {
-        autoCollectRadioAirplayInBackground();
-    }, 20000);
-    setInterval(autoCollectRadioAirplayInBackground, 35 * 60 * 1000);
 });
