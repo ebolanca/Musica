@@ -3024,14 +3024,19 @@ async function autoCollectRadioAirplayInBackground() {
             try {
                 if (st.type === 'triton') {
                     list = await scanTritonStation(st.mount);
+                } else if (st.type === 'myradio') {
+                    list = await scanMyRadioOnline(st.myRadioSlug);
+                } else if (st.type === 'orb_url') {
+                    list = await scanOnlineRadioBoxUrl(st.orbUrl);
                 } else if (st.type === 'emisora') {
-                    list = await scanEmisoraOrg(st.emisoraSlug);
+                    list = await scanMyRadioOnline(st.emisoraSlug || st.myRadioSlug);
+                    if (!list || list.length === 0) list = await scanEmisoraOrg(st.emisoraSlug);
                 } else if (st.type === 'hybrid') {
-                    const [orb, em] = await Promise.allSettled([
+                    const [orb, myr] = await Promise.allSettled([
                         scanOnlineRadioBox(st.orbSlug),
-                        scanEmisoraOrg(st.emisoraSlug)
+                        scanMyRadioOnline(st.myRadioSlug || st.emisoraSlug)
                     ]);
-                    list = (orb.status === 'fulfilled' ? orb.value : []).concat(em.status === 'fulfilled' ? em.value : []);
+                    list = (orb.status === 'fulfilled' ? orb.value : []).concat(myr.status === 'fulfilled' ? myr.value : []);
                 }
             } catch(e) {}
             return list.map(item => ({ ...item, stationId: st.id, stationName: st.name }));
@@ -4085,5 +4090,9 @@ app.post('/api/retro-hits/add-to-viejuna', (req, res) => {
 const PORT = 8087;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Servidor de Música corriendo en http://localhost:${PORT}`);
-    // Auto-enriquecedor: en segundo plano a demanda (sin saturar inicio ni I/O)
+    // Iniciar muestreador automático de radio en segundo plano (24/7 cada 35 minutos)
+    setTimeout(() => {
+        autoCollectRadioAirplayInBackground();
+    }, 20000);
+    setInterval(autoCollectRadioAirplayInBackground, 35 * 60 * 1000);
 });
