@@ -57,21 +57,28 @@ function loadMetadataCache() {
         try { metadataCache = JSON.parse(fs.readFileSync(METADATA_CACHE_FILE, 'utf8')); } catch(e){}
     }
 }
-loadMetadataCache();
+const IS_RUNNING_ON_OMEN = fs.existsSync("D:\\media-library") || __dirname.toLowerCase().startsWith('d:\\');
+
+let metaSaveTimer = null;
+function saveMetadataCacheDebounced() {
+    if (metaSaveTimer) clearTimeout(metaSaveTimer);
+    metaSaveTimer = setTimeout(() => {
+        try {
+            const dataStr = JSON.stringify(metadataCache, null, 2);
+            fs.writeFile(METADATA_CACHE_FILE, dataStr, 'utf8', (err) => {
+                if (err) console.error("Error guardando metadata_cache:", err.message);
+            });
+            if (!IS_RUNNING_ON_OMEN) {
+                const REMOTE_METADATA_CACHE = "\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\metadata_cache.json";
+                fs.writeFile(REMOTE_METADATA_CACHE, dataStr, 'utf8', () => {});
+            }
+        } catch(e) {
+            console.error("Error en saveMetadataCacheDebounced:", e.message);
+        }
+    }, 1500);
+}
 function saveMetadataCache() {
-    try {
-        fs.writeFileSync(METADATA_CACHE_FILE, JSON.stringify(metadataCache, null, 2), 'utf8');
-    } catch(e) {
-        console.error("Error guardando metadata_cache local:", e.message);
-    }
-    const REMOTE_METADATA_CACHE = "\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\metadata_cache.json";
-    // Escritura al OMEN completamente asíncrona (no bloquea el event loop si la red está caída)
-    if (METADATA_CACHE_FILE !== REMOTE_METADATA_CACHE) {
-        const _metaSnap = JSON.stringify(metadataCache, null, 2);
-        fs.access(path.dirname(REMOTE_METADATA_CACHE), fs.constants.W_OK, (e) => {
-            if (!e) fs.writeFile(REMOTE_METADATA_CACHE, _metaSnap, 'utf8', () => {});
-        });
-    }
+    saveMetadataCacheDebounced();
 }
 
 let cachedAnalyses = {};
@@ -82,20 +89,26 @@ function loadAnalysesDb() {
 }
 loadAnalysesDb();
 
+let analysesSaveTimer = null;
+function saveAnalysesDbDebounced() {
+    if (analysesSaveTimer) clearTimeout(analysesSaveTimer);
+    analysesSaveTimer = setTimeout(() => {
+        try {
+            const dataStr = JSON.stringify(cachedAnalyses, null, 2);
+            fs.writeFile(ANALYSES_DB_PATH, dataStr, 'utf8', (err) => {
+                if (err) console.error("Error guardando analyses_db:", err.message);
+            });
+            if (!IS_RUNNING_ON_OMEN) {
+                const REMOTE_ANALYSES_DB = "\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\analyses_db.json";
+                fs.writeFile(REMOTE_ANALYSES_DB, dataStr, 'utf8', () => {});
+            }
+        } catch(e) {
+            console.error("Error en saveAnalysesDbDebounced:", e.message);
+        }
+    }, 1500);
+}
 function saveAnalysesDb() {
-    try {
-        fs.writeFileSync(ANALYSES_DB_PATH, JSON.stringify(cachedAnalyses, null, 2), 'utf8');
-    } catch(e) {
-        console.error("Error guardando analyses_db local:", e.message);
-    }
-    const REMOTE_ANALYSES_DB = "\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\analyses_db.json";
-    // Escritura al OMEN completamente asíncrona (no bloquea el event loop si la red está caída)
-    if (ANALYSES_DB_PATH !== REMOTE_ANALYSES_DB) {
-        const _analysesSnap = JSON.stringify(cachedAnalyses, null, 2);
-        fs.access(path.dirname(REMOTE_ANALYSES_DB), fs.constants.W_OK, (e) => {
-            if (!e) fs.writeFile(REMOTE_ANALYSES_DB, _analysesSnap, 'utf8', () => {});
-        });
-    }
+    saveAnalysesDbDebounced();
 }
 let cachedLyricsDb = {};
 
@@ -3438,25 +3451,29 @@ async function scanOnlineRadioBoxUrl(fullUrl) {
         if (!res.ok) return [];
         const html = await res.text();
         const items = [];
-        const matches = [...html.matchAll(/<td class="track_history_item">[\s\S]*?<a [^>]*class="ajax">([^<]+)<\/a>/g)];
+        const blocks = html.split('class="track_history_item"');
         const now = Date.now();
-        matches.forEach((m, idx) => {
-            const raw = m[1].replace(/&amp;/g, '&').replace(/&#39;/g, "'").trim();
-            const parts = raw.split(' - ');
-            if (parts.length >= 2) {
-                const artist = parts[0].trim();
-                const title = parts.slice(1).join(' - ').trim();
-                if (isValidRadioSong(artist, title)) {
-                    items.push({
-                        artist,
-                        title,
-                        album: null,
-                        coverUrl: null,
-                        timestamp: now - (idx * 4 * 60 * 1000)
-                    });
+        for (let i = 1; i < blocks.length; i++) {
+            const b = blocks[i].slice(0, 1000);
+            const m = b.match(/class="ajax">([^<]+)<\/a>/);
+            if (m) {
+                const raw = m[1].replace(/&amp;/g, '&').replace(/&#39;/g, "'").trim();
+                const parts = raw.split(' - ');
+                if (parts.length >= 2) {
+                    const artist = parts[0].trim();
+                    const title = parts.slice(1).join(' - ').trim();
+                    if (isValidRadioSong(artist, title)) {
+                        items.push({
+                            artist,
+                            title,
+                            album: null,
+                            coverUrl: null,
+                            timestamp: now - ((i - 1) * 4 * 60 * 1000)
+                        });
+                    }
                 }
             }
-        });
+        }
         return items;
     } catch(e) {
         console.warn(`[RADIO SCAN] Error en OnlineRadioBox:`, e.message);
@@ -3473,10 +3490,14 @@ async function scanEmisoraOrg(slug) {
         const html = await res.text();
 
         const items = [];
-        const matches = [...html.matchAll(/class="playlist__item"[^>]*title="([^"]+)"[\s\S]*?(?:<img[^>]*class="playlist__img"[^>]*src="([^"]+)")?/g)];
-        for (const m of matches) {
-            const raw = m[1].replace(/&amp;/g, '&').replace(/&#39;/g, "'").trim();
-            const coverUrl = m[2] && !m[2].includes('default') ? m[2] : null;
+        const blocks = html.split('class="playlist__item"');
+        for (let i = 1; i < blocks.length; i++) {
+            const b = blocks[i].slice(0, 1500);
+            const mTitle = b.match(/title="([^"]+)"/);
+            if (!mTitle) continue;
+            const raw = mTitle[1].replace(/&amp;/g, '&').replace(/&#39;/g, "'").trim();
+            const mImg = b.match(/class="playlist__img"[^>]*src="([^"]+)"/);
+            const coverUrl = (mImg && !mImg[1].includes('default')) ? mImg[1] : null;
             const parts = raw.split(' - ');
             if (parts.length >= 2) {
                 const artist = parts[0].trim();
@@ -3487,12 +3508,16 @@ async function scanEmisoraOrg(slug) {
             }
         }
         // Canción actual en vivo
-        const curMatch = html.match(/data-playlist-current-song[\s\S]*?<a [^>]*>([^<]+)<\/a>[\s\S]*?class="playlist__artist-name">([^<]+)<\/span>/);
-        if (curMatch) {
-            const artist = curMatch[2].trim();
-            const title = curMatch[1].trim();
-            if (artist && title) {
-                items.unshift({ artist, title, album: null, coverUrl: null, timestamp: Date.now() });
+        const curBlock = (html.split('data-playlist-current-song')[1] || '').slice(0, 1500);
+        if (curBlock) {
+            const mSong = curBlock.match(/<a [^>]*>([^<]+)<\/a>/);
+            const mArt = curBlock.match(/class="playlist__artist-name">([^<]+)<\/span>/);
+            if (mSong && mArt) {
+                const artist = mArt[1].trim();
+                const title = mSong[1].trim();
+                if (artist && title) {
+                    items.unshift({ artist, title, album: null, coverUrl: null, timestamp: Date.now() });
+                }
             }
         }
         return items;
@@ -3509,15 +3534,19 @@ async function scanOnlineRadioBox(slug) {
         if (!res.ok) return [];
         const html = await res.text();
         const items = [];
-        const matches = [...html.matchAll(/<td class="track_history_item">[\s\S]*?<a [^>]*class="ajax">([^<]+)<\/a>/g)];
-        for (const m of matches) {
-            const raw = m[1].replace(/&amp;/g, '&').replace(/&#39;/g, "'").trim();
-            const parts = raw.split(' - ');
-            if (parts.length >= 2) {
-                const artist = parts[0].trim();
-                const title = parts.slice(1).join(' - ').trim();
-                if (isValidRadioSong(artist, title)) {
-                    items.push({ artist, title, album: null, coverUrl: null, timestamp: null });
+        const blocks = html.split('class="track_history_item"');
+        for (let i = 1; i < blocks.length; i++) {
+            const b = blocks[i].slice(0, 1000);
+            const m = b.match(/class="ajax">([^<]+)<\/a>/);
+            if (m) {
+                const raw = m[1].replace(/&amp;/g, '&').replace(/&#39;/g, "'").trim();
+                const parts = raw.split(' - ');
+                if (parts.length >= 2) {
+                    const artist = parts[0].trim();
+                    const title = parts.slice(1).join(' - ').trim();
+                    if (isValidRadioSong(artist, title)) {
+                        items.push({ artist, title, album: null, coverUrl: null, timestamp: null });
+                    }
                 }
             }
         }
