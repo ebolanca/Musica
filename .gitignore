@@ -8,3 +8,7 @@ bin/
 *.log
 
 *cookies*.txt
+# Archivos temporales de audio y descargas
+data/temp_*
+data/*.mp3
+data/temp_downloads/
