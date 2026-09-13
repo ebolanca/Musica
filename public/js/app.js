@@ -1634,6 +1634,8 @@ function formatTime(seconds) {
     const cinemaSyncSlider = document.getElementById('cinema-sync-slider');
     const cinemaSyncValue = document.getElementById('cinema-sync-value');
     const btnSyncSave = document.getElementById('btn-sync-save');
+    const btnSyncAuto = document.getElementById('btn-sync-auto');
+    const btnSyncAutoText = document.getElementById('btn-sync-auto-text');
     const btnCinemaReplaceClean = document.getElementById('btn-cinema-replace-clean');
     const btnSyncMinus = document.getElementById('btn-sync-minus');
     const btnSyncPlus = document.getElementById('btn-sync-plus');
@@ -1676,27 +1678,59 @@ function formatTime(seconds) {
     if (cinemaSyncSlider) {
         cinemaSyncSlider.addEventListener('input', (e) => {
             updateLyricsSyncOffset(e.target.value);
+            if (currentPlayingSong) {
+                markTrackSyncManual(currentPlayingSong, true);
+            }
         });
     }
 
     if (btnSyncMinus) {
         btnSyncMinus.addEventListener('click', () => {
             updateLyricsSyncOffset((lyricsSyncOffset - 0.1).toFixed(1));
+            if (currentPlayingSong) {
+                markTrackSyncManual(currentPlayingSong, true);
+            }
         });
     }
 
     if (btnSyncPlus) {
         btnSyncPlus.addEventListener('click', () => {
             updateLyricsSyncOffset((lyricsSyncOffset + 0.1).toFixed(1));
+            if (currentPlayingSong) {
+                markTrackSyncManual(currentPlayingSong, true);
+            }
         });
     }
 
     if (cinemaSyncValue) {
         cinemaSyncValue.addEventListener('click', () => {
             updateLyricsSyncOffset(0.0);
-            showSyncNotification('Sincronía restablecida a 0.0s');
+            if (currentPlayingSong) {
+                markTrackSyncManual(currentPlayingSong, true);
+            }
+            showSyncNotification('Sincronía restablecida a 0.0s (Manual)');
         });
     }
+
+    if (btnSyncAuto) {
+        btnSyncAuto.addEventListener('click', () => {
+            const currentSong = currentPlayingSong || (cinemaCurrentTrackList ? cinemaCurrentTrackList[cinemaCurrentIndex] : null);
+            if (!currentSong) return;
+
+            const isManual = isTrackSyncManual(currentSong);
+            if (isManual) {
+                // Usuario quiere regresar a Auto
+                markTrackSyncManual(currentSong, false);
+                showSyncNotification('🪄 Modo Auto activado: auto-alineando letra...');
+                autoAlignLyricsWithAudio(currentSong, true);
+            } else {
+                // Usuario quiere cambiar a Manual y congelar el desfase actual
+                markTrackSyncManual(currentSong, true);
+                showSyncNotification('✋ Sincronía fijada en Manual para esta canción');
+            }
+        });
+    }
+
 
     
     // Función reutilizable para renderizar las líneas del karaoke
@@ -1776,6 +1810,9 @@ function formatTime(seconds) {
                         isUserScrollingCinema = false;
                         clearTimeout(userScrollTimer);
                         showSyncNotification(`📍 Subtítulos sincronizados (${newOffset >= 0 ? '+' : ''}${newOffset.toFixed(1)}s). Pulsa 💾 para grabar.`);
+                        if (currentPlayingSong) {
+                            markTrackSyncManual(currentPlayingSong, true);
+                        }
                     }
                 }
             });
@@ -1938,6 +1975,8 @@ function formatTime(seconds) {
 
                     renderCinemaLyricLines();
                     updateCinemaSubsDurationBadge();
+                    // Auto-alinear acústicamente si no tiene marca manual previa
+                    autoAlignLyricsWithAudio(track, false);
 
                     showSyncNotification(`✨ Versión de subs ${data.candidateIndex}/${data.totalCandidates} cargada (Duración: ${data.subsDuration})`);
                 } else {
@@ -2043,6 +2082,164 @@ function formatTime(seconds) {
 
 
 
+
+    function getTrackSyncKey(track) {
+        if (!track) return '';
+        return `${normalizeText(track.artist)}_${normalizeText(track.rawTitle || track.title)}`;
+    }
+
+    function isTrackSyncManual(track) {
+        if (!track) return false;
+        const key = getTrackSyncKey(track);
+        return safeStorage.getItem(`manual_sync_${key}`) === 'true';
+    }
+
+    function markTrackSyncManual(track, isManual = true) {
+        if (!track) return;
+        const key = getTrackSyncKey(track);
+        if (isManual) {
+            safeStorage.setItem(`manual_sync_${key}`, 'true');
+        } else {
+            safeStorage.removeItem(`manual_sync_${key}`);
+        }
+        updateSyncAutoButtonUI(isManual);
+    }
+
+    function updateSyncAutoButtonUI(isManual) {
+        if (!btnSyncAuto) return;
+        if (isManual) {
+            btnSyncAuto.classList.remove('active');
+            btnSyncAuto.classList.add('manual');
+            btnSyncAuto.innerHTML = '<i class="fa-solid fa-hand"></i> <span id="btn-sync-auto-text">Manual</span>';
+            btnSyncAuto.title = 'Ajuste manual guardado para esta canción. Pulsa para volver a Auto.';
+        } else {
+            btnSyncAuto.classList.add('active');
+            btnSyncAuto.classList.remove('manual');
+            btnSyncAuto.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> <span id="btn-sync-auto-text">Auto</span>';
+            btnSyncAuto.title = 'Auto-sincronización activa. Si mueves el slider o ajustas estrofas, se guardará en manual.';
+        }
+    }
+
+    // Auto-alineador acústico inteligente y ultraligero (<40ms)
+    let autoAligningTrackKey = null;
+    async function autoAlignLyricsWithAudio(track, force = false) {
+        if (!track || !cinemaParsedLyrics || cinemaParsedLyrics.length === 0) return;
+        const trackKey = getTrackSyncKey(track);
+
+        // Si ya está marcada como ajuste manual y no es forzado, respetar ajuste manual
+        if (!force && isTrackSyncManual(track)) {
+            updateSyncAutoButtonUI(true);
+            return;
+        }
+
+        // Buscar el primer timestamp cantado en la letra
+        const firstSingingLine = cinemaParsedLyrics.find(l => typeof l.seconds === 'number' && l.seconds > 1.5 && (l.text || '').trim().length > 1);
+        if (!firstSingingLine || typeof firstSingingLine.seconds !== 'number') {
+            updateSyncAutoButtonUI(false);
+            return;
+        }
+        const lrcFirstSec = firstSingingLine.seconds;
+
+        // Evitar múltiples análisis concurrentes para la misma pista
+        if (autoAligningTrackKey === trackKey) return;
+        autoAligningTrackKey = trackKey;
+
+        try {
+            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContextClass) return;
+
+            // Obtener primeros ~650 KB de audio (aprox. 18-25 segundos en 320kbps) mediante Range header ultra-rápido
+            const audioUrl = track.audioUrl || (mainMusicAudio ? mainMusicAudio.src : null);
+            if (!audioUrl) return;
+
+            const res = await fetch(audioUrl, {
+                headers: { 'Range': 'bytes=0-655360' }
+            });
+            if (!res.ok && res.status !== 206) return;
+            const arrayBuf = await res.arrayBuffer();
+
+            // Decodificar offline en buffer de audio
+            const tempCtx = new (window.AudioContext || window.webkitAudioContext)();
+            let audioBuffer = null;
+            try {
+                audioBuffer = await tempCtx.decodeAudioData(arrayBuf);
+            } catch(decErr) {
+                // Si el chunk parcial no pudo decodificarse como stream cerrado, intentar con AudioContext existente
+                tempCtx.close().catch(()=>{});
+                return;
+            }
+            tempCtx.close().catch(()=>{});
+
+            if (!audioBuffer) return;
+
+            const channelData = audioBuffer.getChannelData(0);
+            const sampleRate = audioBuffer.sampleRate;
+            const windowSize = Math.floor(sampleRate * 0.05); // Bloques de 50ms
+            const numBlocks = Math.floor(channelData.length / windowSize);
+
+            // Calcular envolvente de energía RMS por bloque de 50ms
+            const rmsProfile = [];
+            let maxRms = 0;
+            let ambientRms = 0;
+            for (let i = 0; i < numBlocks; i++) {
+                let sumSq = 0;
+                const startIdx = i * windowSize;
+                for (let j = 0; j < windowSize; j++) {
+                    const sample = channelData[startIdx + j];
+                    sumSq += sample * sample;
+                }
+                const rms = Math.sqrt(sumSq / windowSize);
+                rmsProfile.push(rms);
+                if (rms > maxRms) maxRms = rms;
+                if (i < 20) ambientRms += rms; // Primer segundo como referencia ambiental
+            }
+            ambientRms = ambientRms / Math.min(20, rmsProfile.length);
+
+            // Umbral de ataque vocal: aumento notable sobre el fondo instrumental/silencio
+            const vocalThreshold = Math.max(0.045, ambientRms * 2.2, maxRms * 0.22);
+            let detectedVocalSec = null;
+
+            // Buscar el primer punto donde la energía vocal se sostiene durante al menos 150ms (3 bloques)
+            for (let i = 4; i < numBlocks - 3; i++) {
+                const bTime = (i * windowSize) / sampleRate;
+                if (bTime < 1.0) continue; // Ignorar el primer segundo
+                if (rmsProfile[i] >= vocalThreshold && rmsProfile[i+1] >= vocalThreshold && rmsProfile[i+2] >= vocalThreshold * 0.8) {
+                    detectedVocalSec = parseFloat(bTime.toFixed(1));
+                    break;
+                }
+            }
+
+            if (detectedVocalSec !== null) {
+                // Desfase estimado = (Letra - Audio Real)
+                // Si letra dice 16.0s y la voz real entra en 13.5s, desfase = -2.5s
+                let calcOffset = parseFloat((firstSingingLine.seconds - detectedVocalSec).toFixed(1));
+
+                // Limitar a un rango plausible (-12s a +12s)
+                if (calcOffset >= -12.0 && calcOffset <= 12.0) {
+                    // Si el desfase es menor de 0.4s, consideramos que ya está perfecto en 0.0s
+                    if (Math.abs(calcOffset) < 0.4) calcOffset = 0.0;
+
+                    // Solo aplicar si no se ha cambiado la pista mientras decodificaba
+                    if (currentPlayingSong && getTrackSyncKey(currentPlayingSong) === trackKey) {
+                        if (!isTrackSyncManual(currentPlayingSong)) {
+                            updateLyricsSyncOffset(calcOffset);
+                            updateSyncAutoButtonUI(false);
+                            if (calcOffset !== 0.0) {
+                                showSyncNotification(`🪄 Auto-sincronía aplicada (${calcOffset > 0 ? '+' : ''}${calcOffset.toFixed(1)}s)`);
+                            }
+                        }
+                    }
+                }
+            }
+        } catch(e) {
+            console.warn('Auto-alineador acústico:', e);
+        } finally {
+            if (autoAligningTrackKey === trackKey) {
+                autoAligningTrackKey = null;
+            }
+        }
+    }
+
     function loadTrackSyncOffset(track) {
         if (!track) return;
         const key = `offset_${normalizeText(track.artist)}_${normalizeText(track.title)}`;
@@ -2050,9 +2247,10 @@ function formatTime(seconds) {
         const val = safeStorage.getItem(key);
         if (val !== null) saved = parseFloat(val);
         updateLyricsSyncOffset(saved);
-        
-        // Reset pin mode on song change
-        
+
+        // Reflejar si la canción tiene preferencia manual guardada
+        const isManual = isTrackSyncManual(track);
+        updateSyncAutoButtonUI(isManual);
     }
 
     
@@ -3635,6 +3833,8 @@ function formatTime(seconds) {
 
                     renderCinemaLyricLines();
                     updateCinemaSubsDurationBadge();
+                    // Auto-alinear acústicamente si no tiene marca manual previa
+                    autoAlignLyricsWithAudio(track, false);
 
                     // Si hay líneas pendientes de traducir, auto-refrescar en 1.5s sin interrumpir la reproducción
                     const hasUntranslatedLines = d.lyrics.some(l => (l.text || '').trim().length > 3 && (!l.translation || l.translation.trim().length === 0));

@@ -5514,3 +5514,54 @@ video {
 .cinema-overlay.tv-mode .cinema-analysis-container {
     max-height: 85vh !important;
 }
+
+
+/* ==========================================================================
+   🪄 Botón Auto / Manual de Sincronización de Letras (Karaoke Cine)
+   ========================================================================== */
+.btn-sync-auto {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #94a3b8;
+  padding: 6px 13px;
+  border-radius: 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+
+.btn-sync-auto:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.btn-sync-auto.active {
+  background: rgba(16, 185, 129, 0.18) !important;
+  border-color: rgba(16, 185, 129, 0.5) !important;
+  color: #34d399 !important;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.25);
+}
+
+.btn-sync-auto.active:hover {
+  background: rgba(16, 185, 129, 0.3) !important;
+  border-color: #10b981 !important;
+  color: #fff !important;
+}
+
+.btn-sync-auto.manual {
+  background: rgba(245, 158, 11, 0.15) !important;
+  border-color: rgba(245, 158, 11, 0.45) !important;
+  color: #fbbf24 !important;
+}
+
+.btn-sync-auto.manual:hover {
+  background: rgba(245, 158, 11, 0.25) !important;
+  border-color: #f59e0b !important;
+  color: #fff !important;
+}
