@@ -2453,9 +2453,8 @@ function formatTime(seconds) {
             return;
         }
 
-        // 1. CONDICIÓN: Solo en modos de reproducción aleatoria (Shuffle)
-        const isShuffle = (playbackMode === 'playlist_shuffle' || playbackMode === 'party_dj' || playbackMode === 'search_shuffle');
-        if (!isShuffle) {
+        // 1. CONDICIÓN: Activo en reproducción continua (no saltar si está en modo repetir 1 pista)
+        if (playbackMode === 'repeat_one') {
             silenceConsecutiveDuration = 0;
             lastSilenceCheckTimestamp = null;
             return;
@@ -2465,13 +2464,19 @@ function formatTime(seconds) {
         const curr = mainMusicAudio.currentTime;
         if (!dur || isNaN(dur) || dur < 25) return;
 
-        // 2. CANDADO 1: Ventana de Zona Final. Solo en los últimos 12 segundos antes del fin
+        // 2. CANDADO 1: Ventana de Zona Final ampliada (hasta 35s antes del fin para canciones con colas largas o vídeos)
         const remaining = dur - curr;
-        if (remaining > 12) {
+        if (remaining > 35) {
             silenceConsecutiveDuration = 0;
             lastSilenceCheckTimestamp = null;
             return;
         }
+
+        // Umbral dinámico de duración según lo cerca que esté del final:
+        // - Si faltan más de 15s (ej. 25-30s como videoclips): requiere 2.2s de silencio absoluto
+        // - Si faltan entre 3s y 15s: requiere 1.4s de silencio
+        // - Si faltan menos de 3s: con 0.8s ya salta limpiamente
+        const requiredSilenceSec = remaining > 15 ? 2.2 : (remaining > 3 ? 1.4 : 0.8);
 
         // 3. CANDADO 2: Medición de nivel sonoro (RMS acústico real)
         const now = performance.now();
@@ -2487,22 +2492,22 @@ function formatTime(seconds) {
                     sumSq += silenceSampleBuffer[i] * silenceSampleBuffer[i];
                 }
                 const rms = Math.sqrt(sumSq / silenceSampleBuffer.length);
-                // Nivel inferior a -54 dB (amplitud RMS < 0.0025) = silencio humano absoluto
-                if (rms < 0.0025) {
+                // Nivel inferior a -50.5 dB (amplitud RMS < 0.003) = silencio humano / ausencia de señal
+                if (rms < 0.003) {
                     isSilent = true;
                 }
             } catch(e) {
                 isSilent = false;
             }
         } else {
-            // Si Web Audio no está disponible, salto seguro solo en los últimos 1.2 segundos
-            if (remaining <= 1.2) isSilent = true;
+            // Si Web Audio no está disponible, salto seguro en los últimos 1.5 segundos
+            if (remaining <= 1.5) isSilent = true;
         }
 
-        // 4. CANDADO 3: Silencio continuo sostenido (al menos 1.8 segundos acumulados)
+        // 4. CANDADO 3: Silencio continuo sostenido
         if (isSilent) {
             silenceConsecutiveDuration += deltaSec;
-            if (silenceConsecutiveDuration >= 1.8) {
+            if (silenceConsecutiveDuration >= requiredSilenceSec) {
                 console.log(`[Auto-Skip Silencio] Silencio final detectado (${silenceConsecutiveDuration.toFixed(1)}s en remaining ${remaining.toFixed(1)}s). Pasando a siguiente pista...`);
                 isAutoSkippingSilence = true;
                 silenceConsecutiveDuration = 0;

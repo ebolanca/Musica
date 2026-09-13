@@ -89609,9 +89609,10 @@
     "releaseYear": "1994",
     "releaseDate": "1994-01-03",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4b8a0d20349ac9e597dc85c136a032c3/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 255000,
-    "durationFmt": "04:15",
-    "source": "Deezer Official Master Catalog"
+    "durationMs": 251500,
+    "durationFmt": "04:11",
+    "source": "Deezer Official Master Catalog",
+    "audioUrl": "/media-music/M%C3%BAsica%20viejuna/Ice%20Mc%20-%20It's%20a%20Rainy%20Day.mp3"
   },
   "icemcitsarainyday": {
     "title": "It's a Rainy Day",
