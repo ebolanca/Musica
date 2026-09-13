@@ -2154,8 +2154,9 @@ function formatTime(seconds) {
                 compressorNode.connect(analyserNode);
                 analyserNode.connect(audioCtx.destination);
             } else {
-                // Bypass directo sin procesamiento
-                audioSourceNode.connect(audioCtx.destination);
+                // Bypass directo a salida pasando por analizador para visualización y salto de silencios
+                audioSourceNode.connect(analyserNode);
+                analyserNode.connect(audioCtx.destination);
             }
         } catch(e) {
             console.log('Error conectando ruta de normalización:', e.message);
@@ -2238,6 +2239,89 @@ function formatTime(seconds) {
         mainMusicAudio.addEventListener('pause', () => {
             releaseWakeLock();
         });
+
+    // ==========================================================================
+    // 🔇 DETECCIÓN INTELIGENTE DE SILENCIOS FINALES (GAPLESS SHUFFLE)
+    // ==========================================================================
+    let silenceConsecutiveDuration = 0;
+    let lastSilenceCheckTimestamp = null;
+    let isAutoSkippingSilence = false;
+    const silenceSampleBuffer = new Float32Array(512);
+
+    function checkEndOfTrackSilence() {
+        if (!mainMusicAudio || mainMusicAudio.paused || mainMusicAudio.ended || isAutoSkippingSilence) {
+            silenceConsecutiveDuration = 0;
+            lastSilenceCheckTimestamp = null;
+            return;
+        }
+
+        // 1. CONDICIÓN: Solo en modos de reproducción aleatoria (Shuffle)
+        const isShuffle = (playbackMode === 'playlist_shuffle' || playbackMode === 'party_dj' || playbackMode === 'search_shuffle');
+        if (!isShuffle) {
+            silenceConsecutiveDuration = 0;
+            lastSilenceCheckTimestamp = null;
+            return;
+        }
+
+        const dur = mainMusicAudio.duration;
+        const curr = mainMusicAudio.currentTime;
+        if (!dur || isNaN(dur) || dur < 25) return;
+
+        // 2. CANDADO 1: Ventana de Zona Final. Solo en los últimos 12 segundos antes del fin
+        const remaining = dur - curr;
+        if (remaining > 12) {
+            silenceConsecutiveDuration = 0;
+            lastSilenceCheckTimestamp = null;
+            return;
+        }
+
+        // 3. CANDADO 2: Medición de nivel sonoro (RMS acústico real)
+        const now = performance.now();
+        const deltaSec = lastSilenceCheckTimestamp ? Math.min(0.5, (now - lastSilenceCheckTimestamp) / 1000) : 0.25;
+        lastSilenceCheckTimestamp = now;
+
+        let isSilent = false;
+        if (analyserNode && audioCtx && audioCtx.state === 'running') {
+            try {
+                analyserNode.getFloatTimeDomainData(silenceSampleBuffer);
+                let sumSq = 0;
+                for (let i = 0; i < silenceSampleBuffer.length; i++) {
+                    sumSq += silenceSampleBuffer[i] * silenceSampleBuffer[i];
+                }
+                const rms = Math.sqrt(sumSq / silenceSampleBuffer.length);
+                // Nivel inferior a -54 dB (amplitud RMS < 0.0025) = silencio humano absoluto
+                if (rms < 0.0025) {
+                    isSilent = true;
+                }
+            } catch(e) {
+                isSilent = false;
+            }
+        } else {
+            // Si Web Audio no está disponible, salto seguro solo en los últimos 1.2 segundos
+            if (remaining <= 1.2) isSilent = true;
+        }
+
+        // 4. CANDADO 3: Silencio continuo sostenido (al menos 1.8 segundos acumulados)
+        if (isSilent) {
+            silenceConsecutiveDuration += deltaSec;
+            if (silenceConsecutiveDuration >= 1.8) {
+                console.log(`[Auto-Skip Silencio] Silencio final detectado (${silenceConsecutiveDuration.toFixed(1)}s en remaining ${remaining.toFixed(1)}s). Pasando a siguiente pista...`);
+                isAutoSkippingSilence = true;
+                silenceConsecutiveDuration = 0;
+                lastSilenceCheckTimestamp = null;
+
+                showSyncNotification('⏭️ Silencio final omitido: siguiente canción');
+
+                // Avanzar de pista simulando el evento ended nativo del reproductor
+                mainMusicAudio.dispatchEvent(new Event('ended'));
+                setTimeout(() => { isAutoSkippingSilence = false; }, 1500);
+            }
+        } else {
+            // Si vuelve a sonar cualquier sonido, reiniciar el acumulador
+            silenceConsecutiveDuration = 0;
+        }
+    }
+
         mainMusicAudio.addEventListener('timeupdate', () => {
             if (!mainMusicAudio.duration) return;
             const curr = mainMusicAudio.currentTime;
@@ -2253,6 +2337,9 @@ function formatTime(seconds) {
             if (cinemaSeekSlider && !cinemaSeekSlider.dragging) {
                 cinemaSeekSlider.value = (curr / dur) * 100;
             }
+
+            // Detección de silencios finales en modo aleatorio
+            checkEndOfTrackSilence();
 
 
 

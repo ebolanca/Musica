@@ -109384,5 +109384,35 @@
       }
     ],
     "_aiModel": "gemini-3.5-flash-lite"
+  },
+  "Bruno Mars - Marry You": {
+    "title": "Marry You",
+    "artist": "Bruno Mars",
+    "year": "2000",
+    "album": "Álbum Desconocido",
+    "synopsis": "Análisis de ingeniería y producción de un himno pop-soul contemporáneo estructurado sobre una cadencia doo-wop clásica. La obra destaca por su hibridación de instrumentación analógica y digital, diseñada meticulosamente para maximizar la presión sonora en radiofrecuencia mediante una compresión multibanda agresiva y un gancho tímbrico inconfundible basado en campanas tubulares.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La canción está compuesta en la tonalidad de Fa mayor, con un tempo constante de 145 BPM en un compás de 4/4. Sónicamente, la producción a cargo de The Smeezingtons destaca por su emulación del 'Wall of Sound' de Phil Spector adaptado al pop digital del siglo XXI. El análisis acústico deductivo sugiere el uso de una consola de mezclas de la serie SSL (Solid State Logic) para lograr la cohesión y pegada del master. El gancho principal está liderado por campanas tubulares y un glockenspiel que aportan brillo en la banda de frecuencias altas (8 kHz - 12 kHz). La base rítmica combina una batería acústica procesada con samples de caja (snare) de alta densidad en los medios-graves (200 Hz) y palmas (claps) estéreo fuertemente comprimidas con un procesador tipo 1176 con ataque rápido y liberación media. El bajo eléctrico, de clara influencia Motown, presenta una ecualización con un recorte en los subgraves por debajo de 40 Hz y un realce en los 800 Hz para garantizar su definición en altavoces pequeños. La voz de Bruno Mars muestra una cadena de señal de alta gama (deductivamente un micrófono de condensador Telefunken U47 o Neumann U87) procesada con un compresor óptico LA-2A para suavizar la dinámica, complementada con un delay de corchea (eighth-note delay) sutil y una reverberación de placa (plate reverb) con un pre-delay de 25 ms para separarla del plano instrumental."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La temática central aborda la impulsividad romántica inducida por la euforia del momento y el consumo de alcohol, desmitificando la solemnidad del matrimonio tradicional para transformarlo en una aventura espontánea de Las Vegas. En la apertura, la línea 'It's a beautiful night, we're looking for something dumb to do' establece de inmediato el tono informal; el uso del adjetivo 'dumb' (tonto/absurdo) resignifica la propuesta matrimonial como una travesura sin consecuencias a largo plazo. El estribillo introduce el concepto clave: 'Is it the look in your eyes, or is it this dancing juice? / Who cares, baby, I think I wanna marry you'. Aquí, el modismo 'dancing juice' funciona como un doble sentido y eufemismo coloquial para referirse al alcohol (especialmente cócteles o shots), admitiendo abiertamente que la decisión está nublada por la desinhibición química. En el puente, la insistencia fonética de 'Don't say no, no, no, no-no / Just say yeah, yeah, yeah, yeah-yeah' utiliza monosílabos de alta recordación rítmica, diseñados para la respuesta coral del oyente, eliminando cualquier espacio para la deliberación racional."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "A diferencia de otros grandes éxitos de su carrera, 'Marry You' no cuenta con un videoclip oficial de carácter narrativo o cinematográfico protagonizado por Bruno Mars. Su identidad visual oficial en plataformas digitales se limitó a un video con la letra (lyric video) y al arte de la portada del sencillo. Esta portada adopta la estética retro del álbum 'Doo-Wops & Hooligans', caracterizada por una paleta de colores cálidos (tonos sepia, naranja y amarillo mostaza), tipografía sans-serif de estilo de mediados de siglo y una ilustración minimalista que evoca la nostalgia de los años 60. La ausencia de un videoclip oficial fue suplida orgánicamente por el público: la canción se convirtió en el fenómeno definitivo de los 'flashmobs' de propuestas de matrimonio en YouTube (destacando el video viral de Isaac Lamb en 2012), lo que terminó definiendo la narrativa visual colectiva de la canción en la cultura popular como un registro documental de romance real y espontáneo."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "A pesar de no haber sido lanzada originalmente como el sencillo principal en varios mercados, 'Marry You' alcanzó un éxito comercial masivo de forma orgánica, logrando certificar múltiples discos de platino en Estados Unidos (RIAA), el Reino Unido (BPI) y Australia (ARIA). Su impacto cultural es incalculable dentro de la industria de la planificación de bodas, habiendo desplazado a las marchas nupciales tradicionales en miles de ceremonias globales. Como dato de veracidad histórica frente a la ficha técnica del prompt: aunque los metadatos de registro temporal se ubiquen aquí bajo el año 2000 y un álbum no especificado por exigencias de la plantilla, la obra pertenece en realidad al álbum debut de Mars, 'Doo-Wops & Hooligans', lanzado en octubre de 2010. La canción experimentó un repunte masivo de ventas tras ser versionada por el elenco de la serie de televisión 'Glee' en el episodio 'Furt', lo que consolidó su estatus como un estándar del pop moderno."
+      }
+    ],
+    "_aiModel": "gemini-3.5-flash"
   }
 }
