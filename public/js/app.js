@@ -1975,8 +1975,17 @@ function formatTime(seconds) {
 
                     renderCinemaLyricLines();
                     updateCinemaSubsDurationBadge();
+
+                    // Actualizar caché de letras en memoria para mantener la versión elegida
+                    const trackKey = getTrackPreloadKey(currentSong);
+                    const cached = preloadedDetailsCache.get(trackKey);
+                    if (cached) {
+                        cached.lyrics = cinemaParsedLyrics;
+                        preloadedDetailsCache.set(trackKey, cached);
+                    }
+
                     // Auto-alinear acústicamente si no tiene marca manual previa
-                    autoAlignLyricsWithAudio(track, false);
+                    autoAlignLyricsWithAudio(currentSong, false);
 
                     showSyncNotification(`✨ Versión de subs ${data.candidateIndex}/${data.totalCandidates} cargada (Duración: ${data.subsDuration})`);
                 } else {
@@ -3838,8 +3847,17 @@ function formatTime(seconds) {
 
                     renderCinemaLyricLines();
                     updateCinemaSubsDurationBadge();
+
+                    // Actualizar caché de letras en memoria para mantener la versión elegida
+                    const trackKey = getTrackPreloadKey(currentSong);
+                    const cached = preloadedDetailsCache.get(trackKey);
+                    if (cached) {
+                        cached.lyrics = cinemaParsedLyrics;
+                        preloadedDetailsCache.set(trackKey, cached);
+                    }
+
                     // Auto-alinear acústicamente si no tiene marca manual previa
-                    autoAlignLyricsWithAudio(track, false);
+                    autoAlignLyricsWithAudio(currentSong, false);
 
                     // Si hay líneas pendientes de traducir, auto-refrescar en 1.5s sin interrumpir la reproducción
                     const hasUntranslatedLines = d.lyrics.some(l => (l.text || '').trim().length > 3 && (!l.translation || l.translation.trim().length === 0));
