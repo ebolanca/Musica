@@ -109444,5 +109444,34 @@
       }
     ],
     "_aiModel": "gemini-3.5-flash"
+  },
+  "Cancion De Prueba Ficticia": {
+    "title": "Cancion De Prueba Ficticia",
+    "artist": "Test Verificacion Claude",
+    "year": "2000",
+    "album": "Álbum oficial",
+    "synopsis": "Obra de naturaleza sintética diseñada para la verificación de protocolos de análisis técnico. La estructura sónica se fundamenta en un patrón de referencia estándar con respuesta de frecuencia plana, carente de matices artísticos complejos. Su valor reside exclusivamente en su función como marcador de control para sistemas de procesamiento de datos.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción presenta un espectro de frecuencias balanceado artificialmente con una ausencia total de saturación armónica o artefactos de compresión analógica. Deducción técnica: La pista carece de capas de instrumentos orgánicos, basándose en un motor de síntesis de prueba que genera ondas sinusoidales puras. La imagen estéreo es estática, sin automatización de paneo, lo que indica una mezcla realizada en un entorno virtual sin procesamiento de reverberación por convolución ni modelado de consolas físicas."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra carece de carga semántica o trasfondo emocional, funcionando únicamente como un 'placeholder' de texto. Fragmento: 'Esto es una prueba de verificación'. Vocabulario: El término 'verificación' se emplea aquí en su acepción técnica de validación de integridad de datos, sin dobles sentidos ni tropos literarios. La autopsia del verso confirma una estructura silábica monótona destinada a medir la latencia de respuesta en lugar de la expresividad lírica."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "No existe videoclip oficial ni material audiovisual vinculado a esta obra. La identidad visual se limita a metadatos de texto plano. No hay una dirección artística, fotografía o simbolismo que analizar, dado que el producto se circunscribe estrictamente al dominio de la señal acústica de prueba."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "Impacto cultural nulo. La pieza no ha sido registrada en listas de éxitos, plataformas de streaming comerciales o registros de derechos de autor. Su existencia es puramente funcional dentro de entornos de desarrollo y pruebas de inteligencia artificial. No existen anécdotas, sincronizaciones ni repercusión en la industria musical profesional."
+      }
+    ]
   }
 }

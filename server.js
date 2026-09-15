@@ -374,7 +374,6 @@ Debes responder ÚNICAMENTE con un objeto JSON válido con esta estructura exact
   ]
 }`;
 
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiKey}`;
         const payload = JSON.stringify({
             contents: [{ parts: [{ text: prompt }] }],
             generationConfig: {
@@ -383,29 +382,38 @@ Debes responder ÚNICAMENTE con un objeto JSON válido con esta estructura exact
             }
         });
 
-        try {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: payload,
-                signal: AbortSignal.timeout(25000)
-            });
+        // El modelo fijo anterior (gemini-2.0-flash) fue descontinuado por Google (404).
+        // Se rota por la misma lista de fallback que usa scripts/worker_ai_analyses.js.
+        const geminiModels = ['gemini-3.5-flash', 'gemini-3.5-flash-lite', 'gemini-3.1-flash-lite'];
 
-            if (response.ok) {
-                const data = await response.json();
-                const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-                if (text) {
-                    const parsed = JSON.parse(text);
-                    if (parsed && parsed.synopsis && parsed.sections) {
-                        return parsed;
+        for (const model of geminiModels) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${geminiKey}`;
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: payload,
+                    signal: AbortSignal.timeout(25000)
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+                    if (text) {
+                        const parsed = JSON.parse(text);
+                        if (parsed && parsed.synopsis && parsed.sections) {
+                            return parsed;
+                        }
                     }
+                } else if (response.status === 429) {
+                    console.warn(`⚠️ Cuota agotada en modelo [${model}]. Probando siguiente...`);
+                } else {
+                    const errText = await response.text();
+                    console.error(`[Gemini API error ${response.status} en ${model}]:`, errText);
                 }
-            } else {
-                const errText = await response.text();
-                console.error(`[Gemini API error ${response.status}]:`, errText);
+            } catch (e) {
+                console.error(`[Gemini API catch en ${model}]:`, e.message);
             }
-        } catch (e) {
-            console.error(`[Gemini API catch]:`, e.message);
         }
     }
 
