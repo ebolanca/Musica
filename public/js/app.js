@@ -1719,20 +1719,23 @@ function formatTime(seconds) {
     }
 
     if (btnSyncAuto) {
-        btnSyncAuto.addEventListener('click', () => {
+        btnSyncAuto.addEventListener('click', async () => {
             const currentSong = currentPlayingSong || (cinemaCurrentTrackList ? cinemaCurrentTrackList[cinemaCurrentIndex] : null);
             if (!currentSong) return;
 
-            const isManual = isTrackSyncManual(currentSong);
-            if (isManual) {
-                // Usuario quiere regresar a Auto
-                markTrackSyncManual(currentSong, false);
-                showSyncNotification('🪄 Modo Auto activado: auto-alineando letra...');
-                autoAlignLyricsWithAudio(currentSong, true);
-            } else {
-                // Usuario quiere cambiar a Manual y congelar el desfase actual
-                markTrackSyncManual(currentSong, true);
-                showSyncNotification('✋ Sincronía fijada en Manual para esta canción');
+            btnSyncAuto.disabled = true;
+            btnSyncAuto.classList.add('loading');
+            btnSyncAuto.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span id="btn-sync-auto-text">Calculando...</span>';
+
+            showSyncNotification('🪄 Analizando audio para estimar inicio vocal...');
+            try {
+                await autoAlignLyricsWithAudio(currentSong, true);
+            } catch(e) {
+                console.warn('Error en auto-alineación:', e);
+            } finally {
+                btnSyncAuto.disabled = false;
+                btnSyncAuto.classList.remove('loading');
+                btnSyncAuto.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> <span id="btn-sync-auto-text">Auto</span>';
             }
         });
     }
@@ -2226,25 +2229,26 @@ function formatTime(seconds) {
 
             if (detectedVocalSec !== null) {
                 // Desfase estimado = (Letra - Audio Real)
-                // Si letra dice 16.0s y la voz real entra en 13.5s, desfase = -2.5s
                 let calcOffset = parseFloat((firstSingingLine.seconds - detectedVocalSec).toFixed(1));
 
-                // Limitar a un rango plausible (-12s a +12s)
-                if (calcOffset >= -12.0 && calcOffset <= 12.0) {
-                    // Si el desfase es menor de 0.4s, consideramos que ya está perfecto en 0.0s
+                if (calcOffset >= -15.0 && calcOffset <= 15.0) {
                     if (Math.abs(calcOffset) < 0.4) calcOffset = 0.0;
 
-                    // Solo aplicar si no se ha cambiado la pista mientras decodificaba
                     if (currentPlayingSong && getTrackSyncKey(currentPlayingSong) === trackKey) {
-                        if (!isTrackSyncManual(currentPlayingSong)) {
-                            updateLyricsSyncOffset(calcOffset);
-                            updateSyncAutoButtonUI(false);
-                            if (calcOffset !== 0.0) {
-                                showSyncNotification(`🪄 Auto-sincronía aplicada (${calcOffset > 0 ? '+' : ''}${calcOffset.toFixed(1)}s)`);
-                            }
+                        updateLyricsSyncOffset(calcOffset);
+                        if (btnSyncAuto) btnSyncAuto.classList.add('active');
+                        if (calcOffset !== 0.0) {
+                            showSyncNotification(`🪄 Auto-sincronía aplicada (${calcOffset > 0 ? '+' : ''}${calcOffset.toFixed(1)}s). Pulsa 💾 para grabar.`);
+                            markTrackSyncManual(currentPlayingSong, true);
+                        } else {
+                            showSyncNotification('ℹ️ La letra ya parece alineada con la voz (desfase < 0.4s)');
                         }
                     }
+                } else if (force) {
+                    showSyncNotification(`⚠️ Desfase calculado (${calcOffset.toFixed(1)}s) fuera de rango seguro (-15s a +15s). Usa el anclaje manual.`);
                 }
+            } else if (force) {
+                showSyncNotification('ℹ️ No se detectó inicio vocal claro en los primeros compases. Usa el anclaje manual con 1 clic en la estrofa.');
             }
         } catch(e) {
             console.warn('Auto-alineador acústico:', e);
@@ -3854,11 +3858,7 @@ function formatTime(seconds) {
                     renderCinemaLyricLines();
                     updateCinemaSubsDurationBadge();
 
-                    // Auto-alinear acústicamente si no tiene marca manual previa
-                    const activeTrack = track || currentPlayingSong;
-                    if (activeTrack) {
-                        autoAlignLyricsWithAudio(activeTrack, false);
-                    }
+                    // (Auto-alineación bajo demanda: sólo al pulsar 🪄 Auto o por anclaje manual con 1 clic en la estrofa)
 
                     // Si hay líneas pendientes de traducir, auto-refrescar en 1.5s sin interrumpir la reproducción
                     const hasUntranslatedLines = d.lyrics.some(l => (l.text || '').trim().length > 3 && (!l.translation || l.translation.trim().length === 0));
