@@ -35,12 +35,29 @@ function loadDb() {
     return {};
 }
 
+// server.js (proceso pm2 separado) escribe este mismo archivo en paralelo mientras este
+// worker corre durante horas con una copia en memoria. Antes de guardar, se relee el disco
+// y se fusiona (disco primero, memoria de este worker encima) para no pisar análisis que
+// el servidor haya guardado mientras tanto, y se muta `db` in-place para que el resto del
+// bucle del worker siga operando sobre el estado fusionado. Escritura atómica (temp+rename)
+// para evitar EBUSY y archivos truncados si coincide con la escritura del servidor.
 function saveDb(db) {
-    fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2), 'utf8');
+    let diskDb = {};
+    if (fs.existsSync(DB_PATH)) {
+        try { diskDb = JSON.parse(fs.readFileSync(DB_PATH, 'utf8')); } catch(e) {}
+    }
+    const merged = { ...diskDb, ...db };
+    for (const k of Object.keys(merged)) db[k] = merged[k];
+
+    const dataStr = JSON.stringify(db, null, 2);
+    const tmpPath = `${DB_PATH}.tmp${process.pid}`;
+    fs.writeFileSync(tmpPath, dataStr, 'utf8');
+    fs.renameSync(tmpPath, DB_PATH);
+
     // Sincronizar en OMEN si está accesible
     try {
         if (fs.existsSync(path.dirname(OMEN_DB_PATH))) {
-            fs.copyFileSync(DB_PATH, OMEN_DB_PATH);
+            fs.writeFileSync(OMEN_DB_PATH, dataStr, 'utf8');
         }
     } catch(e) {}
 }

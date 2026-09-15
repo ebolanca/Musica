@@ -89,23 +89,35 @@ function loadAnalysesDb() {
 }
 loadAnalysesDb();
 
+// scripts/worker_ai_analyses.js (proceso pm2 separado) escribe este mismo archivo en
+// paralelo. Antes de guardar, se relee el disco y se fusiona con la copia en memoria
+// (disco primero, memoria encima) para no perder entradas que el worker haya añadido
+// desde el último load; y se escribe de forma atómica (temp + rename) para evitar tanto
+// los EBUSY por colisión de escritura como archivos truncados si el proceso muere a mitad.
+function persistAnalysesDb() {
+    try {
+        let diskDb = {};
+        if (fs.existsSync(ANALYSES_DB_PATH)) {
+            try { diskDb = JSON.parse(fs.readFileSync(ANALYSES_DB_PATH, 'utf8')); } catch(e) {}
+        }
+        cachedAnalyses = { ...diskDb, ...cachedAnalyses };
+        const dataStr = JSON.stringify(cachedAnalyses, null, 2);
+        const tmpPath = `${ANALYSES_DB_PATH}.tmp${process.pid}`;
+        fs.writeFileSync(tmpPath, dataStr, 'utf8');
+        fs.renameSync(tmpPath, ANALYSES_DB_PATH);
+        if (!IS_RUNNING_ON_OMEN) {
+            const REMOTE_ANALYSES_DB = "\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\analyses_db.json";
+            fs.writeFile(REMOTE_ANALYSES_DB, dataStr, 'utf8', () => {});
+        }
+    } catch(e) {
+        console.error("Error persistiendo analyses_db:", e.message);
+    }
+}
+
 let analysesSaveTimer = null;
 function saveAnalysesDbDebounced() {
     if (analysesSaveTimer) clearTimeout(analysesSaveTimer);
-    analysesSaveTimer = setTimeout(() => {
-        try {
-            const dataStr = JSON.stringify(cachedAnalyses, null, 2);
-            fs.writeFile(ANALYSES_DB_PATH, dataStr, 'utf8', (err) => {
-                if (err) console.error("Error guardando analyses_db:", err.message);
-            });
-            if (!IS_RUNNING_ON_OMEN) {
-                const REMOTE_ANALYSES_DB = "\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\analyses_db.json";
-                fs.writeFile(REMOTE_ANALYSES_DB, dataStr, 'utf8', () => {});
-            }
-        } catch(e) {
-            console.error("Error en saveAnalysesDbDebounced:", e.message);
-        }
-    }, 1500);
+    analysesSaveTimer = setTimeout(persistAnalysesDb, 1500);
 }
 function saveAnalysesDb() {
     saveAnalysesDbDebounced();
@@ -1493,7 +1505,7 @@ app.post('/api/analysis/generate', async (req, res) => {
             cachedAnalyses[`${artist} - ${title}`] = analysis;
             cachedAnalyses[cleanT] = analysis;
             try {
-                fs.writeFileSync(ANALYSES_DB_PATH, JSON.stringify(cachedAnalyses, null, 2), 'utf8');
+                persistAnalysesDb();
             } catch(e) {
                 console.error("Error persistiendo analysis en DB:", e.message);
             }
@@ -1887,7 +1899,7 @@ app.get('/api/track/detail', async (req, res) => {
                 cachedAnalyses[`${artist} - ${title}`] = aiAnalysis;
                 cachedAnalyses[cleanT] = aiAnalysis;
                 try {
-                    fs.writeFileSync(ANALYSES_DB_PATH, JSON.stringify(cachedAnalyses, null, 2), 'utf8');
+                    persistAnalysesDb();
                 } catch(e){}
             }
         }).catch(()=>{});
