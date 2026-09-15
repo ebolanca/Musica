@@ -9651,18 +9651,18 @@
     "source": "Apple Music Original Studio Master Catalog"
   },
   "lady gaga, bruno mars - die with a smile": {
-    "title": "Super Bowl LX Halftime Show",
-    "displayTitle": "Super Bowl LX Halftime Show",
-    "artist": "Bad Bunny",
-    "album": "Super Bowl LX Halftime Show (Live) - EP",
-    "year": "2026",
-    "date": "2026-02-08",
-    "releaseYear": "2026",
-    "releaseDate": "2026-02-08",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/20/9a/fa/209afafa-4552-0407-6bbb-bc9214e5361d/8721465676662.png/1000x1000bb.jpg",
-    "durationMs": 821037,
-    "durationFmt": "13:41",
-    "source": "iTunes / Apple Music Original Studio Master"
+    "title": "Die With A Smile",
+    "displayTitle": "Die With A Smile",
+    "artist": "Lady Gaga, Bruno Mars",
+    "album": "Die With A Smile",
+    "year": "2024",
+    "date": "2024-08-16",
+    "releaseYear": "2024",
+    "releaseDate": "2024-08-16",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/11/ae/f2/11aef294-f57c-bab9-c9fc-529162984e62/24UMGIM85348.rgb.jpg/1000x1000bb.jpg",
+    "durationMs": 251668,
+    "durationFmt": "04:11",
+    "source": "Apple Music Official Studio Master Catalog"
   },
   "chappell roan - good luck, babe!": {
     "title": "Good Luck, Babe!",
@@ -55162,18 +55162,18 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "ladygagabrunomarsdiewithasmile": {
-    "title": "Super Bowl LX Halftime Show",
-    "displayTitle": "Super Bowl LX Halftime Show",
-    "artist": "Bad Bunny",
-    "album": "Super Bowl LX Halftime Show (Live) - EP",
-    "year": "2026",
-    "date": "2026-02-08",
-    "releaseYear": "2026",
-    "releaseDate": "2026-02-08",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/20/9a/fa/209afafa-4552-0407-6bbb-bc9214e5361d/8721465676662.png/1000x1000bb.jpg",
-    "durationMs": 821037,
-    "durationFmt": "13:41",
-    "source": "iTunes / Apple Music Original Studio Master"
+    "title": "Die With A Smile",
+    "displayTitle": "Die With A Smile",
+    "artist": "Lady Gaga, Bruno Mars",
+    "album": "Die With A Smile",
+    "year": "2024",
+    "date": "2024-08-16",
+    "releaseYear": "2024",
+    "releaseDate": "2024-08-16",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/11/ae/f2/11aef294-f57c-bab9-c9fc-529162984e62/24UMGIM85348.rgb.jpg/1000x1000bb.jpg",
+    "durationMs": 251668,
+    "durationFmt": "04:11",
+    "source": "Apple Music Official Studio Master Catalog"
   },
   "taylorswiftthefateofophelia": {
     "title": "The Fate of Ophelia (Track by Track)",
@@ -98595,14 +98595,16 @@
   "lady gaga bruno mars - die with a smile": {
     "title": "Die With A Smile",
     "displayTitle": "Die With A Smile",
-    "artist": "Lady Gaga Bruno Mars",
-    "album": "Die With A Smile - Single",
+    "artist": "Lady Gaga, Bruno Mars",
+    "album": "Die With A Smile",
     "year": "2024",
-    "releaseYear": "2024",
     "date": "2024-08-16",
+    "releaseYear": "2024",
     "releaseDate": "2024-08-16",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/11/ae/f2/11aef294-f57c-bab9-c9fc-529162984e62/24UMGIM85348.rgb.jpg/1000x1000bb.jpg",
-    "source": "Apple Music Original Studio Master Catalog"
+    "durationMs": 251668,
+    "durationFmt": "04:11",
+    "source": "Apple Music Official Studio Master Catalog"
   },
   "lana del rey cedric gervais - summertime sadness lana del rey vs cedric gervais - cedric gervais remix": {
     "title": "Summertime Sadness (Lana Del Rey Vs. Cedric Gervais) [Cedric Gervais Remix]",
@@ -100309,5 +100311,47 @@
     "releaseDate": "2012-11-20",
     "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/84/6d/92/846d926b-8290-3855-b32b-dd903cc9b1ad/13UMGIM26867.rgb.jpg/1000x1000bb.jpg",
     "source": "Apple Music Original Studio Master Catalog"
+  },
+  "lady gaga - die with a smile": {
+    "title": "Die With A Smile",
+    "displayTitle": "Die With A Smile",
+    "artist": "Lady Gaga, Bruno Mars",
+    "album": "Die With A Smile",
+    "year": "2024",
+    "date": "2024-08-16",
+    "releaseYear": "2024",
+    "releaseDate": "2024-08-16",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/11/ae/f2/11aef294-f57c-bab9-c9fc-529162984e62/24UMGIM85348.rgb.jpg/1000x1000bb.jpg",
+    "durationMs": 251668,
+    "durationFmt": "04:11",
+    "source": "Apple Music Official Studio Master Catalog"
+  },
+  "lady gaga bruno mars - die with a smile.mp3": {
+    "title": "Die With A Smile",
+    "displayTitle": "Die With A Smile",
+    "artist": "Lady Gaga, Bruno Mars",
+    "album": "Die With A Smile",
+    "year": "2024",
+    "date": "2024-08-16",
+    "releaseYear": "2024",
+    "releaseDate": "2024-08-16",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/11/ae/f2/11aef294-f57c-bab9-c9fc-529162984e62/24UMGIM85348.rgb.jpg/1000x1000bb.jpg",
+    "durationMs": 251668,
+    "durationFmt": "04:11",
+    "source": "Apple Music Official Studio Master Catalog"
+  },
+  "lady gaga, bruno mars - super bowl lx halftime show": {
+    "title": "Die With A Smile",
+    "displayTitle": "Die With A Smile",
+    "artist": "Lady Gaga, Bruno Mars",
+    "album": "Die With A Smile",
+    "year": "2024",
+    "date": "2024-08-16",
+    "releaseYear": "2024",
+    "releaseDate": "2024-08-16",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/11/ae/f2/11aef294-f57c-bab9-c9fc-529162984e62/24UMGIM85348.rgb.jpg/1000x1000bb.jpg",
+    "durationMs": 251668,
+    "durationFmt": "04:11",
+    "source": "Apple Music Official Studio Master Catalog"
   }
 }

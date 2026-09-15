@@ -17399,36 +17399,6 @@
     ],
     "_aiModel": "gemini-3.1-flash-lite"
   },
-  "Lady Gaga, Bruno Mars - Super Bowl LX Halftime Show": {
-    "title": "Super Bowl LX Halftime Show",
-    "artist": "Lady Gaga, Bruno Mars",
-    "year": "2026",
-    "album": "Super Bowl LX Halftime Show - EP",
-    "synopsis": "Producción híbrida diseñada para estadios de gran escala, optimizada para sistemas de refuerzo sonoro masivo (P.A. Line Array). La mezcla prioriza la inteligibilidad vocal sobre una base rítmica de alta presión sonora, integrando elementos de pop sintético con instrumentación orgánica de funk clásico. La obra funciona como un artefacto de ingeniería acústica enfocado en la contundencia dinámica y la claridad en entornos de alta reverberación.",
-    "sections": [
-      {
-        "title": "1. Anatomía Musical y Producción de Estudio",
-        "icon": "fa-sliders",
-        "text": "La arquitectura sonora se basa en una cadena de señal optimizada para el impacto transitorio. Deducción técnica: se emplean compresores de bus tipo SSL G-Series para cohesionar la mezcla, con una saturación armónica en los medios-graves (200Hz-400Hz) para aportar calidez al bajo sintético. La voz de Gaga utiliza una cadena de procesamiento con ecualización sustractiva agresiva en los 300Hz para evitar el enmascaramiento con los sintetizadores, mientras que la percusión de Mars presenta un 'sidechain' preciso sobre los pads para mantener el 'punch' del bombo. El espectro de agudos (8kHz-12kHz) está realzado mediante excitadores aurales para asegurar la presencia en sistemas de sonido abiertos."
-      },
-      {
-        "title": "2. Análisis Lírico y Desglose Verso a Verso",
-        "icon": "fa-align-left",
-        "text": "La lírica se centra en la dualidad entre el espectáculo y la vulnerabilidad del artista. Fragmento clave: 'Caught in the static of the neon light, we’re burning through the silence of the night'. El uso de 'static' funciona como metáfora de la sobreexposición mediática. 'Burning through' sugiere una urgencia performativa. El doble sentido reside en 'silence', que alude tanto a la calma antes del show como al vacío emocional tras la fama. La estructura es un 'call-and-response' clásico entre ambos artistas, diseñado para maximizar la interacción con la audiencia masiva."
-      },
-      {
-        "title": "3. Narrativa Visual y Videoclip",
-        "icon": "fa-film",
-        "text": "No existe un videoclip oficial de estudio, ya que el contenido visual está supeditado a la transmisión en vivo del evento Super Bowl LX. La identidad visual se define por una estética de alto contraste, utilizando iluminación estroboscópica sincronizada con el tempo (BPM) de la pista. La puesta en escena emplea proyecciones de mapeo sobre el campo, priorizando la escala monumental sobre la narrativa cinematográfica tradicional, buscando una estética de 'futurismo retro' que combina elementos de los años 80 con tecnología LED de última generación."
-      },
-      {
-        "title": "4. Impacto Cultural y Curiosidades",
-        "icon": "fa-award",
-        "text": "El impacto es de alcance global masivo debido a la plataforma del Super Bowl, pero su consumo como EP independiente es de nicho, orientado a coleccionistas y fans de la producción en vivo. No se trata de un lanzamiento de radiofórmula tradicional, sino de un registro de evento. La curiosidad técnica radica en la mezcla de audio 'in-ear' que ambos artistas utilizaron, la cual fue filtrada y masterizada posteriormente para el EP, manteniendo una fidelidad inusual para grabaciones de espectáculos deportivos en vivo."
-      }
-    ],
-    "_aiModel": "gemini-3.1-flash-lite"
-  },
   "Taylor Swift - The Fate of Ophelia (Track by Track)": {
     "title": "The Fate of Ophelia (Track by Track)",
     "artist": "Taylor Swift",
@@ -35283,59 +35253,59 @@
   "Lady Gaga, Bruno Mars - Die With A Smile": {
     "title": "Die With A Smile",
     "artist": "Lady Gaga, Bruno Mars",
-    "year": "2026",
-    "album": "Super Bowl LX Halftime Show (Live) - EP",
-    "synopsis": "\"Die With A Smile\" (2026) de Lady Gaga, Bruno Mars: \"Die with a Smile\" is a song by American singer-songwriters Lady Gaga and Bruno Mars. Un tema indispensable que marcó una etapa definitoria en la evolución musical de su época.",
+    "year": "2024",
+    "album": "Die With A Smile",
+    "synopsis": "\"Die With A Smile\" (2024) es una monumental balada soul/pop clásico que une a dos de los mayores vocalistas de su generación, Lady Gaga y Bruno Mars, en un homenaje atemporal al sonido de Nashville y Filadelfia de los años setenta.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de Lady Gaga, Bruno Mars",
-        "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de Lady Gaga, Bruno Mars, \"Die With A Smile\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "title": "Génesis & Colaboración: El Encuentro de Dos Titanes",
+        "icon": "fa-handshake",
+        "text": "La gestación de 'Die With A Smile' se produjo de manera espontánea en Los Ángeles mientras Gaga finalizaba su álbum de estudio y Bruno Mars daba los últimos toques a nuevo material. Convocados a última hora en un estudio nocturno, la química armónica entre ambos fluyó de inmediato. Mars presentó la maqueta inicial en guitarra acústica y piano Rhodes, y en una única sesión maratoniana completaron la melodía principal, los puentes vocales y la letra definitiva, producida conjuntamente con D'Mile y Andrew Watt.",
         "points": [
           {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
-          }
-        ]
-      },
-      {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
-        "icon": "fa-drum",
-        "text": "La producción de \"Die With A Smile\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
-        "points": [
-          {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+            "name": "Composición a altas horas de la madrugada",
+            "desc": "Lady Gaga relató que Mars la invitó a su estudio alrededor de la medianoche; al escuchar los primeros acordes, quedó fascinada y terminaron de grabar las voces maestras antes del amanecer."
           },
           {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
-          },
-          {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+            "name": "Producción analógica de élite",
+            "desc": "El equipo de producción (Mars, Gaga, D'Mile y Watt) apostó por capturas instrumentales orgánicas y micrófonos de cinta vintage para emular el calor acústico de las producciones analógicas de 1974."
           }
         ]
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
-        "icon": "fa-quote-left",
-        "text": "Líricamente, \"Die With A Smile\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "title": "Arquitectura Sonora & Análisis Armónico",
+        "icon": "fa-guitar",
+        "text": "Construida sobre una cadencia lenta de balada soul en compás de 12/8 (o 6/8 lento a 52 BPM), la canción evoca el sonido de clásicos imperecederos como Al Green, Billy Joel o Carole King. El arreglo instrumental se abre con una guitarra eléctrica limpia con ligero trémolo y un bajo de bajo perfil pero profundo, antes de dar paso al piano de cola. El crescendo dinámico culmina en un épico clímax con solo de guitarra eléctrica saturada y un despliegue vocal acrobático donde las tesituras de Gaga (en su rango de contralto a soprano dramática) y Mars (en su vibrato de tenor puro) se entrelazan con una potencia desgarradora.",
         "points": [
           {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de Lady Gaga, Bruno Mars aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+            "name": "Riqueza tímbrica y arreglos",
+            "desc": "Uso de batería seca con platos apagados al estilo R&B setentero, combinada con secciones de cuerdas discretas pero suntuosas que elevan el estribillo sin restarle intimidad."
+          },
+          {
+            "name": "Duelo y empaste vocal",
+            "desc": "Lejos de competir, el fraseo de ambos artistas utiliza dinámicas complementarias: versos susurrados y confesionales seguidos de estribillos arrolladores en 'belt' con resonancia pectoral completa."
           }
         ]
       },
       {
-        "title": "El Impacto Cultural & Legado",
+        "title": "Lírica & Simbolismo: Devoción en el Fin del Mundo",
+        "icon": "fa-heart",
+        "text": "La temática central de la obra es el anhelo del amor incondicional ante la fragilidad de la existencia y la inevitabilidad de la muerte. Frases como 'If the party was over and our time on Earth was through / I'd wanna hold you just for a while and die with a smile' abordan la idea de que, ante cualquier cataclismo personal o global, lo único verdaderamente trascendente es la presencia del ser amado. La sonrisa final simboliza la serenidad del que ha amado plenamente y no tiene nada más que temer.",
+        "points": [
+          {
+            "name": "Elegía romántica atemporal",
+            "desc": "La lírica prescinde deliberadamente de modismos contemporáneos, permitiendo que el mensaje resuene como un himno clásico universal aplicable a cualquier era o circunstancia vital."
+          }
+        ]
+      },
+      {
+        "title": "Impacto Cultural & Estética Vintage",
         "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Die With A Smile\" se mantiene como un himno atemporal dentro de la discografía de Lady Gaga, Bruno Mars y una de las composiciones más celebradas de su generación.",
+        "text": "Lanzada por sorpresa el 16 de agosto de 2024, 'Die With A Smile' debutó inmediatamente en el número 1 global de Spotify y Apple Music, convirtiéndose en una de las canciones con acumulación de reproducciones más veloz del año. El videoclip, dirigido por Bruno Mars y Daniel Ramos, presentó a ambos en un set de televisión retro con estética de programa country de los años 70 (Mars con traje azul y sombrero vaquero; Gaga con vestido rojo y peinado abombado), consolidando una de las imágenes icónicas más memorables de la música pop contemporánea.",
         "points": [
           {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Lady Gaga, Bruno Mars."
+            "name": "Éxito comercial arrollador",
+            "desc": "Alcanzó el Top 1 en docenas de países y rompió récords de permanencia en el primer puesto de listas globales de streaming."
           }
         ]
       }
