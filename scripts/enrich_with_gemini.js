@@ -31,8 +31,15 @@ if (!fs.existsSync(DB_PATH)) {
 
 const db = JSON.parse(fs.readFileSync(DB_PATH, 'utf8'));
 
+// El esquema "legacy" (section1_title/section1_points/...) no tiene array `sections`, pero
+// no es un análisis genérico: sin este chequeo se reescribirían reseñas reales con Gemini.
+function hasLegacySections(analysis) {
+    return !!(analysis.section1_title || analysis.section1_points);
+}
+
 function isGeneric(analysis) {
     if (!analysis) return true;
+    if (hasLegacySections(analysis)) return false;
     if (!analysis.sections || analysis.sections.length === 0) return true;
     if (analysis.synopsis && analysis.synopsis.includes("es una pieza fundamental dentro de su género")) return true;
     if (analysis.sections[0] && analysis.sections[0].points && analysis.sections[0].points[0] && analysis.sections[0].points[0].name === "El punto de inflexión creativo") return true;

@@ -82,5 +82,19 @@ const db = {
 
 const dataDir = path.join(__dirname, '../data');
 if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
-fs.writeFileSync(path.join(dataDir, 'analyses_db.json'), JSON.stringify(db, null, 2), 'utf8');
-console.log('SUCCESS');
+
+const dbPath = path.join(dataDir, 'analyses_db.json');
+
+// Este script solo debe SEMBRAR entradas de ejemplo, nunca sobrescribir la base de datos
+// completa: se fusiona con lo existente y no se pisa ninguna clave ya presente.
+let existing = {};
+if (fs.existsSync(dbPath)) {
+    try { existing = JSON.parse(fs.readFileSync(dbPath, 'utf8')); } catch(e) {
+        console.error('ABORTADO: analyses_db.json existente no se pudo parsear, no se sobrescribe:', e.message);
+        process.exit(1);
+    }
+}
+
+const merged = { ...db, ...existing };
+fs.writeFileSync(dbPath, JSON.stringify(merged, null, 2), 'utf8');
+console.log(`SUCCESS (${Object.keys(existing).length} entradas existentes preservadas)`);

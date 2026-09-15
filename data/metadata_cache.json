@@ -185,14 +185,14 @@
     "title": "In the End",
     "displayTitle": "In the End",
     "artist": "Linkin Park",
-    "album": "Hybrid Theory (Deluxe Edition)",
+    "album": "Hybrid Theory",
     "year": "2000",
     "date": "2000-10-24",
     "releaseYear": "2000",
     "releaseDate": "2000-10-24",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/53/a7/7f/53a77fab-c54c-a57b-8130-248fc12d0c80/093624948995.jpg/1000x1000bb.jpg",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/033a271b5ec10842c287827c39244fb5/1000x1000-000000-80-0-0.jpg",
     "durationMs": 216294,
-    "source": "Apple Music Original Studio Master Catalog"
+    "source": "Deezer + Apple Music Resolver"
   },
   "coldplay - viva la vida": {
     "title": "Viva La Vida",
@@ -5376,10 +5376,9 @@
     "date": "2000-07-31",
     "releaseYear": "2000",
     "releaseDate": "2000-07-31",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music6/v4/5b/23/1e/5b231e58-c418-2c41-be92-110cb5590c44/00724352812554.jpg/1000x1000bb.jpg",
-    "durationMs": 256000,
-    "durationFmt": "4:16",
-    "source": "Apple Music Original Studio Master Catalog"
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/d260fa442f925e1eb1c95bb29941f636/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 260560,
+    "source": "Deezer + Apple Music Resolver"
   },
   "geri halliwell - it's raining men": {
     "title": "It's Raining Men",
@@ -5771,13 +5770,14 @@
     "title": "It's My Life",
     "displayTitle": "It's My Life",
     "artist": "Bon Jovi",
-    "album": "Crush",
+    "album": "Bon Jovi Greatest Hits - The Ultimate Collection",
     "year": "2000",
-    "releaseYear": "2000",
     "date": "2000-05-23",
+    "releaseYear": "2000",
     "releaseDate": "2000-05-23",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/d5/ad/05/d5ad0586-8108-8da1-6017-3e915f26ad0b/14UMGIM44520.rgb.jpg/1000x1000bb.jpg",
-    "source": "Apple Music Original Studio Master Catalog"
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/58ca1d20e8d19c1e5f8e821d07412c74/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 224600,
+    "source": "Deezer + Apple Music Resolver"
   },
   "*nsync - bye bye bye": {
     "title": "Bye Bye Bye",
@@ -5789,7 +5789,7 @@
     "releaseYear": "2000",
     "releaseDate": "2000-03-21",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/01fdca2ecf54d678ff005162b5b6cc92/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 199640,
+    "durationMs": 200400,
     "source": "Deezer + Apple Music Resolver"
   },
   "tom jones, mousse t. - sexbomb": {
@@ -5840,12 +5840,12 @@
     "artist": "Madonna",
     "album": "Music",
     "year": "2000",
-    "date": "2000-08-21",
+    "date": "2000-09-18",
     "releaseYear": "2000",
-    "releaseDate": "2000-08-21",
+    "releaseDate": "2000-09-18",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/32fa1f6bf870f558de0e874ee04be456/1000x1000-000000-80-0-0.jpg",
     "durationMs": 225973,
-    "source": "Apple Music Original Studio Master Catalog"
+    "source": "Deezer + Apple Music Resolver"
   },
   "santana, the product g&b - maria maria (feat. the product g&b)": {
     "title": "Maria Maria",
@@ -5894,12 +5894,12 @@
     "artist": "Enya",
     "album": "A Day Without Rain",
     "year": "2000",
-    "date": "2000-11-20",
+    "date": "2000-11-11",
     "releaseYear": "2000",
-    "releaseDate": "2000-11-20",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/b0/84/b3/b084b388-41b6-8767-23dc-341a76fcd64d/mzi.bwmjkjwa.jpg/1000x1000bb.jpg",
+    "releaseDate": "2000-11-11",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/cc9eec75400b78c5e66d3097badcfce4/1000x1000-000000-80-0-0.jpg",
     "durationMs": 218547,
-    "source": "Apple Music Original Studio Master Catalog"
+    "source": "Deezer + Apple Music Resolver"
   },
   "westlife - uptown girl - radio edit": {
     "title": "Uptown Girl",
@@ -5952,10 +5952,9 @@
     "date": "2000-11-30",
     "releaseYear": "2000",
     "releaseDate": "2000-11-30",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/fd/4a/77/fd4a77db-0ebc-d043-41a2-f32fa1bb0fb4/dj.qrikkdwj.jpg/1000x1000bb.jpg",
-    "durationMs": 320000,
-    "durationFmt": "5:20",
-    "source": "Apple Music Original Studio Master Catalog"
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/5718f7c81c27e0b2417e2a4c45224f8a/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 320357,
+    "source": "Deezer + Apple Music Resolver"
   },
   "kylie minogue - in your eyes": {
     "title": "In Your Eyes",
@@ -8573,12 +8572,12 @@
     "artist": "Sonique",
     "album": "Hear My Cry",
     "year": "2000",
-    "date": "2000-01-01",
+    "date": "2000-10-21",
     "releaseYear": "2000",
-    "releaseDate": "2000-01-01",
+    "releaseDate": "2000-10-21",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c661b8fab2d6f1e15bba1bd82be2e422/1000x1000-000000-80-0-0.jpg",
     "durationMs": 243019,
-    "source": "Apple Music Original Studio Master Catalog"
+    "source": "Deezer + Apple Music Resolver"
   },
   "madonna, justin timberlake, timbaland - 4 minutes (feat. justin timberlake & timbaland)": {
     "title": "4 Minutes",
@@ -10367,10 +10366,9 @@
     "date": "2000-09-11",
     "releaseYear": "2000",
     "releaseDate": "2000-09-11",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/d9/ad/ca/d9adca49-6119-c775-479d-b57487887ccd/dj.xyubmmhi.jpg/1000x1000bb.jpg",
-    "durationMs": 247000,
-    "durationFmt": "4:07",
-    "source": "Apple Music Original Studio Master Catalog"
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/21b1a49496bcfdff81ae5f84be0a80cf/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 247347,
+    "source": "Deezer + Apple Music Resolver"
   },
   "los rodriguez - dulce condena": {
     "title": "Dulce condena",
@@ -10591,9 +10589,8 @@
     "releaseYear": "2000",
     "releaseDate": "2000-05-19",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/72e01117cc83456277e511ef0b0258ff/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 297000,
-    "durationFmt": "4:57",
-    "source": "Apple Music Original Studio Master Catalog"
+    "durationMs": 296751,
+    "source": "Deezer + Apple Music Resolver"
   },
   "celtas cortos - 20 de abril": {
     "title": "20 de abril",
@@ -12190,15 +12187,14 @@
     "title": "Cuando nadie me ve",
     "displayTitle": "Cuando nadie me ve",
     "artist": "Alejandro Sanz",
-    "album": "El alma al aire (Edicion 2006)",
+    "album": "Coleccion definitiva",
     "year": "2000",
     "date": "2000-09-26",
     "releaseYear": "2000",
     "releaseDate": "2000-09-26",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/cc05df2715e6b572f85ccb0d807e0e42/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 308000,
-    "durationFmt": "5:08",
-    "source": "Apple Music Original Studio Master Catalog"
+    "durationMs": 308560,
+    "source": "Deezer + Apple Music Resolver"
   },
   "la oreja de van gogh - cuídate": {
     "title": "Cuídate",
@@ -13690,15 +13686,14 @@
     "title": "Paris",
     "displayTitle": "Paris",
     "artist": "La Oreja de Van Gogh",
-    "album": "El Viaje de Copperpot",
+    "album": "LOVG - Grandes Exitos",
     "year": "2000",
     "date": "2000-09-11",
     "releaseYear": "2000",
     "releaseDate": "2000-09-11",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/9a/db/78/9adb7877-eaa7-65d9-5891-1d3c04d0bf07/mzi.olgbvucd.jpg/1000x1000bb.jpg",
-    "durationMs": 226000,
-    "durationFmt": "3:46",
-    "source": "Apple Music Original Studio Master Catalog"
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/31c784c4e7ae3044b0fee58ecde66427/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 225227,
+    "source": "Deezer + Apple Music Resolver"
   },
   "el canto del loco - peter pan": {
     "title": "Peter Pan",
@@ -14258,7 +14253,7 @@
     "releaseYear": "2000",
     "releaseDate": "2000-05-23",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/db5cfc7572fdbb83fae973a8406e5a6c/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 253000,
+    "durationMs": 240253,
     "source": "Deezer + Apple Music Resolver"
   },
   "nicky jam, enrique iglesias - el perdón (with enrique iglesias)": {
@@ -16271,13 +16266,14 @@
     "title": "Love Don't Cost a Thing",
     "displayTitle": "Love Don't Cost a Thing",
     "artist": "Jennifer Lopez",
-    "album": "J. Lo",
+    "album": "On The 6 / J. Lo (Coffret 2 CD)",
     "year": "2000",
-    "releaseYear": "2000",
     "date": "2000-12-02",
+    "releaseYear": "2000",
     "releaseDate": "2000-12-02",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/d1/8e/eb/d18eebcc-195c-c148-bd74-1920ac9a0638/mzi.vdnjgskg.jpg/1000x1000bb.jpg",
-    "source": "Apple Music Original Studio Master Catalog"
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c6385c391e17a1c16beccb7ef7da976f/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 221227,
+    "source": "Deezer + Apple Music Resolver"
   },
   "jennifer lopez - waiting for tonight": {
     "title": "Waiting for Tonight",
@@ -17760,16 +17756,17 @@
     "source": "Apple Music Original Studio Master Catalog"
   },
   "leann rimes - can't fight the moonlight": {
-    "title": "Can't Fight the Moonlight",
-    "displayTitle": "Can't Fight the Moonlight",
+    "title": "Can't Fight The Moonlight",
+    "displayTitle": "Can't Fight The Moonlight",
     "artist": "LeAnn Rimes",
-    "album": "Coyote Ugly (Soundtrack from the Motion Picture)",
+    "album": "I Need You",
     "year": "2000",
-    "releaseYear": "2000",
     "date": "2000-08-01",
+    "releaseYear": "2000",
     "releaseDate": "2000-08-01",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music/y2005/m06/d13/h10/s05.fvdzfulz.jpg/1000x1000bb.jpg",
-    "source": "Apple Music Original Studio Master Catalog"
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7b6725e19d0c57ba87d2e9a00ee7be5b/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 215507,
+    "source": "Deezer + Apple Music Resolver"
   },
   "inxs - need you tonight": {
     "title": "Need You Tonight",
@@ -22088,12 +22085,12 @@
     "artist": "Backstreet Boys",
     "album": "Black & Blue",
     "year": "2000",
-    "date": "2000-10-03",
+    "date": "2000-11-21",
     "releaseYear": "2000",
-    "releaseDate": "2000-10-03",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/d1/04/3f/d1043ff2-73b8-e7c5-3ed8-ae9b768bb24f/012414174321.jpg/1000x1000bb.jpg",
+    "releaseDate": "2000-11-21",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/63a5523dbf5e1cdc67ad13cab3744f87/1000x1000-000000-80-0-0.jpg",
     "durationMs": 230093,
-    "source": "Apple Music Original Studio Master Catalog"
+    "source": "Deezer + Apple Music Resolver"
   },
   "bon jovi - born to be my baby": {
     "title": "Born to Be My Baby",
@@ -52730,7 +52727,7 @@
     "releaseDate": "2000-01-01",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a8ab67c182c1f4f9f1ffdb7d90347e5d/1000x1000-000000-80-0-0.jpg",
     "durationMs": 266627,
-    "source": "Apple Music Original Studio Master Catalog"
+    "source": "Deezer + Apple Music Resolver"
   },
   "wilfrido vargas - a mover la colita": {
     "title": "A Mover la Colita",
@@ -90425,7 +90422,7 @@
     "releaseYear": "2000",
     "releaseDate": "2000-03-21",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/01fdca2ecf54d678ff005162b5b6cc92/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 199640,
+    "durationMs": 200400,
     "source": "Deezer + Apple Music Resolver"
   },
   "bad": {
@@ -90789,7 +90786,7 @@
     "releaseYear": "2000",
     "releaseDate": "2000-05-23",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/db5cfc7572fdbb83fae973a8406e5a6c/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 253000,
+    "durationMs": 240253,
     "source": "Deezer + Apple Music Resolver"
   },
   "mediterraneo": {
@@ -91270,7 +91267,7 @@
     "releaseYear": "2000",
     "releaseDate": "2000-08-14",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8e060e432d4480bfd8e383eec75261f9/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 523989,
+    "durationMs": 333120,
     "source": "Deezer + Apple Music Resolver"
   },
   "groovejet (if this ain't love)": {
@@ -91283,7 +91280,7 @@
     "releaseYear": "2000",
     "releaseDate": "2000-08-14",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8e060e432d4480bfd8e383eec75261f9/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 523989,
+    "durationMs": 333120,
     "source": "Deezer + Apple Music Resolver"
   },
   "in-grid - tu es foutu - radio edit": {
@@ -100353,5 +100350,421 @@
     "durationMs": 251668,
     "durationFmt": "04:11",
     "source": "Apple Music Official Studio Master Catalog"
+  },
+  "one more time": {
+    "title": "One More Time",
+    "displayTitle": "One More Time",
+    "artist": "Daft Punk",
+    "album": "Discovery",
+    "year": "2000",
+    "date": "2000-11-30",
+    "releaseYear": "2000",
+    "releaseDate": "2000-11-30",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/5718f7c81c27e0b2417e2a4c45224f8a/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 320357,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "it's my life": {
+    "title": "It's My Life",
+    "displayTitle": "It's My Life",
+    "artist": "Bon Jovi",
+    "album": "Bon Jovi Greatest Hits - The Ultimate Collection",
+    "year": "2000",
+    "date": "2000-05-23",
+    "releaseYear": "2000",
+    "releaseDate": "2000-05-23",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/58ca1d20e8d19c1e5f8e821d07412c74/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 224600,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "rock dj": {
+    "title": "Rock DJ",
+    "displayTitle": "Rock DJ",
+    "artist": "Robbie Williams",
+    "album": "Sing When You're Winning",
+    "year": "2000",
+    "date": "2000-07-31",
+    "releaseYear": "2000",
+    "releaseDate": "2000-07-31",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/d260fa442f925e1eb1c95bb29941f636/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 260560,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "love don't cost a thing": {
+    "title": "Love Don't Cost a Thing",
+    "displayTitle": "Love Don't Cost a Thing",
+    "artist": "Jennifer Lopez",
+    "album": "On The 6 / J. Lo (Coffret 2 CD)",
+    "year": "2000",
+    "date": "2000-12-02",
+    "releaseYear": "2000",
+    "releaseDate": "2000-12-02",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/c6385c391e17a1c16beccb7ef7da976f/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 221227,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "can't fight the moonlight": {
+    "title": "Can't Fight The Moonlight",
+    "displayTitle": "Can't Fight The Moonlight",
+    "artist": "LeAnn Rimes",
+    "album": "I Need You",
+    "year": "2000",
+    "date": "2000-08-01",
+    "releaseYear": "2000",
+    "releaseDate": "2000-08-01",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7b6725e19d0c57ba87d2e9a00ee7be5b/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 215507,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "bruno mars - marry you": {
+    "title": "Marry You",
+    "displayTitle": "Marry You",
+    "artist": "Bruno Mars",
+    "album": "Doo-Wops & Hooligans",
+    "year": "2010",
+    "date": "2010-10-05",
+    "releaseYear": "2010",
+    "releaseDate": "2010-10-05",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/5b59dc18e109515420f8237719bd2186/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 230192,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "marry you": {
+    "title": "Marry You",
+    "displayTitle": "Marry You",
+    "artist": "Bruno Mars",
+    "album": "Doo-Wops & Hooligans",
+    "year": "2010",
+    "date": "2010-10-05",
+    "releaseYear": "2010",
+    "releaseDate": "2010-10-05",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/5b59dc18e109515420f8237719bd2186/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 230192,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "la playa": {
+    "title": "La Playa",
+    "displayTitle": "La Playa",
+    "artist": "La Oreja de Van Gogh",
+    "album": "París",
+    "year": "2000",
+    "date": "2000-09-11",
+    "releaseYear": "2000",
+    "releaseDate": "2000-09-11",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/21b1a49496bcfdff81ae5f84be0a80cf/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 247347,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "fiesta pagana": {
+    "title": "Fiesta Pagana",
+    "displayTitle": "Fiesta Pagana",
+    "artist": "Mägo de Oz",
+    "album": "Finisterra",
+    "year": "2000",
+    "date": "2000-05-19",
+    "releaseYear": "2000",
+    "releaseDate": "2000-05-19",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/72e01117cc83456277e511ef0b0258ff/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 296751,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "cuando nadie me ve": {
+    "title": "Cuando nadie me ve",
+    "displayTitle": "Cuando nadie me ve",
+    "artist": "Alejandro Sanz",
+    "album": "Coleccion definitiva",
+    "year": "2000",
+    "date": "2000-09-26",
+    "releaseYear": "2000",
+    "releaseDate": "2000-09-26",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/cc05df2715e6b572f85ccb0d807e0e42/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 308560,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "paris": {
+    "title": "Paris",
+    "displayTitle": "Paris",
+    "artist": "La Oreja de Van Gogh",
+    "album": "LOVG - Grandes Exitos",
+    "year": "2000",
+    "date": "2000-09-11",
+    "releaseYear": "2000",
+    "releaseDate": "2000-09-11",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/31c784c4e7ae3044b0fee58ecde66427/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 225227,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "nacho - báilame": {
+    "title": "Báilame",
+    "displayTitle": "Báilame",
+    "artist": "Nacho",
+    "album": "Báilame",
+    "year": "2017",
+    "date": "2017-07-31",
+    "releaseYear": "2017",
+    "releaseDate": "2017-07-31",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e2e9c10ce890f1d2a2a76a673e509f25/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 216677,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "báilame": {
+    "title": "Báilame",
+    "displayTitle": "Báilame",
+    "artist": "Nacho",
+    "album": "Báilame",
+    "year": "2017",
+    "date": "2017-07-31",
+    "releaseYear": "2017",
+    "releaseDate": "2017-07-31",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/e2e9c10ce890f1d2a2a76a673e509f25/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 216677,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "los chichos - bailarás con alegría": {
+    "title": "Bailarás Con Alegría",
+    "displayTitle": "Bailarás Con Alegría",
+    "artist": "Los Chichos",
+    "album": "Antología De Los Chichos",
+    "year": "1996",
+    "date": "1996-01-01",
+    "releaseYear": "1996",
+    "releaseDate": "1996-01-01",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/088d89c196a42f0dd30a23ee5c8bdafc/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 193427,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "bailarás con alegría": {
+    "title": "Bailarás Con Alegría",
+    "displayTitle": "Bailarás Con Alegría",
+    "artist": "Los Chichos",
+    "album": "Antología De Los Chichos",
+    "year": "1996",
+    "date": "1996-01-01",
+    "releaseYear": "1996",
+    "releaseDate": "1996-01-01",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/088d89c196a42f0dd30a23ee5c8bdafc/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 193427,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "los chichos - son ilusiones - remastered 2005": {
+    "title": "Son Ilusiones",
+    "displayTitle": "Son Ilusiones",
+    "artist": "Los Chichos",
+    "album": "Antología De Los Chichos",
+    "year": "1996",
+    "date": "1996-01-01",
+    "releaseYear": "1996",
+    "releaseDate": "1996-01-01",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/088d89c196a42f0dd30a23ee5c8bdafc/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 162360,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "los chichos - son ilusiones": {
+    "title": "Son Ilusiones",
+    "displayTitle": "Son Ilusiones",
+    "artist": "Los Chichos",
+    "album": "Antología De Los Chichos",
+    "year": "1996",
+    "date": "1996-01-01",
+    "releaseYear": "1996",
+    "releaseDate": "1996-01-01",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/088d89c196a42f0dd30a23ee5c8bdafc/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 162360,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "son ilusiones": {
+    "title": "Son Ilusiones",
+    "displayTitle": "Son Ilusiones",
+    "artist": "Los Chichos",
+    "album": "Antología De Los Chichos",
+    "year": "1996",
+    "date": "1996-01-01",
+    "releaseYear": "1996",
+    "releaseDate": "1996-01-01",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/088d89c196a42f0dd30a23ee5c8bdafc/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 162360,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "los chichos - ni más ni menos": {
+    "title": "Ni Más Ni Menos",
+    "displayTitle": "Ni Más Ni Menos",
+    "artist": "Los Chichos",
+    "album": "Decálogo (Sus 10 Mayores Éxitos)",
+    "year": "1996",
+    "date": "1996-01-01",
+    "releaseYear": "1996",
+    "releaseDate": "1996-01-01",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/d7f40641f4cf5ef8ccae91eca8e1a8f1/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 200427,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "ni más ni menos": {
+    "title": "Ni Más Ni Menos",
+    "displayTitle": "Ni Más Ni Menos",
+    "artist": "Los Chichos",
+    "album": "Decálogo (Sus 10 Mayores Éxitos)",
+    "year": "1996",
+    "date": "1996-01-01",
+    "releaseYear": "1996",
+    "releaseDate": "1996-01-01",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/d7f40641f4cf5ef8ccae91eca8e1a8f1/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 200427,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "los chichos - quiero ser libre": {
+    "title": "Quiero Ser Libre",
+    "displayTitle": "Quiero Ser Libre",
+    "artist": "Los Chichos",
+    "album": "Antología De Los Chichos",
+    "year": "1993",
+    "date": "1993-01-01",
+    "releaseYear": "1993",
+    "releaseDate": "1993-01-01",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/088d89c196a42f0dd30a23ee5c8bdafc/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 205373,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "quiero ser libre": {
+    "title": "Quiero Ser Libre",
+    "displayTitle": "Quiero Ser Libre",
+    "artist": "Los Chichos",
+    "album": "Antología De Los Chichos",
+    "year": "1993",
+    "date": "1993-01-01",
+    "releaseYear": "1993",
+    "releaseDate": "1993-01-01",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/088d89c196a42f0dd30a23ee5c8bdafc/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 205373,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "los chunguitos - me quedo contigo": {
+    "title": "Me Quedo Contigo",
+    "displayTitle": "Me Quedo Contigo",
+    "artist": "Los Chunguitos",
+    "album": "40 Años - 40 Canciones",
+    "year": "2000",
+    "date": "2000-01-01",
+    "releaseYear": "2000",
+    "releaseDate": "2000-01-01",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/01791f2dadce8e914ed8240df45a0f1b/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 216747,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "me quedo contigo": {
+    "title": "Me Quedo Contigo",
+    "displayTitle": "Me Quedo Contigo",
+    "artist": "Los Chunguitos",
+    "album": "40 Años - 40 Canciones",
+    "year": "2000",
+    "date": "2000-01-01",
+    "releaseYear": "2000",
+    "releaseDate": "2000-01-01",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/01791f2dadce8e914ed8240df45a0f1b/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 216747,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "los chunguitos - carmen": {
+    "title": "Carmen",
+    "displayTitle": "Carmen",
+    "artist": "Los Chunguitos",
+    "album": "40 Años - 40 Canciones",
+    "year": "2000",
+    "date": "2000-01-01",
+    "releaseYear": "2000",
+    "releaseDate": "2000-01-01",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/01791f2dadce8e914ed8240df45a0f1b/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 168827,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "carmen": {
+    "title": "Carmen",
+    "displayTitle": "Carmen",
+    "artist": "Los Chunguitos",
+    "album": "40 Años - 40 Canciones",
+    "year": "2000",
+    "date": "2000-01-01",
+    "releaseYear": "2000",
+    "releaseDate": "2000-01-01",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/01791f2dadce8e914ed8240df45a0f1b/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 168827,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "los chunguitos - ay que dolor": {
+    "title": "Ay Que Dolor",
+    "displayTitle": "Ay Que Dolor",
+    "artist": "Los Chunguitos",
+    "album": "Hoy Sus 30 Mejores Canciones",
+    "year": "2000",
+    "date": "2000-01-01",
+    "releaseYear": "2000",
+    "releaseDate": "2000-01-01",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/bb431b7ac838dd3371a75974cf7bf9f2/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 246160,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "ay que dolor": {
+    "title": "Ay Que Dolor",
+    "displayTitle": "Ay Que Dolor",
+    "artist": "Los Chunguitos",
+    "album": "Hoy Sus 30 Mejores Canciones",
+    "year": "2000",
+    "date": "2000-01-01",
+    "releaseYear": "2000",
+    "releaseDate": "2000-01-01",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/bb431b7ac838dd3371a75974cf7bf9f2/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 246160,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "junco - ¡hola, mi amor!": {
+    "title": "¡Hola, Mi Amor!",
+    "displayTitle": "¡Hola, Mi Amor!",
+    "artist": "Junco",
+    "album": "Básicos",
+    "year": "2020",
+    "date": "2020-12-18",
+    "releaseYear": "2020",
+    "releaseDate": "2020-12-18",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/bd540a065c5ac880d3f62ea0e861bc2d/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 204735,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "¡hola, mi amor!": {
+    "title": "¡Hola, Mi Amor!",
+    "displayTitle": "¡Hola, Mi Amor!",
+    "artist": "Junco",
+    "album": "Básicos",
+    "year": "2020",
+    "date": "2020-12-18",
+    "releaseYear": "2020",
+    "releaseDate": "2020-12-18",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/bd540a065c5ac880d3f62ea0e861bc2d/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 204735,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "junco - celos": {
+    "title": "Celos",
+    "displayTitle": "Celos",
+    "artist": "Junco",
+    "album": "Básicos",
+    "year": "2021",
+    "date": "2021-01-15",
+    "releaseYear": "2021",
+    "releaseDate": "2021-01-15",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/bd540a065c5ac880d3f62ea0e861bc2d/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 183226,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "celos": {
+    "title": "Celos",
+    "displayTitle": "Celos",
+    "artist": "Junco",
+    "album": "Básicos",
+    "year": "2021",
+    "date": "2021-01-15",
+    "releaseYear": "2021",
+    "releaseDate": "2021-01-15",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/bd540a065c5ac880d3f62ea0e861bc2d/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 183226,
+    "source": "Deezer + Apple Music Resolver"
   }
 }

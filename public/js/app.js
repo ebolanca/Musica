@@ -16,6 +16,12 @@ const safeStorage = {
     }
 };
 
+const _escapeHtmlMap = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+function escapeHtml(str) {
+    if (str === null || str === undefined) return '';
+    return String(str).replace(/[&<>"']/g, ch => _escapeHtmlMap[ch]);
+}
+
 function normalizeText(str) {
     if (!str) return '';
     return str
@@ -482,10 +488,10 @@ function formatTime(seconds) {
                 card.className = 'cover-result-card';
                 card.title = `Asignar como carátula: ${item.album}`;
                 card.innerHTML = `
-                    <img src="${item.coverUrl}" alt="${item.album}" loading="lazy" onerror="this.parentElement.style.display='none';">
+                    <img src="${escapeHtml(item.coverUrl)}" alt="${escapeHtml(item.album)}" loading="lazy" onerror="this.parentElement.style.display='none';">
                     <div class="cover-result-info">
-                        <strong>${item.album || 'Álbum'}</strong><br>
-                        <span class="cover-result-source">${item.source || 'Oficial'}</span>
+                        <strong>${escapeHtml(item.album) || 'Álbum'}</strong><br>
+                        <span class="cover-result-source">${escapeHtml(item.source) || 'Oficial'}</span>
                     </div>
                 `;
                 card.addEventListener('click', () => {
@@ -1152,7 +1158,7 @@ function formatTime(seconds) {
             if (res.ok) {
                 const data = await res.json();
                 if (data.nowPlaying && radioBarDial) {
-                    radioBarDial.innerHTML = `<i class="fa-solid fa-music" style="color:var(--spotify-green);"></i> ${data.nowPlaying}`;
+                    radioBarDial.innerHTML = `<i class="fa-solid fa-music" style="color:var(--spotify-green);"></i> ${escapeHtml(data.nowPlaying)}`;
                 }
             }
         } catch(e) {}
@@ -1743,8 +1749,8 @@ function formatTime(seconds) {
             const showTrans = hasTrans && !isSame;
             return `
                 <div class="cinema-lyric-line" id="cinema-lyric-${l.index}" data-sec="${l.seconds !== null ? l.seconds : ''}" data-index="${l.index}" title="Pulsar para activar y sincronizar karaoke desde esta frase">
-                    <div class="cinema-lyric-orig">${l.text}</div>
-                    ${showTrans ? `<div class="cinema-lyric-trans">${l.translation}</div>` : ''}
+                    <div class="cinema-lyric-orig">${escapeHtml(l.text)}</div>
+                    ${showTrans ? `<div class="cinema-lyric-trans">${escapeHtml(l.translation)}</div>` : ''}
                 </div>
             `;
         }).join('');
@@ -2769,7 +2775,7 @@ function formatTime(seconds) {
         currentDisplayedTracks = filtered;
 
         if (isGlobalSearch) {
-            currentSectionTitle.innerHTML = `<i class="fa-solid fa-magnifying-glass" style="color: var(--spotify-green);"></i> Búsqueda global: "${searchQuery}"`;
+            currentSectionTitle.innerHTML = `<i class="fa-solid fa-magnifying-glass" style="color: var(--spotify-green);"></i> Búsqueda global: "${escapeHtml(searchQuery)}"`;
             resultsCountText.textContent = `${filtered.length} canciones encontradas en el catálogo`;
             if (btnPlaylistShuffle) {
                 btnPlaylistShuffle.title = `Reproducir los ${filtered.length} resultados de la búsqueda en modo aleatorio`;
@@ -2789,9 +2795,9 @@ function formatTime(seconds) {
         songsGrid.innerHTML = '';
 
         if (filtered.length === 0) {
-            const emptyMsg = isGlobalSearch 
-                ? `No se encontraron canciones para "${searchQuery}" en ninguna lista.`
-                : `No se encontraron canciones en la categoría "${currentTab}".`;
+            const emptyMsg = isGlobalSearch
+                ? `No se encontraron canciones para "${escapeHtml(searchQuery)}" en ninguna lista.`
+                : `No se encontraron canciones en la categoría "${escapeHtml(currentTab)}".`;
             songsGrid.innerHTML = `
                 <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--text-muted);">
                     <i class="fa-solid fa-compact-disc" style="font-size: 3rem; margin-bottom: 16px; opacity: 0.3;"></i>
@@ -2815,8 +2821,8 @@ function formatTime(seconds) {
             const playlistIcon = playlistIcons[song.playlistName] || 'fa-compact-disc';
             const playlistBadgeHtml = isGlobalSearch ? `
                 <div style="margin-top: 4px; margin-bottom: 6px;">
-                    <span class="track-playlist-badge" data-switch-tab="${song.playlistName}" title="Ir a la lista ${song.playlistName}">
-                        <i class="fa-solid ${playlistIcon}"></i> ${song.playlistName}
+                    <span class="track-playlist-badge" data-switch-tab="${escapeHtml(song.playlistName)}" title="Ir a la lista ${escapeHtml(song.playlistName)}">
+                        <i class="fa-solid ${playlistIcon}"></i> ${escapeHtml(song.playlistName)}
                     </span>
                 </div>
             ` : '';
@@ -2835,19 +2841,19 @@ function formatTime(seconds) {
                         ${playlistBadgeHtml}
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 4px;">
                             <div style="flex: 1; min-width: 0;">
-                                <div class="song-title" title="${song.title}">${song.title}</div>
-                                <div class="song-artist" title="${song.artist}">${song.artist}</div>
+                                <div class="song-title" title="${escapeHtml(song.title)}">${escapeHtml(song.title)}</div>
+                                <div class="song-artist" title="${escapeHtml(song.artist)}">${escapeHtml(song.artist)}</div>
                             </div>
                             <div class="meta-pills-col">
                                 <span class="badge-pill badge-duration" title="Duración">
                                     <i class="fa-regular fa-clock"></i> ${song.durationFmt || '03:30'}
                                 </span>
-                                <span class="badge-pill badge-date" title="Fecha de lanzamiento: ${song.releaseDate || song.releaseYear || ''}">
+                                <span class="badge-pill badge-date" title="Fecha de lanzamiento: ${escapeHtml(song.releaseDate || song.releaseYear || '')}">
                                     <i class="fa-regular fa-calendar"></i> ${briefDate}
                                 </span>
                             </div>
                         </div>
-                        <div class="song-album-name" title="Álbum: ${song.album || 'Desconocido'}">${song.album || 'Álbum Desconocido'}</div>
+                        <div class="song-album-name" title="Álbum: ${escapeHtml(song.album || 'Desconocido')}">${escapeHtml(song.album || 'Álbum Desconocido')}</div>
                         <div class="card-action-icons">
                             <button class="btn-card-action btn-act-credits" title="Ver Créditos y Detalles" data-action="credits">
                                 <i class="fa-solid fa-circle-info"></i>
@@ -2872,12 +2878,12 @@ function formatTime(seconds) {
                     </div>
                     <div class="card-body">
                         <div class="song-info-primary">
-                            <div class="song-title" style="font-size: 1rem;" title="${song.title}">${song.title}</div>
-                            <div class="song-artist" title="${song.artist}">${song.artist}</div>
-                            ${isGlobalSearch ? `<span class="track-playlist-badge" data-switch-tab="${song.playlistName}" style="margin-top: 4px;" title="Ir a la lista ${song.playlistName}"><i class="fa-solid ${playlistIcon}"></i> ${song.playlistName}</span>` : ''}
+                            <div class="song-title" style="font-size: 1rem;" title="${escapeHtml(song.title)}">${escapeHtml(song.title)}</div>
+                            <div class="song-artist" title="${escapeHtml(song.artist)}">${escapeHtml(song.artist)}</div>
+                            ${isGlobalSearch ? `<span class="track-playlist-badge" data-switch-tab="${escapeHtml(song.playlistName)}" style="margin-top: 4px;" title="Ir a la lista ${escapeHtml(song.playlistName)}"><i class="fa-solid ${playlistIcon}"></i> ${escapeHtml(song.playlistName)}</span>` : ''}
                         </div>
-                        <div class="song-album-info" title="${song.album || 'Álbum'}">
-                            <i class="fa-solid fa-compact-disc"></i> ${song.album || 'Álbum Desconocido'}
+                        <div class="song-album-info" title="${escapeHtml(song.album || 'Álbum')}">
+                            <i class="fa-solid fa-compact-disc"></i> ${escapeHtml(song.album || 'Álbum Desconocido')}
                         </div>
                         <div class="song-year-info">
                             <span class="badge-pill badge-date"><i class="fa-regular fa-calendar"></i> ${briefDate}</span>
@@ -3066,32 +3072,32 @@ function formatTime(seconds) {
                 <div class="credit-card">
                     <i class="fa-solid fa-user-pen"></i>
                     <div class="credit-label">Compositor / Autor</div>
-                    <div class="credit-value">${artist}</div>
+                    <div class="credit-value">${escapeHtml(artist)}</div>
                 </div>
                 <div class="credit-card">
                     <i class="fa-solid fa-compact-disc"></i>
                     <div class="credit-label">Álbum</div>
-                    <div class="credit-value">${album}</div>
+                    <div class="credit-value">${escapeHtml(album)}</div>
                 </div>
                 <div class="credit-card">
                     <i class="fa-solid fa-calendar-day"></i>
                     <div class="credit-label">Año de Lanzamiento</div>
-                    <div class="credit-value">${year}</div>
+                    <div class="credit-value">${escapeHtml(year)}</div>
                 </div>
                 <div class="credit-card">
                     <i class="fa-solid fa-clock"></i>
                     <div class="credit-label">Duración</div>
-                    <div class="credit-value">${duration}</div>
+                    <div class="credit-value">${escapeHtml(duration)}</div>
                 </div>
                 <div class="credit-card">
                     <i class="fa-solid fa-building"></i>
                     <div class="credit-label">Sello Discográfico</div>
-                    <div class="credit-value">${label}</div>
+                    <div class="credit-value">${escapeHtml(label)}</div>
                 </div>
                 <div class="credit-card">
                     <i class="fa-solid fa-music"></i>
                     <div class="credit-label">Género Musical</div>
-                    <div class="credit-value">${genre}</div>
+                    <div class="credit-value">${escapeHtml(genre)}</div>
                 </div>
             </div>
         `;
@@ -3195,14 +3201,14 @@ function formatTime(seconds) {
                             <span class="analysis-ai-badge">
                                 <i class="fa-solid fa-brain"></i> ${isGeneric ? 'Plantilla Básica' : 'Gemini AI Sónico'}
                             </span>
-                            ${a.year && a.year !== '2000' ? `<span class="analysis-meta-pill"><i class="fa-regular fa-calendar"></i> ${a.year}</span>` : ''}
-                            ${a.album && a.album !== 'Álbum' && a.album !== 'Álbum Principal' ? `<span class="analysis-meta-pill"><i class="fa-solid fa-compact-disc"></i> ${a.album}</span>` : ''}
+                            ${a.year && a.year !== '2000' ? `<span class="analysis-meta-pill"><i class="fa-regular fa-calendar"></i> ${escapeHtml(a.year)}</span>` : ''}
+                            ${a.album && a.album !== 'Álbum' && a.album !== 'Álbum Principal' ? `<span class="analysis-meta-pill"><i class="fa-solid fa-compact-disc"></i> ${escapeHtml(a.album)}</span>` : ''}
                         </div>
                         <button class="btn-reanalyze-ai" id="btn-reanalyze-ai" title="Regenerar análisis sónico con Gemini AI">
                             <i class="fa-solid fa-wand-magic-sparkles"></i> ${isGeneric ? 'Mejorar con Gemini IA' : 'Re-analizar con IA'}
                         </button>
                     </div>
-                    <p class="analysis-synopsis-text">${a.synopsis || 'Análisis no disponible'}</p>
+                    <p class="analysis-synopsis-text">${escapeHtml(a.synopsis) || 'Análisis no disponible'}</p>
                 </div>
 
                 <!-- Secciones Modulares -->
@@ -3224,9 +3230,9 @@ function formatTime(seconds) {
                             ${sec.points.map(p => `
                                 <div class="analysis-point-card">
                                     <div class="analysis-point-name">
-                                        <i class="fa-solid fa-circle-dot"></i> ${p.name || 'Detalle'}
+                                        <i class="fa-solid fa-circle-dot"></i> ${escapeHtml(p.name) || 'Detalle'}
                                     </div>
-                                    <p class="analysis-point-desc">${p.desc || ''}</p>
+                                    <p class="analysis-point-desc">${escapeHtml(p.desc)}</p>
                                 </div>
                             `).join('')}
                         </div>
@@ -3239,9 +3245,9 @@ function formatTime(seconds) {
                             <div class="analysis-sec-icon-wrap">
                                 <i class="fa-solid ${sec.icon || 'fa-compact-disc'}"></i>
                             </div>
-                            <h4 class="analysis-sec-title-text">${sec.title}</h4>
+                            <h4 class="analysis-sec-title-text">${escapeHtml(sec.title)}</h4>
                         </div>
-                        ${sec.text ? `<p class="analysis-sec-intro-text">${sec.text}</p>` : ''}
+                        ${sec.text ? `<p class="analysis-sec-intro-text">${escapeHtml(sec.text)}</p>` : ''}
                         ${pointsHtml}
                     </div>
                 `;
@@ -4430,17 +4436,17 @@ function formatTime(seconds) {
                             <i class="fa-solid fa-record-vinyl retro-cover-icon"></i>
                         </div>
                         <div class="retro-info">
-                            <div class="retro-title" title="${hit.title}">${hit.title}</div>
-                            <div class="retro-artist" title="${hit.artist}">${hit.artist}</div>
+                            <div class="retro-title" title="${escapeHtml(hit.title)}">${escapeHtml(hit.title)}</div>
+                            <div class="retro-artist" title="${escapeHtml(hit.artist)}">${escapeHtml(hit.artist)}</div>
                             <div class="retro-meta-row">
-                                ${hit.peak ? `<span class="retro-badge-peak"><i class="fa-solid fa-crown"></i> ${hit.peak}</span>` : ''}
-                                ${hit.year ? `<span class="retro-badge-year">${hit.year}</span>` : ''}
+                                ${hit.peak ? `<span class="retro-badge-peak"><i class="fa-solid fa-crown"></i> ${escapeHtml(hit.peak)}</span>` : ''}
+                                ${hit.year ? `<span class="retro-badge-year">${escapeHtml(hit.year)}</span>` : ''}
                             </div>
                         </div>
                     </div>
                     <div class="retro-card-actions" style="flex-wrap: wrap;">
                         <div style="display: flex; gap: 8px; align-items: center;">
-                            <button class="btn-retro-preview" data-track-key="${trackKey}">
+                            <button class="btn-retro-preview" data-track-key="${escapeHtml(trackKey)}">
                                 <i class="fa-solid fa-play"></i> Escuchar
                             </button>
                             <a href="https://open.spotify.com/search/${encodeURIComponent(hit.artist + ' ' + hit.title)}" target="_blank" class="btn-retro-spotify" title="Buscar y añadir en Spotify">
@@ -4632,8 +4638,8 @@ function formatTime(seconds) {
                 const card = document.createElement('div');
                 card.className = track.isOwned ? 'retro-card owned' : 'retro-card';
 
-                const coverHtml = track.coverUrl 
-                    ? `<img src="${track.coverUrl}" class="retro-cover-img" onerror="this.style.display='none';">`
+                const coverHtml = track.coverUrl
+                    ? `<img src="${escapeHtml(track.coverUrl)}" class="retro-cover-img" onerror="this.style.display='none';">`
                     : '<i class="fa-solid fa-record-vinyl retro-cover-icon"></i>';
 
                 const trackKey = `${track.artist} - ${track.title}`;
@@ -4645,11 +4651,11 @@ function formatTime(seconds) {
                             ${coverHtml}
                         </div>
                         <div class="retro-info">
-                            <div class="retro-title" title="${track.title}">${track.title}</div>
-                            <div class="retro-artist" title="${track.artist}">${track.artist}</div>
+                            <div class="retro-title" title="${escapeHtml(track.title)}">${escapeHtml(track.title)}</div>
+                            <div class="retro-artist" title="${escapeHtml(track.artist)}">${escapeHtml(track.artist)}</div>
                             <div class="retro-meta-row">
                                 <span class="retro-badge-peak" style="border-color:#38bdf8;color:#38bdf8;background:rgba(56,189,248,0.12);">
-                                    <i class="fa-solid fa-radio"></i> ${stationLabel}
+                                    <i class="fa-solid fa-radio"></i> ${escapeHtml(stationLabel)}
                                 </span>
                                 ${(function() {
                                     const pc = track.playCount || 1;
@@ -4666,7 +4672,7 @@ function formatTime(seconds) {
                     </div>
                     <div class="retro-card-actions" style="flex-wrap: wrap;">
                         <div style="display: flex; gap: 8px; align-items: center;">
-                            <button class="btn-retro-preview" data-track-key="${trackKey}">
+                            <button class="btn-retro-preview" data-track-key="${escapeHtml(trackKey)}">
                                 <i class="fa-solid fa-play"></i> Escuchar
                             </button>
                             <a href="https://open.spotify.com/search/${encodeURIComponent(track.artist + ' ' + track.title)}" target="_blank" class="btn-retro-spotify" title="Buscar y añadir en Spotify">

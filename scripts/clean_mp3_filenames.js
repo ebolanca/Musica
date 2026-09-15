@@ -27,7 +27,13 @@ function cleanFileName(fileName) {
     return name + ext;
 }
 
+// Carpeta de cuarentena: los "duplicados" nunca se borran directamente, se mueven aquí para
+// revisión manual (podrían ser una canción distinta cuyo nombre limpio colisiona, o una
+// versión de mayor calidad que la que ya está en su sitio).
+const quarantineDir = path.join(baseDir, '_duplicados_pendientes_revision');
+
 let renamedCount = 0;
+let quarantinedCount = 0;
 for (const f of folders) {
   const fPath = path.join(baseDir, f);
   const files = fs.readdirSync(fPath);
@@ -38,9 +44,12 @@ for (const f of folders) {
       const newPath = path.join(fPath, cleaned);
       try {
         if (fs.existsSync(newPath)) {
-          // Si ya existe la versión original limpia, eliminamos el archivo con sufijo de remaster/edit
-          fs.unlinkSync(oldPath);
-          console.log(`🗑️ Eliminado duplicado remaster: [${f}] ${file}`);
+          // No se borra: se mueve a cuarentena para que un humano decida si es realmente un duplicado.
+          if (!fs.existsSync(quarantineDir)) fs.mkdirSync(quarantineDir, { recursive: true });
+          const quarantinePath = path.join(quarantineDir, `[${f}] ${file}`);
+          fs.renameSync(oldPath, quarantinePath);
+          console.log(`📦 Movido a cuarentena (posible duplicado remaster): [${f}] ${file}`);
+          quarantinedCount++;
         } else {
           fs.renameSync(oldPath, newPath);
           console.log(`✅ Renombrado a original: [${f}] ${file} => ${cleaned}`);
@@ -52,4 +61,4 @@ for (const f of folders) {
     }
   }
 }
-console.log(`\n🎉 Limpieza de archivos MP3 completada: ${renamedCount} archivos procesados.`);
+console.log(`\n🎉 Limpieza de archivos MP3 completada: ${renamedCount} archivos procesados (${quarantinedCount} movidos a cuarentena en "${quarantineDir}" para revisión manual).`);

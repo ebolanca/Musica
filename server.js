@@ -117,6 +117,31 @@ function cleanTrackKey(str) {
     return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
 }
 
+// Sanea artist/title de entrada del usuario antes de usarlos para construir comandos de
+// shell (exec) o rutas de archivo: quita separadores de ruta, colapsa ".." (path traversal)
+// y elimina metacaracteres que cmd.exe interpreta incluso dentro de comillas (& | ^ < > % ").
+// Emparejamiento difuso de archivo existente por artista/título normalizados. Exige una
+// longitud mínima en ambas claves antes de usar includes(): con títulos/artistas muy cortos
+// (p.ej. título "x"), un includes() sin este límite puede "coincidir" con archivos reales sin
+// relación (cualquier nombre que contenga esa letra, como "Alex...") y sobrescribirlos.
+const MIN_FUZZY_MATCH_LEN = 4;
+function fuzzyTrackFileMatches(fNorm, wantedNorm, cleanTKey, artistKey) {
+    if (fNorm === wantedNorm) return true;
+    if (cleanTKey.length < MIN_FUZZY_MATCH_LEN || artistKey.length < MIN_FUZZY_MATCH_LEN) return false;
+    return fNorm.includes(cleanTKey) && fNorm.includes(artistKey);
+}
+
+function sanitizeArtistTitleInput(str) {
+    if (!str) return '';
+    return String(str)
+        .replace(/[\\/]/g, '')
+        .replace(/\.\.+/g, '.')
+        .replace(/["&|^<>%;\r\n\t]/g, '')
+        .replace(/[\x00-\x1f\x7f]/g, '')
+        .trim()
+        .slice(0, 200);
+}
+
 function loadLyricsDb() {
     if (fs.existsSync(LYRICS_DB_PATH)) {
         try { cachedLyricsDb = JSON.parse(fs.readFileSync(LYRICS_DB_PATH, 'utf8')); } catch(e){}
@@ -1704,11 +1729,13 @@ function resolveTrackCategory(artist, cleanT, category) {
             const checkDir = path.join(OMEN_MUSIC_DIR, f);
             if (fs.existsSync(checkDir)) {
                 const wanted = cleanTrackKey(artist) + '_' + cleanTrackKey(cleanT);
+                const wantedTKey = cleanTrackKey(cleanT);
+                const wantedArtistKey = cleanTrackKey(artist.split(/[,&]/)[0]);
                 try {
                     const files = fs.readdirSync(checkDir);
                     if (files.some(file => {
                         const fb = cleanTrackKey(file.replace(/\.mp3$/i, ''));
-                        return fb === wanted || (fb.includes(cleanTrackKey(cleanT)) && fb.includes(cleanTrackKey(artist.split(/[,&]/)[0])));
+                        return fuzzyTrackFileMatches(fb, wanted, wantedTKey, wantedArtistKey);
                     })) {
                         return f;
                     }
@@ -1721,9 +1748,14 @@ function resolveTrackCategory(artist, cleanT, category) {
 
 app.post('/api/track/upload-replace', (req, res) => {
     try {
-        const { artist, title, category } = req.query;
+        let { artist, title, category } = req.query;
         if (!artist || !title) {
             return res.status(400).json({ error: 'Faltan parámetros requeridos (artist, title)' });
+        }
+        artist = sanitizeArtistTitleInput(artist);
+        title = sanitizeArtistTitleInput(title);
+        if (!artist || !title) {
+            return res.status(400).json({ error: 'artist/title inválidos tras el saneado' });
         }
 
         const cleanT = cleanTrackTitle(title);
@@ -1740,11 +1772,13 @@ app.post('/api/track/upload-replace', (req, res) => {
         if (fs.existsSync(targetFolder)) {
             const files = fs.readdirSync(targetFolder);
             const wantedNorm = cleanTrackKey(artist) + '_' + cleanTrackKey(cleanT);
+            const wantedTKey = cleanTrackKey(cleanT);
+            const wantedArtistKey = cleanTrackKey(artist.split(/[,&]/)[0]);
             const matchFile = files.find(f => {
                 if (!f.toLowerCase().endsWith('.mp3')) return false;
                 const fBase = f.replace(/\.mp3$/i, '');
                 const fNorm = cleanTrackKey(fBase);
-                return fNorm === wantedNorm || (fNorm.includes(cleanTrackKey(cleanT)) && fNorm.includes(cleanTrackKey(artist.split(/[,&]/)[0])));
+                return fuzzyTrackFileMatches(fNorm, wantedNorm, wantedTKey, wantedArtistKey);
             });
             if (matchFile) {
                 targetFileName = matchFile;
@@ -2110,9 +2144,38 @@ app.get('/api/artist/images', async (req, res) => {
 const httpsLib = require('https');
 const radioNowPlayingCache = new Map();
 
+// Whitelist de hosts de emisoras conocidas (debe reflejar la lista `radioStations` del
+// frontend). Evita que /api/radio/now-playing actúe como proxy SSRF hacia cualquier URL
+// arbitraria que envíe el cliente.
+const ALLOWED_RADIO_STREAM_HOSTS = new Set([
+    'hitfm.kissfmradio.cires21.com',
+    's3.we4stream.com',
+    'playerservices.streamtheworld.com',
+    'kissfm.kissfmradio.cires21.com',
+    'cadena100-streamers-mp3.flumotion.com',
+    'flucast10-o-cloud.flumotion.com',
+    'ibizaglobalradio.streaming-pro.com',
+    'liveradio.ondacero.es',
+    'flucast35-h-cloud.flumotion.com',
+    'stream.flaixbac.cat'
+]);
+
+function isAllowedRadioStreamUrl(streamUrl) {
+    try {
+        const parsed = new URL(streamUrl);
+        if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return false;
+        return ALLOWED_RADIO_STREAM_HOSTS.has(parsed.hostname.toLowerCase());
+    } catch(e) {
+        return false;
+    }
+}
+
 function fetchIcyMetadata(streamUrl) {
     return new Promise((resolve) => {
         try {
+            if (!isAllowedRadioStreamUrl(streamUrl)) {
+                return resolve(null);
+            }
             const parsed = new URL(streamUrl);
             const lib = parsed.protocol === 'https:' ? httpsLib : http;
             const req = lib.get(streamUrl, {
@@ -2522,9 +2585,14 @@ async function downloadFromOnlineConverter(youtubeUrl, outputPath) {
 
 app.post('/api/track/replace-clean-audio', async (req, res) => {
     try {
-        const { artist, title, category, discardCurrent } = req.body;
+        let { artist, title, category, discardCurrent } = req.body;
         if (!artist || !title) {
             return res.status(400).json({ error: 'Faltan parámetros requeridos (artist, title)' });
+        }
+        artist = sanitizeArtistTitleInput(artist);
+        title = sanitizeArtistTitleInput(title);
+        if (!artist || !title) {
+            return res.status(400).json({ error: 'artist/title inválidos tras el saneado' });
         }
 
         const cleanT = cleanTrackTitle(title);
@@ -2542,11 +2610,13 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
         if (!fs.existsSync(targetFilePath) && fs.existsSync(targetFolder)) {
             const files = fs.readdirSync(targetFolder);
             const wantedNorm = cleanTrackKey(artist) + '_' + cleanTrackKey(cleanT);
+            const wantedTKey = cleanTrackKey(cleanT);
+            const wantedArtistKey = cleanTrackKey(artist.split(/[,&]/)[0]);
             const matchFile = files.find(f => {
                 if (!f.toLowerCase().endsWith('.mp3')) return false;
                 const fBase = f.replace(/\.mp3$/i, '');
                 const fNorm = cleanTrackKey(fBase);
-                return fNorm === wantedNorm || (fNorm.includes(cleanTrackKey(cleanT)) && fNorm.includes(cleanTrackKey(artist.split(/[,&]/)[0])));
+                return fuzzyTrackFileMatches(fNorm, wantedNorm, wantedTKey, wantedArtistKey);
             });
             if (matchFile) {
                 targetFileName = matchFile;
@@ -3904,9 +3974,14 @@ async function handleRecommendationsPreview(req, res) {
 
 async function handleRecommendationsDownload(req, res) {
     try {
-        const { artist, title, playlist, expectedDurationSec } = req.body;
+        let { artist, title, playlist, expectedDurationSec } = req.body;
         if (!artist || !title) {
             return res.status(400).json({ error: 'Falta artist o title' });
+        }
+        artist = sanitizeArtistTitleInput(artist);
+        title = sanitizeArtistTitleInput(title);
+        if (!artist || !title) {
+            return res.status(400).json({ error: 'artist/title inválidos tras el saneado' });
         }
 
         const targetPlaylist = normalizePlaylistKey(playlist || 'Música viejuna');
