@@ -1153,10 +1153,15 @@ function formatTime(seconds) {
     // ==========================================================================
     async function updateLiveRadioMetadata() {
         if (!currentPlayingRadio || !liveRadioAudio || liveRadioAudio.paused) return;
+        const requestedStation = currentPlayingRadio;
         try {
-            const res = await fetch(`/api/radio/now-playing?id=${encodeURIComponent(currentPlayingRadio.id)}&streamUrl=${encodeURIComponent(currentPlayingRadio.streamUrl)}`);
+            const res = await fetch(`/api/radio/now-playing?id=${encodeURIComponent(requestedStation.id)}&streamUrl=${encodeURIComponent(requestedStation.streamUrl)}`);
+            // Si el usuario cambió de emisora mientras la petición estaba en vuelo, descartar
+            // esta respuesta desactualizada en vez de pisar el "now playing" de la nueva.
+            if (currentPlayingRadio !== requestedStation) return;
             if (res.ok) {
                 const data = await res.json();
+                if (currentPlayingRadio !== requestedStation) return;
                 if (data.nowPlaying && radioBarDial) {
                     radioBarDial.innerHTML = `<i class="fa-solid fa-music" style="color:var(--spotify-green);"></i> ${escapeHtml(data.nowPlaying)}`;
                 }
@@ -1402,6 +1407,11 @@ function formatTime(seconds) {
         if (liveRadioAudio && !liveRadioAudio.paused) {
             liveRadioAudio.pause();
             if (radioPlayerBar) radioPlayerBar.style.display = 'none';
+            currentPlayingRadio = null;
+            if (nowPlayingPollInterval) {
+                clearInterval(nowPlayingPollInterval);
+                nowPlayingPollInterval = null;
+            }
         }
 
         currentPlayingSong = track;
@@ -1416,11 +1426,15 @@ function formatTime(seconds) {
                 mainMusicAudio.src = playableUrl;
             }
             mainMusicAudio.volume = musicVolSlider ? parseFloat(musicVolSlider.value) : 0.85;
+            // Si el usuario salta de pista varias veces seguidas, esta promesa puede resolver
+            // después de que ya se haya lanzado otra reproducción; comprobar que `track` sigue
+            // siendo la pista activa antes de tocar el estado del reproductor, para no dejarlo
+            // desincronizado con lo que realmente suena.
             mainMusicAudio.play().then(() => {
-                updateMusicBarState(true);
+                if (currentPlayingSong === track) updateMusicBarState(true);
             }).catch(err => {
                 console.log('Autoplay audio blocked or error:', err.message);
-                updateMusicBarState(false);
+                if (currentPlayingSong === track) updateMusicBarState(false);
             });
         } else {
             console.log('Track has no audio file in library:', track.title);
@@ -3043,8 +3057,12 @@ function formatTime(seconds) {
 
         switchModalTab(initialTab);
 
-        // Mostrar de inmediato los créditos con los datos que ya tenemos del catálogo
+        // Mostrar de inmediato los créditos con los datos que ya tenemos del catálogo, y
+        // limpiar letra/análisis a un estado neutro para no dejar ver por un instante (o si
+        // falla el fetch) los de la canción abierta anteriormente en este mismo modal.
         populateCreditsTab({}, song);
+        populateLyricsTab(null);
+        populateAnalysisTab(null, song.artist, song.title);
 
         songModal.classList.add('active');
 
@@ -3052,12 +3070,18 @@ function formatTime(seconds) {
         fetch(`/api/track/detail?artist=${encodeURIComponent(song.artist)}&title=${encodeURIComponent(trackTitleQuery)}`)
             .then(res => res.json())
             .then(detail => {
+                // Si el usuario cerró este modal y abrió el de otra canción mientras la
+                // petición estaba en vuelo, descartar esta respuesta desactualizada.
+                if (currentModalSong !== song) return;
                 populateCreditsTab(detail, song);
                 populateLyricsTab(detail);
                 populateAnalysisTab(detail, song.artist, song.title);
             })
             .catch(err => {
                 console.error('Error cargando detalle adicional:', err);
+                if (currentModalSong !== song) return;
+                populateLyricsTab(null);
+                populateAnalysisTab(null, song.artist, song.title);
             });
     }
 
@@ -3749,6 +3773,9 @@ function formatTime(seconds) {
         try {
             const res = await fetch(`/api/artist/images?artist=${encodeURIComponent(artist)}`);
             const data = await res.json();
+            // Si el usuario ya saltó a otra pista/artista mientras esta petición estaba en
+            // vuelo, descartar esta respuesta desactualizada para no pisar la galería nueva.
+            if (lastLoadedGalleryArtist !== artist) return;
             if (data && data.items && Array.isArray(data.items) && data.items.length > 0) {
                 currentArtistGalleryItems = data.items;
             } else if (data && data.images && Array.isArray(data.images) && data.images.length > 0) {
@@ -3757,6 +3784,8 @@ function formatTime(seconds) {
         } catch (err) {
             console.warn('No se pudieron obtener imágenes del artista:', err);
         }
+
+        if (lastLoadedGalleryArtist !== artist) return;
 
         // Añadir la carátula al repertorio si existe y no está repetida
         if (coverUrl) {

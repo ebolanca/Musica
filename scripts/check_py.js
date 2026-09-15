@@ -1,5 +1,6 @@
 const { execSync } = require('child_process');
 const fs = require('fs');
+const path = require('path');
 
 const log = [];
 for (const py of ['python', 'py', 'python3']) {
@@ -18,4 +19,4 @@ try {
     log.push(`python -m yt_dlp -> ERROR: ${e.message}`);
 }
 
-fs.writeFileSync('d:\\03_Trabajo\\Musica\\scripts\\omen_python_check.log', log.join('\n'));
+fs.writeFileSync(path.join(__dirname, 'omen_python_check.log'), log.join('\n'));

@@ -157,6 +157,34 @@ function fuzzyTrackFileMatches(fNorm, wantedNorm, cleanTKey, artistKey) {
     return fNorm.includes(cleanTKey) && fNorm.includes(artistKey);
 }
 
+// Mismo problema (includes() bidireccional sin longitud mínima) en las búsquedas de letras/
+// metadatos por clave normalizada "artista+título" combinada: usado para fusionar/reescribir
+// datos de una canción existente, no para sobrescribir archivos, pero puede mezclar letras o
+// carátulas de dos canciones distintas si alguna de las dos claves es demasiado corta.
+function fuzzyNormKeyMatches(normA, normB) {
+    if (normA === normB) return true;
+    if (normA.length < MIN_FUZZY_MATCH_LEN || normB.length < MIN_FUZZY_MATCH_LEN) return false;
+    return normA.includes(normB) || normB.includes(normA);
+}
+
+// child_process.exec() con `timeout` en Windows solo mata el proceso cmd.exe al expirar,
+// no a los procesos hijos que este haya lanzado (yt-dlp.exe, y a su vez ffmpeg.exe), que
+// quedan huérfanos corriendo indefinidamente. `taskkill /T` sí mata el árbol completo
+// usando el ParentProcessId original, aunque cmd.exe ya haya terminado.
+function execWithTreeKill(cmd, options, callback) {
+    const { exec } = require('child_process');
+    const child = exec(cmd, options, callback);
+    const timeoutMs = options && options.timeout;
+    if (timeoutMs && child.pid) {
+        const pid = child.pid;
+        const killer = setTimeout(() => {
+            try { require('child_process').execSync(`taskkill /pid ${pid} /T /F`, { windowsHide: true }); } catch(e) {}
+        }, timeoutMs + 500);
+        child.once('exit', () => clearTimeout(killer));
+    }
+    return child;
+}
+
 function sanitizeArtistTitleInput(str) {
     if (!str) return '';
     return String(str)
@@ -186,7 +214,7 @@ function findLyricsForTrack(artist, title) {
     const normTarget = `${artist}${cleanT}`.toLowerCase().replace(/[^a-z0-9]/g, '');
     for (const [k, v] of Object.entries(cachedLyricsDb)) {
         const normK = k.toLowerCase().replace(/[^a-z0-9]/g, '');
-        if (normK === normTarget || (normK.length > 5 && (normK.includes(normTarget) || normTarget.includes(normK)))) {
+        if (fuzzyNormKeyMatches(normK, normTarget)) {
             return v;
         }
     }
@@ -782,18 +810,19 @@ function getTrackMetadata(artist, title) {
     for (const [k, meta] of Object.entries(metadataCache)) {
         if (!meta || !meta.coverUrl) continue;
         let normK = k.toLowerCase().replace(/,/g, ' ').replace(/&/g, ' ').replace(/[^a-z0-9]/g, '');
-        if (normK === normTarget || (normK.length > 5 && (normK.includes(normTarget) || normTarget.includes(normK)))) {
+        if (fuzzyNormKeyMatches(normK, normTarget)) {
             return meta;
         }
     }
 
-    // Secondary match: title match + primary artist word match
+    // Secondary match: título + palabra principal del artista, ambos con longitud mínima
+    // (antes, un artista corto se saltaba la comprobación de artista por completo).
     const primaryArtist = normArt.split(' ')[0] || '';
-    if (normTit.length > 3) {
+    if (normTit.length >= MIN_FUZZY_MATCH_LEN) {
         for (const [k, meta] of Object.entries(metadataCache)) {
             if (!meta || !meta.coverUrl) continue;
             let normK = k.toLowerCase().replace(/,/g, ' ').replace(/&/g, ' ').replace(/[^a-z0-9]/g, '');
-            if (normK.includes(normTit) && (primaryArtist.length < 3 || normK.includes(primaryArtist))) {
+            if (normK.includes(normTit) && primaryArtist.length >= 2 && normK.includes(primaryArtist)) {
                 return meta;
             }
         }
@@ -1688,7 +1717,7 @@ app.post('/api/covers/save', (req, res) => {
         if (!existingMeta) {
             for (const [k, meta] of Object.entries(metadataCache)) {
                 let normK = k.toLowerCase().replace(/,/g, ' ').replace(/&/g, ' ').replace(/[^a-z0-9]/g, '');
-                if (normK === normTarget || (normK.length > 5 && (normK.includes(normTarget) || normTarget.includes(normK)))) {
+                if (fuzzyNormKeyMatches(normK, normTarget)) {
                     existingMeta = meta;
                     break;
                 }
@@ -1740,7 +1769,7 @@ app.post('/api/covers/save', (req, res) => {
         // Buscar variantes adicionales que contengan normTarget
         for (const [k, meta] of Object.entries(metadataCache)) {
             let normK = k.toLowerCase().replace(/,/g, ' ').replace(/&/g, ' ').replace(/[^a-z0-9]/g, '');
-            if (normK === normTarget || (normK.length > 6 && normK.includes(normTarget))) {
+            if (normK === normTarget || (normTarget.length >= MIN_FUZZY_MATCH_LEN && normK.length > 6 && normK.includes(normTarget))) {
                 metadataCache[k] = newMeta;
             }
         }
@@ -1873,7 +1902,7 @@ app.post('/api/track/upload-replace', (req, res) => {
                 const convertCmd = `${ffmpegBin} -y -i "${tempUploadPath}" -vn -c:a libmp3lame -b:a 320k "${finalTempMp3}"`;
                 await new Promise((resolve) => {
                     const { exec } = require('child_process');
-                    exec(convertCmd, { timeout: 40000, windowsHide: true }, () => resolve());
+                    execWithTreeKill(convertCmd, { timeout: 40000, windowsHide: true }, () => resolve());
                 });
 
                 const pathToCopy = (fs.existsSync(finalTempMp3) && fs.statSync(finalTempMp3).size >= 50000)
@@ -2412,8 +2441,7 @@ app.post('/api/lyrics/save-offset', (req, res) => {
         // 2. Buscar y actualizar cualquier clave coincidente por normalización en la BD
         for (const k of Object.keys(cachedLyricsDb)) {
             const normK = k.toLowerCase().replace(/[^a-z0-9]/g, '');
-            if (normK === normTarget || normK === normRawTarget || 
-               (normK.length > 5 && (normK.includes(normTarget) || normTarget.includes(normK)))) {
+            if (fuzzyNormKeyMatches(normK, normTarget) || fuzzyNormKeyMatches(normK, normRawTarget)) {
                 cachedLyricsDb[k] = updatedLyrics;
             }
         }
@@ -2466,7 +2494,7 @@ app.post('/api/lyrics/cycle-version', async (req, res) => {
 
                             // Filtro estricto: Verificar que el resultado pertenezca al mismo artista
                             const itemArtist = cleanTrackKey(item.artistName || '');
-                            const isSameArtist = itemArtist.includes(normArtist) || normArtist.includes(itemArtist) ||
+                            const isSameArtist = fuzzyNormKeyMatches(itemArtist, normArtist) ||
                                 normArtist.split(' ').some(w => w.length > 3 && itemArtist.includes(w));
 
                             if (!isSameArtist) continue; // Descartar letras de otros artistas homónimos
@@ -2775,7 +2803,7 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
                 const cookiesArg = getYtDlpCookiesArg();
                 const dumpCmd = `${ytdlpBin} ${cookiesArg} --dump-json --flat-playlist "${q}"`.replace(/\s+/g, " ");
                 const dumpOutput = await new Promise((resolve) => {
-                    exec(dumpCmd, { maxBuffer: 10 * 1024 * 1024, timeout: 15000, windowsHide: true }, (err, stdout) => {
+                    execWithTreeKill(dumpCmd, { maxBuffer: 10 * 1024 * 1024, timeout: 15000, windowsHide: true }, (err, stdout) => {
                         resolve(stdout || '');
                     });
                 });
@@ -2891,7 +2919,7 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
                     const downloadCmd = `${ytdlpBin} ${cookiesArg} --ffmpeg-location "${ffmpegDir}" "${cand.url}" -x --audio-format mp3 --audio-quality 0 -o "${tempOutput}"`.replace(/\s+/g, " ");
 
                     const result = await new Promise((resolve) => {
-                        exec(downloadCmd, { timeout: 45000, windowsHide: true }, (err, stdout, stderr) => {
+                        execWithTreeKill(downloadCmd, { timeout: 45000, windowsHide: true }, (err, stdout, stderr) => {
                             if (fs.existsSync(tempOutput)) {
                                 try {
                                     const stats = fs.statSync(tempOutput);
@@ -2940,7 +2968,7 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
                     try {
                         const checkFfmpeg = fs.existsSync(path.join(binDir, 'ffmpeg.exe')) ? `"${path.join(binDir, 'ffmpeg.exe')}"` : 'ffmpeg';
                         const durProbe = await new Promise((resolve) => {
-                            exec(`${checkFfmpeg} -i "${pFile}" 2>&1`, { timeout: 5000 }, (err, stdout, stderr) => {
+                            execWithTreeKill(`${checkFfmpeg} -i "${pFile}" 2>&1`, { timeout: 5000 }, (err, stdout, stderr) => {
                                 const out = (stdout || '') + (stderr || '');
                                 const m = out.match(/Duration:\s*(\d+):(\d+):([\d.]+)/);
                                 if (m) {
@@ -2957,7 +2985,7 @@ app.post('/api/track/replace-clean-audio', async (req, res) => {
 
                             const cutCmd = `${checkFfmpeg} -ss ${introOffsetSec} -t ${expectedDurationSec + 3} -i "${pFile}" -c copy "${tempOutput}" -y`;
                             const cutOk = await new Promise((resolve) => {
-                                exec(cutCmd, { timeout: 10000 }, (err) => {
+                                execWithTreeKill(cutCmd, { timeout: 10000 }, (err) => {
                                     if (fs.existsSync(tempOutput) && fs.statSync(tempOutput).size >= 900000) {
                                         resolve(true);
                                     } else resolve(false);
@@ -4097,7 +4125,7 @@ async function handleRecommendationsDownload(req, res) {
                 const cookiesArg = getYtDlpCookiesArg();
                 const dumpCmd = `${ytdlpBin} ${cookiesArg} --dump-json --flat-playlist "${q}"`.replace(/\s+/g, " ");
                 const dumpOutput = await new Promise((resolve) => {
-                    exec(dumpCmd, { maxBuffer: 10 * 1024 * 1024, timeout: 15000, windowsHide: true }, (err, stdout) => {
+                    execWithTreeKill(dumpCmd, { maxBuffer: 10 * 1024 * 1024, timeout: 15000, windowsHide: true }, (err, stdout) => {
                         resolve(stdout || '');
                     });
                 });
@@ -4175,7 +4203,7 @@ async function handleRecommendationsDownload(req, res) {
 
             console.log(`[RECOMMENDATION DOWNLOAD] Probando candidato [${i + 1}/${validCandidates.length}]: "${cand.title}"`);
             const ok = await new Promise((resolve) => {
-                exec(dlCmd, { maxBuffer: 10 * 1024 * 1024, timeout: 45000, windowsHide: true }, (err) => {
+                execWithTreeKill(dlCmd, { maxBuffer: 10 * 1024 * 1024, timeout: 45000, windowsHide: true }, (err) => {
                     if (!err && fs.existsSync(tempOutput)) {
                         const stats = fs.statSync(tempOutput);
                         if (stats.size >= 800000) return resolve(true);

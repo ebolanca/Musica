@@ -1,8 +1,17 @@
 const fs = require('fs');
+const path = require('path');
 
+const METADATA_CACHE_PATH = path.join(__dirname, '..', 'data', 'metadata_cache.json');
 const OMEN_CACHE_PATH = '\\\\100.95.217.45\\omen D\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json';
-const playlistsData = JSON.parse(fs.readFileSync(OMEN_CACHE_PATH, 'utf8'));
-const metaCache = JSON.parse(fs.readFileSync('data/metadata_cache.json', 'utf8'));
+
+let playlistsData;
+try {
+    playlistsData = JSON.parse(fs.readFileSync(OMEN_CACHE_PATH, 'utf8'));
+} catch(e) {
+    console.error(`❌ No se pudo leer ${OMEN_CACHE_PATH} (¿red/NAS no accesible?): ${e.message}`);
+    process.exit(1);
+}
+const metaCache = JSON.parse(fs.readFileSync(METADATA_CACHE_PATH, 'utf8'));
 
 // Obtener todas las canciones de las listas de Siglo XXI
 const sigloTracks = [];
@@ -86,6 +95,6 @@ async function queryItunes(artist, title) {
         }
     }
 
-    fs.writeFileSync('data/metadata_cache.json', JSON.stringify(metaCache, null, 2), 'utf8');
+    fs.writeFileSync(METADATA_CACHE_PATH, JSON.stringify(metaCache, null, 2), 'utf8');
     console.log(`\n🎉 Auditoría completada: ${fixedCount} canciones de Siglo XXI corregidas con fechas exactas.`);
 })();
