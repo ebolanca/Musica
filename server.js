@@ -3727,6 +3727,56 @@ async function handleRecommendationsRadioRadar(req, res) {
             }
         }
 
+        // 3. Incorporar también canciones del histórico semanal que no hayan sonado en el último lote
+        const weeklyHistory = loadAirplayHistory();
+        const nowMs = Date.now();
+        const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
+
+        for (const [hKey, item] of Object.entries(weeklyHistory)) {
+            if (!item || !item.artist || !item.title) continue;
+            if (!isValidRadioSong(item.artist, item.title)) continue;
+            const cleanArt = normalizeSearchText(item.artist);
+            const cleanTit = normalizeSearchText(cleanSongTitle(item.title));
+            if (!cleanArt || !cleanTit) continue;
+            const k = `${cleanArt}_${cleanTit}`;
+            if (seen.has(k)) continue;
+
+            // Filtrar por emisoras de esta playlist
+            const itemStations = Array.isArray(item.stations) ? item.stations : [];
+            const matchesPlaylistStations = availableStationKeys.some(stKey => itemStations.includes(stKey));
+            if (!matchesPlaylistStations) continue;
+
+            // Filtrar si el usuario la omitió o ya la tiene en su colección
+            if (isRecommendationDismissed(item.artist, item.title)) continue;
+            const isOwned = isSongInCollection(item.artist, item.title);
+            if (isOwned) continue;
+
+            // Calcular emisiones reales de los últimos 7 días
+            const validRecentPlays = (item.plays || []).filter(ts => (nowMs - ts) <= SEVEN_DAYS_MS);
+            const playCount = Math.max(item.playCount7d || 1, validRecentPlays.length, 1);
+            if (playCount <= 0) continue;
+
+            seen.add(k);
+            let rotationLevel = 'light';
+            if (playCount >= 5) rotationLevel = 'heavy';
+            else if (playCount >= 2) rotationLevel = 'medium';
+
+            const primaryStationId = itemStations.find(st => availableStationKeys.includes(st)) || itemStations[0] || availableStationKeys[0];
+            const stationConf = RADAR_STATIONS_CONFIG[primaryStationId] || {};
+
+            unique.push({
+                artist: item.artist,
+                title: item.title,
+                stationId: primaryStationId,
+                stationName: stationConf.name || primaryStationId,
+                playlist,
+                isOwned: false,
+                playCount,
+                rotationLevel,
+                isFromWeeklyHistory: true
+            });
+        }
+
         // Contabilizar repeticiones y rotaciones por emisora
         const stationStats = {};
         for (const k of availableStationKeys) {
@@ -4119,4 +4169,9 @@ app.post('/api/retro-hits/add-to-viejuna', (req, res) => {
 const PORT = 8087;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Servidor de Música corriendo en http://localhost:${PORT}`);
+    // Iniciar muestreador 24/7 en segundo plano (cada 20 minutos)
+    setTimeout(() => {
+        autoCollectRadioAirplayInBackground();
+    }, 15000);
+    setInterval(autoCollectRadioAirplayInBackground, 20 * 60 * 1000);
 });
