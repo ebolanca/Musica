@@ -32,6 +32,20 @@ const fs = require('fs');
 const path = require('path');
 const http = require('http');
 
+// Sin estos handlers, un error async fuera del ciclo request/response (una promesa sin
+// .catch(), una excepción en un setTimeout/setInterval) tumba el proceso sin dejar rastro
+// claro en los logs de pm2. Se deja que el proceso termine igualmente (pm2 lo reinicia
+// solo, que es el comportamiento correcto ante estado potencialmente inconsistente), pero
+// con un log identificable para saber qué pasó.
+process.on('unhandledRejection', (reason) => {
+    console.error('🔥 [UNHANDLED REJECTION] El servidor se reiniciará por un error no controlado:', reason);
+    process.exit(1);
+});
+process.on('uncaughtException', (err) => {
+    console.error('🔥 [UNCAUGHT EXCEPTION] El servidor se reiniciará por un error no controlado:', err);
+    process.exit(1);
+});
+
 // Cargar variables de entorno desde .env si existe
 const ENV_PATH = path.join(__dirname, '.env');
 if (fs.existsSync(ENV_PATH)) {
@@ -837,7 +851,9 @@ function cleanTrackTitle(rawTitle) {
 
 const app = express();
 app.use(cors());
-app.use(express.json());
+// Límite ampliado a 15mb: /api/covers/save recibe carátulas HD en base64 (el default de
+// 100kb las rechaza con PayloadTooLargeError en cada intento de subida local).
+app.use(express.json({ limit: '15mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Rutas compatibles tanto en local OMEN (D:\) como remoto MSI (red Tailscale)
@@ -1376,8 +1392,8 @@ function findAnalysisForTrack(artist, title) {
 // 🎬 Jellyfin Music Videos Integration (OMEN :8096)
 // ==========================================================================
 const JELLYFIN_HOST = process.env.JELLYFIN_HOST || 'http://100.95.217.45:8096';
-const JELLYFIN_TOKEN = '128c3d9a51bd4b22bacaccad03ef9328';
-const JELLYFIN_USER_ID = '9f5ea2fca2c7415ba5a030c05821e9f9';
+const JELLYFIN_TOKEN = process.env.JELLYFIN_TOKEN || '128c3d9a51bd4b22bacaccad03ef9328';
+const JELLYFIN_USER_ID = process.env.JELLYFIN_USER_ID || '9f5ea2fca2c7415ba5a030c05821e9f9';
 
 let cachedJellyfinVideos = [];
 let jellyfinVideosLookup = new Map();
@@ -1758,6 +1774,8 @@ function resolveTrackCategory(artist, cleanT, category) {
     return targetCategory;
 }
 
+const MAX_UPLOAD_BYTES = 60 * 1024 * 1024; // 60MB: de sobra para cualquier pista de audio; evita llenar el disco con una subida arbitrariamente grande.
+
 app.post('/api/track/upload-replace', (req, res) => {
     try {
         let { artist, title, category } = req.query;
@@ -1768,6 +1786,11 @@ app.post('/api/track/upload-replace', (req, res) => {
         title = sanitizeArtistTitleInput(title);
         if (!artist || !title) {
             return res.status(400).json({ error: 'artist/title inválidos tras el saneado' });
+        }
+
+        const declaredLength = parseInt(req.headers['content-length'], 10);
+        if (declaredLength && declaredLength > MAX_UPLOAD_BYTES) {
+            return res.status(413).json({ error: `Archivo demasiado grande (máximo ${Math.floor(MAX_UPLOAD_BYTES / 1024 / 1024)}MB)` });
         }
 
         const cleanT = cleanTrackTitle(title);
@@ -1803,9 +1826,27 @@ app.post('/api/track/upload-replace', (req, res) => {
         const tempUploadPath = path.join(tempDir, `upload_${Date.now()}_temp.raw`);
         const fileStream = fs.createWriteStream(tempUploadPath);
 
+        // Por si Content-Length falta o miente (chunked transfer): corta la subida en marcha
+        // si se pasa del límite, en vez de escribir un archivo arbitrariamente grande a disco.
+        let receivedBytes = 0;
+        let aborted = false;
+        req.on('data', (chunk) => {
+            receivedBytes += chunk.length;
+            if (!aborted && receivedBytes > MAX_UPLOAD_BYTES) {
+                aborted = true;
+                fileStream.destroy();
+                req.destroy();
+                try { fs.unlinkSync(tempUploadPath); } catch(e){}
+                if (!res.headersSent) {
+                    res.status(413).json({ error: `Archivo demasiado grande (máximo ${Math.floor(MAX_UPLOAD_BYTES / 1024 / 1024)}MB)` });
+                }
+            }
+        });
+
         req.pipe(fileStream);
 
         fileStream.on('finish', async () => {
+            if (aborted) return;
             try {
                 if (!fs.existsSync(tempUploadPath)) {
                     return res.status(400).json({ error: 'No se recibió ningún dato de audio' });
@@ -1871,8 +1912,9 @@ app.post('/api/track/upload-replace', (req, res) => {
         });
 
         fileStream.on('error', (err) => {
+            if (aborted) return;
             console.error('Error escribiendo stream:', err);
-            res.status(500).json({ error: err.message });
+            if (!res.headersSent) res.status(500).json({ error: err.message });
         });
     } catch(e) {
         console.error('Error en upload-replace:', e);
