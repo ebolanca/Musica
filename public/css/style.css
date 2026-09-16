@@ -1860,7 +1860,9 @@ video {
   box-sizing: border-box;
 }
 
-@media (max-width: 960px) {
+/* Solo se apila en vertical (portrait): en horizontal (Modo TV en móvil) se mantiene el
+   diseño en dos columnas aunque el ancho sea estrecho. */
+@media (max-width: 960px) and (orientation: portrait) {
   .cinema-content {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -3459,7 +3461,10 @@ video {
     border-radius: 12px;
   }
 
-  /* --- MODO CINE EN MÓVIL (Layout Vertical Optimizado) --- */
+  /* --- MODO CINE EN MÓVIL (Layout Vertical Optimizado) ---
+     Solo en portrait: en horizontal (Modo TV) se mantiene el layout de dos columnas
+     de escritorio en vez de apilar la info de la canción encima del karaoke. */
+  @media (orientation: portrait) {
   .cinema-overlay {
     padding: 0 !important;
   }
@@ -3612,6 +3617,7 @@ video {
     font-size: 0.82rem !important;
     margin-top: 4px !important;
   }
+  } /* fin @media (orientation: portrait) del Modo Cine móvil */
 
   /* --- Modales estilo Bottom Sheet en Móvil --- */
   .modal {
