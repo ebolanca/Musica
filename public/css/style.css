@@ -5580,3 +5580,9 @@ body.public-mode #btn-reanalyze-ai,
 body.public-mode #btn-trigger-ai-analysis {
   display: none !important;
 }
+
+/* Pensado principalmente para móvil: las carátulas de las tarjetas de canción
+   ocupan demasiado espacio en pantallas pequeñas. */
+body.public-mode .card-cover {
+  display: none !important;
+}

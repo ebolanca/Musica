@@ -1585,6 +1585,34 @@ function formatTime(seconds) {
         }
     }
 
+    // En el acceso público (pensado para móvil), la reproducción aleatoria abre directamente
+    // el modo cine en pantalla completa/horizontal en vez de dejar solo la barra flotante.
+    function maybeOpenCinemaForPublicShuffle() {
+        if (!document.body.classList.contains('public-mode')) return;
+        if (!activePlaylistQueue || activePlaylistQueue.length === 0) return;
+        openCinemaMode(activePlaylistQueue[currentQueueIndex] || activePlaylistQueue[0], activePlaylistQueue);
+        if (musicPlayerBar) musicPlayerBar.style.display = 'none';
+
+        // El bloqueo de orientación solo lo permiten los navegadores en pantalla completa
+        // real; si ya lo está, se intenta ya, si no, se espera al evento de que lo consiga
+        // (best-effort: iOS Safari no soporta esta API en absoluto y se ignora sin error).
+        const tryLockOrientation = () => {
+            try {
+                if (screen.orientation && screen.orientation.lock) {
+                    screen.orientation.lock('landscape').catch(() => {});
+                }
+            } catch(e) {}
+        };
+        if (document.fullscreenElement) {
+            tryLockOrientation();
+        } else {
+            document.addEventListener('fullscreenchange', function onFsChange() {
+                document.removeEventListener('fullscreenchange', onFsChange);
+                tryLockOrientation();
+            });
+        }
+    }
+
     function startPlaylistShuffle(playlistName) {
         const tracks = allPlaylists[playlistName] || allPlaylists[currentTab] || [];
         if (tracks.length === 0) return;
@@ -1599,6 +1627,7 @@ function formatTime(seconds) {
         currentQueueIndex = 0;
 
         playQueueTrack(activePlaylistQueue[0], `${playlistName} (${playedCount + 1}/${total})`);
+        maybeOpenCinemaForPublicShuffle();
     }
 
     function startSearchShuffle(queryLabel, tracks) {
@@ -1617,6 +1646,7 @@ function formatTime(seconds) {
         currentSearchShuffleLabel = queryLabel;
 
         playQueueTrack(activePlaylistQueue[0], `Búsqueda "${queryLabel}" (${playedCount + 1}/${total})`);
+        maybeOpenCinemaForPublicShuffle();
     }
 
     if (btnPlaylistShuffle) {
@@ -1650,6 +1680,7 @@ function formatTime(seconds) {
             currentQueueIndex = 0;
 
             playQueueTrack(activePlaylistQueue[0], `Modo Fiesta (${playedCount + 1}/${total})`);
+            maybeOpenCinemaForPublicShuffle();
         });
     }
 
@@ -3639,6 +3670,11 @@ function formatTime(seconds) {
         stopArtistGallery();
         toggleCinemaAnalysis(false);
         if (mainMusicAudio && mainMusicAudio.paused) releaseWakeLock();
+        // Si la reproducción aleatoria pública ocultó la barra flotante al abrir el modo
+        // cine, restaurarla al cerrar (la música puede seguir sonando).
+        if (musicPlayerBar && mainMusicAudio && !mainMusicAudio.paused) {
+            musicPlayerBar.style.display = 'block';
+        }
         document.body.style.overflow = '';
         document.documentElement.style.overflow = '';
         
