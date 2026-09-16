@@ -61,6 +61,98 @@ if (fs.existsSync(ENV_PATH)) {
     } catch(e){}
 }
 
+// ==========================================================================
+// 🔐 Autenticación (contraseña única compartida, sesión de ~30 días)
+// ==========================================================================
+const crypto = require('crypto');
+const APP_PASSWORD = process.env.APP_PASSWORD || '';
+const SESSION_SECRET = process.env.SESSION_SECRET || '';
+const SESSION_MAX_AGE_MS = 30 * 24 * 60 * 60 * 1000; // 30 días
+const SESSION_COOKIE_NAME = 'musica_session';
+
+if (!APP_PASSWORD || !SESSION_SECRET) {
+    console.warn('⚠️ [AUTH] APP_PASSWORD/SESSION_SECRET no configurados en .env: la app queda SIN protección de login.');
+}
+
+function signSession(expiresAt) {
+    const hmac = crypto.createHmac('sha256', SESSION_SECRET).update(String(expiresAt)).digest('hex');
+    return `${expiresAt}.${hmac}`;
+}
+
+function verifySession(cookieValue) {
+    if (!cookieValue || !SESSION_SECRET) return false;
+    const [expiresAtStr, hmac] = cookieValue.split('.');
+    const expiresAt = parseInt(expiresAtStr, 10);
+    if (!expiresAt || !hmac || Date.now() > expiresAt) return false;
+    const expected = crypto.createHmac('sha256', SESSION_SECRET).update(String(expiresAt)).digest('hex');
+    try {
+        return crypto.timingSafeEqual(Buffer.from(hmac), Buffer.from(expected));
+    } catch(e) {
+        return false; // longitud distinta -> timingSafeEqual lanza en vez de devolver false
+    }
+}
+
+function parseCookies(req) {
+    const header = req.headers.cookie;
+    const out = {};
+    if (!header) return out;
+    header.split(';').forEach(part => {
+        const idx = part.indexOf('=');
+        if (idx === -1) return;
+        const k = part.slice(0, idx).trim();
+        const v = part.slice(idx + 1).trim();
+        if (k) out[k] = decodeURIComponent(v);
+    });
+    return out;
+}
+
+function isAuthenticated(req) {
+    if (!APP_PASSWORD || !SESSION_SECRET) return true; // sin configurar -> no bloquear (uso local sin login)
+    const cookies = parseCookies(req);
+    return verifySession(cookies[SESSION_COOKIE_NAME]);
+}
+
+// Acceso público (musicamix.majecruz.es, vía Cloudflare Tunnel) = funciones reducidas
+// (listas, radios, modo cine/TV con karaoke, ver análisis, transmitir). Entrando por la red
+// Tailscale/localhost se conserva siempre la app completa (edición de subtítulos/audio,
+// radar de emisoras, análisis IA bajo demanda, etc.). La distinción es por el host con el
+// que se accedió, no por contraseña: hay una única sesión, pero el mismo host determina el
+// nivel de funciones disponible en cada visita.
+const PUBLIC_HOSTNAME = 'musicamix.majecruz.es';
+function isPublicHost(req) {
+    return (req.hostname || '').toLowerCase() === PUBLIC_HOSTNAME;
+}
+function blockInPublicMode(req, res, next) {
+    if (isPublicHost(req)) {
+        return res.status(403).json({ error: 'Esta función no está disponible en el acceso público' });
+    }
+    next();
+}
+
+// Limitador de intentos de login: máx. 5 fallos por IP en 15 minutos.
+const loginAttempts = new Map(); // ip -> { count, firstAttemptAt }
+const LOGIN_MAX_ATTEMPTS = 5;
+const LOGIN_WINDOW_MS = 15 * 60 * 1000;
+
+function isLoginRateLimited(ip) {
+    const entry = loginAttempts.get(ip);
+    if (!entry) return false;
+    if (Date.now() - entry.firstAttemptAt > LOGIN_WINDOW_MS) {
+        loginAttempts.delete(ip);
+        return false;
+    }
+    return entry.count >= LOGIN_MAX_ATTEMPTS;
+}
+
+function registerLoginFailure(ip) {
+    const entry = loginAttempts.get(ip);
+    if (!entry || Date.now() - entry.firstAttemptAt > LOGIN_WINDOW_MS) {
+        loginAttempts.set(ip, { count: 1, firstAttemptAt: Date.now() });
+    } else {
+        entry.count++;
+    }
+}
+
 const LYRICS_DB_PATH = path.join(__dirname, 'data', 'lyrics_db.json');
 const METADATA_CACHE_FILE = path.join(__dirname, 'data', 'metadata_cache.json');
 const ANALYSES_DB_PATH = path.join(__dirname, 'data', 'analyses_db.json');
@@ -887,10 +979,65 @@ function cleanTrackTitle(rawTitle) {
 
 
 const app = express();
-app.use(cors());
+// Detrás de Cloudflare Tunnel, req.ip sería siempre la IP local del túnel sin esto: hace que
+// Express confíe en X-Forwarded-For para saber la IP real del visitante (usada en el
+// limitador de intentos de login).
+app.set('trust proxy', true);
+// Origen restringido al dominio público una vez publicado (las peticiones del propio
+// frontend servido por esta misma app son same-origin y no pasan por CORS en absoluto;
+// esto solo bloquea que OTRA web use la cookie de sesión del visitante contra esta API).
+app.use(cors({ origin: 'https://musicamix.majecruz.es', credentials: true }));
 // Límite ampliado a 15mb: /api/covers/save recibe carátulas HD en base64 (el default de
 // 100kb las rechaza con PayloadTooLargeError en cada intento de subida local).
 app.use(express.json({ limit: '15mb' }));
+
+app.post('/api/login', (req, res) => {
+    const ip = req.ip || (req.socket && req.socket.remoteAddress) || 'unknown';
+    if (isLoginRateLimited(ip)) {
+        return res.status(429).json({ error: 'Demasiados intentos fallidos. Espera unos minutos e inténtalo de nuevo.' });
+    }
+    if (!APP_PASSWORD || !SESSION_SECRET) {
+        return res.status(500).json({ error: 'Login no configurado en el servidor (falta APP_PASSWORD/SESSION_SECRET en .env)' });
+    }
+    const provided = Buffer.from(String((req.body && req.body.password) || ''));
+    const expected = Buffer.from(APP_PASSWORD);
+    const isValid = provided.length === expected.length && crypto.timingSafeEqual(provided, expected);
+    if (!isValid) {
+        registerLoginFailure(ip);
+        return res.status(401).json({ error: 'Contraseña incorrecta' });
+    }
+    const expiresAt = Date.now() + SESSION_MAX_AGE_MS;
+    const isHttps = req.secure || req.headers['x-forwarded-proto'] === 'https';
+    res.cookie(SESSION_COOKIE_NAME, signSession(expiresAt), {
+        httpOnly: true,
+        secure: isHttps,
+        sameSite: 'lax',
+        maxAge: SESSION_MAX_AGE_MS
+    });
+    res.json({ success: true });
+});
+
+app.post('/api/logout', (req, res) => {
+    res.clearCookie(SESSION_COOKIE_NAME);
+    res.json({ success: true });
+});
+
+// A partir de aquí, todo lo registrado más abajo (estáticos, /media-music, /media-videos
+// y el resto de rutas /api/*) queda protegido por sesión.
+app.use((req, res, next) => {
+    if (isAuthenticated(req)) return next();
+    if (req.path.startsWith('/api/')) {
+        return res.status(401).json({ error: 'No autenticado' });
+    }
+    res.status(401).sendFile(path.join(__dirname, 'public', 'login.html'));
+});
+
+// El frontend la consulta al arrancar para saber si debe ocultar las funciones de edición
+// (subtítulos, audio, carátulas, radar de emisoras, re-análisis IA) del acceso público.
+app.get('/api/session-info', (req, res) => {
+    res.json({ publicMode: isPublicHost(req) });
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Rutas compatibles tanto en local OMEN (D:\) como remoto MSI (red Tailscale)
@@ -1515,7 +1662,7 @@ app.get('/api/jellyfin/videos', async (req, res) => {
 });
 
 // Endpoint: Refrescar catálogo en caliente
-app.post('/api/jellyfin/refresh', async (req, res) => {
+app.post('/api/jellyfin/refresh', blockInPublicMode, async (req, res) => {
     try {
         await fetch(`${JELLYFIN_HOST}/Library/Refresh`, {
             method: 'POST',
@@ -1541,7 +1688,7 @@ app.post('/api/jellyfin/refresh', async (req, res) => {
 });
 
 // Endpoint: Generar o re-analizar pista con Gemini AI
-app.post('/api/analysis/generate', async (req, res) => {
+app.post('/api/analysis/generate', blockInPublicMode, async (req, res) => {
     const { artist, title, force } = req.body;
     if (!artist || !title) {
         return res.status(400).json({ error: 'artist y title son obligatorios' });
@@ -1575,7 +1722,7 @@ app.post('/api/analysis/generate', async (req, res) => {
 // ==========================================================================
 // 🖼️ Búsqueda de Carátulas Alternativas (Deezer + iTunes)
 // ==========================================================================
-app.get('/api/covers/search', async (req, res) => {
+app.get('/api/covers/search', blockInPublicMode, async (req, res) => {
     try {
         const query = (req.query.q || '').trim();
         if (!query) {
@@ -1685,7 +1832,7 @@ app.get('/api/covers/search', async (req, res) => {
 // ==========================================================================
 // 💾 Guardar Carátula Elegida para una Canción
 // ==========================================================================
-app.post('/api/covers/save', (req, res) => {
+app.post('/api/covers/save', blockInPublicMode, (req, res) => {
     try {
         const { artist, title, rawTitle, coverUrl, album } = req.body;
         if (!artist || !title || !coverUrl) {
@@ -1813,7 +1960,7 @@ function resolveTrackCategory(artist, cleanT, category) {
 
 const MAX_UPLOAD_BYTES = 60 * 1024 * 1024; // 60MB: de sobra para cualquier pista de audio; evita llenar el disco con una subida arbitrariamente grande.
 
-app.post('/api/track/upload-replace', (req, res) => {
+app.post('/api/track/upload-replace', blockInPublicMode, (req, res) => {
     try {
         let { artist, title, category } = req.query;
         if (!artist || !title) {
@@ -1968,7 +2115,8 @@ app.get('/api/track/detail', async (req, res) => {
     let analysis = findAnalysisForTrack(artist, title);
 
     // Si no hay análisis, lanzar la generación con IA en segundo plano sin bloquear la respuesta de letras
-    if (!analysis || isGenericAnalysis(analysis)) {
+    // (nunca desde el acceso público: solo puede ver análisis ya existentes, no generar nuevos y gastar cuota).
+    if ((!analysis || isGenericAnalysis(analysis)) && !isPublicHost(req)) {
         const cleanT = cleanTrackTitle(title);
         const meta = getTrackMetadata(artist, title);
         generateGeminiAnalysis(artist, cleanT, meta.album, meta.releaseYear).then(aiAnalysis => {
@@ -2361,7 +2509,7 @@ app.get('/api/radio/now-playing', async (req, res) => {
 // ==========================================================================
 // 💾 Grabar Desfase Permanente de Letras / Subtítulos
 // ==========================================================================
-app.post('/api/lyrics/save-offset', (req, res) => {
+app.post('/api/lyrics/save-offset', blockInPublicMode, (req, res) => {
     try {
         const { artist, title, rawTitle, offsetSec, lyrics, lyricsArray } = req.body;
         if (!artist || !title) {
@@ -2464,7 +2612,7 @@ app.post('/api/lyrics/save-offset', (req, res) => {
 // ==========================================================================
 let lyricsCycleMap = {};
 
-app.post('/api/lyrics/cycle-version', async (req, res) => {
+app.post('/api/lyrics/cycle-version', blockInPublicMode, async (req, res) => {
     try {
         const { artist, title } = req.body;
         if (!artist || !title) {
@@ -2673,7 +2821,7 @@ async function downloadFromOnlineConverter(youtubeUrl, outputPath) {
     }
 }
 
-app.post('/api/track/replace-clean-audio', async (req, res) => {
+app.post('/api/track/replace-clean-audio', blockInPublicMode, async (req, res) => {
     try {
         let { artist, title, category, discardCurrent } = req.body;
         if (!artist || !title) {
@@ -4305,27 +4453,27 @@ function handleRecommendationsUndismiss(req, res) {
     }
 }
 
-// Registro de Rutas
-app.get('/api/recommendations/catalog', handleRecommendationsCatalog);
-app.get('/api/recommendations/radio-radar', handleRecommendationsRadioRadar);
-app.get('/api/recommendations/preview', handleRecommendationsPreview);
-app.post('/api/recommendations/download', handleRecommendationsDownload);
-app.post('/api/recommendations/dismiss', handleRecommendationsDismiss);
-app.post('/api/recommendations/undismiss', handleRecommendationsUndismiss);
+// Registro de Rutas (todo el radar de emisoras/descubridor de éxitos: fuera del acceso público)
+app.get('/api/recommendations/catalog', blockInPublicMode, handleRecommendationsCatalog);
+app.get('/api/recommendations/radio-radar', blockInPublicMode, handleRecommendationsRadioRadar);
+app.get('/api/recommendations/preview', blockInPublicMode, handleRecommendationsPreview);
+app.post('/api/recommendations/download', blockInPublicMode, handleRecommendationsDownload);
+app.post('/api/recommendations/dismiss', blockInPublicMode, handleRecommendationsDismiss);
+app.post('/api/recommendations/undismiss', blockInPublicMode, handleRecommendationsUndismiss);
 
 // Compatibilidad retro retro-hits
-app.get('/api/retro-hits/catalog', (req, res) => {
+app.get('/api/retro-hits/catalog', blockInPublicMode, (req, res) => {
     req.query.playlist = req.query.playlist || 'Música viejuna';
     return handleRecommendationsCatalog(req, res);
 });
-app.get('/api/retro-hits/radio-radar', (req, res) => {
+app.get('/api/retro-hits/radio-radar', blockInPublicMode, (req, res) => {
     req.query.playlist = req.query.playlist || 'Música viejuna';
     return handleRecommendationsRadioRadar(req, res);
 });
-app.get('/api/retro-hits/preview', handleRecommendationsPreview);
-app.post('/api/retro-hits/dismiss', handleRecommendationsDismiss);
-app.post('/api/retro-hits/undismiss', handleRecommendationsUndismiss);
-app.post('/api/retro-hits/add-to-viejuna', (req, res) => {
+app.get('/api/retro-hits/preview', blockInPublicMode, handleRecommendationsPreview);
+app.post('/api/retro-hits/dismiss', blockInPublicMode, handleRecommendationsDismiss);
+app.post('/api/retro-hits/undismiss', blockInPublicMode, handleRecommendationsUndismiss);
+app.post('/api/retro-hits/add-to-viejuna', blockInPublicMode, (req, res) => {
     req.body.playlist = 'Música viejuna';
     return handleRecommendationsDownload(req, res);
 });

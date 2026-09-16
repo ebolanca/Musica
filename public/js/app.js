@@ -91,6 +91,15 @@ function formatTime(seconds) {
 }
 
     document.addEventListener('DOMContentLoaded', () => {
+    // Acceso público (musicamix.majecruz.es): oculta edición de subtítulos/audio/carátulas
+    // y el radar de emisoras. El bloqueo real está en el servidor (blockInPublicMode); esto
+    // solo evita mostrar botones que darían 403 al pulsarlos.
+    fetch('/api/session-info').then(r => r.json()).then(data => {
+        if (data && data.publicMode) {
+            document.body.classList.add('public-mode');
+        }
+    }).catch(() => {});
+
     let allPlaylists = {};
     let currentTab = 'Música viejuna';
     let searchQuery = '';
@@ -4034,6 +4043,15 @@ function formatTime(seconds) {
                     btnJellyfinSync.disabled = false;
                     btnJellyfinSync.innerHTML = '<i class="fa-solid fa-rotate"></i> Sincronizar';
                 });
+        });
+    }
+
+    // Cerrar sesión
+    const btnLogout = document.getElementById('btn-logout');
+    if (btnLogout) {
+        btnLogout.addEventListener('click', () => {
+            fetch('/api/logout', { method: 'POST', credentials: 'include' })
+                .finally(() => location.reload());
         });
     }
 

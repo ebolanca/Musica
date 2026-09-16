@@ -5565,3 +5565,18 @@ video {
   border-color: #f59e0b !important;
   color: #fff !important;
 }
+
+/* ==========================================================================
+   🔒 Acceso público (musicamix.majecruz.es): oculta edición de subtítulos/
+   audio/carátulas, radar de emisoras y sincronización/mantenimiento.
+   El bloqueo real vive en el servidor (blockInPublicMode); esto es solo UX.
+   ========================================================================== */
+body.public-mode #btn-jellyfin-sync,
+body.public-mode #btn-open-recommendations,
+body.public-mode #tab-btn-retro,
+body.public-mode #cinema-top-toolbars-panel,
+body.public-mode #btn-cinema-tv-toggle,
+body.public-mode #btn-reanalyze-ai,
+body.public-mode #btn-trigger-ai-analysis {
+  display: none !important;
+}
