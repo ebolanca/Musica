@@ -983,11 +983,12 @@
       1789494694894,
       1789501931033,
       1789546178760,
-      1789552834001
+      1789552834001,
+      1789560657686
     ],
-    "playCount7d": 5,
+    "playCount7d": 6,
     "firstSeen": "2026-09-05T07:00:21.435Z",
-    "lastSeen": "2026-09-16T10:00:34.001Z"
+    "lastSeen": "2026-09-16T12:10:57.686Z"
   },
   "beyonce_halo": {
     "artist": "Beyoncé",
@@ -1519,11 +1520,12 @@
     ],
     "plays": [
       1789208476726,
-      1789489489287
+      1789489489287,
+      1789560527414
     ],
-    "playCount7d": 2,
+    "playCount7d": 3,
     "firstSeen": "2026-09-05T08:21:04.428Z",
-    "lastSeen": "2026-09-15T16:24:49.287Z"
+    "lastSeen": "2026-09-16T12:08:47.414Z"
   },
   "clooneeprospa_freeyourmind": {
     "artist": "Cloonee,Prospa",
@@ -2893,11 +2895,12 @@
       1789492112771,
       1789500678347,
       1789549994027,
-      1789546485854
+      1789546485854,
+      1789560822577
     ],
-    "playCount7d": 6,
+    "playCount7d": 7,
     "firstSeen": "2026-09-05T16:48:40.092Z",
-    "lastSeen": "2026-09-16T08:14:45.854Z"
+    "lastSeen": "2026-09-16T12:13:42.577Z"
   },
   "madonnasabrinacarpenter_bringyourlove": {
     "artist": "Madonna & Sabrina Carpenter",
@@ -3164,12 +3167,11 @@
       "HITFM"
     ],
     "plays": [
-      1788626920092,
-      1788620555624
+      1789560867692
     ],
-    "playCount7d": 2,
+    "playCount7d": 1,
     "firstSeen": "2026-09-05T16:48:40.092Z",
-    "lastSeen": "2026-09-05T15:02:35.624Z"
+    "lastSeen": "2026-09-16T12:14:27.692Z"
   },
   "chanel_slomo": {
     "artist": "Chanel",
@@ -3306,14 +3308,15 @@
     "artist": "Leire Martínez",
     "title": "Mi nombre",
     "stations": [
-      "CADENA100"
+      "CADENA100",
+      "CADENADIAL"
     ],
     "plays": [
-      1788626920185
+      1789560637485
     ],
     "playCount7d": 1,
     "firstSeen": "2026-09-05T16:48:40.185Z",
-    "lastSeen": "2026-09-05T16:48:40.185Z"
+    "lastSeen": "2026-09-16T12:10:37.485Z"
   },
   "aliciakeys_girlonfire": {
     "artist": "Alicia Keys",
@@ -7383,11 +7386,12 @@
     "plays": [
       1789200563767,
       1789179683767,
-      1789464092919
+      1789464092919,
+      1789560867683
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-15T09:21:32.919Z"
+    "lastSeen": "2026-09-16T12:14:27.683Z"
   },
   "michelelbuenon_cierromisojos": {
     "artist": "Michel El Buenon",
@@ -15196,11 +15200,12 @@
       "CADENADIAL"
     ],
     "plays": [
-      1789489090714
+      1789489090714,
+      1789560831142
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-05T16:17:48.747Z",
-    "lastSeen": "2026-09-15T16:18:10.714Z"
+    "lastSeen": "2026-09-16T12:13:51.142Z"
   },
   "estopa_vacaciones": {
     "artist": "Estopa",
@@ -17495,11 +17500,11 @@
       "KISSFM"
     ],
     "plays": [
-      1788624165548
+      1789560867538
     ],
     "playCount7d": 1,
     "firstSeen": "2026-09-05T16:02:45.548Z",
-    "lastSeen": "2026-09-05T16:02:45.548Z"
+    "lastSeen": "2026-09-16T12:14:27.538Z"
   },
   "chumbawamba_tubthumping": {
     "artist": "Chumbawamba",
@@ -19620,11 +19625,12 @@
     ],
     "plays": [
       1789205393667,
-      1789484888112
+      1789484888112,
+      1789560657692
     ],
-    "playCount7d": 2,
+    "playCount7d": 3,
     "firstSeen": "2026-09-12T09:29:53.667Z",
-    "lastSeen": "2026-09-15T15:08:08.112Z"
+    "lastSeen": "2026-09-16T12:10:57.692Z"
   },
   "mylessmith_stayifyouwannadance": {
     "artist": "Myles Smith",
@@ -25806,11 +25812,12 @@
       "CADENA100"
     ],
     "plays": [
-      1789491482807
+      1789491482807,
+      1789560657565
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-15T16:58:02.807Z",
-    "lastSeen": "2026-09-15T16:58:02.807Z"
+    "lastSeen": "2026-09-16T12:10:57.565Z"
   },
   "aitana_6defebrero": {
     "artist": "Aitana",
@@ -36167,11 +36174,12 @@
       "RADIOLE"
     ],
     "plays": [
-      1789502206758
+      1789502206758,
+      1789560657682
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-15T19:56:46.758Z",
-    "lastSeen": "2026-09-15T19:56:46.758Z"
+    "lastSeen": "2026-09-16T12:10:57.682Z"
   },
   "navajitaplateabuika_friosinti": {
     "artist": "Navajita Plateá,Buika",
@@ -38113,14 +38121,16 @@
     "artist": "Charles & Eddie",
     "title": "Would I Lie To You",
     "stations": [
-      "KISSFM"
+      "KISSFM",
+      "CADENA100"
     ],
     "plays": [
-      1789552155864
+      1789552155864,
+      1789560867565
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-16T09:49:15.864Z",
-    "lastSeen": "2026-09-16T09:49:15.864Z"
+    "lastSeen": "2026-09-16T12:14:27.565Z"
   },
   "toniperet_elmegakiss": {
     "artist": "Toni Peret",
@@ -43442,14 +43452,16 @@
     "artist": "Extreme",
     "title": "More Than Words",
     "stations": [
-      "KISSFM"
+      "KISSFM",
+      "LOS40_CLASSIC"
     ],
     "plays": [
-      1789556960675
+      1789556960675,
+      1789560766828
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-16T11:09:20.675Z",
-    "lastSeen": "2026-09-16T11:09:20.675Z"
+    "lastSeen": "2026-09-16T12:12:46.828Z"
   },
   "billyjoel_uptowngirl": {
     "artist": "Billy Joel",
@@ -44516,5 +44528,122 @@
     "playCount7d": 1,
     "firstSeen": "2026-09-16T12:07:09.655Z",
     "lastSeen": "2026-09-16T12:07:09.655Z"
+  },
+  "u2_istillhaventfoundwhatimlookingfor": {
+    "artist": "U2",
+    "title": "I still haven't found what I'm looking for",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1789560519760
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-16T12:08:39.760Z",
+    "lastSeen": "2026-09-16T12:08:39.760Z"
+  },
+  "oasis_dontlookbackinanger": {
+    "artist": "Oasis",
+    "title": "Don't Look Back In Anger",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1789560867682
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-16T12:14:27.682Z",
+    "lastSeen": "2026-09-16T12:14:27.682Z"
+  },
+  "thepolice_cantstandlosingyou": {
+    "artist": "The Police",
+    "title": "Can't Stand Losing You",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1789560657682
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-16T12:10:57.682Z",
+    "lastSeen": "2026-09-16T12:10:57.682Z"
+  },
+  "enigma_returntoinnocence": {
+    "artist": "Enigma",
+    "title": "Return To Innocence",
+    "stations": [
+      "KISSFM"
+    ],
+    "plays": [
+      1789560657538
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-16T12:10:57.538Z",
+    "lastSeen": "2026-09-16T12:10:57.538Z"
+  },
+  "estopa_fuego": {
+    "artist": "Estopa",
+    "title": "Fuego",
+    "stations": [
+      "LOS40"
+    ],
+    "plays": [
+      1789560459772
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-16T12:07:39.772Z",
+    "lastSeen": "2026-09-16T12:07:39.772Z"
+  },
+  "martingarrixbonn_highonlife": {
+    "artist": "Martin Garrix,Bonn",
+    "title": "High on life",
+    "stations": [
+      "LOS40_DANCE"
+    ],
+    "plays": [
+      1789560709586
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-16T12:11:49.586Z",
+    "lastSeen": "2026-09-16T12:11:49.586Z"
+  },
+  "lolita_estupido": {
+    "artist": "Lolita",
+    "title": "Estúpido",
+    "stations": [
+      "RADIOLE"
+    ],
+    "plays": [
+      1789560851672
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-16T12:14:11.672Z",
+    "lastSeen": "2026-09-16T12:14:11.672Z"
+  },
+  "olgatanon_vendrasllorando": {
+    "artist": "Olga Tañon",
+    "title": "Vendras Llorando",
+    "stations": [
+      "MERENGUE_RADIO"
+    ],
+    "plays": [
+      1789560867719
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-16T12:14:27.719Z",
+    "lastSeen": "2026-09-16T12:14:27.719Z"
+  },
+  "anthonysantos_latristezademicarta": {
+    "artist": "Anthony Santos",
+    "title": "La tristeza de mi carta",
+    "stations": [
+      "LATINA_104"
+    ],
+    "plays": [
+      1789560867606
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-16T12:14:27.606Z",
+    "lastSeen": "2026-09-16T12:14:27.606Z"
   }
 }

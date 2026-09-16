@@ -261,6 +261,10 @@ function formatTime(seconds) {
             mainMusicAudio.remote.addEventListener('connect', () => {
                 updateCastVisualState(true);
                 showSyncNotification('✅ Transmitiendo audio a Chromecast / Smart TV');
+                // El cambio de URL firmada se hace aquí, ya conectado, y no antes de
+                // remote.prompt(): esperar (await) una petición de red justo antes de
+                // prompt() pierde el gesto de usuario y el navegador autocancela el selector.
+                makeCurrentSrcCastable();
             });
             mainMusicAudio.remote.addEventListener('disconnect', () => {
                 updateCastVisualState(false);
@@ -276,7 +280,6 @@ function formatTime(seconds) {
         async function triggerCast() {
             if (mainMusicAudio && mainMusicAudio.remote) {
                 try {
-                    await makeCurrentSrcCastable();
                     await mainMusicAudio.remote.prompt();
                     return;
                 } catch(err) {
@@ -285,8 +288,10 @@ function formatTime(seconds) {
                 }
             }
             if (mainMusicAudio && typeof mainMusicAudio.webkitShowPlaybackTargetPicker === 'function') {
-                await makeCurrentSrcCastable();
                 mainMusicAudio.webkitShowPlaybackTargetPicker();
+                // AirPlay no dispara un evento 'connect' propio en todos los navegadores;
+                // se prepara la URL firmada de inmediato por si acaso.
+                makeCurrentSrcCastable();
                 return;
             }
             showSyncNotification('ℹ️ Tu navegador no soporta transmitir a Chromecast/AirPlay. Prueba con Chrome o Safari.');
