@@ -5592,3 +5592,114 @@ body.public-mode #btn-trigger-ai-analysis {
 body.public-mode .card-cover {
   display: none !important;
 }
+
+/* Modo TV en móvil horizontal: la pantalla apaisada de un móvil es muy baja de alto (a
+   menudo 350-420px), y el layout de escritorio (foto grande, texto grande) recorta el
+   título, el artista y los controles, y solo deja sitio para una línea de karaoke. Se
+   compacta todo y se reduce el tamaño de letra para que quepa de verdad. */
+@media (orientation: landscape) and (max-height: 500px) {
+  body.public-mode .cinema-header {
+    padding: 8px 20px !important;
+  }
+
+  body.public-mode .cinema-content {
+    padding: 6px 24px !important;
+    gap: 24px !important;
+  }
+
+  body.public-mode .cinema-left {
+    justify-content: center !important;
+    overflow-y: auto !important;
+  }
+
+  body.public-mode .cinema-artist-gallery {
+    width: 130px !important;
+    height: 100px !important;
+    margin-bottom: 6px !important;
+  }
+
+  body.public-mode .cinema-vinyl-wrap {
+    width: 100px !important;
+    height: 100px !important;
+    margin-bottom: 6px !important;
+  }
+
+  body.public-mode .cinema-cover {
+    width: 84px !important;
+    height: 84px !important;
+  }
+
+  body.public-mode .cinema-vinyl-record {
+    width: 76px !important;
+    height: 76px !important;
+  }
+
+  body.public-mode .cinema-view-switcher {
+    margin-bottom: 4px !important;
+    transform: scale(0.82);
+  }
+
+  body.public-mode .cinema-track-info {
+    margin-bottom: 4px !important;
+  }
+
+  body.public-mode .cinema-track-title {
+    font-size: 1rem !important;
+    margin-bottom: 2px !important;
+  }
+
+  body.public-mode .cinema-track-artist {
+    font-size: 0.8rem !important;
+    margin-bottom: 2px !important;
+  }
+
+  body.public-mode .cinema-track-album {
+    font-size: 0.68rem !important;
+  }
+
+  body.public-mode .cinema-progress-row {
+    margin: 4px 0 !important;
+  }
+
+  body.public-mode .cinema-controls {
+    gap: 10px !important;
+  }
+
+  body.public-mode .btn-cinema-ctrl {
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 0.8rem !important;
+  }
+
+  body.public-mode .btn-cinema-play {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 0.95rem !important;
+  }
+
+  body.public-mode .cinema-right {
+    padding: 10px 20px !important;
+  }
+
+  body.public-mode .cinema-lyrics-container {
+    padding: 8px 4px !important;
+  }
+
+  body.public-mode .cinema-lyric-line,
+  body.public-mode .cinema-overlay.tv-mode .cinema-lyric-line {
+    font-size: 1rem !important;
+    margin-bottom: 8px !important;
+    padding: 4px 8px !important;
+  }
+
+  body.public-mode .cinema-lyric-line.active,
+  body.public-mode .cinema-overlay.tv-mode .cinema-lyric-line.active {
+    font-size: 1.2rem !important;
+  }
+
+  body.public-mode .cinema-lyric-trans,
+  body.public-mode .cinema-overlay.tv-mode .cinema-lyric-trans {
+    font-size: 0.75rem !important;
+    margin-top: 2px !important;
+  }
+}
