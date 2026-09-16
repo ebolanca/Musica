@@ -138,6 +138,33 @@ function formatTime(seconds) {
     // ==========================================================================
     let isCastConnected = false;
 
+    // El Chromecast hace su propia petición HTTP al servidor para descargar el audio, sin
+    // la cookie de sesión del navegador que lo invocó — con la web protegida por login, esa
+    // petición directa recibía 401 y el Chromecast se quedaba conectado pero mudo. Se pide
+    // una URL firmada de un solo archivo (válida unas horas) y se cambia el <audio> a esa
+    // URL. Vive en este ámbito (no dentro de initChromecastFeature) porque playQueueTrack
+    // también la necesita, para que cambiar de canción no rompa una transmisión en curso.
+    async function makeCurrentSrcCastable() {
+        if (!mainMusicAudio || !mainMusicAudio.currentSrc) return;
+        try {
+            const current = new URL(mainMusicAudio.currentSrc);
+            const relPath = decodeURIComponent(current.pathname);
+            if (!(relPath.startsWith('/media-music/') || relPath.startsWith('/media-videos/'))) return;
+            if (current.search.includes('mtoken=')) return; // ya es una URL firmada
+            const res = await fetch(`/api/media-token?path=${encodeURIComponent(relPath)}`);
+            const data = await res.json();
+            if (data && data.url) {
+                const resumeAt = mainMusicAudio.currentTime;
+                const wasPlaying = !mainMusicAudio.paused;
+                mainMusicAudio.src = data.url;
+                mainMusicAudio.currentTime = resumeAt;
+                if (wasPlaying) { try { await mainMusicAudio.play(); } catch(e){} }
+            }
+        } catch(e) {
+            console.log('No se pudo preparar una URL firmada para transmitir:', e.message);
+        }
+    }
+
     function initChromecastFeature() {
         const cinemaOverlayEl = document.getElementById('cinema-overlay');
         const btnCinemaTvToggle = document.getElementById('btn-cinema-tv-toggle');
@@ -249,6 +276,7 @@ function formatTime(seconds) {
         async function triggerCast() {
             if (mainMusicAudio && mainMusicAudio.remote) {
                 try {
+                    await makeCurrentSrcCastable();
                     await mainMusicAudio.remote.prompt();
                     return;
                 } catch(err) {
@@ -257,6 +285,7 @@ function formatTime(seconds) {
                 }
             }
             if (mainMusicAudio && typeof mainMusicAudio.webkitShowPlaybackTargetPicker === 'function') {
+                await makeCurrentSrcCastable();
                 mainMusicAudio.webkitShowPlaybackTargetPicker();
                 return;
             }
@@ -1320,6 +1349,9 @@ function formatTime(seconds) {
                 console.log('Autoplay audio blocked or error:', err.message);
                 if (currentPlayingSong === track) updateMusicBarState(false);
             });
+            // Si ya se estaba transmitiendo a un Chromecast, la pista nueva necesita su
+            // propia URL firmada o el dispositivo remoto se quedará mudo con la siguiente.
+            if (isCastConnected) makeCurrentSrcCastable();
         } else {
             console.log('Track has no audio file in library:', track.title);
             // 🛑 Limpiar src y pausar inmediatamente para no reproducir jamás la pista previa

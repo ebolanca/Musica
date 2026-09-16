@@ -153,6 +153,36 @@ function registerLoginFailure(ip) {
     }
 }
 
+// Tokens firmados de un solo archivo para /media-music y /media-videos: un Chromecast (u
+// otro dispositivo de "Transmitir") hace su propia petición HTTP directa al servidor y no
+// tiene la cookie de sesión del navegador, así que sin esto el archivo le devolvía 401. El
+// token solo autoriza esa ruta exacta durante un tiempo limitado, no toda la biblioteca.
+const MEDIA_TOKEN_MAX_AGE_MS = 6 * 60 * 60 * 1000; // 6 horas
+
+function signMediaToken(relPath, expiresAt) {
+    return crypto.createHmac('sha256', SESSION_SECRET).update(`${relPath}|${expiresAt}`).digest('hex');
+}
+
+function isValidMediaTokenRequest(req) {
+    if (!SESSION_SECRET) return false;
+    // req.path llega tal cual (con %20 etc. sin decodificar); /api/media-token firma la
+    // ruta ya decodificada (así llega req.query.path), así que hay que decodificar aquí
+    // también para que ambos lados firmen exactamente la misma cadena.
+    let reqPath;
+    try { reqPath = decodeURIComponent(req.path); } catch(e) { return false; }
+    if (!(reqPath.startsWith('/media-music/') || reqPath.startsWith('/media-videos/'))) return false;
+    const { mtoken, exp } = req.query;
+    if (!mtoken || !exp) return false;
+    const expiresAt = parseInt(exp, 10);
+    if (!expiresAt || Date.now() > expiresAt) return false;
+    const expected = signMediaToken(reqPath, expiresAt);
+    try {
+        return mtoken.length === expected.length && crypto.timingSafeEqual(Buffer.from(mtoken), Buffer.from(expected));
+    } catch(e) {
+        return false;
+    }
+}
+
 const LYRICS_DB_PATH = path.join(__dirname, 'data', 'lyrics_db.json');
 const METADATA_CACHE_FILE = path.join(__dirname, 'data', 'metadata_cache.json');
 const ANALYSES_DB_PATH = path.join(__dirname, 'data', 'analyses_db.json');
@@ -1023,9 +1053,10 @@ app.post('/api/logout', (req, res) => {
 });
 
 // A partir de aquí, todo lo registrado más abajo (estáticos, /media-music, /media-videos
-// y el resto de rutas /api/*) queda protegido por sesión.
+// y el resto de rutas /api/*) queda protegido por sesión (o, solo para archivos concretos
+// de /media-music y /media-videos, por un token firmado de un solo uso: ver más abajo).
 app.use((req, res, next) => {
-    if (isAuthenticated(req)) return next();
+    if (isAuthenticated(req) || isValidMediaTokenRequest(req)) return next();
     if (req.path.startsWith('/api/')) {
         return res.status(401).json({ error: 'No autenticado' });
     }
@@ -1036,6 +1067,22 @@ app.use((req, res, next) => {
 // (subtítulos, audio, carátulas, radar de emisoras, re-análisis IA) del acceso público.
 app.get('/api/session-info', (req, res) => {
     res.json({ publicMode: isPublicHost(req) });
+});
+
+// Genera una URL firmada de corta duración para UN archivo concreto de /media-music o
+// /media-videos, pensada para "Transmitir": el Chromecast la usa para descargar el audio
+// directamente sin necesitar la cookie de sesión del navegador que lo pidió.
+app.get('/api/media-token', (req, res) => {
+    const relPath = req.query.path;
+    if (!relPath || typeof relPath !== 'string' || !(relPath.startsWith('/media-music/') || relPath.startsWith('/media-videos/'))) {
+        return res.status(400).json({ error: 'path inválido' });
+    }
+    if (!SESSION_SECRET) {
+        return res.status(500).json({ error: 'No configurado' });
+    }
+    const expiresAt = Date.now() + MEDIA_TOKEN_MAX_AGE_MS;
+    const mtoken = signMediaToken(relPath, expiresAt);
+    res.json({ url: `${relPath}?mtoken=${mtoken}&exp=${expiresAt}` });
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
