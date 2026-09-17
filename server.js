@@ -37,11 +37,32 @@ const http = require('http');
 // claro en los logs de pm2. Se deja que el proceso termine igualmente (pm2 lo reinicia
 // solo, que es el comportamiento correcto ante estado potencialmente inconsistente), pero
 // con un log identificable para saber qué pasó.
+//
+// Excepción deliberada: DOMException/TimeoutError de AbortSignal.timeout(). Es un fallo
+// conocido de Node (el temporizador interno del abort puede dispararse igualmente aunque
+// el fetch ya se haya resuelto por otra vía, p.ej. Gemini devolviendo 503) y llega aquí
+// SIN pasar por ningún try/catch del código porque se lanza desde el propio temporizador
+// interno de Node, no desde la promesa del fetch. Tumbar el servidor entero por esto
+// mataba también peticiones completamente ajenas en curso (p.ej. una descarga de audio),
+// para un error que no corrompe ningún estado real de la app: se registra y se sigue.
+function isBenignTimeoutArtifact(err) {
+    return err && (err.name === 'TimeoutError' || err.name === 'AbortError') &&
+        /aborted due to timeout/i.test(err.message || '');
+}
+
 process.on('unhandledRejection', (reason) => {
+    if (isBenignTimeoutArtifact(reason)) {
+        console.warn('⚠️ [UNHANDLED REJECTION] Timeout de fetch ignorado (no corrompe estado, no se reinicia):', reason.message);
+        return;
+    }
     console.error('🔥 [UNHANDLED REJECTION] El servidor se reiniciará por un error no controlado:', reason);
     process.exit(1);
 });
 process.on('uncaughtException', (err) => {
+    if (isBenignTimeoutArtifact(err)) {
+        console.warn('⚠️ [UNCAUGHT EXCEPTION] Timeout de fetch ignorado (no corrompe estado, no se reinicia):', err.message);
+        return;
+    }
     console.error('🔥 [UNCAUGHT EXCEPTION] El servidor se reiniciará por un error no controlado:', err);
     process.exit(1);
 });
