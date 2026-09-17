@@ -993,6 +993,10 @@ function cleanTrackTitle(rawTitle) {
         .replace(/\s*\([^)]*(radio edit|club edit|extended mix|club mix|radio mix|dance vault|re-edit|edit|mixed)[^)]*\)/gi, '')
         .replace(/\s*\([^)]*(remastered|\d{4} remaster|remaster|20\d\d remaster|19\d\d remaster)[^)]*\)/gi, '')
         .replace(/\s*\([^)]*(remix|revisited|dub|vip mix|acoustic|unplugged|live|demo|deluxe|evolutions)[^)]*\)/gi, '')
+        // Cajón de sastre: cualquier paréntesis/corchete que contenga la palabra "mix" pero
+        // con un nombre de remezcla propio no listado arriba (p.ej. "(Nu-NRG Mix)"), para que
+        // no se quede pegado al título "limpio" contaminando la búsqueda de otra versión.
+        .replace(/\s*[\(\[][^)\]]*\bmix\b[^)\]]*[\)\]]/gi, '')
         // Quitar sufijos precedidos por guión
         .replace(/\s*-\s*[^-\n]*\b(non-film|film|radio|album|single|\d{4}|short|extended|original|deluxe|anniversary|acoustic|live|en vivo|directo|sinfónico|remaster|remastered|edit|mix)\b[^-\n]*version.*/gi, '')
         .replace(/\s*-\s*.*version.*/gi, '')
@@ -1000,6 +1004,7 @@ function cleanTrackTitle(rawTitle) {
         .replace(/\s*-\s*(radio edit|club edit|extended mix|club mix|radio mix|edit).*/gi, '')
         .replace(/\s*-\s*(remastered|\d{4} remaster|remaster|20\d\d remaster|19\d\d remaster).*/gi, '')
         .replace(/\s*-\s*(remix|acoustic|unplugged|live|demo|extended|mono|stereo|original).*/gi, '')
+        .replace(/\s*-\s*[^-\n]*\b(mix|remix)\b.*/gi, '')
         .trim();
 
     clean = clean.replace(/^[(\[]+([^)\]]+)[)\]]\s*/, '$1 ');
