@@ -1943,7 +1943,7 @@ app.get('/api/covers/search', blockInPublicMode, async (req, res) => {
 // ==========================================================================
 // ✏️ Corregir Artista/Título mal etiquetados en origen (ej. "Canción 2014")
 // ==========================================================================
-app.post('/api/track/rename', blockInPublicMode, (req, res) => {
+app.post('/api/track/rename', blockInPublicMode, async (req, res) => {
     try {
         const { oldArtist, oldTitle, newArtist, newTitle } = req.body;
         if (!oldArtist || !oldTitle || !newArtist || !newTitle) {
@@ -1956,6 +1956,31 @@ app.post('/api/track/rename', blockInPublicMode, (req, res) => {
         }
         titleOverrides[titleOverrideKey(oldArtist, oldTitle)] = { artist: cleanNewArtist, title: cleanNewTitle };
         saveTitleOverrides();
+
+        // La metadata cacheada (portada, álbum y sobre todo duración) se resolvió buscando
+        // con el título viejo, posiblemente contra la canción equivocada. Sin borrarla y
+        // volver a resolverla ahora, "buscar otra versión" seguiría comparando contra esa
+        // duración incorrecta indefinidamente, aunque el título ya esté bien.
+        const oldNormTarget = `${(oldArtist || '').toLowerCase().replace(/,/g, ' ').replace(/&/g, ' ').replace(/[^a-z0-9]/g, '')}${cleanTrackTitle(oldTitle).toLowerCase().replace(/[^a-z0-9]/g, '')}`;
+        for (const k of Object.keys(metadataCache)) {
+            const normK = k.toLowerCase().replace(/,/g, ' ').replace(/&/g, ' ').replace(/[^a-z0-9]/g, '');
+            if (fuzzyNormKeyMatches(normK, oldNormTarget)) {
+                delete metadataCache[k];
+            }
+        }
+        try {
+            const resolved = await resolveTrackMetadataOnline(cleanNewArtist, cleanNewTitle);
+            if (resolved) {
+                const cleanT = cleanTrackTitle(cleanNewTitle);
+                metadataCache[`${cleanNewArtist} - ${cleanNewTitle}`.toLowerCase()] = resolved;
+                metadataCache[`${cleanNewArtist} - ${cleanT}`.toLowerCase()] = resolved;
+                metadataCache[cleanT.toLowerCase()] = resolved;
+                saveMetadataCacheDebounced();
+            }
+        } catch(e) {
+            console.error('Error re-resolviendo metadata tras renombrar:', e.message);
+        }
+
         invalidatePlaylistsCache();
         console.log(`✏️ [RENOMBRAR] "${oldArtist} - ${oldTitle}" -> "${cleanNewArtist} - ${cleanNewTitle}"`);
         res.json({ success: true, artist: cleanNewArtist, title: cleanNewTitle });

@@ -19347,20 +19347,6 @@
     "durationFmt": "4:29",
     "source": "Deezer / Apple Music Official Master Catalog"
   },
-  "destiny's child - lose my breath": {
-    "title": "Lose My Breath",
-    "displayTitle": "Lose My Breath",
-    "artist": "Destiny's Child",
-    "album": "Destiny Fulfilled",
-    "year": "2001",
-    "date": "2001-01-01",
-    "releaseYear": "2001",
-    "releaseDate": "2001-01-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a834c91eee2bb719f89287aa6d93ff51/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 242000,
-    "durationFmt": "4:02",
-    "source": "Deezer / Apple Music Official Master Catalog"
-  },
   "bryan adams - please forgive me": {
     "title": "Please Forgive Me",
     "displayTitle": "Please Forgive Me",
@@ -54811,20 +54797,6 @@
     "durationMs": 341098,
     "durationFmt": "05:41",
     "source": "iTunes / Apple Music Original Studio Master"
-  },
-  "destinyschildlosemybreath": {
-    "title": "Lose My Breath",
-    "displayTitle": "Lose My Breath",
-    "artist": "Destiny's Child",
-    "album": "Destiny Fulfilled",
-    "year": "2001",
-    "date": "2001-01-01",
-    "releaseYear": "2001",
-    "releaseDate": "2001-01-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a834c91eee2bb719f89287aa6d93ff51/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 242000,
-    "durationFmt": "4:02",
-    "source": "Deezer / Apple Music Official Master Catalog"
   },
   "pnkgetthepartystarted": {
     "title": "Get the Party Started",
@@ -100744,5 +100716,31 @@
     "durationMs": 293000,
     "durationFmt": "4:53",
     "source": "Deezer / Apple Music Official Master Catalog"
+  },
+  "destiny's child - lose my breath": {
+    "title": "Lose My Breath",
+    "displayTitle": "Lose My Breath",
+    "artist": "Destiny's Child",
+    "album": "Destiny Fulfilled",
+    "year": "2001",
+    "date": "2001-01-01",
+    "releaseYear": "2001",
+    "releaseDate": "2001-01-01",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a834c91eee2bb719f89287aa6d93ff51/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 242013,
+    "source": "Deezer + Apple Music Resolver"
+  },
+  "lose my breath": {
+    "title": "Lose My Breath",
+    "displayTitle": "Lose My Breath",
+    "artist": "Destiny's Child",
+    "album": "Destiny Fulfilled",
+    "year": "2001",
+    "date": "2001-01-01",
+    "releaseYear": "2001",
+    "releaseDate": "2001-01-01",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a834c91eee2bb719f89287aa6d93ff51/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 242013,
+    "source": "Deezer + Apple Music Resolver"
   }
 }
