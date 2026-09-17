@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Música - Plataforma de Videoclips & Análisis Sónico</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
-    <link rel="stylesheet" href="css/style.css?v=1.6.7">
+    <link rel="stylesheet" href="css/style.css?v=1.7.0">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -18,7 +18,7 @@
             </div>
             <div class="logo-title">
                 <h1>Música</h1>
-                <p>Plataforma de Videoclips & Análisis Sónico v1.6.7</p>
+                <p>Plataforma de Videoclips & Análisis Sónico v1.7.0</p>
             </div>
         </div>
 
@@ -322,7 +322,12 @@
                 </div>
 
                 <div class="cinema-track-info">
-                    <div class="cinema-track-title" id="cinema-title">Título de la Canción</div>
+                    <div class="cinema-track-title" id="cinema-title">
+                        <span id="cinema-title-text">Título de la Canción</span>
+                        <button class="btn-edit-title" id="btn-edit-title" title="Corregir artista/título mal etiquetados">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                    </div>
                     <div class="cinema-track-artist" id="cinema-artist">Artista</div>
                     <div class="cinema-track-album" id="cinema-album">Álbum • 2000</div>
                 </div>
@@ -704,8 +709,37 @@
         </div>
     </div>
 
-    
+    <!-- Modal: Corregir Artista/Título mal etiquetados -->
+    <div class="modal-backdrop" id="modal-edit-title" style="display: none;">
+        <div class="modal-container" style="max-width: 460px;">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <h3 class="modal-title" style="color:#fff; font-size:1.25rem; font-weight:800; display:flex; align-items:center; gap:10px;">
+                        <i class="fa-solid fa-pen" style="color: var(--spotify-green, #1db954);"></i> Corregir Artista/Título
+                    </h3>
+                    <p class="modal-subtitle" style="color:var(--text-muted); font-size:0.86rem; margin-top:3px;">
+                        Úsalo cuando el título traiga texto de más (años, sufijos...) y por eso no encuentre letra ni versión de audio.
+                    </p>
+                </div>
+                <button class="btn-close-modal" id="btn-close-edit-title" title="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" style="padding: 20px 24px; display: flex; flex-direction: column; gap: 14px;">
+                <div>
+                    <label style="display:block; font-size:0.82rem; color:var(--text-muted); margin-bottom:6px;">Artista</label>
+                    <input type="text" id="input-edit-title-artist" class="cover-search-input" placeholder="Artista">
+                </div>
+                <div>
+                    <label style="display:block; font-size:0.82rem; color:var(--text-muted); margin-bottom:6px;">Título</label>
+                    <input type="text" id="input-edit-title-title" class="cover-search-input" placeholder="Título">
+                </div>
+                <div id="edit-title-status-msg" style="display: none; padding: 10px; border-radius: 8px; font-size: 0.88rem; text-align: center;"></div>
+                <button class="btn-action" id="btn-save-edit-title" style="background: var(--spotify-green, #1db954); color: #000; font-weight: 700; justify-content: center;">
+                    <i class="fa-solid fa-floppy-disk"></i> Guardar corrección
+                </button>
+            </div>
+        </div>
+    </div>
 
-    <script src="js/app.js?v=1.6.7"></script>
+    <script src="js/app.js?v=1.7.0"></script>
 </body>
 </html>

@@ -541,6 +541,106 @@ function formatTime(seconds) {
         }
     }
 
+    // Corregir artista/título mal etiquetados en origen (p.ej. "Canción 2014" cuando el
+    // "2014" no forma parte del título real): sin esto, letras y "buscar otra versión"
+    // nunca encuentran nada porque la búsqueda arrastra ese texto de más.
+    function initEditTitleFeature() {
+        const btnEditTitle = document.getElementById('btn-edit-title');
+        const modalEditTitle = document.getElementById('modal-edit-title');
+        const btnCloseEditTitle = document.getElementById('btn-close-edit-title');
+        const inputEditArtist = document.getElementById('input-edit-title-artist');
+        const inputEditTitleField = document.getElementById('input-edit-title-title');
+        const btnSaveEditTitle = document.getElementById('btn-save-edit-title');
+        const editTitleStatusMsg = document.getElementById('edit-title-status-msg');
+
+        let editingTrack = null;
+
+        function showEditTitleError(msg) {
+            if (!editTitleStatusMsg) return;
+            editTitleStatusMsg.textContent = msg;
+            editTitleStatusMsg.style.display = 'block';
+            editTitleStatusMsg.style.color = '#f87171';
+            editTitleStatusMsg.style.background = 'rgba(248, 113, 113, 0.1)';
+        }
+
+        function openEditTitleModal() {
+            editingTrack = currentPlayingSong || (cinemaCurrentTrackList && cinemaCurrentTrackList.length > 0 ? cinemaCurrentTrackList[cinemaCurrentIndex] : null);
+            if (!editingTrack) {
+                showSyncNotification('⚠️ No hay ninguna canción seleccionada');
+                return;
+            }
+            if (inputEditArtist) inputEditArtist.value = editingTrack.artist || '';
+            if (inputEditTitleField) inputEditTitleField.value = editingTrack.title || '';
+            if (editTitleStatusMsg) editTitleStatusMsg.style.display = 'none';
+            if (modalEditTitle) {
+                modalEditTitle.style.display = 'flex';
+                setTimeout(() => modalEditTitle.classList.add('active'), 10);
+            }
+        }
+
+        function closeEditTitleModal() {
+            if (modalEditTitle) {
+                modalEditTitle.classList.remove('active');
+                setTimeout(() => { modalEditTitle.style.display = 'none'; }, 200);
+            }
+        }
+
+        if (btnEditTitle) {
+            btnEditTitle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openEditTitleModal();
+            });
+        }
+        if (btnCloseEditTitle) btnCloseEditTitle.addEventListener('click', closeEditTitleModal);
+        if (modalEditTitle) {
+            modalEditTitle.addEventListener('click', (e) => {
+                if (e.target === modalEditTitle) closeEditTitleModal();
+            });
+        }
+
+        if (btnSaveEditTitle) {
+            btnSaveEditTitle.addEventListener('click', async () => {
+                if (!editingTrack) return;
+                const newArtist = (inputEditArtist.value || '').trim();
+                const newTitle = (inputEditTitleField.value || '').trim();
+                if (!newArtist || !newTitle) {
+                    showEditTitleError('Artista y título son obligatorios');
+                    return;
+                }
+                btnSaveEditTitle.disabled = true;
+                btnSaveEditTitle.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Guardando...';
+                try {
+                    const res = await fetch('/api/track/rename', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            oldArtist: editingTrack.artist,
+                            oldTitle: editingTrack.title,
+                            newArtist,
+                            newTitle
+                        })
+                    });
+                    const data = await res.json();
+                    if (res.ok && data.success) {
+                        closeEditTitleModal();
+                        showSyncNotification('✅ Título corregido');
+                        editingTrack.artist = data.artist;
+                        editingTrack.title = data.title;
+                        renderCinemaTrack(editingTrack);
+                        fetchPlaylists();
+                    } else {
+                        throw new Error(data.error || 'No se pudo guardar');
+                    }
+                } catch(err) {
+                    showEditTitleError('Error: ' + err.message);
+                } finally {
+                    btnSaveEditTitle.disabled = false;
+                    btnSaveEditTitle.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Guardar corrección';
+                }
+            });
+        }
+    }
+
 // Features inicializadas al final del DOMContentLoaded
 
 
@@ -650,6 +750,7 @@ function formatTime(seconds) {
     const cinemaBg = document.getElementById('cinema-bg');
     const cinemaCover = document.getElementById('cinema-cover');
     const cinemaTitle = document.getElementById('cinema-title');
+    const cinemaTitleText = document.getElementById('cinema-title-text');
     const cinemaArtist = document.getElementById('cinema-artist');
     const cinemaAlbum = document.getElementById('cinema-album');
     const cinemaTimeCurr = document.getElementById('cinema-time-curr');
@@ -3811,7 +3912,7 @@ function formatTime(seconds) {
         const cover = track.coverUrl || 'img/radios/hitfm.svg';
         if (cinemaBg) cinemaBg.style.backgroundImage = `url('${cover}')`;
         if (cinemaCover) cinemaCover.src = cover;
-        if (cinemaTitle) cinemaTitle.textContent = track.title;
+        if (cinemaTitleText) cinemaTitleText.textContent = track.title;
         if (cinemaArtist) cinemaArtist.textContent = track.artist;
         if (cinemaAlbum) cinemaAlbum.textContent = `${track.album || 'Álbum'} • ${formatBriefDate(track.releaseDate, track.releaseYear)}`;
 
@@ -4996,6 +5097,7 @@ function formatTime(seconds) {
 
     // Inicializar características complementarias una vez que todo el DOM está listo
     initCoverChangeFeature();
+    initEditTitleFeature();
         // Inicializar botón de análisis en Modo Cine
     const btnCinemaAnalysis = document.getElementById('btn-cinema-analysis');
     const btnCinemaCloseAnalysis = document.getElementById('btn-cinema-close-analysis');

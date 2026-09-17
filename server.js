@@ -208,6 +208,33 @@ const LYRICS_DB_PATH = path.join(__dirname, 'data', 'lyrics_db.json');
 const METADATA_CACHE_FILE = path.join(__dirname, 'data', 'metadata_cache.json');
 const ANALYSES_DB_PATH = path.join(__dirname, 'data', 'analyses_db.json');
 
+// Correcciones manuales de artista/título: tracks_cache.json lo genera y resincroniza un
+// proceso externo (el contenedor spotdl-sync), así que cualquier corrección que hiciéramos
+// ahí se perdería en el siguiente sync. Esto vive aparte y se aplica como capa por encima,
+// justo al leer tracks_cache.json en /api/playlists, así que todo lo que pasa después
+// (búsqueda de audio, letras, portada, "buscar otra versión") ya ve el título correcto.
+const TITLE_OVERRIDES_PATH = path.join(__dirname, 'data', 'title_overrides.json');
+let titleOverrides = {};
+function loadTitleOverrides() {
+    if (fs.existsSync(TITLE_OVERRIDES_PATH)) {
+        try { titleOverrides = JSON.parse(fs.readFileSync(TITLE_OVERRIDES_PATH, 'utf8')); } catch(e) {}
+    }
+}
+loadTitleOverrides();
+function titleOverrideKey(artist, title) {
+    return `${String(artist || '').toLowerCase().trim()} - ${String(title || '').toLowerCase().trim()}`;
+}
+function saveTitleOverrides() {
+    try {
+        const dataStr = JSON.stringify(titleOverrides, null, 2);
+        const tmpPath = `${TITLE_OVERRIDES_PATH}.tmp${process.pid}`;
+        fs.writeFileSync(tmpPath, dataStr, 'utf8');
+        fs.renameSync(tmpPath, TITLE_OVERRIDES_PATH);
+    } catch(e) {
+        console.error('Error guardando title_overrides:', e.message);
+    }
+}
+
 let metadataCache = {};
 function loadMetadataCache() {
     if (fs.existsSync(METADATA_CACHE_FILE)) {
@@ -1423,8 +1450,13 @@ app.get('/api/playlists', (req, res) => {
         const enrichedTracks = [];
 
         for (const item of rawTracks) {
-            const artist = Array.isArray(item) ? item[0] : item.artist;
-            const title = Array.isArray(item) ? item[1] : item.title;
+            let artist = Array.isArray(item) ? item[0] : item.artist;
+            let title = Array.isArray(item) ? item[1] : item.title;
+            const override = titleOverrides[titleOverrideKey(artist, title)];
+            if (override) {
+                artist = override.artist;
+                title = override.title;
+            }
             const cleanTitle = cleanTrackTitle(title);
             
             // Deduplication by normalized artist and clean title
@@ -1539,9 +1571,15 @@ app.get('/api/playlists', (req, res) => {
                 }
             }
 
+            // Si el título viene de una corrección manual, no dejar que el "displayTitle"
+            // cacheado (de una búsqueda de metadatos hecha con el título viejo) lo pise.
+            const finalTitle = override
+                ? cleanTitle
+                : ((/dance/i.test(listName)) ? cleanSoundtrackTitle(meta.displayTitle || cleanTitle) : cleanTrackTitle(meta.displayTitle || cleanTitle));
+
             enrichedTracks.push({
                 artist: artist,
-                title: (/dance/i.test(listName)) ? cleanSoundtrackTitle(meta.displayTitle || cleanTitle) : cleanTrackTitle(meta.displayTitle || cleanTitle),
+                title: finalTitle,
                 rawTitle: title,
                 album: (/dance/i.test(listName)) ? (meta.album || 'Álbum Desconocido') : cleanAlbumTitle(meta.album),
                 coverUrl: meta.coverUrl || null,
@@ -1898,6 +1936,31 @@ app.get('/api/covers/search', blockInPublicMode, async (req, res) => {
         res.json({ success: true, count: results.length, results });
     } catch(err) {
         console.error('Error en /api/covers/search:', err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// ==========================================================================
+// ✏️ Corregir Artista/Título mal etiquetados en origen (ej. "Canción 2014")
+// ==========================================================================
+app.post('/api/track/rename', blockInPublicMode, (req, res) => {
+    try {
+        const { oldArtist, oldTitle, newArtist, newTitle } = req.body;
+        if (!oldArtist || !oldTitle || !newArtist || !newTitle) {
+            return res.status(400).json({ error: 'Faltan parámetros requeridos' });
+        }
+        const cleanNewArtist = sanitizeArtistTitleInput(newArtist);
+        const cleanNewTitle = sanitizeArtistTitleInput(newTitle);
+        if (!cleanNewArtist || !cleanNewTitle) {
+            return res.status(400).json({ error: 'artist/title inválidos tras el saneado' });
+        }
+        titleOverrides[titleOverrideKey(oldArtist, oldTitle)] = { artist: cleanNewArtist, title: cleanNewTitle };
+        saveTitleOverrides();
+        invalidatePlaylistsCache();
+        console.log(`✏️ [RENOMBRAR] "${oldArtist} - ${oldTitle}" -> "${cleanNewArtist} - ${cleanNewTitle}"`);
+        res.json({ success: true, artist: cleanNewArtist, title: cleanNewTitle });
+    } catch(err) {
+        console.error('Error en /api/track/rename:', err);
         res.status(500).json({ error: err.message });
     }
 });
