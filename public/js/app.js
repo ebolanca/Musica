@@ -624,8 +624,15 @@ function formatTime(seconds) {
                     if (res.ok && data.success) {
                         closeEditTitleModal();
                         showSyncNotification('✅ Título corregido');
+                        // getTrackPreloadKey usa rawTitle antes que title: sin borrar la
+                        // clave vieja de la caché de letras/análisis precargados, seguía
+                        // devolviendo el resultado "no encontrado" guardado antes de corregir.
+                        const oldKey = getTrackPreloadKey(editingTrack);
+                        preloadedDetailsCache.delete(oldKey);
                         editingTrack.artist = data.artist;
                         editingTrack.title = data.title;
+                        editingTrack.rawTitle = data.title;
+                        preloadedDetailsCache.delete(getTrackPreloadKey(editingTrack));
                         renderCinemaTrack(editingTrack);
                         fetchPlaylists();
                     } else {
@@ -987,7 +994,7 @@ function formatTime(seconds) {
     renderQuickPills();
 
     function fetchPlaylists() {
-        fetch('/api/playlists')
+        fetch('/api/playlists', { cache: 'no-store' })
             .then(res => res.json())
             .then(data => {
                 allPlaylists = data;

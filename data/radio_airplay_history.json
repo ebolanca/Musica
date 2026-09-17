@@ -2315,11 +2315,12 @@
       1789576653302,
       1789592422597,
       1789641777102,
-      1789659428388
+      1789659428388,
+      1789676922530
     ],
-    "playCount7d": 8,
+    "playCount7d": 9,
     "firstSeen": "2026-09-05T08:43:50.897Z",
-    "lastSeen": "2026-09-17T15:37:08.388Z"
+    "lastSeen": "2026-09-17T20:28:42.530Z"
   },
   "luisfonsi_medespido": {
     "artist": "Luis Fonsi",
@@ -2971,11 +2972,12 @@
       1789648873492,
       1789655037397,
       1789662208048,
-      1789669614967
+      1789669614967,
+      1789676771683
     ],
-    "playCount7d": 21,
+    "playCount7d": 22,
     "firstSeen": "2026-09-05T09:32:36.754Z",
-    "lastSeen": "2026-09-17T18:26:54.967Z"
+    "lastSeen": "2026-09-17T20:26:11.683Z"
   },
   "dannyromero_agachate": {
     "artist": "Danny Romero",
@@ -3546,11 +3548,12 @@
       1789644568275,
       1789655269942,
       1789657993346,
-      1789666153377
+      1789666153377,
+      1789677045687
     ],
-    "playCount7d": 20,
+    "playCount7d": 21,
     "firstSeen": "2026-09-05T16:48:40.092Z",
-    "lastSeen": "2026-09-17T17:29:13.377Z"
+    "lastSeen": "2026-09-17T20:30:45.687Z"
   },
   "madonnasabrinacarpenter_bringyourlove": {
     "artist": "Madonna & Sabrina Carpenter",
@@ -3779,11 +3782,12 @@
       1789654333211,
       1789662457240,
       1789666196620,
-      1789673309965
+      1789673309965,
+      1789676943616
     ],
-    "playCount7d": 28,
+    "playCount7d": 29,
     "firstSeen": "2026-09-05T16:48:40.092Z",
-    "lastSeen": "2026-09-17T19:28:29.965Z"
+    "lastSeen": "2026-09-17T20:29:03.616Z"
   },
   "aitana_superestrella": {
     "artist": "Aitana",
@@ -20004,11 +20008,12 @@
       1789657853985,
       1789670006625,
       1789664966625,
-      1789673606672
+      1789673606672,
+      1789676943624
     ],
-    "playCount7d": 34,
+    "playCount7d": 35,
     "firstSeen": "2026-09-05T16:37:45.548Z",
-    "lastSeen": "2026-09-17T19:33:26.672Z"
+    "lastSeen": "2026-09-17T20:29:03.624Z"
   },
   "glennmedeiros_nothingsgonnachangemyloveforyou": {
     "artist": "Glenn Medeiros",
@@ -21043,11 +21048,12 @@
       1789212533674,
       1789580622829,
       1789583053036,
-      1789585632808
+      1789585632808,
+      1789676943625
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-12T11:28:53.674Z",
-    "lastSeen": "2026-09-16T19:07:12.808Z"
+    "lastSeen": "2026-09-17T20:29:03.625Z"
   },
   "thecure_fridayiminlove": {
     "artist": "The Cure",
@@ -22548,16 +22554,18 @@
     "title": "Désenchantée",
     "stations": [
       "HITFM",
-      "LOS40_DANCE"
+      "LOS40_DANCE",
+      "LOS40_CLASSIC"
     ],
     "plays": [
       1789206233667,
       1789551011738,
-      1789656643355
+      1789656643355,
+      1789676697331
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-12T09:43:53.667Z",
-    "lastSeen": "2026-09-17T14:50:43.355Z"
+    "lastSeen": "2026-09-17T20:24:57.331Z"
   },
   "shawnmendescamilacabello_senorita": {
     "artist": "Shawn Mendes & Camila Cabello",
@@ -23876,11 +23884,12 @@
       1789536133115,
       1789619893027,
       1789639813126,
-      1789649173163
+      1789649173163,
+      1789676913511
     ],
-    "playCount7d": 20,
+    "playCount7d": 21,
     "firstSeen": "2026-09-12T09:33:23.702Z",
-    "lastSeen": "2026-09-17T12:46:13.163Z"
+    "lastSeen": "2026-09-17T20:28:33.511Z"
   },
   "antonysantos_quien": {
     "artist": "Antony Santos",
@@ -27716,11 +27725,12 @@
     "plays": [
       1789492064380,
       1789576812793,
-      1789610665739
+      1789610665739,
+      1789677153624
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-15T17:07:44.380Z",
-    "lastSeen": "2026-09-17T02:04:25.739Z"
+    "lastSeen": "2026-09-17T20:32:33.624Z"
   },
   "juanes_meenamora": {
     "artist": "Juanes",
@@ -36076,11 +36086,12 @@
       "LATINA_104"
     ],
     "plays": [
-      1789453292845
+      1789453292845,
+      1789677153535
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-15T06:21:32.845Z",
-    "lastSeen": "2026-09-15T06:21:32.845Z"
+    "lastSeen": "2026-09-17T20:32:33.535Z"
   },
   "lagranmanzana_portuquerer": {
     "artist": "La Gran Manzana",
@@ -37901,15 +37912,17 @@
     "artist": "Jarabe de Palo",
     "title": "Depende",
     "stations": [
-      "LOS40_CLASSIC"
+      "LOS40_CLASSIC",
+      "CADENA100"
     ],
     "plays": [
       1789496903436,
-      1789625587544
+      1789625587544,
+      1789677153616
     ],
-    "playCount7d": 2,
+    "playCount7d": 3,
     "firstSeen": "2026-09-15T18:28:23.436Z",
-    "lastSeen": "2026-09-17T06:13:07.544Z"
+    "lastSeen": "2026-09-17T20:32:33.616Z"
   },
   "rickastley_togetherforever": {
     "artist": "Rick Astley",
@@ -40973,17 +40986,19 @@
     "title": "Heart Of Glass",
     "stations": [
       "ROCKFM",
-      "LOS40_CLASSIC"
+      "LOS40_CLASSIC",
+      "KISSFM"
     ],
     "plays": [
       1789503947971,
       1789548463219,
       1789665986608,
-      1789668506710
+      1789668506710,
+      1789676733624
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-15T20:25:47.971Z",
-    "lastSeen": "2026-09-17T18:08:26.710Z"
+    "lastSeen": "2026-09-17T20:25:33.624Z"
   },
   "laurapausini_amoresextranos": {
     "artist": "Laura Pausini",
@@ -43722,11 +43737,12 @@
     ],
     "plays": [
       1789545855743,
-      1789674246863
+      1789674246863,
+      1789676733616
     ],
-    "playCount7d": 2,
+    "playCount7d": 3,
     "firstSeen": "2026-09-16T08:04:15.743Z",
-    "lastSeen": "2026-09-17T19:44:06.863Z"
+    "lastSeen": "2026-09-17T20:25:33.616Z"
   },
   "bensonboone_mysticalmagical": {
     "artist": "Benson Boone",
@@ -45541,11 +45557,12 @@
     "plays": [
       1789511025810,
       1789513812890,
-      1789516212931
+      1789516212931,
+      1789677153566
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-15T22:23:45.810Z",
-    "lastSeen": "2026-09-15T23:50:12.931Z"
+    "lastSeen": "2026-09-17T20:32:33.566Z"
   },
   "orosolido_latanga": {
     "artist": "Oro Solido",
@@ -45875,11 +45892,12 @@
       1789625173072,
       1789630693157,
       1789622533387,
-      1789628186553
+      1789628186553,
+      1789677153579
     ],
-    "playCount7d": 6,
+    "playCount7d": 7,
     "firstSeen": "2026-09-16T03:39:45.842Z",
-    "lastSeen": "2026-09-17T06:56:26.553Z"
+    "lastSeen": "2026-09-17T20:32:33.579Z"
   },
   "alexbueno_enbandolera": {
     "artist": "Alex Bueno",
@@ -48162,14 +48180,16 @@
     "artist": "Oasis",
     "title": "Wonderwall",
     "stations": [
-      "KISSFM"
+      "KISSFM",
+      "ROCKFM"
     ],
     "plays": [
-      1789554582492
+      1789554582492,
+      1789677153625
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-16T10:29:42.492Z",
-    "lastSeen": "2026-09-16T10:29:42.492Z"
+    "lastSeen": "2026-09-17T20:32:33.625Z"
   },
   "ritaora_anywhere": {
     "artist": "Rita Ora",
@@ -49227,11 +49247,12 @@
     "plays": [
       1789558224328,
       1789597743336,
-      1789637536918
+      1789637536918,
+      1789677018732
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-16T11:30:24.328Z",
-    "lastSeen": "2026-09-17T09:32:16.918Z"
+    "lastSeen": "2026-09-17T20:30:18.732Z"
   },
   "ninapastori_burbujasdeamor": {
     "artist": "Niña Pastori",
@@ -72525,5 +72546,83 @@
     "playCount7d": 1,
     "firstSeen": "2026-09-17T20:21:37.274Z",
     "lastSeen": "2026-09-17T20:21:37.274Z"
+  },
+  "richardmarx_rightherewaiting": {
+    "artist": "Richard Marx",
+    "title": "Right here waiting",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1789677125978
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-17T20:32:05.978Z",
+    "lastSeen": "2026-09-17T20:32:05.978Z"
+  },
+  "hombresg_devuelvemeamichica": {
+    "artist": "Hombres G",
+    "title": "Devuélveme a mi chica",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1789676929464
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-17T20:28:49.464Z",
+    "lastSeen": "2026-09-17T20:28:49.464Z"
+  },
+  "madconraydalton_dontworry": {
+    "artist": "Madcon & Ray Dalton",
+    "title": "Dont Worry",
+    "stations": [
+      "HITFM"
+    ],
+    "plays": [
+      1789677153664
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-17T20:32:33.664Z",
+    "lastSeen": "2026-09-17T20:32:33.664Z"
+  },
+  "dualipa_newrules": {
+    "artist": "Dua Lipa",
+    "title": "New Rules",
+    "stations": [
+      "HITFM"
+    ],
+    "plays": [
+      1789676943664
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-17T20:29:03.664Z",
+    "lastSeen": "2026-09-17T20:29:03.664Z"
+  },
+  "diegotorres_suenos": {
+    "artist": "Diego Torres",
+    "title": "Sueños",
+    "stations": [
+      "CADENADIAL"
+    ],
+    "plays": [
+      1789677148752
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-17T20:32:28.752Z",
+    "lastSeen": "2026-09-17T20:32:28.752Z"
+  },
+  "pabloalboran_volveraempezar": {
+    "artist": "Pablo Alborán",
+    "title": "Volver a empezar",
+    "stations": [
+      "RADIOLE"
+    ],
+    "plays": [
+      1789676797434
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-17T20:26:37.434Z",
+    "lastSeen": "2026-09-17T20:26:37.434Z"
   }
 }
