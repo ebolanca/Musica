@@ -4130,23 +4130,44 @@ function formatTime(seconds) {
                     count++;
                 }
                 const avgChunk = count > 0 ? (sumChunk / count) : 0;
-                // Combinar pico y promedio con compensación de agudos
-                const trebleBoost = 1.0 + (i / EQ_NUM_BARS) * 0.75;
-                const bassDamp = i < 4 ? 0.85 : 1.0;
-                targetVal = Math.min(1.0, ((maxChunk * 0.7 + avgChunk * 0.3) / 255.0) * trebleBoost * bassDamp);
+
+                // Calibración acústica por bandas para evitar que los medios y graves queden pegados al techo
+                let bandGain = 1.0;
+                if (i < 6) {
+                    bandGain = 0.72; // Sub-graves y bombo
+                } else if (i < 15) {
+                    bandGain = 0.68; // Bajos y medios-bajos
+                } else if (i < 24) {
+                    bandGain = 0.74; // Medios vocales y cuerpo
+                } else if (i < 30) {
+                    bandGain = 0.88; // Medios-altos
+                } else {
+                    bandGain = 1.05; // Agudos y platos
+                }
+
+                // Balance entre energía sostenida (avg) y transitorios (max)
+                const rawEnergy = (avgChunk * 0.65 + maxChunk * 0.35);
+
+                // Descartar umbral de suelo de ruido (compresión / AGC) y normalizar
+                const normalized = Math.max(0, (rawEnergy - 35) / 195.0);
+
+                // Curva exponencial (pow 1.65): abre gran rango dinámico. Silencios y partes suaves
+                // quedan abajo (15-35%), y los golpes de percusión saltan limpiamente al 65-85%,
+                // dejando aire libre arriba como en los analizadores de estudio.
+                targetVal = Math.min(0.88, Math.pow(normalized, 1.65) * bandGain);
             }
 
-            // Suavizado temporal reactivo (interpolación ágil pero sin parpadeos duros)
+            // Suavizado temporal ágil: subida reactiva inmediata y caída rápida para sentir cada beat
             const currentVal = eqSmoothedBars[i];
-            const lerpSpeed = targetVal > currentVal ? 0.42 : 0.18;
+            const lerpSpeed = targetVal > currentVal ? 0.52 : 0.25;
             eqSmoothedBars[i] = currentVal + (targetVal - currentVal) * lerpSpeed;
 
-            // Retención de picos (Peak Hold) que caen por gravedad
+            // Retención de picos (Peak Hold) que caen con gravedad natural
             if (eqSmoothedBars[i] >= eqPeakBars[i]) {
                 eqPeakBars[i] = eqSmoothedBars[i];
                 eqPeakDropSpeeds[i] = 0;
             } else {
-                eqPeakDropSpeeds[i] += 0.0016; // Aceleración por gravedad
+                eqPeakDropSpeeds[i] += 0.0024; // Aceleración de caída
                 eqPeakBars[i] = Math.max(0, eqPeakBars[i] - eqPeakDropSpeeds[i]);
             }
         }
