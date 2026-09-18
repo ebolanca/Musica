@@ -3763,6 +3763,7 @@ function formatTime(seconds) {
     function closeCinemaMode() {
         if (cinemaOverlay) cinemaOverlay.style.display = 'none';
         stopArtistGallery();
+        stopCinemaEqualizer();
         toggleCinemaAnalysis(false);
         if (mainMusicAudio && mainMusicAudio.paused) releaseWakeLock();
         // Si la reproducción aleatoria pública ocultó la barra flotante al abrir el modo
@@ -3809,16 +3810,33 @@ function formatTime(seconds) {
 
         const galleryEl = document.getElementById('cinema-artist-gallery');
         const vinylWrapEl = document.getElementById('cinema-vinyl-wrap');
+        const eqWrapEl = document.getElementById('cinema-equalizer-wrap');
         const btnSwitchGallery = document.getElementById('btn-switch-gallery');
         const btnSwitchVinyl = document.getElementById('btn-switch-vinyl');
+        const btnSwitchEqualizer = document.getElementById('btn-switch-equalizer');
 
-        if (viewMode === 'vinyl') {
+        if (viewMode === 'equalizer') {
             if (galleryEl) galleryEl.style.display = 'none';
+            if (vinylWrapEl) vinylWrapEl.style.display = 'none';
+            if (eqWrapEl) eqWrapEl.style.display = 'flex';
+            if (btnSwitchGallery) btnSwitchGallery.classList.remove('active');
+            if (btnSwitchVinyl) btnSwitchVinyl.classList.remove('active');
+            if (btnSwitchEqualizer) btnSwitchEqualizer.classList.add('active');
+            updateEqualizerBadge();
+            startCinemaEqualizer();
+        } else if (viewMode === 'vinyl') {
+            stopCinemaEqualizer();
+            if (galleryEl) galleryEl.style.display = 'none';
+            if (eqWrapEl) eqWrapEl.style.display = 'none';
             if (vinylWrapEl) vinylWrapEl.style.display = 'flex';
             if (btnSwitchGallery) btnSwitchGallery.classList.remove('active');
             if (btnSwitchVinyl) btnSwitchVinyl.classList.add('active');
+            if (btnSwitchEqualizer) btnSwitchEqualizer.classList.remove('active');
         } else {
             // Modo galería de fotos
+            stopCinemaEqualizer();
+            if (eqWrapEl) eqWrapEl.style.display = 'none';
+            if (btnSwitchEqualizer) btnSwitchEqualizer.classList.remove('active');
             if (currentArtistGalleryItems && currentArtistGalleryItems.length > 0) {
                 if (galleryEl) galleryEl.style.display = 'block';
                 if (vinylWrapEl) vinylWrapEl.style.display = 'none';
@@ -3887,7 +3905,7 @@ function formatTime(seconds) {
             if (!artistGalleryInterval && currentArtistGalleryItems.length > 1) {
                 artistGalleryInterval = setInterval(rotateArtistGallerySlide, 12000);
             }
-            const activeView = (artistGalleryActiveView === 'vinyl') ? 'vinyl' : 'gallery';
+            const activeView = (artistGalleryActiveView === 'vinyl') ? 'vinyl' : ((artistGalleryActiveView === 'equalizer') ? 'equalizer' : 'gallery');
             setCinemaActiveView(activeView, false);
             return;
         }
@@ -3906,7 +3924,7 @@ function formatTime(seconds) {
             slide1.classList.add('active');
             if (slide2) slide2.classList.remove('active');
             currentGallerySlideActive = 1;
-            const initView = (artistGalleryActiveView === 'vinyl') ? 'vinyl' : 'gallery';
+            const initView = (artistGalleryActiveView === 'vinyl') ? 'vinyl' : ((artistGalleryActiveView === 'equalizer') ? 'equalizer' : 'gallery');
             setCinemaActiveView(initView, false);
         }
 
@@ -3954,17 +3972,19 @@ function formatTime(seconds) {
                 artistGalleryInterval = setInterval(rotateArtistGallerySlide, 12000);
             }
 
-            // Preferir siempre galería salvo que el usuario haya seleccionado vinilo
-            const activeView = (artistGalleryActiveView === 'vinyl') ? 'vinyl' : 'gallery';
+            // Preferir siempre la vista seleccionada por el usuario
+            const activeView = (artistGalleryActiveView === 'vinyl') ? 'vinyl' : ((artistGalleryActiveView === 'equalizer') ? 'equalizer' : 'gallery');
             setCinemaActiveView(activeView, false);
         } else {
-            setCinemaActiveView('vinyl', false);
+            const fallbackView = (artistGalleryActiveView === 'equalizer') ? 'equalizer' : 'vinyl';
+            setCinemaActiveView(fallbackView, false);
         }
     }
 
     function initArtistGalleryFeature() {
         const btnSwitchGallery = document.getElementById('btn-switch-gallery');
         const btnSwitchVinyl = document.getElementById('btn-switch-vinyl');
+        const btnSwitchEqualizer = document.getElementById('btn-switch-equalizer');
 
         if (btnSwitchGallery) {
             btnSwitchGallery.addEventListener('click', (e) => {
@@ -3979,6 +3999,18 @@ function formatTime(seconds) {
                 setCinemaActiveView('vinyl', true);
             });
         }
+
+        if (btnSwitchEqualizer) {
+            btnSwitchEqualizer.addEventListener('click', (e) => {
+                e.stopPropagation();
+                // Asegurar que AudioContext esté inicializado y activo
+                if (!audioCtx) initAudioNormalizationGraph();
+                if (audioCtx && audioCtx.state === 'suspended') {
+                    audioCtx.resume().catch(() => {});
+                }
+                setCinemaActiveView('equalizer', true);
+            });
+        }
     }
 
     function renderCinemaTrack(track) {
@@ -3990,6 +4022,7 @@ function formatTime(seconds) {
         }
         loadTrackSyncOffset(track);
         loadArtistGallery(track.artist, track.coverUrl);
+        updateEqualizerBadge();
         if (isCinemaAnalysisOpen) loadCinemaAnalysis(track);
         const cover = track.coverUrl || 'img/radios/hitfm.svg';
         if (cinemaBg) cinemaBg.style.backgroundImage = `url('${cover}')`;

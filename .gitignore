@@ -12,3 +12,5 @@ bin/
 data/temp_*
 data/*.mp3
 data/temp_downloads/
+
+.claude/

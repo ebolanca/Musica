@@ -18,7 +18,7 @@
             </div>
             <div class="logo-title">
                 <h1>Música</h1>
-                <p>Plataforma de Videoclips & Análisis Sónico v1.8.1</p>
+                <p>Plataforma de Videoclips & Análisis Sónico v1.8.2</p>
             </div>
         </div>
 
@@ -311,13 +311,24 @@
                         <div class="cinema-vinyl-record" id="cinema-vinyl"></div>
                     </div>
 
-                    <!-- Selector para alternar entre Galería de Fotos y Vinilo -->
+                    <!-- Vista 3: Ecualizador de Espectro Real en Vivo -->
+                    <div class="cinema-equalizer-wrap" id="cinema-equalizer-wrap" style="display: none;">
+                        <canvas id="cinema-equalizer-canvas" class="cinema-equalizer-canvas"></canvas>
+                        <div class="artist-gallery-badge" id="equalizer-artist-badge">
+                            <i class="fa-solid fa-chart-simple"></i> <span id="equalizer-artist-name">Ecualizador</span>
+                        </div>
+                    </div>
+
+                    <!-- Selector para alternar entre Galería de Fotos, Vinilo y Ecualizador -->
                     <div class="cinema-view-switcher" id="cinema-view-switcher">
                         <button class="btn-switch-view active" id="btn-switch-gallery" title="Ver Galería de fotos del Grupo / Artista">
                             <i class="fa-solid fa-images"></i> Fotos
                         </button>
                         <button class="btn-switch-view" id="btn-switch-vinyl" title="Ver Carátula y Vinilo giratorio">
                             <i class="fa-solid fa-compact-disc"></i> Vinilo
+                        </button>
+                        <button class="btn-switch-view" id="btn-switch-equalizer" title="Ver Ecualizador y Espectro en tiempo real">
+                            <i class="fa-solid fa-chart-simple"></i> Ecualizador
                         </button>
                     </div>
                 </div>
@@ -741,6 +752,6 @@
         </div>
     </div>
 
-    <script src="js/app.js?v=1.8.1"></script>
+    <script src="js/app.js?v=1.8.2"></script>
 </body>
 </html>
