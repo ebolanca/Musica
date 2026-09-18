@@ -104,7 +104,7 @@ function formatTime(seconds) {
     let currentTab = 'Música viejuna';
     let searchQuery = '';
     let quickFilterQuery = '';
-    let sortBy = 'title';
+    let sortBy = 'random';
     let sortAsc = true;
     let viewMode = 'grid';
     let activeQuickPill = 'all';
@@ -1055,11 +1055,30 @@ function formatTime(seconds) {
         return str.replace(/^[(\[\s.'"…-]+/, '').toLowerCase();
     }
 
+    // Orden aleatorio pero ESTABLE dentro de la sesión: cada canción recibe un valor al
+    // azar la primera vez que se ordena, y se reutiliza después. Así filtrar o cambiar de
+    // pestaña no reordena todo el rato, pero cada vez que abres la app ves un orden distinto
+    // en vez de las mismas carátulas siempre en el mismo sitio (alfabético por título).
+    const randomSortCache = new Map();
+    function getRandomSortValue(track) {
+        const key = `${track.artist}__${track.title}`;
+        if (!randomSortCache.has(key)) {
+            randomSortCache.set(key, Math.random());
+        }
+        return randomSortCache.get(key);
+    }
+    function reshuffleRandomSort() {
+        randomSortCache.clear();
+    }
+
     function sortTracks(tracks) {
         const sorted = [...tracks];
         sorted.sort((a, b) => {
             let valA, valB;
-            if (sortBy === 'title') {
+            if (sortBy === 'random') {
+                valA = getRandomSortValue(a);
+                valB = getRandomSortValue(b);
+            } else if (sortBy === 'title') {
                 valA = getSortKey(a.title);
                 valB = getSortKey(b.title);
             } else if (sortBy === 'artist') {
@@ -1535,14 +1554,29 @@ function formatTime(seconds) {
             return;
         }
 
-        // Check if an active playlist queue is currently running
+        // Si ya suena algo, no interrumpir: la canción pulsada se añade justo después de la
+        // actual para sonar a continuación. Solo se reproduce al instante si no hay nada
+        // sonando ahora mismo (evita cortar una canción por pulsar otra sin querer).
+        const isActivelyPlaying = !!(currentPlayingSong && mainMusicAudio && !mainMusicAudio.paused);
+
         if (playbackMode === 'playlist_shuffle' || playbackMode === 'party_dj' || playbackMode === 'search_shuffle') {
-            // Insert this song to play next immediately and then continue with the rest of the queue
             activePlaylistQueue.splice(currentQueueIndex + 1, 0, song);
-            currentQueueIndex++;
-            playQueueTrack(activePlaylistQueue[currentQueueIndex]);
+            if (isActivelyPlaying) {
+                showSyncNotification(`⏭️ "${song.title}" sonará a continuación`);
+            } else {
+                currentQueueIndex++;
+                playQueueTrack(activePlaylistQueue[currentQueueIndex]);
+            }
+        } else if (isActivelyPlaying) {
+            if (playbackMode !== 'single' || activePlaylistQueue.length === 0) {
+                activePlaylistQueue = [currentPlayingSong];
+                currentQueueIndex = 0;
+                playbackMode = 'single';
+            }
+            activePlaylistQueue.splice(currentQueueIndex + 1, 0, song);
+            showSyncNotification(`⏭️ "${song.title}" sonará a continuación`);
         } else {
-            // Single song mode
+            // Nada sonando: reproducir al instante
             playbackMode = 'single';
             activePlaylistQueue = [song];
             currentQueueIndex = 0;
@@ -2681,6 +2715,10 @@ function formatTime(seconds) {
                         if (btnSmartDj) btnSmartDj.click();
                     }
                 }
+            } else if (playbackMode === 'single' && activePlaylistQueue.length > 0 && currentQueueIndex + 1 < activePlaylistQueue.length) {
+                // Había una canción añadida "a continuación" sin interrumpir la que sonaba
+                currentQueueIndex++;
+                playQueueTrack(activePlaylistQueue[currentQueueIndex]);
             } else {
                 updateMusicBarState(false);
                 renderSongs();
@@ -3070,15 +3108,35 @@ function formatTime(seconds) {
     }
 
     // Controles de Ordenamiento
+    function updateSortDirButtonAppearance() {
+        if (!sortDirIcon || !btnSortDir) return;
+        if (sortBy === 'random') {
+            sortDirIcon.className = 'fa-solid fa-shuffle';
+            btnSortDir.title = 'Volver a barajar';
+        } else {
+            sortDirIcon.className = sortAsc ? 'fa-solid fa-arrow-down-a-z' : 'fa-solid fa-arrow-up-z-a';
+            btnSortDir.title = sortAsc ? 'Orden Ascendente (A-Z / Antiguo)' : 'Orden Descendente (Z-A / Reciente)';
+        }
+    }
+    updateSortDirButtonAppearance();
+
     sortSelect.addEventListener('change', (e) => {
         sortBy = e.target.value;
+        if (sortBy === 'random') reshuffleRandomSort();
+        updateSortDirButtonAppearance();
         renderSongs();
     });
 
     btnSortDir.addEventListener('click', () => {
+        // En modo Aleatorio no hay ascendente/descendente que valga: el botón sirve para
+        // barajar de nuevo en su lugar.
+        if (sortBy === 'random') {
+            reshuffleRandomSort();
+            renderSongs();
+            return;
+        }
         sortAsc = !sortAsc;
-        sortDirIcon.className = sortAsc ? 'fa-solid fa-arrow-down-a-z' : 'fa-solid fa-arrow-up-z-a';
-        btnSortDir.title = sortAsc ? 'Orden Ascendente (A-Z / Antiguo)' : 'Orden Descendente (Z-A / Reciente)';
+        updateSortDirButtonAppearance();
         renderSongs();
     });
 
