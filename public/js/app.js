@@ -3822,7 +3822,6 @@ function formatTime(seconds) {
             if (btnSwitchGallery) btnSwitchGallery.classList.remove('active');
             if (btnSwitchVinyl) btnSwitchVinyl.classList.remove('active');
             if (btnSwitchEqualizer) btnSwitchEqualizer.classList.add('active');
-            updateEqualizerBadge();
             startCinemaEqualizer();
         } else if (viewMode === 'vinyl') {
             stopCinemaEqualizer();
@@ -4026,13 +4025,6 @@ function formatTime(seconds) {
     const eqPeakBars = new Float32Array(EQ_NUM_BARS);
     const eqPeakDropSpeeds = new Float32Array(EQ_NUM_BARS);
 
-    function updateEqualizerBadge() {
-        const badgeName = document.getElementById('equalizer-artist-name');
-        if (badgeName) {
-            const track = currentPlayingSong || (cinemaCurrentTrackList ? cinemaCurrentTrackList[cinemaCurrentIndex] : null);
-            badgeName.textContent = track ? (track.artist || 'Ecualizador') : 'Ecualizador';
-        }
-    }
 
     function startCinemaEqualizer() {
         if (!eqCanvas) {
@@ -4269,7 +4261,6 @@ function formatTime(seconds) {
         }
         loadTrackSyncOffset(track);
         loadArtistGallery(track.artist, track.coverUrl);
-        updateEqualizerBadge();
         if (isCinemaAnalysisOpen) loadCinemaAnalysis(track);
         const cover = track.coverUrl || 'img/radios/hitfm.svg';
         if (cinemaBg) cinemaBg.style.backgroundImage = `url('${cover}')`;
