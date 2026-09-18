@@ -1559,11 +1559,19 @@ function formatTime(seconds) {
         // sonando ahora mismo (evita cortar una canción por pulsar otra sin querer).
         const isActivelyPlaying = !!(currentPlayingSong && mainMusicAudio && !mainMusicAudio.paused);
 
+        // Evita añadir la misma canción varias veces si se pulsa repetidas veces sobre ella
+        // (p.ej. porque el aviso de confirmación no se veía y el usuario reintentaba).
+        const isAlreadyQueuedNext = (idx) => activePlaylistQueue.slice(idx + 1)
+            .some(t => t.artist === song.artist && t.title === song.title);
+
         if (playbackMode === 'playlist_shuffle' || playbackMode === 'party_dj' || playbackMode === 'search_shuffle') {
-            activePlaylistQueue.splice(currentQueueIndex + 1, 0, song);
             if (isActivelyPlaying) {
+                if (!isAlreadyQueuedNext(currentQueueIndex)) {
+                    activePlaylistQueue.splice(currentQueueIndex + 1, 0, song);
+                }
                 showSyncNotification(`⏭️ "${song.title}" sonará a continuación`);
             } else {
+                activePlaylistQueue.splice(currentQueueIndex + 1, 0, song);
                 currentQueueIndex++;
                 playQueueTrack(activePlaylistQueue[currentQueueIndex]);
             }
@@ -1573,7 +1581,9 @@ function formatTime(seconds) {
                 currentQueueIndex = 0;
                 playbackMode = 'single';
             }
-            activePlaylistQueue.splice(currentQueueIndex + 1, 0, song);
+            if (!isAlreadyQueuedNext(currentQueueIndex)) {
+                activePlaylistQueue.splice(currentQueueIndex + 1, 0, song);
+            }
             showSyncNotification(`⏭️ "${song.title}" sonará a continuación`);
         } else {
             // Nada sonando: reproducir al instante
@@ -1755,18 +1765,25 @@ function formatTime(seconds) {
     const btnSyncPlus = document.getElementById('btn-sync-plus');
     
     function showSyncNotification(msg) {
-        const existing = document.querySelector('.cinema-toast-notification');
+        const overlay = document.getElementById('cinema-overlay');
+        const isCinemaOpen = overlay && overlay.style.display === 'flex';
+
+        // Dentro del modo cine se ancla al overlay (position: absolute sobre él); fuera
+        // (p.ej. al añadir una canción a la cola desde la cuadrícula normal) se ancla a la
+        // ventana, si no el aviso nunca llega a insertarse en ningún sitio visible.
+        const existing = document.querySelector(isCinemaOpen ? '.cinema-toast-notification' : '.app-toast-notification');
         if (existing) existing.remove();
 
         const toast = document.createElement('div');
-        toast.className = 'cinema-toast-notification';
-        toast.innerHTML = `<i class="fa-solid fa-sparkles" style="color:var(--spotify-green);"></i> ${msg}`;
-        
-        const overlay = document.getElementById('cinema-overlay');
-        if (overlay && overlay.style.display === 'flex') {
+        toast.className = isCinemaOpen ? 'cinema-toast-notification' : 'app-toast-notification';
+        toast.innerHTML = `<i class="fa-solid fa-sparkles" style="color:var(--spotify-green);"></i> ${escapeHtml(msg)}`;
+
+        if (isCinemaOpen) {
             overlay.appendChild(toast);
-            setTimeout(() => { toast.remove(); }, 3500);
+        } else {
+            document.body.appendChild(toast);
         }
+        setTimeout(() => { toast.remove(); }, 3500);
     }
 
     function updateLyricsSyncOffset(val) {
