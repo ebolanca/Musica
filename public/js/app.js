@@ -4013,6 +4013,232 @@ function formatTime(seconds) {
         }
     }
 
+
+    // ==========================================================================
+    // 📊 Motor Gráfico: Ecualizador de Espectro Real en Vivo con Reflejo Líquido
+    // ==========================================================================
+    let eqCanvas = null;
+    let eqCtx = null;
+    let eqAnimFrameId = null;
+    let eqFftDataArray = null;
+    const EQ_NUM_BARS = 36;
+    const eqSmoothedBars = new Float32Array(EQ_NUM_BARS);
+    const eqPeakBars = new Float32Array(EQ_NUM_BARS);
+    const eqPeakDropSpeeds = new Float32Array(EQ_NUM_BARS);
+
+    function updateEqualizerBadge() {
+        const badgeName = document.getElementById('equalizer-artist-name');
+        if (badgeName) {
+            const track = currentPlayingSong || (cinemaCurrentTrackList ? cinemaCurrentTrackList[cinemaCurrentIndex] : null);
+            badgeName.textContent = track ? (track.artist || 'Ecualizador') : 'Ecualizador';
+        }
+    }
+
+    function startCinemaEqualizer() {
+        if (!eqCanvas) {
+            eqCanvas = document.getElementById('cinema-equalizer-canvas');
+            if (eqCanvas) eqCtx = eqCanvas.getContext('2d');
+        }
+        if (!eqCanvas || !eqCtx) return;
+
+        if (!audioCtx) initAudioNormalizationGraph();
+        if (audioCtx && audioCtx.state === 'suspended') {
+            audioCtx.resume().catch(() => {});
+        }
+
+        if (analyserNode && !eqFftDataArray) {
+            eqFftDataArray = new Uint8Array(analyserNode.frequencyBinCount);
+        }
+
+        if (!eqAnimFrameId) {
+            eqAnimFrameId = requestAnimationFrame(renderCinemaEqualizerFrame);
+        }
+    }
+
+    function stopCinemaEqualizer() {
+        if (eqAnimFrameId) {
+            cancelAnimationFrame(eqAnimFrameId);
+            eqAnimFrameId = null;
+        }
+    }
+
+    function renderCinemaEqualizerFrame(timestamp) {
+        if (artistGalleryActiveView !== 'equalizer' || !cinemaOverlay || cinemaOverlay.style.display !== 'flex') {
+            eqAnimFrameId = null;
+            return;
+        }
+
+        if (!eqCanvas || !eqCtx) {
+            eqAnimFrameId = null;
+            return;
+        }
+
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const rect = eqCanvas.getBoundingClientRect();
+        const displayW = Math.floor(rect.width);
+        const displayH = Math.floor(rect.height);
+
+        if (displayW <= 0 || displayH <= 0) {
+            eqAnimFrameId = requestAnimationFrame(renderCinemaEqualizerFrame);
+            return;
+        }
+
+        if (eqCanvas.width !== Math.floor(displayW * dpr) || eqCanvas.height !== Math.floor(displayH * dpr)) {
+            eqCanvas.width = Math.floor(displayW * dpr);
+            eqCanvas.height = Math.floor(displayH * dpr);
+        }
+
+        eqCtx.save();
+        eqCtx.scale(dpr, dpr);
+
+        const w = displayW;
+        const h = displayH;
+
+        // Fondo oscuro con atmósfera sónica
+        eqCtx.fillStyle = '#05060a';
+        eqCtx.fillRect(0, 0, w, h);
+
+        const isAudioPlaying = mainMusicAudio && !mainMusicAudio.paused && mainMusicAudio.currentTime > 0;
+
+        if (isAudioPlaying && analyserNode && eqFftDataArray) {
+            analyserNode.getByteFrequencyData(eqFftDataArray);
+        } else if (!isAudioPlaying) {
+            // Decaimiento suave a reposo
+            if (eqFftDataArray) eqFftDataArray.fill(0);
+        }
+
+        // Distribución logarítmica de frecuencias en EQ_NUM_BARS
+        const binCount = eqFftDataArray ? eqFftDataArray.length : 512;
+        const minBin = 1;
+        const maxBin = Math.min(binCount - 1, 380);
+
+        for (let i = 0; i < EQ_NUM_BARS; i++) {
+            let targetVal = 0;
+            if (isAudioPlaying && eqFftDataArray) {
+                const p1 = i / EQ_NUM_BARS;
+                const p2 = (i + 1) / EQ_NUM_BARS;
+                const bStart = Math.floor(minBin * Math.pow(maxBin / minBin, p1));
+                const bEnd = Math.max(bStart + 1, Math.floor(minBin * Math.pow(maxBin / minBin, p2)));
+
+                let maxChunk = 0;
+                let sumChunk = 0;
+                let count = 0;
+                for (let b = bStart; b < bEnd && b < binCount; b++) {
+                    const v = eqFftDataArray[b];
+                    if (v > maxChunk) maxChunk = v;
+                    sumChunk += v;
+                    count++;
+                }
+                const avgChunk = count > 0 ? (sumChunk / count) : 0;
+                // Combinar pico y promedio con compensación de agudos
+                const trebleBoost = 1.0 + (i / EQ_NUM_BARS) * 0.75;
+                const bassDamp = i < 4 ? 0.85 : 1.0;
+                targetVal = Math.min(1.0, ((maxChunk * 0.7 + avgChunk * 0.3) / 255.0) * trebleBoost * bassDamp);
+            }
+
+            // Suavizado temporal reactivo (interpolación ágil pero sin parpadeos duros)
+            const currentVal = eqSmoothedBars[i];
+            const lerpSpeed = targetVal > currentVal ? 0.42 : 0.18;
+            eqSmoothedBars[i] = currentVal + (targetVal - currentVal) * lerpSpeed;
+
+            // Retención de picos (Peak Hold) que caen por gravedad
+            if (eqSmoothedBars[i] >= eqPeakBars[i]) {
+                eqPeakBars[i] = eqSmoothedBars[i];
+                eqPeakDropSpeeds[i] = 0;
+            } else {
+                eqPeakDropSpeeds[i] += 0.0016; // Aceleración por gravedad
+                eqPeakBars[i] = Math.max(0, eqPeakBars[i] - eqPeakDropSpeeds[i]);
+            }
+        }
+
+        // Geometría del ecualizador
+        const horizonY = Math.floor(h * 0.70); // Línea del horizonte a 70%
+        const maxBarH = horizonY - 14;
+        const gap = 3.5;
+        const totalGaps = (EQ_NUM_BARS + 1) * gap;
+        const barW = Math.max(4, (w - totalGaps) / EQ_NUM_BARS);
+
+        const segmentH = 3.2;
+        const segmentGap = 1.4;
+        const segStep = segmentH + segmentGap;
+        const maxSegments = Math.floor(maxBarH / segStep);
+
+        // Paleta vibrante arcoíris por altura (idéntica a la referencia de estudio)
+        function getSegmentColor(frac, alpha = 1.0) {
+            if (frac < 0.16) return `rgba(255, 23, 68, ${alpha})`;    // Rojo eléctrico base
+            if (frac < 0.35) return `rgba(255, 109, 0, ${alpha})`;   // Naranja intenso
+            if (frac < 0.54) return `rgba(255, 214, 0, ${alpha})`;   // Amarillo vivo
+            if (frac < 0.72) return `rgba(0, 230, 118, ${alpha})`;   // Verde lima neón
+            if (frac < 0.88) return `rgba(0, 229, 255, ${alpha})`;   // Cian brillante
+            return `rgba(124, 77, 255, ${alpha})`;                   // Púrpura / Azul cima
+        }
+
+        // 1. Dibujar barras superiores de frecuencias (hacia arriba)
+        for (let i = 0; i < EQ_NUM_BARS; i++) {
+            const x = gap + i * (barW + gap);
+            const val = eqSmoothedBars[i];
+            const peak = eqPeakBars[i];
+            const numSegs = Math.floor(val * maxSegments);
+
+            // Bloques LED segmentados de la barra
+            for (let s = 0; s < numSegs; s++) {
+                const segFrac = s / maxSegments;
+                const segY = horizonY - (s + 1) * segStep;
+                eqCtx.fillStyle = getSegmentColor(segFrac, 0.95);
+                eqCtx.fillRect(x, segY, barW, segmentH);
+            }
+
+            // Peak Hold (cap flotante superior)
+            if (peak > 0.04) {
+                const peakSegIdx = Math.min(maxSegments - 1, Math.floor(peak * maxSegments));
+                const peakY = horizonY - (peakSegIdx + 1) * segStep;
+                const peakFrac = peakSegIdx / maxSegments;
+                eqCtx.fillStyle = getSegmentColor(peakFrac, 1.0);
+                eqCtx.fillRect(x, peakY, barW, segmentH);
+            }
+        }
+
+        // 2. Dibujar superficie reflectante líquida (hacia abajo con efecto de ondas de agua)
+        const reflectionMaxH = h - horizonY;
+        const timeSec = (timestamp || 0) * 0.003;
+
+        for (let i = 0; i < EQ_NUM_BARS; i++) {
+            const x = gap + i * (barW + gap);
+            const val = eqSmoothedBars[i];
+            const numSegs = Math.floor(val * maxSegments * 0.80);
+
+            for (let s = 0; s < numSegs; s++) {
+                const segFrac = s / maxSegments;
+                const distFromWaterline = (s + 1) * segStep;
+                if (distFromWaterline >= reflectionMaxH - 4) break;
+
+                // Ondulación horizontal del agua
+                const waveShift = Math.sin(distFromWaterline * 0.22 + timeSec + i * 0.5) * (1.8 + (distFromWaterline / reflectionMaxH) * 4.5);
+                const refY = horizonY + distFromWaterline;
+
+                // Desvanecimiento suave en profundidad
+                const depthFade = Math.max(0, 1.0 - (distFromWaterline / reflectionMaxH));
+                const refAlpha = 0.52 * depthFade * (0.4 + segFrac * 0.6);
+
+                eqCtx.fillStyle = getSegmentColor(segFrac, refAlpha);
+                eqCtx.fillRect(x + waveShift, refY, barW, segmentH);
+            }
+        }
+
+        // 3. Líneas de escaneo y brillo horizontal del horizonte de agua
+        eqCtx.fillStyle = 'rgba(255, 255, 255, 0.12)';
+        eqCtx.fillRect(0, horizonY - 0.5, w, 1);
+
+        // Scanlines sutiles sobre el reflejo para acentuar el aspecto de superficie líquida
+        for (let y = horizonY + 2; y < h; y += 4) {
+            eqCtx.fillStyle = 'rgba(0, 0, 0, 0.38)';
+            eqCtx.fillRect(0, y, w, 1.5);
+        }
+
+        eqCtx.restore();
+        eqAnimFrameId = requestAnimationFrame(renderCinemaEqualizerFrame);
+    }
+
     function renderCinemaTrack(track) {
         if (!track) return;
         currentPlayingSong = track;
