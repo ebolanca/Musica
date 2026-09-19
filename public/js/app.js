@@ -4216,7 +4216,7 @@ function formatTime(seconds) {
         }
 
         // Geometría del ecualizador
-        const horizonY = Math.floor(h * 0.70); // Línea del horizonte a 70%
+        const horizonY = Math.floor(h * 0.67); // Línea del horizonte a 67% para mayor profundidad
         const maxBarH = horizonY - 14;
         const gap = 3.5;
         const totalGaps = (EQ_NUM_BARS + 1) * gap;
@@ -4262,41 +4262,61 @@ function formatTime(seconds) {
             }
         }
 
-        // 2. Dibujar superficie reflectante líquida (hacia abajo con efecto de ondas de agua)
+        // 2. Fondo ambiental de la masa de agua (suave degradado acuático nocturno)
         const reflectionMaxH = h - horizonY;
-        const timeSec = (timestamp || 0) * 0.003;
+        const timeSec = (timestamp || 0) * 0.0028;
 
+        const waterGrad = eqCtx.createLinearGradient(0, horizonY, 0, h);
+        waterGrad.addColorStop(0, 'rgba(12, 24, 48, 0.35)');
+        waterGrad.addColorStop(0.35, 'rgba(8, 16, 32, 0.20)');
+        waterGrad.addColorStop(1, 'rgba(3, 5, 10, 0.75)');
+        eqCtx.fillStyle = waterGrad;
+        eqCtx.fillRect(0, horizonY, w, reflectionMaxH);
+
+        // 3. Dibujar superficie reflectante líquida (reflejo invertido con ondas de agua vivas)
         for (let i = 0; i < EQ_NUM_BARS; i++) {
             const x = gap + i * (barW + gap);
             const val = eqSmoothedBars[i];
-            const numSegs = Math.floor(val * maxSegments * 0.80);
+            const numSegs = Math.floor(val * maxSegments * 0.85);
 
             for (let s = 0; s < numSegs; s++) {
                 const segFrac = s / maxSegments;
                 const distFromWaterline = (s + 1) * segStep;
                 if (distFromWaterline >= reflectionMaxH - 4) break;
 
-                // Ondulación horizontal del agua
-                const waveShift = Math.sin(distFromWaterline * 0.22 + timeSec + i * 0.5) * (1.8 + (distFromWaterline / reflectionMaxH) * 4.5);
+                // Ondulaciones orgánicas en el agua que cambian según profundidad y tiempo
+                const wavePhase = distFromWaterline * 0.18 + timeSec * 1.8 + i * 0.32;
+                const waveShift = Math.sin(wavePhase) * (2.2 + (distFromWaterline / reflectionMaxH) * 5.2);
                 const refY = horizonY + distFromWaterline;
 
-                // Desvanecimiento suave en profundidad
-                const depthFade = Math.max(0, 1.0 - (distFromWaterline / reflectionMaxH));
-                const refAlpha = 0.52 * depthFade * (0.4 + segFrac * 0.6);
+                // Caída suave de luminosidad: inicia vívida en la orilla (~0.72) y se desvanece con la distancia
+                const depthRatio = distFromWaterline / reflectionMaxH;
+                const depthFade = Math.pow(Math.max(0, 1.0 - depthRatio), 0.70);
+                const shimmer = 0.86 + 0.14 * Math.cos(wavePhase * 1.25);
+                const refAlpha = Math.max(0.08, 0.72 * depthFade * shimmer);
 
                 eqCtx.fillStyle = getSegmentColor(segFrac, refAlpha);
                 eqCtx.fillRect(x + waveShift, refY, barW, segmentH);
             }
         }
 
-        // 3. Líneas de escaneo y brillo horizontal del horizonte de agua
-        eqCtx.fillStyle = 'rgba(255, 255, 255, 0.12)';
-        eqCtx.fillRect(0, horizonY - 0.5, w, 1);
+        // 4. Línea de horizonte de agua (borde cristalino con resplandor)
+        const waterLineGrad = eqCtx.createLinearGradient(0, horizonY - 1, 0, horizonY + 3);
+        waterLineGrad.addColorStop(0, 'rgba(255, 255, 255, 0.55)');
+        waterLineGrad.addColorStop(0.4, 'rgba(80, 220, 255, 0.40)');
+        waterLineGrad.addColorStop(1, 'rgba(0, 140, 255, 0.0)');
+        eqCtx.fillStyle = waterLineGrad;
+        eqCtx.fillRect(0, horizonY - 1, w, 4);
 
-        // Scanlines sutiles sobre el reflejo para acentuar el aspecto de superficie líquida
-        for (let y = horizonY + 2; y < h; y += 4) {
-            eqCtx.fillStyle = 'rgba(0, 0, 0, 0.38)';
-            eqCtx.fillRect(0, y, w, 1.5);
+        // Ondas líquidas sutiles horizontales que se desplazan por la superficie
+        for (let y = horizonY + 4; y < h - 4; y += 7) {
+            const rowFrac = (y - horizonY) / reflectionMaxH;
+            const waveOpacity = 0.09 * (1.0 - rowFrac);
+            if (waveOpacity > 0.015) {
+                const waveOffset = Math.sin(y * 0.28 + timeSec * 2.2) * 1.6;
+                eqCtx.fillStyle = `rgba(180, 235, 255, ${waveOpacity})`;
+                eqCtx.fillRect(0, y + waveOffset, w, 1);
+            }
         }
 
         eqCtx.restore();
