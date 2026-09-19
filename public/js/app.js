@@ -333,23 +333,64 @@ function formatTime(seconds) {
 
             const tTitle = currentCoverTrack.title || currentCoverTrack.rawTitle || '';
             const tArtist = currentCoverTrack.artist || '';
-
-            if (changeCoverTrackName) {
-                changeCoverTrackName.textContent = `${tArtist} • ${tTitle}`;
-            }
+            const rawAlb = currentCoverTrack.album || '';
+            const isGenericAlb = !rawAlb || rawAlb === 'Álbum Desconocido' || rawAlb === 'Álbum' || rawAlb === 'Álbum Oficial';
+            const tAlbum = isGenericAlb ? '' : rawAlb;
 
             const cleanT = (typeof cleanTrackTitle === 'function') ? cleanTrackTitle(tTitle) : tTitle;
-            const defaultQuery = `${tArtist} ${cleanT}`.trim();
+
+            // Mostrar Artista, Canción y Álbum en el encabezado
+            if (changeCoverTrackName) {
+                changeCoverTrackName.innerHTML = `<strong>${escapeHtml(tArtist)}</strong> • ${escapeHtml(tTitle)}${tAlbum ? ` <span style="display:inline-flex; align-items:center; gap:4px; opacity:0.85; margin-left:6px; font-size:0.8rem; background:rgba(255,255,255,0.08); padding:2px 8px; border-radius:10px;"><i class="fa-solid fa-compact-disc"></i> ${escapeHtml(tAlbum)}</span>` : ''}`;
+            }
+
+            // Prioridad: Si hay álbum conocido, buscar por "Artista Álbum"; si no, por "Artista Canción"
+            const albumQuery = tAlbum ? `${tArtist} ${tAlbum}`.trim() : '';
+            const songQuery = `${tArtist} ${cleanT}`.trim();
+            const defaultQuery = albumQuery || songQuery;
+
             if (inputCoverSearch) inputCoverSearch.value = defaultQuery;
             if (inputCoverCustomUrl) inputCoverCustomUrl.value = '';
             if (coverStatusMsg) coverStatusMsg.style.display = 'none';
+
+            // Renderizar chips de búsqueda rápida para alternar con un solo clic
+            const chipsContainer = document.getElementById('cover-search-chips');
+            if (chipsContainer) {
+                chipsContainer.innerHTML = '';
+                if (albumQuery) {
+                    const btnAlb = document.createElement('button');
+                    btnAlb.type = 'button';
+                    btnAlb.className = 'cover-chip-btn active';
+                    btnAlb.innerHTML = `<i class="fa-solid fa-compact-disc"></i> Álbum: ${escapeHtml(tAlbum)}`;
+                    btnAlb.onclick = () => {
+                        if (inputCoverSearch) inputCoverSearch.value = albumQuery;
+                        chipsContainer.querySelectorAll('.cover-chip-btn').forEach(b => b.classList.remove('active'));
+                        btnAlb.classList.add('active');
+                        triggerCoverSearch(albumQuery, tArtist, tAlbum, cleanT);
+                    };
+                    chipsContainer.appendChild(btnAlb);
+                }
+
+                const btnSong = document.createElement('button');
+                btnSong.type = 'button';
+                btnSong.className = `cover-chip-btn ${!albumQuery ? 'active' : ''}`;
+                btnSong.innerHTML = `<i class="fa-solid fa-music"></i> Canción: ${escapeHtml(cleanT)}`;
+                btnSong.onclick = () => {
+                    if (inputCoverSearch) inputCoverSearch.value = songQuery;
+                    chipsContainer.querySelectorAll('.cover-chip-btn').forEach(b => b.classList.remove('active'));
+                    btnSong.classList.add('active');
+                    triggerCoverSearch(songQuery, tArtist, '', cleanT);
+                };
+                chipsContainer.appendChild(btnSong);
+                chipsContainer.style.display = 'flex';
+            }
 
             if (modalChangeCover) {
                 modalChangeCover.style.display = 'flex';
                 setTimeout(() => modalChangeCover.classList.add('active'), 10);
             }
 
-            triggerCoverSearch(defaultQuery);
+            triggerCoverSearch(defaultQuery, tArtist, tAlbum, cleanT);
         }
 
         function closeCoverModal() {
@@ -362,7 +403,7 @@ function formatTime(seconds) {
             }
         }
 
-        async function triggerCoverSearch(query) {
+        async function triggerCoverSearch(query, artistOpt = '', albumOpt = '', titleOpt = '') {
             if (!query || !coverResultsGrid) return;
             coverResultsGrid.innerHTML = `
                 <div style="grid-column: 1 / -1; text-align: center; padding: 36px 12px; color: var(--text-muted);">
@@ -373,7 +414,11 @@ function formatTime(seconds) {
             if (coverResultsCount) coverResultsCount.textContent = 'Buscando...';
 
             try {
-                const res = await fetch(`/api/covers/search?q=${encodeURIComponent(query)}`);
+                const art = artistOpt || (currentCoverTrack ? currentCoverTrack.artist : '') || '';
+                const alb = albumOpt || (currentCoverTrack ? currentCoverTrack.album : '') || '';
+                const tit = titleOpt || (currentCoverTrack ? (currentCoverTrack.title || currentCoverTrack.rawTitle) : '') || '';
+                const url = `/api/covers/search?q=${encodeURIComponent(query)}&artist=${encodeURIComponent(art)}&album=${encodeURIComponent(alb)}&title=${encodeURIComponent(tit)}`;
+                const res = await fetch(url);
                 const data = await res.json();
                 if (data.success && data.results && data.results.length > 0) {
                     renderCoverResults(data.results);

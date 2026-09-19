@@ -5804,3 +5804,40 @@ body.public-mode .cinema-equalizer-wrap {
     height: 240px !important;
     border-radius: 18px !important;
 }
+
+.cover-search-chips {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: -4px;
+}
+
+.cover-chip-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: #e2e8f0;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cover-chip-btn:hover {
+    background: rgba(29, 185, 84, 0.18);
+    border-color: rgba(29, 185, 84, 0.5);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.cover-chip-btn.active {
+    background: rgba(29, 185, 84, 0.22);
+    border-color: var(--spotify-green, #1db954);
+    color: #22c55e;
+    box-shadow: 0 0 10px rgba(29, 185, 84, 0.2);
+}

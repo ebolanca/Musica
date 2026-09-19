@@ -721,97 +721,153 @@ async function resolveTrackMetadataOnline(artist, rawTitle) {
     let deezerMeta = null;
     let itunesMeta = null;
 
-    // 1. Consultar Deezer (Carátulas HD 1000x1000 y álbum oficial)
+    const COMPILATION_OR_DERIVATIVE = /\b(karaoke|tribute|greatest hits|best of|the hits|the best|gold|platinum|collection|anthology|definitive|anniversary|deluxe|edition|remixes|acoustic|live|en vivo|directo)\b/i;
+    const NON_ORIGINAL_PATTERN = /\b(remix|remaster|remastered|live|acoustic|unplugged|demo|mono|stereo|sped up|slowed|revisited|version \d{4}|dub|radio edit|club edit|extended mix)\b/i;
+
+    const normText = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+    const normArt = normText(primaryArtist);
+    const normSong = normText(cleanT);
+
+    // 1. Consultar Apple Music / iTunes (referencia histórica para álbumes de estudio originales)
     try {
         const q = encodeURIComponent(`${primaryArtist} ${cleanT}`);
-        const dzRes = await fetch(`https://api.deezer.com/search?q=${q}&limit=5`, { signal: AbortSignal.timeout(5000) });
-        if (dzRes.ok) {
-            const dzData = await dzRes.json();
-            if (dzData.data && dzData.data.length > 0) {
-                const item = dzData.data[0];
-                let albTitle = item.album ? cleanAlbumTitle(item.album.title) : null;
-                let cover = item.album ? (item.album.cover_xl || item.album.cover_big || item.album.cover_medium) : null;
-                let rDate = null;
-                let rYear = null;
-                if (item.album && item.album.id) {
-                    try {
-                        const albRes = await fetch(`https://api.deezer.com/album/${item.album.id}`, { signal: AbortSignal.timeout(4000) });
-                        if (albRes.ok) {
-                            const albData = await albRes.json();
-                            if (albData.release_date) {
-                                rDate = albData.release_date;
-                                rYear = rDate.split('-')[0];
-                            }
-                        }
-                    } catch(e) {}
-                }
-                if (cover && albTitle) {
-                    deezerMeta = {
+        const itRes = await fetch(`https://itunes.apple.com/search?term=${q}&entity=song&limit=25`, { signal: AbortSignal.timeout(5000) });
+        if (itRes.ok) {
+            const itData = await itRes.json();
+            if (itData.results && itData.results.length > 0) {
+                // Filtrar por artista compatible
+                const matchingArtist = itData.results.filter(r => {
+                    const rArt = normText(r.artistName || '');
+                    return rArt.includes(normArt) || normArt.includes(rArt);
+                });
+                const pool = matchingArtist.length > 0 ? matchingArtist : itData.results;
+
+                // Filtrar por coincidencia estricta de título
+                const matchingTitle = pool.filter(r => {
+                    const rClean = cleanTrackTitle(r.trackName || '');
+                    const rNorm = normText(rClean);
+                    return rNorm === normSong || (rNorm.length > 4 && (rNorm.includes(normSong) || normSong.includes(rNorm)));
+                });
+                const songPool = matchingTitle.length > 0 ? matchingTitle : pool;
+
+                // Filtrar canciones de estudio limpias
+                const cleanSongs = songPool.filter(r => !NON_ORIGINAL_PATTERN.test(r.trackName || ''));
+                const candidatePool = cleanSongs.length > 0 ? cleanSongs : songPool;
+
+                // Ordenar: primero álbumes de estudio (no compilaciones ni recopilatorios), luego fecha más antigua
+                candidatePool.sort((a, b) => {
+                    const aComp = COMPILATION_OR_DERIVATIVE.test(a.collectionName || '');
+                    const bComp = COMPILATION_OR_DERIVATIVE.test(b.collectionName || '');
+                    if (aComp !== bComp) return aComp ? 1 : -1;
+
+                    const aDate = a.releaseDate || '9999';
+                    const bDate = b.releaseDate || '9999';
+                    return aDate.localeCompare(bDate);
+                });
+
+                const best = candidatePool[0];
+                if (best) {
+                    const rDate = (best.releaseDate || '').split('T')[0] || null;
+                    const rYear = rDate ? rDate.split('-')[0] : null;
+                    itunesMeta = {
                         title: cleanT,
                         displayTitle: cleanT,
-                        artist: artist,
-                        album: albTitle,
+                        artist: best.artistName || artist,
+                        album: cleanAlbumTitle(best.collectionName || ''),
                         year: rYear,
                         date: rDate,
-                        coverUrl: cover,
-                        durationMs: (item.duration || 210) * 1000,
-                        source: 'Deezer API'
+                        coverUrl: best.artworkUrl100 ? best.artworkUrl100.replace('100x100bb', '1000x1000bb') : null,
+                        durationMs: best.trackTimeMillis || 210000,
+                        source: 'Apple Music / iTunes'
                     };
                 }
             }
         }
     } catch(e) {}
 
-    // 2. Consultar Apple Music / iTunes (Fechas originales y respaldo)
+    // 2. Consultar Deezer: Si iTunes ya identificó el álbum de estudio original, buscar la carátula HD 1000x1000 de ese álbum
     try {
-        const q = encodeURIComponent(`${primaryArtist} ${cleanT}`);
-        const itRes = await fetch(`https://itunes.apple.com/search?term=${q}&entity=song&limit=5`, { signal: AbortSignal.timeout(5000) });
-        if (itRes.ok) {
-            const itData = await itRes.json();
-            if (itData.results && itData.results.length > 0) {
-                const best = itData.results[0];
-                const rDate = (best.releaseDate || '').split('T')[0] || null;
-                const rYear = rDate ? rDate.split('-')[0] : null;
-                itunesMeta = {
-                    title: cleanT,
-                    displayTitle: cleanT,
-                    artist: artist,
-                    album: cleanAlbumTitle(best.collectionName || ''),
-                    year: rYear,
-                    date: rDate,
-                    coverUrl: best.artworkUrl100 ? best.artworkUrl100.replace('100x100bb', '1000x1000bb') : null,
-                    durationMs: best.trackTimeMillis || 210000,
-                    source: 'Apple Music / iTunes'
-                };
+        if (itunesMeta && itunesMeta.album && itunesMeta.album !== 'Álbum Desconocido') {
+            const albQ = encodeURIComponent(`${primaryArtist} ${itunesMeta.album}`);
+            const dzAlbRes = await fetch(`https://api.deezer.com/search/album?q=${albQ}&limit=5`, { signal: AbortSignal.timeout(4000) });
+            if (dzAlbRes.ok) {
+                const albData = await dzAlbRes.json();
+                if (albData.data && albData.data.length > 0) {
+                    const matchingAlb = albData.data.find(a => {
+                        const aArt = normText((a.artist && a.artist.name) || '');
+                        return aArt.includes(normArt) || normArt.includes(aArt);
+                    }) || albData.data[0];
+                    if (matchingAlb) {
+                        const cover = matchingAlb.cover_xl || matchingAlb.cover_big;
+                        if (cover) {
+                            deezerMeta = {
+                                title: cleanT,
+                                displayTitle: cleanT,
+                                artist: (matchingAlb.artist && matchingAlb.artist.name) || artist,
+                                album: cleanAlbumTitle(matchingAlb.title || itunesMeta.album),
+                                year: itunesMeta.year,
+                                date: itunesMeta.date,
+                                coverUrl: cover,
+                                durationMs: itunesMeta.durationMs,
+                                source: 'Deezer API'
+                            };
+                        }
+                    }
+                }
+            }
+        }
+
+        // Si Deezer no encontró el álbum exacto, buscar por canción pero descartando artistas no afines y compilaciones
+        if (!deezerMeta) {
+            const q = encodeURIComponent(`${primaryArtist} ${cleanT}`);
+            const dzRes = await fetch(`https://api.deezer.com/search?q=${q}&limit=10`, { signal: AbortSignal.timeout(5000) });
+            if (dzRes.ok) {
+                const dzData = await dzRes.json();
+                if (dzData.data && dzData.data.length > 0) {
+                    const matchingDz = dzData.data.filter(t => {
+                        const tArt = normText((t.artist && t.artist.name) || '');
+                        return tArt.includes(normArt) || normArt.includes(tArt);
+                    });
+                    const dzPool = matchingDz.length > 0 ? matchingDz : dzData.data;
+
+                    dzPool.sort((a, b) => {
+                        const aComp = COMPILATION_OR_DERIVATIVE.test((a.album && a.album.title) || '');
+                        const bComp = COMPILATION_OR_DERIVATIVE.test((b.album && b.album.title) || '');
+                        if (aComp !== bComp) return aComp ? 1 : -1;
+                        return 0;
+                    });
+
+                    const item = dzPool[0];
+                    let albTitle = item.album ? cleanAlbumTitle(item.album.title) : null;
+                    let cover = item.album ? (item.album.cover_xl || item.album.cover_big || item.album.cover_medium) : null;
+                    if (cover && albTitle) {
+                        deezerMeta = {
+                            title: cleanT,
+                            displayTitle: cleanT,
+                            artist: (item.artist && item.artist.name) || artist,
+                            album: albTitle,
+                            year: null,
+                            date: null,
+                            coverUrl: cover,
+                            durationMs: (item.duration || 210) * 1000,
+                            source: 'Deezer API'
+                        };
+                    }
+                }
             }
         }
     } catch(e) {}
 
     if (!deezerMeta && !itunesMeta) return null;
 
+    // Priorizar el álbum de estudio original detectado por iTunes
+    const album = (itunesMeta && itunesMeta.album && itunesMeta.album !== 'Álbum Desconocido') 
+        ? itunesMeta.album 
+        : ((deezerMeta && deezerMeta.album && deezerMeta.album !== 'Álbum Desconocido') ? deezerMeta.album : 'Álbum Oficial');
+        
     const coverUrl = (deezerMeta && deezerMeta.coverUrl) || (itunesMeta && itunesMeta.coverUrl);
-    let album = (deezerMeta && deezerMeta.album && deezerMeta.album !== 'Álbum Desconocido') ? deezerMeta.album : (itunesMeta ? itunesMeta.album : 'Álbum Oficial');
-    
-    // Para el año, si iTunes tiene un año más antiguo (lanzamiento original vs remaster moderno), priorizarlo
-    let year = '2000';
-    let date = '2000-01-01';
-    const dzYear = deezerMeta && deezerMeta.year ? parseInt(deezerMeta.year, 10) : 9999;
-    const itYear = itunesMeta && itunesMeta.year ? parseInt(itunesMeta.year, 10) : 9999;
-    
-    if (itYear < dzYear && itYear >= 1950) {
-        year = String(itYear);
-        date = itunesMeta.date || `${year}-01-01`;
-    } else if (dzYear <= itYear && dzYear >= 1950 && dzYear < 9999) {
-        year = String(dzYear);
-        date = deezerMeta.date || `${year}-01-01`;
-    } else if (itunesMeta && itunesMeta.year) {
-        year = itunesMeta.year;
-        date = itunesMeta.date || `${year}-01-01`;
-    } else if (deezerMeta && deezerMeta.year) {
-        year = deezerMeta.year;
-        date = deezerMeta.date || `${year}-01-01`;
-    }
-
+    const year = (itunesMeta && itunesMeta.year) || (deezerMeta && deezerMeta.year) || '2000';
+    const date = (itunesMeta && itunesMeta.date) || (deezerMeta && deezerMeta.date) || `${year}-01-01`;
     const durationMs = (itunesMeta && itunesMeta.durationMs) || (deezerMeta && deezerMeta.durationMs) || 210000;
 
     return {
@@ -1836,54 +1892,108 @@ app.post('/api/analysis/generate', blockInPublicMode, async (req, res) => {
 app.get('/api/covers/search', blockInPublicMode, async (req, res) => {
     try {
         const query = (req.query.q || '').trim();
-        if (!query) {
-            return res.status(400).json({ error: 'Parámetro de búsqueda (q) requerido' });
+        const artistParam = (req.query.artist || '').trim();
+        const albumParam = (req.query.album || '').trim();
+        const titleParam = (req.query.title || '').trim();
+
+        if (!query && !albumParam && !artistParam) {
+            return res.status(400).json({ error: 'Parámetro de búsqueda requerido' });
+        }
+
+        const COMPILATION_REGEX = /\b(karaoke|tribute|greatest hits|best of|the hits|the best|gold|platinum|collection|anthology|definitive|remixes|anniversary|deluxe|edition)\b/i;
+        const norm = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+
+        const targetArt = norm(artistParam);
+        const targetAlb = norm(albumParam);
+
+        const searchTerms = [];
+        if (query) searchTerms.push(query);
+        if (artistParam && albumParam) {
+            const albTerm = `${artistParam} ${albumParam}`.trim();
+            if (!searchTerms.includes(albTerm)) searchTerms.unshift(albTerm);
+        }
+        if (artistParam && titleParam) {
+            const songTerm = `${artistParam} ${cleanTrackTitle(titleParam)}`.trim();
+            if (!searchTerms.includes(songTerm)) searchTerms.push(songTerm);
         }
 
         const cleanQ = cleanTrackTitle(query);
-        const searchTerms = [query];
-        if (cleanQ && cleanQ.toLowerCase() !== query.toLowerCase()) {
+        if (cleanQ && cleanQ.toLowerCase() !== query.toLowerCase() && !searchTerms.includes(cleanQ)) {
             searchTerms.push(cleanQ);
         }
 
         const results = [];
         const seenCovers = new Set();
 
-        const addResult = (coverUrl, album, source) => {
+        const addResult = (coverUrl, albumName, artistName, source) => {
             if (!coverUrl || typeof coverUrl !== 'string') return;
             const normUrl = coverUrl.trim();
             if (normUrl.startsWith('http') && !seenCovers.has(normUrl)) {
                 seenCovers.add(normUrl);
-                results.push({ coverUrl: normUrl, album: album || 'Álbum Oficial', source });
+
+                // Calcular puntuación de afinidad
+                let score = 50;
+                const aName = albumName || '';
+                const artName = artistName || '';
+                const normA = norm(aName);
+                const normArt = norm(artName);
+
+                if (targetAlb && normA) {
+                    if (normA === targetAlb) score += 100;
+                    else if (normA.includes(targetAlb) || targetAlb.includes(normA)) score += 50;
+                }
+
+                if (targetArt && normArt) {
+                    if (normArt.includes(targetArt) || targetArt.includes(normArt)) score += 40;
+                    else score -= 40; // Artista ajeno (ej. recopilatorio de otro autor)
+                }
+
+                if (COMPILATION_REGEX.test(aName)) {
+                    score -= 35;
+                }
+
+                results.push({ 
+                    coverUrl: normUrl, 
+                    album: aName || 'Álbum Oficial', 
+                    artist: artName || '',
+                    source,
+                    score 
+                });
             }
         };
 
-        // 1. Deezer API (Pistas y Álbumes)
-        const fetchDeezer = async (term) => {
+        // 1. Deezer API (Búsqueda por álbum y por pista)
+        const fetchDeezer = async (term, isAlbumSearch = false) => {
             try {
                 const encoded = encodeURIComponent(term);
-                const [trackRes, albumRes] = await Promise.allSettled([
-                    fetch(`https://api.deezer.com/search?q=${encoded}&limit=15`, { signal: AbortSignal.timeout(4000) }),
-                    fetch(`https://api.deezer.com/search/album?q=${encoded}&limit=10`, { signal: AbortSignal.timeout(4000) })
-                ]);
-
-                if (trackRes.status === 'fulfilled' && trackRes.value.ok) {
-                    const data = await trackRes.value.json();
-                    if (data.data) {
-                        data.data.forEach(t => {
-                            if (t.album && (t.album.cover_xl || t.album.cover_big)) {
-                                addResult(t.album.cover_xl || t.album.cover_big, t.album.title, 'Deezer');
-                            }
-                        });
-                    }
+                const fetches = [
+                    fetch(`https://api.deezer.com/search/album?q=${encoded}&limit=12`, { signal: AbortSignal.timeout(4000) })
+                ];
+                if (!isAlbumSearch) {
+                    fetches.push(fetch(`https://api.deezer.com/search?q=${encoded}&limit=12`, { signal: AbortSignal.timeout(4000) }));
                 }
 
-                if (albumRes.status === 'fulfilled' && albumRes.value.ok) {
-                    const data = await albumRes.value.json();
+                const settled = await Promise.allSettled(fetches);
+
+                // Álbumes
+                if (settled[0].status === 'fulfilled' && settled[0].value.ok) {
+                    const data = await settled[0].value.json();
                     if (data.data) {
                         data.data.forEach(a => {
                             if (a.cover_xl || a.cover_big) {
-                                addResult(a.cover_xl || a.cover_big, a.title, 'Deezer');
+                                addResult(a.cover_xl || a.cover_big, a.title, (a.artist && a.artist.name) || '', 'Deezer');
+                            }
+                        });
+                    }
+                }
+
+                // Pistas
+                if (settled[1] && settled[1].status === 'fulfilled' && settled[1].value.ok) {
+                    const data = await settled[1].value.json();
+                    if (data.data) {
+                        data.data.forEach(t => {
+                            if (t.album && (t.album.cover_xl || t.album.cover_big)) {
+                                addResult(t.album.cover_xl || t.album.cover_big, t.album.title, (t.artist && t.artist.name) || '', 'Deezer');
                             }
                         });
                     }
@@ -1891,34 +2001,40 @@ app.get('/api/covers/search', blockInPublicMode, async (req, res) => {
             } catch (e) {}
         };
 
-        // 2. iTunes API (Canciones y Álbumes)
-        const fetchITunes = async (term) => {
+        // 2. iTunes API (Búsqueda por álbum y por canción)
+        const fetchITunes = async (term, isAlbumSearch = false) => {
             try {
                 const encoded = encodeURIComponent(term);
-                const [songRes, albumRes] = await Promise.allSettled([
-                    fetch(`https://itunes.apple.com/search?term=${encoded}&entity=song&limit=15`, { signal: AbortSignal.timeout(4000) }),
-                    fetch(`https://itunes.apple.com/search?term=${encoded}&entity=album&limit=10`, { signal: AbortSignal.timeout(4000) })
-                ]);
+                const fetches = [
+                    fetch(`https://itunes.apple.com/search?term=${encoded}&entity=album&limit=12`, { signal: AbortSignal.timeout(4000) })
+                ];
+                if (!isAlbumSearch) {
+                    fetches.push(fetch(`https://itunes.apple.com/search?term=${encoded}&entity=song&limit=12`, { signal: AbortSignal.timeout(4000) }));
+                }
 
-                if (songRes.status === 'fulfilled' && songRes.value.ok) {
-                    const data = await songRes.value.json();
+                const settled = await Promise.allSettled(fetches);
+
+                // Álbumes
+                if (settled[0].status === 'fulfilled' && settled[0].value.ok) {
+                    const data = await settled[0].value.json();
                     if (data.results) {
                         data.results.forEach(r => {
                             if (r.artworkUrl100) {
                                 const hdUrl = r.artworkUrl100.replace('100x100bb', '1000x1000bb');
-                                addResult(hdUrl, r.collectionName, 'iTunes / Apple Music');
+                                addResult(hdUrl, r.collectionName, r.artistName, 'iTunes / Apple Music');
                             }
                         });
                     }
                 }
 
-                if (albumRes.status === 'fulfilled' && albumRes.value.ok) {
-                    const data = await albumRes.value.json();
+                // Canciones
+                if (settled[1] && settled[1].status === 'fulfilled' && settled[1].value.ok) {
+                    const data = await settled[1].value.json();
                     if (data.results) {
                         data.results.forEach(r => {
                             if (r.artworkUrl100) {
                                 const hdUrl = r.artworkUrl100.replace('100x100bb', '1000x1000bb');
-                                addResult(hdUrl, r.collectionName, 'iTunes / Apple Music');
+                                addResult(hdUrl, r.collectionName, r.artistName, 'iTunes / Apple Music');
                             }
                         });
                     }
@@ -1926,12 +2042,21 @@ app.get('/api/covers/search', blockInPublicMode, async (req, res) => {
             } catch (e) {}
         };
 
-        await Promise.allSettled([
-            fetchDeezer(searchTerms[0]),
-            fetchITunes(searchTerms[0]),
-            searchTerms[1] ? fetchDeezer(searchTerms[1]) : Promise.resolve(),
-            searchTerms[1] ? fetchITunes(searchTerms[1]) : Promise.resolve()
-        ]);
+        // Ejecutar búsquedas concurrentes ordenadas por prioridad
+        const searchTasks = [];
+        if (searchTerms[0]) {
+            searchTasks.push(fetchDeezer(searchTerms[0], !!albumParam));
+            searchTasks.push(fetchITunes(searchTerms[0], !!albumParam));
+        }
+        if (searchTerms[1]) {
+            searchTasks.push(fetchDeezer(searchTerms[1], false));
+            searchTasks.push(fetchITunes(searchTerms[1], false));
+        }
+
+        await Promise.allSettled(searchTasks);
+
+        // Ordenar resultados por puntuación de relevancia
+        results.sort((a, b) => b.score - a.score);
 
         res.json({ success: true, count: results.length, results });
     } catch(err) {
