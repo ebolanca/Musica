@@ -16562,15 +16562,15 @@
     "title": "Hero",
     "displayTitle": "Hero",
     "artist": "Mariah Carey",
-    "album": "Pavarotti - The Duets",
+    "album": "Music Box",
     "year": "1993",
-    "date": "1993-01-01",
+    "date": "1993-08-31",
     "releaseYear": "1993",
-    "releaseDate": "1993-01-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6a1aeef41619907cc283d4eb1eac2fe6/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 257000,
-    "durationFmt": "4:17",
-    "source": "Apple Music Original Studio Master Catalog"
+    "releaseDate": "1993-08-31",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/1a/c7/08/1ac708ec-f080-71f5-0580-ff81bc48b0e6/196871356909.jpg/1000x1000bb.jpg",
+    "durationMs": 259000,
+    "durationFmt": "4:19",
+    "source": "Apple Music Official Studio Master Catalog"
   },
   "kylie minogue - the loco-motion": {
     "title": "The Loco-Motion",
@@ -38566,14 +38566,18 @@
     "releaseDate": "2009-01-01"
   },
   "mariah carey - mariah carey - hero (official hd video)": {
-    "title": "Mariah Carey - Hero (Official HD Video)",
+    "title": "Hero",
     "artist": "Mariah Carey",
-    "album": "Single / Álbum",
-    "year": "2009",
-    "date": "2009-01-01",
-    "source": "MusicBrainz Picard",
-    "releaseYear": "2009",
-    "releaseDate": "2009-01-01"
+    "album": "Music Box",
+    "year": "1993",
+    "date": "1993-08-31",
+    "source": "Apple Music Official Studio Master Catalog",
+    "releaseYear": "1993",
+    "releaseDate": "1993-08-31",
+    "displayTitle": "Hero",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/1a/c7/08/1ac708ec-f080-71f5-0580-ff81bc48b0e6/196871356909.jpg/1000x1000bb.jpg",
+    "durationMs": 259000,
+    "durationFmt": "4:19"
   },
   "doc rudy | soul studios - ain't no mountain high enough (extra hq) - marvin gaye & tammi terrell": {
     "title": "Ain't No Mountain High Enough (extra HQ) - Marvin Gaye & Tammi Terrell",
@@ -48724,11 +48728,14 @@
     "artist": "Mariah Carey",
     "album": "Music Box",
     "year": "1993",
-    "date": "1993-01-01",
-    "source": "MusicBrainz Picard",
+    "date": "1993-08-31",
+    "source": "Apple Music Official Studio Master Catalog",
     "releaseYear": "1993",
-    "releaseDate": "1993-01-01",
-    "displayTitle": "Hero"
+    "releaseDate": "1993-08-31",
+    "displayTitle": "Hero",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/1a/c7/08/1ac708ec-f080-71f5-0580-ff81bc48b0e6/196871356909.jpg/1000x1000bb.jpg",
+    "durationMs": 259000,
+    "durationFmt": "4:19"
   },
   "marvin gaye & tammi terrell - ain't nothing like the real thing": {
     "title": "Ain't Nothing Like the Real Thing",
@@ -73361,15 +73368,15 @@
     "title": "Hero",
     "displayTitle": "Hero",
     "artist": "Mariah Carey",
-    "album": "Greatest Hits",
-    "year": "2001",
-    "date": "2001-11-12",
-    "releaseYear": "2001",
-    "releaseDate": "2001-11-12",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/6a1aeef41619907cc283d4eb1eac2fe6/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 257000,
-    "durationFmt": "4:17",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "album": "Music Box",
+    "year": "1993",
+    "date": "1993-08-31",
+    "releaseYear": "1993",
+    "releaseDate": "1993-08-31",
+    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/1a/c7/08/1ac708ec-f080-71f5-0580-ff81bc48b0e6/196871356909.jpg/1000x1000bb.jpg",
+    "durationMs": 259000,
+    "durationFmt": "4:19",
+    "source": "Apple Music Official Studio Master Catalog"
   },
   "kylieminoguethelocomotion": {
     "title": "The Loco-Motion",

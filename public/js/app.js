@@ -2021,17 +2021,22 @@ function formatTime(seconds) {
             }
 
             try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 60000);
+
                 const res = await fetch('/api/track/replace-clean-audio', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
+                    signal: controller.signal,
                     body: JSON.stringify({
                         artist: currentSong.artist,
                         title: currentSong.rawTitle || currentSong.title,
                         category: getTrackPlaylistName(currentSong),
                         discardCurrent: true,
-                        expectedDurationSec: (mainMusicAudio && !isNaN(mainMusicAudio.duration) && mainMusicAudio.duration > 30) ? Math.round(mainMusicAudio.duration) : subsSec
+                        expectedDurationSec: subsSec || null
                     })
                 });
+                clearTimeout(timeoutId);
 
                 const data = await res.json();
                 if (data.success) {
@@ -2082,7 +2087,8 @@ function formatTime(seconds) {
                 }
             } catch(e) {
                 console.error('Error reemplazando versión limpia:', e);
-                showSyncNotification('❌ ' + e.message);
+                const errMsg = e.name === 'AbortError' ? 'Tiempo de espera agotado buscando versión alternativa' : e.message;
+                showSyncNotification('❌ ' + errMsg);
                 btnCinemaReplaceClean.disabled = false;
                 btnCinemaReplaceClean.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i> Versión';
             }

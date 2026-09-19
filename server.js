@@ -3050,61 +3050,9 @@ function isVersionDiscarded(artist, title, urlOrId) {
 let activeCleanVersion = {}; // TrackKey -> URL actual para saber cuál descartar si el usuario pulsa "Versión" de nuevo
 
 async function downloadFromOnlineConverter(youtubeUrl, outputPath) {
-    try {
-        console.log(`[CONVERTER API] Solicitando conversión en la nube para: ${youtubeUrl}...`);
-        const apiUrl = 'https://loader.to/ajax/download.php?button=1&start=1&end=1&format=mp3&url=' + encodeURIComponent(youtubeUrl);
-        const headers = { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36' };
-        
-        const initRes = await fetch(apiUrl, { headers, signal: AbortSignal.timeout(10000) });
-        if (!initRes.ok) return false;
-        const initData = await initRes.json();
-        if (!initData || !initData.progress_url) return false;
-        
-        const progressUrl = initData.progress_url;
-        let downloadUrl = null;
-        
-        for (let attempt = 0; attempt < 12; attempt++) {
-            await new Promise(r => setTimeout(r, 2000));
-            try {
-                const progRes = await fetch(progressUrl, { headers, signal: AbortSignal.timeout(6000) });
-                if (progRes.ok) {
-                    const progData = await progRes.json();
-                    if (progData.success === 1 && progData.download_url) {
-                        downloadUrl = progData.download_url;
-                        break;
-                    }
-                }
-            } catch(e) {}
-        }
-        
-        if (!downloadUrl) return false;
-        
-        console.log(`[CONVERTER API] Enlace directo de audio obtenido. Descargando MP3...`);
-        const dlRes = await fetch(downloadUrl, { headers, signal: AbortSignal.timeout(45000) });
-        if (!dlRes.ok) return false;
-        
-        const { Readable } = require('stream');
-        const fileStream = fs.createWriteStream(outputPath);
-        await new Promise((resolve, reject) => {
-            Readable.fromWeb(dlRes.body).pipe(fileStream);
-            fileStream.on('finish', resolve);
-            fileStream.on('error', reject);
-        });
-        
-        if (fs.existsSync(outputPath)) {
-            const stats = fs.statSync(outputPath);
-            if (stats.size >= 900000) {
-                console.log(`✅ [CONVERTER API] Descarga en la nube completada con éxito (${stats.size} bytes).`);
-                return true;
-            } else {
-                try { fs.unlinkSync(outputPath); } catch(e){}
-            }
-        }
-        return false;
-    } catch(err) {
-        console.warn(`[CONVERTER API] Aviso:`, err.message);
-        return false;
-    }
+    // loader.to ha quedado obsoleto / bloqueado tras pasarela de pago.
+    // Se devuelve false de inmediato para que yt-dlp local tome el control directo sin demoras.
+    return false;
 }
 
 app.post('/api/track/replace-clean-audio', blockInPublicMode, async (req, res) => {
@@ -3333,42 +3281,33 @@ app.post('/api/track/replace-clean-audio', blockInPublicMode, async (req, res) =
 
             console.log(`[CLEAN DOWNLOAD] Probando ${allValidCandidates.length} candidatos válidos no descartados...`);
 
-            for (let i = 0; i < allValidCandidates.length; i++) {
-                const cand = allValidCandidates[i];
-                console.log(`[CLEAN DOWNLOAD] Intentando candidato [${i + 1}/${allValidCandidates.length}]: "${cand.title}" (${cand.duration}s) de ${cand.uploader} -> ${cand.url}`);
+            const candidatesToTest = allValidCandidates.slice(0, 3);
+            for (let i = 0; i < candidatesToTest.length; i++) {
+                const cand = candidatesToTest[i];
+                console.log(`[CLEAN DOWNLOAD] Intentando candidato [${i + 1}/${candidatesToTest.length}]: "${cand.title}" (${cand.duration}s) de ${cand.uploader} -> ${cand.url}`);
 
                 let candSuccess = false;
 
-                // Si es YouTube, probar primero el motor de conversión en la nube para saltar bot-blocks
-                if (cand.url.includes('youtube.com') || cand.url.includes('youtu.be')) {
-                    try {
-                        const convertedOk = await downloadFromOnlineConverter(cand.url, tempOutput);
-                        if (convertedOk) candSuccess = true;
-                    } catch(e) {}
-                }
+                // Descarga directa con yt-dlp local (rápida y fiable, timeout 25s)
+                const cookiesArg = getYtDlpCookiesArg();
+                const downloadCmd = `${ytdlpBin} ${cookiesArg} --ffmpeg-location "${ffmpegDir}" "${cand.url}" -x --audio-format mp3 --audio-quality 0 -o "${tempOutput}"`.replace(/\s+/g, " ");
 
-                // Si no se convirtió o es SoundCloud, intentar con yt-dlp local
-                if (!candSuccess) {
-                    const cookiesArg = getYtDlpCookiesArg();
-                    const downloadCmd = `${ytdlpBin} ${cookiesArg} --ffmpeg-location "${ffmpegDir}" "${cand.url}" -x --audio-format mp3 --audio-quality 0 -o "${tempOutput}"`.replace(/\s+/g, " ");
-
-                    const result = await new Promise((resolve) => {
-                        execWithTreeKill(downloadCmd, { timeout: 45000, windowsHide: true }, (err, stdout, stderr) => {
-                            if (fs.existsSync(tempOutput)) {
-                                try {
-                                    const stats = fs.statSync(tempOutput);
-                                    if (stats.size >= 900000) {
-                                        return resolve({ success: true, stats });
-                                    } else {
-                                        try { fs.unlinkSync(tempOutput); } catch(e){}
-                                    }
-                                } catch(e) {}
-                            }
-                            resolve({ success: false });
-                        });
+                const result = await new Promise((resolve) => {
+                    execWithTreeKill(downloadCmd, { timeout: 25000, windowsHide: true }, (err, stdout, stderr) => {
+                        if (fs.existsSync(tempOutput)) {
+                            try {
+                                const stats = fs.statSync(tempOutput);
+                                if (stats.size >= 900000) {
+                                    return resolve({ success: true, stats });
+                                } else {
+                                    try { fs.unlinkSync(tempOutput); } catch(e){}
+                                }
+                            } catch(e) {}
+                        }
+                        resolve({ success: false });
                     });
-                    if (result.success) candSuccess = true;
-                }
+                });
+                if (result.success) candSuccess = true;
 
                 if (candSuccess && fs.existsSync(tempOutput)) {
                     const stats = fs.statSync(tempOutput);
