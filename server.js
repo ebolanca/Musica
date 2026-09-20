@@ -1170,6 +1170,7 @@ app.post('/api/logout', (req, res) => {
 // y el resto de rutas /api/*) queda protegido por sesión (o, solo para archivos concretos
 // de /media-music y /media-videos, por un token firmado de un solo uso: ver más abajo).
 app.use((req, res, next) => {
+    if (req.path === '/receiver.html' || req.path === '/login.html') return next();
     if (isAuthenticated(req) || isValidMediaTokenRequest(req)) return next();
     if (req.path.startsWith('/api/')) {
         return res.status(401).json({ error: 'No autenticado' });

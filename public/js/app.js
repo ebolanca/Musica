@@ -9,7 +9,10 @@ window['__onGCastApiAvailable'] = function(isAvailable) {
     if (isAvailable && window.cast && cast.framework) {
         try {
             cast.framework.CastContext.getInstance().setOptions({
-                receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
+                receiverApplicationId: (function() {
+                const customId = (typeof safeStorage !== 'undefined' ? safeStorage.getItem('cast_custom_app_id') : null) || window.__CAST_CUSTOM_APP_ID;
+                return (customId && customId !== 'DEFAULT') ? customId : chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID;
+            })(),
                 autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
             });
             isCastSdkReady = true;
@@ -328,6 +331,18 @@ function formatTime(seconds) {
                     contentType = 'audio/mpeg';
                 }
 
+                // Obtener letras si aún no están cargadas en memoria
+                let trackLyrics = (typeof cinemaParsedLyrics !== 'undefined' && cinemaParsedLyrics && cinemaParsedLyrics.length > 0) ? cinemaParsedLyrics : [];
+                if (trackLyrics.length === 0) {
+                    try {
+                        const lrcRes = await fetch(`/api/track/detail?artist=${encodeURIComponent(currentPlayingSong.artist)}&title=${encodeURIComponent(currentPlayingSong.rawTitle || currentPlayingSong.title)}`);
+                        if (lrcRes.ok) {
+                            const lrcData = await lrcRes.json();
+                            if (lrcData && lrcData.lyrics) trackLyrics = lrcData.lyrics;
+                        }
+                    } catch(e){}
+                }
+
                 const mediaInfo = new chrome.cast.media.MediaInfo(finalUrl, contentType);
                 mediaInfo.streamType = chrome.cast.media.StreamType.BUFFERED;
                 mediaInfo.metadata = new chrome.cast.media.MusicTrackMediaMetadata();
@@ -338,6 +353,15 @@ function formatTime(seconds) {
                     const absCover = new URL(currentPlayingSong.coverUrl, window.location.origin).href;
                     mediaInfo.metadata.images = [new chrome.cast.Image(absCover)];
                 }
+
+                // Enviar datos completos de Modo TV (letras sincronizadas, carátula, álbum) al receptor de la Smart TV
+                mediaInfo.customData = {
+                    title: currentPlayingSong.title || currentPlayingSong.rawTitle || 'Canción',
+                    artist: currentPlayingSong.artist || '',
+                    album: currentPlayingSong.album || '',
+                    coverUrl: currentPlayingSong.coverUrl ? new URL(currentPlayingSong.coverUrl, window.location.origin).href : '',
+                    lyrics: trackLyrics
+                };
 
                 const request = new chrome.cast.media.LoadRequest(mediaInfo);
                 request.currentTime = mainMusicAudio ? (mainMusicAudio.currentTime || 0) : 0;
