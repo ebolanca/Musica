@@ -5800,9 +5800,18 @@ body.public-mode .btn-edit-title {
 }
 
 body.public-mode .cinema-equalizer-wrap {
-    width: 320px !important;
-    height: 240px !important;
+    width: 280px !important;
+    height: 190px !important;
+    max-width: 90vw !important;
     border-radius: 18px !important;
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  body.public-mode .cinema-equalizer-wrap {
+    width: 140px !important;
+    height: 100px !important;
+    margin-bottom: 6px !important;
+  }
 }
 
 .cover-search-chips {

@@ -4069,7 +4069,11 @@ function formatTime(seconds) {
     let currentArtistGalleryItems = [];
     let currentArtistGalleryIndex = 0;
     let currentGallerySlideActive = 1;
-    let artistGalleryActiveView = safeStorage.getItem('cinema_active_view') || 'gallery';
+    const isMobileClientBrowser = () => {
+        return /android|iphone|ipad|ipod|mobile|blackberry|iemobile|opera mini/i.test(navigator.userAgent) ||
+               (window.innerWidth <= 768 && ('ontouchstart' in window || navigator.maxTouchPoints > 0));
+    };
+    let artistGalleryActiveView = safeStorage.getItem('cinema_active_view') || (isMobileClientBrowser() ? 'equalizer' : 'gallery');
     let lastLoadedGalleryArtist = '';
 
     function setCinemaActiveView(viewMode, saveToStorage = false) {
@@ -4167,6 +4171,19 @@ function formatTime(seconds) {
 
     async function loadArtistGallery(artist, coverUrl) {
         if (!artist) return;
+
+        const isMobile = isMobileClientBrowser();
+        // En móviles, la vista base predeterminada es el ecualizador para no gastar datos en fotos
+        if (isMobile && artistGalleryActiveView === 'equalizer') {
+            stopArtistGallery();
+            setCinemaActiveView('equalizer', false);
+            return;
+        }
+        if (isMobile && artistGalleryActiveView === 'vinyl') {
+            stopArtistGallery();
+            setCinemaActiveView('vinyl', false);
+            return;
+        }
 
         const badgeName = document.getElementById('artist-gallery-name');
         if (badgeName) badgeName.textContent = artist;
