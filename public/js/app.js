@@ -8,11 +8,12 @@ let isCastSdkReady = false;
 window['__onGCastApiAvailable'] = function(isAvailable) {
     if (isAvailable && window.cast && cast.framework) {
         try {
+            const customAppId = 'D9CD2AFE';
             cast.framework.CastContext.getInstance().setOptions({
                 receiverApplicationId: (function() {
-                const customId = (typeof safeStorage !== 'undefined' ? safeStorage.getItem('cast_custom_app_id') : null) || window.__CAST_CUSTOM_APP_ID;
-                return (customId && customId !== 'DEFAULT') ? customId : chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID;
-            })(),
+                    const customId = (typeof safeStorage !== 'undefined' ? safeStorage.getItem('cast_custom_app_id') : null) || window.__CAST_CUSTOM_APP_ID;
+                    return (customId && customId !== 'DEFAULT') ? customId : customAppId;
+                })(),
                 autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
             });
             isCastSdkReady = true;
