@@ -307,12 +307,28 @@ function formatTime(seconds) {
                         const res = await fetch(`/api/media-token?path=${encodeURIComponent(relPath)}`);
                         const data = await res.json();
                         if (data && data.url) {
-                            finalUrl = new URL(data.url, window.location.origin).href;
+                            const tokenUrl = new URL(data.url, window.location.origin);
+                            finalUrl = tokenUrl.href;
                         }
                     } catch(e){}
                 }
 
-                const mediaInfo = new chrome.cast.media.MediaInfo(finalUrl, 'audio/mp3');
+                // Detección precisa de MIME Type para Google Cast (audio/mpeg para MP3, video/mp4 para MP4)
+                let contentType = 'audio/mpeg';
+                const lowerUrl = finalUrl.toLowerCase();
+                if (lowerUrl.includes('.mp4')) {
+                    contentType = 'video/mp4';
+                } else if (lowerUrl.includes('.m4a')) {
+                    contentType = 'audio/mp4';
+                } else if (lowerUrl.includes('.flac')) {
+                    contentType = 'audio/flac';
+                } else if (lowerUrl.includes('.ogg')) {
+                    contentType = 'audio/ogg';
+                } else if (lowerUrl.includes('.mp3')) {
+                    contentType = 'audio/mpeg';
+                }
+
+                const mediaInfo = new chrome.cast.media.MediaInfo(finalUrl, contentType);
                 mediaInfo.streamType = chrome.cast.media.StreamType.BUFFERED;
                 mediaInfo.metadata = new chrome.cast.media.MusicTrackMediaMetadata();
                 mediaInfo.metadata.title = currentPlayingSong.title || currentPlayingSong.rawTitle || 'Canción';
@@ -327,10 +343,13 @@ function formatTime(seconds) {
                 request.currentTime = mainMusicAudio ? (mainMusicAudio.currentTime || 0) : 0;
                 request.autoplay = true;
 
+                showSyncNotification(`📡 Enviando "${currentPlayingSong.title}" a la TV...`);
                 await session.loadMedia(request);
-                console.log('📡 Audio cargado en Google Cast:', finalUrl);
+                console.log('📡 Audio cargado con éxito en Google Cast:', finalUrl, contentType);
+                showSyncNotification(`🎵 Reproduciendo en ${session.getCastDevice()?.friendlyName || 'Chromecast'}`);
             } catch(err) {
                 console.warn('Aviso cargando media en Cast:', err);
+                showSyncNotification('⚠️ Error al cargar la canción en Chromecast');
             }
         }
 

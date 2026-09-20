@@ -140,12 +140,17 @@ function isAuthenticated(req) {
 // que se accedió, no por contraseña: hay una única sesión, pero el mismo host determina el
 // nivel de funciones disponible en cada visita.
 const PUBLIC_HOSTNAME = 'musicamix.majecruz.es';
+function isMobileClient(req) {
+    const ua = (req.headers['user-agent'] || '').toLowerCase();
+    return /android|iphone|ipad|ipod|mobile|blackberry|iemobile|opera mini/i.test(ua);
+}
 function isPublicHost(req) {
     return (req.hostname || '').toLowerCase() === PUBLIC_HOSTNAME;
 }
 function blockInPublicMode(req, res, next) {
-    if (isPublicHost(req)) {
-        return res.status(403).json({ error: 'Esta función no está disponible en el acceso público' });
+    // En PC / escritorio se habilitan todas las funciones; solo se limitan en móviles para ahorrar datos
+    if (isPublicHost(req) && isMobileClient(req)) {
+        return res.status(403).json({ error: 'Esta función no está disponible en la versión móvil' });
     }
     next();
 }
@@ -1175,7 +1180,12 @@ app.use((req, res, next) => {
 // El frontend la consulta al arrancar para saber si debe ocultar las funciones de edición
 // (subtítulos, audio, carátulas, radar de emisoras, re-análisis IA) del acceso público.
 app.get('/api/session-info', (req, res) => {
-    res.json({ publicMode: isPublicHost(req) });
+    const isMobile = isMobileClient(req);
+    res.json({ 
+        publicMode: isPublicHost(req) && isMobile,
+        isMobile,
+        isPublicHost: isPublicHost(req)
+    });
 });
 
 // Genera una URL firmada de corta duración para UN archivo concreto de /media-music o
@@ -1289,7 +1299,20 @@ const OMEN_VIDEOS_DIR = fs.existsSync(LOCAL_OMEN_VIDEOS) ? LOCAL_OMEN_VIDEOS : R
 
 // Servir la carpeta de videoclips de OMEN como estática si está disponible
 if (fs.existsSync(OMEN_VIDEOS_DIR)) {
-    app.use('/media-videos', express.static(OMEN_VIDEOS_DIR));
+    app.use('/media-videos', (req, res, next) => {
+        res.header('Access-Control-Allow-Origin', '*');
+        res.header('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Range');
+        if (req.method === 'OPTIONS') return res.sendStatus(200);
+        next();
+    }, express.static(OMEN_VIDEOS_DIR, {
+        maxAge: '7d',
+        setHeaders: (res) => {
+            res.set('Access-Control-Allow-Origin', '*');
+            res.set('Accept-Ranges', 'bytes');
+            res.set('Cache-Control', 'public, max-age=604800, immutable');
+        }
+    }));
 }
 
 // Función auxiliar para escanear archivos de vídeo y letras
