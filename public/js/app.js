@@ -1,3 +1,30 @@
+// ==========================================================================
+// 📡 Google Cast Web SDK (Chromecast / Smart TV)
+// ==========================================================================
+let castRemotePlayer = null;
+let castRemotePlayerController = null;
+let isCastSdkReady = false;
+
+window['__onGCastApiAvailable'] = function(isAvailable) {
+    if (isAvailable && window.cast && cast.framework) {
+        try {
+            cast.framework.CastContext.getInstance().setOptions({
+                receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
+                autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
+            });
+            isCastSdkReady = true;
+            castRemotePlayer = new cast.framework.RemotePlayer();
+            castRemotePlayerController = new cast.framework.RemotePlayerController(castRemotePlayer);
+            console.log('✅ Google Cast SDK inicializado correctamente');
+            if (typeof window.__onCastSdkReadyCallback === 'function') {
+                window.__onCastSdkReadyCallback();
+            }
+        } catch(e) {
+            console.warn('Aviso inicializando Google Cast Context:', e.message);
+        }
+    }
+};
+
 const memoryStore = {};
 const safeStorage = {
     getItem(key) {
@@ -253,7 +280,122 @@ function formatTime(seconds) {
             });
         }
 
-        // 1. Escuchar eventos de la Remote Playback API nativa del navegador en mainMusicAudio
+        async function loadCurrentTrackOnCast() {
+            if (!window.cast || !cast.framework) return;
+            const context = cast.framework.CastContext.getInstance();
+            const session = context.getCurrentSession();
+            if (!session || !currentPlayingSong) return;
+
+            // Silenciar o pausar audio local para no solapar el sonido
+            if (mainMusicAudio && !mainMusicAudio.paused) {
+                mainMusicAudio.pause();
+                updateMusicBarState(true);
+            }
+
+            try {
+                let playableUrl = currentPlayingSong.audioUrl || (currentPlayingSong.videoItem ? currentPlayingSong.videoItem.streamUrl : null) || currentPlayingSong.videoPath;
+                if (!playableUrl && mainMusicAudio) playableUrl = mainMusicAudio.src;
+                if (!playableUrl) return;
+
+                const parsed = new URL(playableUrl, window.location.origin);
+                let relPath = decodeURIComponent(parsed.pathname);
+                let finalUrl = parsed.href;
+
+                // Si es una ruta protegida sin token, obtener token firmado para Chromecast
+                if ((relPath.startsWith('/media-music/') || relPath.startsWith('/media-videos/')) && !parsed.search.includes('mtoken=')) {
+                    try {
+                        const res = await fetch(`/api/media-token?path=${encodeURIComponent(relPath)}`);
+                        const data = await res.json();
+                        if (data && data.url) {
+                            finalUrl = new URL(data.url, window.location.origin).href;
+                        }
+                    } catch(e){}
+                }
+
+                const mediaInfo = new chrome.cast.media.MediaInfo(finalUrl, 'audio/mp3');
+                mediaInfo.streamType = chrome.cast.media.StreamType.BUFFERED;
+                mediaInfo.metadata = new chrome.cast.media.MusicTrackMediaMetadata();
+                mediaInfo.metadata.title = currentPlayingSong.title || currentPlayingSong.rawTitle || 'Canción';
+                mediaInfo.metadata.artist = currentPlayingSong.artist || '';
+                if (currentPlayingSong.album) mediaInfo.metadata.albumName = currentPlayingSong.album;
+                if (currentPlayingSong.coverUrl) {
+                    const absCover = new URL(currentPlayingSong.coverUrl, window.location.origin).href;
+                    mediaInfo.metadata.images = [new chrome.cast.Image(absCover)];
+                }
+
+                const request = new chrome.cast.media.LoadRequest(mediaInfo);
+                request.currentTime = mainMusicAudio ? (mainMusicAudio.currentTime || 0) : 0;
+                request.autoplay = true;
+
+                await session.loadMedia(request);
+                console.log('📡 Audio cargado en Google Cast:', finalUrl);
+            } catch(err) {
+                console.warn('Aviso cargando media en Cast:', err);
+            }
+        }
+
+        function setupCastSdkListeners() {
+            if (!window.cast || !cast.framework) return;
+            try {
+                const context = cast.framework.CastContext.getInstance();
+                context.addEventListener(cast.framework.CastContextEventType.SESSION_STATE_CHANGED, (event) => {
+                    switch (event.sessionState) {
+                        case cast.framework.SessionState.SESSION_STARTED:
+                        case cast.framework.SessionState.SESSION_RESUMED: {
+                            const session = context.getCurrentSession();
+                            const devName = session?.getCastDevice()?.friendlyName || 'Smart TV / Chromecast';
+                            updateCastVisualState(true);
+                            showSyncNotification(`✅ Transmitiendo en ${devName}`);
+                            loadCurrentTrackOnCast();
+                            break;
+                        }
+                        case cast.framework.SessionState.SESSION_ENDED:
+                            updateCastVisualState(false);
+                            showSyncNotification('ℹ️ Transmisión finalizada en Chromecast');
+                            break;
+                    }
+                });
+
+                if (castRemotePlayerController) {
+                    castRemotePlayerController.addEventListener(cast.framework.RemotePlayerEventType.IS_PAUSED_CHANGED, () => {
+                        if (isCastConnected && castRemotePlayer) {
+                            updateMusicBarState(!castRemotePlayer.isPaused);
+                        }
+                    });
+                    castRemotePlayerController.addEventListener(cast.framework.RemotePlayerEventType.CURRENT_TIME_CHANGED, () => {
+                        if (isCastConnected && castRemotePlayer && castRemotePlayer.duration) {
+                            const curr = castRemotePlayer.currentTime;
+                            const dur = castRemotePlayer.duration;
+                            if (musicTimeCurr) musicTimeCurr.textContent = formatTime(curr);
+                            if (musicTimeDur) musicTimeDur.textContent = formatTime(dur);
+                            if (musicSeekSlider && !musicSeekSlider.dragging) {
+                                musicSeekSlider.value = (curr / dur) * 100;
+                            }
+                            if (cinemaTimeCurr) cinemaTimeCurr.textContent = formatTime(curr);
+                            if (cinemaTimeDur) cinemaTimeDur.textContent = formatTime(dur);
+                            if (cinemaSeekSlider && !cinemaSeekSlider.dragging) {
+                                cinemaSeekSlider.value = (curr / dur) * 100;
+                            }
+                        }
+                    });
+                    castRemotePlayerController.addEventListener(cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED, () => {
+                        if (isCastConnected && castRemotePlayer && castRemotePlayer.playerState === chrome.cast.media.PlayerState.IDLE) {
+                            if (mainMusicAudio) mainMusicAudio.dispatchEvent(new Event('ended'));
+                        }
+                    });
+                }
+            } catch(e) {
+                console.warn('Aviso configurando listeners de Cast SDK:', e);
+            }
+        }
+
+        if (isCastSdkReady) {
+            setupCastSdkListeners();
+        } else {
+            window.__onCastSdkReadyCallback = setupCastSdkListeners;
+        }
+
+        // 1. Escuchar eventos de la Remote Playback API nativa del navegador en mainMusicAudio (fallback AirPlay / Safari)
         if (mainMusicAudio && mainMusicAudio.remote) {
             mainMusicAudio.remote.addEventListener('connecting', () => {
                 showSyncNotification('🔄 Conectando con dispositivo Chromecast...');
@@ -261,9 +403,6 @@ function formatTime(seconds) {
             mainMusicAudio.remote.addEventListener('connect', () => {
                 updateCastVisualState(true);
                 showSyncNotification('✅ Transmitiendo audio a Chromecast / Smart TV');
-                // El cambio de URL firmada se hace aquí, ya conectado, y no antes de
-                // remote.prompt(): esperar (await) una petición de red justo antes de
-                // prompt() pierde el gesto de usuario y el navegador autocancela el selector.
                 makeCurrentSrcCastable();
             });
             mainMusicAudio.remote.addEventListener('disconnect', () => {
@@ -272,29 +411,52 @@ function formatTime(seconds) {
             });
         }
 
-        // Transmitir: abre directamente el selector nativo de dispositivos (Chromecast en
-        // Chrome/Edge/Android vía Remote Playback API, AirPlay en Safari/iOS). Una vez
-        // conectado, el propio navegador se encarga de enviar el audio al dispositivo
-        // elegido sin intervención adicional — se puede apagar la pantalla del móvil o
-        // usarlo para otra cosa y el audio sigue sonando en el dispositivo remoto.
+        // Transmitir: abre selector de Google Cast, AirPlay o Remote Playback API
         async function triggerCast() {
+            if (window.location.hostname.startsWith('100.') || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                showSyncNotification('💡 Para transmitir a la TV, accede desde https://musicamix.majecruz.es (la tele no tiene Tailscale).');
+            }
+
+            if (!currentPlayingSong && (!mainMusicAudio || !mainMusicAudio.src)) {
+                showSyncNotification('⚠️ Primero reproduce una canción antes de transmitir a la TV o Chromecast.');
+                return;
+            }
+
+            // 1. Google Cast Web SDK oficial (Chrome / Edge en Windows, Android, Mac)
+            if (window.cast && cast.framework) {
+                try {
+                    const context = cast.framework.CastContext.getInstance();
+                    await context.requestSession();
+                    return;
+                } catch(err) {
+                    if (err !== 'cancel' && err !== 'user_cancel') {
+                        console.log('Google Cast requestSession aviso:', err);
+                    }
+                    return;
+                }
+            }
+
+            // 2. AirPlay en Safari / iOS
+            if (mainMusicAudio && typeof mainMusicAudio.webkitShowPlaybackTargetPicker === 'function') {
+                mainMusicAudio.webkitShowPlaybackTargetPicker();
+                makeCurrentSrcCastable();
+                return;
+            }
+
+            // 3. Fallback Remote Playback API nativo
             if (mainMusicAudio && mainMusicAudio.remote) {
                 try {
                     await mainMusicAudio.remote.prompt();
                     return;
                 } catch(err) {
-                    console.log('Remote playback cancelado o no disponible:', err.message);
+                    if (!err.message?.includes('dismissed')) {
+                        console.log('Remote playback cancelado o no disponible:', err.message);
+                    }
                     return;
                 }
             }
-            if (mainMusicAudio && typeof mainMusicAudio.webkitShowPlaybackTargetPicker === 'function') {
-                mainMusicAudio.webkitShowPlaybackTargetPicker();
-                // AirPlay no dispara un evento 'connect' propio en todos los navegadores;
-                // se prepara la URL firmada de inmediato por si acaso.
-                makeCurrentSrcCastable();
-                return;
-            }
-            showSyncNotification('ℹ️ Tu navegador no soporta transmitir a Chromecast/AirPlay. Prueba con Chrome o Safari.');
+
+            showSyncNotification('ℹ️ Tu navegador no soporta transmitir a Chromecast/AirPlay. Prueba con Google Chrome.');
         }
 
         [btnCinemaCastHeader, btnMusicCast].forEach(btn => {
@@ -303,6 +465,8 @@ function formatTime(seconds) {
                     e.stopPropagation();
                     triggerCast();
                 });
+            }
+        });
             }
         });
     }
@@ -1528,7 +1692,13 @@ function formatTime(seconds) {
             });
             // Si ya se estaba transmitiendo a un Chromecast, la pista nueva necesita su
             // propia URL firmada o el dispositivo remoto se quedará mudo con la siguiente.
-            if (isCastConnected) makeCurrentSrcCastable();
+            if (isCastConnected) {
+                if (window.cast && cast.framework && cast.framework.CastContext.getInstance().getCurrentSession()) {
+                    loadCurrentTrackOnCast();
+                } else {
+                    makeCurrentSrcCastable();
+                }
+            }
         } else {
             console.log('Track has no audio file in library:', track.title);
             // 🛑 Limpiar src y pausar inmediatamente para no reproducir jamás la pista previa
@@ -1586,6 +1756,11 @@ function formatTime(seconds) {
 
         // If this song is currently playing, toggle pause/play
         if (currentPlayingSong && currentPlayingSong.title === song.title && currentPlayingSong.artist === song.artist) {
+            if (isCastConnected && castRemotePlayerController) {
+                castRemotePlayerController.playOrPause();
+                renderSongs();
+                return;
+            }
             if (mainMusicAudio.paused) {
                 if (!audioCtx) initAudioNormalizationGraph();
                 else if (audioCtx.state === 'suspended') audioCtx.resume().catch(()=>{});
@@ -2848,6 +3023,10 @@ function formatTime(seconds) {
                     showSyncNotification(`⏳ Descargando versión de estudio para "${currentPlayingSong.title}"...`);
                     autoDownloadMissingTrack(currentPlayingSong);
                 }
+                return;
+            }
+            if (isCastConnected && castRemotePlayerController) {
+                castRemotePlayerController.playOrPause();
                 return;
             }
             if (mainMusicAudio.paused) {
