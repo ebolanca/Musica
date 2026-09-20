@@ -9,11 +9,11 @@ window['__onGCastApiAvailable'] = function(isAvailable) {
     if (isAvailable && window.cast && cast.framework) {
         try {
             const customAppId = 'D9CD2AFE';
+            const savedCastId = (typeof safeStorage !== 'undefined' ? safeStorage.getItem('cast_custom_app_id') : null) || window.__CAST_CUSTOM_APP_ID;
+            const activeReceiverId = (savedCastId === 'DEFAULT') ? chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID : (savedCastId || customAppId);
+
             cast.framework.CastContext.getInstance().setOptions({
-                receiverApplicationId: (function() {
-                    const customId = (typeof safeStorage !== 'undefined' ? safeStorage.getItem('cast_custom_app_id') : null) || window.__CAST_CUSTOM_APP_ID;
-                    return (customId && customId !== 'DEFAULT') ? customId : customAppId;
-                })(),
+                receiverApplicationId: activeReceiverId,
                 autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
             });
             isCastSdkReady = true;
@@ -503,11 +503,33 @@ function formatTime(seconds) {
             showSyncNotification('ℹ️ Tu navegador no soporta transmitir a Chromecast/AirPlay. Prueba con Google Chrome.');
         }
 
+        function toggleCastReceiverMode() {
+            const currentMode = safeStorage.getItem('cast_custom_app_id') === 'DEFAULT' ? 'DEFAULT' : 'TV';
+            if (currentMode === 'TV') {
+                const conf = confirm('📺 Estás en Modo TV (Receptor con vinilo y letras D9CD2AFE).\n\nSi Google aún no ha terminado de propagar tu app a tu Chromecast o no aparece en la lista:\n\n¿Deseas cambiar temporalmente al Modo Estándar de Google (compatible de inmediato con todos tus dispositivos)?\n\n(La página se recargará automáticamente)');
+                if (conf) {
+                    safeStorage.setItem('cast_custom_app_id', 'DEFAULT');
+                    window.location.reload();
+                }
+            } else {
+                const conf = confirm('📻 Estás en Modo Estándar de Google.\n\n¿Deseas volver a activar el Modo TV Personalizado (con vinilo giratorio y letras de karaoke en la televisión)?\n\n(La página se recargará automáticamente)');
+                if (conf) {
+                    safeStorage.setItem('cast_custom_app_id', 'D9CD2AFE');
+                    window.location.reload();
+                }
+            }
+        }
+
         [btnCinemaCastHeader, btnMusicCast].forEach(btn => {
             if (btn) {
                 btn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     triggerCast();
+                });
+                btn.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleCastReceiverMode();
                 });
             }
         });

@@ -214,16 +214,18 @@
     "title": "A kind of magic",
     "stations": [
       "LOS40_CLASSIC",
-      "ROCKFM"
+      "ROCKFM",
+      "KISSFM"
     ],
     "plays": [
       1789604850634,
       1789673816654,
-      1789676256261
+      1789676256261,
+      1789903869284
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-05T09:22:35.793Z",
-    "lastSeen": "2026-09-17T20:17:36.261Z"
+    "lastSeen": "2026-09-20T11:31:09.284Z"
   },
   "seguridadsocial_quierotenertupresencia": {
     "artist": "Seguridad Social",
@@ -288,11 +290,12 @@
     ],
     "plays": [
       1789632169972,
-      1789694960539
+      1789694960539,
+      1789903425610
     ],
-    "playCount7d": 2,
+    "playCount7d": 3,
     "firstSeen": "2026-09-05T09:06:43.724Z",
-    "lastSeen": "2026-09-18T01:29:20.539Z"
+    "lastSeen": "2026-09-20T11:23:45.610Z"
   },
   "estopa_cachoacacho": {
     "artist": "Estopa",
@@ -985,11 +988,13 @@
       1789866249061,
       1789874670760,
       1789883259203,
-      1789891449234
+      1789891449234,
+      1789899849259,
+      1789903239295
     ],
-    "playCount7d": 49,
+    "playCount7d": 51,
     "firstSeen": "2026-09-05T08:42:47.496Z",
-    "lastSeen": "2026-09-20T08:04:09.234Z"
+    "lastSeen": "2026-09-20T11:20:39.295Z"
   },
   "nilmoliner_nexo01meacuerdodeti": {
     "artist": "Nil Moliner",
@@ -1029,11 +1034,12 @@
       1789842569215,
       1789866775176,
       1789873222845,
-      1789891224932
+      1789891224932,
+      1789900844760
     ],
-    "playCount7d": 31,
+    "playCount7d": 32,
     "firstSeen": "2026-09-05T08:39:37.002Z",
-    "lastSeen": "2026-09-20T08:00:24.932Z"
+    "lastSeen": "2026-09-20T10:40:44.760Z"
   },
   "nickyjam_locoxverte": {
     "artist": "Nicky Jam",
@@ -1105,11 +1111,12 @@
       1789806214023,
       1789831729491,
       1789867559765,
-      1789884597595
+      1789884597595,
+      1789902728155
     ],
-    "playCount7d": 20,
+    "playCount7d": 21,
     "firstSeen": "2026-09-05T08:21:54.068Z",
-    "lastSeen": "2026-09-20T06:09:57.595Z"
+    "lastSeen": "2026-09-20T11:12:08.155Z"
   },
   "brunomars_ijustmight": {
     "artist": "Bruno Mars",
@@ -1175,11 +1182,12 @@
       1789881253453,
       1789886649188,
       1789894059241,
-      1789898999955
+      1789898999955,
+      1789903659294
     ],
-    "playCount7d": 57,
+    "playCount7d": 58,
     "firstSeen": "2026-09-05T08:18:22.147Z",
-    "lastSeen": "2026-09-20T10:09:59.955Z"
+    "lastSeen": "2026-09-20T11:27:39.294Z"
   },
   "ruslana_lasguapasnomorimosdeverdad": {
     "artist": "Ruslana",
@@ -1213,11 +1221,12 @@
       1789747118372,
       1789750088391,
       1789772858407,
-      1789840322819
+      1789840322819,
+      1789900269274
     ],
-    "playCount7d": 10,
+    "playCount7d": 11,
     "firstSeen": "2026-09-05T07:53:01.653Z",
-    "lastSeen": "2026-09-19T17:52:02.819Z"
+    "lastSeen": "2026-09-20T10:31:09.274Z"
   },
   "alvarodeluna_dimedondeestas": {
     "artist": "Álvaro de Luna",
@@ -1378,11 +1387,12 @@
       1789871651034,
       1789877229036,
       1789885292147,
-      1789894361294
+      1789894361294,
+      1789901558437
     ],
-    "playCount7d": 62,
+    "playCount7d": 63,
     "firstSeen": "2026-09-05T07:36:49.336Z",
-    "lastSeen": "2026-09-20T08:52:41.294Z"
+    "lastSeen": "2026-09-20T10:52:38.437Z"
   },
   "shakiraburnaboy_daidai": {
     "artist": "Shakira,Burna Boy",
@@ -1625,11 +1635,12 @@
       1789866029257,
       1789873219643,
       1789881460175,
-      1789894829907
+      1789894829907,
+      1789903091502
     ],
-    "playCount7d": 46,
+    "playCount7d": 47,
     "firstSeen": "2026-09-05T07:00:21.435Z",
-    "lastSeen": "2026-09-20T09:00:29.907Z"
+    "lastSeen": "2026-09-20T11:18:11.502Z"
   },
   "beyonce_halo": {
     "artist": "Beyoncé",
@@ -1717,11 +1728,12 @@
       1789857809277,
       1789861239046,
       1789875675460,
-      1789891869234
+      1789891869234,
+      1789903869295
     ],
-    "playCount7d": 41,
+    "playCount7d": 42,
     "firstSeen": "2026-09-05T06:39:23.510Z",
-    "lastSeen": "2026-09-20T08:11:09.234Z"
+    "lastSeen": "2026-09-20T11:31:09.295Z"
   },
   "sabrinacarpentermadonna_bringyourlove": {
     "artist": "Sabrina Carpenter,Madonna",
@@ -1969,11 +1981,12 @@
       1789721207407,
       1789739061716,
       1789757321847,
-      1789808942359
+      1789808942359,
+      1789900922972
     ],
-    "playCount7d": 10,
+    "playCount7d": 11,
     "firstSeen": "2026-09-05T10:12:47.474Z",
-    "lastSeen": "2026-09-19T09:09:02.359Z"
+    "lastSeen": "2026-09-20T10:42:02.972Z"
   },
   "rozallagitta_everybodysturningback": {
     "artist": "Rozalla,Gitta",
@@ -2023,11 +2036,12 @@
       1789755783266,
       1789805052954,
       1789815752381,
-      1789830442687
+      1789830442687,
+      1789899649135
     ],
-    "playCount7d": 23,
+    "playCount7d": 24,
     "firstSeen": "2026-09-05T10:02:03.897Z",
-    "lastSeen": "2026-09-19T15:07:22.687Z"
+    "lastSeen": "2026-09-20T10:20:49.135Z"
   },
   "djgoja_michico": {
     "artist": "DJ Goja",
@@ -2083,11 +2097,12 @@
       1789703106477,
       1789723808290,
       1789861449042,
-      1789863849125
+      1789863849125,
+      1789899639259
     ],
-    "playCount7d": 12,
+    "playCount7d": 13,
     "firstSeen": "2026-09-05T09:53:44.138Z",
-    "lastSeen": "2026-09-20T00:24:09.125Z"
+    "lastSeen": "2026-09-20T10:20:39.259Z"
   },
   "topiccarteblanche_luckyones": {
     "artist": "TOPIC,Carteblanche",
@@ -2338,11 +2353,12 @@
       1789654307578,
       1789697616058,
       1789712497963,
-      1789807146471
+      1789807146471,
+      1789903482020
     ],
-    "playCount7d": 5,
+    "playCount7d": 6,
     "firstSeen": "2026-09-05T09:09:44.163Z",
-    "lastSeen": "2026-09-19T08:39:06.471Z"
+    "lastSeen": "2026-09-20T11:24:42.020Z"
   },
   "klaan_cafeconron": {
     "artist": "KLAAN",
@@ -2371,11 +2387,12 @@
       1789748689506,
       1789809694600,
       1789820659852,
-      1789892451806
+      1789892451806,
+      1789903291315
     ],
-    "playCount7d": 21,
+    "playCount7d": 22,
     "firstSeen": "2026-09-05T09:06:30.198Z",
-    "lastSeen": "2026-09-20T08:20:51.806Z"
+    "lastSeen": "2026-09-20T11:21:31.315Z"
   },
   "arminvanbuuren_hereinmyarmsenjoythesilence": {
     "artist": "Armin Van Buuren",
@@ -2499,14 +2516,14 @@
       "LOS40_DANCE"
     ],
     "plays": [
-      1789208069192,
       1789578392359,
       1789632393252,
-      1789736809997
+      1789736809997,
+      1789900401911
     ],
     "playCount7d": 4,
     "firstSeen": "2026-09-05T08:33:25.468Z",
-    "lastSeen": "2026-09-18T13:06:49.997Z"
+    "lastSeen": "2026-09-20T10:33:21.911Z"
   },
   "energy52_cafedelmar": {
     "artist": "Energy 52",
@@ -2597,11 +2614,12 @@
       1789813096614,
       1789819220502,
       1789832240267,
-      1789891344835
+      1789891344835,
+      1789902008493
     ],
-    "playCount7d": 24,
+    "playCount7d": 25,
     "firstSeen": "2026-09-05T08:17:41.173Z",
-    "lastSeen": "2026-09-20T08:02:24.835Z"
+    "lastSeen": "2026-09-20T11:00:08.493Z"
   },
   "cyril_stumblinin": {
     "artist": "Cyril",
@@ -2719,11 +2737,12 @@
       1789812008416,
       1789821430409,
       1789830020497,
-      1789892242437
+      1789892242437,
+      1789903080965
     ],
-    "playCount7d": 23,
+    "playCount7d": 24,
     "firstSeen": "2026-09-05T08:01:59.691Z",
-    "lastSeen": "2026-09-20T08:17:22.437Z"
+    "lastSeen": "2026-09-20T11:18:00.965Z"
   },
   "miguelbose_nena": {
     "artist": "Miguel Bosé",
@@ -2881,11 +2900,12 @@
       1789821385390,
       1789839461040,
       1789872130826,
-      1789889768452
+      1789889768452,
+      1789902021610
     ],
-    "playCount7d": 18,
+    "playCount7d": 19,
     "firstSeen": "2026-09-05T09:51:22.350Z",
-    "lastSeen": "2026-09-20T07:36:08.452Z"
+    "lastSeen": "2026-09-20T11:00:21.610Z"
   },
   "guilletoledano_milmariposas": {
     "artist": "Guille Toledano",
@@ -3151,11 +3171,12 @@
       1789850885300,
       1789870385103,
       1789883508990,
-      1789895854598
+      1789895854598,
+      1789903119654
     ],
-    "playCount7d": 25,
+    "playCount7d": 26,
     "firstSeen": "2026-09-05T08:38:07.871Z",
-    "lastSeen": "2026-09-20T09:17:34.598Z"
+    "lastSeen": "2026-09-20T11:18:39.654Z"
   },
   "antoniojose_patasarribaelhotel": {
     "artist": "Antonio José",
@@ -3283,11 +3304,12 @@
       1789847511594,
       1789868990684,
       1789877432975,
-      1789890337974
+      1789890337974,
+      1789901126919
     ],
-    "playCount7d": 26,
+    "playCount7d": 27,
     "firstSeen": "2026-09-05T07:52:47.936Z",
-    "lastSeen": "2026-09-20T07:45:37.974Z"
+    "lastSeen": "2026-09-20T10:45:26.919Z"
   },
   "manuelcarrasco_tamboresdeguerra": {
     "artist": "Manuel Carrasco",
@@ -3540,11 +3562,12 @@
       1789781517630,
       1789805938184,
       1789849359836,
-      1789860525824
+      1789860525824,
+      1789900213888
     ],
-    "playCount7d": 10,
+    "playCount7d": 11,
     "firstSeen": "2026-09-05T08:43:04.076Z",
-    "lastSeen": "2026-09-19T23:28:45.824Z"
+    "lastSeen": "2026-09-20T10:30:13.888Z"
   },
   "mariacarrasco_lafiestadelavida": {
     "artist": "María Carrasco",
@@ -3931,11 +3954,12 @@
       1789866970598,
       1789874021696,
       1789880427123,
-      1789895863587
+      1789895863587,
+      1789902027229
     ],
-    "playCount7d": 45,
+    "playCount7d": 46,
     "firstSeen": "2026-09-05T09:32:36.754Z",
-    "lastSeen": "2026-09-20T09:17:43.587Z"
+    "lastSeen": "2026-09-20T11:00:27.229Z"
   },
   "dannyromero_agachate": {
     "artist": "Danny Romero",
@@ -4498,11 +4522,12 @@
       1789847048969,
       1789864419061,
       1789868019089,
-      1789882629203
+      1789882629203,
+      1789901619291
     ],
-    "playCount7d": 25,
+    "playCount7d": 26,
     "firstSeen": "2026-09-05T16:48:40.092Z",
-    "lastSeen": "2026-09-20T05:37:09.203Z"
+    "lastSeen": "2026-09-20T10:53:39.291Z"
   },
   "teddyswims_breakupinreverse": {
     "artist": "Teddy Swims",
@@ -4570,11 +4595,12 @@
       1789859829033,
       1789875849153,
       1789885890547,
-      1789891029234
+      1789891029234,
+      1789903449294
     ],
-    "playCount7d": 35,
+    "playCount7d": 36,
     "firstSeen": "2026-09-05T16:48:40.092Z",
-    "lastSeen": "2026-09-20T07:57:09.234Z"
+    "lastSeen": "2026-09-20T11:24:09.294Z"
   },
   "jenniferlopezdavidguetta_savemetonight": {
     "artist": "Jennifer Lopez & David Guetta",
@@ -4592,11 +4618,12 @@
       1789819658834,
       1789833848893,
       1789848668956,
-      1789873869121
+      1789873869121,
+      1789902669291
     ],
-    "playCount7d": 10,
+    "playCount7d": 11,
     "firstSeen": "2026-09-05T16:48:40.092Z",
-    "lastSeen": "2026-09-20T03:11:09.121Z"
+    "lastSeen": "2026-09-20T11:11:09.291Z"
   },
   "ravynlenae_lovemenot": {
     "artist": "Ravyn Lenae",
@@ -4651,11 +4678,12 @@
       1789869792660,
       1789877469151,
       1789880681379,
-      1789891416867
+      1789891416867,
+      1789902308866
     ],
-    "playCount7d": 45,
+    "playCount7d": 46,
     "firstSeen": "2026-09-05T16:48:40.092Z",
-    "lastSeen": "2026-09-20T08:03:36.867Z"
+    "lastSeen": "2026-09-20T11:05:08.866Z"
   },
   "madonnasabrinacarpenter_bringyourlove": {
     "artist": "Madonna & Sabrina Carpenter",
@@ -4950,11 +4978,12 @@
       1789830619304,
       1789846418969,
       1789868916060,
-      1789886722350
+      1789886722350,
+      1789900629293
     ],
-    "playCount7d": 41,
+    "playCount7d": 42,
     "firstSeen": "2026-09-05T16:48:40.092Z",
-    "lastSeen": "2026-09-20T06:45:22.350Z"
+    "lastSeen": "2026-09-20T10:37:09.293Z"
   },
   "katseye_gabriela": {
     "artist": "Katseye",
@@ -5038,11 +5067,12 @@
       1789863164934,
       1789877049149,
       1789883245411,
-      1789888419109
+      1789888419109,
+      1789899850640
     ],
-    "playCount7d": 59,
+    "playCount7d": 60,
     "firstSeen": "2026-09-05T16:48:40.092Z",
-    "lastSeen": "2026-09-20T07:13:39.109Z"
+    "lastSeen": "2026-09-20T10:24:10.640Z"
   },
   "aitana_superestrella": {
     "artist": "Aitana",
@@ -5721,11 +5751,12 @@
       1789817468669,
       1789840268799,
       1789844858950,
-      1789879869158
+      1789879869158,
+      1789901409291
     ],
-    "playCount7d": 26,
+    "playCount7d": 27,
     "firstSeen": "2026-09-05T16:48:40.185Z",
-    "lastSeen": "2026-09-20T04:51:09.158Z"
+    "lastSeen": "2026-09-20T10:50:09.291Z"
   },
   "anamena_unclasico": {
     "artist": "Ana Mena",
@@ -6136,11 +6167,12 @@
       1789783658500,
       1789809848633,
       1789833638780,
-      1789878459034
+      1789878459034,
+      1789902249273
     ],
-    "playCount7d": 14,
+    "playCount7d": 15,
     "firstSeen": "2026-09-05T16:48:40.185Z",
-    "lastSeen": "2026-09-20T04:27:39.034Z"
+    "lastSeen": "2026-09-20T11:04:09.273Z"
   },
   "takethat_patience": {
     "artist": "Take That",
@@ -6225,11 +6257,12 @@
       1789861659046,
       1789872819121,
       1789884249204,
-      1789894179902
+      1789894179902,
+      1789900059259
     ],
-    "playCount7d": 30,
+    "playCount7d": 31,
     "firstSeen": "2026-09-05T16:48:40.185Z",
-    "lastSeen": "2026-09-20T08:49:39.902Z"
+    "lastSeen": "2026-09-20T10:27:39.259Z"
   },
   "gabrielle_outofreach": {
     "artist": "Gabrielle",
@@ -6309,11 +6342,12 @@
       1789755788335,
       1789792748562,
       1789829948802,
-      1789866909018
+      1789866909018,
+      1789903869209
     ],
-    "playCount7d": 17,
+    "playCount7d": 18,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-20T01:15:09.018Z"
+    "lastSeen": "2026-09-20T11:31:09.209Z"
   },
   "adelfybueno_elamor": {
     "artist": "Adelfy Bueno",
@@ -6340,11 +6374,12 @@
       1789753148296,
       1789790108548,
       1789827068759,
-      1789864268934
+      1789864268934,
+      1789901229196
     ],
-    "playCount7d": 19,
+    "playCount7d": 20,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-20T00:31:08.934Z"
+    "lastSeen": "2026-09-20T10:47:09.196Z"
   },
   "juanbautista_juanbautistapormalafe": {
     "artist": "Juan Bautista",
@@ -6538,11 +6573,12 @@
       1789753628296,
       1789790588548,
       1789827548799,
-      1789864508970
+      1789864508970,
+      1789901709203
     ],
-    "playCount7d": 14,
+    "playCount7d": 15,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-20T00:35:08.970Z"
+    "lastSeen": "2026-09-20T10:55:09.203Z"
   },
   "juanbautista_rochy": {
     "artist": "Juan Bautista",
@@ -6851,11 +6887,12 @@
       1789753868296,
       1789790828548,
       1789827788799,
-      1789864748970
+      1789864748970,
+      1789901949203
     ],
-    "playCount7d": 16,
+    "playCount7d": 17,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-20T00:39:08.970Z"
+    "lastSeen": "2026-09-20T10:59:09.203Z"
   },
   "blasduran_quebienlohiciste": {
     "artist": "Blas Duran",
@@ -7391,11 +7428,12 @@
       1789754828313,
       1789791788561,
       1789828748787,
-      1789865949009
+      1789865949009,
+      1789902909209
     ],
-    "playCount7d": 16,
+    "playCount7d": 17,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-20T00:59:09.009Z"
+    "lastSeen": "2026-09-20T11:15:09.209Z"
   },
   "leonardopaniagua_misecreto": {
     "artist": "Leonardo Paniagua",
@@ -7627,11 +7665,12 @@
       1789767308424,
       1789788668538,
       1789825628771,
-      1789862589072
+      1789862589072,
+      1789899549188
     ],
-    "playCount7d": 18,
+    "playCount7d": 19,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-20T00:03:09.072Z"
+    "lastSeen": "2026-09-20T10:19:09.188Z"
   },
   "bienvenidorodriguez_entretuyyo": {
     "artist": "Bienvenido Rodriguez",
@@ -7683,11 +7722,12 @@
       1789752188317,
       1789789388551,
       1789826348759,
-      1789863548934
+      1789863548934,
+      1789900269188
     ],
-    "playCount7d": 15,
+    "playCount7d": 16,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-20T00:19:08.934Z"
+    "lastSeen": "2026-09-20T10:31:09.188Z"
   },
   "teodororeyes_comoel": {
     "artist": "Teodoro Reyes",
@@ -7954,11 +7994,12 @@
       1789752428317,
       1789789628551,
       1789826588759,
-      1789863788934
+      1789863788934,
+      1789900749196
     ],
-    "playCount7d": 17,
+    "playCount7d": 18,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-20T00:23:08.934Z"
+    "lastSeen": "2026-09-20T10:39:09.196Z"
   },
   "ramoncordero_manantialdeamor": {
     "artist": "Ramon Cordero",
@@ -8009,11 +8050,12 @@
       1789754108313,
       1789791068548,
       1789828028799,
-      1789864988970
+      1789864988970,
+      1789902189203
     ],
-    "playCount7d": 13,
+    "playCount7d": 14,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-20T00:43:08.970Z"
+    "lastSeen": "2026-09-20T11:03:09.203Z"
   },
   "brauliorodriguez_enunviejobar": {
     "artist": "Braulio Rodriguez",
@@ -8089,11 +8131,12 @@
       1789751228292,
       1789788428538,
       1789825388771,
-      1789862349072
+      1789862349072,
+      1789899309188
     ],
-    "playCount7d": 16,
+    "playCount7d": 17,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-19T23:59:09.072Z"
+    "lastSeen": "2026-09-20T10:15:09.188Z"
   },
   "angelonunez_elrinconcito": {
     "artist": "Angelo Núñez",
@@ -8468,11 +8511,12 @@
       1789751708317,
       1789788908551,
       1789825868771,
-      1789862829072
+      1789862829072,
+      1789899789188
     ],
-    "playCount7d": 17,
+    "playCount7d": 18,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-20T00:07:09.072Z"
+    "lastSeen": "2026-09-20T10:23:09.188Z"
   },
   "antonysantos_necesitodeti": {
     "artist": "Antony Santos",
@@ -8887,11 +8931,12 @@
       1789754348313,
       1789791308561,
       1789828268799,
-      1789865228970
+      1789865228970,
+      1789902429203
     ],
-    "playCount7d": 17,
+    "playCount7d": 18,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-20T00:47:08.970Z"
+    "lastSeen": "2026-09-20T11:07:09.203Z"
   },
   "teodororeyes_medejoporotro": {
     "artist": "Teodoro Reyes",
@@ -9120,11 +9165,12 @@
       1789755068313,
       1789792028561,
       1789828988787,
-      1789866189009
+      1789866189009,
+      1789903149209
     ],
-    "playCount7d": 18,
+    "playCount7d": 19,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-20T01:03:09.009Z"
+    "lastSeen": "2026-09-20T11:19:09.209Z"
   },
   "allendy_mediopallamarte": {
     "artist": "Allendy",
@@ -9524,11 +9570,12 @@
       1789753388296,
       1789790348548,
       1789827308799,
-      1789864268970
+      1789864268970,
+      1789901469196
     ],
-    "playCount7d": 15,
+    "playCount7d": 16,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-20T00:31:08.970Z"
+    "lastSeen": "2026-09-20T10:51:09.196Z"
   },
   "jeudyelmuneco_quebuscatuconel": {
     "artist": "JEUDY''el muñeco''",
@@ -12093,11 +12140,12 @@
       1789548852890,
       1789551252931,
       1789671146638,
-      1789784348601
+      1789784348601,
+      1789902669207
     ],
     "playCount7d": 6,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-19T02:19:08.601Z"
+    "lastSeen": "2026-09-20T11:11:09.207Z"
   },
   "luisenrique_tunolemasletemes": {
     "artist": "Luis Enrique",
@@ -12250,11 +12298,12 @@
       "LATINA_104"
     ],
     "plays": [
-      1789872189011
+      1789872189011,
+      1789874589200
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-20T02:43:09.011Z"
+    "lastSeen": "2026-09-20T03:23:09.200Z"
   },
   "johnnyrivera_cuandopararalalluvia": {
     "artist": "Johnny Rivera",
@@ -12592,12 +12641,12 @@
       "SALSA_RADIO"
     ],
     "plays": [
-      1789177763767,
-      1789728119194
+      1789728119194,
+      1789903389273
     ],
     "playCount7d": 2,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-18T10:41:59.194Z"
+    "lastSeen": "2026-09-20T11:23:09.273Z"
   },
   "eddiesantiago_tumehacesfalta": {
     "artist": "Eddie Santiago",
@@ -13425,11 +13474,12 @@
       1789710096444,
       1789734668193,
       1789707548272,
-      1789732028476
+      1789732028476,
+      1789902189234
     ],
-    "playCount7d": 6,
+    "playCount7d": 7,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-18T11:47:08.476Z"
+    "lastSeen": "2026-09-20T11:03:09.234Z"
   },
   "orquestalalinea_migranamor": {
     "artist": "Orquesta La Linea",
@@ -14313,11 +14363,12 @@
       1789647973238,
       1789645466625,
       1789858988976,
-      1789856349193
+      1789856349193,
+      1789900749246
     ],
-    "playCount7d": 5,
+    "playCount7d": 6,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-19T22:19:09.193Z"
+    "lastSeen": "2026-09-20T10:39:09.246Z"
   },
   "lanuevafuerza_voypaalla": {
     "artist": "La Nueva Fuerza",
@@ -14541,11 +14592,12 @@
     ],
     "plays": [
       1789719216421,
-      1789721708277
+      1789721708277,
+      1789899789196
     ],
-    "playCount7d": 2,
+    "playCount7d": 3,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-18T08:55:08.277Z"
+    "lastSeen": "2026-09-20T10:23:09.196Z"
   },
   "lacocoband_yasemeolvidotunombre": {
     "artist": "La Coco Band",
@@ -14823,18 +14875,20 @@
     "artist": "Sin Fronteras",
     "title": "Amarte A Ti",
     "stations": [
-      "MERENGUE_RADIO"
+      "MERENGUE_RADIO",
+      "LATINA_104"
     ],
     "plays": [
       1789456892883,
       1789784108558,
       1789781468817,
       1789835468827,
-      1789778828968
+      1789778828968,
+      1789902909218
     ],
-    "playCount7d": 5,
+    "playCount7d": 6,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-19T00:47:08.968Z"
+    "lastSeen": "2026-09-20T11:15:09.218Z"
   },
   "lostorosband_enamorado": {
     "artist": "Los Toros Band",
@@ -15209,11 +15263,12 @@
       1789504638009,
       1789808588701,
       1789826108832,
-      1789805948844
+      1789805948844,
+      1789902669200
     ],
-    "playCount7d": 5,
+    "playCount7d": 6,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-19T08:19:08.844Z"
+    "lastSeen": "2026-09-20T11:11:09.200Z"
   },
   "pepo_dondeestara": {
     "artist": "Pepo",
@@ -16176,11 +16231,12 @@
       "LATINA_104"
     ],
     "plays": [
-      1789871949011
+      1789871949011,
+      1789874349200
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-20T02:39:09.011Z"
+    "lastSeen": "2026-09-20T03:19:09.200Z"
   },
   "frankreyes_pap": {
     "artist": "Frank Reyes",
@@ -17543,12 +17599,11 @@
       "LATINA_104"
     ],
     "plays": [
-      1788626921301,
-      1789174403757
+      1789900749201
     ],
-    "playCount7d": 2,
+    "playCount7d": 1,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-12T00:53:23.757Z"
+    "lastSeen": "2026-09-20T10:39:09.201Z"
   },
   "tommyolivencia_lodudo": {
     "artist": "Tommy Olivencia",
@@ -18969,11 +19024,12 @@
     "plays": [
       1789623493061,
       1789647973156,
-      1789620986575
+      1789620986575,
+      1789901949200
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-05T16:48:41.301Z",
-    "lastSeen": "2026-09-17T04:56:26.575Z"
+    "lastSeen": "2026-09-20T10:59:09.200Z"
   },
   "yoskarsarante_lanoche": {
     "artist": "Yoskar Sarante",
@@ -19479,11 +19535,12 @@
       1789608497606,
       1789656412771,
       1789706298460,
-      1789801977458
+      1789801977458,
+      1789901391365
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-05T15:51:57.389Z",
-    "lastSeen": "2026-09-19T07:12:57.458Z"
+    "lastSeen": "2026-09-20T10:49:51.365Z"
   },
   "feidalejorobi_pantysito": {
     "artist": "FEID,Alejo,Robi",
@@ -19792,11 +19849,12 @@
       1789766364305,
       1789789238522,
       1789813238667,
-      1789836038783
+      1789836038783,
+      1789903294286
     ],
-    "playCount7d": 13,
+    "playCount7d": 14,
     "firstSeen": "2026-09-05T16:19:23.111Z",
-    "lastSeen": "2026-09-19T16:40:38.783Z"
+    "lastSeen": "2026-09-20T11:21:34.286Z"
   },
   "hozier_takemetochurch": {
     "artist": "Hozier",
@@ -19882,11 +19940,12 @@
       1789788458633,
       1789795638250,
       1789847468962,
-      1789878249034
+      1789878249034,
+      1789900608239
     ],
-    "playCount7d": 10,
+    "playCount7d": 11,
     "firstSeen": "2026-09-05T15:36:39.254Z",
-    "lastSeen": "2026-09-20T04:24:09.034Z"
+    "lastSeen": "2026-09-20T10:36:48.239Z"
   },
   "emiliatininickinicole_blackout": {
     "artist": "Emilia,Tini,Nicki Nicole",
@@ -19962,11 +20021,12 @@
       1789814231983,
       1789847236832,
       1789867349486,
-      1789870242225
+      1789870242225,
+      1789903429370
     ],
-    "playCount7d": 14,
+    "playCount7d": 15,
     "firstSeen": "2026-09-05T15:09:06.893Z",
-    "lastSeen": "2026-09-20T02:10:42.225Z"
+    "lastSeen": "2026-09-20T11:23:49.370Z"
   },
   "charlieputhselenagomez_wedonttalkanymore": {
     "artist": "Charlie Puth,Selena Gomez",
@@ -20073,11 +20133,12 @@
       1789804418714,
       1789846628969,
       1789877469149,
-      1789888419206
+      1789888419206,
+      1789903869294
     ],
-    "playCount7d": 15,
+    "playCount7d": 16,
     "firstSeen": "2026-09-05T14:32:15.880Z",
-    "lastSeen": "2026-09-20T07:13:39.206Z"
+    "lastSeen": "2026-09-20T11:31:09.294Z"
   },
   "anamenalolaindigo_patitoa": {
     "artist": "Ana Mena & Lola índigo",
@@ -20129,11 +20190,12 @@
       1789869849096,
       1789877049151,
       1789887849228,
-      1789895049092
+      1789895049092,
+      1789902249291
     ],
-    "playCount7d": 44,
+    "playCount7d": 45,
     "firstSeen": "2026-09-05T16:53:10.415Z",
-    "lastSeen": "2026-09-20T09:04:09.092Z"
+    "lastSeen": "2026-09-20T11:04:09.291Z"
   },
   "alvarodelunatim_hoyfestejo": {
     "artist": "Álvaro de Luna,TIMØ",
@@ -20509,16 +20571,18 @@
     "artist": "La Quinta Estación",
     "title": "Que te quería",
     "stations": [
-      "CADENADIAL"
+      "CADENADIAL",
+      "KISSFM"
     ],
     "plays": [
       1789589413925,
       1789647377211,
-      1789892539678
+      1789892539678,
+      1789903029284
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-05T15:12:51.103Z",
-    "lastSeen": "2026-09-20T08:22:19.678Z"
+    "lastSeen": "2026-09-20T11:17:09.284Z"
   },
   "alejandrosanz_ysifueraella": {
     "artist": "Alejandro Sanz",
@@ -20572,11 +20636,12 @@
       1789800191811,
       1789833619858,
       1789851626479,
-      1789880431928
+      1789880431928,
+      1789900563801
     ],
-    "playCount7d": 17,
+    "playCount7d": 18,
     "firstSeen": "2026-09-05T15:00:22.611Z",
-    "lastSeen": "2026-09-20T05:00:31.928Z"
+    "lastSeen": "2026-09-20T10:36:03.801Z"
   },
   "indiamartinezmarcanthony_convenceme": {
     "artist": "India Martínez,Marc Anthony",
@@ -20913,11 +20978,12 @@
       1789795134878,
       1789831151051,
       1789868474283,
-      1789885143082
+      1789885143082,
+      1789903150318
     ],
-    "playCount7d": 17,
+    "playCount7d": 18,
     "firstSeen": "2026-09-05T16:18:24.423Z",
-    "lastSeen": "2026-09-20T06:19:03.082Z"
+    "lastSeen": "2026-09-20T11:19:10.318Z"
   },
   "tuotrabonita_alegriadevivir": {
     "artist": "Tu Otra Bonita",
@@ -21073,11 +21139,12 @@
       1789828932218,
       1789847052852,
       1789866987343,
-      1789882972524
+      1789882972524,
+      1789901150482
     ],
-    "playCount7d": 20,
+    "playCount7d": 21,
     "firstSeen": "2026-09-05T15:45:04.913Z",
-    "lastSeen": "2026-09-20T05:42:52.524Z"
+    "lastSeen": "2026-09-20T10:45:50.482Z"
   },
   "loschunguitosazucarmoreno_viveatumanera": {
     "artist": "Los Chunguitos,Azúcar Moreno",
@@ -21209,11 +21276,12 @@
       1789827484148,
       1789845621383,
       1789863450214,
-      1789881495911
+      1789881495911,
+      1789899442315
     ],
-    "playCount7d": 19,
+    "playCount7d": 20,
     "firstSeen": "2026-09-05T15:19:11.281Z",
-    "lastSeen": "2026-09-20T05:18:15.911Z"
+    "lastSeen": "2026-09-20T10:17:22.315Z"
   },
   "loschichos_quieroserlibre": {
     "artist": "Los Chichos",
@@ -21367,11 +21435,12 @@
     "plays": [
       1789619149308,
       1789655144197,
-      1789731787918
+      1789731787918,
+      1789900881031
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-05T14:45:51.462Z",
-    "lastSeen": "2026-09-18T11:43:07.918Z"
+    "lastSeen": "2026-09-20T10:41:21.031Z"
   },
   "miguelcampello_flamencaconlunares": {
     "artist": "Miguel Campello",
@@ -21717,11 +21786,12 @@
     ],
     "plays": [
       1789671626506,
-      1789695371695
+      1789695371695,
+      1789901525733
     ],
-    "playCount7d": 2,
+    "playCount7d": 3,
     "firstSeen": "2026-09-05T16:52:50.593Z",
-    "lastSeen": "2026-09-18T01:36:11.695Z"
+    "lastSeen": "2026-09-20T10:52:05.733Z"
   },
   "thecranberries_odetomyfamily": {
     "artist": "The Cranberries",
@@ -21906,7 +21976,8 @@
     "stations": [
       "LOS40_CLASSIC",
       "HITFM",
-      "CADENA100"
+      "CADENA100",
+      "KISSFM"
     ],
     "plays": [
       1789486232771,
@@ -21915,11 +21986,12 @@
       1789677251751,
       1789722749052,
       1789740021466,
-      1789848736726
+      1789848736726,
+      1789902459129
     ],
-    "playCount7d": 7,
+    "playCount7d": 8,
     "firstSeen": "2026-09-05T16:04:11.622Z",
-    "lastSeen": "2026-09-19T20:12:16.726Z"
+    "lastSeen": "2026-09-20T11:07:39.129Z"
   },
   "aha_takeonme": {
     "artist": "a-ha",
@@ -21952,17 +22024,19 @@
     "artist": "David Guetta,Kelly Rowland",
     "title": "When love takes over",
     "stations": [
-      "LOS40_CLASSIC"
+      "LOS40_CLASSIC",
+      "LOS40_DANCE"
     ],
     "plays": [
       1789580643054,
       1789644852462,
       1789775343252,
-      1789893336647
+      1789893336647,
+      1789900213903
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-05T15:56:59.186Z",
-    "lastSeen": "2026-09-20T08:35:36.647Z"
+    "lastSeen": "2026-09-20T10:30:13.903Z"
   },
   "bananarama_venus": {
     "artist": "Bananarama",
@@ -21995,11 +22069,12 @@
       1789596312838,
       1789599043026,
       1789667816615,
-      1789672577102
+      1789672577102,
+      1789901049164
     ],
-    "playCount7d": 7,
+    "playCount7d": 8,
     "firstSeen": "2026-09-05T15:47:39.753Z",
-    "lastSeen": "2026-09-17T19:16:17.102Z"
+    "lastSeen": "2026-09-20T10:44:09.164Z"
   },
   "freddiemercury_thegreatpretender": {
     "artist": "Freddie Mercury",
@@ -22203,11 +22278,12 @@
       1789736078803,
       1789771528702,
       1789810268762,
-      1789866711836
+      1789866711836,
+      1789902819295
     ],
-    "playCount7d": 8,
+    "playCount7d": 9,
     "firstSeen": "2026-09-05T15:00:27.526Z",
-    "lastSeen": "2026-09-20T01:11:51.836Z"
+    "lastSeen": "2026-09-20T11:13:39.295Z"
   },
   "therighteousbrothers_unchainedmelody": {
     "artist": "The Righteous Brothers",
@@ -22900,11 +22976,12 @@
       1789718489051,
       1789796858717,
       1789799918719,
-      1789802408727
+      1789802408727,
+      1789902249291
     ],
-    "playCount7d": 9,
+    "playCount7d": 10,
     "firstSeen": "2026-09-05T15:55:45.553Z",
-    "lastSeen": "2026-09-19T07:20:08.727Z"
+    "lastSeen": "2026-09-20T11:04:09.291Z"
   },
   "blacksabbath_heavenandhell": {
     "artist": "Black Sabbath",
@@ -23331,11 +23408,12 @@
       1789752031440,
       1789754858406,
       1789813028667,
-      1789861143262
+      1789861143262,
+      1789903230830
     ],
-    "playCount7d": 9,
+    "playCount7d": 10,
     "firstSeen": "2026-09-05T17:09:15.548Z",
-    "lastSeen": "2026-09-19T23:39:03.262Z"
+    "lastSeen": "2026-09-20T11:20:30.830Z"
   },
   "menatwork_downunder": {
     "artist": "Men At Work",
@@ -23536,11 +23614,12 @@
       1789882269180,
       1789889469206,
       1789893429106,
-      1789897029250
+      1789897029250,
+      1789900269262
     ],
-    "playCount7d": 77,
+    "playCount7d": 78,
     "firstSeen": "2026-09-05T16:37:45.548Z",
-    "lastSeen": "2026-09-20T09:37:09.250Z"
+    "lastSeen": "2026-09-20T10:31:09.262Z"
   },
   "glennmedeiros_nothingsgonnachangemyloveforyou": {
     "artist": "Glenn Medeiros",
@@ -23599,11 +23678,13 @@
       1789827313361,
       1789853259066,
       1789860680158,
-      1789888546652
+      1789888546652,
+      1789899639262,
+      1789903239297
     ],
-    "playCount7d": 15,
+    "playCount7d": 17,
     "firstSeen": "2026-09-05T16:27:15.548Z",
-    "lastSeen": "2026-09-20T07:15:46.652Z"
+    "lastSeen": "2026-09-20T11:20:39.297Z"
   },
   "pink_try": {
     "artist": "Pink",
@@ -23742,11 +23823,12 @@
       1789779978448,
       1789790858555,
       1789865829077,
-      1789872039125
+      1789872039125,
+      1789903853085
     ],
-    "playCount7d": 12,
+    "playCount7d": 13,
     "firstSeen": "2026-09-05T15:52:15.548Z",
-    "lastSeen": "2026-09-20T02:40:39.125Z"
+    "lastSeen": "2026-09-20T11:30:53.085Z"
   },
   "kimcarnes_bettedaviseyes": {
     "artist": "Kim Carnes",
@@ -24006,11 +24088,12 @@
       1789700346428,
       1789703466475,
       1789765399338,
-      1789893069120
+      1789893069120,
+      1789895679297
     ],
-    "playCount7d": 8,
+    "playCount7d": 9,
     "firstSeen": "2026-09-12T11:47:59.879Z",
-    "lastSeen": "2026-09-20T08:31:09.120Z"
+    "lastSeen": "2026-09-20T09:14:39.297Z"
   },
   "madonna_likeavirgin": {
     "artist": "Madonna",
@@ -24133,15 +24216,16 @@
     "artist": "Michael Jackson",
     "title": "Heal the world",
     "stations": [
-      "LOS40_CLASSIC"
+      "LOS40_CLASSIC",
+      "KISSFM"
     ],
     "plays": [
-      1789211576597,
-      1789628149859
+      1789628149859,
+      1789900059262
     ],
     "playCount7d": 2,
     "firstSeen": "2026-09-12T11:12:56.597Z",
-    "lastSeen": "2026-09-17T06:55:49.859Z"
+    "lastSeen": "2026-09-20T10:27:39.262Z"
   },
   "roxette_thelook": {
     "artist": "Roxette",
@@ -25011,11 +25095,12 @@
       1789560342841,
       1789607023026,
       1789851068966,
-      1789892859120
+      1789892859120,
+      1789895469297
     ],
-    "playCount7d": 5,
+    "playCount7d": 6,
     "firstSeen": "2026-09-12T10:36:23.674Z",
-    "lastSeen": "2026-09-20T08:27:39.120Z"
+    "lastSeen": "2026-09-20T09:11:09.297Z"
   },
   "extremoduro_laveredadelapuertadeatras": {
     "artist": "Extremoduro",
@@ -25066,11 +25151,12 @@
       1789753928318,
       1789822268845,
       1789824668933,
-      1789877829150
+      1789877829150,
+      1789899849255
     ],
-    "playCount7d": 5,
+    "playCount7d": 6,
     "firstSeen": "2026-09-12T10:22:23.674Z",
-    "lastSeen": "2026-09-20T04:17:09.150Z"
+    "lastSeen": "2026-09-20T10:24:09.255Z"
   },
   "direstraits_ladywriter": {
     "artist": "Dire Straits",
@@ -25164,11 +25250,12 @@
       1789807868727,
       1789810328688,
       1789824071880,
-      1789881849180
+      1789881849180,
+      1789900156665
     ],
-    "playCount7d": 11,
+    "playCount7d": 12,
     "firstSeen": "2026-09-12T10:04:53.674Z",
-    "lastSeen": "2026-09-20T05:24:09.180Z"
+    "lastSeen": "2026-09-20T10:29:16.665Z"
   },
   "blacksabbath_paranoid": {
     "artist": "Black Sabbath",
@@ -25990,11 +26077,12 @@
       1789870434599,
       1789877804206,
       1789884784538,
-      1789892210112
+      1789892210112,
+      1789899456356
     ],
-    "playCount7d": 50,
+    "playCount7d": 51,
     "firstSeen": "2026-09-12T11:39:37.172Z",
-    "lastSeen": "2026-09-20T08:16:50.112Z"
+    "lastSeen": "2026-09-20T10:17:36.356Z"
   },
   "judelinekarolgrusowsky_bbywow": {
     "artist": "Judeline,Karol G,Rusowsky",
@@ -26031,11 +26119,12 @@
       1789838035337,
       1789857105479,
       1789866239623,
-      1789879089620
+      1789879089620,
+      1789900015067
     ],
-    "playCount7d": 29,
+    "playCount7d": 30,
     "firstSeen": "2026-09-12T10:30:56.428Z",
-    "lastSeen": "2026-09-20T04:38:09.620Z"
+    "lastSeen": "2026-09-20T10:26:55.067Z"
   },
   "daddyyankeebizarrap_daddyyankeebzrpmusicsessionsvol066": {
     "artist": "Daddy Yankee,Bizarrap",
@@ -26106,11 +26195,12 @@
       1789860726854,
       1789871884051,
       1789882680244,
-      1789892713877
+      1789892713877,
+      1789903654971
     ],
-    "playCount7d": 32,
+    "playCount7d": 33,
     "firstSeen": "2026-09-12T10:03:36.212Z",
-    "lastSeen": "2026-09-20T08:25:13.877Z"
+    "lastSeen": "2026-09-20T11:27:34.971Z"
   },
   "lolatuduri_pistoletazodesalida": {
     "artist": "Lola Tuduri",
@@ -26132,11 +26222,12 @@
       1789809288262,
       1789835745694,
       1789849028982,
-      1789865629544
+      1789865629544,
+      1789900453362
     ],
-    "playCount7d": 13,
+    "playCount7d": 14,
     "firstSeen": "2026-09-12T09:21:57.289Z",
-    "lastSeen": "2026-09-20T00:53:49.544Z"
+    "lastSeen": "2026-09-20T10:34:13.362Z"
   },
   "camilo_elarbol": {
     "artist": "Camilo",
@@ -26495,11 +26586,12 @@
       1789789028661,
       1789821638847,
       1789839069160,
-      1789863429071
+      1789863429071,
+      1789899429259
     ],
-    "playCount7d": 21,
+    "playCount7d": 22,
     "firstSeen": "2026-09-12T10:36:23.667Z",
-    "lastSeen": "2026-09-20T00:17:09.071Z"
+    "lastSeen": "2026-09-20T10:17:09.259Z"
   },
   "oliviadean_manineed": {
     "artist": "Olivia Dean",
@@ -26512,11 +26604,12 @@
       1789626643153,
       1789690266299,
       1789784967120,
-      1789839008908
+      1789839008908,
+      1789900269259
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-12T10:32:53.667Z",
-    "lastSeen": "2026-09-19T17:30:08.908Z"
+    "lastSeen": "2026-09-20T10:31:09.259Z"
   },
   "sombr_undressed": {
     "artist": "Sombr",
@@ -26734,11 +26827,12 @@
       1789810268633,
       1789827068880,
       1789859049050,
-      1789878669144
+      1789878669144,
+      1789902459291
     ],
-    "playCount7d": 22,
+    "playCount7d": 23,
     "firstSeen": "2026-09-12T09:33:23.667Z",
-    "lastSeen": "2026-09-20T04:31:09.144Z"
+    "lastSeen": "2026-09-20T11:07:39.291Z"
   },
   "calvinharriselliegoulding_miracle": {
     "artist": "Calvin Harris & Ellie Goulding",
@@ -27072,7 +27166,8 @@
     "title": "Sincericidio",
     "stations": [
       "CADENA100",
-      "CADENADIAL"
+      "CADENADIAL",
+      "LOS40"
     ],
     "plays": [
       1789492322807,
@@ -27081,11 +27176,12 @@
       1789661041057,
       1789697466241,
       1789845600395,
-      1789891239122
+      1789891239122,
+      1789899218677
     ],
-    "playCount7d": 7,
+    "playCount7d": 8,
     "firstSeen": "2026-09-12T10:43:23.672Z",
-    "lastSeen": "2026-09-20T08:00:39.122Z"
+    "lastSeen": "2026-09-20T10:13:38.677Z"
   },
   "dualipa_houdini": {
     "artist": "Dua Lipa",
@@ -27215,11 +27311,12 @@
       1789855869021,
       1789866459077,
       1789879239022,
-      1789891449122
+      1789891449122,
+      1789902669273
     ],
-    "playCount7d": 34,
+    "playCount7d": 35,
     "firstSeen": "2026-09-12T10:15:23.672Z",
-    "lastSeen": "2026-09-20T08:04:09.122Z"
+    "lastSeen": "2026-09-20T11:11:09.273Z"
   },
   "taxiyalvarourquijo_quierouncamino": {
     "artist": "Taxi y Álvaro Urquijo",
@@ -27291,18 +27388,19 @@
     "artist": "Alicia Keys",
     "title": "Fallin'",
     "stations": [
-      "CADENA100"
+      "CADENA100",
+      "KISSFM"
     ],
     "plays": [
-      1789206233672,
       1789572222619,
       1789668596496,
       1789794458662,
-      1789797128583
+      1789797128583,
+      1789902669129
     ],
     "playCount7d": 5,
     "firstSeen": "2026-09-12T09:43:53.672Z",
-    "lastSeen": "2026-09-19T05:52:08.583Z"
+    "lastSeen": "2026-09-20T11:11:09.129Z"
   },
   "karolgynickiminaj_tusa": {
     "artist": "Karol G y Nicki Minaj",
@@ -27376,15 +27474,15 @@
       "CADENA100"
     ],
     "plays": [
-      1789204763672,
       1789566792623,
       1789633003071,
       1789698876236,
-      1789755428419
+      1789755428419,
+      1789902039273
     ],
     "playCount7d": 5,
     "firstSeen": "2026-09-12T09:19:23.672Z",
-    "lastSeen": "2026-09-18T18:17:08.419Z"
+    "lastSeen": "2026-09-20T11:00:39.273Z"
   },
   "beckyhilloliverheldens_geckooverdrive": {
     "artist": "Becky Hill,Oliver Heldens",
@@ -27410,14 +27508,14 @@
       "LOS40_DANCE"
     ],
     "plays": [
-      1789213193370,
       1789654503171,
       1789697813680,
-      1789750397933
+      1789750397933,
+      1789900692260
     ],
     "playCount7d": 4,
     "firstSeen": "2026-09-12T11:39:53.370Z",
-    "lastSeen": "2026-09-18T16:53:17.933Z"
+    "lastSeen": "2026-09-20T10:38:12.260Z"
   },
   "thechemicalbrothersartbat_heyboyheygirl": {
     "artist": "The Chemical Brothers,ARTBAT",
@@ -27426,14 +27524,14 @@
       "LOS40_DANCE"
     ],
     "plays": [
-      1789212829159,
       1789584560092,
       1789638550053,
-      1789743051663
+      1789743051663,
+      1789902890938
     ],
     "playCount7d": 4,
     "firstSeen": "2026-09-12T11:33:49.159Z",
-    "lastSeen": "2026-09-18T14:50:51.663Z"
+    "lastSeen": "2026-09-20T11:14:50.938Z"
   },
   "sebastianingrossotommytrashjohnmartin_reload": {
     "artist": "Sebastian Ingrosso,Tommy Trash,John Martin",
@@ -27610,11 +27708,12 @@
       1789580968415,
       1789635080409,
       1789739282188,
-      1789832990415
+      1789832990415,
+      1789899263861
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-12T10:32:21.727Z",
-    "lastSeen": "2026-09-19T15:49:50.415Z"
+    "lastSeen": "2026-09-20T10:14:23.861Z"
   },
   "lostfrequencies_areyouwithme": {
     "artist": "Lost Frequencies",
@@ -27681,11 +27780,12 @@
       1789617823613,
       1789670392187,
       1789733621909,
-      1789819421539
+      1789819421539,
+      1789901093736
     ],
-    "playCount7d": 5,
+    "playCount7d": 6,
     "firstSeen": "2026-09-12T09:47:01.850Z",
-    "lastSeen": "2026-09-19T12:03:41.539Z"
+    "lastSeen": "2026-09-20T10:44:53.736Z"
   },
   "spillersophieellisbextor_groovejetifthisaintlove": {
     "artist": "Spiller,Sophie Ellis-Bextor",
@@ -27930,11 +28030,12 @@
       1789845100162,
       1789866650601,
       1789876254989,
-      1789888808525
+      1789888808525,
+      1789899327953
     ],
-    "playCount7d": 24,
+    "playCount7d": 25,
     "firstSeen": "2026-09-12T09:34:05.278Z",
-    "lastSeen": "2026-09-20T07:20:08.525Z"
+    "lastSeen": "2026-09-20T10:15:27.953Z"
   },
   "mariacarrasco_aguitadelrio": {
     "artist": "María Carrasco",
@@ -28359,11 +28460,12 @@
       1789754588313,
       1789791548561,
       1789828508787,
-      1789865468970
+      1789865468970,
+      1789902669203
     ],
-    "playCount7d": 16,
+    "playCount7d": 17,
     "firstSeen": "2026-09-12T05:05:23.702Z",
-    "lastSeen": "2026-09-20T00:51:08.970Z"
+    "lastSeen": "2026-09-20T11:11:09.203Z"
   },
   "dalvinlamelodia_dalvinlamelodiasinalmaysinbandera": {
     "artist": "Dalvin La Melodia",
@@ -29807,11 +29909,12 @@
       1789583652892,
       1789728599170,
       1789726028355,
-      1789846268917
+      1789846268917,
+      1789903629308
     ],
-    "playCount7d": 5,
+    "playCount7d": 6,
     "firstSeen": "2026-09-12T04:41:23.769Z",
-    "lastSeen": "2026-09-19T19:31:08.917Z"
+    "lastSeen": "2026-09-20T11:27:09.308Z"
   },
   "mannycruzelblachy_paperderte": {
     "artist": "Manny Cruz, El Blachy",
@@ -30086,11 +30189,12 @@
       1789579332796,
       1789582452892,
       1789800668621,
-      1789798028837
+      1789798028837,
+      1789903389308
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-12T03:09:23.769Z",
-    "lastSeen": "2026-09-19T06:07:08.837Z"
+    "lastSeen": "2026-09-20T11:23:09.308Z"
   },
   "dionifernandez_yoamo": {
     "artist": "Dioni Fernández",
@@ -30699,11 +30803,11 @@
       "LATINA_104"
     ],
     "plays": [
-      1789209923757
+      1789900269151
     ],
     "playCount7d": 1,
     "firstSeen": "2026-09-12T10:45:23.757Z",
-    "lastSeen": "2026-09-12T10:45:23.757Z"
+    "lastSeen": "2026-09-20T10:31:09.151Z"
   },
   "hectoracosta34eltorito34_mellamas": {
     "artist": "Héctor Acosta &#34;El Torito&#34;",
@@ -31079,11 +31183,12 @@
     "plays": [
       1789491692845,
       1789667546524,
-      1789871709011
+      1789871709011,
+      1789874109200
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-12T08:09:23.757Z",
-    "lastSeen": "2026-09-20T02:35:09.011Z"
+    "lastSeen": "2026-09-20T03:15:09.200Z"
   },
   "yoskarsarante_teperdi": {
     "artist": "Yoskar Sarante",
@@ -32104,11 +32209,12 @@
     "plays": [
       1789487612919,
       1789712256449,
-      1789831388948
+      1789831388948,
+      1789902429200
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-12T00:45:23.757Z",
-    "lastSeen": "2026-09-19T15:23:08.948Z"
+    "lastSeen": "2026-09-20T11:07:09.200Z"
   },
   "albertomaria_conlamismapiedra": {
     "artist": "Alberto Maria",
@@ -32133,11 +32239,12 @@
     "plays": [
       1789621813048,
       1789619306565,
-      1789807388619
+      1789807388619,
+      1789903869218
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-12T00:37:23.757Z",
-    "lastSeen": "2026-09-19T08:43:08.619Z"
+    "lastSeen": "2026-09-20T11:31:09.218Z"
   },
   "zacariasferreira_cupido": {
     "artist": "Zacarías Ferreira",
@@ -32893,11 +33000,12 @@
       1789658081505,
       1789716876501,
       1789719419074,
-      1789851848974
+      1789851848974,
+      1789902669291
     ],
-    "playCount7d": 7,
+    "playCount7d": 8,
     "firstSeen": "2026-09-15T17:01:32.917Z",
-    "lastSeen": "2026-09-19T21:04:08.974Z"
+    "lastSeen": "2026-09-20T11:11:09.291Z"
   },
   "nirvana_themanwhosoldtheworld": {
     "artist": "Nirvana",
@@ -32994,11 +33102,12 @@
       1789649023294,
       1789651423380,
       1789746038313,
-      1789748498412
+      1789748498412,
+      1789901829291
     ],
-    "playCount7d": 5,
+    "playCount7d": 6,
     "firstSeen": "2026-09-15T16:37:02.917Z",
-    "lastSeen": "2026-09-18T16:21:38.412Z"
+    "lastSeen": "2026-09-20T10:57:09.291Z"
   },
   "aerosmith_amazing": {
     "artist": "Aerosmith",
@@ -33125,11 +33234,12 @@
       1789696896340,
       1789699716428,
       1789772438554,
-      1789890669431
+      1789890669431,
+      1789893129255
     ],
-    "playCount7d": 11,
+    "playCount7d": 12,
     "firstSeen": "2026-09-15T15:51:32.917Z",
-    "lastSeen": "2026-09-20T07:51:09.431Z"
+    "lastSeen": "2026-09-20T08:32:09.255Z"
   },
   "joanjett_ihatemyselfforlovingyou": {
     "artist": "Joan Jett",
@@ -33469,11 +33579,12 @@
       1789699926430,
       1789702896477,
       1789716529060,
-      1789775532930
+      1789775532930,
+      1789900629153
     ],
-    "playCount7d": 9,
+    "playCount7d": 10,
     "firstSeen": "2026-09-15T17:05:02.922Z",
-    "lastSeen": "2026-09-18T23:52:12.930Z"
+    "lastSeen": "2026-09-20T10:37:09.153Z"
   },
   "thewonders_thatthingyoudo": {
     "artist": "The Wonders",
@@ -33584,11 +33695,12 @@
       1789665806842,
       1789759448467,
       1789766141617,
-      1789862425044
+      1789862425044,
+      1789901259153
     ],
-    "playCount7d": 8,
+    "playCount7d": 9,
     "firstSeen": "2026-09-15T16:37:02.922Z",
-    "lastSeen": "2026-09-20T00:00:25.044Z"
+    "lastSeen": "2026-09-20T10:47:39.153Z"
   },
   "toto_holdtheline": {
     "artist": "Toto",
@@ -33650,11 +33762,12 @@
       1789701829163,
       1789758270931,
       1789784438616,
-      1789823851581
+      1789823851581,
+      1789902819284
     ],
-    "playCount7d": 6,
+    "playCount7d": 7,
     "firstSeen": "2026-09-15T16:19:32.922Z",
-    "lastSeen": "2026-09-19T13:17:31.581Z"
+    "lastSeen": "2026-09-20T11:13:39.284Z"
   },
   "elcantodelloco_contigo": {
     "artist": "El Canto Del Loco",
@@ -33718,11 +33831,12 @@
       1789487912922,
       1789630453221,
       1789750829674,
-      1789756058327
+      1789756058327,
+      1789903239284
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-15T15:58:32.922Z",
-    "lastSeen": "2026-09-18T18:27:38.327Z"
+    "lastSeen": "2026-09-20T11:20:39.284Z"
   },
   "jimmysomerville_youmakemefeel": {
     "artist": "Jimmy Somerville",
@@ -34037,11 +34151,12 @@
       1789704325150,
       1789838245010,
       1789860008744,
-      1789894126831
+      1789894126831,
+      1789899654954
     ],
-    "playCount7d": 8,
+    "playCount7d": 9,
     "firstSeen": "2026-09-15T15:08:20.735Z",
-    "lastSeen": "2026-09-20T08:48:46.831Z"
+    "lastSeen": "2026-09-20T10:20:54.954Z"
   },
   "gayle_abcdefu": {
     "artist": "Gayle",
@@ -34194,7 +34309,8 @@
     "artist": "The Weeknd & Ariana Grande",
     "title": "Save Your Tears",
     "stations": [
-      "HITFM"
+      "HITFM",
+      "KISSFM"
     ],
     "plays": [
       1789486652771,
@@ -34212,11 +34328,12 @@
       1789816268826,
       1789849868987,
       1789871469107,
-      1789896669277
+      1789896669277,
+      1789901829129
     ],
-    "playCount7d": 16,
+    "playCount7d": 17,
     "firstSeen": "2026-09-15T15:37:32.771Z",
-    "lastSeen": "2026-09-20T09:31:09.277Z"
+    "lastSeen": "2026-09-20T10:57:09.129Z"
   },
   "djsnakejustinbieber_letmeloveyou": {
     "artist": "Dj Snake & Justin Bieber",
@@ -34417,11 +34534,12 @@
       1789491482807,
       1789560657565,
       1789690056182,
-      1789760858325
+      1789760858325,
+      1789899429274
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-15T16:58:02.807Z",
-    "lastSeen": "2026-09-18T19:47:38.325Z"
+    "lastSeen": "2026-09-20T10:17:09.274Z"
   },
   "aitana_6defebrero": {
     "artist": "Aitana",
@@ -34469,11 +34587,12 @@
       1789847078979,
       1789849478989,
       1789854249022,
-      1789857009020
+      1789857009020,
+      1789901619273
     ],
-    "playCount7d": 14,
+    "playCount7d": 15,
     "firstSeen": "2026-09-15T16:51:02.807Z",
-    "lastSeen": "2026-09-19T22:30:09.020Z"
+    "lastSeen": "2026-09-20T10:53:39.273Z"
   },
   "innercircle_sweatalalalalalong": {
     "artist": "Inner circle",
@@ -34838,11 +34957,12 @@
       1789629043233,
       1789766018388,
       1789791848660,
-      1789794518693
+      1789794518693,
+      1789903659295
     ],
-    "playCount7d": 6,
+    "playCount7d": 7,
     "firstSeen": "2026-09-15T15:09:32.807Z",
-    "lastSeen": "2026-09-19T05:08:38.693Z"
+    "lastSeen": "2026-09-20T11:27:39.295Z"
   },
   "brunomars_riskitall": {
     "artist": "Bruno Mars",
@@ -35029,11 +35149,12 @@
       1789723180736,
       1789741078477,
       1789814545918,
-      1789829259630
+      1789829259630,
+      1789902744398
     ],
-    "playCount7d": 12,
+    "playCount7d": 13,
     "firstSeen": "2026-09-15T16:49:03.238Z",
-    "lastSeen": "2026-09-19T14:47:39.630Z"
+    "lastSeen": "2026-09-20T11:12:24.398Z"
   },
   "oxia_domino": {
     "artist": "Oxia",
@@ -35082,11 +35203,12 @@
       1789581806388,
       1789713246078,
       1789805286389,
-      1789823343945
+      1789823343945,
+      1789899882646
     ],
-    "playCount7d": 5,
+    "playCount7d": 6,
     "firstSeen": "2026-09-15T16:21:27.760Z",
-    "lastSeen": "2026-09-19T13:09:03.945Z"
+    "lastSeen": "2026-09-20T10:24:42.646Z"
   },
   "abelthekidaliciapolaris_anglia": {
     "artist": "Abel The Kid,Alicia Polaris",
@@ -35347,11 +35469,12 @@
     ],
     "plays": [
       1789492280194,
-      1789650669422
+      1789650669422,
+      1789899110988
     ],
-    "playCount7d": 2,
+    "playCount7d": 3,
     "firstSeen": "2026-09-15T17:11:20.194Z",
-    "lastSeen": "2026-09-17T13:11:09.422Z"
+    "lastSeen": "2026-09-20T10:11:50.988Z"
   },
   "manuelcarrasco_mujerdelasmilbatallas": {
     "artist": "Manuel Carrasco",
@@ -35699,11 +35822,12 @@
       1789701947594,
       1789741369468,
       1789794885114,
-      1789840038633
+      1789840038633,
+      1789901315905
     ],
-    "playCount7d": 8,
+    "playCount7d": 9,
     "firstSeen": "2026-09-15T17:15:56.195Z",
-    "lastSeen": "2026-09-19T17:47:18.633Z"
+    "lastSeen": "2026-09-20T10:48:35.905Z"
   },
   "kikemanu_tequieroamorir": {
     "artist": "Kike & Manu",
@@ -35758,11 +35882,12 @@
     "plays": [
       1789491380461,
       1789584982976,
-      1789800762570
+      1789800762570,
+      1789901781414
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-15T16:56:20.461Z",
-    "lastSeen": "2026-09-19T06:52:42.570Z"
+    "lastSeen": "2026-09-20T10:56:21.414Z"
   },
   "camela_elcalordemicuerpo": {
     "artist": "Camela",
@@ -35982,11 +36107,12 @@
       1789823522541,
       1789844188838,
       1789862419369,
-      1789882606354
+      1789882606354,
+      1789902736455
     ],
-    "playCount7d": 17,
+    "playCount7d": 18,
     "firstSeen": "2026-09-15T15:54:27.345Z",
-    "lastSeen": "2026-09-20T05:36:46.354Z"
+    "lastSeen": "2026-09-20T11:12:16.455Z"
   },
   "pastorasoler_enmisoledad": {
     "artist": "Pastora Soler",
@@ -36063,11 +36189,12 @@
     "plays": [
       1789486011038,
       1789633925301,
-      1789758958520
+      1789758958520,
+      1789899272499
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-15T15:26:51.038Z",
-    "lastSeen": "2026-09-18T19:15:58.520Z"
+    "lastSeen": "2026-09-20T10:14:32.499Z"
   },
   "maluninapastori_enamorada": {
     "artist": "Malú,Niña Pastori",
@@ -36641,11 +36768,12 @@
     "plays": [
       1789476332919,
       1789449452919,
-      1789761548678
+      1789761548678,
+      1789903629273
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-15T12:45:32.919Z",
-    "lastSeen": "2026-09-18T19:59:08.678Z"
+    "lastSeen": "2026-09-20T11:27:09.273Z"
   },
   "andymontanez_elecodeltambor": {
     "artist": "Andy Montanez",
@@ -36683,11 +36811,12 @@
       "SALSA_RADIO"
     ],
     "plays": [
-      1789475372919
+      1789475372919,
+      1789903869273
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-15T12:29:32.919Z",
-    "lastSeen": "2026-09-15T12:29:32.919Z"
+    "lastSeen": "2026-09-20T11:31:09.273Z"
   },
   "titorojas_esteamor": {
     "artist": "Tito Rojas",
@@ -37669,11 +37798,12 @@
       1789445852919,
       1789562532624,
       1789565172890,
-      1789567572931
+      1789567572931,
+      1789900989229
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-15T04:17:32.919Z",
-    "lastSeen": "2026-09-16T14:06:12.931Z"
+    "lastSeen": "2026-09-20T10:43:09.229Z"
   },
   "mimiibarra_quenadieseentere": {
     "artist": "Mimi Ibarra",
@@ -37744,11 +37874,12 @@
       1789548225810,
       1789551012890,
       1789553412931,
-      1789710576439
+      1789710576439,
+      1789900749229
     ],
-    "playCount7d": 5,
+    "playCount7d": 6,
     "firstSeen": "2026-09-15T03:49:32.919Z",
-    "lastSeen": "2026-09-18T05:49:36.439Z"
+    "lastSeen": "2026-09-20T10:39:09.229Z"
   },
   "grupocaneo_quevoyhacersinti": {
     "artist": "Grupo Caneo",
@@ -39687,11 +39818,12 @@
     ],
     "plays": [
       1789443932883,
-      1789734668116
+      1789734668116,
+      1789900029196
     ],
-    "playCount7d": 2,
+    "playCount7d": 3,
     "firstSeen": "2026-09-15T03:45:32.883Z",
-    "lastSeen": "2026-09-18T12:31:08.116Z"
+    "lastSeen": "2026-09-20T10:27:09.196Z"
   },
   "irisyfranklin_simplementeamigos": {
     "artist": "Iris Y Franklin",
@@ -39917,11 +40049,12 @@
       1789731959164,
       1789729388460,
       1789803068669,
-      1789800428850
+      1789800428850,
+      1789902429234
     ],
-    "playCount7d": 8,
+    "playCount7d": 9,
     "firstSeen": "2026-09-15T01:05:32.883Z",
-    "lastSeen": "2026-09-19T06:47:08.850Z"
+    "lastSeen": "2026-09-20T11:07:09.234Z"
   },
   "nandogalan_voyaseguir": {
     "artist": "Nando Galan",
@@ -40899,11 +41032,12 @@
     "plays": [
       1789477292845,
       1789501997954,
-      1789865948999
+      1789865948999,
+      1789899549196
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-15T13:01:32.845Z",
-    "lastSeen": "2026-09-20T00:59:08.999Z"
+    "lastSeen": "2026-09-20T10:19:09.196Z"
   },
   "albertomaria_tumepides": {
     "artist": "Alberto Maria",
@@ -43521,11 +43655,12 @@
       1789795238643,
       1789798658719,
       1789801148727,
-      1789891659251
+      1789891659251,
+      1789894119164
     ],
-    "playCount7d": 11,
+    "playCount7d": 12,
     "firstSeen": "2026-09-15T18:09:17.935Z",
-    "lastSeen": "2026-09-20T08:07:39.251Z"
+    "lastSeen": "2026-09-20T08:48:39.164Z"
   },
   "meatloaf_iddoanythingforlove": {
     "artist": "Meat Loaf",
@@ -43544,11 +43679,12 @@
       1789759868466,
       1789762718489,
       1789833638923,
-      1789836099188
+      1789836099188,
+      1789900059255
     ],
-    "playCount7d": 11,
+    "playCount7d": 12,
     "firstSeen": "2026-09-15T17:58:47.935Z",
-    "lastSeen": "2026-09-19T16:41:39.188Z"
+    "lastSeen": "2026-09-20T10:27:39.255Z"
   },
   "crowdedhouse_dontdreamitsover": {
     "artist": "Crowded House",
@@ -43748,28 +43884,31 @@
     "plays": [
       1789496903436,
       1789625587544,
-      1789677153616
+      1789677153616,
+      1789899654382
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-15T18:28:23.436Z",
-    "lastSeen": "2026-09-17T20:32:33.616Z"
+    "lastSeen": "2026-09-20T10:20:54.382Z"
   },
   "rickastley_togetherforever": {
     "artist": "Rick Astley",
     "title": "Together forever",
     "stations": [
-      "LOS40_CLASSIC"
+      "LOS40_CLASSIC",
+      "KISSFM"
     ],
     "plays": [
       1789496680587,
       1789624677188,
       1789680261423,
       1789783486108,
-      1789835249592
+      1789835249592,
+      1789899849262
     ],
-    "playCount7d": 5,
+    "playCount7d": 6,
     "firstSeen": "2026-09-15T18:24:40.587Z",
-    "lastSeen": "2026-09-19T16:27:29.592Z"
+    "lastSeen": "2026-09-20T10:24:09.262Z"
   },
   "nickifrench_totaleclipseoftheheart": {
     "artist": "Nicki French",
@@ -43799,11 +43938,12 @@
     "plays": [
       1789496209411,
       1789568202721,
-      1789626971004
+      1789626971004,
+      1789900422833
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-15T18:16:49.411Z",
-    "lastSeen": "2026-09-17T06:36:11.004Z"
+    "lastSeen": "2026-09-20T10:33:42.833Z"
   },
   "lippsinc_funkytown": {
     "artist": "Lipps Inc.",
@@ -43818,11 +43958,12 @@
       1789641016898,
       1789674596709,
       1789740949904,
-      1789844913400
+      1789844913400,
+      1789903449284
     ],
-    "playCount7d": 6,
+    "playCount7d": 7,
     "firstSeen": "2026-09-15T18:12:42.047Z",
-    "lastSeen": "2026-09-19T19:08:33.400Z"
+    "lastSeen": "2026-09-20T11:24:09.284Z"
   },
   "shakira_suertewheneverwherever": {
     "artist": "Shakira",
@@ -43932,11 +44073,12 @@
       1789658053236,
       1789660676615,
       1789774838547,
-      1789777238632
+      1789777238632,
+      1789901259164
     ],
-    "playCount7d": 7,
+    "playCount7d": 8,
     "firstSeen": "2026-09-15T18:25:47.771Z",
-    "lastSeen": "2026-09-19T00:20:38.632Z"
+    "lastSeen": "2026-09-20T10:47:39.164Z"
   },
   "royorbison_yougotit": {
     "artist": "Roy Orbison",
@@ -44018,11 +44160,12 @@
       1789496957780,
       1789693446342,
       1789853829022,
-      1789856589020
+      1789856589020,
+      1789900839293
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-15T18:29:17.780Z",
-    "lastSeen": "2026-09-19T22:23:09.020Z"
+    "lastSeen": "2026-09-20T10:40:39.293Z"
   },
   "katyperry_teenagedream": {
     "artist": "Katy Perry",
@@ -44915,11 +45058,12 @@
       1789785885298,
       1789832438358,
       1789854278854,
-      1789875926523
+      1789875926523,
+      1789900762660
     ],
-    "playCount7d": 15,
+    "playCount7d": 16,
     "firstSeen": "2026-09-15T18:39:33.014Z",
-    "lastSeen": "2026-09-20T03:45:26.523Z"
+    "lastSeen": "2026-09-20T10:39:22.660Z"
   },
   "fangoria_mevoy": {
     "artist": "Fangoria",
@@ -44945,11 +45089,12 @@
       1789798265685,
       1789803606447,
       1789841488305,
-      1789877815637
+      1789877815637,
+      1789900129127
     ],
-    "playCount7d": 16,
+    "playCount7d": 17,
     "firstSeen": "2026-09-15T18:36:06.193Z",
-    "lastSeen": "2026-09-20T04:16:55.637Z"
+    "lastSeen": "2026-09-20T10:28:49.127Z"
   },
   "perezajuanaguirre_estrellapolar": {
     "artist": "Pereza,Juan Aguirre",
@@ -45333,11 +45478,12 @@
       1789635043041,
       1789682783601,
       1789816058658,
-      1789827048102
+      1789827048102,
+      1789899428366
     ],
-    "playCount7d": 8,
+    "playCount7d": 9,
     "firstSeen": "2026-09-15T19:05:47.937Z",
-    "lastSeen": "2026-09-19T14:10:48.102Z"
+    "lastSeen": "2026-09-20T10:17:08.366Z"
   },
   "whitneyhouston_imyourbabytonight": {
     "artist": "Whitney Houston",
@@ -45365,11 +45511,12 @@
       1789760438318,
       1789762928489,
       1789791638660,
-      1789794308693
+      1789794308693,
+      1789900839164
     ],
-    "playCount7d": 6,
+    "playCount7d": 7,
     "firstSeen": "2026-09-15T18:55:17.937Z",
-    "lastSeen": "2026-09-19T05:05:08.693Z"
+    "lastSeen": "2026-09-20T10:40:39.164Z"
   },
   "aviciialoeblacc_wakemeup": {
     "artist": "Avicii,Aloe Blacc",
@@ -45389,11 +45536,12 @@
       1789657641107,
       1789685886282,
       1789694509188,
-      1789748478321
+      1789748478321,
+      1789900236767
     ],
-    "playCount7d": 10,
+    "playCount7d": 11,
     "firstSeen": "2026-09-15T19:04:50.642Z",
-    "lastSeen": "2026-09-18T16:21:18.321Z"
+    "lastSeen": "2026-09-20T10:30:36.767Z"
   },
   "thekidlaroijustinbieber_stay": {
     "artist": "The Kid Laroi & Justin Bieber",
@@ -45738,11 +45886,12 @@
       1789500247403,
       1789629187550,
       1789800038681,
-      1789802498762
+      1789802498762,
+      1789902544352
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-15T19:24:07.403Z",
-    "lastSeen": "2026-09-19T07:21:38.762Z"
+    "lastSeen": "2026-09-20T11:09:04.352Z"
   },
   "celinedion_myheartwillgoon": {
     "artist": "Céline Dion",
@@ -46293,11 +46442,12 @@
       1789630444382,
       1789683636147,
       1789746668177,
-      1789851068975
+      1789851068975,
+      1789903015056
     ],
-    "playCount7d": 7,
+    "playCount7d": 8,
     "firstSeen": "2026-09-15T19:44:03.534Z",
-    "lastSeen": "2026-09-19T20:51:08.975Z"
+    "lastSeen": "2026-09-20T11:16:55.056Z"
   },
   "donnasummer_iwillgowithyoucontepartiro": {
     "artist": "Donna Summer",
@@ -46496,11 +46646,12 @@
       1789506232282,
       1789627870792,
       1789671839705,
-      1789770807291
+      1789770807291,
+      1789902233909
     ],
-    "playCount7d": 5,
+    "playCount7d": 6,
     "firstSeen": "2026-09-15T19:37:44.746Z",
-    "lastSeen": "2026-09-18T22:33:27.291Z"
+    "lastSeen": "2026-09-20T11:03:53.909Z"
   },
   "dualipa_idgaf": {
     "artist": "Dua Lipa",
@@ -46726,11 +46877,12 @@
       1789678013917,
       1789728546684,
       1789775032286,
-      1789790812475
+      1789790812475,
+      1789902418325
     ],
-    "playCount7d": 8,
+    "playCount7d": 9,
     "firstSeen": "2026-09-15T19:33:44.306Z",
-    "lastSeen": "2026-09-19T04:06:52.475Z"
+    "lastSeen": "2026-09-20T11:06:58.325Z"
   },
   "marina_queimportalagente": {
     "artist": "Marina",
@@ -46760,11 +46912,12 @@
     ],
     "plays": [
       1789501757914,
-      1789667786563
+      1789667786563,
+      1789899549224
     ],
-    "playCount7d": 2,
+    "playCount7d": 3,
     "firstSeen": "2026-09-15T19:49:17.914Z",
-    "lastSeen": "2026-09-17T17:56:26.563Z"
+    "lastSeen": "2026-09-20T10:19:09.224Z"
   },
   "johnnyventura_minoviaymimujer": {
     "artist": "Johnny Ventura",
@@ -46842,11 +46995,12 @@
       1789716546512,
       1789769803056,
       1789810058762,
-      1789826425091
+      1789826425091,
+      1789901051344
     ],
-    "playCount7d": 10,
+    "playCount7d": 11,
     "firstSeen": "2026-09-15T20:00:24.922Z",
-    "lastSeen": "2026-09-19T14:00:25.091Z"
+    "lastSeen": "2026-09-20T10:44:11.344Z"
   },
   "chriscornell_youknowmyname": {
     "artist": "Chris Cornell",
@@ -47406,11 +47560,12 @@
       1789571652754,
       1789574112829,
       1789842668919,
-      1789845069066
+      1789845069066,
+      1789903869297
     ],
-    "playCount7d": 5,
+    "playCount7d": 6,
     "firstSeen": "2026-09-15T20:29:17.971Z",
-    "lastSeen": "2026-09-19T19:11:09.066Z"
+    "lastSeen": "2026-09-20T11:31:09.297Z"
   },
   "blondie_heartofglass": {
     "artist": "Blondie",
@@ -47584,11 +47739,12 @@
       1789824818851,
       1789846838969,
       1789866459061,
-      1789885869183
+      1789885869183,
+      1789900419293
     ],
-    "playCount7d": 18,
+    "playCount7d": 19,
     "firstSeen": "2026-09-15T20:15:17.975Z",
-    "lastSeen": "2026-09-20T06:31:09.183Z"
+    "lastSeen": "2026-09-20T10:33:39.293Z"
   },
   "zzoiloyaitana_monamour": {
     "artist": "zzoilo y Aitana",
@@ -47622,11 +47778,12 @@
       1789781468602,
       1789804838714,
       1789831238773,
-      1789873239123
+      1789873239123,
+      1789899639274
     ],
-    "playCount7d": 11,
+    "playCount7d": 12,
     "firstSeen": "2026-09-15T20:15:17.976Z",
-    "lastSeen": "2026-09-20T03:00:39.123Z"
+    "lastSeen": "2026-09-20T10:20:39.274Z"
   },
   "alexubagoamaiamonterocarlosgonicristinallisodavidsummersquiquegonzalezdespistaos_ciengaviotas": {
     "artist": "Álex Ubago,Amaia Montero,Carlos Goñi,Cristina Lliso,David Summers,Quique González,Despistaos",
@@ -47887,11 +48044,12 @@
       1789756838419,
       1789759418506,
       1789835048888,
-      1789837569188
+      1789837569188,
+      1789903449297
     ],
-    "playCount7d": 13,
+    "playCount7d": 14,
     "firstSeen": "2026-09-15T20:42:18.017Z",
-    "lastSeen": "2026-09-19T17:06:09.188Z"
+    "lastSeen": "2026-09-20T11:24:09.297Z"
   },
   "michaeljackson_maninthemirror": {
     "artist": "Michael Jackson",
@@ -48110,11 +48268,12 @@
       1789822596697,
       1789840817515,
       1789860976319,
-      1789881058404
+      1789881058404,
+      1789900673522
     ],
-    "playCount7d": 18,
+    "playCount7d": 19,
     "firstSeen": "2026-09-15T20:36:57.776Z",
-    "lastSeen": "2026-09-20T05:10:58.404Z"
+    "lastSeen": "2026-09-20T10:37:53.522Z"
   },
   "gipsykings_bailame": {
     "artist": "Gipsy Kings",
@@ -48495,11 +48654,12 @@
       "SALSA_RADIO"
     ],
     "plays": [
-      1789506557955
+      1789506557955,
+      1789901949207
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-15T21:09:17.955Z",
-    "lastSeen": "2026-09-15T21:09:17.955Z"
+    "lastSeen": "2026-09-20T10:59:09.207Z"
   },
   "manole_ayamor": {
     "artist": "Manole",
@@ -49268,11 +49428,12 @@
     "plays": [
       1789546145955,
       1789616572376,
-      1789755611133
+      1789755611133,
+      1789902278142
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-16T08:09:05.955Z",
-    "lastSeen": "2026-09-18T18:20:11.133Z"
+    "lastSeen": "2026-09-20T11:04:38.142Z"
   },
   "eltonjohn_imstillstanding": {
     "artist": "Elton John",
@@ -49327,11 +49488,12 @@
       1789613527065,
       1789725359183,
       1789730159229,
-      1789833378262
+      1789833378262,
+      1789901772995
     ],
-    "playCount7d": 6,
+    "playCount7d": 7,
     "firstSeen": "2026-09-16T07:07:06.988Z",
-    "lastSeen": "2026-09-19T15:56:18.262Z"
+    "lastSeen": "2026-09-20T10:56:12.995Z"
   },
   "supertramp_thelogicalsong": {
     "artist": "Supertramp",
@@ -49369,11 +49531,12 @@
       1789602222998,
       1789840058903,
       1789842668966,
-      1789892439120
+      1789892439120,
+      1789895049297
     ],
-    "playCount7d": 6,
+    "playCount7d": 7,
     "firstSeen": "2026-09-16T09:45:45.862Z",
-    "lastSeen": "2026-09-20T08:20:39.120Z"
+    "lastSeen": "2026-09-20T09:04:09.297Z"
   },
   "redhotchilipeppers_underthebridge": {
     "artist": "Red Hot Chili Peppers",
@@ -49764,11 +49927,12 @@
       1789852628989,
       1789855269031,
       1789885869184,
-      1789888269249
+      1789888269249,
+      1789903659284
     ],
-    "playCount7d": 20,
+    "playCount7d": 21,
     "firstSeen": "2026-09-16T09:38:45.864Z",
-    "lastSeen": "2026-09-20T07:11:09.249Z"
+    "lastSeen": "2026-09-20T11:27:39.284Z"
   },
   "theverve_bittersweetsymphony": {
     "artist": "The Verve",
@@ -50082,11 +50246,12 @@
       1789584571442,
       1789668386614,
       1789737317422,
-      1789774628548
+      1789774628548,
+      1789902249129
     ],
-    "playCount7d": 5,
+    "playCount7d": 6,
     "firstSeen": "2026-09-16T07:43:15.864Z",
-    "lastSeen": "2026-09-18T23:37:08.548Z"
+    "lastSeen": "2026-09-20T11:04:09.129Z"
   },
   "queen_somebodytolove": {
     "artist": "Queen",
@@ -50129,11 +50294,12 @@
       1789801868573,
       1789841753552,
       1789863069090,
-      1789896028957
+      1789896028957,
+      1789901829273
     ],
-    "playCount7d": 13,
+    "playCount7d": 14,
     "firstSeen": "2026-09-16T09:51:06.362Z",
-    "lastSeen": "2026-09-20T09:20:28.957Z"
+    "lastSeen": "2026-09-20T10:57:09.273Z"
   },
   "rihanna_sm": {
     "artist": "Rihanna",
@@ -50163,11 +50329,12 @@
       1789687352532,
       1789726752877,
       1789751258374,
-      1789831814412
+      1789831814412,
+      1789903029294
     ],
-    "playCount7d": 7,
+    "playCount7d": 8,
     "firstSeen": "2026-09-16T09:24:48.838Z",
-    "lastSeen": "2026-09-19T15:30:14.412Z"
+    "lastSeen": "2026-09-20T11:17:09.294Z"
   },
   "nilmoliner_libertad": {
     "artist": "Nil Moliner",
@@ -52223,11 +52390,12 @@
       1789524465810,
       1789527252890,
       1789529652931,
-      1789786748607
+      1789786748607,
+      1789899789224
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-16T02:07:45.810Z",
-    "lastSeen": "2026-09-19T02:59:08.607Z"
+    "lastSeen": "2026-09-20T10:23:09.224Z"
   },
   "rubenblades_camaleon": {
     "artist": "Rubén Blades",
@@ -52539,11 +52707,12 @@
       1789515345810,
       1789518132890,
       1789520532931,
-      1789755308362
+      1789755308362,
+      1789903149273
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-15T23:35:45.810Z",
-    "lastSeen": "2026-09-18T18:15:08.362Z"
+    "lastSeen": "2026-09-20T11:19:09.273Z"
   },
   "edwinbonilla_situnovienesnobailas": {
     "artist": "Edwin Bonilla",
@@ -54654,11 +54823,12 @@
       "LATINA_104"
     ],
     "plays": [
-      1789515345776
+      1789515345776,
+      1789903629218
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-15T23:35:45.776Z",
-    "lastSeen": "2026-09-15T23:35:45.776Z"
+    "lastSeen": "2026-09-20T11:27:09.218Z"
   },
   "antonysantos_sefuelabola": {
     "artist": "Antony Santos",
@@ -54972,11 +55142,12 @@
       1789748228362,
       1789751048466,
       1789854459024,
-      1789892229120
+      1789892229120,
+      1789894839297
     ],
-    "playCount7d": 14,
+    "playCount7d": 15,
     "firstSeen": "2026-09-16T10:09:00.832Z",
-    "lastSeen": "2026-09-20T08:17:09.120Z"
+    "lastSeen": "2026-09-20T09:00:39.297Z"
   },
   "losrebeldes_mediterraneo": {
     "artist": "Los Rebeldes",
@@ -55068,11 +55239,12 @@
       1789650311674,
       1789708686461,
       1789751202375,
-      1789857316109
+      1789857316109,
+      1789901829291
     ],
-    "playCount7d": 5,
+    "playCount7d": 6,
     "firstSeen": "2026-09-16T10:09:47.094Z",
-    "lastSeen": "2026-09-19T22:35:16.109Z"
+    "lastSeen": "2026-09-20T10:57:09.291Z"
   },
   "anastacia_paidmydues": {
     "artist": "Anastacia",
@@ -56150,11 +56322,12 @@
       1789669391786,
       1789687983934,
       1789750342730,
-      1789827479615
+      1789827479615,
+      1789901564916
     ],
-    "playCount7d": 7,
+    "playCount7d": 8,
     "firstSeen": "2026-09-16T11:08:13.855Z",
-    "lastSeen": "2026-09-19T14:17:59.615Z"
+    "lastSeen": "2026-09-20T10:52:44.916Z"
   },
   "earthwindfirephatssmall_september99": {
     "artist": "Earth, Wind & Fire,Phats & Small",
@@ -56503,11 +56676,12 @@
       1789819814851,
       1789840058799,
       1789842538704,
-      1789878902214
+      1789878902214,
+      1789902733671
     ],
-    "playCount7d": 16,
+    "playCount7d": 17,
     "firstSeen": "2026-09-16T11:13:47.514Z",
-    "lastSeen": "2026-09-20T04:35:02.214Z"
+    "lastSeen": "2026-09-20T11:12:13.671Z"
   },
   "amarfisylabandadeatakke_popurriromantico": {
     "artist": "Amarfis y La Banda De Atakke",
@@ -57196,11 +57370,12 @@
       1789799288719,
       1789801778727,
       1789868302990,
-      1789891239251
+      1789891239251,
+      1789893699164
     ],
-    "playCount7d": 10,
+    "playCount7d": 11,
     "firstSeen": "2026-09-16T12:01:14.595Z",
-    "lastSeen": "2026-09-20T08:00:39.251Z"
+    "lastSeen": "2026-09-20T08:41:39.164Z"
   },
   "deeppurple_burn": {
     "artist": "Deep Purple",
@@ -57487,11 +57662,12 @@
       1789559354488,
       1789562533128,
       1789566132931,
-      1789684896229
+      1789684896229,
+      1789900029224
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-16T11:49:14.488Z",
-    "lastSeen": "2026-09-17T22:41:36.229Z"
+    "lastSeen": "2026-09-20T10:27:09.224Z"
   },
   "estopa_partiendolapana": {
     "artist": "Estopa",
@@ -57506,11 +57682,12 @@
       1789691430648,
       1789774563393,
       1789792407429,
-      1789830248064
+      1789830248064,
+      1789899659990
     ],
-    "playCount7d": 5,
+    "playCount7d": 6,
     "firstSeen": "2026-09-16T12:04:46.799Z",
-    "lastSeen": "2026-09-19T15:04:08.064Z"
+    "lastSeen": "2026-09-20T10:20:59.990Z"
   },
   "greenday_americanidiot": {
     "artist": "Green Day",
@@ -57679,11 +57856,12 @@
       1789693296327,
       1789792058666,
       1789794728689,
-      1789797128704
+      1789797128704,
+      1789903659297
     ],
-    "playCount7d": 9,
+    "playCount7d": 10,
     "firstSeen": "2026-09-16T12:10:57.682Z",
-    "lastSeen": "2026-09-19T05:52:08.704Z"
+    "lastSeen": "2026-09-20T11:27:39.297Z"
   },
   "enigma_returntoinnocence": {
     "artist": "Enigma",
@@ -57893,11 +58071,12 @@
       1789561812653,
       1789564452890,
       1789566852931,
-      1789696416281
+      1789696416281,
+      1789901469229
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-16T12:30:12.653Z",
-    "lastSeen": "2026-09-18T01:53:36.281Z"
+    "lastSeen": "2026-09-20T10:51:09.229Z"
   },
   "rokabanda_ajititi": {
     "artist": "Rokabanda",
@@ -58810,11 +58989,12 @@
       1789709106390,
       1789744628326,
       1789774838549,
-      1789838858788
+      1789838858788,
+      1789900059274
     ],
-    "playCount7d": 9,
+    "playCount7d": 10,
     "firstSeen": "2026-09-16T12:56:42.582Z",
-    "lastSeen": "2026-09-19T17:27:38.788Z"
+    "lastSeen": "2026-09-20T10:27:39.274Z"
   },
   "bennett_voissurtonchemin": {
     "artist": "Bennett",
@@ -59490,11 +59670,12 @@
       1789770041020,
       1789785638643,
       1789872792930,
-      1789892439251
+      1789892439251,
+      1789901469283
     ],
-    "playCount7d": 11,
+    "playCount7d": 12,
     "firstSeen": "2026-09-16T13:50:42.733Z",
-    "lastSeen": "2026-09-20T08:20:39.251Z"
+    "lastSeen": "2026-09-20T10:51:09.283Z"
   },
   "bonjovi_livingonaprayer": {
     "artist": "Bon Jovi",
@@ -59944,11 +60125,12 @@
       1789661443248,
       1789663916481,
       1789712286475,
-      1789714986501
+      1789714986501,
+      1789901619291
     ],
-    "playCount7d": 6,
+    "playCount7d": 7,
     "firstSeen": "2026-09-16T14:00:12.792Z",
-    "lastSeen": "2026-09-18T07:03:06.501Z"
+    "lastSeen": "2026-09-20T10:53:39.291Z"
   },
   "paulyoung_everytimeyougoaway": {
     "artist": "Paul Young",
@@ -60370,11 +60552,12 @@
       1789652331892,
       1789713696476,
       1789751557657,
-      1789768268499
+      1789768268499,
+      1789903236443
     ],
-    "playCount7d": 7,
+    "playCount7d": 8,
     "firstSeen": "2026-09-16T14:30:42.673Z",
-    "lastSeen": "2026-09-18T21:51:08.499Z"
+    "lastSeen": "2026-09-20T11:20:36.443Z"
   },
   "pereza_princesas": {
     "artist": "Pereza",
@@ -60949,11 +61132,12 @@
       "RADIOLE"
     ],
     "plays": [
-      1789569282493
+      1789569282493,
+      1789902508530
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-16T14:34:42.493Z",
-    "lastSeen": "2026-09-16T14:34:42.493Z"
+    "lastSeen": "2026-09-20T11:08:28.530Z"
   },
   "amina_dikidiki": {
     "artist": "Amina",
@@ -61102,11 +61286,12 @@
     ],
     "plays": [
       1789571652776,
-      1789574742829
+      1789574742829,
+      1789899219262
     ],
-    "playCount7d": 2,
+    "playCount7d": 3,
     "firstSeen": "2026-09-16T15:14:12.776Z",
-    "lastSeen": "2026-09-16T16:05:42.829Z"
+    "lastSeen": "2026-09-20T10:13:39.262Z"
   },
   "eightwonder_imnotscared": {
     "artist": "Eight Wonder",
@@ -61218,11 +61403,12 @@
     "plays": [
       1789571022631,
       1789681452425,
-      1789760603438
+      1789760603438,
+      1789903449295
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-16T15:03:42.631Z",
-    "lastSeen": "2026-09-18T19:43:23.438Z"
+    "lastSeen": "2026-09-20T11:24:09.295Z"
   },
   "luispericoortiz_depatitas": {
     "artist": "Luis Perico Ortiz",
@@ -61842,11 +62028,12 @@
       1789601691532,
       1789752668405,
       1789780575301,
-      1789878005055
+      1789878005055,
+      1789903029295
     ],
-    "playCount7d": 5,
+    "playCount7d": 6,
     "firstSeen": "2026-09-16T16:10:42.787Z",
-    "lastSeen": "2026-09-20T04:20:05.055Z"
+    "lastSeen": "2026-09-20T11:17:09.295Z"
   },
   "puertoricanpower_buscandoamores": {
     "artist": "Puerto Rican Power",
@@ -62080,11 +62267,12 @@
       1789710096460,
       1789713066487,
       1789716396511,
-      1789718834185
+      1789718834185,
+      1789901469153
     ],
-    "playCount7d": 5,
+    "playCount7d": 6,
     "firstSeen": "2026-09-16T16:23:42.751Z",
-    "lastSeen": "2026-09-18T08:07:14.185Z"
+    "lastSeen": "2026-09-20T10:51:09.153Z"
   },
   "huntrxkpopdemonhunterscast_golden": {
     "artist": "Huntr/x,KPop Demon Hunters Cast",
@@ -62484,7 +62672,8 @@
     "title": "19 días y 500 noches",
     "stations": [
       "CADENADIAL",
-      "KISSFM"
+      "KISSFM",
+      "LOS40_CLASSIC"
     ],
     "plays": [
       1789574849164,
@@ -62492,11 +62681,12 @@
       1789744058388,
       1789747448350,
       1789749848372,
-      1789752818391
+      1789752818391,
+      1789903640307
     ],
-    "playCount7d": 6,
+    "playCount7d": 7,
     "firstSeen": "2026-09-16T16:07:29.164Z",
-    "lastSeen": "2026-09-18T17:33:38.391Z"
+    "lastSeen": "2026-09-20T11:27:20.307Z"
   },
   "alejandrosanzmarcanthony_dejaquetebese": {
     "artist": "Alejandro Sanz,Marc Anthony",
@@ -62752,11 +62942,12 @@
     ],
     "plays": [
       1789577573614,
-      1789720352339
+      1789720352339,
+      1789902815541
     ],
-    "playCount7d": 2,
+    "playCount7d": 3,
     "firstSeen": "2026-09-16T16:52:53.614Z",
-    "lastSeen": "2026-09-18T08:32:32.339Z"
+    "lastSeen": "2026-09-20T11:13:35.541Z"
   },
   "montelljordan_thisishowwedoit": {
     "artist": "Montell Jordan",
@@ -62921,11 +63112,12 @@
     "plays": [
       1789576602823,
       1789792418662,
-      1789849808980
+      1789849808980,
+      1789901049293
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-16T16:36:42.823Z",
-    "lastSeen": "2026-09-19T20:30:08.980Z"
+    "lastSeen": "2026-09-20T10:44:09.293Z"
   },
   "martinsolveig_rockingmusic": {
     "artist": "Martin Solveig",
@@ -63161,11 +63353,12 @@
       1789763468549,
       1789801416028,
       1789853482928,
-      1789873449121
+      1789873449121,
+      1789901469164
     ],
-    "playCount7d": 12,
+    "playCount7d": 13,
     "firstSeen": "2026-09-16T17:10:42.816Z",
-    "lastSeen": "2026-09-20T03:04:09.121Z"
+    "lastSeen": "2026-09-20T10:51:09.164Z"
   },
   "journey_anywayyouwantit": {
     "artist": "Journey",
@@ -63861,11 +64054,12 @@
       1789584852931,
       1789696176281,
       1789757708410,
-      1789817468785
+      1789817468785,
+      1789902909273
     ],
-    "playCount7d": 6,
+    "playCount7d": 7,
     "firstSeen": "2026-09-16T17:30:12.832Z",
-    "lastSeen": "2026-09-19T11:31:08.785Z"
+    "lastSeen": "2026-09-20T11:15:09.273Z"
   },
   "josealbertoelcanario_amadamia": {
     "artist": "Jose Alberto El Canario",
@@ -63979,7 +64173,8 @@
     "title": "Who can it be now?",
     "stations": [
       "LOS40_CLASSIC",
-      "ROCKFM"
+      "ROCKFM",
+      "KISSFM"
     ],
     "plays": [
       1789580063581,
@@ -63987,11 +64182,12 @@
       1789690266306,
       1789833848923,
       1789836309188,
-      1789877837283
+      1789877837283,
+      1789901049153
     ],
-    "playCount7d": 6,
+    "playCount7d": 7,
     "firstSeen": "2026-09-16T17:34:23.581Z",
-    "lastSeen": "2026-09-20T04:17:17.283Z"
+    "lastSeen": "2026-09-20T10:44:09.153Z"
   },
   "statusquo_whatyoureproposing": {
     "artist": "Status Quo",
@@ -64028,11 +64224,12 @@
       1789715676514,
       1789718279051,
       1789846268943,
-      1789848669027
+      1789848669027,
+      1789899639255
     ],
-    "playCount7d": 10,
+    "playCount7d": 11,
     "firstSeen": "2026-09-16T17:50:42.829Z",
-    "lastSeen": "2026-09-19T20:11:09.027Z"
+    "lastSeen": "2026-09-20T10:20:39.255Z"
   },
   "metallica_whiskeyinthejar": {
     "artist": "Metallica",
@@ -64095,11 +64292,12 @@
       1789659453839,
       1789712076479,
       1789769468495,
-      1789802865704
+      1789802865704,
+      1789901259293
     ],
-    "playCount7d": 5,
+    "playCount7d": 6,
     "firstSeen": "2026-09-16T17:47:12.672Z",
-    "lastSeen": "2026-09-19T07:27:45.704Z"
+    "lastSeen": "2026-09-20T10:47:39.293Z"
   },
   "nilmoliner_tucuerpoenbraille": {
     "artist": "Nil Moliner",
@@ -64242,11 +64440,12 @@
       "RADIOLE"
     ],
     "plays": [
-      1789580073502
+      1789580073502,
+      1789900445500
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-16T17:34:33.502Z",
-    "lastSeen": "2026-09-16T17:34:33.502Z"
+    "lastSeen": "2026-09-20T10:34:05.500Z"
   },
   "tonyvega_devuelvememiamor": {
     "artist": "Tony Vega",
@@ -64966,11 +65165,12 @@
       1789583442694,
       1789712286370,
       1789714956381,
-      1789822838867
+      1789822838867,
+      1789900839283
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-16T18:30:42.694Z",
-    "lastSeen": "2026-09-19T13:00:38.867Z"
+    "lastSeen": "2026-09-20T10:40:39.283Z"
   },
   "jaxjonesraye_youdontknowme": {
     "artist": "Jax Jones,Raye",
@@ -66261,11 +66461,12 @@
       1789587018456,
       1789666218501,
       1789745418365,
-      1789824620072
+      1789824620072,
+      1789903819097
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-16T19:30:18.456Z",
-    "lastSeen": "2026-09-19T13:30:20.072Z"
+    "lastSeen": "2026-09-20T11:30:19.097Z"
   },
   "antoniojosemiguelpoveda_elplan": {
     "artist": "Antonio José,Miguel Poveda",
@@ -66725,11 +66926,12 @@
       1789727189074,
       1789729778105,
       1789783448607,
-      1789891449251
+      1789891449251,
+      1789893909164
     ],
-    "playCount7d": 10,
+    "playCount7d": 11,
     "firstSeen": "2026-09-16T20:03:42.900Z",
-    "lastSeen": "2026-09-20T08:04:09.251Z"
+    "lastSeen": "2026-09-20T08:45:09.164Z"
   },
   "robertmiles_oneandone": {
     "artist": "Robert Miles",
@@ -67154,11 +67356,12 @@
       1789599463026,
       1789740038319,
       1789742708373,
-      1789892649120
+      1789892649120,
+      1789895259297
     ],
-    "playCount7d": 7,
+    "playCount7d": 8,
     "firstSeen": "2026-09-16T20:43:42.939Z",
-    "lastSeen": "2026-09-20T08:24:09.120Z"
+    "lastSeen": "2026-09-20T09:07:39.297Z"
   },
   "bonjovi_always": {
     "artist": "Bon Jovi",
@@ -67240,16 +67443,18 @@
     "artist": "Calvin Harris & Dua Lipa",
     "title": "One Kiss",
     "stations": [
-      "HITFM"
+      "HITFM",
+      "LOS40_DANCE"
     ],
     "plays": [
       1789591422944,
       1789727399044,
-      1789777238578
+      1789777238578,
+      1789903814586
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-16T20:43:42.944Z",
-    "lastSeen": "2026-09-19T00:20:38.578Z"
+    "lastSeen": "2026-09-20T11:30:14.586Z"
   },
   "willsmith_meninblack": {
     "artist": "Will Smith",
@@ -67628,11 +67833,12 @@
     "plays": [
       1789593252900,
       1789735868215,
-      1789733228476
+      1789733228476,
+      1789901229246
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-16T21:14:12.900Z",
-    "lastSeen": "2026-09-18T12:07:08.476Z"
+    "lastSeen": "2026-09-20T10:47:09.246Z"
   },
   "loskenton_elnegrodelswing": {
     "artist": "Los Kenton",
@@ -67726,11 +67932,12 @@
       1789593568831,
       1789696686338,
       1789699506430,
-      1789702476477
+      1789702476477,
+      1789899429262
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-16T21:19:28.831Z",
-    "lastSeen": "2026-09-18T03:34:36.477Z"
+    "lastSeen": "2026-09-20T10:17:09.262Z"
   },
   "acdc_hardasarock": {
     "artist": "Ac/dc",
@@ -68895,11 +69102,12 @@
     ],
     "plays": [
       1789598837140,
-      1789755823934
+      1789755823934,
+      1789899948576
     ],
-    "playCount7d": 2,
+    "playCount7d": 3,
     "firstSeen": "2026-09-16T22:47:17.140Z",
-    "lastSeen": "2026-09-18T18:23:43.934Z"
+    "lastSeen": "2026-09-20T10:25:48.576Z"
   },
   "massiel_eres": {
     "artist": "Massiel",
@@ -69009,11 +69217,12 @@
     "plays": [
       1789599816096,
       1789655156849,
-      1789796713363
+      1789796713363,
+      1789899915457
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-16T23:03:36.096Z",
-    "lastSeen": "2026-09-19T05:45:13.363Z"
+    "lastSeen": "2026-09-20T10:25:15.457Z"
   },
   "mikeandthemechanics_overmyshoulder": {
     "artist": "Mike and The Mechanics",
@@ -69922,11 +70131,12 @@
       1789603422878,
       1789605883091,
       1789661393950,
-      1789777164923
+      1789777164923,
+      1789902702711
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-17T00:03:42.878Z",
-    "lastSeen": "2026-09-19T00:19:24.923Z"
+    "lastSeen": "2026-09-20T11:11:42.711Z"
   },
   "brunomars_wheniwasyourman": {
     "artist": "Bruno Mars",
@@ -69996,11 +70206,12 @@
     ],
     "plays": [
       1789603394430,
-      1789754604529
+      1789754604529,
+      1789902198531
     ],
-    "playCount7d": 2,
+    "playCount7d": 3,
     "firstSeen": "2026-09-17T00:03:14.430Z",
-    "lastSeen": "2026-09-18T18:03:24.529Z"
+    "lastSeen": "2026-09-20T11:03:18.531Z"
   },
   "martasantos_algosencillito": {
     "artist": "Marta Santos",
@@ -70203,11 +70414,12 @@
     "plays": [
       1789604377701,
       1789634327461,
-      1789712633039
+      1789712633039,
+      1789899628683
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-17T00:19:37.701Z",
-    "lastSeen": "2026-09-18T06:23:53.039Z"
+    "lastSeen": "2026-09-20T10:20:28.683Z"
   },
   "titonieves_loquesonlascosas": {
     "artist": "Tito Nieves",
@@ -70385,11 +70597,12 @@
     ],
     "plays": [
       1789606146746,
-      1789757566935
+      1789757566935,
+      1789901561131
     ],
-    "playCount7d": 2,
+    "playCount7d": 3,
     "firstSeen": "2026-09-17T00:49:06.746Z",
-    "lastSeen": "2026-09-18T18:52:46.935Z"
+    "lastSeen": "2026-09-20T10:52:41.131Z"
   },
   "antonioflores_isladepalma": {
     "artist": "Antonio Flores",
@@ -70627,11 +70840,12 @@
     "plays": [
       1789606692968,
       1789604053179,
-      1789601546569
+      1789601546569,
+      1789901949234
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-17T00:58:12.968Z",
-    "lastSeen": "2026-09-16T23:32:26.569Z"
+    "lastSeen": "2026-09-20T10:59:09.234Z"
   },
   "raulinrodriguez_adondeiresinti": {
     "artist": "Raulín Rodríguez",
@@ -71523,11 +71737,12 @@
       1789661610756,
       1789673564258,
       1789730678655,
-      1789875449278
+      1789875449278,
+      1789900333354
     ],
-    "playCount7d": 5,
+    "playCount7d": 6,
     "firstSeen": "2026-09-17T02:27:47.692Z",
-    "lastSeen": "2026-09-20T03:37:29.278Z"
+    "lastSeen": "2026-09-20T10:32:13.354Z"
   },
   "antoniojosecaliyeldandee_tumeobligasteversionpop": {
     "artist": "Antonio José,Cali y El Dandee",
@@ -71563,11 +71778,12 @@
       "RADIOLE"
     ],
     "plays": [
-      1789611747871
+      1789611747871,
+      1789903351234
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-17T02:22:27.871Z",
-    "lastSeen": "2026-09-17T02:22:27.871Z"
+    "lastSeen": "2026-09-20T11:22:31.234Z"
   },
   "manzanita_unramitodevioletas": {
     "artist": "Manzanita",
@@ -73413,11 +73629,12 @@
       "LOS40_DANCE"
     ],
     "plays": [
-      1789621509952
+      1789621509952,
+      1789901667645
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-17T05:05:09.952Z",
-    "lastSeen": "2026-09-17T05:05:09.952Z"
+    "lastSeen": "2026-09-20T10:54:27.645Z"
   },
   "alejandrosanz_aquelloquemediste": {
     "artist": "Alejandro Sanz",
@@ -74155,11 +74372,12 @@
       "HITFM"
     ],
     "plays": [
-      1789626223153
+      1789626223153,
+      1789903239294
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-17T06:23:43.153Z",
-    "lastSeen": "2026-09-17T06:23:43.153Z"
+    "lastSeen": "2026-09-20T11:20:39.294Z"
   },
   "anamenaybelinda_las12": {
     "artist": "Ana Mena y Belinda",
@@ -74464,11 +74682,12 @@
     "plays": [
       1789628281948,
       1789755066133,
-      1789830813545
+      1789830813545,
+      1789902510589
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-17T06:58:01.948Z",
-    "lastSeen": "2026-09-19T15:13:33.545Z"
+    "lastSeen": "2026-09-20T11:08:30.589Z"
   },
   "davidguettateddyswimstonesandi_gonegonegone": {
     "artist": "David Guetta, Teddy Swims & Tones And I",
@@ -75281,11 +75500,12 @@
       1789633423071,
       1789729379111,
       1789833848780,
-      1789866669077
+      1789866669077,
+      1789899849274
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-17T08:23:43.071Z",
-    "lastSeen": "2026-09-20T01:11:09.077Z"
+    "lastSeen": "2026-09-20T10:24:09.274Z"
   },
   "icemc_thinkabouttheway": {
     "artist": "Ice Mc",
@@ -76047,11 +76267,12 @@
     ],
     "plays": [
       1789636728467,
-      1789770647359
+      1789770647359,
+      1789901334340
     ],
-    "playCount7d": 2,
+    "playCount7d": 3,
     "firstSeen": "2026-09-17T09:18:48.467Z",
-    "lastSeen": "2026-09-18T22:30:47.359Z"
+    "lastSeen": "2026-09-20T10:48:54.340Z"
   },
   "camarondelaislatheroyalphilharmonicorchestra_soygitano": {
     "artist": "Camarón de la Isla,The Royal Philharmonic Orchestra",
@@ -76510,11 +76731,12 @@
       1789743848379,
       1789781618623,
       1789786268643,
-      1789851848874
+      1789851848874,
+      1789902459273
     ],
-    "playCount7d": 6,
+    "playCount7d": 7,
     "firstSeen": "2026-09-17T09:56:43.129Z",
-    "lastSeen": "2026-09-19T21:04:08.874Z"
+    "lastSeen": "2026-09-20T11:07:39.273Z"
   },
   "rufusdusol_innerbloom": {
     "artist": "Rüfüs Du Sol",
@@ -78011,11 +78233,12 @@
       1789646435490,
       1789702827983,
       1789768317177,
-      1789823743758
+      1789823743758,
+      1789902040483
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-17T12:00:35.490Z",
-    "lastSeen": "2026-09-19T13:15:43.758Z"
+    "lastSeen": "2026-09-20T11:00:40.483Z"
   },
   "frankreyes_sevamuriendoelamor": {
     "artist": "Frank Reyes",
@@ -78339,11 +78562,12 @@
       "CADENADIAL"
     ],
     "plays": [
-      1789649182069
+      1789649182069,
+      1789900938753
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-17T12:46:22.069Z",
-    "lastSeen": "2026-09-17T12:46:22.069Z"
+    "lastSeen": "2026-09-20T10:42:18.753Z"
   },
   "ninapastori_desdelaazotea": {
     "artist": "Niña Pastori",
@@ -78454,11 +78678,12 @@
       1789758878521,
       1789797638690,
       1789800548719,
-      1789803038727
+      1789803038727,
+      1789902039291
     ],
-    "playCount7d": 8,
+    "playCount7d": 9,
     "firstSeen": "2026-09-17T13:07:13.297Z",
-    "lastSeen": "2026-09-19T07:30:38.727Z"
+    "lastSeen": "2026-09-20T11:00:39.291Z"
   },
   "culturebeat_mrvain": {
     "artist": "Culture Beat",
@@ -78635,11 +78860,12 @@
     ],
     "plays": [
       1789651229714,
-      1789780838611
+      1789780838611,
+      1789902900282
     ],
-    "playCount7d": 2,
+    "playCount7d": 3,
     "firstSeen": "2026-09-17T13:20:29.714Z",
-    "lastSeen": "2026-09-19T01:20:38.611Z"
+    "lastSeen": "2026-09-20T11:15:00.282Z"
   },
   "lillywoodtheprickandrobinschulz_prayerinc": {
     "artist": "Lilly Wood & The Prick And Robin Schulz",
@@ -78680,11 +78906,12 @@
     "plays": [
       1789652010277,
       1789695328485,
-      1789752116794
+      1789752116794,
+      1789902586328
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-17T13:33:30.277Z",
-    "lastSeen": "2026-09-18T17:21:56.794Z"
+    "lastSeen": "2026-09-20T11:09:46.328Z"
   },
   "alessosebastianingrosso_calling": {
     "artist": "Alesso,Sebastian Ingrosso",
@@ -79914,11 +80141,12 @@
     ],
     "plays": [
       1789659698733,
-      1789801224822
+      1789801224822,
+      1789902024559
     ],
-    "playCount7d": 2,
+    "playCount7d": 3,
     "firstSeen": "2026-09-17T15:41:38.733Z",
-    "lastSeen": "2026-09-19T07:00:24.822Z"
+    "lastSeen": "2026-09-20T11:00:24.559Z"
   },
   "thedoobiebrothers_whatafoolbelieves": {
     "artist": "The Doobie Brothers",
@@ -82018,11 +82246,12 @@
       1789768268871,
       1789865469011,
       1789872669011,
-      1789888989207
+      1789888989207,
+      1789875069200
     ],
-    "playCount7d": 7,
+    "playCount7d": 8,
     "firstSeen": "2026-09-17T19:00:26.625Z",
-    "lastSeen": "2026-09-20T07:23:09.207Z"
+    "lastSeen": "2026-09-20T03:31:09.200Z"
   },
   "hectoracosta34eltorito34_lamorena": {
     "artist": "Héctor Acosta &#34;El Torito&#34;",
@@ -82057,11 +82286,12 @@
       "KISSFM"
     ],
     "plays": [
-      1789674026672
+      1789674026672,
+      1789900839153
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-17T19:40:26.672Z",
-    "lastSeen": "2026-09-17T19:40:26.672Z"
+    "lastSeen": "2026-09-20T10:40:39.153Z"
   },
   "mana_rayandoelsolmtvunplugged": {
     "artist": "Maná",
@@ -82248,11 +82478,12 @@
       1789678086257,
       1789812038790,
       1789814708845,
-      1789890249431
+      1789890249431,
+      1789892709255
     ],
-    "playCount7d": 5,
+    "playCount7d": 6,
     "firstSeen": "2026-09-17T20:00:26.710Z",
-    "lastSeen": "2026-09-20T07:44:09.431Z"
+    "lastSeen": "2026-09-20T08:25:09.255Z"
   },
   "kiss_crazycrazynights": {
     "artist": "Kiss",
@@ -83943,11 +84174,12 @@
       1789816988777,
       1789776188777,
       1789814348871,
-      1789773548871
+      1789773548871,
+      1789903149308
     ],
-    "playCount7d": 8,
+    "playCount7d": 9,
     "firstSeen": "2026-09-17T22:25:36.316Z",
-    "lastSeen": "2026-09-18T23:19:08.871Z"
+    "lastSeen": "2026-09-20T11:19:09.308Z"
   },
   "victorwaill_meenamorecomonunca": {
     "artist": "Victor Waill",
@@ -85505,11 +85737,12 @@
     ],
     "plays": [
       1789694816090,
-      1789784569169
+      1789784569169,
+      1789903574801
     ],
-    "playCount7d": 2,
+    "playCount7d": 3,
     "firstSeen": "2026-09-18T01:26:56.090Z",
-    "lastSeen": "2026-09-19T02:22:49.169Z"
+    "lastSeen": "2026-09-20T11:26:14.801Z"
   },
   "joeveras_lutoenmicorazon": {
     "artist": "Joe Veras",
@@ -85717,11 +85950,12 @@
       1789698096348,
       1789700766428,
       1789703886475,
-      1789891869251
+      1789891869251,
+      1789894329164
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-18T02:21:36.348Z",
-    "lastSeen": "2026-09-20T08:11:09.251Z"
+    "lastSeen": "2026-09-20T08:52:09.164Z"
   },
   "acdc_hellsbells": {
     "artist": "Ac/dc",
@@ -85861,11 +86095,12 @@
       1789698666379,
       1789701186428,
       1789704306475,
-      1789890459431
+      1789890459431,
+      1789892919255
     ],
-    "playCount7d": 4,
+    "playCount7d": 5,
     "firstSeen": "2026-09-18T02:31:06.379Z",
-    "lastSeen": "2026-09-20T07:47:39.431Z"
+    "lastSeen": "2026-09-20T08:28:39.255Z"
   },
   "madonna_holiday": {
     "artist": "Madonna",
@@ -86528,11 +86763,12 @@
       "HITFM"
     ],
     "plays": [
-      1789703886412
+      1789703886412,
+      1789902039291
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-18T03:58:06.412Z",
-    "lastSeen": "2026-09-18T03:58:06.412Z"
+    "lastSeen": "2026-09-20T11:00:39.291Z"
   },
   "alexubago_aunquenotepuedaver": {
     "artist": "Álex Ubago",
@@ -87399,11 +87635,12 @@
     ],
     "plays": [
       1789713696359,
-      1789716179191
+      1789716179191,
+      1789901259283
     ],
-    "playCount7d": 2,
+    "playCount7d": 3,
     "firstSeen": "2026-09-18T06:41:36.359Z",
-    "lastSeen": "2026-09-18T07:22:59.191Z"
+    "lastSeen": "2026-09-20T10:47:39.283Z"
   },
   "lolita_ynomeimportanada": {
     "artist": "Lolita",
@@ -90794,11 +91031,12 @@
       "HITFM"
     ],
     "plays": [
-      1789749218357
+      1789749218357,
+      1789901469293
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-18T16:33:38.357Z",
-    "lastSeen": "2026-09-18T16:33:38.357Z"
+    "lastSeen": "2026-09-20T10:51:09.293Z"
   },
   "amaral_todalanocheenlacalle": {
     "artist": "Amaral",
@@ -91681,11 +91919,12 @@
       "CADENADIAL"
     ],
     "plays": [
-      1789759448273
+      1789759448273,
+      1789903496656
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-18T19:24:08.273Z",
-    "lastSeen": "2026-09-18T19:24:08.273Z"
+    "lastSeen": "2026-09-20T11:24:56.656Z"
   },
   "nuriafergoalgueroaugusto_seraelamor": {
     "artist": "Nuria Fergó,Algueró, Augusto",
@@ -92381,11 +92620,12 @@
       "LATINA_104"
     ],
     "plays": [
-      1789765868397
+      1789765868397,
+      1789899309151
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-18T21:11:08.397Z",
-    "lastSeen": "2026-09-18T21:11:08.397Z"
+    "lastSeen": "2026-09-20T10:15:09.151Z"
   },
   "ramontorres_amorcondelicadeza": {
     "artist": "Ramón Torres",
@@ -94012,11 +94252,12 @@
       "ROCKFM"
     ],
     "plays": [
-      1789784648618
+      1789784648618,
+      1789900269255
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-19T02:24:08.618Z",
-    "lastSeen": "2026-09-19T02:24:08.618Z"
+    "lastSeen": "2026-09-20T10:31:09.255Z"
   },
   "mika_relaxtakeiteasymika": {
     "artist": "Mika",
@@ -95556,11 +95797,12 @@
     "plays": [
       1789808556079,
       1789826060084,
-      1789891543203
+      1789891543203,
+      1789902214607
     ],
-    "playCount7d": 3,
+    "playCount7d": 4,
     "firstSeen": "2026-09-19T09:02:36.079Z",
-    "lastSeen": "2026-09-20T08:05:43.203Z"
+    "lastSeen": "2026-09-20T11:03:34.607Z"
   },
   "india_vivirlonuestro": {
     "artist": "India",
@@ -99629,11 +99871,12 @@
       "LATINA_104"
     ],
     "plays": [
-      1789871469011
+      1789871469011,
+      1789873869200
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-20T02:31:09.011Z",
-    "lastSeen": "2026-09-20T02:31:09.011Z"
+    "lastSeen": "2026-09-20T03:11:09.200Z"
   },
   "pabloalboranindiarasfair_vamonosdeaqui": {
     "artist": "Pablo Alborán,Indiara Sfair",
@@ -100356,14 +100599,16 @@
     "artist": "Enrique Iglesias,Maria Becerra",
     "title": "Asi es la vida",
     "stations": [
-      "LOS40"
+      "LOS40",
+      "CADENADIAL"
     ],
     "plays": [
-      1789887446308
+      1789887446308,
+      1789899494877
     ],
-    "playCount7d": 1,
+    "playCount7d": 2,
     "firstSeen": "2026-09-20T06:57:26.308Z",
-    "lastSeen": "2026-09-20T06:57:26.308Z"
+    "lastSeen": "2026-09-20T10:18:14.877Z"
   },
   "dualipablackpink_kissandmakeup": {
     "artist": "Dua Lipa & Blackpink",
@@ -100845,5 +101090,226 @@
     "playCount7d": 1,
     "firstSeen": "2026-09-20T09:59:09.172Z",
     "lastSeen": "2026-09-20T09:59:09.172Z"
+  },
+  "josealbertoelcanario_disculpemesenora": {
+    "artist": "Jose Alberto El Canario",
+    "title": "Disculpeme Señora",
+    "stations": [
+      "SALSA_RADIO"
+    ],
+    "plays": [
+      1789900269224
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-20T10:31:09.224Z",
+    "lastSeen": "2026-09-20T10:31:09.224Z"
+  },
+  "davidkada_dondeestaras": {
+    "artist": "David Kada",
+    "title": "Dónde Estarás",
+    "stations": [
+      "LATINA_104"
+    ],
+    "plays": [
+      1789900029151
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-20T10:27:09.151Z",
+    "lastSeen": "2026-09-20T10:27:09.151Z"
+  },
+  "thepretenders_illstandbyyou": {
+    "artist": "The Pretenders",
+    "title": "I'll stand by you",
+    "stations": [
+      "LOS40_CLASSIC"
+    ],
+    "plays": [
+      1789901291180
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-20T10:48:11.180Z",
+    "lastSeen": "2026-09-20T10:48:11.180Z"
+  },
+  "ramonorlando_nohaynadiemas": {
+    "artist": "Ramón Orlando",
+    "title": "No Hay Nadie Mas",
+    "stations": [
+      "MERENGUE_RADIO"
+    ],
+    "plays": [
+      1789901469246
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-20T10:51:09.246Z",
+    "lastSeen": "2026-09-20T10:51:09.246Z"
+  },
+  "hectoracosta34eltorito34_perdonamelavida": {
+    "artist": "Héctor Acosta &#34;El Torito&#34;",
+    "title": "Perdóname la Vida",
+    "stations": [
+      "LATINA_104"
+    ],
+    "plays": [
+      1789901469201
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-20T10:51:09.201Z",
+    "lastSeen": "2026-09-20T10:51:09.201Z"
+  },
+  "anthonysantos_dimequetefue": {
+    "artist": "Anthony Santos",
+    "title": "Dime Que Te Fue",
+    "stations": [
+      "LATINA_104"
+    ],
+    "plays": [
+      1789901229201
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-20T10:47:09.201Z",
+    "lastSeen": "2026-09-20T10:47:09.201Z"
+  },
+  "joeveras_despiadada": {
+    "artist": "Joe Veras",
+    "title": "Despiadada",
+    "stations": [
+      "LATINA_104"
+    ],
+    "plays": [
+      1789900989201
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-20T10:43:09.201Z",
+    "lastSeen": "2026-09-20T10:43:09.201Z"
+  },
+  "thenewyorkband_nadiecomotu": {
+    "artist": "The New York Band",
+    "title": "Nadie Como Tú - Live",
+    "stations": [
+      "LATINA_104"
+    ],
+    "plays": [
+      1789900509201
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-20T10:35:09.201Z",
+    "lastSeen": "2026-09-20T10:35:09.201Z"
+  },
+  "edwinstarr_war": {
+    "artist": "Edwin Starr",
+    "title": "War",
+    "stations": [
+      "ROCKFM"
+    ],
+    "plays": [
+      1789902459291
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-20T11:07:39.291Z",
+    "lastSeen": "2026-09-20T11:07:39.291Z"
+  },
+  "frankieruiz_primerofuiyo": {
+    "artist": "Frankie Ruiz",
+    "title": "Primero Fui Yo",
+    "stations": [
+      "SALSA_RADIO"
+    ],
+    "plays": [
+      1789902189207
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-20T11:03:09.207Z",
+    "lastSeen": "2026-09-20T11:03:09.207Z"
+  },
+  "titorojas_elamorquetumedas": {
+    "artist": "Tito Rojas",
+    "title": "El Amor Que Tu Me Das",
+    "stations": [
+      "SALSA_RADIO"
+    ],
+    "plays": [
+      1789901709207
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-20T10:55:09.207Z",
+    "lastSeen": "2026-09-20T10:55:09.207Z"
+  },
+  "tonorosario_tumujer": {
+    "artist": "Tono Rosario",
+    "title": "Tu Mujer (Live)",
+    "stations": [
+      "MERENGUE_RADIO"
+    ],
+    "plays": [
+      1789902669234
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-20T11:11:09.234Z",
+    "lastSeen": "2026-09-20T11:11:09.234Z"
+  },
+  "josealberto34elcanario34lainsuperable_patapata": {
+    "artist": "José Alberto &#34;El Canario&#34; / La Insuperable",
+    "title": "Pata Pata",
+    "stations": [
+      "LATINA_104"
+    ],
+    "plays": [
+      1789902189200
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-20T11:03:09.200Z",
+    "lastSeen": "2026-09-20T11:03:09.200Z"
+  },
+  "larafabian_otroamorvendraiwillloveagain": {
+    "artist": "Lara Fabian",
+    "title": "Otro amor vendrá (I will love again)",
+    "stations": [
+      "CADENADIAL"
+    ],
+    "plays": [
+      1789902903950
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-20T11:15:03.950Z",
+    "lastSeen": "2026-09-20T11:15:03.950Z"
+  },
+  "camarondelaislaraimundoamadortomatito_laleyendadeltiempo": {
+    "artist": "Camarón de la Isla,Raimundo Amador,Tomatito",
+    "title": "La leyenda del tiempo",
+    "stations": [
+      "RADIOLE"
+    ],
+    "plays": [
+      1789902952617
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-20T11:15:52.617Z",
+    "lastSeen": "2026-09-20T11:15:52.617Z"
+  },
+  "frankreyes_24horas": {
+    "artist": "Frank Reyes",
+    "title": "24 Horas",
+    "stations": [
+      "LATINA_104"
+    ],
+    "plays": [
+      1789903389218
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-20T11:23:09.218Z",
+    "lastSeen": "2026-09-20T11:23:09.218Z"
+  },
+  "joeveras_tontocorazon": {
+    "artist": "Joe Veras",
+    "title": "Tonto Corazón",
+    "stations": [
+      "LATINA_104"
+    ],
+    "plays": [
+      1789903149218
+    ],
+    "playCount7d": 1,
+    "firstSeen": "2026-09-20T11:19:09.218Z",
+    "lastSeen": "2026-09-20T11:19:09.218Z"
   }
 }
