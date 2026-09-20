@@ -1585,22 +1585,6 @@ app.get('/api/playlists', (req, res) => {
                                jellyfinVideosLookup.get(cleanTrackKey(`${artist} - ${title}`)) || null;
 
             let audioUrl = audioInfo ? audioInfo.relUrl : null;
-            // Si el archivo de audio está truncado (<2.5MB) pero tenemos videoclip completo, usar el videoclip como audio
-            if (audioInfo && audioInfo.isTruncated) {
-                if (videoInfo && videoInfo.mp4) {
-                    audioUrl = `/media-videos/${videoInfo.mp4.replace(/\\/g, '/')}`;
-                } else if (jellyVideo && jellyVideo.streamUrl) {
-                    audioUrl = jellyVideo.streamUrl;
-                }
-            }
-            // Si no hay MP3 pero hay videoclip en local o Jellyfin, usar como audio stream de respaldo
-            if (!audioUrl) {
-                if (videoInfo && videoInfo.mp4) {
-                    audioUrl = `/media-videos/${videoInfo.mp4.replace(/\\/g, '/')}`;
-                } else if (jellyVideo && jellyVideo.streamUrl) {
-                    audioUrl = jellyVideo.streamUrl;
-                }
-            }
 
             const meta = getTrackMetadata(artist, title);
             const analysis = findAnalysisForTrack(artist, title);

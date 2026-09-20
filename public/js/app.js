@@ -486,8 +486,6 @@ function formatTime(seconds) {
                 });
             }
         });
-            }
-        });
     }
 
     function initCoverChangeFeature() {
