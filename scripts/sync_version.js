@@ -15,12 +15,15 @@ if (newVersion) {
     let patch = parseInt(parts[2], 10) || 0;
 
     patch++;
-    if (patch >= 100) {
+    if (patch >= 10) {
         minor++;
         patch = 0;
+        if (minor >= 10) {
+            major++;
+            minor = 0;
+        }
     }
-    const patchStr = patch < 10 ? `0${patch}` : `${patch}`;
-    pkg.version = `${major}.${minor}.${patchStr}`;
+    pkg.version = `${major}.${minor}.${patch}`;
 }
 
 fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
