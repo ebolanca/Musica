@@ -1875,7 +1875,6 @@ function formatTime(seconds) {
         currentQueueIndex = 0;
         playQueueTrack(song);
     }
-    }
 
     
     
