@@ -2090,10 +2090,30 @@ app.post('/api/track/rename', blockInPublicMode, async (req, res) => {
         titleOverrides[titleOverrideKey(oldArtist, oldTitle)] = { artist: cleanNewArtist, title: cleanNewTitle };
         saveTitleOverrides();
 
-        // La metadata cacheada (portada, álbum y sobre todo duración) se resolvió buscando
-        // con el título viejo, posiblemente contra la canción equivocada. Sin borrarla y
-        // volver a resolverla ahora, "buscar otra versión" seguiría comparando contra esa
-        // duración incorrecta indefinidamente, aunque el título ya esté bien.
+        // Parsear duración (soporta mm:ss, mm.ss, mm,ss o segundos directos)
+        let updatedDurationMs = null;
+        let updatedDurationFmt = null;
+        if (duration !== undefined && duration !== null && String(duration).trim()) {
+            const rawD = String(duration).trim().replace(',', '.');
+            let durSec = 0;
+            if (rawD.includes(':')) {
+                const parts = rawD.split(':');
+                durSec = (parseInt(parts[0], 10) || 0) * 60 + (parseFloat(parts[1]) || 0);
+            } else if (rawD.includes('.')) {
+                const parts = rawD.split('.');
+                // Si el usuario escribe 3.59 significa 3 min 59 seg
+                durSec = (parseInt(parts[0], 10) || 0) * 60 + (parseFloat(parts[1]) || 0);
+            } else if (!isNaN(rawD)) {
+                durSec = parseFloat(rawD);
+            }
+            if (durSec > 20) {
+                updatedDurationMs = Math.round(durSec * 1000);
+                const s = Math.round(durSec);
+                updatedDurationFmt = `${Math.floor(s / 60)}:${(s % 60).toString().padStart(2, '0')}`;
+            }
+        }
+
+        // Limpiar claves viejas en metadataCache
         const oldNormTarget = `${(oldArtist || '').toLowerCase().replace(/,/g, ' ').replace(/&/g, ' ').replace(/[^a-z0-9]/g, '')}${cleanTrackTitle(oldTitle).toLowerCase().replace(/[^a-z0-9]/g, '')}`;
         for (const k of Object.keys(metadataCache)) {
             const normK = k.toLowerCase().replace(/,/g, ' ').replace(/&/g, ' ').replace(/[^a-z0-9]/g, '');
@@ -2101,21 +2121,26 @@ app.post('/api/track/rename', blockInPublicMode, async (req, res) => {
                 delete metadataCache[k];
             }
         }
+
         try {
-            const resolved = await resolveTrackMetadataOnline(cleanNewArtist, cleanNewTitle);
-            if (resolved) {
-                const cleanT = cleanTrackTitle(cleanNewTitle);
-                metadataCache[`${cleanNewArtist} - ${cleanNewTitle}`.toLowerCase()] = resolved;
-                metadataCache[`${cleanNewArtist} - ${cleanT}`.toLowerCase()] = resolved;
-                metadataCache[cleanT.toLowerCase()] = resolved;
-                saveMetadataCacheDebounced();
+            let resolved = await resolveTrackMetadataOnline(cleanNewArtist, cleanNewTitle) || {};
+            if (updatedDurationMs) {
+                resolved.durationMs = updatedDurationMs;
+                resolved.durationFmt = updatedDurationFmt;
             }
+            const cleanT = cleanTrackTitle(cleanNewTitle);
+            metadataCache[`${cleanNewArtist} - ${cleanNewTitle}`.toLowerCase()] = resolved;
+            metadataCache[`${cleanNewArtist} - ${cleanT}`.toLowerCase()] = resolved;
+            metadataCache[cleanT.toLowerCase()] = resolved;
+            const normKey = `${cleanNewArtist}${cleanT}`.toLowerCase().replace(/[^a-z0-9]/g, '');
+            metadataCache[normKey] = resolved;
+            saveMetadataCacheDebounced();
         } catch(e) {
             console.error('Error re-resolviendo metadata tras renombrar:', e.message);
         }
 
         invalidatePlaylistsCache();
-        console.log(`✏️ [RENOMBRAR] "${oldArtist} - ${oldTitle}" -> "${cleanNewArtist} - ${cleanNewTitle}"`);
+        console.log(`✏️ [RENOMBRAR] "${oldArtist} - ${oldTitle}" -> "${cleanNewArtist} - ${cleanNewTitle}" (Duración: ${updatedDurationFmt || 'No modificada'})`);
         res.json({ 
             success: true, 
             artist: cleanNewArtist, 
