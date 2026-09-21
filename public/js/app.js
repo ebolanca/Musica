@@ -8,9 +8,10 @@ let isCastSdkReady = false;
 window['__onGCastApiAvailable'] = function(isAvailable) {
     if (isAvailable && window.cast && cast.framework) {
         try {
-            const customAppId = 'D9CD2AFE';
             const savedCastId = (typeof safeStorage !== 'undefined' ? safeStorage.getItem('cast_custom_app_id') : null) || window.__CAST_CUSTOM_APP_ID;
-            const activeReceiverId = (savedCastId === 'DEFAULT') ? chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID : (savedCastId || customAppId);
+            // Por defecto usar el receptor universal oficial de Google (DEFAULT_MEDIA_RECEIVER_APP_ID: CC1AD845)
+            // para que todos los dispositivos (Dormitorio, Comedor, etc.) se conecten de inmediato sin cuelgues ni esperas.
+            const activeReceiverId = (savedCastId === 'TV' || savedCastId === 'D9CD2AFE') ? 'D9CD2AFE' : chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID;
 
             cast.framework.CastContext.getInstance().setOptions({
                 receiverApplicationId: activeReceiverId,
@@ -190,7 +191,7 @@ function formatTime(seconds) {
             const res = await fetch(`/api/media-token?path=${encodeURIComponent(relPath)}`);
             const data = await res.json();
             if (data && data.url) {
-                const tokenUrl = new URL(data.url, window.location.origin).href;
+                const tokenUrl = encodeURI(decodeURI(new URL(data.url, window.location.origin).href));
                 const resumeAt = mainMusicAudio.currentTime || 0;
                 const wasPlaying = !mainMusicAudio.paused;
                 mainMusicAudio.src = tokenUrl;
@@ -318,7 +319,9 @@ function formatTime(seconds) {
                         const data = await res.json();
                         if (data && data.url) {
                             const tokenUrl = new URL(data.url, window.location.origin);
-                            finalUrl = tokenUrl.href;
+                            finalUrl = encodeURI(decodeURI(tokenUrl.href));
+                        } else {
+                            finalUrl = encodeURI(decodeURI(finalUrl));
                         }
                     } catch(e){}
                 }
@@ -520,7 +523,7 @@ function formatTime(seconds) {
         }
 
         function toggleCastReceiverMode() {
-            const currentMode = safeStorage.getItem('cast_custom_app_id') === 'DEFAULT' ? 'DEFAULT' : 'TV';
+            const currentMode = (safeStorage.getItem('cast_custom_app_id') === 'TV' || safeStorage.getItem('cast_custom_app_id') === 'D9CD2AFE') ? 'TV' : 'DEFAULT';
             if (currentMode === 'TV') {
                 const conf = confirm('📺 Estás en Modo TV (Receptor con vinilo y letras D9CD2AFE).\n\nSi Google aún no ha terminado de propagar tu app a tu Chromecast o no aparece en la lista:\n\n¿Deseas cambiar temporalmente al Modo Estándar de Google (compatible de inmediato con todos tus dispositivos)?\n\n(La página se recargará automáticamente)');
                 if (conf) {

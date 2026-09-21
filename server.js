@@ -1585,7 +1585,7 @@ app.get('/api/playlists', (req, res) => {
                                jellyfinVideosLookup.get(cleanTrackKey(cleanTitle)) || 
                                jellyfinVideosLookup.get(cleanTrackKey(`${artist} - ${title}`)) || null;
 
-            let audioUrl = audioInfo ? audioInfo.relUrl : null;
+            let audioUrl = audioInfo ? audioInfo.relUrl : (videoInfo && videoInfo.mp4 ? `/media-videos/${encodeURI(videoInfo.mp4.replace(/\\/g, '/'))}` : null);
 
             const meta = getTrackMetadata(artist, title);
             const analysis = findAnalysisForTrack(artist, title);
