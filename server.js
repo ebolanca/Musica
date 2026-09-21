@@ -726,7 +726,7 @@ async function resolveTrackMetadataOnline(artist, rawTitle) {
     let deezerMeta = null;
     let itunesMeta = null;
 
-    const COMPILATION_OR_DERIVATIVE = /\b(karaoke|tribute|greatest hits|best of|the hits|the best|gold|platinum|collection|anthology|definitive|anniversary|deluxe|edition|remixes|acoustic|live|en vivo|directo)\b/i;
+    const COMPILATION_OR_DERIVATIVE = /\b(super hits|greatest hits|best of|the best|the very best|the hits|all the hits|smash hits|mega hits|top hits|chart hits|number 1|number one|party hits|club hits|disco hits|retro hits|love songs|ballads|éxitos|exitos|grandes éxitos|grandes exitos|superéxitos|superexitos|todo éxitos|sus grandes éxitos|canciones de oro|lo mejor|lo mejor de|colección|coleccion|collection|anthology|antología|antologia|definitive|ultimate|the ultimate|essential|the essential|complete|the complete|singles|the singles|the platinum|platinum collection|gold collection|gold|platino|soundtrack|music from|motion picture|original soundtrack|b\.s\.o\.|ost|workout|fitness|training|aerobics|gym|various artists|varios artistas|recopilatorio|tribute|tributo|karaoke|pub songs)\b/i;
     const NON_ORIGINAL_PATTERN = /\b(remix|remaster|remastered|live|acoustic|unplugged|demo|mono|stereo|sped up|slowed|revisited|version \d{4}|dub|radio edit|club edit|extended mix)\b/i;
 
     const normText = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
@@ -761,8 +761,8 @@ async function resolveTrackMetadataOnline(artist, rawTitle) {
 
                 // Ordenar: primero álbumes de estudio (no compilaciones ni recopilatorios), luego fecha más antigua
                 candidatePool.sort((a, b) => {
-                    const aComp = COMPILATION_OR_DERIVATIVE.test(a.collectionName || '');
-                    const bComp = COMPILATION_OR_DERIVATIVE.test(b.collectionName || '');
+                    const aComp = COMPILATION_OR_DERIVATIVE.test(a.collectionName || '') || /various artists/i.test(a.collectionArtistName || '');
+                    const bComp = COMPILATION_OR_DERIVATIVE.test(b.collectionName || '') || /various artists/i.test(b.collectionArtistName || '');
                     if (aComp !== bComp) return aComp ? 1 : -1;
 
                     const aDate = a.releaseDate || '9999';
