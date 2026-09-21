@@ -5850,3 +5850,14 @@ body.public-mode .cinema-equalizer-wrap {
     color: #22c55e;
     box-shadow: 0 0 10px rgba(29, 185, 84, 0.2);
 }
+
+/* ⏱️ Duración editable al hacer clic */
+.cinema-time-dur-editable {
+    cursor: pointer;
+    border-bottom: 1px dashed rgba(255,255,255,0.3);
+    transition: all 0.2s ease;
+}
+.cinema-time-dur-editable:hover {
+    color: var(--spotify-green, #1db954) !important;
+    border-bottom-color: var(--spotify-green, #1db954);
+}

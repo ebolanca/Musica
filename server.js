@@ -2078,7 +2078,7 @@ app.get('/api/covers/search', blockInPublicMode, async (req, res) => {
 // ==========================================================================
 app.post('/api/track/rename', blockInPublicMode, async (req, res) => {
     try {
-        const { oldArtist, oldTitle, newArtist, newTitle } = req.body;
+        const { oldArtist, oldTitle, newArtist, newTitle, duration } = req.body;
         if (!oldArtist || !oldTitle || !newArtist || !newTitle) {
             return res.status(400).json({ error: 'Faltan parámetros requeridos' });
         }
@@ -2116,7 +2116,13 @@ app.post('/api/track/rename', blockInPublicMode, async (req, res) => {
 
         invalidatePlaylistsCache();
         console.log(`✏️ [RENOMBRAR] "${oldArtist} - ${oldTitle}" -> "${cleanNewArtist} - ${cleanNewTitle}"`);
-        res.json({ success: true, artist: cleanNewArtist, title: cleanNewTitle });
+        res.json({ 
+            success: true, 
+            artist: cleanNewArtist, 
+            title: cleanNewTitle,
+            durationMs: updatedDurationMs,
+            durationFmt: updatedDurationFmt
+        });
     } catch(err) {
         console.error('Error en /api/track/rename:', err);
         res.status(500).json({ error: err.message });

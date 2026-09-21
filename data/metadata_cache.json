@@ -20897,9 +20897,9 @@
     "releaseYear": "1998",
     "releaseDate": "1998-05-12",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7b9a0b3b4f75736802eed274c137bccd/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 157000,
-    "durationFmt": "2:37",
-    "source": "Apple Music Original Studio Master Catalog"
+    "durationMs": 221000,
+    "durationFmt": "3:41",
+    "source": "Lenny Kravitz Official Studio Album 5"
   },
   "lenny kravitz - it ain't over 'til it's over": {
     "title": "It Ain't Over 'Til It's Over",
@@ -77281,18 +77281,18 @@
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "lennykravitzflyaway": {
-    "title": "FLY",
-    "displayTitle": "FLY",
-    "artist": "Quavo",
-    "album": "FLY",
-    "year": "2024",
-    "date": "2024-08-09",
-    "releaseYear": "2024",
-    "releaseDate": "2024-08-09",
+    "title": "Fly Away",
+    "displayTitle": "Fly Away",
+    "artist": "Lenny Kravitz",
+    "album": "5",
+    "year": "1998",
+    "date": "1998-05-12",
+    "releaseYear": "1998",
+    "releaseDate": "1998-05-12",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7b9a0b3b4f75736802eed274c137bccd/1000x1000-000000-80-0-0.jpg",
-    "durationMs": 157000,
-    "durationFmt": "2:37",
-    "source": "Deezer / Apple Music Official Master Catalog"
+    "durationMs": 221000,
+    "durationFmt": "3:41",
+    "source": "Lenny Kravitz Official Studio Album 5"
   },
   "lennykravitzitaintovertilitsover": {
     "title": "It Ain't Over 'Til It's Over",
@@ -87918,15 +87918,18 @@
     "source": "iTunes / Apple Music Original Studio Master"
   },
   "lenny kravitz - fly": {
-    "title": "Fly",
-    "displayTitle": "Fly",
+    "title": "Fly Away",
+    "displayTitle": "Fly Away",
     "artist": "Lenny Kravitz",
-    "album": "Blue Electric Light",
-    "year": "2024",
-    "releaseYear": "2024",
-    "releaseDate": "2024-05-24",
-    "durationFmt": "2:37",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/9feea9ca1b75df9c3140fc3bbf61dd99/1000x1000-000000-80-0-0.jpg"
+    "album": "5",
+    "year": "1998",
+    "date": "1998-05-12",
+    "releaseYear": "1998",
+    "releaseDate": "1998-05-12",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7b9a0b3b4f75736802eed274c137bccd/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 221000,
+    "durationFmt": "3:41",
+    "source": "Lenny Kravitz Official Studio Album 5"
   },
   "milli vanilli - girl i'm gonna miss you": {
     "title": "Girl I'm Gonna Miss You",
@@ -101860,5 +101863,19 @@
     "durationMs": 158000,
     "durationFmt": "2:38",
     "source": "Deezer / Apple Music Official Master Catalog"
+  },
+  "fly away": {
+    "title": "Fly Away",
+    "displayTitle": "Fly Away",
+    "artist": "Lenny Kravitz",
+    "album": "5",
+    "year": "1998",
+    "date": "1998-05-12",
+    "releaseYear": "1998",
+    "releaseDate": "1998-05-12",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7b9a0b3b4f75736802eed274c137bccd/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 221000,
+    "durationFmt": "3:41",
+    "source": "Lenny Kravitz Official Studio Album 5"
   }
 }

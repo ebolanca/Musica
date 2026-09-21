@@ -842,6 +842,7 @@ function formatTime(seconds) {
         const btnCloseEditTitle = document.getElementById('btn-close-edit-title');
         const inputEditArtist = document.getElementById('input-edit-title-artist');
         const inputEditTitleField = document.getElementById('input-edit-title-title');
+        const inputEditDurationField = document.getElementById('input-edit-title-duration');
         const btnSaveEditTitle = document.getElementById('btn-save-edit-title');
         const editTitleStatusMsg = document.getElementById('edit-title-status-msg');
 
@@ -863,6 +864,14 @@ function formatTime(seconds) {
             }
             if (inputEditArtist) inputEditArtist.value = editingTrack.artist || '';
             if (inputEditTitleField) inputEditTitleField.value = editingTrack.title || '';
+            if (inputEditDurationField) {
+                let dFmt = editingTrack.durationFmt;
+                if (!dFmt && editingTrack.durationMs) {
+                    const sec = Math.round(editingTrack.durationMs / 1000);
+                    dFmt = `${Math.floor(sec / 60)}:${(sec % 60).toString().padStart(2, '0')}`;
+                }
+                inputEditDurationField.value = dFmt || '';
+            }
             if (editTitleStatusMsg) editTitleStatusMsg.style.display = 'none';
             if (modalEditTitle) {
                 modalEditTitle.style.display = 'flex';
@@ -884,6 +893,13 @@ function formatTime(seconds) {
             });
         }
         if (btnCloseEditTitle) btnCloseEditTitle.addEventListener('click', closeEditTitleModal);
+        if (cinemaTimeDur) {
+            cinemaTimeDur.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openEditTitleModal();
+                if (inputEditDurationField) setTimeout(() => inputEditDurationField.focus(), 150);
+            });
+        }
         if (modalEditTitle) {
             modalEditTitle.addEventListener('click', (e) => {
                 if (e.target === modalEditTitle) closeEditTitleModal();
@@ -909,7 +925,8 @@ function formatTime(seconds) {
                             oldArtist: editingTrack.artist,
                             oldTitle: editingTrack.title,
                             newArtist,
-                            newTitle
+                            newTitle,
+                            duration: inputEditDurationField ? inputEditDurationField.value.trim() : null
                         })
                     });
                     const data = await res.json();
@@ -923,6 +940,12 @@ function formatTime(seconds) {
                         preloadedDetailsCache.delete(oldKey);
                         editingTrack.artist = data.artist;
                         editingTrack.title = data.title;
+                        if (data.durationFmt && data.durationMs) {
+                            editingTrack.durationFmt = data.durationFmt;
+                            editingTrack.durationMs = data.durationMs;
+                            if (cinemaTimeDur) cinemaTimeDur.textContent = data.durationFmt;
+                            if (musicTimeDur) musicTimeDur.textContent = data.durationFmt;
+                        }
                         editingTrack.rawTitle = data.title;
                         preloadedDetailsCache.delete(getTrackPreloadKey(editingTrack));
                         renderCinemaTrack(editingTrack);

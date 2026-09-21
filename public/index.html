@@ -18,7 +18,7 @@
             </div>
             <div class="logo-title">
                 <h1>Música</h1>
-                <p>Plataforma de Videoclips & Análisis Sónico v1.9.9</p>
+                <p>Plataforma de Videoclips & Análisis Sónico v2.0.0</p>
             </div>
         </div>
 
@@ -345,7 +345,7 @@
                 <div class="cinema-progress-row">
                     <span class="cinema-time" id="cinema-time-curr">0:00</span>
                     <input type="range" id="cinema-seek-slider" min="0" max="100" value="0" class="cinema-seek-bar" title="Desplazar punto de reproducción">
-                    <span class="cinema-time" id="cinema-time-dur">0:00</span>
+                    <span class="cinema-time" id="cinema-time-dur" class="cinema-time cinema-time-dur-editable" title="Haz clic para corregir la duración esperada de esta pista">0:00</span>
                 </div>
                 <div class="cinema-controls">
                     <button class="btn-cinema-ctrl" id="cinema-prev" title="Canción anterior"><i class="fa-solid fa-backward-step"></i></button>
@@ -744,6 +744,10 @@
                     <label style="display:block; font-size:0.82rem; color:var(--text-muted); margin-bottom:6px;">Título</label>
                     <input type="text" id="input-edit-title-title" class="cover-search-input" placeholder="Título">
                 </div>
+                <div>
+                    <label style="display:block; font-size:0.82rem; color:var(--text-muted); margin-bottom:6px;">Duración esperada de estudio <span style="font-size:0.75rem; color:#888;">(formato mm:ss, ej: 3:41)</span></label>
+                    <input type="text" id="input-edit-title-duration" class="cover-search-input" placeholder="3:41">
+                </div>
                 <div id="edit-title-status-msg" style="display: none; padding: 10px; border-radius: 8px; font-size: 0.88rem; text-align: center;"></div>
                 <button class="btn-action" id="btn-save-edit-title" style="background: var(--spotify-green, #1db954); color: #000; font-weight: 700; justify-content: center;">
                     <i class="fa-solid fa-floppy-disk"></i> Guardar corrección
@@ -753,6 +757,6 @@
     </div>
 
     <script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
-    <script src="js/app.js?v=1.9.9"></script>
+    <script src="js/app.js?v=2.0.0"></script>
 </body>
 </html>
