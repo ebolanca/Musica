@@ -36,9 +36,16 @@
             user-select: none;
         }
 
-        /* Ocultar reproductor nativo de Google Cast para usar nuestra interfaz personalizada */
+        /* Mantener activo el reproductor nativo de Google Cast en segundo plano */
         cast-media-player {
-            display: none !important;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 1px !important;
+            height: 1px !important;
+            opacity: 0.001 !important;
+            pointer-events: none !important;
+            z-index: -10 !important;
         }
 
         .tv-container {
@@ -60,16 +67,83 @@
             text-align: center;
         }
 
+        .tv-bg-blur {
+            position: fixed;
+            top: -40px;
+            left: -40px;
+            right: -40px;
+            bottom: -40px;
+            background-size: cover;
+            background-position: center;
+            filter: blur(55px) brightness(0.24);
+            z-index: 0;
+            transition: background-image 1.2s ease-in-out;
+        }
+
+        .tv-container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            padding: 40px 60px;
+            gap: 60px;
+        }
+
+        .tv-vinyl-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            padding-right: 40px;
+        }
+
         .tv-cover-wrapper {
             position: relative;
             width: 380px;
             height: 380px;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(16, 185, 129, 0.15);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(16, 185, 129, 0.25);
             background: #161b22;
-            margin-bottom: 24px;
+            z-index: 2;
             transition: transform 0.4s ease;
+        }
+
+        .tv-vinyl-record {
+            position: absolute;
+            right: -25px;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #333 0%, #151515 20%, #0d0d0d 40%, #222 60%, #0a0a0a 80%, #000 100%);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+            z-index: 1;
+            animation: spinTvVinyl 12s linear infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #222;
+            transition: opacity 0.5s ease;
+        }
+
+        .tv-vinyl-record.paused {
+            animation-play-state: paused;
+        }
+
+        .tv-vinyl-center {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: #10b981;
+            border: 6px solid #111;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        @keyframes spinTvVinyl {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .tv-cover-wrapper:hover {
@@ -309,10 +383,16 @@
     <div class="tv-container">
         <!-- Columna Izquierda -->
         <div class="tv-left-panel">
-            <div class="tv-cover-wrapper">
-                <img id="tv-cover-img" src="" alt="Carátula" class="tv-cover-img">
-                <div class="tv-badge-pill" id="tv-badge-pill">
-                    <i class="fa-solid fa-music"></i> <span id="tv-badge-artist">Música</span>
+            <div class="tv-bg-blur" id="tv-bg-blur"></div>
+            <div class="tv-vinyl-wrap">
+                <div class="tv-cover-wrapper">
+                    <img id="tv-cover-img" src="" alt="Carátula" class="tv-cover-img">
+                    <div class="tv-badge-pill" id="tv-badge-pill">
+                        <i class="fa-solid fa-music"></i> <span id="tv-badge-artist">Música</span>
+                    </div>
+                </div>
+                <div class="tv-vinyl-record" id="tv-vinyl-record">
+                    <div class="tv-vinyl-center"></div>
                 </div>
             </div>
 
@@ -467,6 +547,8 @@
                         if (coverUrl) {
                             coverImg.src = coverUrl;
                             coverImg.style.display = 'block';
+                            const bgBlur = document.getElementById('tv-bg-blur');
+                            if (bgBlur) bgBlur.style.backgroundImage = 'url("' + coverUrl + '")';
                         }
 
                         if (custom.lyrics && Array.isArray(custom.lyrics)) {
@@ -502,14 +584,17 @@
         );
 
         // Actualización de estado (Play / Pause)
+        const tvVinylEl = document.getElementById('tv-vinyl-record');
         playerManager.addEventListener(
             cast.framework.events.EventType.PLAYER_STATE_CHANGED,
             event => {
                 const state = event.playerState;
                 if (state === 'PLAYING') {
                     btnPlay.innerHTML = '<i class="fa-solid fa-pause"></i>';
+                    if (tvVinylEl) tvVinylEl.classList.remove('paused');
                 } else {
                     btnPlay.innerHTML = '<i class="fa-solid fa-play"></i>';
+                    if (tvVinylEl) tvVinylEl.classList.add('paused');
                 }
             }
         );

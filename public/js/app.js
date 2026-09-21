@@ -11,7 +11,8 @@ window['__onGCastApiAvailable'] = function(isAvailable) {
             const savedCastId = (typeof safeStorage !== 'undefined' ? safeStorage.getItem('cast_custom_app_id') : null) || window.__CAST_CUSTOM_APP_ID;
             // Por defecto usar el receptor universal oficial de Google (DEFAULT_MEDIA_RECEIVER_APP_ID: CC1AD845)
             // para que todos los dispositivos (Dormitorio, Comedor, etc.) se conecten de inmediato sin cuelgues ni esperas.
-            const activeReceiverId = (savedCastId === 'TV' || savedCastId === 'D9CD2AFE') ? 'D9CD2AFE' : chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID;
+            // Receptor Modo TV / Modo Cine con vinilo y letras sincronizadas (D9CD2AFE) por defecto
+            const activeReceiverId = (savedCastId === 'DEFAULT') ? chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID : (savedCastId || 'D9CD2AFE');
 
             cast.framework.CastContext.getInstance().setOptions({
                 receiverApplicationId: activeReceiverId,
@@ -550,6 +551,16 @@ function formatTime(seconds) {
                     e.stopPropagation();
                     toggleCastReceiverMode();
                 });
+                // Pulsación larga en pantalla táctil (móvil) para alternar receptor
+                let touchTimer = null;
+                btn.addEventListener('touchstart', () => {
+                    touchTimer = setTimeout(() => {
+                        touchTimer = null;
+                        toggleCastReceiverMode();
+                    }, 800);
+                }, { passive: true });
+                btn.addEventListener('touchend', () => { if (touchTimer) clearTimeout(touchTimer); });
+                btn.addEventListener('touchmove', () => { if (touchTimer) clearTimeout(touchTimer); });
             }
         });
     }
