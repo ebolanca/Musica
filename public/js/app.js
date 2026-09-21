@@ -176,18 +176,24 @@ function formatTime(seconds) {
     // URL. Vive en este ámbito (no dentro de initChromecastFeature) porque playQueueTrack
     // también la necesita, para que cambiar de canción no rompa una transmisión en curso.
     async function makeCurrentSrcCastable() {
-        if (!mainMusicAudio || !mainMusicAudio.currentSrc) return;
+        if (!mainMusicAudio) return;
+        let urlToCheck = mainMusicAudio.currentSrc || mainMusicAudio.src;
+        if ((!urlToCheck || urlToCheck === window.location.href) && currentPlayingSong) {
+            urlToCheck = currentPlayingSong.audioUrl || (currentPlayingSong.videoItem ? currentPlayingSong.videoItem.streamUrl : null) || currentPlayingSong.videoPath;
+        }
+        if (!urlToCheck) return;
         try {
-            const current = new URL(mainMusicAudio.currentSrc);
+            const current = new URL(urlToCheck, window.location.origin);
             const relPath = decodeURIComponent(current.pathname);
             if (!(relPath.startsWith('/media-music/') || relPath.startsWith('/media-videos/'))) return;
             if (current.search.includes('mtoken=')) return; // ya es una URL firmada
             const res = await fetch(`/api/media-token?path=${encodeURIComponent(relPath)}`);
             const data = await res.json();
             if (data && data.url) {
-                const resumeAt = mainMusicAudio.currentTime;
+                const tokenUrl = new URL(data.url, window.location.origin).href;
+                const resumeAt = mainMusicAudio.currentTime || 0;
                 const wasPlaying = !mainMusicAudio.paused;
-                mainMusicAudio.src = data.url;
+                mainMusicAudio.src = tokenUrl;
                 mainMusicAudio.currentTime = resumeAt;
                 if (wasPlaying) { try { await mainMusicAudio.play(); } catch(e){} }
             }
@@ -447,11 +453,18 @@ function formatTime(seconds) {
             mainMusicAudio.remote.addEventListener('connect', () => {
                 updateCastVisualState(true);
                 showSyncNotification('✅ Transmitiendo audio a Chromecast / Smart TV');
-                makeCurrentSrcCastable();
+                // Silenciar el nodo local de audio en el móvil para que suene exclusivamente en la TV
+                if (audioCtx && normalizerGainNode) {
+                    normalizerGainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+                }
             });
             mainMusicAudio.remote.addEventListener('disconnect', () => {
                 updateCastVisualState(false);
                 showSyncNotification('ℹ️ Transmisión finalizada');
+                // Restaurar el volumen en el móvil al desconectar
+                if (audioCtx && normalizerGainNode) {
+                    normalizerGainNode.gain.setValueAtTime(1.8, audioCtx.currentTime);
+                }
             });
         }
 
@@ -465,6 +478,9 @@ function formatTime(seconds) {
                 showSyncNotification('⚠️ Primero reproduce una canción antes de transmitir a la TV o Chromecast.');
                 return;
             }
+
+            // Preparar SIEMPRE la URL firmada con token antes de pedir conexión a cualquier dispositivo remoto
+            await makeCurrentSrcCastable();
 
             // 1. Google Cast Web SDK oficial (Chrome / Edge en Windows, Android, Mac)
             if (window.cast && cast.framework) {
@@ -1818,7 +1834,7 @@ function formatTime(seconds) {
     function handleCardPlayClick(song) {
         if (!song) return;
 
-        // If this song is currently playing, toggle pause/play
+        // Si es la canción que ya está sonando, alternar pausa / reanudar
         if (currentPlayingSong && currentPlayingSong.title === song.title && currentPlayingSong.artist === song.artist) {
             if (isCastConnected && castRemotePlayerController) {
                 castRemotePlayerController.playOrPause();
@@ -1838,44 +1854,24 @@ function formatTime(seconds) {
             return;
         }
 
-        // Si ya suena algo, no interrumpir: la canción pulsada se añade justo después de la
-        // actual para sonar a continuación. Solo se reproduce al instante si no hay nada
-        // sonando ahora mismo (evita cortar una canción por pulsar otra sin querer).
-        const isActivelyPlaying = !!(currentPlayingSong && mainMusicAudio && !mainMusicAudio.paused);
-
-        // Evita añadir la misma canción varias veces si se pulsa repetidas veces sobre ella
-        // (p.ej. porque el aviso de confirmación no se veía y el usuario reintentaba).
-        const isAlreadyQueuedNext = (idx) => activePlaylistQueue.slice(idx + 1)
-            .some(t => t.artist === song.artist && t.title === song.title);
-
-        if (playbackMode === 'playlist_shuffle' || playbackMode === 'party_dj' || playbackMode === 'search_shuffle') {
-            if (isActivelyPlaying) {
-                if (!isAlreadyQueuedNext(currentQueueIndex)) {
-                    activePlaylistQueue.splice(currentQueueIndex + 1, 0, song);
-                }
-                showSyncNotification(`⏭️ "${song.title}" sonará a continuación`);
-            } else {
-                activePlaylistQueue.splice(currentQueueIndex + 1, 0, song);
-                currentQueueIndex++;
-                playQueueTrack(activePlaylistQueue[currentQueueIndex]);
+        // Si pulsa Play en otra canción: reproducir DE INMEDIATO esa canción (no ponerla a la cola)
+        // Y situar la cola activa en esa canción dentro de la lista actual
+        if (currentDisplayedTracks && currentDisplayedTracks.length > 0) {
+            const foundIdx = currentDisplayedTracks.findIndex(t => t.title === song.title && t.artist === song.artist);
+            if (foundIdx !== -1) {
+                activePlaylistQueue = currentDisplayedTracks;
+                currentQueueIndex = foundIdx;
+                playbackMode = 'playlist_shuffle';
+                playQueueTrack(song);
+                return;
             }
-        } else if (isActivelyPlaying) {
-            if (playbackMode !== 'single' || activePlaylistQueue.length === 0) {
-                activePlaylistQueue = [currentPlayingSong];
-                currentQueueIndex = 0;
-                playbackMode = 'single';
-            }
-            if (!isAlreadyQueuedNext(currentQueueIndex)) {
-                activePlaylistQueue.splice(currentQueueIndex + 1, 0, song);
-            }
-            showSyncNotification(`⏭️ "${song.title}" sonará a continuación`);
-        } else {
-            // Nada sonando: reproducir al instante
-            playbackMode = 'single';
-            activePlaylistQueue = [song];
-            currentQueueIndex = 0;
-            playQueueTrack(song);
         }
+
+        playbackMode = 'single';
+        activePlaylistQueue = [song];
+        currentQueueIndex = 0;
+        playQueueTrack(song);
+    }
     }
 
     
