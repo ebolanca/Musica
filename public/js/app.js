@@ -3549,12 +3549,13 @@ function formatTime(seconds) {
     function populateCreditsTab(detail, song) {
         detail = detail || {};
         song = song || {};
-        const artist = detail.composers || song.artist || 'Artista Principal';
-        const album = song.album || detail.album || 'Álbum Desconocido';
-        const year = song.releaseYear || detail.releaseYear || '2000';
+        const artist = detail.composers || detail.artist || song.artist || 'Artista Principal';
+        const album = detail.album || song.album || 'Álbum Desconocido';
+        const year = detail.releaseYear || detail.year || song.releaseYear || '2000';
         const duration = song.durationFmt || detail.durationFmt || '03:30';
         const label = detail.label || 'Sello Discográfico Principal';
         const genre = detail.genre || 'Pop / Rock / Dance';
+        const isVerified = detail.geminiEnriched === true;
 
         document.getElementById('tab-credits').innerHTML = `
             <div class="credits-grid" style="margin-top: 10px;">
@@ -3566,7 +3567,10 @@ function formatTime(seconds) {
                 <div class="credit-card">
                     <i class="fa-solid fa-compact-disc"></i>
                     <div class="credit-label">Álbum</div>
-                    <div class="credit-value">${escapeHtml(album)}</div>
+                    <div class="credit-value" style="display:flex; flex-direction:column; gap:4px;">
+                        <span>${escapeHtml(album)}</span>
+                        ${isVerified ? '<span style="font-size:0.7rem; color:var(--spotify-green,#1db954); font-weight:700;"><i class="fa-solid fa-shield-check"></i> Álbum Original (Gemini IA)</span>' : ''}
+                    </div>
                 </div>
                 <div class="credit-card">
                     <i class="fa-solid fa-calendar-day"></i>
@@ -3589,7 +3593,69 @@ function formatTime(seconds) {
                     <div class="credit-value">${escapeHtml(genre)}</div>
                 </div>
             </div>
+            <div style="margin-top: 18px; display: flex; justify-content: flex-end; align-items: center; gap: 12px; flex-wrap: wrap;">
+                <button class="btn-gemini-enrich" id="btn-enrich-credits-gemini" title="Consultar a Gemini IA para obtener el álbum original de estudio (descartando Grandes Éxitos), compositores reales y sello">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> ${isVerified ? 'Re-verificar con Gemini IA' : 'Identificar Álbum Original con Gemini IA'}
+                </button>
+            </div>
         `;
+
+        const btnEnrich = document.getElementById('btn-enrich-credits-gemini');
+        if (btnEnrich) {
+            btnEnrich.onclick = async () => {
+                const targetSong = song || currentModalSong || currentPlayingSong;
+                if (!targetSong) return;
+                btnEnrich.disabled = true;
+                btnEnrich.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Consultando discografía original con Gemini...';
+                try {
+                    const trackTitleQuery = targetSong.rawTitle || targetSong.title;
+                    const res = await fetch('/api/metadata/enrich-gemini', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            artist: targetSong.artist,
+                            title: trackTitleQuery
+                        })
+                    });
+                    const data = await res.json();
+                    if (data.success && data.metadata) {
+                        const meta = data.metadata;
+                        targetSong.album = meta.album;
+                        targetSong.releaseYear = meta.releaseYear;
+                        targetSong.releaseDate = meta.releaseDate;
+                        targetSong.composers = meta.composers;
+                        targetSong.label = meta.label;
+                        targetSong.genre = meta.genre;
+
+                        if (meta.coverUrl) {
+                            targetSong.coverUrl = meta.coverUrl;
+                            const cinCov = document.getElementById('cinema-cover');
+                            const cinBg = document.getElementById('cinema-bg');
+                            const musCov = document.getElementById('music-bar-cover');
+                            if (cinCov) cinCov.src = meta.coverUrl;
+                            if (cinBg) cinBg.style.backgroundImage = `url('${meta.coverUrl}')`;
+                            if (musCov) musCov.src = meta.coverUrl;
+                        }
+
+                        const cinAlb = document.getElementById('cinema-album');
+                        if (cinAlb && meta.album) {
+                            cinAlb.textContent = `${meta.album} • ${meta.releaseYear || ''}`;
+                        }
+
+                        populateCreditsTab(meta, targetSong);
+                        showSyncNotification(`✨ Álbum original identificado: "${meta.album}" (${meta.releaseYear})`);
+                    } else {
+                        showSyncNotification('⚠️ ' + (data.error || 'No se pudo obtener información de Gemini'));
+                        btnEnrich.disabled = false;
+                        btnEnrich.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> Identificar Álbum Original con Gemini IA';
+                    }
+                } catch(e) {
+                    showSyncNotification('❌ Error de conexión al consultar Gemini');
+                    btnEnrich.disabled = false;
+                    btnEnrich.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> Identificar Álbum Original con Gemini IA';
+                }
+            };
+        }
     }
 
     function populateLyricsTab(detail) {

@@ -76,7 +76,7 @@ Debes responder ÚNICAMENTE con un objeto JSON válido con esta estructura:
   ]
 }`;
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${geminiKey}`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${geminiKey}`;
     const payload = JSON.stringify({
         contents: [{ parts: [{ text: prompt }] }],
         generationConfig: {

@@ -532,26 +532,188 @@ function isGenericAnalysis(analysis) {
     return false;
 }
 
+function syncMetadataFromGemini(artist, title, geminiData) {
+    if (!artist || !geminiData) return null;
+    const cleanT = cleanTrackTitle(title);
+    const mKey1 = `${artist} - ${title}`.toLowerCase();
+    const mKey2 = `${artist} - ${cleanT}`.toLowerCase();
+    const mKey3 = cleanT.toLowerCase();
+
+    const currentMeta = getTrackMetadata(artist, title) || {};
+    const isCompilation = (a) => !a || /\b(greatest hits|best of|esencial|the essential|the best|antolog|recopilator|éxitos|exitos|colecci|superéxitos|collection|singles|definitive|the hits|platinum|gold)\b/i.test(a);
+
+    const rawGemAlbum = geminiData.originalAlbum || geminiData.album || '';
+    const verifiedAlbum = cleanAlbumTitle(rawGemAlbum);
+    const verifiedYear = String(geminiData.releaseYear || geminiData.year || currentMeta.releaseYear || '2000').trim();
+    const verifiedDate = String(geminiData.releaseDate || currentMeta.releaseDate || `${verifiedYear}-01-01`).trim();
+    const verifiedComposers = String(geminiData.composers || currentMeta.composers || artist).trim();
+    const verifiedLabel = String(geminiData.label || currentMeta.label || 'Sello Discográfico Principal').trim();
+    const verifiedGenre = String(geminiData.genre || currentMeta.genre || 'Pop / Rock / Dance').trim();
+
+    const prevAlbum = currentMeta.album || '';
+    const shouldUpdateAlbum = !prevAlbum || isCompilation(prevAlbum) || prevAlbum === 'Álbum Desconocido' || prevAlbum === 'Álbum' || prevAlbum === 'Álbum oficial';
+    const finalAlbum = (shouldUpdateAlbum && verifiedAlbum) ? verifiedAlbum : (prevAlbum || verifiedAlbum || 'Álbum Oficial');
+
+    const updated = {
+        ...currentMeta,
+        title: currentMeta.title || cleanT,
+        displayTitle: currentMeta.displayTitle || cleanT,
+        artist: currentMeta.artist || artist,
+        album: finalAlbum,
+        releaseYear: (verifiedYear !== '2000' || !currentMeta.releaseYear) ? verifiedYear : currentMeta.releaseYear,
+        releaseDate: (verifiedDate && !verifiedDate.startsWith('2000')) ? verifiedDate : (currentMeta.releaseDate || `${verifiedYear}-01-01`),
+        year: (verifiedYear !== '2000' || !currentMeta.year) ? verifiedYear : currentMeta.year,
+        date: (verifiedDate && !verifiedDate.startsWith('2000')) ? verifiedDate : (currentMeta.date || `${verifiedYear}-01-01`),
+        composers: verifiedComposers,
+        label: verifiedLabel,
+        genre: verifiedGenre,
+        geminiEnriched: true
+    };
+
+    metadataCache[mKey1] = updated;
+    metadataCache[mKey2] = updated;
+    metadataCache[mKey3] = updated;
+
+    saveMetadataCache();
+    return updated;
+}
+
+async function enrichTrackMetadataWithGemini(artist, title) {
+    const cleanT = cleanTrackTitle(title);
+    const geminiKey = process.env.GEMINI_API_KEY;
+    if (!geminiKey) throw new Error('GEMINI_API_KEY no configurada');
+
+    const prompt = `Actúa como musicólogo y documentalista musical experto en la discografía y créditos oficiales.
+Para la canción "${cleanT}" del artista o grupo "${artist}":
+
+Determina los metadatos canónicos y originales de esta canción:
+1. "originalAlbum": El título exacto del ÁLBUM DE ESTUDIO ORIGINAL en el que se publicó por primera vez esta canción (o si fue un single inicial que luego formó parte de su primer álbum de estudio, indica el título de dicho álbum de estudio original).
+   ¡ESTRICTAMENTE PROHIBIDO poner discos recopilatorios, grandes éxitos, 'Greatest Hits', 'Best Of', 'Esencial', recopilaciones digitales o directos! (Por ejemplo, para "Hoy no me puedo levantar" de Mecano, pon "Mecano", NUNCA "Esencial Mecano").
+2. "releaseYear": Año exacto del lanzamiento original (ej: "1981" o "1982").
+3. "releaseDate": Fecha original de lanzamiento en formato YYYY-MM-DD si se conoce, o YYYY-01-01.
+4. "composers": Nombres de los compositores y autores reales (personas físicas, ej: "José María Cano, Nacho Cano").
+5. "label": Sello discográfico original de la primera edición (ej: "CBS", "Columbia", "Hispavox", etc.).
+6. "genre": Género musical preciso (ej: "Tecnopop / Synth-pop / New Wave").
+
+Responde ÚNICAMENTE en JSON válido con esta estructura:
+{
+  "artist": "${artist}",
+  "title": "${cleanT}",
+  "originalAlbum": "...",
+  "releaseYear": "...",
+  "releaseDate": "...",
+  "composers": "...",
+  "label": "...",
+  "genre": "..."
+}`;
+
+    const geminiModels = [
+        'gemini-3-flash-preview',
+        'gemini-3.6-flash',
+        'gemini-3.5-flash',
+        'gemini-3.8-flash',
+        'gemini-3.7-flash',
+        'gemini-3.5-flash-lite',
+        'gemini-3.1-flash-lite',
+        'gemini-flash-latest'
+    ];
+
+    let geminiData = null;
+    for (const model of geminiModels) {
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${geminiKey}`;
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [{ parts: [{ text: prompt }] }],
+                    generationConfig: { responseMimeType: "application/json", temperature: 0.2 }
+                }),
+                signal: AbortSignal.timeout(15000)
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+                if (text) {
+                    geminiData = JSON.parse(text);
+                    if (geminiData && (geminiData.originalAlbum || geminiData.composers)) break;
+                }
+            } else if (response.status === 429) {
+                console.warn(`[Gemini Metadata] Cuota excedida en ${model}, probando siguiente...`);
+            }
+        } catch(e) {
+            console.warn(`[Gemini Metadata] Fallo en ${model}: ${e.message}`);
+        }
+    }
+
+    if (!geminiData) throw new Error('No se pudo obtener respuesta de Gemini para metadatos');
+
+    const updated = syncMetadataFromGemini(artist, title, geminiData);
+
+    // Si el álbum original es conocido y diferente al anterior, intentar buscar la carátula en HD del álbum original en Deezer
+    if (updated && updated.album && updated.album !== 'Álbum Desconocido' && updated.album !== 'Álbum') {
+        try {
+            const albQ = encodeURIComponent(`${artist} ${updated.album}`);
+            const dzRes = await fetch(`https://api.deezer.com/search/album?q=${albQ}&limit=4`, { signal: AbortSignal.timeout(3500) });
+            if (dzRes.ok) {
+                const dzData = await dzRes.json();
+                if (dzData.data && dzData.data.length > 0) {
+                    const firstMatch = dzData.data[0];
+                    const cov = firstMatch.cover_xl || firstMatch.cover_big;
+                    if (cov) {
+                        updated.coverUrl = cov;
+                        const mKey1 = `${artist} - ${title}`.toLowerCase();
+                        const mKey2 = `${artist} - ${cleanT}`.toLowerCase();
+                        const mKey3 = cleanT.toLowerCase();
+                        metadataCache[mKey1] = updated;
+                        metadataCache[mKey2] = updated;
+                        metadataCache[mKey3] = updated;
+                        saveMetadataCache();
+                    }
+                }
+            }
+        } catch(e) {}
+    }
+
+    return updated;
+}
+
 async function generateGeminiAnalysis(artist, title, album, year) {
     const cleanT = cleanTrackTitle(title);
     const geminiKey = process.env.GEMINI_API_KEY;
 
     if (geminiKey) {
-        const prompt = `Instrucciones para análisis técnico y forense de canciones:
-Actúa como un productor musical e ingeniero de sonido experto. Realiza un análisis exhaustivo y técnico en profundidad de la canción "${cleanT}" de ${artist} (álbum: ${album || 'Álbum oficial'}, año: ${year || 'Histórico'}).
-Prohibido hacer resúmenes superficiales, omitir bloques o rebajar el nivel de detalle. Tono directo, analítico, profesional y técnico. Cero relleno, entra directamente a la materia en la primera línea.
+        const prompt = `Instrucciones para análisis técnico, musicológico y forense de canciones:
+Actúa como un productor musical, musicólogo e ingeniero de sonido experto. Realiza un análisis exhaustivo y técnico en profundidad de la canción "${cleanT}" de ${artist}.
+
+IMPORTANTE - REGLA DE ORO DE METADATOS Y ÁLBUM:
+Determina con rigor enciclopédico los metadatos canónicos de su lanzamiento ORIGINAL:
+1. "originalAlbum": El título exacto del ÁLBUM DE ESTUDIO ORIGINAL en el que se editó por primera vez (o si fue un single debut que luego encabezó su primer álbum de estudio, indica dicho álbum de estudio original).
+   ¡ESTRICTAMENTE PROHIBIDO incluir recopilatorios de grandes éxitos, 'Greatest Hits', 'Best Of', 'Esencial', 'Antología', reediciones tardías o directos! (Ejemplo: para "Hoy no me puedo levantar" de Mecano, el álbum original es "Mecano", NUNCA "Esencial Mecano").
+2. "releaseYear": Año original de lanzamiento (ej: "1981").
+3. "releaseDate": Fecha de lanzamiento original (YYYY-MM-DD o YYYY-01-01).
+4. "composers": Nombres de los compositores y autores reales (personas físicas, ej: "José María Cano, Nacho Cano").
+5. "label": Sello discográfico original de la primera edición (ej: "CBS", "Columbia", "Hispavox", etc.).
+6. "genre": Género musical preciso (ej: "Tecnopop / Synth-pop / New Wave").
 
 Protocolo de verificación y cero alucinaciones (Estricto):
 - Prohibido inventar datos técnicos: Si no hay registros documentados sobre estudio exacto, modelos de micrófonos o consolas, haz un análisis acústico deductivo indicando con claridad que es una deducción basada en la escucha.
 - Honestidad sobre repercusión: Si el tema es independiente o de nicho, dilo abiertamente en lugar de fabricar un impacto ficticio.
 - Veracidad de la letra: Cita textualmente fragmentos reales en su idioma original con lecciones de vocabulario o dobles sentidos.
 
-Debes responder ÚNICAMENTE con un objeto JSON válido con esta estructura exacta de 4 apartados:
+Debes responder ÚNICAMENTE con un objeto JSON válido con esta estructura exacta:
 {
   "title": "${cleanT}",
   "artist": "${artist}",
-  "year": "${year || '2000'}",
-  "album": "${album || 'Álbum oficial'}",
+  "year": "Año original",
+  "album": "Título exacto del ÁLBUM DE ESTUDIO ORIGINAL",
+  "originalAlbum": "Título exacto del ÁLBUM DE ESTUDIO ORIGINAL",
+  "releaseYear": "Año original",
+  "releaseDate": "YYYY-MM-DD",
+  "composers": "Nombres de los compositores reales",
+  "label": "Sello discográfico original",
+  "genre": "Género musical específico",
   "synopsis": "Sinopsis técnica de entrada directa (3-5 líneas) resumiendo la tesis sónica y la trascendencia de la obra...",
   "sections": [
     {
@@ -581,13 +743,20 @@ Debes responder ÚNICAMENTE con un objeto JSON válido con esta estructura exact
             contents: [{ parts: [{ text: prompt }] }],
             generationConfig: {
                 responseMimeType: "application/json",
-                temperature: 0.7
+                temperature: 0.5
             }
         });
 
-        // El modelo fijo anterior (gemini-2.0-flash) fue descontinuado por Google (404).
-        // Se rota por la misma lista de fallback que usa scripts/worker_ai_analyses.js.
-        const geminiModels = ['gemini-3.5-flash', 'gemini-3.5-flash-lite', 'gemini-3.1-flash-lite'];
+        const geminiModels = [
+            'gemini-3-flash-preview',
+            'gemini-3.6-flash',
+            'gemini-3.5-flash',
+            'gemini-3.8-flash',
+            'gemini-3.7-flash',
+            'gemini-3.5-flash-lite',
+            'gemini-3.1-flash-lite',
+            'gemini-flash-latest'
+        ];
 
         for (const model of geminiModels) {
             const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${geminiKey}`;
@@ -605,6 +774,11 @@ Debes responder ÚNICAMENTE con un objeto JSON válido con esta estructura exact
                     if (text) {
                         const parsed = JSON.parse(text);
                         if (parsed && parsed.synopsis && parsed.sections) {
+                            try {
+                                syncMetadataFromGemini(artist, title, parsed);
+                            } catch(errSync) {
+                                console.error('[Gemini Analysis] Error sync metadata:', errSync.message);
+                            }
                             return parsed;
                         }
                     }
@@ -1863,6 +2037,20 @@ app.post('/api/jellyfin/refresh', blockInPublicMode, async (req, res) => {
 });
 
 // Endpoint: Generar o re-analizar pista con Gemini AI
+app.post('/api/metadata/enrich-gemini', blockInPublicMode, async (req, res) => {
+    const { artist, title } = req.body;
+    if (!artist || !title) {
+        return res.status(400).json({ error: 'artist y title son requeridos' });
+    }
+    try {
+        const enriched = await enrichTrackMetadataWithGemini(artist, title);
+        res.json({ success: true, metadata: enriched });
+    } catch(e) {
+        console.error('Error enriqueciendo metadata con Gemini:', e.message);
+        res.status(500).json({ error: e.message });
+    }
+});
+
 app.post('/api/analysis/generate', blockInPublicMode, async (req, res) => {
     const { artist, title, force } = req.body;
     if (!artist || !title) {
@@ -2549,20 +2737,27 @@ app.get('/api/track/detail', async (req, res) => {
         }
     }
 
+    const isCompilationCheck = (a) => !a || /\b(greatest hits|best of|esencial|the essential|the best|antolog|recopilator|éxitos|exitos|colecci|superéxitos|collection|singles|definitive|the hits|platinum|gold)\b/i.test(a);
+    let finalAlbum = meta.album;
+    if (analysis && (analysis.originalAlbum || analysis.album) && (!finalAlbum || isCompilationCheck(finalAlbum))) {
+        finalAlbum = analysis.originalAlbum || analysis.album;
+    }
+
     res.json({
         artist: artist,
         title: cleanTrackTitle(meta.displayTitle || title),
-        album: cleanAlbumTitle(meta.album),
+        album: cleanAlbumTitle(finalAlbum),
         releaseDate: finalDate,
         releaseYear: finalYear,
         durationFmt: meta.durationFmt || '03:30',
-        label: meta.label || 'Sello Discográfico Principal',
-        genre: meta.genre || 'Pop / Rock / Dance',
+        label: meta.label || (analysis && analysis.label) || 'Sello Discográfico Principal',
+        genre: meta.genre || (analysis && analysis.genre) || 'Pop / Rock / Dance',
         audioUrl: (scanAudioFiles().get(`${artist} - ${title}`.toLowerCase().replace(/[^a-z0-9]/g, '')) || {}).relUrl || null,
         videoItem: jellyfinVideosLookup.get(cleanTrackKey(`${artist} ${title}`)) || 
                    jellyfinVideosLookup.get(cleanTrackKey(title)) || 
                    jellyfinVideosLookup.get(cleanTrackKey(`${artist} - ${title}`)) || null,
-        composers: meta.composers || artist,
+        composers: meta.composers || (analysis && analysis.composers) || artist,
+        geminiEnriched: meta.geminiEnriched || false,
         lyrics: (parsedLyrics || []).map(l => ({
             ...l,
             translation: (l.translation && l.translation.trim().toLowerCase() !== (l.text || '').trim().toLowerCase()) ? l.translation : null

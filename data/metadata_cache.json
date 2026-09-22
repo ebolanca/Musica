@@ -14736,14 +14736,18 @@
     "title": "Hoy no Me Puedo Levantar",
     "displayTitle": "Hoy no Me Puedo Levantar",
     "artist": "Mecano",
-    "album": "Esencial Mecano",
-    "year": "2026",
-    "date": "2026-01-28",
+    "album": "Mecano",
+    "year": "1981",
+    "date": "1981-06-22",
     "releaseYear": "1981",
     "releaseDate": "1981-06-22",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/9c86f35b62c7177c03bc9670f8b2c639/1000x1000-000000-80-0-0.jpg",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/5cdee367cca1ff013aaffaf8b6a12696/1000x1000-000000-80-0-0.jpg",
     "durationMs": 196000,
     "durationFmt": "3:16",
+    "composers": "Nacho Cano, José María Cano",
+    "label": "CBS",
+    "genre": "Tecnopop / Synth-pop / New Wave",
+    "geminiEnriched": true,
     "source": "Deezer / Apple Music Official Master Catalog"
   },
   "los burros - huesos": {
@@ -16834,9 +16838,13 @@
     "date": "1975-10-31",
     "releaseYear": "1975",
     "releaseDate": "1975-10-31",
-    "coverUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/ef/54/0b/ef540ba4-bbe7-0809-aa55-97ce32e0e13d/18UMGIM55763.rgb.jpg/1000x1000bb.jpg",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/5bbfab8ae2def08b9d58932b5e6121a4/1000x1000-000000-80-0-0.jpg",
     "durationMs": 355145,
-    "source": "Apple Music Original Studio Master Catalog"
+    "source": "Apple Music Original Studio Master Catalog",
+    "composers": "Freddie Mercury",
+    "label": "EMI",
+    "genre": "Progressive Rock / Symphonic Rock / Hard Rock",
+    "geminiEnriched": true
   },
   "queen - crazy little thing called love - 2011 remaster": {
     "title": "Crazy Little Thing Called Love",
@@ -92633,14 +92641,18 @@
     "title": "Bohemian Rhapsody",
     "displayTitle": "Bohemian Rhapsody",
     "artist": "Queen",
-    "album": "A Night At The Opera",
+    "album": "Bohemian Rhapsody (The Original Soundtrack)",
     "year": "1975",
     "date": "1975-10-31",
     "releaseYear": "1975",
     "releaseDate": "1975-10-31",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/0b56f4eee05fa1ea753c5654b2cdb70c/1000x1000-000000-80-0-0.jpg",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/5bbfab8ae2def08b9d58932b5e6121a4/1000x1000-000000-80-0-0.jpg",
     "durationMs": 355145,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Apple Music Original Studio Master Catalog",
+    "composers": "Freddie Mercury",
+    "label": "EMI",
+    "genre": "Progressive Rock / Symphonic Rock / Hard Rock",
+    "geminiEnriched": true
   },
   "crazy little thing called love": {
     "title": "Crazy Little Thing Called Love",
@@ -104920,5 +104932,23 @@
     "date": "1998-01-01",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4d95815677bab46b7b4b8e05cf7f6180/1000x1000-000000-80-0-0.jpg",
     "source": "Canonical Original Studio Album"
+  },
+  "hoy no me puedo levantar": {
+    "title": "Hoy no Me Puedo Levantar",
+    "displayTitle": "Hoy no Me Puedo Levantar",
+    "artist": "Mecano",
+    "album": "Mecano",
+    "year": "1981",
+    "date": "1981-06-22",
+    "releaseYear": "1981",
+    "releaseDate": "1981-06-22",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/5cdee367cca1ff013aaffaf8b6a12696/1000x1000-000000-80-0-0.jpg",
+    "durationMs": 196000,
+    "durationFmt": "3:16",
+    "composers": "Nacho Cano, José María Cano",
+    "label": "CBS",
+    "genre": "Tecnopop / Synth-pop / New Wave",
+    "geminiEnriched": true,
+    "source": "Deezer / Apple Music Official Master Catalog"
   }
 }
