@@ -1,0 +1,878 @@
+{
+  "stats": {
+    "Siglo XXI": {
+      "total": 745,
+      "flagged": 17
+    },
+    "Española": {
+      "total": 385,
+      "flagged": 11
+    },
+    "Música viejuna": {
+      "total": 569,
+      "flagged": 29
+    },
+    "Música latina": {
+      "total": 290,
+      "flagged": 7
+    },
+    "Dance": {
+      "total": 204,
+      "flagged": 13
+    }
+  },
+  "flaggedTracks": [
+    {
+      "playlist": "Siglo XXI",
+      "artist": "Atomic Kitten",
+      "title": "The Tide Is High",
+      "album": "Feels So Good",
+      "releaseYear": "2000",
+      "releaseDate": "2000-01-01",
+      "reasons": [
+        "Fecha en fallback exacto por defecto (2000-01-01)"
+      ]
+    },
+    {
+      "playlist": "Siglo XXI",
+      "artist": "Black Eyed Peas",
+      "title": "Don't Phunk With My Heart",
+      "album": "Monkey Business (20th Anniversary Edition)",
+      "releaseYear": "2005",
+      "releaseDate": "2005-04-05",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Monkey Business (20th Anniversary Edition)\""
+      ]
+    },
+    {
+      "playlist": "Siglo XXI",
+      "artist": "Beyoncé",
+      "title": "IRREPLACEABLE",
+      "album": "B'DAY (20th ANNIVERSARY DELUXE EDITION)",
+      "releaseYear": "2006",
+      "releaseDate": "2006-09-01",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"B'DAY (20th ANNIVERSARY DELUXE EDITION)\""
+      ]
+    },
+    {
+      "playlist": "Siglo XXI",
+      "artist": "Lady Gaga",
+      "title": "The Edge Of Glory",
+      "album": "Born This Way (International Special Edition Version)",
+      "releaseYear": "2011",
+      "releaseDate": "2011-05-23",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Born This Way (International Special Edition Version)\""
+      ]
+    },
+    {
+      "playlist": "Siglo XXI",
+      "artist": "Carlinhos Brown, DJ Dero",
+      "title": "María Caipirinha",
+      "album": "Omelete Man",
+      "releaseYear": "2000",
+      "releaseDate": "2000-01-01",
+      "reasons": [
+        "Fecha en fallback exacto por defecto (2000-01-01)"
+      ]
+    },
+    {
+      "playlist": "Siglo XXI",
+      "artist": "Sonique",
+      "title": "Sky",
+      "album": "Hear My Cry",
+      "releaseYear": "2000",
+      "releaseDate": "2000-01-01",
+      "reasons": [
+        "Fecha en fallback exacto por defecto (2000-01-01)"
+      ]
+    },
+    {
+      "playlist": "Siglo XXI",
+      "artist": "Timbaland, Katy Perry",
+      "title": "If We Ever Meet Again",
+      "album": "Shock Value II (International Deluxe version)",
+      "releaseYear": "2009",
+      "releaseDate": "2009-12-22",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Shock Value II (International Deluxe version)\""
+      ]
+    },
+    {
+      "playlist": "Siglo XXI",
+      "artist": "Lara Fabian",
+      "title": "I Will Love Again",
+      "album": "Lara Fabian",
+      "releaseYear": "2000",
+      "releaseDate": "2000-01-01",
+      "reasons": [
+        "Fecha en fallback exacto por defecto (2000-01-01)"
+      ]
+    },
+    {
+      "playlist": "Siglo XXI",
+      "artist": "Santana, The Product G&B",
+      "title": "Maria Maria",
+      "album": "Supernatural (Legacy Edition)",
+      "releaseYear": "2011",
+      "releaseDate": "2011-02-18",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Supernatural (Legacy Edition)\""
+      ]
+    },
+    {
+      "playlist": "Siglo XXI",
+      "artist": "Sonique",
+      "title": "It Feels So Good",
+      "album": "It Feels So Good",
+      "releaseYear": "2000",
+      "releaseDate": "2000-01-01",
+      "reasons": [
+        "Fecha en fallback exacto por defecto (2000-01-01)"
+      ]
+    },
+    {
+      "playlist": "Siglo XXI",
+      "artist": "Toploader",
+      "title": "Dancing in the Moonlight",
+      "album": "Dancing in the Moonlight - Single",
+      "releaseYear": "2000",
+      "releaseDate": "2000-01-01",
+      "reasons": [
+        "Fecha en fallback exacto por defecto (2000-01-01)"
+      ]
+    },
+    {
+      "playlist": "Siglo XXI",
+      "artist": "Tom Jones, Mousse T.",
+      "title": "Sexbomb",
+      "album": "Reload",
+      "releaseYear": "2000",
+      "releaseDate": "2000-01-01",
+      "reasons": [
+        "Fecha en fallback exacto por defecto (2000-01-01)"
+      ]
+    },
+    {
+      "playlist": "Siglo XXI",
+      "artist": "Justin Timberlake, Timbaland",
+      "title": "SexyBack",
+      "album": "FutureSex/LoveSounds Deluxe Edition",
+      "releaseYear": "2006",
+      "releaseDate": "2006-09-08",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"FutureSex/LoveSounds Deluxe Edition\""
+      ]
+    },
+    {
+      "playlist": "Siglo XXI",
+      "artist": "O-Zone",
+      "title": "Dragostea din tei",
+      "album": "Ma Ya Hi (Dragostea Din Tei) [English Mixes]",
+      "releaseYear": "2000",
+      "releaseDate": "2000-01-01",
+      "reasons": [
+        "Fecha en fallback exacto por defecto (2000-01-01)"
+      ]
+    },
+    {
+      "playlist": "Siglo XXI",
+      "artist": "The Corrs",
+      "title": "Breathless",
+      "album": "Breathless - Single",
+      "releaseYear": "2000",
+      "releaseDate": "2000-01-01",
+      "reasons": [
+        "Fecha en fallback exacto por defecto (2000-01-01)"
+      ]
+    },
+    {
+      "playlist": "Siglo XXI",
+      "artist": "Sean Paul",
+      "title": "Get Busy",
+      "album": "Dutty Rock (20th Anniversary)",
+      "releaseYear": "2002",
+      "releaseDate": "2002-11-12",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Dutty Rock (20th Anniversary)\""
+      ]
+    },
+    {
+      "playlist": "Siglo XXI",
+      "artist": "Hoobastank",
+      "title": "The Reason",
+      "album": "The Reason (20th Anniversary)",
+      "releaseYear": "2003",
+      "releaseDate": "2003-06-30",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"The Reason (20th Anniversary)\""
+      ]
+    },
+    {
+      "playlist": "Española",
+      "artist": "Alex Ubago, Amaia Montero",
+      "title": "Sin miedo a nada",
+      "album": "20 Años",
+      "releaseYear": "2022",
+      "releaseDate": "2022-05-13",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"20 Años\""
+      ]
+    },
+    {
+      "playlist": "Española",
+      "artist": "Alex Ubago",
+      "title": "A gritos de esperanza",
+      "album": "20 Años",
+      "releaseYear": "2022",
+      "releaseDate": "2022-05-13",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"20 Años\""
+      ]
+    },
+    {
+      "playlist": "Española",
+      "artist": "Loquillo",
+      "title": "Cadillac Solitario",
+      "album": "Rock & Roll Star: 30 Años / 1980-2010",
+      "releaseYear": "1983",
+      "releaseDate": "1983-01-01",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Rock & Roll Star: 30 Años / 1980-2010\""
+      ]
+    },
+    {
+      "playlist": "Española",
+      "artist": "Duncan Dhu",
+      "title": "Esos Ojos Negros",
+      "album": "20 Años de Canciones",
+      "releaseYear": "1986",
+      "releaseDate": "1986-01-17",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"20 Años de Canciones\""
+      ]
+    },
+    {
+      "playlist": "Española",
+      "artist": "Duncan Dhu",
+      "title": "Jardin De Rosas",
+      "album": "20 Años de Canciones",
+      "releaseYear": "1986",
+      "releaseDate": "1986-01-17",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"20 Años de Canciones\""
+      ]
+    },
+    {
+      "playlist": "Española",
+      "artist": "Ricky Martin, Yotuel",
+      "title": "La Mordidita",
+      "album": "A Quien Quiera Escuchar Deluxe Edition",
+      "releaseYear": "2015",
+      "releaseDate": "2015-02-10",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"A Quien Quiera Escuchar Deluxe Edition\""
+      ]
+    },
+    {
+      "playlist": "Española",
+      "artist": "Raphael",
+      "title": "Mi gran noche",
+      "album": "Raphael: 30 Éxitos Insuperables",
+      "releaseYear": "1967",
+      "releaseDate": "1967-12-30",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Raphael: 30 Éxitos Insuperables\""
+      ]
+    },
+    {
+      "playlist": "Española",
+      "artist": "Nino Bravo",
+      "title": "Un Beso y una Flor",
+      "album": "Homenaje a Niño Bravo",
+      "releaseYear": "2018",
+      "releaseDate": "2018-03-20",
+      "reasons": [
+        "Un Beso y una Flor tiene año 2018 (debe ser 1972)"
+      ]
+    },
+    {
+      "playlist": "Española",
+      "artist": "Los Chunguitos",
+      "title": "Me Quedo Contigo",
+      "album": "40 Años - 40 Canciones",
+      "releaseYear": "1980",
+      "releaseDate": "1980-01-01",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"40 Años - 40 Canciones\""
+      ]
+    },
+    {
+      "playlist": "Española",
+      "artist": "Los Chunguitos",
+      "title": "Dame Veneno",
+      "album": "40 Años - 40 Canciones",
+      "releaseYear": "1977",
+      "releaseDate": "1977-01-01",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"40 Años - 40 Canciones\""
+      ]
+    },
+    {
+      "playlist": "Española",
+      "artist": "Los Chunguitos",
+      "title": "Ay Que Dolor",
+      "album": "40 Años - 40 Canciones",
+      "releaseYear": "1978",
+      "releaseDate": "1978-01-01",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"40 Años - 40 Canciones\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Milli Vanilli",
+      "title": "Blame It On the Rain",
+      "album": "4 Hits: Milli Vanilli - EP",
+      "releaseYear": "1989",
+      "releaseDate": "1989-03-07",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"4 Hits: Milli Vanilli - EP\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Michael Jackson",
+      "title": "Billie Jean",
+      "album": "Pop Music: The Modern Era 1976-1999",
+      "releaseYear": "1966",
+      "releaseDate": "1966-01-01",
+      "reasons": [
+        "Billie Jean tiene año 1966 (debe ser 1982 del álbum Thriller)"
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "New Kids On The Block",
+      "title": "You Got It (The Right Stuff)",
+      "album": "Hangin' Tough (30th Anniversary)",
+      "releaseYear": "1988",
+      "releaseDate": "1988-01-01",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Hangin' Tough (30th Anniversary)\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "R.E.M.",
+      "title": "Shiny Happy People",
+      "album": "Out Of Time (25th Anniversary Edition)",
+      "releaseYear": "1991",
+      "releaseDate": "1991-03-08",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Out Of Time (25th Anniversary Edition)\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Phil Collins",
+      "title": "Another Day in Paradise",
+      "album": "Serious Hits...Live!",
+      "releaseYear": "1990",
+      "releaseDate": "1990-07-15",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Serious Hits...Live!\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Roxette",
+      "title": "Listen To Your Heart",
+      "album": "Look Sharp! 30th Anniversary Edition",
+      "releaseYear": "1988",
+      "releaseDate": "1988-09-27",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Look Sharp! 30th Anniversary Edition\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Roxette",
+      "title": "Fading Like A Flower (Every Time You Leave)",
+      "album": "Joyride (30th Anniversary Edition)",
+      "releaseYear": "1991",
+      "releaseDate": "1991-03-28",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Joyride (30th Anniversary Edition)\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Patrick Swayze, Wendy Fraser",
+      "title": "She's Like the Wind",
+      "album": "Radio Hits of the 80s",
+      "releaseYear": "1987",
+      "releaseDate": "1987-01-01",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Radio Hits of the 80s\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "All Saints",
+      "title": "Never Ever",
+      "album": "All Hits",
+      "releaseYear": "1996",
+      "releaseDate": "1996-07-01",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"All Hits\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Gloria Estefan, Miami Sound Machine",
+      "title": "Conga",
+      "album": "iTunes Originals: Gloria Estefan (English Version)",
+      "releaseYear": "1985",
+      "releaseDate": "1985-08-13",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"iTunes Originals: Gloria Estefan (English Version)\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Pet Shop Boys",
+      "title": "It's a Sin",
+      "album": "Actually: Further Listening 1987-1988 [2018 Remaster]",
+      "releaseYear": "1987",
+      "releaseDate": "1987-06-01",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Actually: Further Listening 1987-1988 [2018 Remaster]\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Michael Jackson",
+      "title": "The Way You Make Me Feel",
+      "album": "Bad 25th Anniversary",
+      "releaseYear": "1987",
+      "releaseDate": "1987-08-31",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Bad 25th Anniversary\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Cutting Crew",
+      "title": "I Just Died In Your Arms",
+      "album": "Pure 80's Love: The #1 Hits",
+      "releaseYear": "1986",
+      "releaseDate": "1986-01-01",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Pure 80's Love: The #1 Hits\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Taylor Dayne",
+      "title": "Tell It to My Heart",
+      "album": "Tell It to My Heart (30 Year Deluxe Edition)",
+      "releaseYear": "1987",
+      "releaseDate": "1987-01-01",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Tell It to My Heart (30 Year Deluxe Edition)\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Pet Shop Boys",
+      "title": "Always on My Mind",
+      "album": "Actually: Further Listening 1987-1988 [2018 Remaster]",
+      "releaseYear": "1987",
+      "releaseDate": "1987-09-07",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Actually: Further Listening 1987-1988 [2018 Remaster]\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Fleetwood Mac",
+      "title": "Everywhere",
+      "album": "Tango in the Night [Deluxe Edition]",
+      "releaseYear": "1987",
+      "releaseDate": "1987-04-13",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Tango in the Night [Deluxe Edition]\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Eagles",
+      "title": "Hotel California",
+      "album": "Hotel California (40th Anniversary Expanded Edition)",
+      "releaseYear": "1976",
+      "releaseDate": "1976-10-20",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Hotel California (40th Anniversary Expanded Edition)\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Eurythmics, Annie Lennox, Dave Stewart",
+      "title": "There Must Be an Angel (Playing With My Heart)",
+      "album": "Be Yourself Tonight [2005 Remaster]",
+      "releaseYear": "1985",
+      "releaseDate": "1985-04-29",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Be Yourself Tonight [2005 Remaster]\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Mike Oldfield",
+      "title": "To France",
+      "album": "Discovery [Remastered 2015]",
+      "releaseYear": "1984",
+      "releaseDate": "1984-01-01",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Discovery [Remastered 2015]\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Billy Joel",
+      "title": "Piano Man",
+      "album": "Piano Man (Legacy Edition)",
+      "releaseYear": "1990",
+      "releaseDate": "1990-01-01",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Piano Man (Legacy Edition)\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Michael Jackson",
+      "title": "Dirty Diana",
+      "album": "Bad 25th Anniversary",
+      "releaseYear": "1987",
+      "releaseDate": "1987-08-25",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Bad 25th Anniversary\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Tina Turner",
+      "title": "We Don't Need Another Hero (Thunderdome)",
+      "album": "Private Dancer (30th Anniversary Issue)",
+      "releaseYear": "1985",
+      "releaseDate": "1985-07-08",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Private Dancer (30th Anniversary Issue)\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Green Day",
+      "title": "Basket Case",
+      "album": "International Superhits!",
+      "releaseYear": "1994",
+      "releaseDate": "1994-01-28",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"International Superhits!\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Earth, Wind & Fire",
+      "title": "September",
+      "album": "The Best of Earth, Wind & Fire, Vol. 1",
+      "releaseYear": "1978",
+      "releaseDate": "1978-11-18",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"The Best of Earth, Wind & Fire, Vol. 1\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Shania Twain",
+      "title": "I'm Gonna Getcha Good!",
+      "album": "Up!",
+      "releaseYear": "2002",
+      "releaseDate": "2002-10-07",
+      "reasons": [
+        "[Música viejuna] Año 2002 es posterior al año 2000"
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Counting Crows",
+      "title": "Accidentally In Love",
+      "album": "Shrek 2 (Original Soundtrack)",
+      "releaseYear": "2004",
+      "releaseDate": "2004-05-03",
+      "reasons": [
+        "[Música viejuna] Año 2004 es posterior al año 2000"
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Tina Turner",
+      "title": "Private Dancer",
+      "album": "Private Dancer (30th Anniversary Edition)",
+      "releaseYear": "1984",
+      "releaseDate": "1984-05-29",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Private Dancer (30th Anniversary Edition)\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Phil Collins",
+      "title": "Two Hearts",
+      "album": "The Singles",
+      "releaseYear": "1988",
+      "releaseDate": "1988-09-01",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"The Singles\""
+      ]
+    },
+    {
+      "playlist": "Música viejuna",
+      "artist": "Phil Collins",
+      "title": "You'll Be In My Heart",
+      "album": "Soli Film Hits",
+      "releaseYear": "2000",
+      "releaseDate": "2000-01-01",
+      "reasons": [
+        "Fecha en fallback exacto por defecto (2000-01-01)"
+      ]
+    },
+    {
+      "playlist": "Música latina",
+      "artist": "Joe Arroyo, La Verdad",
+      "title": "En Barranquilla Me Quedo",
+      "album": "Colección Oro de la Salsa, Vol. 10",
+      "releaseYear": "2015",
+      "releaseDate": "2015-03-02",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Colección Oro de la Salsa, Vol. 10\"",
+        "En Barranquilla Me Quedo tiene año 2015 (debe ser 1988)"
+      ]
+    },
+    {
+      "playlist": "Música latina",
+      "artist": "Edgar Joel, Anthony Colon",
+      "title": "Hechizo De Luna",
+      "album": "Oro Salsero (20 Éxitos)",
+      "releaseYear": "2002",
+      "releaseDate": "2002-12-10",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Oro Salsero (20 Éxitos)\""
+      ]
+    },
+    {
+      "playlist": "Música latina",
+      "artist": "Joseph Fonseca",
+      "title": "Noches de Fantasía",
+      "album": "Noches de Fantasía",
+      "releaseYear": "2000",
+      "releaseDate": "2000-01-01",
+      "reasons": [
+        "Fecha en fallback exacto por defecto (2000-01-01)"
+      ]
+    },
+    {
+      "playlist": "Música latina",
+      "artist": "Omega, Roberto Ferrante",
+      "title": "Si Te Vas / Que Tengo Que Hacer",
+      "album": "El Dueño Del Flow 2 (New Deluxe Version)",
+      "releaseYear": "2011",
+      "releaseDate": "2011-04-28",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"El Dueño Del Flow 2 (New Deluxe Version)\""
+      ]
+    },
+    {
+      "playlist": "Música latina",
+      "artist": "Omega",
+      "title": "Tu Si Quieres, Tu No Quieres",
+      "album": "El Dueño Del Flow 2 (New Deluxe Version)",
+      "releaseYear": "2011",
+      "releaseDate": "2011-04-28",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"El Dueño Del Flow 2 (New Deluxe Version)\""
+      ]
+    },
+    {
+      "playlist": "Música latina",
+      "artist": "Los Chiches Vallenatos",
+      "title": "Tierra Mala",
+      "album": "Tierra Mala",
+      "releaseYear": "1967",
+      "releaseDate": "1967-01-01",
+      "reasons": [
+        "Tierra Mala tiene año 1967 (debe ser 1994)"
+      ]
+    },
+    {
+      "playlist": "Música latina",
+      "artist": "Luis Mateus, David Rendon",
+      "title": "Muero Por Verla - Renovado",
+      "album": "Mis 20 Éxitos Renovados",
+      "releaseYear": "1981",
+      "releaseDate": "1981-01-01",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Mis 20 Éxitos Renovados\""
+      ]
+    },
+    {
+      "playlist": "Dance",
+      "artist": "Century, John Wesley",
+      "title": "Lover Why",
+      "album": "Best Of Century (Vocal Dream Mix)",
+      "releaseYear": "2012",
+      "releaseDate": "2012-01-01",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Best Of Century (Vocal Dream Mix)\"",
+        "Lover Why tiene año 2012 (debe ser 1985)"
+      ]
+    },
+    {
+      "playlist": "Dance",
+      "artist": "Jam & Spoon, PLAVKA",
+      "title": "Right in the Night",
+      "album": "Tripomatic Fairytales 2001 (Deluxe Edition)",
+      "releaseYear": "2013",
+      "releaseDate": "2013-12-13",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Tripomatic Fairytales 2001 (Deluxe Edition)\"",
+        "Right in the Night tiene año 2013 (debe ser 1993)"
+      ]
+    },
+    {
+      "playlist": "Dance",
+      "artist": "Toni Atomic, Eloise",
+      "title": "Sweet Sleep",
+      "album": "Makina Remember - Los Grandes Éxitos de la Música Mákina",
+      "releaseYear": "1996",
+      "releaseDate": "1996-01-01",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Makina Remember - Los Grandes Éxitos de la Música Mákina\""
+      ]
+    },
+    {
+      "playlist": "Dance",
+      "artist": "Absolom",
+      "title": "Stars",
+      "album": "Stars",
+      "releaseYear": "2000",
+      "releaseDate": "2000-01-01",
+      "reasons": [
+        "Fecha en fallback exacto por defecto (2000-01-01)"
+      ]
+    },
+    {
+      "playlist": "Dance",
+      "artist": "Monelli",
+      "title": "L'ultimo dei Mohicani",
+      "album": "Best of Arkimed 90's (remastered)",
+      "releaseYear": "2023",
+      "releaseDate": "2023-07-24",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Best of Arkimed 90's (remastered)\""
+      ]
+    },
+    {
+      "playlist": "Dance",
+      "artist": "Robin, Now",
+      "title": "Let's Make Love",
+      "album": "Contraseña \"The History\" Cantaditas 25th Anniversary 1990 - 2015",
+      "releaseYear": "2014",
+      "releaseDate": "2014-10-10",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Contraseña \"The History\" Cantaditas 25th Anniversary 1990 - 2015\""
+      ]
+    },
+    {
+      "playlist": "Dance",
+      "artist": "Es Imposible",
+      "title": "Es Imposible, No Puede Ser",
+      "album": "Sonido de Valencia 1989-1995",
+      "releaseYear": "2000",
+      "releaseDate": "2000-01-01",
+      "reasons": [
+        "Fecha en fallback exacto por defecto (2000-01-01)"
+      ]
+    },
+    {
+      "playlist": "Dance",
+      "artist": "Peter Murphy",
+      "title": "All Night Long",
+      "album": "Love Hysteria (Expanded Edition)",
+      "releaseYear": "2013",
+      "releaseDate": "2013-11-25",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Love Hysteria (Expanded Edition)\""
+      ]
+    },
+    {
+      "playlist": "Dance",
+      "artist": "Faithless",
+      "title": "Insomnia (Monster Mix) [Radio Edit]",
+      "album": "Insomnia (30th Anniversary)",
+      "releaseYear": "1995",
+      "releaseDate": "1995-11-27",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Insomnia (30th Anniversary)\""
+      ]
+    },
+    {
+      "playlist": "Dance",
+      "artist": "Ismael Lora",
+      "title": "Shout (12' Inch Mix)",
+      "album": "Mdt Radio Hits: Los Nº1 de la Emisora del Remember Mix",
+      "releaseYear": "2014",
+      "releaseDate": "2014-06-23",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Mdt Radio Hits: Los Nº1 de la Emisora del Remember Mix\""
+      ]
+    },
+    {
+      "playlist": "Dance",
+      "artist": "Alfredo Pareja, Charo Campillos, Dagon, Dj Mave, dj maxx, DJ Revolution, DJ Thomas, Head Horny's, Ismael Lora, Jerry Daley, John Dark Face, Kriss, Leit-Motiv, Lime, Mach 4, Maxipaul, Miguel Serna, Nacho Division, New Limit, PG2",
+      "title": "Mdt Radio Hits: Los Nº1 de la Emisora del Remember Mix",
+      "album": "Mdt Radio Hits: Los Nº1 de la Emisora del Remember Mix",
+      "releaseYear": "2014",
+      "releaseDate": "2014-06-23",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Mdt Radio Hits: Los Nº1 de la Emisora del Remember Mix\""
+      ]
+    },
+    {
+      "playlist": "Dance",
+      "artist": "Gala",
+      "title": "10Th Anniversary Megamix",
+      "album": "Coming Into a Decade (10Th Anniversary)",
+      "releaseYear": "2007",
+      "releaseDate": "2007-04-18",
+      "reasons": [
+        "Álbum de recopilatorio/reedición detectado: \"Coming Into a Decade (10Th Anniversary)\""
+      ]
+    },
+    {
+      "playlist": "Dance",
+      "artist": "840, Interfront, Megabeat, Chimo Bayo, Espiral, Not Real Presence, Tambourines, Konplot, Metro, Piropo, Spook, This Is A Presence, Chiquetere Band, Dagon, DJ Pirata, DJ Sylvan, Hipnotica, Mach 4, New Limit, Newton",
+      "title": "In My Mind",
+      "album": "In My Mind",
+      "releaseYear": "2000",
+      "releaseDate": "2000-01-01",
+      "reasons": [
+        "Fecha en fallback exacto por defecto (2000-01-01)"
+      ]
+    }
+  ],
+  "totalAudited": 2193,
+  "totalFlagged": 77
+}

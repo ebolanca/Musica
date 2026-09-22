@@ -1,0 +1,2317 @@
+{
+  "totalTracks": 2193,
+  "byPlaylist": {
+    "Siglo XXI": 745,
+    "Española": 385,
+    "Música viejuna": 569,
+    "Música latina": 290,
+    "Dance": 204
+  },
+  "issues": {
+    "viejunaPost2000": [
+      {
+        "plName": "Música viejuna",
+        "artist": "Shania Twain",
+        "title": "I'm Gonna Getcha Good!",
+        "album": "Up!",
+        "releaseYear": "2002",
+        "releaseDate": "2002-10-07"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Counting Crows",
+        "title": "Accidentally In Love",
+        "album": "Shrek 2 (Original Soundtrack)",
+        "releaseYear": "2004",
+        "releaseDate": "2004-05-03"
+      }
+    ],
+    "sigloXxiPre2000": [],
+    "fallback2000": [
+      {
+        "plName": "Siglo XXI",
+        "artist": "Atomic Kitten",
+        "title": "The Tide Is High",
+        "album": "Feels So Good",
+        "releaseYear": "2000",
+        "releaseDate": "2000-01-01"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Carlinhos Brown, DJ Dero",
+        "title": "María Caipirinha",
+        "album": "Omelete Man",
+        "releaseYear": "2000",
+        "releaseDate": "2000-01-01"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Sonique",
+        "title": "Sky",
+        "album": "Hear My Cry",
+        "releaseYear": "2000",
+        "releaseDate": "2000-01-01"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Lara Fabian",
+        "title": "I Will Love Again",
+        "album": "Lara Fabian",
+        "releaseYear": "2000",
+        "releaseDate": "2000-01-01"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Sonique",
+        "title": "It Feels So Good",
+        "album": "It Feels So Good",
+        "releaseYear": "2000",
+        "releaseDate": "2000-01-01"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Toploader",
+        "title": "Dancing in the Moonlight",
+        "album": "Dancing in the Moonlight - Single",
+        "releaseYear": "2000",
+        "releaseDate": "2000-01-01"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Tom Jones, Mousse T.",
+        "title": "Sexbomb",
+        "album": "Reload",
+        "releaseYear": "2000",
+        "releaseDate": "2000-01-01"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "O-Zone",
+        "title": "Dragostea din tei",
+        "album": "Ma Ya Hi (Dragostea Din Tei) [English Mixes]",
+        "releaseYear": "2000",
+        "releaseDate": "2000-01-01"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "The Corrs",
+        "title": "Breathless",
+        "album": "Breathless - Single",
+        "releaseYear": "2000",
+        "releaseDate": "2000-01-01"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Phil Collins",
+        "title": "You'll Be In My Heart",
+        "album": "Soli Film Hits",
+        "releaseYear": "2000",
+        "releaseDate": "2000-01-01"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Joseph Fonseca",
+        "title": "Noches de Fantasía",
+        "album": "Noches de Fantasía",
+        "releaseYear": "2000",
+        "releaseDate": "2000-01-01"
+      },
+      {
+        "plName": "Dance",
+        "artist": "Absolom",
+        "title": "Stars",
+        "album": "Stars",
+        "releaseYear": "2000",
+        "releaseDate": "2000-01-01"
+      },
+      {
+        "plName": "Dance",
+        "artist": "Es Imposible",
+        "title": "Es Imposible, No Puede Ser",
+        "album": "Sonido de Valencia 1989-1995",
+        "releaseYear": "2000",
+        "releaseDate": "2000-01-01"
+      },
+      {
+        "plName": "Dance",
+        "artist": "840, Interfront, Megabeat, Chimo Bayo, Espiral, Not Real Presence, Tambourines, Konplot, Metro, Piropo, Spook, This Is A Presence, Chiquetere Band, Dagon, DJ Pirata, DJ Sylvan, Hipnotica, Mach 4, New Limit, Newton",
+        "title": "In My Mind",
+        "album": "In My Mind",
+        "releaseYear": "2000",
+        "releaseDate": "2000-01-01"
+      }
+    ],
+    "reissueAlbumWithModernDate": [
+      {
+        "plName": "Siglo XXI",
+        "artist": "Ariana Grande",
+        "title": "we can't be friends (wait for your love)",
+        "album": "eternal sunshine (slightly deluxe)",
+        "releaseYear": "2024",
+        "releaseDate": "2024-03-08"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Black Eyed Peas",
+        "title": "Don't Phunk With My Heart",
+        "album": "Monkey Business (20th Anniversary Edition)",
+        "releaseYear": "2005",
+        "releaseDate": "2005-04-05"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Beyoncé",
+        "title": "IRREPLACEABLE",
+        "album": "B'DAY (20th ANNIVERSARY DELUXE EDITION)",
+        "releaseYear": "2006",
+        "releaseDate": "2006-09-01"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Lady Gaga",
+        "title": "The Edge Of Glory",
+        "album": "Born This Way (International Special Edition Version)",
+        "releaseYear": "2011",
+        "releaseDate": "2011-05-23"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Timbaland, Katy Perry",
+        "title": "If We Ever Meet Again",
+        "album": "Shock Value II (International Deluxe version)",
+        "releaseYear": "2009",
+        "releaseDate": "2009-12-22"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Santana, The Product G&B",
+        "title": "Maria Maria",
+        "album": "Supernatural (Legacy Edition)",
+        "releaseYear": "2011",
+        "releaseDate": "2011-02-18"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Justin Timberlake, Timbaland",
+        "title": "SexyBack",
+        "album": "FutureSex/LoveSounds Deluxe Edition",
+        "releaseYear": "2006",
+        "releaseDate": "2006-09-08"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "MIKA",
+        "title": "Grace Kelly",
+        "album": "Life In Cartoon Motion (UK eDeluxe Album)",
+        "releaseYear": "2007",
+        "releaseDate": "2007-02-27"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Lady Gaga, Colby O'Donis",
+        "title": "Just Dance",
+        "album": "The Fame Monster (International Deluxe)",
+        "releaseYear": "2009",
+        "releaseDate": "2009-01-01"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Major Lazer, Justin Bieber, MØ",
+        "title": "Cold Water",
+        "album": "Major Lazer Essentials",
+        "releaseYear": "2016",
+        "releaseDate": "2016-07-22"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Major Lazer, Nyla, Fuse ODG",
+        "title": "Light It Up",
+        "album": "Major Lazer Essentials",
+        "releaseYear": "2017",
+        "releaseDate": "2017-10-26"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Maroon 5, Christina Aguilera",
+        "title": "Moves Like Jagger",
+        "album": "Hands All Over (Revised International Deluxe)",
+        "releaseYear": "2011",
+        "releaseDate": "2011-07-11"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Lady Gaga",
+        "title": "Alejandro",
+        "album": "The Fame Monster (International Deluxe)",
+        "releaseYear": "2009",
+        "releaseDate": "2009-01-01"
+      },
+      {
+        "plName": "Española",
+        "artist": "Ricky Martin, Yotuel",
+        "title": "La Mordidita",
+        "album": "A Quien Quiera Escuchar Deluxe Edition",
+        "releaseYear": "2015",
+        "releaseDate": "2015-02-10"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Maná, Prince Royce",
+        "title": "El verdadero amor perdona (dueto con Prince Royce)",
+        "album": "Drama Y Luz Edición Deluxe",
+        "releaseYear": "2011",
+        "releaseDate": "2011-11-15"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Joe Arroyo, La Verdad",
+        "title": "En Barranquilla Me Quedo",
+        "album": "Colección Oro de la Salsa, Vol. 10",
+        "releaseYear": "2015",
+        "releaseDate": "2015-03-02"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "El Gran Combo De Puerto Rico",
+        "title": "Brujeria",
+        "album": "45 Years of Music- From the Beginning (1962-2007)",
+        "releaseYear": "2008",
+        "releaseDate": "2008-08-05"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "El Gran Combo De Puerto Rico",
+        "title": "Me Libere",
+        "album": "45 Years of Music- From the Beginning (1962-2007)",
+        "releaseYear": "2008",
+        "releaseDate": "2008-08-05"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Omega, Roberto Ferrante",
+        "title": "Si Te Vas / Que Tengo Que Hacer",
+        "album": "El Dueño Del Flow 2 (New Deluxe Version)",
+        "releaseYear": "2011",
+        "releaseDate": "2011-04-28"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Omega",
+        "title": "Tu Si Quieres, Tu No Quieres",
+        "album": "El Dueño Del Flow 2 (New Deluxe Version)",
+        "releaseYear": "2011",
+        "releaseDate": "2011-04-28"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "El Gran Combo De Puerto Rico",
+        "title": "Trampolin",
+        "album": "45 Years of Music- From the Beginning (1962-2007)",
+        "releaseYear": "2008",
+        "releaseDate": "2008-08-05"
+      },
+      {
+        "plName": "Dance",
+        "artist": "Century, John Wesley",
+        "title": "Lover Why",
+        "album": "Best Of Century (Vocal Dream Mix)",
+        "releaseYear": "2012",
+        "releaseDate": "2012-01-01"
+      },
+      {
+        "plName": "Dance",
+        "artist": "Jam & Spoon, PLAVKA",
+        "title": "Right in the Night",
+        "album": "Tripomatic Fairytales 2001 (Deluxe Edition)",
+        "releaseYear": "2013",
+        "releaseDate": "2013-12-13"
+      },
+      {
+        "plName": "Dance",
+        "artist": "Lasgo",
+        "title": "Alone",
+        "album": "Some Things (Deluxe)",
+        "releaseYear": "2011",
+        "releaseDate": "2011-09-22"
+      },
+      {
+        "plName": "Dance",
+        "artist": "Monelli",
+        "title": "L'ultimo dei Mohicani",
+        "album": "Best of Arkimed 90's (remastered)",
+        "releaseYear": "2023",
+        "releaseDate": "2023-07-24"
+      },
+      {
+        "plName": "Dance",
+        "artist": "Robin, Now",
+        "title": "Let's Make Love",
+        "album": "Contraseña \"The History\" Cantaditas 25th Anniversary 1990 - 2015",
+        "releaseYear": "2014",
+        "releaseDate": "2014-10-10"
+      },
+      {
+        "plName": "Dance",
+        "artist": "Fiocco",
+        "title": "Afflitto",
+        "album": "Trance - The Early Years (1997-2002)",
+        "releaseYear": "2012",
+        "releaseDate": "2012-09-21"
+      },
+      {
+        "plName": "Dance",
+        "artist": "Peter Murphy",
+        "title": "All Night Long",
+        "album": "Love Hysteria (Expanded Edition)",
+        "releaseYear": "2013",
+        "releaseDate": "2013-11-25"
+      },
+      {
+        "plName": "Dance",
+        "artist": "Gala",
+        "title": "10Th Anniversary Megamix",
+        "album": "Coming Into a Decade (10Th Anniversary)",
+        "releaseYear": "2007",
+        "releaseDate": "2007-04-18"
+      }
+    ],
+    "analysisMismatch": [
+      {
+        "plName": "Siglo XXI",
+        "artist": "Destiny's Child",
+        "title": "Lose My Breath",
+        "album": "Destiny Fulfilled",
+        "releaseYear": "2001",
+        "analysisYear": "2004",
+        "analysisAlbum": "Destiny Fulfilled"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Tame Impala",
+        "title": "Dracula",
+        "album": "Dracula - Single",
+        "releaseYear": "2025",
+        "analysisYear": "2015",
+        "analysisAlbum": "Dracula"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Black Eyed Peas",
+        "title": "Don't Phunk With My Heart",
+        "album": "Monkey Business (20th Anniversary Edition)",
+        "releaseYear": "2005",
+        "analysisYear": "2014",
+        "analysisAlbum": "Monkey Business"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "The Pussycat Dolls",
+        "title": "When I Grow Up",
+        "album": "Doll Domination",
+        "releaseYear": "2019",
+        "analysisYear": "2008",
+        "analysisAlbum": "Doll Domination"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Måneskin",
+        "title": "I WANNA BE YOUR SLAVE (纯享版)",
+        "album": "I WANNA BE YOUR SLAVE (纯享版) - Single",
+        "releaseYear": "2024",
+        "analysisYear": "2021",
+        "analysisAlbum": "Teatro d'ira - Vol. I"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Black Eyed Peas",
+        "title": "Let's Get It Started",
+        "album": "Live 8",
+        "releaseYear": "2005",
+        "analysisYear": "2009",
+        "analysisAlbum": "Cool Kidz (International Version)"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Carlinhos Brown, DJ Dero",
+        "title": "María Caipirinha",
+        "album": "Omelete Man",
+        "releaseYear": "2000",
+        "analysisYear": "2014",
+        "analysisAlbum": "Latin Fitness 2015 - Workout Party Music (Latin Hits ideal for Running, Fat Burning, Aerobic, Gym, Cardio, Training, Exercise)"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Sigala",
+        "title": "Easy Love",
+        "album": "Easy Love - Single",
+        "releaseYear": "2015",
+        "analysisYear": "2018",
+        "analysisAlbum": "Brighter Days"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Shakira, Freshlyground",
+        "title": "Waka Waka (This Time for Africa) [The Official 2010 FIFA World Cup (TM) Song] [feat. Freshlyground] [Single]",
+        "album": "Listen Up! The Official 2010 FIFA World Cup Album",
+        "releaseYear": "2010",
+        "analysisYear": "2013",
+        "analysisAlbum": "Party Hits: Summer Edition"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "LP",
+        "title": "Lost on You",
+        "album": "Lost On You",
+        "releaseYear": "2009",
+        "analysisYear": "2017",
+        "analysisAlbum": "Lost On You"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Ava Max",
+        "title": "So Am I",
+        "album": "Heaven & Hell",
+        "releaseYear": "2016",
+        "analysisYear": "2019",
+        "analysisAlbum": "So Am I"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Alexandra Stan",
+        "title": "Mr. Saxobeat",
+        "album": "Saxobeats",
+        "releaseYear": "2005",
+        "analysisYear": "2010",
+        "analysisAlbum": "Saxobeats"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Anastacia",
+        "title": "Sick and Tired",
+        "album": "Anastacia",
+        "releaseYear": "2004",
+        "analysisYear": "2015",
+        "analysisAlbum": "Ultimate Collection"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Dido",
+        "title": "White Flag",
+        "album": "White Flag - Single",
+        "releaseYear": "2003",
+        "analysisYear": "2008",
+        "analysisAlbum": "Life For Rent"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Toploader",
+        "title": "Dancing in the Moonlight",
+        "album": "Dancing in the Moonlight - Single",
+        "releaseYear": "2000",
+        "analysisYear": "2009",
+        "analysisAlbum": "Onka's Big Moka"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Tom Jones, Mousse T.",
+        "title": "Sexbomb",
+        "album": "Reload",
+        "releaseYear": "2000",
+        "analysisYear": "2003",
+        "analysisAlbum": "Reload"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "O-Zone",
+        "title": "Dragostea din tei",
+        "album": "Ma Ya Hi (Dragostea Din Tei) [English Mixes]",
+        "releaseYear": "2000",
+        "analysisYear": "1990",
+        "analysisAlbum": "Ma Ya Hi (Dragostea Din Tei) [English Mixes]"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Fergie",
+        "title": "Big Girls Don't Cry (Personal)",
+        "album": "The Dutchess",
+        "releaseYear": "2006",
+        "analysisYear": "2015",
+        "analysisAlbum": "The Dutchess Deluxe"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Robbie Williams",
+        "title": "Rock DJ",
+        "album": "Sing When You're Winning",
+        "releaseYear": "2000",
+        "analysisYear": "2003",
+        "analysisAlbum": "Sing When You're Winning"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Kelly Clarkson",
+        "title": "Behind These Hazel Eyes",
+        "album": "Breakaway",
+        "releaseYear": "2004",
+        "analysisYear": "2009",
+        "analysisAlbum": "Breakaway"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Eminem",
+        "title": "Lose Yourself",
+        "album": "Best Ever Soundtracks",
+        "releaseYear": "2015",
+        "analysisYear": "2002",
+        "analysisAlbum": "8 Mile (Soundtrack)"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Sean Paul",
+        "title": "Get Busy",
+        "album": "Dutty Rock (20th Anniversary)",
+        "releaseYear": "2002",
+        "analysisYear": "2017",
+        "analysisAlbum": "Dutty Classics Collection"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Axwell /\\ Ingrosso",
+        "title": "More Than You Know",
+        "album": "More Than You Know",
+        "releaseYear": "2017",
+        "analysisYear": "2024",
+        "analysisAlbum": "More Than You Know"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Black Eyed Peas",
+        "title": "Where Is The Love?",
+        "album": "Elephunk",
+        "releaseYear": "2003",
+        "analysisYear": "2022",
+        "analysisAlbum": "Elephunk"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Fifth Harmony, Kid Ink",
+        "title": "Worth It",
+        "album": "Worth It (feat. Kid Ink)",
+        "releaseYear": "2015",
+        "analysisYear": "2024",
+        "analysisAlbum": "Worth It (feat. Kid Ink)"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Nickelback",
+        "title": "How You Remind Me",
+        "album": "Silver Side Up",
+        "releaseYear": "2001",
+        "analysisYear": "2013",
+        "analysisAlbum": "Silver Side Up"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Evanescence",
+        "title": "Bring Me To Life",
+        "album": "Fallen",
+        "releaseYear": "2003",
+        "analysisYear": "2014",
+        "analysisAlbum": "Fallen"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Keane",
+        "title": "Everybody's Changing",
+        "album": "Hopes and Fears",
+        "releaseYear": "2003",
+        "analysisYear": "2013",
+        "analysisAlbum": "Hopes and Fears (Deluxe Edition)"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Hoobastank",
+        "title": "The Reason",
+        "album": "The Reason (20th Anniversary)",
+        "releaseYear": "2003",
+        "analysisYear": "2019",
+        "analysisAlbum": "The Reason"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Lumidee",
+        "title": "Never Leave You (Uh Oooh, Uh Oooh)",
+        "album": "Never Leave You (Uh Oooh, Uh Oooh) - Single",
+        "releaseYear": "2003",
+        "analysisYear": "2008",
+        "analysisAlbum": "Almost Famous"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Black Eyed Peas",
+        "title": "Shut Up",
+        "album": "Elephunk",
+        "releaseYear": "2003",
+        "analysisYear": "2022",
+        "analysisAlbum": "Elephunk"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "will.i.am",
+        "title": "I Like To Move It",
+        "album": "I Like To Move It",
+        "releaseYear": "2023",
+        "analysisYear": "2019",
+        "analysisAlbum": "Madagascar: Escape 2 Africa (Music From The Motion Picture)"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "The Offspring",
+        "title": "You're Gonna Go Far, Kid",
+        "album": "Rise and Fall, Rage and Grace",
+        "releaseYear": "2008",
+        "analysisYear": "2016",
+        "analysisAlbum": "Rise And Fall, Rage And Grace"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Alizée",
+        "title": "Moi... Lolita",
+        "album": "Gourmandises",
+        "releaseYear": "2000",
+        "analysisYear": "2018",
+        "analysisAlbum": "Gourmandises"
+      },
+      {
+        "plName": "Siglo XXI",
+        "artist": "Bruno Mars",
+        "title": "Marry You",
+        "album": "Doo-Wops & Hooligans",
+        "releaseYear": "2010",
+        "analysisYear": "2000",
+        "analysisAlbum": "Álbum Desconocido"
+      },
+      {
+        "plName": "Española",
+        "artist": "Melendi",
+        "title": "Con la luna llena",
+        "album": "Yo me veo contigo",
+        "releaseYear": "2003",
+        "analysisYear": "2023",
+        "analysisAlbum": "Con La Luna Llena"
+      },
+      {
+        "plName": "Española",
+        "artist": "Alejandro Sanz",
+        "title": "Amiga Mía",
+        "album": "Más",
+        "releaseYear": "1997",
+        "analysisYear": "2011",
+        "analysisAlbum": "Coleccion definitiva (Deluxe)"
+      },
+      {
+        "plName": "Española",
+        "artist": "Heroes Del Silencio",
+        "title": "Entre Dos Tierras",
+        "album": "Senderos de Traición",
+        "releaseYear": "1990",
+        "analysisYear": "2006",
+        "analysisAlbum": "The Platinum Collection"
+      },
+      {
+        "plName": "Española",
+        "artist": "El Canto Del Loco",
+        "title": "Volverá",
+        "album": "Zapatillas",
+        "releaseYear": "2005",
+        "analysisYear": "2002",
+        "analysisAlbum": "Zapatillas"
+      },
+      {
+        "plName": "Española",
+        "artist": "Chayanne",
+        "title": "Dejaría Todo",
+        "album": "Atado a Tu Amor",
+        "releaseYear": "1998",
+        "analysisYear": "2012",
+        "analysisAlbum": "Atado a Tu Amor"
+      },
+      {
+        "plName": "Española",
+        "artist": "Diego Torres",
+        "title": "Color Esperanza",
+        "album": "Un Mundo Diferente",
+        "releaseYear": "2001",
+        "analysisYear": "2020",
+        "analysisAlbum": "Color Esperanza 2020"
+      },
+      {
+        "plName": "Española",
+        "artist": "Alejandro Sanz",
+        "title": "Corazón Partío",
+        "album": "Más",
+        "releaseYear": "1997",
+        "analysisYear": "2011",
+        "analysisAlbum": "Coleccion definitiva (Deluxe)"
+      },
+      {
+        "plName": "Española",
+        "artist": "Tino Casal",
+        "title": "Eloise",
+        "album": "Casal Único",
+        "releaseYear": "1987",
+        "analysisYear": "2007",
+        "analysisAlbum": "The Platinum Collection: Tino Casal"
+      },
+      {
+        "plName": "Española",
+        "artist": "La Oreja de Van Gogh",
+        "title": "Cuéntame al Oido",
+        "album": "Dile al Sol",
+        "releaseYear": "1998",
+        "analysisYear": "2008",
+        "analysisAlbum": "Dile al Sol"
+      },
+      {
+        "plName": "Española",
+        "artist": "Jarabe De Palo",
+        "title": "El lado oscuro",
+        "album": "La Flaca",
+        "releaseYear": "1996",
+        "analysisYear": "2006",
+        "analysisAlbum": "La Flaca - Edición 10º Aniversario"
+      },
+      {
+        "plName": "Española",
+        "artist": "Mecano",
+        "title": "Aire",
+        "album": "Ana, José, Nacho",
+        "releaseYear": "1984",
+        "analysisYear": "2026",
+        "analysisAlbum": "Ana, José, Nacho"
+      },
+      {
+        "plName": "Española",
+        "artist": "Ella Baila Sola",
+        "title": "Amores de barra",
+        "album": "Imprescindibles - EP",
+        "releaseYear": "1996",
+        "analysisYear": "2005",
+        "analysisAlbum": "Ella Baila Sola"
+      },
+      {
+        "plName": "Española",
+        "artist": "Alaska Y Los Pegamoides",
+        "title": "Bailando",
+        "album": "Las 100 mejores canciones del Pop Español, Vol. 3",
+        "releaseYear": "1982",
+        "analysisYear": "2006",
+        "analysisAlbum": "Música De Los 80 En Español"
+      },
+      {
+        "plName": "Española",
+        "artist": "Loquillo",
+        "title": "Cadillac Solitario",
+        "album": "Rock & Roll Star: 30 Años / 1980-2010",
+        "releaseYear": "1983",
+        "analysisYear": "1989",
+        "analysisAlbum": "Heroes De Los 80"
+      },
+      {
+        "plName": "Española",
+        "artist": "Los Fabulosos Cadillacs",
+        "title": "El Matador",
+        "album": "ROCK 80s Y 90s EN ESPAÑOL",
+        "releaseYear": "1993",
+        "analysisYear": "2005",
+        "analysisAlbum": "ROCK 80s Y 90s EN ESPAÑOL"
+      },
+      {
+        "plName": "Española",
+        "artist": "Tino Casal",
+        "title": "Embrujada",
+        "album": "Todo Casal [Versión Estándar]",
+        "releaseYear": "1983",
+        "analysisYear": "2007",
+        "analysisAlbum": "The Platinum Collection: Tino Casal"
+      },
+      {
+        "plName": "Española",
+        "artist": "Radio Futura",
+        "title": "Escuela de Calor",
+        "album": "La Ley del Desierto",
+        "releaseYear": "1984",
+        "analysisYear": "2008",
+        "analysisAlbum": "Paisajes Electricos"
+      },
+      {
+        "plName": "Española",
+        "artist": "Duncan Dhu",
+        "title": "Esos Ojos Negros",
+        "album": "20 Años de Canciones",
+        "releaseYear": "1986",
+        "analysisYear": "1995",
+        "analysisAlbum": "20 Años de Canciones"
+      },
+      {
+        "plName": "Española",
+        "artist": "Loquillo Y Los Trogloditas",
+        "title": "Feo, Fuerte y Formal",
+        "album": "Feo, Fuerte y Formal",
+        "releaseYear": "2001",
+        "analysisYear": "2006",
+        "analysisAlbum": "Hermanos de sangre"
+      },
+      {
+        "plName": "Española",
+        "artist": "Mecano",
+        "title": "Hoy no Me Puedo Levantar",
+        "album": "Mecano",
+        "releaseYear": "1981",
+        "analysisYear": "2026",
+        "analysisAlbum": "Esencial Mecano"
+      },
+      {
+        "plName": "Española",
+        "artist": "Jarabe De Palo",
+        "title": "La flaca",
+        "album": "La Flaca",
+        "releaseYear": "1996",
+        "analysisYear": "2003",
+        "analysisAlbum": "La Flaca"
+      },
+      {
+        "plName": "Española",
+        "artist": "Heroes Del Silencio",
+        "title": "Maldito Duende",
+        "album": "Senderos de Traición",
+        "releaseYear": "1990",
+        "analysisYear": "2006",
+        "analysisAlbum": "The Platinum Collection"
+      },
+      {
+        "plName": "Española",
+        "artist": "Ricky Martin",
+        "title": "María",
+        "album": "A Medio Vivir",
+        "releaseYear": "1995",
+        "analysisYear": "1999",
+        "analysisAlbum": "Don't Stop the Party"
+      },
+      {
+        "plName": "Española",
+        "artist": "Ole Ole",
+        "title": "No Controles",
+        "album": "No Controles",
+        "releaseYear": "1983",
+        "analysisYear": "2014",
+        "analysisAlbum": "No Controles"
+      },
+      {
+        "plName": "Española",
+        "artist": "Joaquín Sabina",
+        "title": "Por el Bulevar de los Sueños Rotos",
+        "album": "Sabina 70 (Con Digital Booklet)",
+        "releaseYear": "1994",
+        "analysisYear": "2014",
+        "analysisAlbum": "Esencial Joaquin Sabina"
+      },
+      {
+        "plName": "Española",
+        "artist": "José Luis Perales",
+        "title": "Un Velero Llamado Libertad",
+        "album": "Canciones de un Poeta",
+        "releaseYear": "1979",
+        "analysisYear": "2016",
+        "analysisAlbum": "iCollection"
+      },
+      {
+        "plName": "Española",
+        "artist": "Conchita",
+        "title": "Puede Ser",
+        "album": "Nada Más",
+        "releaseYear": "2002",
+        "analysisYear": "2007",
+        "analysisAlbum": "Nada Más"
+      },
+      {
+        "plName": "Española",
+        "artist": "Rosario",
+        "title": "¡Que Bonito!",
+        "album": "Mucho Por Vivir",
+        "releaseYear": "1996",
+        "analysisYear": "2024",
+        "analysisAlbum": "Las Voces De Rosario"
+      },
+      {
+        "plName": "Española",
+        "artist": "Alex Ubago",
+        "title": "¿Qué Pides Tú?",
+        "album": "¿Qué Pides Tú?",
+        "releaseYear": "2007",
+        "analysisYear": "2017",
+        "analysisAlbum": "Latin Rock Ballads"
+      },
+      {
+        "plName": "Española",
+        "artist": "Lolita",
+        "title": "Sarandonga",
+        "album": "Takatá, a Toda Rumba",
+        "releaseYear": "2001",
+        "analysisYear": "2010",
+        "analysisAlbum": "Takatá, a Toda Rumba"
+      },
+      {
+        "plName": "Española",
+        "artist": "Los Secretos",
+        "title": "Sobre un vidrio mojado",
+        "album": "Una vida a tu lado",
+        "releaseYear": "2015",
+        "analysisYear": "2008",
+        "analysisAlbum": "Gracias por elegirme"
+      },
+      {
+        "plName": "Española",
+        "artist": "Azucar Moreno",
+        "title": "Solo Se Vive Una Vez",
+        "album": "Solo Se Vive Una Vez - Single",
+        "releaseYear": "2024",
+        "analysisYear": "1997",
+        "analysisAlbum": "Mucho Azucar (Grandes Exitos)"
+      },
+      {
+        "plName": "Española",
+        "artist": "Amaral",
+        "title": "Te Necesito",
+        "album": "Estrella de Mar",
+        "releaseYear": "2002",
+        "analysisYear": "2007",
+        "analysisAlbum": "Te Necesito"
+      },
+      {
+        "plName": "Española",
+        "artist": "Shakira, Freshlyground",
+        "title": "Waka Waka (This Time for Africa) [The Official 2010 FIFA World Cup (TM) Song] [feat. Freshlyground] [Single]",
+        "album": "Listen Up! The Official 2010 FIFA World Cup Album",
+        "releaseYear": "2010",
+        "analysisYear": "2013",
+        "analysisAlbum": "Party Hits: Summer Edition"
+      },
+      {
+        "plName": "Española",
+        "artist": "Sonia Y Selena",
+        "title": "Yo Quiero Bailar",
+        "album": "La pachanga, vol.4",
+        "releaseYear": "2001",
+        "analysisYear": "2014",
+        "analysisAlbum": "Yo Quiero Bailar"
+      },
+      {
+        "plName": "Española",
+        "artist": "Nino Bravo",
+        "title": "Un Beso y una Flor",
+        "album": "Homenaje a Niño Bravo",
+        "releaseYear": "2018",
+        "analysisYear": "1976",
+        "analysisAlbum": "Super 20"
+      },
+      {
+        "plName": "Española",
+        "artist": "La Mosca",
+        "title": "Yo Te Quiero Dar",
+        "album": "Muchachos",
+        "releaseYear": "1999",
+        "analysisYear": "2024",
+        "analysisAlbum": "Muchachos"
+      },
+      {
+        "plName": "Española",
+        "artist": "Paloma San Basilio",
+        "title": "Juntos",
+        "album": "Las canciones de mi vida",
+        "releaseYear": "1981",
+        "analysisYear": "2008",
+        "analysisAlbum": "Los Romanticos- Paloma San Basilio"
+      },
+      {
+        "plName": "Española",
+        "artist": "Gipsy Kings",
+        "title": "Volare (Nel Blu di Pinto di Blu)",
+        "album": "1001Tracklists: Kgzoo, ALGRA Mix (DJ Mix)",
+        "releaseYear": "2024",
+        "analysisYear": "2012",
+        "analysisAlbum": "1001Tracklists: Kgzoo, ALGRA Mix (DJ Mix)"
+      },
+      {
+        "plName": "Española",
+        "artist": "Cantores De Hispalis",
+        "title": "Tócala, Tócala",
+        "album": "Vamos a la Feria con Cantores de Híspalis",
+        "releaseYear": "2007",
+        "analysisYear": "2012",
+        "analysisAlbum": "Tócala, Tócala"
+      },
+      {
+        "plName": "Española",
+        "artist": "Heroes Del Silencio",
+        "title": "Héroe De Leyenda",
+        "album": "El Mar No Cesa - Edición Especial",
+        "releaseYear": "1987",
+        "analysisYear": "2006",
+        "analysisAlbum": "The Platinum Collection"
+      },
+      {
+        "plName": "Española",
+        "artist": "Chanel",
+        "title": "SloMo",
+        "album": "SloMo",
+        "releaseYear": "2021",
+        "analysisYear": "2026",
+        "analysisAlbum": "SloMo"
+      },
+      {
+        "plName": "Española",
+        "artist": "ABBA",
+        "title": "Chiquitita",
+        "album": "Voulez-Vous",
+        "releaseYear": "1979",
+        "analysisYear": "1999",
+        "analysisAlbum": "Oro \"Grandes Exitos\""
+      },
+      {
+        "plName": "Española",
+        "artist": "Paradisio",
+        "title": "Bailando",
+        "album": "Paradisio",
+        "releaseYear": "1996",
+        "analysisYear": "2010",
+        "analysisAlbum": "Bailando"
+      },
+      {
+        "plName": "Española",
+        "artist": "Nacho",
+        "title": "Báilame",
+        "album": "Báilame",
+        "releaseYear": "2017",
+        "analysisYear": "2000",
+        "analysisAlbum": "Álbum Desconocido"
+      },
+      {
+        "plName": "Española",
+        "artist": "Los Chichos",
+        "title": "Bailarás Con Alegría",
+        "album": "De cerca",
+        "releaseYear": "1996",
+        "analysisYear": "2000",
+        "analysisAlbum": "Álbum Desconocido"
+      },
+      {
+        "plName": "Española",
+        "artist": "Los Chichos",
+        "title": "Son ilusiones",
+        "album": "De cerca",
+        "releaseYear": "1996",
+        "analysisYear": "2000",
+        "analysisAlbum": "Álbum Desconocido"
+      },
+      {
+        "plName": "Española",
+        "artist": "Los Chichos",
+        "title": "Ni Más Ni Menos",
+        "album": "Decálogo (Sus 10 Mayores Éxitos)",
+        "releaseYear": "1996",
+        "analysisYear": "2000",
+        "analysisAlbum": "Álbum Desconocido"
+      },
+      {
+        "plName": "Española",
+        "artist": "Los Chichos",
+        "title": "Quiero ser libre",
+        "album": "De cerca",
+        "releaseYear": "1993",
+        "analysisYear": "2000",
+        "analysisAlbum": "Álbum Desconocido"
+      },
+      {
+        "plName": "Española",
+        "artist": "Los Chunguitos",
+        "title": "Me Quedo Contigo",
+        "album": "40 Años - 40 Canciones",
+        "releaseYear": "1980",
+        "analysisYear": "2000",
+        "analysisAlbum": "Álbum Desconocido"
+      },
+      {
+        "plName": "Española",
+        "artist": "Los Chunguitos",
+        "title": "Dame Veneno",
+        "album": "40 Años - 40 Canciones",
+        "releaseYear": "1977",
+        "analysisYear": "2011",
+        "analysisAlbum": "Dame Veneno"
+      },
+      {
+        "plName": "Española",
+        "artist": "Los Chunguitos",
+        "title": "Carmen",
+        "album": "Contra la pared",
+        "releaseYear": "1985",
+        "analysisYear": "2000",
+        "analysisAlbum": "Álbum Desconocido"
+      },
+      {
+        "plName": "Española",
+        "artist": "Los Chunguitos",
+        "title": "Ay Que Dolor",
+        "album": "40 Años - 40 Canciones",
+        "releaseYear": "1978",
+        "analysisYear": "2000",
+        "analysisAlbum": "Álbum Desconocido"
+      },
+      {
+        "plName": "Española",
+        "artist": "Junco",
+        "title": "¡Hola, Mi Amor!",
+        "album": "Básicos",
+        "releaseYear": "2020",
+        "analysisYear": "2000",
+        "analysisAlbum": "Álbum Desconocido"
+      },
+      {
+        "plName": "Española",
+        "artist": "Junco",
+        "title": "Celos",
+        "album": "Básicos",
+        "releaseYear": "2021",
+        "analysisYear": "2000",
+        "analysisAlbum": "Álbum Desconocido"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Michael Jackson",
+        "title": "Billie Jean",
+        "album": "Pop Music: The Modern Era 1976-1999",
+        "releaseYear": "1966",
+        "analysisYear": "1982",
+        "analysisAlbum": "Thriller"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Depeche Mode",
+        "title": "Enjoy the Silence",
+        "album": "DMBX4",
+        "releaseYear": "1990",
+        "analysisYear": "1998",
+        "analysisAlbum": "The Singles 86-98"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Kim Carnes",
+        "title": "Bette Davis Eyes",
+        "album": "Mistaken Identity",
+        "releaseYear": "1981",
+        "analysisYear": "1993",
+        "analysisAlbum": "Gypsy Honeymoon: The Best Of Kim Carnes"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Phil Collins",
+        "title": "You Can't Hurry Love",
+        "album": "Hello, I Must Be Going!",
+        "releaseYear": "1982",
+        "analysisYear": "1991",
+        "analysisAlbum": "The Singles"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Desireless",
+        "title": "Voyage voyage",
+        "album": "François",
+        "releaseYear": "1980",
+        "analysisYear": "1986",
+        "analysisAlbum": "François"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Eric Carmen",
+        "title": "Hungry Eyes",
+        "album": "Dirty Dancing",
+        "releaseYear": "1989",
+        "analysisYear": "1997",
+        "analysisAlbum": "The Definitive Collection"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Joan Jett & the Blackhearts",
+        "title": "I Love Rock 'N Roll",
+        "album": "I Love Rock 'N' Roll",
+        "releaseYear": "1981",
+        "analysisYear": "1992",
+        "analysisAlbum": "I Love Rock 'N' Roll"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Gloria Estefan, Miami Sound Machine",
+        "title": "Conga",
+        "album": "iTunes Originals: Gloria Estefan (English Version)",
+        "releaseYear": "1985",
+        "analysisYear": "1992",
+        "analysisAlbum": "The Essential Gloria Estefan"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Elton John",
+        "title": "Sacrifice",
+        "album": "Diamonds",
+        "releaseYear": "1989",
+        "analysisYear": "1995",
+        "analysisAlbum": "Love Songs"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Madonna",
+        "title": "Holiday",
+        "album": "Madonna",
+        "releaseYear": "1983",
+        "analysisYear": "1990",
+        "analysisAlbum": "The Immaculate Collection"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Bonnie Tyler",
+        "title": "Total Eclipse of the Heart",
+        "album": "Flashback Internacional",
+        "releaseYear": "1982",
+        "analysisYear": "1993",
+        "analysisAlbum": "Heaven & Hell"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Los Lobos",
+        "title": "La Bamba",
+        "album": "La Bamba (Original Motion Picture Soundtrack)",
+        "releaseYear": "1987",
+        "analysisYear": "1999",
+        "analysisAlbum": "La Bamba"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Starship",
+        "title": "Nothing's Gonna Stop Us Now",
+        "album": "No Protection",
+        "releaseYear": "1987",
+        "analysisYear": "1991",
+        "analysisAlbum": "Greatest Hits (Ten Years And Change 1979-1991)"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Paul Young",
+        "title": "Every Time You Go Away",
+        "album": "The Secret of Association",
+        "releaseYear": "1985",
+        "analysisYear": "1991",
+        "analysisAlbum": "From Time To Time - The Singles Collection"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "4 Non Blondes",
+        "title": "What's Up?",
+        "album": "Bigger, Better, Faster, More!",
+        "releaseYear": "1992",
+        "analysisYear": "1996",
+        "analysisAlbum": "Bigger, Better, Faster, More !"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Ultra Naté, Mood II Swing",
+        "title": "Free - Mood II Swing Radio Edit",
+        "album": "Strictly Rhythms, Vol. 2 (Mixed By Mr V)",
+        "releaseYear": "1991",
+        "analysisYear": "1997",
+        "analysisAlbum": "Free - The Strictly Collection"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Robin S",
+        "title": "Show Me Love",
+        "album": "Show Me Love",
+        "releaseYear": "1990",
+        "analysisYear": "1993",
+        "analysisAlbum": "Show Me Love"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Metallica",
+        "title": "The Unforgiven",
+        "album": "Metallica",
+        "releaseYear": "1991",
+        "analysisYear": "1997",
+        "analysisAlbum": "Reload"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Cutting Crew",
+        "title": "I Just Died In Your Arms",
+        "album": "Pure 80's Love: The #1 Hits",
+        "releaseYear": "1986",
+        "analysisYear": "2004",
+        "analysisAlbum": "Molotov Cocktail Party"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Limahl",
+        "title": "Never Ending Story (Rerecorded)",
+        "album": "So Far So Good (Rerecorded Version)",
+        "releaseYear": "1984",
+        "analysisYear": "1996",
+        "analysisAlbum": "The Very Best Of Kajagoogoo"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "The Buggles",
+        "title": "Video Killed The Radio Star",
+        "album": "The Age of Plastic",
+        "releaseYear": "1979",
+        "analysisYear": "1974",
+        "analysisAlbum": "Body By Jake: 80s Weight Loss Workout (BPM 100-136)"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Nik Kershaw",
+        "title": "The Riddle",
+        "album": "The Riddle",
+        "releaseYear": "1984",
+        "analysisYear": "1999",
+        "analysisAlbum": "The Collection"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Donna Summer",
+        "title": "She Works Hard for the Money",
+        "album": "A Hot Summer Night",
+        "releaseYear": "1983",
+        "analysisYear": "1987",
+        "analysisAlbum": "She Works Hard For The Money"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Joe Cocker, Jennifer Warnes",
+        "title": "Up Where We Belong",
+        "album": "Joe Cocker Live",
+        "releaseYear": "1990",
+        "analysisYear": "1982",
+        "analysisAlbum": "'80s Pop Number 1's"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Janet Jackson",
+        "title": "Together Again",
+        "album": "The Velvet Rope",
+        "releaseYear": "1997",
+        "analysisYear": "1993",
+        "analysisAlbum": "The Velvet Rope"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Hot Chocolate",
+        "title": "You Sexy Thing",
+        "album": "Dance Groove 70's & 80's: Disco, Soul & Funk",
+        "releaseYear": "1975",
+        "analysisYear": "1996",
+        "analysisAlbum": "Hot Chocolate"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Nik Kershaw",
+        "title": "Wouldn't It Be Good",
+        "album": "Human Racing",
+        "releaseYear": "1984",
+        "analysisYear": "1999",
+        "analysisAlbum": "The Collection"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "The Cranberries",
+        "title": "Promises",
+        "album": "Bury the Hatchet",
+        "releaseYear": "1999",
+        "analysisYear": "1993",
+        "analysisAlbum": "Bury The Hatchet (The Complete Sessions 1998-1999)"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "The Outfield",
+        "title": "Your Love",
+        "album": "Play Deep",
+        "releaseYear": "1985",
+        "analysisYear": "1998",
+        "analysisAlbum": "Super Hits"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Simply Red",
+        "title": "Fairground",
+        "album": "Life (US Release)",
+        "releaseYear": "1995",
+        "analysisYear": "1985",
+        "analysisAlbum": "Life"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Billy Joel",
+        "title": "We Didn't Start the Fire",
+        "album": "Pop Music: The Modern Era 1976-1999",
+        "releaseYear": "1966",
+        "analysisYear": "1989",
+        "analysisAlbum": "Storm Front"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Alanis Morissette",
+        "title": "Thank U",
+        "album": "Supposed Former Infatuation Junkie",
+        "releaseYear": "1998",
+        "analysisYear": "2005",
+        "analysisAlbum": "The Collection (Standard Edition)"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Michael Jackson",
+        "title": "Don't Stop 'Til You Get Enough",
+        "album": "R&B: From Doo-Wop to Hip-Hop",
+        "releaseYear": "1966",
+        "analysisYear": "1979",
+        "analysisAlbum": "Michael: Songs From The Motion Picture"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Aerosmith",
+        "title": "Dream On",
+        "album": "Aerosmith",
+        "releaseYear": "1973",
+        "analysisYear": "1993",
+        "analysisAlbum": "Greatest Hits"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Deep Purple",
+        "title": "Smoke On the Water",
+        "album": "Machine Head",
+        "releaseYear": "1972",
+        "analysisYear": "2003",
+        "analysisAlbum": "Machine Head - 25th Anniversary Edition"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "The Rolling Stones Experience, David Tree",
+        "title": "Angie",
+        "album": "Goats Head Soup",
+        "releaseYear": "1973",
+        "analysisYear": "2021",
+        "analysisAlbum": "Angie"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "ABBA",
+        "title": "Dancing Queen",
+        "album": "Arrival",
+        "releaseYear": "1976",
+        "analysisYear": "2005",
+        "analysisAlbum": "ABBA Gold"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Boston",
+        "title": "More Than a Feeling",
+        "album": "Boston",
+        "releaseYear": "1976",
+        "analysisYear": "2016",
+        "analysisAlbum": "Rock: The Train Kept A Rollin'"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Bee Gees",
+        "title": "Stayin' Alive",
+        "album": "Saturday Night Fever",
+        "releaseYear": "1977",
+        "analysisYear": "2009",
+        "analysisAlbum": "The Ultimate Bee Gees"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Earth, Wind & Fire",
+        "title": "September",
+        "album": "The Best of Earth, Wind & Fire, Vol. 1",
+        "releaseYear": "1978",
+        "analysisYear": "2018",
+        "analysisAlbum": "September"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "The Police",
+        "title": "Message In A Bottle",
+        "album": "Reggatta de Blanc",
+        "releaseYear": "1979",
+        "analysisYear": "2008",
+        "analysisAlbum": "Certifiable"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "The Knack",
+        "title": "My Sharona",
+        "album": "Get the Knack",
+        "releaseYear": "1979",
+        "analysisYear": "2008",
+        "analysisAlbum": "Get The Knack"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Bob Marley & The Wailers",
+        "title": "Could You Be Loved",
+        "album": "Uprising",
+        "releaseYear": "1980",
+        "analysisYear": "2001",
+        "analysisAlbum": "Uprising"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Queen, David Bowie",
+        "title": "Under Pressure",
+        "album": "Hot Space",
+        "releaseYear": "1981",
+        "analysisYear": "2011",
+        "analysisAlbum": "Live at Wembley Stadium"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Spandau Ballet",
+        "title": "True",
+        "album": "True",
+        "releaseYear": "1983",
+        "analysisYear": "2009",
+        "analysisAlbum": "Once More (Digital Album)"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "P. Lion",
+        "title": "Happy Children",
+        "album": "Springtime",
+        "releaseYear": "1983",
+        "analysisYear": "2009",
+        "analysisAlbum": "Happy Children"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Europe",
+        "title": "Carrie",
+        "album": "The Final Countdown",
+        "releaseYear": "1986",
+        "analysisYear": "2017",
+        "analysisAlbum": "The Final Countdown 30th Anniversary Show"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Queen",
+        "title": "A Kind Of Magic",
+        "album": "A Kind of Magic",
+        "releaseYear": "1986",
+        "analysisYear": "2011",
+        "analysisAlbum": "Live at Wembley Stadium"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "The Bangles",
+        "title": "Walk Like an Egyptian",
+        "album": "Different Light",
+        "releaseYear": "1986",
+        "analysisYear": "2010",
+        "analysisAlbum": "Different Light"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Lionel Richie",
+        "title": "Say You, Say Me",
+        "album": "Dancing on the Ceiling",
+        "releaseYear": "1985",
+        "analysisYear": "2003",
+        "analysisAlbum": "Dancing On The Ceiling"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Michael Jackson",
+        "title": "Bad",
+        "album": "Bad",
+        "releaseYear": "1987",
+        "analysisYear": "2012",
+        "analysisAlbum": "Bad 25th Anniversary"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "U2",
+        "title": "Where The Streets Have No Name",
+        "album": "The Joshua Tree",
+        "releaseYear": "1987",
+        "analysisYear": "2021",
+        "analysisAlbum": "The Virtual Road – U2 Go Home: Live From Slane Castle Ireland EP"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Chris de Burgh",
+        "title": "The Lady In Red",
+        "album": "Into the Light",
+        "releaseYear": "1986",
+        "analysisYear": "2005",
+        "analysisAlbum": "Live in Dortmund"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "The Bangles, Susanna Hoffs",
+        "title": "Eternal Flame",
+        "album": "Everything",
+        "releaseYear": "1988",
+        "analysisYear": "2003",
+        "analysisAlbum": "Something That You Said"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Yazz",
+        "title": "The Only Way Is Up",
+        "album": "Wanted",
+        "releaseYear": "1988",
+        "analysisYear": "2017",
+        "analysisAlbum": "Wanted"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Kylie Minogue",
+        "title": "I Should Be so Lucky",
+        "album": "Kylie",
+        "releaseYear": "1987",
+        "analysisYear": "2006",
+        "analysisAlbum": "Kylie"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Lisa Stansfield",
+        "title": "All Around the World",
+        "album": "Affection",
+        "releaseYear": "1989",
+        "analysisYear": "2017",
+        "analysisAlbum": "Affection"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Twenty 4 Seven Ft. Capt. Hollywood",
+        "title": "I Can't Stand It!",
+        "album": "Street Moves",
+        "releaseYear": "1989",
+        "analysisYear": "2016",
+        "analysisAlbum": "Streetmoves (feat. Capt. Hollywood)"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "2 Unlimited",
+        "title": "Get Ready For This",
+        "album": "Get Ready!",
+        "releaseYear": "1991",
+        "analysisYear": "2016",
+        "analysisAlbum": "Get Ready"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Bon Jovi",
+        "title": "Keep The Faith",
+        "album": "Keep The Faith",
+        "releaseYear": "1998",
+        "analysisYear": "1992",
+        "analysisAlbum": "Keep The Faith"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Roxette",
+        "title": "How Do You Do!",
+        "album": "Tourism",
+        "releaseYear": "1992",
+        "analysisYear": "2014",
+        "analysisAlbum": "The 30 Biggest Hits XXX"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "2 Unlimited",
+        "title": "No Limit",
+        "album": "No Limits!",
+        "releaseYear": "1993",
+        "analysisYear": "2016",
+        "analysisAlbum": "No Limits"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Culture Beat",
+        "title": "Mr. Vain",
+        "album": "Serenity",
+        "releaseYear": "1993",
+        "analysisYear": "2012",
+        "analysisAlbum": "Mr. Vain"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Whigfield",
+        "title": "Saturday Night",
+        "album": "Whigfield",
+        "releaseYear": "1994",
+        "analysisYear": "2024",
+        "analysisAlbum": "Whigfield Christmas"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "La Bouche",
+        "title": "Sweet Dreams",
+        "album": "Sweet Dreams",
+        "releaseYear": "1994",
+        "analysisYear": "2023",
+        "analysisAlbum": "Sweet Dreams"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Roxette",
+        "title": "Sleeping In My Car",
+        "album": "Crash! Boom! Bang!",
+        "releaseYear": "1994",
+        "analysisYear": "2024",
+        "analysisAlbum": "Crash! Boom! Bang! 30th Anniversary Edition"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Will Smith",
+        "title": "Men In Black",
+        "album": "Big Willie Style",
+        "releaseYear": "1997",
+        "analysisYear": "2012",
+        "analysisAlbum": "Wanna Buy Beats? - Volume 2"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Céline Dion",
+        "title": "My Heart Will Go On",
+        "album": "Let's Talk About Love",
+        "releaseYear": "1997",
+        "analysisYear": "2012",
+        "analysisAlbum": "Titanic: Original Motion Picture Soundtrack - Collector's Anniversary Edition"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Vengaboys",
+        "title": "Up & Down",
+        "album": "Up & Down - The Party Album",
+        "releaseYear": "1998",
+        "analysisYear": "2010",
+        "analysisAlbum": "Up & Down"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Manic Street Preachers",
+        "title": "If You Tolerate This Your Children Will Be Next",
+        "album": "This Is My Truth Tell Me Yours",
+        "releaseYear": "1988",
+        "analysisYear": "1998",
+        "analysisAlbum": "This Is My Truth Tell Me Yours"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "blink-182",
+        "title": "All The Small Things",
+        "album": "Enema of the State",
+        "releaseYear": "1999",
+        "analysisYear": "2011",
+        "analysisAlbum": "The Mark, Tom And Travis Show"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "GIGI D'AGOSTINO",
+        "title": "Bla Bla Bla",
+        "album": "L'Amour Toujours",
+        "releaseYear": "1999",
+        "analysisYear": "2009",
+        "analysisAlbum": "The Essential Gigi D'Agostino"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "GIGI D'AGOSTINO",
+        "title": "The Riddle",
+        "album": "L'Amour Toujours",
+        "releaseYear": "1999",
+        "analysisYear": "2009",
+        "analysisAlbum": "Gigi D'Agostino - L'Amour Toujours (MP3 Album)"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Tom Jones, Mousse T.",
+        "title": "Sexbomb",
+        "album": "Reload",
+        "releaseYear": "1999",
+        "analysisYear": "2003",
+        "analysisAlbum": "Reload"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Rozalla",
+        "title": "Everybody's Free (To Feel Good)",
+        "album": "Everybody's Free (1996)",
+        "releaseYear": "1996",
+        "analysisYear": "1987",
+        "analysisAlbum": "The Very Best of Rozalla"
+      },
+      {
+        "plName": "Música viejuna",
+        "artist": "Status Quo",
+        "title": "What You're Proposing",
+        "album": "Just Supposin'",
+        "releaseYear": "1997",
+        "analysisYear": "1980",
+        "analysisAlbum": "Just Supposin'"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Aventura",
+        "title": "Por un Segundo",
+        "album": "The Last",
+        "releaseYear": "2009",
+        "analysisYear": "2016",
+        "analysisAlbum": "Todavía Me Amas: Lo Mejor de Aventura (Deluxe Edition)"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Aventura",
+        "title": "Angelito",
+        "album": "God's Project",
+        "releaseYear": "2005",
+        "analysisYear": "2016",
+        "analysisAlbum": "Todavía Me Amas: Lo Mejor de Aventura (Deluxe Edition)"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Prince Royce",
+        "title": "Corazón Sin Cara 2.0",
+        "album": "Corazón Sin Cara",
+        "releaseYear": "2022",
+        "analysisYear": "2025",
+        "analysisAlbum": "Number 1's"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Prince Royce",
+        "title": "El Amor Que Perdimos",
+        "album": "Prince Royce",
+        "releaseYear": "2010",
+        "analysisYear": "2025",
+        "analysisAlbum": "Prince Royce"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Prince Royce",
+        "title": "Mi Ultima Carta",
+        "album": "Prince Royce",
+        "releaseYear": "2010",
+        "analysisYear": "2025",
+        "analysisAlbum": "Prince Royce"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Prince Royce",
+        "title": "Incondicional",
+        "album": "Number 1's",
+        "releaseYear": "2010",
+        "analysisYear": "2025",
+        "analysisAlbum": "Number 1's"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Prince Royce",
+        "title": "Stand by Me",
+        "album": "Prince Royce",
+        "releaseYear": "2010",
+        "analysisYear": "2025",
+        "analysisAlbum": "Prince Royce"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Anthony Santos",
+        "title": "Creíste",
+        "album": "Creíste - Single",
+        "releaseYear": "1999",
+        "analysisYear": "2013",
+        "analysisAlbum": "Creíste"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Prince Royce",
+        "title": "Rechazame",
+        "album": "Prince Royce",
+        "releaseYear": "2010",
+        "analysisYear": "2025",
+        "analysisAlbum": "Prince Royce"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Anthony Santos",
+        "title": "Corazón Culpable",
+        "album": "Las Bachatas De Moda",
+        "releaseYear": "1991",
+        "analysisYear": "2024",
+        "analysisAlbum": "Las Bachatas De Moda"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Luis Miguel Del Amargue",
+        "title": "No Te Puedo Perdonar",
+        "album": "Bachatas y Merengues",
+        "releaseYear": "2003",
+        "analysisYear": "2015",
+        "analysisAlbum": "Bachatas y Merengues"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "El Gran Combo De Puerto Rico",
+        "title": "Un Verano en Nueva York",
+        "album": "Número 7",
+        "releaseYear": "1975",
+        "analysisYear": "1987",
+        "analysisAlbum": "25th Anniversary"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Joe Arroyo, La Verdad",
+        "title": "Rebelión",
+        "album": "Viejitas pero bonitas",
+        "releaseYear": "1986",
+        "analysisYear": "2024",
+        "analysisAlbum": "Viejitas pero bonitas"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Fruko Y Sus Tesos, Wilson \"Saoko\" Manyoma",
+        "title": "El Preso",
+        "album": "El Grande",
+        "releaseYear": "1975",
+        "analysisYear": "2016",
+        "analysisAlbum": "Narcos, Vol. 2 (More Music from the Netflix Original Series)"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "LA INDIA",
+        "title": "Ese Hombre",
+        "album": "Ese Hombre (Baile Total)",
+        "releaseYear": "1994",
+        "analysisYear": "2002",
+        "analysisAlbum": "Rumbo al Caribe, La Llegada de la Salsa Romántica"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Víctor Manuelle",
+        "title": "Apiádate de Mí",
+        "album": "Historia de un Sonero",
+        "releaseYear": "1994",
+        "analysisYear": "2010",
+        "analysisAlbum": "Mis Favoritas"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Gilberto Santa Rosa",
+        "title": "Conciencia",
+        "album": "Perspectiva",
+        "releaseYear": "1991",
+        "analysisYear": "2010",
+        "analysisAlbum": "Mis Favoritas"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Andy Montañez",
+        "title": "Casi Te Envidio",
+        "album": "Payaso (Baile Total)",
+        "releaseYear": "1988",
+        "analysisYear": "2015",
+        "analysisAlbum": "Salsa Legends"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Rey Ruiz",
+        "title": "No Me Acostumbro",
+        "album": "Rey Ruiz: Mis 30 Mejores Canciones",
+        "releaseYear": "1992",
+        "analysisYear": "2011",
+        "analysisAlbum": "Mis Favoritas"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Víctor Manuelle",
+        "title": "He Tratado",
+        "album": "A Pesar de Todo",
+        "releaseYear": "1993",
+        "analysisYear": "2001",
+        "analysisAlbum": "Oro Salsero"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "David Pabon",
+        "title": "Aquel Viejo Motel",
+        "album": "Serie Sensacional: David Pabon",
+        "releaseYear": "1989",
+        "analysisYear": "2013",
+        "analysisAlbum": "12 Favoritas"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Elvis Crespo",
+        "title": "Suavemente",
+        "album": "Suavemente",
+        "releaseYear": "1998",
+        "analysisYear": "2008",
+        "analysisAlbum": "Suavemente...Los Exitos"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Juan Luis Guerra 4.40",
+        "title": "Las Avispas",
+        "album": "Para Ti",
+        "releaseYear": "2004",
+        "analysisYear": "2019",
+        "analysisAlbum": "Colección Cristiana"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Fulanito",
+        "title": "El Cepillo",
+        "album": "El Hombre Mas Famoso de la Tierra",
+        "releaseYear": "1997",
+        "analysisYear": "2008",
+        "analysisAlbum": "Greatest Hits"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "La Linea",
+        "title": "Si Me Dejas No Vale",
+        "album": "AL Rojo Vivo",
+        "releaseYear": "1990",
+        "analysisYear": "2024",
+        "analysisAlbum": "AL Rojo Vivo"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Olga Tañón",
+        "title": "Es Mentiroso",
+        "album": "Siente el Amor",
+        "releaseYear": "1994",
+        "analysisYear": "2006",
+        "analysisAlbum": "100% Merengue"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Los Chiches Vallenatos",
+        "title": "Tierra Mala",
+        "album": "Tierra Mala",
+        "releaseYear": "1967",
+        "analysisYear": "2013",
+        "analysisAlbum": "La Voz Del idolo"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Luis Mateus, David Rendon",
+        "title": "Muero Por Verla - Renovado",
+        "album": "Mis 20 Éxitos Renovados",
+        "releaseYear": "1981",
+        "analysisYear": "2024",
+        "analysisAlbum": "Mis 20 Éxitos Renovados"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Frankie Ruiz",
+        "title": "La Cura",
+        "album": "Esta Cobardía",
+        "releaseYear": "1985",
+        "analysisYear": "2018",
+        "analysisAlbum": "Serie Platino: Frankie Ruíz"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Los Hermanos Rosario",
+        "title": "Morena Ven",
+        "album": "Mundialmente Sabrosos",
+        "releaseYear": "1993",
+        "analysisYear": "2022",
+        "analysisAlbum": "Grandes Éxitos"
+      },
+      {
+        "plName": "Música latina",
+        "artist": "Daddy Yankee",
+        "title": "Rompe",
+        "album": "Reguetón Viejo",
+        "releaseYear": "2020",
+        "analysisYear": "2004",
+        "analysisAlbum": "20 Number 1's Now"
+      },
+      {
+        "plName": "Dance",
+        "artist": "Alice Deejay",
+        "title": "Better Off Alone",
+        "album": "Who Needs Guitars Anyway?",
+        "releaseYear": "1999",
+        "analysisYear": "2020",
+        "analysisAlbum": "Better Off Alone"
+      },
+      {
+        "plName": "Dance",
+        "artist": "Interfront",
+        "title": "Strange (Album Interfront 1)",
+        "album": "Sonido de Valencia 1989-1995",
+        "releaseYear": "1990",
+        "analysisYear": "2024",
+        "analysisAlbum": "Sonido de Valencia 1989-1995"
+      },
+      {
+        "plName": "Dance",
+        "artist": "Kryss",
+        "title": "Tonight",
+        "album": "Made in Spain",
+        "releaseYear": "1991",
+        "analysisYear": "2009",
+        "analysisAlbum": "Grandes Exitos"
+      },
+      {
+        "plName": "Dance",
+        "artist": "New Limit",
+        "title": "In My Heart",
+        "album": "Remember 90's & 2000",
+        "releaseYear": "1994",
+        "analysisYear": "2009",
+        "analysisAlbum": "Grandes Exitos"
+      },
+      {
+        "plName": "Dance",
+        "artist": "Paul Droid",
+        "title": "Missing Inside Me (Extension Mix)",
+        "album": "Missing Inside Me",
+        "releaseYear": "1999",
+        "analysisYear": "2019",
+        "analysisAlbum": "2000s: The Collection, Vol. 2"
+      },
+      {
+        "plName": "Dance",
+        "artist": "Committe",
+        "title": "Trance Line",
+        "album": "Trance Line / Drop the bass",
+        "releaseYear": "2004",
+        "analysisYear": "2026",
+        "analysisAlbum": "Trance Line / Drop the bass"
+      },
+      {
+        "plName": "Dance",
+        "artist": "Absolom",
+        "title": "Stars",
+        "album": "Stars",
+        "releaseYear": "2000",
+        "analysisYear": "2026",
+        "analysisAlbum": "Stars"
+      },
+      {
+        "plName": "Dance",
+        "artist": "Head Horny's",
+        "title": "I'm The 1 You're Looking 4 (12\" Inch)",
+        "album": "EP Vol.2",
+        "releaseYear": "2010",
+        "analysisYear": "2015",
+        "analysisAlbum": "Head Horny's Vol.1 (The Best Spanish Dance Music)"
+      },
+      {
+        "plName": "Dance",
+        "artist": "New Limit",
+        "title": "Smile",
+        "album": "Surround Me - EP",
+        "releaseYear": "1991",
+        "analysisYear": "2009",
+        "analysisAlbum": "Grandes Exitos"
+      },
+      {
+        "plName": "Dance",
+        "artist": "Nalin & Kane",
+        "title": "Beachball",
+        "album": "Beachball",
+        "releaseYear": "1997",
+        "analysisYear": "2009",
+        "analysisAlbum": "Best of 538 Dance Smash"
+      },
+      {
+        "plName": "Dance",
+        "artist": "Newton",
+        "title": "Streamline",
+        "album": "Made in Spain",
+        "releaseYear": "1991",
+        "analysisYear": "2014",
+        "analysisAlbum": "Streamline"
+      },
+      {
+        "plName": "Dance",
+        "artist": "Es Imposible",
+        "title": "Es Imposible, No Puede Ser",
+        "album": "Sonido de Valencia 1989-1995",
+        "releaseYear": "2000",
+        "analysisYear": "2024",
+        "analysisAlbum": "Sonido de Valencia 1989-1995"
+      },
+      {
+        "plName": "Dance",
+        "artist": "And One",
+        "title": "Metalhammer",
+        "album": "Anguish",
+        "releaseYear": "1991",
+        "analysisYear": "2013",
+        "analysisAlbum": "Anguish"
+      },
+      {
+        "plName": "Dance",
+        "artist": "Barthezz",
+        "title": "Infected",
+        "album": "Infected",
+        "releaseYear": "2001",
+        "analysisYear": "2024",
+        "analysisAlbum": "Infected"
+      },
+      {
+        "plName": "Dance",
+        "artist": "Spacio",
+        "title": "Dancer (Spacio Mix)",
+        "album": "MDT Millenium 2000, Vol. 2",
+        "releaseYear": "2009",
+        "analysisYear": "2015",
+        "analysisAlbum": "Space Dancer"
+      },
+      {
+        "plName": "Dance",
+        "artist": "GIGI D'AGOSTINO",
+        "title": "Bla Bla Bla",
+        "album": "L'Amour Toujours",
+        "releaseYear": "1999",
+        "analysisYear": "2009",
+        "analysisAlbum": "The Essential Gigi D'Agostino"
+      },
+      {
+        "plName": "Dance",
+        "artist": "Robert Miles",
+        "title": "Children",
+        "album": "Dreamland",
+        "releaseYear": "1995",
+        "analysisYear": "2013",
+        "analysisAlbum": "2gether 90 (Années 90)"
+      },
+      {
+        "plName": "Dance",
+        "artist": "La Luna",
+        "title": "Here I Am",
+        "album": "Here I Am - Single",
+        "releaseYear": "2002",
+        "analysisYear": "2021",
+        "analysisAlbum": "Here I Am"
+      }
+    ],
+    "invalidDate": []
+  }
+}
