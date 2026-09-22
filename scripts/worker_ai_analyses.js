@@ -1,16 +1,25 @@
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const DB_PATH = path.join(__dirname, '../data/analyses_db.json');
 const OMEN_DB_PATH = '\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\analyses_db.json';
+
+const META_PATH = path.join(__dirname, '../data/metadata_cache.json');
+const OMEN_META_PATH = '\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\metadata_cache.json';
+
 const ENV_PATH = path.join(__dirname, '../.env');
 
-// Obtener GEMINI_API_KEY
+// Obtener GEMINI_API_KEY y SESSION_SECRET
 let geminiKey = process.env.GEMINI_API_KEY;
-if (!geminiKey && fs.existsSync(ENV_PATH)) {
+let sessionSecret = process.env.SESSION_SECRET;
+
+if (fs.existsSync(ENV_PATH)) {
     const env = fs.readFileSync(ENV_PATH, 'utf8');
     const m = env.match(/GEMINI_API_KEY=([^\r\n]+)/);
     if (m) geminiKey = m[1].trim();
+    const s = env.match(/SESSION_SECRET=([^\r\n]+)/);
+    if (s) sessionSecret = s[1].trim();
 }
 
 if (!geminiKey) {
@@ -35,12 +44,15 @@ function loadDb() {
     return {};
 }
 
-// server.js (proceso pm2 separado) escribe este mismo archivo en paralelo mientras este
-// worker corre durante horas con una copia en memoria. Antes de guardar, se relee el disco
-// y se fusiona (disco primero, memoria de este worker encima) para no pisar análisis que
-// el servidor haya guardado mientras tanto, y se muta `db` in-place para que el resto del
-// bucle del worker siga operando sobre el estado fusionado. Escritura atómica (temp+rename)
-// para evitar EBUSY y archivos truncados si coincide con la escritura del servidor.
+function loadMeta() {
+    if (fs.existsSync(META_PATH)) {
+        try {
+            return JSON.parse(fs.readFileSync(META_PATH, 'utf8'));
+        } catch(e) {}
+    }
+    return {};
+}
+
 function saveDb(db) {
     let diskDb = {};
     if (fs.existsSync(DB_PATH)) {
@@ -54,10 +66,29 @@ function saveDb(db) {
     fs.writeFileSync(tmpPath, dataStr, 'utf8');
     fs.renameSync(tmpPath, DB_PATH);
 
-    // Sincronizar en OMEN si está accesible
     try {
         if (fs.existsSync(path.dirname(OMEN_DB_PATH))) {
             fs.writeFileSync(OMEN_DB_PATH, dataStr, 'utf8');
+        }
+    } catch(e) {}
+}
+
+function saveMeta(meta) {
+    let diskMeta = {};
+    if (fs.existsSync(META_PATH)) {
+        try { diskMeta = JSON.parse(fs.readFileSync(META_PATH, 'utf8')); } catch(e) {}
+    }
+    const merged = { ...diskMeta, ...meta };
+    for (const k of Object.keys(merged)) meta[k] = merged[k];
+
+    const dataStr = JSON.stringify(meta, null, 2);
+    const tmpPath = `${META_PATH}.tmp${process.pid}`;
+    fs.writeFileSync(tmpPath, dataStr, 'utf8');
+    fs.renameSync(tmpPath, META_PATH);
+
+    try {
+        if (fs.existsSync(path.dirname(OMEN_META_PATH))) {
+            fs.writeFileSync(OMEN_META_PATH, dataStr, 'utf8');
         }
     } catch(e) {}
 }
@@ -76,49 +107,82 @@ function cleanTitle(raw) {
         .trim();
 }
 
-async function analyzeTrack(artist, title, album, year) {
+function cleanAlbumTitle(raw) {
+    if (!raw) return '';
+    return raw
+        .replace(/\s*\(\d+(?:th|nd|rd|st)?\s*anniversary(?:\s*edition)?\)/gi, '')
+        .replace(/\s*\[\d+(?:th|nd|rd|st)?\s*anniversary(?:\s*edition)?\]/gi, '')
+        .replace(/\s*\(remaster(?:ed)?(?:\s*\d{4})?\)/gi, '')
+        .replace(/\s*\[remaster(?:ed)?(?:\s*\d{4})?\]/gi, '')
+        .replace(/\s*\((?:deluxe|expanded|legacy|special)\s*edition\)/gi, '')
+        .replace(/\s*\[(?:deluxe|expanded|legacy|special)\s*edition\]/gi, '')
+        .trim();
+}
+
+async function fetchDeezerCover(artist, album) {
+    try {
+        const query = encodeURIComponent(`${artist} ${album}`);
+        const res = await fetch(`https://api.deezer.com/search/album?q=${query}&limit=3`, { signal: AbortSignal.timeout(4000) });
+        if (res.ok) {
+            const data = await res.json();
+            const alb = data.data?.[0];
+            if (alb && (alb.cover_xl || alb.cover_big)) {
+                return alb.cover_xl || alb.cover_big;
+            }
+        }
+    } catch(e) {}
+    return null;
+}
+
+async function analyzeAndEnrichTrack(artist, title, currentAlbum, currentYear) {
     const cleanT = cleanTitle(title);
-    const prompt = `Instrucciones para análisis técnico y forense de canciones:
-Actúa como un productor musical e ingeniero de sonido experto. Realiza un análisis exhaustivo y técnico en profundidad de la canción "${cleanT}" de ${artist} (álbum: ${album || 'Álbum oficial'}, año: ${year || 'Histórico'}).
-Prohibido hacer resúmenes superficiales, omitir bloques o rebajar el nivel de detalle. Tono directo, analítico, profesional y técnico. Cero relleno, entra directamente a la materia en la primera línea.
+    const prompt = `Instrucciones para análisis técnico, documental y forense de canciones:
+Actúa como un musicólogo experto, productor e ingeniero de sonido. Realiza un análisis exhaustivo y técnico en profundidad de la canción "${cleanT}" de ${artist}.
 
-Protocolo de verificación y cero alucinaciones (Estricto):
-- Prohibido inventar datos técnicos: Si no hay registros documentados sobre estudio exacto, modelos de micrófonos o consolas, haz un análisis acústico deductivo indicando con claridad que es una deducción basada en la escucha.
-- Honestidad sobre repercusión: Si el tema es independiente o de nicho, dilo abiertamente en lugar de fabricar un impacto ficticio.
-- Veracidad de la letra: Cita textualmente fragmentos reales en su idioma original con lecciones de vocabulario o dobles sentidos.
+Identificación de Metadatos Canónicos (Estricto):
+1. "originalAlbum": Nombre exacto del ÁLBUM DE ESTUDIO ORIGINAL donde se publicó por primera vez (PROHIBIDO poner Grandes Éxitos, recopilatorios, 'Best Of', 'Anniversary', directos o reediciones).
+2. "releaseYear": Año original de lanzamiento (ej: "1983").
+3. "releaseDate": Fecha original (YYYY-MM-DD o YYYY-01-01).
+4. "composers": Nombres de los compositores y autores reales (personas físicas).
+5. "label": Sello discográfico original de la primera edición.
+6. "genre": Género musical preciso.
 
-Debes responder ÚNICAMENTE con un objeto JSON válido con esta estructura exacta de 4 apartados:
+Debes responder ÚNICAMENTE con un objeto JSON válido con esta estructura exacta:
 {
   "title": "${cleanT}",
   "artist": "${artist}",
-  "year": "${year || '2000'}",
-  "album": "${album || 'Álbum oficial'}",
+  "year": "${currentYear || '2000'}",
+  "originalAlbum": "${currentAlbum || 'Álbum original'}",
+  "releaseYear": "...",
+  "releaseDate": "...",
+  "composers": "...",
+  "label": "...",
+  "genre": "...",
   "synopsis": "Sinopsis técnica de entrada directa (3-5 líneas) resumiendo la tesis sónica y la trascendencia de la obra...",
   "sections": [
     {
       "title": "1. Anatomía Musical y Producción de Estudio",
       "icon": "fa-sliders",
-      "text": "Análisis exhaustivo de instrumentos clave, capas de pistas, arreglos, frecuencias (subgraves, medios, agudos), técnicas de grabación, procesadores, compresión, reverberación, saturación y labor del productor e ingenieros..."
+      "text": "Análisis exhaustivo de instrumentos clave, capas de pistas, arreglos, frecuencias, técnicas de grabación y labor del productor e ingenieros..."
     },
     {
       "title": "2. Análisis Lírico y Desglose Verso a Verso",
       "icon": "fa-align-left",
-      "text": "Temática central, trasfondo psicológico o contexto real. Selección de estrofas clave (apertura, estribillo, puente/coda) citadas textualmente en su idioma original con lecciones de vocabulario, dobles sentidos y autopsia verso a verso..."
+      "text": "Temática central, trasfondo psicológico. Selección de estrofas clave en su idioma original con lecciones de vocabulario, dobles sentidos y autopsia verso a verso..."
     },
     {
       "title": "3. Narrativa Visual y Videoclip",
       "icon": "fa-film",
-      "text": "Dirección, fotografía, concepto artístico y simbolismo del vídeo oficial. (Si no existe, indícalo de forma explícita y analiza la identidad visual, portada o estética)..."
+      "text": "Dirección, fotografía, concepto artístico y simbolismo del vídeo oficial. (Si no existe, analiza la estética y portada)..."
     },
     {
       "title": "4. Impacto Cultural y Curiosidades",
       "icon": "fa-award",
-      "text": "Rendimiento comercial, listas, sincronizaciones, anécdotas documentadas y honestidad sobre repercusión real..."
+      "text": "Rendimiento comercial, listas, sincronizaciones y repercusión real..."
     }
   ]
 }`;
 
-    // Lista de modelos a rotar automáticamente en orden de preferencia
     const availableModels = [
         'gemini-3-flash-preview',
         'gemini-3.6-flash',
@@ -138,18 +202,17 @@ Debes responder ÚNICAMENTE con un objeto JSON válido con esta estructura exact
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     contents: [{ parts: [{ text: prompt }] }],
-                    generationConfig: { responseMimeType: 'application/json', temperature: 0.3 }
-                })
+                    generationConfig: { responseMimeType: 'application/json', temperature: 0.25 }
+                }),
+                signal: AbortSignal.timeout(20000)
             });
 
             if (res.status === 429) {
-                console.warn(`⚠️ Cuota agotada en modelo [${model}]. Probando siguiente modelo disponible...`);
-                continue; // Probar siguiente modelo
+                console.warn(`⚠️ Cuota agotada en modelo [${model}]. Probando siguiente...`);
+                continue;
             }
 
             if (!res.ok) {
-                const txt = await res.text();
-                console.warn(`Aviso en modelo ${model} (${res.status}): ${txt.substring(0, 80)}`);
                 continue;
             }
 
@@ -161,96 +224,174 @@ Debes responder ÚNICAMENTE con un objeto JSON válido con esta estructura exact
                 return parsed;
             }
         } catch(e) {
-            console.warn(`Error llamando a ${model}:`, e.message);
+            // probar siguiente
         }
     }
 
-    // Si todos los modelos dieron 429
     throw new Error("ALL_QUOTAS_EXHAUSTED");
 }
 
-(async () => {
-    console.log("==========================================================");
-    console.log("🚀 WORKER DE ANÁLISIS FORENSE MUSICAL POR IA (GEMINI)");
-    console.log("==========================================================");
-
-    // 1. Obtener playlists desde OMEN
-    let playlists = {};
-    try {
-        const res = await fetch('http://100.95.217.45:8087/api/playlists');
-        playlists = await res.json();
-    } catch(e) {
-        console.error("No se pudo conectar con OMEN:8087, cargando metadatos locales...");
-        const meta = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/metadata_cache.json'), 'utf8'));
-        playlists = { 'Biblioteca': Object.values(meta) };
+async function fetchPlaylists() {
+    let authHeader = {};
+    if (sessionSecret) {
+        const exp = Date.now() + 3600000;
+        const hmac = crypto.createHmac('sha256', sessionSecret).update(String(exp)).digest('hex');
+        authHeader = { Cookie: `musica_session=${exp}.${hmac}` };
     }
 
-    const db = loadDb();
-    console.log(`📚 Canciones ya analizadas actualmente en DB: ${Object.keys(db).length}`);
+    const hosts = ['http://100.95.217.45:8087', 'http://localhost:8087'];
+    for (const host of hosts) {
+        try {
+            const res = await fetch(`${host}/api/playlists`, { headers: authHeader, signal: AbortSignal.timeout(5000) });
+            if (res.ok) return await res.json();
+        } catch(e) {}
+    }
 
-    // Procesar en el orden estricto solicitado
-    for (const listName of ORDERED_LISTS) {
-        const tracks = playlists[listName] || [];
-        if (tracks.length === 0) continue;
-
-        console.log(`\n==========================================================`);
-        console.log(`▶️ INICIANDO LISTA: [ ${listName.toUpperCase()} ] (${tracks.length} canciones)`);
-        console.log(`==========================================================`);
-
-        let processedInList = 0;
-        let skippedInList = 0;
-
-        for (let i = 0; i < tracks.length; i++) {
-            const t = tracks[i];
-            const cleanT = cleanTitle(t.title || t.rawTitle);
-            const artist = t.artist || 'Desconocido';
-            const album = t.album || 'Álbum';
-            const year = t.releaseYear || t.year || '';
-
-            const keyExact = `${artist} - ${cleanT}`;
-            const keyRaw = `${artist} - ${t.rawTitle || t.title}`;
-
-            // Si ya existe (ej. una de las 96 originales o ya analizada) -> SALTAR
-            if (db[keyExact] || db[keyRaw]) {
-                skippedInList++;
-                continue;
+    const localOmenCache = '\\\\100.95.217.45\\omen D\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json';
+    if (fs.existsSync(localOmenCache)) {
+        try {
+            const raw = JSON.parse(fs.readFileSync(localOmenCache, 'utf8'));
+            const out = {};
+            for (const [k, v] of Object.entries(raw)) {
+                out[k] = v.map(item => ({
+                    artist: Array.isArray(item) ? item[0] : item.artist,
+                    title: Array.isArray(item) ? item[1] : item.title
+                }));
             }
+            return out;
+        } catch(e) {}
+    }
 
-            console.log(`\n[${i+1}/${tracks.length}] 🎵 Analizando: "${artist} - ${cleanT}" (${year})...`);
+    return {};
+}
 
-            let success = false;
-            let attempts = 0;
+// Bucle Continuo (Daemon)
+(async () => {
+    console.log("==========================================================");
+    console.log("🚀 WORKER CONTINUO DE ANÁLISIS Y ENRIQUECIMIENTO GEMINI IA");
+    console.log("==========================================================");
 
-            while (!success && attempts < 3) {
-                attempts++;
-                try {
-                    const analysis = await analyzeTrack(artist, cleanT, album, year);
-                    if (analysis && analysis.sections && analysis.sections.length >= 4) {
-                        db[keyExact] = analysis;
-                        saveDb(db);
-                        console.log(`✅ [GUARDADO] "${artist} - ${cleanT}" -> ${analysis.sections.length} secciones completas.`);
-                        processedInList++;
-                        success = true;
-                    } else {
-                        console.warn(`⚠️ Respuesta incompleta para ${cleanT}, reintentando...`);
+    while (true) {
+        try {
+            const playlists = await fetchPlaylists();
+            const db = loadDb();
+            const meta = loadMeta();
+
+            let totalPending = 0;
+            let processedInRun = 0;
+
+            for (const listName of ORDERED_LISTS) {
+                const tracks = playlists[listName] || [];
+                if (tracks.length === 0) continue;
+
+                for (let i = 0; i < tracks.length; i++) {
+                    const t = tracks[i];
+                    const rawTitle = t.title || t.rawTitle || '';
+                    const cleanT = cleanTitle(rawTitle);
+                    const artist = t.artist || 'Desconocido';
+
+                    const keyExact = `${artist} - ${cleanT}`;
+                    const keyRaw = `${artist} - ${rawTitle}`;
+
+                    const mKey1 = keyExact.toLowerCase();
+                    const mKey2 = keyRaw.toLowerCase();
+                    const mKey3 = cleanT.toLowerCase();
+
+                    const currentMeta = meta[mKey1] || meta[mKey2] || meta[mKey3] || {};
+                    const hasAnalysis = !!(db[keyExact] || db[keyRaw]);
+                    const isEnriched = !!currentMeta.geminiEnriched;
+
+                    // Si ya tiene análisis Y está enriquecido con Gemini -> Saltar
+                    if (hasAnalysis && isEnriched) {
+                        continue;
                     }
-                } catch(err) {
-                    if (err.message === 'ALL_QUOTAS_EXHAUSTED' || err.message === 'RATE_LIMIT') {
-                        console.warn('⏸️ [CUOTA DIARIA AGOTADA EN TODOS LOS MODELOS]. El worker pausará 30 minutos antes del próximo sondeo...');
-                        await new Promise(r => setTimeout(r, 30 * 60 * 1000));
-                    } else {
-                        console.error(`❌ Error analizando "${cleanT}":`, err.message);
-                        break;
+
+                    totalPending++;
+
+                    console.log(`\n🎵 [${listName}] Procesando: "${artist} - ${cleanT}" (${hasAnalysis ? 'Análisis OK' : 'Falta Análisis'}, ${isEnriched ? 'Créditos OK' : 'Faltan Créditos'})...`);
+
+                    let success = false;
+                    let attempts = 0;
+
+                    while (!success && attempts < 3) {
+                        attempts++;
+                        try {
+                            const result = await analyzeAndEnrichTrack(artist, cleanT, currentMeta.album, currentMeta.releaseYear || t.releaseYear);
+                            if (result) {
+                                // 1. Guardar Análisis
+                                if (result.sections && result.sections.length >= 4) {
+                                    db[keyExact] = result;
+                                    saveDb(db);
+                                }
+
+                                // 2. Guardar Metadatos y Álbum Canónico
+                                const verifiedAlbum = cleanAlbumTitle(result.originalAlbum || currentMeta.album || 'Álbum Oficial');
+                                const verifiedYear = String(result.releaseYear || result.year || currentMeta.releaseYear || '2000').trim();
+                                const verifiedDate = String(result.releaseDate || `${verifiedYear}-01-01`).trim();
+                                const verifiedComposers = String(result.composers || currentMeta.composers || artist).trim();
+                                const verifiedLabel = String(result.label || currentMeta.label || 'Sello Discográfico Principal').trim();
+                                const verifiedGenre = String(result.genre || currentMeta.genre || 'Pop / Rock').trim();
+
+                                // Buscar carátula si el álbum cambió o no tiene
+                                let cover = currentMeta.coverUrl;
+                                if (!cover || (verifiedAlbum && verifiedAlbum !== currentMeta.album)) {
+                                    const newCover = await fetchDeezerCover(artist, verifiedAlbum);
+                                    if (newCover) cover = newCover;
+                                }
+
+                                const updatedMeta = {
+                                    ...currentMeta,
+                                    title: cleanT,
+                                    displayTitle: cleanT,
+                                    artist: artist,
+                                    album: verifiedAlbum,
+                                    releaseYear: verifiedYear,
+                                    releaseDate: verifiedDate,
+                                    year: verifiedYear,
+                                    date: verifiedDate,
+                                    composers: verifiedComposers,
+                                    label: verifiedLabel,
+                                    genre: verifiedGenre,
+                                    coverUrl: cover || null,
+                                    geminiEnriched: true
+                                };
+
+                                meta[mKey1] = updatedMeta;
+                                meta[mKey2] = updatedMeta;
+                                meta[mKey3] = updatedMeta;
+
+                                saveMeta(meta);
+
+                                console.log(`✅ [ENRIQUECIDO] "${artist} - ${cleanT}" -> Álbum: "${verifiedAlbum}" (${verifiedYear})`);
+                                processedInRun++;
+                                success = true;
+                            }
+                        } catch(err) {
+                            if (err.message === 'ALL_QUOTAS_EXHAUSTED') {
+                                console.warn('⏸️ [CUOTA DIARIA/MINUTO AGOTADA]. Esperando 5 minutos antes de continuar...');
+                                await new Promise(r => setTimeout(r, 5 * 60 * 1000));
+                            } else {
+                                console.error(`❌ Error procesando "${cleanT}":`, err.message);
+                                break;
+                            }
+                        }
                     }
+
+                    // Pausa de seguridad de 8 segundos entre canciones (respetando Free Tier ~7 RPM)
+                    await new Promise(r => setTimeout(r, 8000));
                 }
             }
 
-            // Pausa de seguridad de 8 segundos entre canciones para respetar el Free Tier
-            await new Promise(r => setTimeout(r, 8000));
+            if (processedInRun === 0) {
+                console.log("\n😴 [TODO AL DÍA] Toda la biblioteca está analizada y verificada con Gemini.");
+                console.log("💤 Esperando 5 minutos para buscar nuevas canciones añadidas...");
+                await new Promise(r => setTimeout(r, 5 * 60 * 1000));
+            } else {
+                console.log(`\n🏁 Ronda completada: ${processedInRun} canciones analizadas y enriquecidas.`);
+            }
+        } catch(cycleError) {
+            console.error("Error en ciclo principal del worker:", cycleError.message);
+            await new Promise(r => setTimeout(r, 60000));
         }
-
-        console.log(`\n🏁 FIN DE LISTA [${listName}]: ${processedInList} nuevas analizadas, ${skippedInList} ya estaban en la base de datos.`);
     }
-
-    console.log("\n🎉 ¡TODAS LAS LISTAS HAN SIDO COMPLETADAS CON ÉXITO!");
 })();
