@@ -1150,6 +1150,12 @@ async function autoEnrichCatalogInBackground() {
 function cleanAlbumTitle(rawAlbum) {
     if (!rawAlbum) return 'Álbum Desconocido';
     let clean = rawAlbum
+        .replace(/\s*[([]\s*\d+\w*\s*anniversary.*?[)]]/gi, '')
+        .replace(/\s*-\s*\d+\w*\s*anniversary.*/gi, '')
+        .replace(/\s*[([]\s*legacy\s*edition.*?[)]]/gi, '')
+        .replace(/\s*-\s*legacy\s*edition.*/gi, '')
+        .replace(/\s*[([]\s*digital\s*album.*?[)]]/gi, '')
+        .replace(/\s*[([]\s*mp3\s*album.*?[)]]/gi, '')
         .replace(/\s*\(Digital Deluxe.*?\)/i, '')
         .replace(/\s*\(Deluxe.*?\)/i, '')
         .replace(/\s*\(Expanded.*?\)/i, '')
@@ -1791,9 +1797,9 @@ app.get('/api/playlists', (req, res) => {
                     }
                 }
             } else if (/viejuna/i.test(listName)) {
-                // Música viejuna: Clásicos anteriores a 2003
-                if (yrNum > 2003) {
-                    if (analysis && analysis.year && parseInt(analysis.year, 10) <= 2003) {
+                // Música viejuna: Clásicos históricos (hasta el año 2000)
+                if (yrNum > 2000) {
+                    if (analysis && analysis.year && parseInt(analysis.year, 10) <= 2000) {
                         releaseYear = analysis.year;
                         releaseDate = `${analysis.year}-01-01`;
                     }

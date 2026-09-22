@@ -41933,7 +41933,7 @@
     "title": "Beautiful Day",
     "artist": "U2",
     "year": "2000",
-    "album": "All That You Can't Leave Behind",
+    "album": "Beautiful Day - EP",
     "synopsis": "\"Beautiful Day\" (2000) de U2 es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
     "sections": [
       {
@@ -44922,7 +44922,7 @@
     "title": "Love Don't Cost a Thing",
     "artist": "Jennifer Lopez",
     "year": "2000",
-    "album": "On The 6 / J. Lo (Coffret 2 CD)",
+    "album": "J. Lo",
     "synopsis": "\"Love Don't Cost a Thing\" (2000) de Jennifer Lopez: \"Love Don't Cost a Thing\" is a song by American singer Jennifer Lopez for her second studio album J. Un tema indispensable que marcó una etapa definitoria en la evolución musical de su época.",
     "sections": [
       {
@@ -45593,7 +45593,7 @@
     "title": "Groovejet (If This Ain't Love)",
     "artist": "Spiller, Sophie Ellis-Bextor",
     "year": "2000",
-    "album": "Groovejet (If This Ain't Love)",
+    "album": "Groovejet (If This Ain’t Love)",
     "synopsis": "\"Groovejet (If This Ain't Love)\" (2000) de Spiller, Sophie Ellis-Bextor es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
     "sections": [
       {
@@ -109500,5 +109500,249 @@
       }
     ],
     "_aiModel": "gemini-3.5-flash-lite"
+  },
+  "Miley Cyrus - Bass Persuades": {
+    "title": "Bass Persuades",
+    "artist": "Miley Cyrus",
+    "year": "2026",
+    "album": "Bass Persuades",
+    "synopsis": "\"Bass Persuades\" (2026) de Miley Cyrus es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Miley Cyrus",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Miley Cyrus, \"Bass Persuades\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Bass Persuades\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Bass Persuades\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Miley Cyrus aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Bass Persuades\" se mantiene como un himno atemporal dentro de la discografía de Miley Cyrus y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Miley Cyrus."
+          }
+        ]
+      }
+    ]
+  },
+  "Milky, David Guetta - Just The Way You Are": {
+    "title": "Just The Way You Are",
+    "artist": "Milky, David Guetta",
+    "year": "2002",
+    "album": "Just The Way You Are",
+    "synopsis": "\"Just The Way You Are\" (2002) de Milky, David Guetta es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Milky, David Guetta",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Milky, David Guetta, \"Just The Way You Are\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Just The Way You Are\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Just The Way You Are\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Milky, David Guetta aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Just The Way You Are\" se mantiene como un himno atemporal dentro de la discografía de Milky, David Guetta y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Milky, David Guetta."
+          }
+        ]
+      }
+    ]
+  },
+  "Milky, David Guetta - Just The Way You Are - David Guetta Remix": {
+    "title": "Just The Way You Are",
+    "artist": "Milky, David Guetta",
+    "year": "2002",
+    "album": "Just The Way You Are",
+    "synopsis": "\"Just The Way You Are\" (2002) de Milky, David Guetta es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Milky, David Guetta",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Milky, David Guetta, \"Just The Way You Are\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Just The Way You Are\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Just The Way You Are\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Milky, David Guetta aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Just The Way You Are\" se mantiene como un himno atemporal dentro de la discografía de Milky, David Guetta y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Milky, David Guetta."
+          }
+        ]
+      }
+    ]
+  },
+  "Myles Smith - Stay (If You Wanna Dance)": {
+    "title": "Stay (If You Wanna Dance)",
+    "artist": "Myles Smith",
+    "year": "2025",
+    "album": "My Mess, My Heart, My Life.",
+    "synopsis": "\"Stay (If You Wanna Dance)\" (2025) de Myles Smith es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Myles Smith",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Myles Smith, \"Stay (If You Wanna Dance)\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Stay (If You Wanna Dance)\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Stay (If You Wanna Dance)\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Myles Smith aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Stay (If You Wanna Dance)\" se mantiene como un himno atemporal dentro de la discografía de Myles Smith y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Myles Smith."
+          }
+        ]
+      }
+    ]
   }
 }
