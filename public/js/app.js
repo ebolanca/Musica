@@ -1169,14 +1169,24 @@ function formatTime(seconds) {
             streamUrl: 'https://kissfm.kissfmradio.cires21.com/kissfm.mp3'
         },
         {
-            id: 'los40dance',
-            name: 'LOS40 DANCE',
-            slogan: 'La Radio del Dance y Clubbing',
-            genre: 'EDM / Dance / Club',
+            id: 'locafmremember',
+            name: 'LOCA FM REMEMBER',
+            slogan: 'Lo Mejor del Dance y Remember 90s & 2000s',
+            genre: 'Dance 90s / 2000s / Remember',
             quality: '128 kbps HD',
-            logoUrl: 'img/radios/los40dance.svg',
-            webUrl: 'https://los40.com/los40_dance/',
-            streamUrl: 'https://playerservices.streamtheworld.com/api/livestream-redirect/LOS40_DANCE.mp3'
+            logoUrl: 'img/radios/locafm.svg',
+            webUrl: 'https://locafm.com/',
+            streamUrl: 'http://s02.fjperezdj.com:8035/live'
+        },
+        {
+            id: 'sunshinelive90s',
+            name: 'SUNSHINE LIVE 90er',
+            slogan: 'Eurodance, Rave & 90s Club Classics',
+            genre: 'Eurodance / 90s Dance',
+            quality: '192 kbps HD',
+            logoUrl: 'img/radios/sunshinelive.svg',
+            webUrl: 'https://www.sunshine-live.de/',
+            streamUrl: 'http://stream.sunshine-live.de/90er/mp3-128'
         },
         {
             id: 'cadena100',

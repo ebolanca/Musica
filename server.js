@@ -3831,6 +3831,8 @@ async function autoCollectRadioAirplayInBackground() {
                     list = await scanMyRadioOnline(st.myRadioSlug);
                 } else if (st.type === 'orb_url') {
                     list = await scanOnlineRadioBoxUrl(st.orbUrl);
+                } else if (st.type === 'icecast') {
+                    list = await scanIcecastStation(st.icecastUrl);
                 } else if (st.type === 'emisora') {
                     list = await scanMyRadioOnline(st.emisoraSlug || st.myRadioSlug);
                     if (!list || list.length === 0) list = await scanEmisoraOrg(st.emisoraSlug);
@@ -4096,8 +4098,12 @@ const RADAR_STATIONS_CONFIG = {
     'LOS40': { id: 'LOS40', name: 'LOS40', genre: 'Siglo XXI', type: 'triton', mount: 'LOS40' },
     'HITFM': { id: 'HITFM', name: 'Hit FM', genre: 'Siglo XXI', type: 'myradio', myRadioSlug: 'hit-fm' },
     'CADENA100': { id: 'CADENA100', name: 'Cadena 100', genre: 'Siglo XXI', type: 'myradio', myRadioSlug: 'cadena-100' },
-    // Dance
-    'LOS40_DANCE': { id: 'LOS40_DANCE', name: 'LOS40 Dance', genre: 'Dance', type: 'triton', mount: 'LOS40_DANCE' },
+    // Dance (100% enfocado en Dance 90s, Eurodance, Remember y Trance 2000s)
+    'LOCA_REMEMBER': { id: 'LOCA_REMEMBER', name: 'Loca Remember', genre: 'Dance', type: 'icecast', icecastUrl: 'http://s02.fjperezdj.com:8035/status-json.xsl' },
+    'SUNSHINE_90S': { id: 'SUNSHINE_90S', name: 'Sunshine Live 90er', genre: 'Dance', type: 'orb_url', orbUrl: 'https://onlineradiobox.com/de/sunshinelive90er/playlist/' },
+    'SUNSHINE_CLASSICS': { id: 'SUNSHINE_CLASSICS', name: 'Sunshine Live Classics 2000s', genre: 'Dance', type: 'orb_url', orbUrl: 'https://onlineradiobox.com/de/sunshineliveclassics/playlist/' },
+    'NOSTALGIE_DANCE90': { id: 'NOSTALGIE_DANCE90', name: 'Nostalgie Dance 90', genre: 'Dance', type: 'orb_url', orbUrl: 'https://onlineradiobox.com/be/nostalgiedance90/playlist/' },
+    'DANCE_UK': { id: 'DANCE_UK', name: 'Dance UK Classics', genre: 'Dance', type: 'orb_url', orbUrl: 'https://onlineradiobox.com/uk/danceuk/playlist/' },
     // Española
     'CADENADIAL': { id: 'CADENADIAL', name: 'Cadena Dial', genre: 'Española', type: 'triton', mount: 'CADENADIAL' },
     'RADIOLE': { id: 'RADIOLE', name: 'Radiolé', genre: 'Española', type: 'triton', mount: 'RADIOLE' },
@@ -4112,7 +4118,7 @@ const RADAR_STATIONS_CONFIG = {
 const PLAYLIST_RADAR_MAP = {
     'Música viejuna': ['LOS40_CLASSIC', 'ROCKFM', 'KISSFM'],
     'Siglo XXI': ['LOS40', 'HITFM', 'CADENA100'],
-    'Dance': ['LOS40_DANCE'],
+    'Dance': ['LOCA_REMEMBER', 'SUNSHINE_90S', 'SUNSHINE_CLASSICS', 'NOSTALGIE_DANCE90', 'DANCE_UK'],
     'Española': ['CADENADIAL', 'RADIOLE', 'CADENA100_ESP'],
     'Música latina': ['BACHATA_RADIO', 'SALSA_RADIO', 'MERENGUE_RADIO', 'LATINA_104']
 };
@@ -4346,6 +4352,55 @@ async function scanOnlineRadioBox(slug) {
     }
 }
 
+// Escaneador Icecast en tiempo real (Loca FM Remember y derivados)
+async function scanIcecastStation(url) {
+    try {
+        const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' }, signal: AbortSignal.timeout(3500) });
+        if (!res.ok) return [];
+        const data = await res.json();
+        const src = data.icestats ? (Array.isArray(data.icestats.source) ? data.icestats.source[0] : data.icestats.source) : null;
+        if (!src) return [];
+        const rawTitle = (src.yp_currently_playing || src.title || '').trim();
+        if (!rawTitle) return [];
+
+        let artist = '';
+        let title = '';
+        if (rawTitle.includes(' - ')) {
+            const parts = rawTitle.split(' - ');
+            artist = parts[0].trim();
+            title = parts.slice(1).join(' - ').trim();
+        } else {
+            try {
+                const dzRes = await fetch(`https://api.deezer.com/search?q=${encodeURIComponent(rawTitle)}&limit=1`, { signal: AbortSignal.timeout(2500) });
+                if (dzRes.ok) {
+                    const d = await dzRes.json();
+                    if (d.data && d.data.length > 0) {
+                        artist = d.data[0].artist ? d.data[0].artist.name : '';
+                        title = d.data[0].title || rawTitle;
+                    }
+                }
+            } catch(e) {}
+            if (!artist) {
+                artist = 'Loca Remember';
+                title = rawTitle;
+            }
+        }
+
+        if (isValidRadioSong(artist, title)) {
+            return [{
+                artist,
+                title,
+                album: null,
+                coverUrl: null,
+                timestamp: Date.now()
+            }];
+        }
+        return [];
+    } catch(e) {
+        return [];
+    }
+}
+
 // Handlers de Controladores Reutilizables
 function handleRecommendationsCatalog(req, res) {
     try {
@@ -4445,6 +4500,8 @@ async function handleRecommendationsRadioRadar(req, res) {
                     list = await scanMyRadioOnline(st.myRadioSlug);
                 } else if (st.type === 'orb_url') {
                     list = await scanOnlineRadioBoxUrl(st.orbUrl);
+                } else if (st.type === 'icecast') {
+                    list = await scanIcecastStation(st.icecastUrl);
                 } else if (st.type === 'emisora') {
                     list = await scanMyRadioOnline(st.emisoraSlug || st.myRadioSlug);
                     if (!list || list.length === 0) list = await scanEmisoraOrg(st.emisoraSlug);
