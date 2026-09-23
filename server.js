@@ -3499,8 +3499,8 @@ app.post('/api/track/replace-clean-audio', blockInPublicMode, async (req, res) =
                         if (/preview|teaser|trailer|snippet|recortada|short/i.test(itemTitle)) continue;
 
                         // FILTRO ESTRICTO ANTI-COVERS Y ANTI-HOMENAJES: Si la pista original no es cover/homenaje, descartarlos
-                        const isCoverOrTribute = /\b(cover|acoustic cover|guitar cover|piano cover|metal cover|rock cover|tribute|tributo|homenaje|karaoke|fan made|parody|parodia|versi[oó]n ac[uú]stica|acustico|acustica|directo|en vivo|live|concierto|gira|festival|sinf[oó]nico)\b/i.test(itemTitle)
-                                     || /\b(cover|karaoke|tribute|homenaje)\b/i.test(itemUploader);
+                        const isCoverOrTribute = /\b(cover|acoustic cover|guitar cover|piano cover|metal cover|rock cover|tribute|tributo|homenaje|karaoke|fan made|parody|parodia|versi[oó]n ac[uú]stica|acustico|acustica|directo|en vivo|live|concierto|gira|festival|sinf[oó]nico|acapella|a\s*capella)\b/i.test(itemTitle)
+                                     || /\b(cover|karaoke|tribute|homenaje|acapella)\b/i.test(itemUploader);
                         if (isCoverOrTribute && !/cover|tribute|homenaje|live|directo/i.test(title)) {
                             continue;
                         }

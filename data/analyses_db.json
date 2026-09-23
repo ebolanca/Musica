@@ -34037,31 +34037,36 @@
     "title": "Stand My Ground",
     "artist": "Within Temptation",
     "year": "2004",
-    "album": "The Silent Force",
-    "synopsis": "\"Stand My Ground\" es el corte inaugural de The Silent Force, consolidando la transición comercial del metal sinfónico europeo con una arquitectura de producción densa y cinematográfica. Combina el grosor rítmico del metal moderno con arreglos corales masivos, una ejecución vocal operística pero accesible y una mezcla enfocada en la inteligibilidad de frecuencias medias-altas. Su tesis sónica radica en la tensión constante entre la pesadez instrumental y la claridad etérea de la voz principal.",
+    "originalAlbum": "The Silent Force",
+    "releaseYear": "2004",
+    "releaseDate": "2004-11-15",
+    "composers": "Sharon den Adel, Robert Westerholt, Daniel Gibson, Han Kooreneef",
+    "label": "Roadrunner Records",
+    "genre": "Symphonic Metal",
+    "synopsis": "Stand My Ground representa el pináculo del metal sinfónico comercial de mediados de los 2000, fusionando la potencia orquestal con una estructura pop-rock altamente pulida. La producción destaca por su equilibrio entre la voz etérea de Sharon den Adel y una base rítmica contundente, consolidando el sonido cinematográfico que definió la carrera internacional de la banda.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La producción, liderada por Daniel Gibson y Stefan Hols, destaca por un muro de sonido guitarrero afinado en standard o drop D moderado, con doble pista estéreo para maximizar el ancho del panorama. La batería presenta un procesamiento pesado con compresión en paralelo (tipo New York) en el bus de la caja para asegurar pegada sin perder la dinámica natural de los transitorios, complementada con muestras de bombo optimizadas en el rango de los 60-80 Hz para dar contundencia en sistemas comerciales. El bajo eléctrico opera en un rango de frecuencias de 100-250 Hz, saturado sutilmente con un plugin de emulación de válvulas para entrelazarse armónicamente con las guitarras rítmicas. Las secciones sinfónicas y los coros (orquestados por Ruud Jolie y la Film Orchestra Epoque) están mezclados en capas estéreo anchas, utilizando reverberación de tipo convolución con colas largas (2.5 a 3.5 segundos) que imitan una sala de conciertos gótica, pero con cortes de ecualización drásticos en los medios-bajos (alrededor de 300 Hz) para evitar el enmascaramiento de la voz principal de Sharon den Adel. La voz solista utiliza un micrófono de condensador de gran diafragma (con deducción basada en escucha de un Neumann U87 o similar de gama alta), procesada con compresión multinivel para controlar los picos dinámicos y una EQ orientada a realzar la presencia en la banda de 2 kHz a 5 kHz, aportando esa textura punzante y cristalina sobre el colchón orquestal."
+        "text": "La pista se caracteriza por una producción de alta fidelidad con una densa capa de sintetizadores y arreglos orquestales grabados con la Orquesta Rusa de San Petersburgo. La mezcla prioriza la claridad de la voz principal, comprimida para destacar sobre un muro de sonido de guitarras distorsionadas en drop-D. El uso de percusión programada junto a baterías acústicas crea un pulso constante, mientras que el diseño sonoro enfatiza una atmósfera épica mediante el uso de reverberaciones de sala larga en los coros."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "Temáticamente, la canción explora la resistencia psicológica, la convicción inquebrantable frente a la adversidad y la supervivencia emocional en un entorno hostil. Estrofa inicial analizada: 'I'm losing my mind / In this web of lies / Every breath that I take / Is getting harder to survive'. Vocabulario clave: 'web of lies' (red de mentiras), metáfora táctil de enredo y confinamiento. Autopsia verso a verso: Sharon den Adel expone la asfixia mental mediante una línea melódica descendente que simula caída, apoyada únicamente por un arpegio de piano con compresión suave. Estribillo analizado: 'I'll stand my ground / I won't give in / No more standing on the edge'. Vocabulario clave: 'stand my ground' (mantener mi posición / hacerme fuerte), idiom que denota firmeza territorial y psicológica; 'give in' (ceder, rendirse). Autopsia verso a verso: explosión dinámica donde entra la banda completa y el coro orquestal; la vocalista eleva el registro a una mezcla de pecho-cabeza, proyectando una resolución absoluta frente a la crisis planteada en los versos."
+        "text": "La letra aborda la resiliencia y la convicción personal frente a la adversidad. Versos como 'I'll stand my ground, won't be turned around' funcionan como un mantra de empoderamiento. El análisis revela una estructura de lucha interna: el verso establece la duda ('All the odds are against me'), mientras que el estribillo actúa como una declaración de principios inamovible. El vocabulario es directo pero evocador, utilizando metáforas de batalla para describir la integridad emocional."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "El videoclip oficial fue dirigido por Martijn Smits y se caracteriza por una estética post-apocalíptica y cinematográfica. La fotografía emplea una paleta de colores desaturada, dominada por tonos fríos (cian y gris acero) que contrastan con destellos cálidos de fuego y efectos de iluminación cenital sobre la banda. Conceptual y simbólicamente, el vídeo intercala tomas de la banda tocando en una ruina urbana en colapso con una narrativa donde Sharon den Adel avanza a través de obstáculos físicos y catástrofes ambientales (edificios derrumbándose, suelo desmoronándose), representando visualmente el título de la canción. La edición está sincronizada milimétricamente con los golpes de caja y los acentos orquestales del puente, reforzando la sensación de impacto inminente."
+        "text": "El videoclip, dirigido por Patric Ullaeus, utiliza una estética gótica urbana y elementos de fantasía histórica. La narrativa visual alterna entre la banda actuando en un entorno oscuro y escenas de una ciudad antigua bajo una amenaza inminente, simbolizando la lucha contra el destino. El uso de efectos visuales (CGI) de la época refuerza la temática de 'fuerza silenciosa' y el heroísmo frente a lo inevitable."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "Comercialmente, \"Stand My Ground\" fue el sencillo principal de The Silent Force, alcanzando el éxito en las listas de Europa continental (top 10 en Países Bajos y Alemania) y ayudando a catapultar a Within Temptation al circuito mainstream del metal sinfónico internacional. Honesta sobre su repercusión: a diferencia del mercado anglosajón masivo (donde operaban como un acto de nicho rock/metal alternativo), su impacto global real se concentró en la escena rock europea y en la comunidad fan del género gótico-sinfónico. Curiosidad documentada: la canción fue seleccionada por la cadena alemana RTL para la cobertura televisiva del Campeonato Europeo de Fútbol UEFA Euro 2004 y utilizada como banda sonora para la película de fantasía holandesa 'Huizinga', lo que expandió drásticamente su audiencia demográfica más allá de los seguidores tradicionales del metal."
+        "text": "Fue el sencillo principal que catapultó a Within Temptation al éxito masivo en Europa, alcanzando el Top 10 en varios países. La canción fue utilizada como tema principal para la serie 'The Vampire Diaries' y en la película 'Blood and Chocolate', lo que cimentó su estatus como un himno del metal sinfónico. Es considerada una pieza fundamental en la transición del metal underground al mainstream radiofónico."
       }
     ],
-    "_aiModel": "gemini-3.5-flash-lite"
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "Swedish House Mafia - Don't You Worry Child [feat. John Martin]": {
     "title": "Don't You Worry Child [feat. John Martin]",
