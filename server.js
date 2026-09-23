@@ -535,9 +535,13 @@ function isGenericAnalysis(analysis) {
 function syncMetadataFromGemini(artist, title, geminiData) {
     if (!artist || !geminiData) return null;
     const cleanT = cleanTrackTitle(title);
+    const primaryArtist = artist.split(/[,&]/)[0].replace(/\bfeat\.?.*$/i, '').trim();
+
     const mKey1 = `${artist} - ${title}`.toLowerCase();
     const mKey2 = `${artist} - ${cleanT}`.toLowerCase();
-    const mKey3 = cleanT.toLowerCase();
+    const mKey3 = `${primaryArtist} - ${cleanT}`.toLowerCase();
+    const mKey4 = `${primaryArtist} - ${title}`.toLowerCase();
+    const mKey5 = cleanT.toLowerCase();
 
     const currentMeta = getTrackMetadata(artist, title) || {};
     const isCompilation = (a) => !a || /\b(greatest hits|best of|esencial|the essential|the best|antolog|recopilator|éxitos|exitos|colecci|superéxitos|collection|singles|definitive|the hits|platinum|gold)\b/i.test(a);
@@ -551,8 +555,8 @@ function syncMetadataFromGemini(artist, title, geminiData) {
     const verifiedGenre = String(geminiData.genre || currentMeta.genre || 'Pop / Rock / Dance').trim();
 
     const prevAlbum = currentMeta.album || '';
-    const shouldUpdateAlbum = !prevAlbum || isCompilation(prevAlbum) || prevAlbum === 'Álbum Desconocido' || prevAlbum === 'Álbum' || prevAlbum === 'Álbum oficial';
-    const finalAlbum = (shouldUpdateAlbum && verifiedAlbum) ? verifiedAlbum : (prevAlbum || verifiedAlbum || 'Álbum Oficial');
+    // El álbum original identificado por Gemini debe prevalecer siempre sobre recopilatorios o nombres antiguos
+    const finalAlbum = verifiedAlbum || prevAlbum || 'Álbum Oficial';
 
     const updated = {
         ...currentMeta,
@@ -573,8 +577,11 @@ function syncMetadataFromGemini(artist, title, geminiData) {
     metadataCache[mKey1] = updated;
     metadataCache[mKey2] = updated;
     metadataCache[mKey3] = updated;
+    metadataCache[mKey4] = updated;
+    metadataCache[mKey5] = updated;
 
     saveMetadataCache();
+    invalidatePlaylistsCache();
     return updated;
 }
 
@@ -654,28 +661,38 @@ Responde ÚNICAMENTE en JSON válido con esta estructura:
     // Si el álbum original es conocido y diferente al anterior, intentar buscar la carátula en HD del álbum original en Deezer
     if (updated && updated.album && updated.album !== 'Álbum Desconocido' && updated.album !== 'Álbum') {
         try {
-            const albQ = encodeURIComponent(`${artist} ${updated.album}`);
-            const dzRes = await fetch(`https://api.deezer.com/search/album?q=${albQ}&limit=4`, { signal: AbortSignal.timeout(3500) });
-            if (dzRes.ok) {
-                const dzData = await dzRes.json();
-                if (dzData.data && dzData.data.length > 0) {
-                    const firstMatch = dzData.data[0];
-                    const cov = firstMatch.cover_xl || firstMatch.cover_big;
-                    if (cov) {
-                        updated.coverUrl = cov;
-                        const mKey1 = `${artist} - ${title}`.toLowerCase();
-                        const mKey2 = `${artist} - ${cleanT}`.toLowerCase();
-                        const mKey3 = cleanT.toLowerCase();
-                        metadataCache[mKey1] = updated;
-                        metadataCache[mKey2] = updated;
-                        metadataCache[mKey3] = updated;
-                        saveMetadataCache();
+            const primaryArtist = (artist || '').split(/[,&]/)[0].replace(/\bfeat\.?.*$/i, '').trim();
+            const queries = [`${primaryArtist} ${updated.album}`];
+            if (primaryArtist.toLowerCase() !== artist.toLowerCase()) {
+                queries.push(`${artist} ${updated.album}`);
+            }
+
+            for (const q of queries) {
+                const albQ = encodeURIComponent(q);
+                const dzRes = await fetch(`https://api.deezer.com/search/album?q=${albQ}&limit=4`, { signal: AbortSignal.timeout(3500) });
+                if (dzRes.ok) {
+                    const dzData = await dzRes.json();
+                    if (dzData.data && dzData.data.length > 0) {
+                        const firstMatch = dzData.data[0];
+                        const cov = firstMatch.cover_xl || firstMatch.cover_big;
+                        if (cov) {
+                            updated.coverUrl = cov;
+                            const mKey1 = `${artist} - ${title}`.toLowerCase();
+                            const mKey2 = `${artist} - ${cleanT}`.toLowerCase();
+                            const mKey3 = cleanT.toLowerCase();
+                            metadataCache[mKey1] = updated;
+                            metadataCache[mKey2] = updated;
+                            metadataCache[mKey3] = updated;
+                            saveMetadataCache();
+                            break;
+                        }
                     }
                 }
             }
         } catch(e) {}
     }
 
+    invalidatePlaylistsCache();
     return updated;
 }
 

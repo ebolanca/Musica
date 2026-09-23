@@ -3534,6 +3534,42 @@ function formatTime(seconds) {
                 // Si el usuario cerró este modal y abrió el de otra canción mientras la
                 // petición estaba en vuelo, descartar esta respuesta desactualizada.
                 if (currentModalSong !== song) return;
+
+                // Sincronizar inmediatamente los metadatos verificados hacia el objeto canción y la interfaz activa
+                if (detail && (detail.geminiEnriched || detail.album)) {
+                    if (detail.album && detail.album !== song.album) {
+                        song.album = detail.album;
+                    }
+                    if (detail.releaseYear) song.releaseYear = detail.releaseYear;
+                    if (detail.releaseDate) song.releaseDate = detail.releaseDate;
+                    if (detail.coverUrl) song.coverUrl = detail.coverUrl;
+
+                    const isCurrent = currentPlayingSong && (
+                        currentPlayingSong === song ||
+                        (currentPlayingSong.title === song.title && currentPlayingSong.artist === song.artist)
+                    );
+
+                    if (isCurrent) {
+                        currentPlayingSong.album = song.album;
+                        currentPlayingSong.releaseYear = song.releaseYear;
+                        currentPlayingSong.releaseDate = song.releaseDate;
+                        if (song.coverUrl) currentPlayingSong.coverUrl = song.coverUrl;
+
+                        const cinAlb = document.getElementById('cinema-album');
+                        if (cinAlb && song.album) {
+                            cinAlb.textContent = `${song.album} • ${formatBriefDate(song.releaseDate, song.releaseYear)}`;
+                        }
+                        if (song.coverUrl) {
+                            const cinCov = document.getElementById('cinema-cover');
+                            const cinBg = document.getElementById('cinema-bg');
+                            const musCov = document.getElementById('music-bar-cover');
+                            if (cinCov) cinCov.src = song.coverUrl;
+                            if (cinBg) cinBg.style.backgroundImage = `url('${song.coverUrl}')`;
+                            if (musCov) musCov.src = song.coverUrl;
+                        }
+                    }
+                }
+
                 populateCreditsTab(detail, song);
                 populateLyricsTab(detail);
                 populateAnalysisTab(detail, song.artist, song.title);
@@ -3629,9 +3665,27 @@ function formatTime(seconds) {
 
                         if (meta.coverUrl) {
                             targetSong.coverUrl = meta.coverUrl;
-                            const cinCov = document.getElementById('cinema-cover');
-                            const cinBg = document.getElementById('cinema-bg');
-                            const musCov = document.getElementById('music-bar-cover');
+                        }
+
+                        // Sincronizar también currentPlayingSong si es la misma canción
+                        const isCurrentPlaying = currentPlayingSong && (
+                            currentPlayingSong === targetSong ||
+                            (currentPlayingSong.title === targetSong.title && currentPlayingSong.artist === targetSong.artist)
+                        );
+                        if (isCurrentPlaying) {
+                            currentPlayingSong.album = meta.album;
+                            currentPlayingSong.releaseYear = meta.releaseYear;
+                            currentPlayingSong.releaseDate = meta.releaseDate;
+                            currentPlayingSong.composers = meta.composers;
+                            currentPlayingSong.label = meta.label;
+                            currentPlayingSong.genre = meta.genre;
+                            if (meta.coverUrl) currentPlayingSong.coverUrl = meta.coverUrl;
+                        }
+
+                        const cinCov = document.getElementById('cinema-cover');
+                        const cinBg = document.getElementById('cinema-bg');
+                        const musCov = document.getElementById('music-bar-cover');
+                        if (meta.coverUrl) {
                             if (cinCov) cinCov.src = meta.coverUrl;
                             if (cinBg) cinBg.style.backgroundImage = `url('${meta.coverUrl}')`;
                             if (musCov) musCov.src = meta.coverUrl;
@@ -3639,10 +3693,11 @@ function formatTime(seconds) {
 
                         const cinAlb = document.getElementById('cinema-album');
                         if (cinAlb && meta.album) {
-                            cinAlb.textContent = `${meta.album} • ${meta.releaseYear || ''}`;
+                            cinAlb.textContent = `${meta.album} • ${formatBriefDate(meta.releaseDate, meta.releaseYear)}`;
                         }
 
                         populateCreditsTab(meta, targetSong);
+                        renderSongs();
                         showSyncNotification(`✨ Álbum original identificado: "${meta.album}" (${meta.releaseYear})`);
                     } else {
                         showSyncNotification('⚠️ ' + (data.error || 'No se pudo obtener información de Gemini'));

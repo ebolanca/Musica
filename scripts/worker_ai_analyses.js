@@ -335,7 +335,8 @@ async function fetchPlaylists() {
                                 // Buscar carátula si el álbum cambió o no tiene
                                 let cover = currentMeta.coverUrl;
                                 if (!cover || (verifiedAlbum && verifiedAlbum !== currentMeta.album)) {
-                                    const newCover = await fetchDeezerCover(artist, verifiedAlbum);
+                                    const primaryArtist = artist.split(/[,&]/)[0].replace(/\bfeat\.?.*$/i, '').trim();
+                                    const newCover = await fetchDeezerCover(primaryArtist, verifiedAlbum) || await fetchDeezerCover(artist, verifiedAlbum);
                                     if (newCover) cover = newCover;
                                 }
 
@@ -356,9 +357,15 @@ async function fetchPlaylists() {
                                     geminiEnriched: true
                                 };
 
+                                const primaryArt = artist.split(/[,&]/)[0].replace(/\bfeat\.?.*$/i, '').trim();
+                                const mKey4 = `${primaryArt} - ${cleanT}`.toLowerCase();
+                                const mKey5 = `${primaryArt} - ${rawTitle}`.toLowerCase();
+
                                 meta[mKey1] = updatedMeta;
                                 meta[mKey2] = updatedMeta;
                                 meta[mKey3] = updatedMeta;
+                                meta[mKey4] = updatedMeta;
+                                meta[mKey5] = updatedMeta;
 
                                 saveMeta(meta);
 
