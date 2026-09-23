@@ -46622,7 +46622,7 @@
     "artist": "Linkin Park",
     "year": "2000",
     "album": "Hybrid Theory",
-    "synopsis": "\"In the End\" (2000) de Linkin Park: \"In the End\" is a song by American rock band Linkin Park. Un tema indispensable que marcó una etapa definitoria en la evolución musical de su época.",
+    "synopsis": "\"In the End\" (2000) de Linkin Park es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
     "sections": [
       {
         "title": "El Origen & Trayectoria: La consagración de Linkin Park",
@@ -48208,7 +48208,7 @@
     "artist": "Coldplay",
     "year": "2000",
     "album": "Parachutes",
-    "synopsis": "\"Trouble\" (2000) de Coldplay: \"Trouble\" is a song by British rock band Coldplay, for their debut album, Parachutes (2000). Un tema indispensable que marcó una etapa definitoria en la evolución musical de su época.",
+    "synopsis": "\"Trouble\" (2000) de Coldplay es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
     "sections": [
       {
         "title": "El Origen & Trayectoria: La consagración de Coldplay",
@@ -48452,7 +48452,7 @@
     "artist": "Jennifer Lopez",
     "year": "2000",
     "album": "J. Lo",
-    "synopsis": "\"Love Don't Cost a Thing\" (2000) de Jennifer Lopez: \"Love Don't Cost a Thing\" is a song by American singer Jennifer Lopez for her second studio album J. Un tema indispensable que marcó una etapa definitoria en la evolución musical de su época.",
+    "synopsis": "\"Love Don't Cost a Thing\" (2000) de Jennifer Lopez es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
     "sections": [
       {
         "title": "El Origen & Trayectoria: La consagración de Jennifer Lopez",
@@ -48513,7 +48513,7 @@
     "artist": "Craig David",
     "year": "2000",
     "album": "Born to Do It",
-    "synopsis": "\"7 Days\" (2000) de Craig David: \"7 Days\" is a song by British singer Craig David. Un tema indispensable que marcó una etapa definitoria en la evolución musical de su época.",
+    "synopsis": "\"7 Days\" (2000) de Craig David es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
     "sections": [
       {
         "title": "El Origen & Trayectoria: La consagración de Craig David",
@@ -75477,9 +75477,9 @@
   "Eddy Herrera - A Dormir Juntitos": {
     "title": "A Dormir Juntitos",
     "artist": "Eddy Herrera",
-    "year": "2022",
-    "album": "Aqui Esperandote (2022 Remastered)",
-    "synopsis": "\"A Dormir Juntitos\" (2022) de Eddy Herrera es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "year": "2017",
+    "album": "Dúos Entre Amigos",
+    "synopsis": "\"A Dormir Juntitos\" (2017) de Eddy Herrera es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
     "sections": [
       {
         "title": "El Origen & Trayectoria: La consagración de Eddy Herrera",
@@ -75536,39 +75536,65 @@
     ]
   },
   "Eddy Herrera - A Dormir Juntitos - Liz featuring Eddy Herrera": {
-    "title": "A Dormir Juntitos - Liz featuring Eddy Herrera",
+    "title": "A Dormir Juntitos",
     "artist": "Eddy Herrera",
-    "year": "2022",
-    "originalAlbum": "Independiente",
-    "releaseYear": "2000",
-    "releaseDate": "2000-01-01",
-    "composers": "Jorge Luis Piloto",
-    "label": "Karen Records",
-    "genre": "Merengue",
-    "synopsis": "A Dormir Juntitos es un estándar del merengue dominicano de finales de los 90, caracterizado por una instrumentación de metales brillante y una base rítmica de tambora y güira altamente sincopada. La producción destaca por la química vocal entre Liz y Eddy Herrera, equilibrando la potencia del registro de Herrera con la calidez melódica de Liz en una estructura de llamada y respuesta clásica del género tropical.",
+    "year": "2017",
+    "album": "Dúos Entre Amigos",
+    "synopsis": "\"A Dormir Juntitos\" (2017) de Eddy Herrera es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
     "sections": [
       {
-        "title": "1. Anatomía Musical y Producción de Estudio",
-        "icon": "fa-sliders",
-        "text": "La producción se sustenta en una sección de vientos (trompetas y saxofones) que ejecutan arreglos de 'mambo' con alta precisión técnica. La percusión es el motor de la pieza, con una güira que mantiene un patrón constante de semicorcheas y una tambora que enfatiza el contratiempo. La mezcla prioriza la claridad de las voces principales, situándolas en el centro del espectro estéreo, mientras que el bajo eléctrico mantiene una línea melódica que refuerza la progresión armónica del merengue tradicional."
+        "title": "El Origen & Trayectoria: La consagración de Eddy Herrera",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Eddy Herrera, \"A Dormir Juntitos\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
       },
       {
-        "title": "2. Análisis Lírico y Desglose Verso a Verso",
-        "icon": "fa-align-left",
-        "text": "La letra aborda la intimidad y la reconciliación amorosa con un tono sugerente pero romántico. El uso de la frase 'A dormir juntitos' actúa como un estribillo pegadizo que simboliza la complicidad de la pareja. El análisis lírico revela una estructura de diálogo donde ambos intérpretes negocian sus emociones, utilizando el lenguaje cotidiano para normalizar la pasión y el deseo, consolidándose como un himno de seducción en las pistas de baile."
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"A Dormir Juntitos\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
       },
       {
-        "title": "3. Narrativa Visual y Videoclip",
-        "icon": "fa-film",
-        "text": "Aunque la canción se popularizó principalmente a través de la radio y presentaciones en vivo, su estética visual se alinea con la era dorada del merengue dominicano: escenarios de estudio con iluminación cálida, vestuario formal-tropical y una puesta en escena que enfatiza la interacción coreográfica entre los artistas, reforzando la narrativa de pareja que propone la letra."
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"A Dormir Juntitos\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Eddy Herrera aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
       },
       {
-        "title": "4. Impacto Cultural y Curiosidades",
-        "icon": "fa-award",
-        "text": "Esta colaboración se convirtió en uno de los temas más emblemáticos de la carrera de Eddy Herrera, consolidando su estatus como 'El Galán del Merengue'. La canción ha trascendido generaciones en toda Latinoamérica, siendo un elemento básico en las celebraciones sociales y manteniendo una alta rotación en emisoras de música tropical, lo que demuestra su longevidad comercial y relevancia en el canon del merengue moderno."
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"A Dormir Juntitos\" se mantiene como un himno atemporal dentro de la discografía de Eddy Herrera y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Eddy Herrera."
+          }
+        ]
       }
-    ],
-    "_aiModel": "gemini-3.1-flash-lite"
+    ]
   },
   "Grupo Climax - Mesa Que Mas Aplauda (version - Española": {
     "title": "Mesa Que Mas Aplauda (version - Española",

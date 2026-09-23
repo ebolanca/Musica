@@ -31,6 +31,7 @@ const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 const http = require('http');
+const { fetchTrackMetadataFromWikiAndMB } = require('./scripts/metadata_wiki_provider');
 
 // Sin estos handlers, un error async fuera del ciclo request/response (una promesa sin
 // .catch(), una excepción en un setTimeout/setInterval) tumba el proceso sin dejar rastro
@@ -654,7 +655,16 @@ Responde ÚNICAMENTE en JSON válido con esta estructura:
         }
     }
 
-    if (!geminiData) throw new Error('No se pudo obtener respuesta de Gemini para metadatos');
+    if (!geminiData) {
+        console.warn(`[METADATA] Gemini no disponible o cuota agotada. Consultando Wikipedia y MusicBrainz para "${artist} - ${title}"...`);
+        try {
+            geminiData = await fetchTrackMetadataFromWikiAndMB(artist, title);
+        } catch(wikiErr) {
+            console.error('[METADATA] Error consultando Wikipedia/MusicBrainz:', wikiErr.message);
+        }
+    }
+
+    if (!geminiData) throw new Error('No se pudo obtener respuesta de Gemini, Wikipedia ni MusicBrainz para los metadatos');
 
     const updated = syncMetadataFromGemini(artist, title, geminiData);
 

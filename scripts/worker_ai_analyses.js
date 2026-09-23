@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const { fetchTrackMetadataFromWikiAndMB } = require('./metadata_wiki_provider');
 
 const DB_PATH = path.join(__dirname, '../data/analyses_db.json');
 const OMEN_DB_PATH = '\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\analyses_db.json';
@@ -375,8 +376,65 @@ async function fetchPlaylists() {
                             }
                         } catch(err) {
                             if (err.message === 'ALL_QUOTAS_EXHAUSTED') {
-                                console.warn('⏸️ [CUOTA DIARIA/MINUTO AGOTADA]. Esperando 5 minutos antes de continuar...');
-                                await new Promise(r => setTimeout(r, 5 * 60 * 1000));
+                                if (!isEnriched) {
+                                    console.log(`🌐 [FALLBACK WIKI] Cuota Gemini agotada. Consultando Wikipedia y MusicBrainz para "${artist} - ${cleanT}"...`);
+                                    try {
+                                        const wikiData = await fetchTrackMetadataFromWikiAndMB(artist, cleanT);
+                                        if (wikiData && wikiData.originalAlbum) {
+                                            const verifiedAlbum = cleanAlbumTitle(wikiData.originalAlbum || currentMeta.album || 'Álbum Oficial');
+                                            const verifiedYear = String(wikiData.releaseYear || currentMeta.releaseYear || '2000').trim();
+                                            const verifiedDate = String(wikiData.releaseDate || `${verifiedYear}-01-01`).trim();
+                                            const verifiedComposers = String(wikiData.composers || currentMeta.composers || artist).trim();
+                                            const verifiedLabel = String(wikiData.label || currentMeta.label || 'Sello Discográfico Principal').trim();
+                                            const verifiedGenre = String(wikiData.genre || currentMeta.genre || 'Pop / Rock').trim();
+
+                                            let cover = currentMeta.coverUrl;
+                                            if (!cover || (verifiedAlbum && verifiedAlbum !== currentMeta.album)) {
+                                                const primaryArtist = artist.split(/[,&]/)[0].replace(/\bfeat\.?.*$/i, '').trim();
+                                                const newCover = await fetchDeezerCover(primaryArtist, verifiedAlbum) || await fetchDeezerCover(artist, verifiedAlbum);
+                                                if (newCover) cover = newCover;
+                                            }
+
+                                            const updatedMeta = {
+                                                ...currentMeta,
+                                                title: cleanT,
+                                                displayTitle: cleanT,
+                                                artist: artist,
+                                                album: verifiedAlbum,
+                                                releaseYear: verifiedYear,
+                                                releaseDate: verifiedDate,
+                                                year: verifiedYear,
+                                                date: verifiedDate,
+                                                composers: verifiedComposers,
+                                                label: verifiedLabel,
+                                                genre: verifiedGenre,
+                                                coverUrl: cover || null,
+                                                geminiEnriched: true
+                                            };
+
+                                            const primaryArt = artist.split(/[,&]/)[0].replace(/\bfeat\.?.*$/i, '').trim();
+                                            const mKey4 = `${primaryArt} - ${cleanT}`.toLowerCase();
+                                            const mKey5 = `${primaryArt} - ${rawTitle}`.toLowerCase();
+
+                                            meta[mKey1] = updatedMeta;
+                                            meta[mKey2] = updatedMeta;
+                                            meta[mKey3] = updatedMeta;
+                                            meta[mKey4] = updatedMeta;
+                                            meta[mKey5] = updatedMeta;
+
+                                            saveMeta(meta);
+
+                                            console.log(`✅ [ENRIQUECIDO VÍA ${wikiData.source.toUpperCase()}] "${artist} - ${cleanT}" -> Álbum: "${verifiedAlbum}" (${verifiedYear})`);
+                                            processedInRun++;
+                                            success = true;
+                                            break;
+                                        }
+                                    } catch(wErr) {
+                                        console.warn(`[FALLBACK WIKI] Error en fallback: ${wErr.message}`);
+                                    }
+                                }
+                                console.warn('⏸️ [CUOTA DIARIA/MINUTO AGOTADA]. Esperando 3 minutos antes de continuar...');
+                                await new Promise(r => setTimeout(r, 3 * 60 * 1000));
                             } else {
                                 console.error(`❌ Error procesando "${cleanT}":`, err.message);
                                 break;
