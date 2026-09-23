@@ -382,11 +382,29 @@ async function fetchPlaylists() {
                                         const wikiData = await fetchTrackMetadataFromWikiAndMB(artist, cleanT);
                                         if (wikiData && wikiData.originalAlbum) {
                                             const verifiedAlbum = cleanAlbumTitle(wikiData.originalAlbum || currentMeta.album || 'Álbum Oficial');
-                                            const verifiedYear = String(wikiData.releaseYear || currentMeta.releaseYear || '2000').trim();
-                                            const verifiedDate = String(wikiData.releaseDate || `${verifiedYear}-01-01`).trim();
+                                            const isBadAlbum = (a) => /\b(les nuits fauves|soundtrack|bso|ost|banda sonora|motion picture|various artists|list of)\b/i.test(a);
+                                            if (isBadAlbum(verifiedAlbum) && currentMeta.album && !isBadAlbum(currentMeta.album)) {
+                                                verifiedAlbum = currentMeta.album;
+                                            }
+
+                                            const prevYear = parseInt(currentMeta.releaseYear || currentMeta.year, 10) || 0;
+                                            const newYear = parseInt(wikiData.releaseYear || wikiData.year, 10) || 0;
+                                            const verifiedYear = (prevYear > 1950 && newYear > prevYear + 5) 
+                                                ? String(prevYear) 
+                                                : String(newYear || prevYear || '2000').trim();
+
+                                            const verifiedDate = String(wikiData.releaseDate || currentMeta.releaseDate || `${verifiedYear}-01-01`).trim();
                                             const verifiedComposers = String(wikiData.composers || currentMeta.composers || artist).trim();
-                                            const verifiedLabel = String(wikiData.label || currentMeta.label || 'Sello Discográfico Principal').trim();
-                                            const verifiedGenre = String(wikiData.genre || currentMeta.genre || 'Pop / Rock').trim();
+
+                                            let verifiedLabel = String(wikiData.label || '').trim();
+                                            if (!verifiedLabel || verifiedLabel === 'Sello Discográfico Principal') {
+                                                verifiedLabel = currentMeta.label || 'Sello Discográfico Principal';
+                                            }
+
+                                            let verifiedGenre = String(wikiData.genre || '').trim();
+                                            if (!verifiedGenre || verifiedGenre === 'Pop / Rock / Dance') {
+                                                verifiedGenre = currentMeta.genre || 'Pop / Rock / Dance';
+                                            }
 
                                             let cover = currentMeta.coverUrl;
                                             if (!cover || (verifiedAlbum && verifiedAlbum !== currentMeta.album)) {

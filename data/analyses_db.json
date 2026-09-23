@@ -32291,32 +32291,37 @@
   "Rita Ora - Your Song": {
     "title": "Your Song",
     "artist": "Rita Ora",
-    "year": "2017",
-    "album": "Your Song",
-    "synopsis": "\"Your Song\" de Rita Ora (2017) es un ejercicio de pop contemporáneo comercial estructurado bajo la co-autoría de Ed Sheeran, diseñado con una arquitectura sónica limpia y un enfoque radio-friendly. Su tesis sónica se fundamenta en la transición desde una estrofa acústico-minimalista hasta un drop de estribillo impulsado por síntesis, compresión multibanda agresiva y sidechain en los graves para maximizar la pegada rítmica. La producción busca la máxima claridad en el rango medio-agudo para resaltar la tesitura vocal pop de la intérprete.",
+    "year": "2018",
+    "originalAlbum": "Phoenix",
+    "releaseYear": "2017",
+    "releaseDate": "2017-05-26",
+    "composers": "Ed Sheeran, Steve Mac",
+    "label": "Atlantic Records",
+    "genre": "Dance-pop",
+    "synopsis": "Your Song es una pieza de pop contemporáneo caracterizada por una producción minimalista y orgánica que evoluciona hacia un estribillo eufórico. La colaboración compositiva de Ed Sheeran aporta una estructura melódica directa y pegadiza, mientras que la interpretación vocal de Rita Ora destaca por su versatilidad dinámica, equilibrando la vulnerabilidad emocional con una ejecución técnica precisa en el registro medio-agudo.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La producción se construye sobre una base rítmica de programación digital (DAW) con un tempo de aproximadamente 118 BPM en tonalidad de Si bemol mayor (B♭ major). En los subgraves (20Hz - 60Hz), el bombo (kick) y el bajo sintetizado interactúan mediante un procesamiento de sidechain pesado, liberando espacio para que el transitorio del kick perfore la mezcla sin enmascarar la fundamental del bajo. Los medios (500Hz - 2kHz) están rigurosamente controlados para evitar la congestión en las frecuencias vocales principales y los colchones de sintetizadores analógicos virtuales que aportan calidez armónica. En los agudos (6kHz - 20kHz), se percibe un brillo digital característico del pop de mediados de la década de 2010, con uso generoso de de-essing en la voz de Ora para mitigar las sibilancias acentuadas por la compresión en paralelo. Aunque los registros específicos de los micrófonos de estudio no están publicados oficialmente, el análisis acústico deductivo de la pista vocal revela el uso probable de un micrófono de condensador de diafragma grande (como un Neumann U87 Ai) emparentado con previos transparentes (tipo Neve o Avalon), entregando una presencia frontal, con compresión tipo 1176 en modo 'all-buttons-in' para densificar el cuerpo de la voz y mantenerla estables frente a la instrumentación electrónica."
+        "text": "La producción, a cargo de Steve Mac, se apoya en un piano acústico procesado con compresión suave y una base rítmica programada que prioriza el 'kick' y el 'snare' con un 'sidechain' marcado. La mezcla destaca por una voz principal con presencia frontal, tratada con capas de 'doubling' sutiles para ganar cuerpo. El arreglo transita de una instrumentación despojada en las estrofas a una expansión sonora en el estribillo mediante sintetizadores de texturas brillantes y percusiones electrónicas que definen su identidad radiofónica."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "La temática central gira en torno a la superación de un estado emocional melancólico a través de la influencia positiva de un nuevo interés amoroso, rechazando canciones tristes previas en favor de una narrativa de optimismo pop. Estrofa de apertura: 'I woke up to a hundred emails / But your voice is the only one I wanna hear' — vocabulario cotidiano enfocado en la fatiga digital contrastada con la intimidad acústica. Estribillo: 'I don't wanna sing a sad song anymore / Teach me how to sing along' — uso del doble sentido donde 'sad song' funciona como metáfora de rumiación depresiva o rupturas pasadas, mientras que 'sing along' implica sincronización emocional y aceptación mutua. Autopsia verso a verso: La progresión lírica desplaza el foco desde la soledad hiperconectada ('hundred emails') hacia la simplicidad sensorial del canal auditivo del amante, empleando una estructura estrófica cíclica que imita la predictibilidad reconfortante de una relación estable."
+        "text": "La lírica aborda la superación de la melancolía a través de la música, sustituyendo canciones tristes por una nueva melodía que evoca felicidad. Versos como 'I'm tired of playing these songs in my head' reflejan un cambio de paradigma emocional. La estructura es un ejercicio de optimismo pop, utilizando metáforas sobre el sonido y la frecuencia para describir el enamoramiento, con un vocabulario accesible pero efectivo que refuerza la narrativa de empoderamiento personal."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "El videoclip oficial, dirigido por Michael Haussman y rodado en Vancouver, establece una identidad visual de libertad urbana y desconexión digital. La fotografía destaca por una paleta de colores desaturados en los exteriores, contrastando con la iluminación cálida sobre la artista. Simbología: Rita Ora aparece caminando descalza por la ciudad y abandonando su ropa formal, un tropo visual clásico que representa la liberación de las expectativas de la industria musical y la reconexión con la autenticidad personal. La dirección de cámara emplea planos secuencia fluidos que siguen a la artista rompiendo la cuarta pared, enfatizando la accesibilidad del mensaje pop."
+        "text": "El videoclip oficial, dirigido por Michael Haussman, presenta una estética urbana y cinematográfica. Rita Ora aparece en diversos escenarios, desde una oficina gris hasta las calles de Londres, simbolizando la ruptura con la monotonía. El uso de colores saturados y una edición dinámica refuerza la transición de la tristeza a la liberación, utilizando el simbolismo de la danza y el movimiento constante como metáfora de la vitalidad que la canción propone."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "Honestidad sobre repercusión real: Aunque no alcanzó el estatus de hito cultural masivo global a largo plazo como los mayorescatalogados de la era streaming, el sencillo funcionó como un sólido éxito de listas en el mercado europeo. Debutó en posiciones altas en el UK Singles Chart (alcanzando el Top 10) y consolidó el regreso comercial de Rita Ora tras una pausa prolongada en su catálogo de álbumes. Curiosidad documentada: El tema fue co-escrito por Ed Sheeran junto a Steve Mac, quienes originalmente concibieron la maqueta pensando en el estilo vocal acústico característico de Sheeran, antes de ser adaptada para encajar en el registro y potencia pop de Ora."
+        "text": "La canción marcó el regreso triunfal de Rita Ora a las listas británicas, alcanzando el Top 10 en el UK Singles Chart. Su éxito consolidó la influencia de Ed Sheeran como compositor de éxitos globales para otros artistas. La obra se convirtió en un estándar del pop de radio de 2017, siendo elogiada por su capacidad para combinar la sencillez compositiva con una producción de alta fidelidad, logrando certificaciones de platino en múltiples mercados internacionales."
       }
     ],
-    "_aiModel": "gemini-3.5-flash-lite"
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "Little Mix - Is Your Love Enough?": {
     "title": "Is Your Love Enough?",
@@ -46622,7 +46627,7 @@
     "artist": "Linkin Park",
     "year": "2000",
     "album": "Hybrid Theory",
-    "synopsis": "\"In the End\" (2000) de Linkin Park es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "synopsis": "\"In the End\" (2000) de Linkin Park: \"In the End\" is a song by American rock band Linkin Park. Un tema indispensable que marcó una etapa definitoria en la evolución musical de su época.",
     "sections": [
       {
         "title": "El Origen & Trayectoria: La consagración de Linkin Park",
@@ -48208,7 +48213,7 @@
     "artist": "Coldplay",
     "year": "2000",
     "album": "Parachutes",
-    "synopsis": "\"Trouble\" (2000) de Coldplay es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "synopsis": "\"Trouble\" (2000) de Coldplay: \"Trouble\" is a song by British rock band Coldplay, for their debut album, Parachutes (2000). Un tema indispensable que marcó una etapa definitoria en la evolución musical de su época.",
     "sections": [
       {
         "title": "El Origen & Trayectoria: La consagración de Coldplay",
@@ -48452,7 +48457,7 @@
     "artist": "Jennifer Lopez",
     "year": "2000",
     "album": "J. Lo",
-    "synopsis": "\"Love Don't Cost a Thing\" (2000) de Jennifer Lopez es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "synopsis": "\"Love Don't Cost a Thing\" (2000) de Jennifer Lopez: \"Love Don't Cost a Thing\" is a song by American singer Jennifer Lopez for her second studio album J. Un tema indispensable que marcó una etapa definitoria en la evolución musical de su época.",
     "sections": [
       {
         "title": "El Origen & Trayectoria: La consagración de Jennifer Lopez",
@@ -48513,7 +48518,7 @@
     "artist": "Craig David",
     "year": "2000",
     "album": "Born to Do It",
-    "synopsis": "\"7 Days\" (2000) de Craig David es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "synopsis": "\"7 Days\" (2000) de Craig David: \"7 Days\" is a song by British singer Craig David. Un tema indispensable que marcó una etapa definitoria en la evolución musical de su época.",
     "sections": [
       {
         "title": "El Origen & Trayectoria: La consagración de Craig David",
@@ -75477,9 +75482,9 @@
   "Eddy Herrera - A Dormir Juntitos": {
     "title": "A Dormir Juntitos",
     "artist": "Eddy Herrera",
-    "year": "2017",
-    "album": "Dúos Entre Amigos",
-    "synopsis": "\"A Dormir Juntitos\" (2017) de Eddy Herrera es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "year": "2022",
+    "album": "Aqui Esperandote (2022 Remastered)",
+    "synopsis": "\"A Dormir Juntitos\" (2022) de Eddy Herrera es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
     "sections": [
       {
         "title": "El Origen & Trayectoria: La consagración de Eddy Herrera",
@@ -75536,65 +75541,39 @@
     ]
   },
   "Eddy Herrera - A Dormir Juntitos - Liz featuring Eddy Herrera": {
-    "title": "A Dormir Juntitos",
+    "title": "A Dormir Juntitos - Liz featuring Eddy Herrera",
     "artist": "Eddy Herrera",
-    "year": "2017",
-    "album": "Dúos Entre Amigos",
-    "synopsis": "\"A Dormir Juntitos\" (2017) de Eddy Herrera es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "year": "2022",
+    "originalAlbum": "Independiente",
+    "releaseYear": "2000",
+    "releaseDate": "2000-01-01",
+    "composers": "Jorge Luis Piloto",
+    "label": "Karen Records",
+    "genre": "Merengue",
+    "synopsis": "A Dormir Juntitos es un estándar del merengue dominicano de finales de los 90, caracterizado por una instrumentación de metales brillante y una base rítmica de tambora y güira altamente sincopada. La producción destaca por la química vocal entre Liz y Eddy Herrera, equilibrando la potencia del registro de Herrera con la calidez melódica de Liz en una estructura de llamada y respuesta clásica del género tropical.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de Eddy Herrera",
-        "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de Eddy Herrera, \"A Dormir Juntitos\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
-        "points": [
-          {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
-          }
-        ]
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción se sustenta en una sección de vientos (trompetas y saxofones) que ejecutan arreglos de 'mambo' con alta precisión técnica. La percusión es el motor de la pieza, con una güira que mantiene un patrón constante de semicorcheas y una tambora que enfatiza el contratiempo. La mezcla prioriza la claridad de las voces principales, situándolas en el centro del espectro estéreo, mientras que el bajo eléctrico mantiene una línea melódica que refuerza la progresión armónica del merengue tradicional."
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
-        "icon": "fa-drum",
-        "text": "La producción de \"A Dormir Juntitos\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
-        "points": [
-          {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
-          },
-          {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
-          },
-          {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
-          }
-        ]
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra aborda la intimidad y la reconciliación amorosa con un tono sugerente pero romántico. El uso de la frase 'A dormir juntitos' actúa como un estribillo pegadizo que simboliza la complicidad de la pareja. El análisis lírico revela una estructura de diálogo donde ambos intérpretes negocian sus emociones, utilizando el lenguaje cotidiano para normalizar la pasión y el deseo, consolidándose como un himno de seducción en las pistas de baile."
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
-        "icon": "fa-quote-left",
-        "text": "Líricamente, \"A Dormir Juntitos\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
-        "points": [
-          {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de Eddy Herrera aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
-          }
-        ]
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Aunque la canción se popularizó principalmente a través de la radio y presentaciones en vivo, su estética visual se alinea con la era dorada del merengue dominicano: escenarios de estudio con iluminación cálida, vestuario formal-tropical y una puesta en escena que enfatiza la interacción coreográfica entre los artistas, reforzando la narrativa de pareja que propone la letra."
       },
       {
-        "title": "El Impacto Cultural & Legado",
-        "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"A Dormir Juntitos\" se mantiene como un himno atemporal dentro de la discografía de Eddy Herrera y una de las composiciones más celebradas de su generación.",
-        "points": [
-          {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Eddy Herrera."
-          }
-        ]
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "Esta colaboración se convirtió en uno de los temas más emblemáticos de la carrera de Eddy Herrera, consolidando su estatus como 'El Galán del Merengue'. La canción ha trascendido generaciones en toda Latinoamérica, siendo un elemento básico en las celebraciones sociales y manteniendo una alta rotación en emisoras de música tropical, lo que demuestra su longevidad comercial y relevancia en el canon del merengue moderno."
       }
-    ]
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "Grupo Climax - Mesa Que Mas Aplauda (version - Española": {
     "title": "Mesa Que Mas Aplauda (version - Española",

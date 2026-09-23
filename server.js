@@ -548,15 +548,37 @@ function syncMetadataFromGemini(artist, title, geminiData) {
     const isCompilation = (a) => !a || /\b(greatest hits|best of|esencial|the essential|the best|antolog|recopilator|éxitos|exitos|colecci|superéxitos|collection|singles|definitive|the hits|platinum|gold)\b/i.test(a);
 
     const rawGemAlbum = geminiData.originalAlbum || geminiData.album || '';
-    const verifiedAlbum = cleanAlbumTitle(rawGemAlbum);
-    const verifiedYear = String(geminiData.releaseYear || geminiData.year || currentMeta.releaseYear || '2000').trim();
+    let verifiedAlbum = cleanAlbumTitle(rawGemAlbum);
+
+    // Descartar si el nuevo álbum es una BSO ajena o lista
+    const isBadAlbum = (a) => /\b(les nuits fauves|soundtrack|bso|ost|banda sonora|motion picture|various artists|list of)\b/i.test(a);
+    if (isBadAlbum(verifiedAlbum) && currentMeta.album && !isBadAlbum(currentMeta.album)) {
+        verifiedAlbum = currentMeta.album;
+    }
+
+    const prevYear = parseInt(currentMeta.releaseYear || currentMeta.year, 10) || 0;
+    const newYear = parseInt(geminiData.releaseYear || geminiData.year, 10) || 0;
+    // Si la canción ya tenía un año clásico/antiguo (< 2005) y el nuevo viene con fecha muy posterior (> prevYear + 5), conservar el año original
+    let verifiedYear = (prevYear > 1950 && newYear > prevYear + 5) 
+        ? String(prevYear) 
+        : String(newYear || prevYear || '2000').trim();
+
     const verifiedDate = String(geminiData.releaseDate || currentMeta.releaseDate || `${verifiedYear}-01-01`).trim();
     const verifiedComposers = String(geminiData.composers || currentMeta.composers || artist).trim();
-    const verifiedLabel = String(geminiData.label || currentMeta.label || 'Sello Discográfico Principal').trim();
-    const verifiedGenre = String(geminiData.genre || currentMeta.genre || 'Pop / Rock / Dance').trim();
+
+    // Sello: conservar el que ya tenía si el nuevo es genérico
+    let verifiedLabel = String(geminiData.label || '').trim();
+    if (!verifiedLabel || verifiedLabel === 'Sello Discográfico Principal') {
+        verifiedLabel = currentMeta.label || 'Sello Discográfico Principal';
+    }
+
+    // Género: conservar el que ya tenía si el nuevo es genérico
+    let verifiedGenre = String(geminiData.genre || '').trim();
+    if (!verifiedGenre || verifiedGenre === 'Pop / Rock / Dance') {
+        verifiedGenre = currentMeta.genre || 'Pop / Rock / Dance';
+    }
 
     const prevAlbum = currentMeta.album || '';
-    // El álbum original identificado por Gemini debe prevalecer siempre sobre recopilatorios o nombres antiguos
     const finalAlbum = verifiedAlbum || prevAlbum || 'Álbum Oficial';
 
     const updated = {
@@ -565,10 +587,10 @@ function syncMetadataFromGemini(artist, title, geminiData) {
         displayTitle: currentMeta.displayTitle || cleanT,
         artist: currentMeta.artist || artist,
         album: finalAlbum,
-        releaseYear: (verifiedYear !== '2000' || !currentMeta.releaseYear) ? verifiedYear : currentMeta.releaseYear,
-        releaseDate: (verifiedDate && !verifiedDate.startsWith('2000')) ? verifiedDate : (currentMeta.releaseDate || `${verifiedYear}-01-01`),
-        year: (verifiedYear !== '2000' || !currentMeta.year) ? verifiedYear : currentMeta.year,
-        date: (verifiedDate && !verifiedDate.startsWith('2000')) ? verifiedDate : (currentMeta.date || `${verifiedYear}-01-01`),
+        releaseYear: verifiedYear,
+        releaseDate: verifiedDate,
+        year: verifiedYear,
+        date: verifiedDate,
         composers: verifiedComposers,
         label: verifiedLabel,
         genre: verifiedGenre,

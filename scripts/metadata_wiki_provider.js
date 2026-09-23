@@ -86,12 +86,16 @@ async function fetchWikipediaInfobox(artist, title, lang = 'en') {
             const results = data.query?.search || [];
             if (results.length === 0) continue;
 
-            // Elegir el artículo más prometedor
-            const candidate = results.find(r => {
+            // Elegir el artículo más prometedor (descartando listas, giras, anexos)
+            const badTitles = /^(list of|anexo:|discograf|tour |gira |concierto|premios|awards)/i;
+            const validResults = results.filter(r => !badTitles.test(r.title));
+            if (validResults.length === 0) continue;
+
+            const candidate = validResults.find(r => {
                 const tit = r.title.toLowerCase();
                 const snippet = (r.snippet || '').toLowerCase();
                 return tit.includes(cleanT.toLowerCase()) || snippet.includes(cleanT.toLowerCase());
-            }) || results[0];
+            }) || validResults[0];
 
             if (!candidate) continue;
 
@@ -172,7 +176,7 @@ async function fetchMusicBrainzInfo(artist, title) {
 
     try {
         const query = `recording:"${cleanT}" AND artist:"${mainArt}"`;
-        const url = `https://musicbrainz.org/ws/2/recording/?query=${encodeURIComponent(query)}&fmt=json&limit=10`;
+        const url = `https://musicbrainz.org/ws/2/recording/?query=${encodeURIComponent(query)}&fmt=json&limit=15`;
         const res = await fetch(url, {
             headers: { 'User-Agent': 'MusicaApp/2.1 (contact@majecruz.es; personal audio tool)' },
             signal: AbortSignal.timeout(5000)
@@ -182,18 +186,29 @@ async function fetchMusicBrainzInfo(artist, title) {
         const recordings = data.recordings || [];
         if (recordings.length === 0) return null;
 
+        const forbiddenSecondary = ['compilation', 'soundtrack', 'live', 'remix', 'dj-mix', 'mixtape/street', 'demo'];
+
         for (const rec of recordings) {
             const releases = rec.releases || [];
-            // Filtrar álbumes oficiales de estudio (no compilaciones)
+            // Filtrar álbumes oficiales de estudio (ESTRICTO: sin bandas sonoras ni recopilatorios ni directos)
             const studioReleases = releases.filter(r => {
                 const rg = r['release-group'];
                 const pType = rg ? rg['primary-type'] : null;
-                const sTypes = rg ? rg['secondary-types'] || [] : [];
-                return pType === 'Album' && !sTypes.includes('Compilation');
+                const sTypes = (rg ? rg['secondary-types'] || [] : []).map(s => String(s).toLowerCase());
+                
+                // Rechazar si es recopilación, BSO (Soundtrack), directo o remix
+                if (pType !== 'Album') return false;
+                if (sTypes.some(st => forbiddenSecondary.includes(st))) return false;
+
+                // Rechazar si el artista es "Various Artists" o "Varios Artistas"
+                const relArt = (r['artist-credit']?.[0]?.name || '').toLowerCase();
+                if (relArt.includes('various') || relArt.includes('varios')) return false;
+
+                return true;
             });
 
             if (studioReleases.length > 0) {
-                // Ordenar por fecha más antigua para encontrar el lanzamiento original
+                // Ordenar por fecha más antigua para encontrar el lanzamiento original de estudio
                 studioReleases.sort((a, b) => (a.date || '9999').localeCompare(b.date || '9999'));
                 const original = studioReleases[0];
                 const year = original.date ? original.date.split('-')[0] : null;
@@ -215,26 +230,28 @@ async function fetchMusicBrainzInfo(artist, title) {
 
 /**
  * Consulta unificada con fallback inteligente:
- * 1. Intenta Wikipedia en inglés (la más exhaustiva en infoboxes).
- * 2. Si no halla álbum, intenta Wikipedia en español.
- * 3. Si aún falta álbum, consulta MusicBrainz (base de datos relacional discográfica).
- * 4. Combina los mejores campos disponibles.
+ * 1. Prioriza español si el tema es hispano, inglés si es anglosajón.
+ * 2. Si no halla álbum, consulta MusicBrainz (con exclusión estricta de Soundtracks y Compilations).
+ * 3. Combina los mejores campos disponibles.
  */
 async function fetchTrackMetadataFromWikiAndMB(artist, title) {
     const cleanT = cleanTitle(title);
     
-    // 1. Wikipedia inglés
-    let wikiEn = await fetchWikipediaInfobox(artist, cleanT, 'en');
+    const isSpanish = /[áéíóúñÁÉÍÓÚÑ]/.test(`${artist} ${title}`) || 
+                      /\b(los|las|el|la|de|del|por|para|sueños|quedo|contigo|corazon|amor|vida|noche|estacion|chunguitos|mecano|sabina|estopa)\b/i.test(`${artist} ${title}`);
 
-    // 2. Wikipedia español (especialmente útil para artistas hispanos/latinos)
-    let wikiEs = null;
-    if (!wikiEn || !wikiEn.originalAlbum) {
-        wikiEs = await fetchWikipediaInfobox(artist, cleanT, 'es');
+    const primaryLang = isSpanish ? 'es' : 'en';
+    const secondaryLang = isSpanish ? 'en' : 'es';
+
+    let wiki1 = await fetchWikipediaInfobox(artist, cleanT, primaryLang);
+    let wiki2 = null;
+    if (!wiki1 || !wiki1.originalAlbum) {
+        wiki2 = await fetchWikipediaInfobox(artist, cleanT, secondaryLang);
     }
 
-    const wikiBest = wikiEn?.originalAlbum ? wikiEn : (wikiEs?.originalAlbum ? wikiEs : (wikiEn || wikiEs));
+    const wikiBest = wiki1?.originalAlbum ? wiki1 : (wiki2?.originalAlbum ? wiki2 : (wiki1 || wiki2));
 
-    // 3. MusicBrainz si aún no tenemos álbum
+    // MusicBrainz solo si aún no tenemos álbum de estudio de Wikipedia
     let mbInfo = null;
     if (!wikiBest || !wikiBest.originalAlbum) {
         mbInfo = await fetchMusicBrainzInfo(artist, cleanT);
