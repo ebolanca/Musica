@@ -80737,63 +80737,37 @@
   "Kryss - Tonight": {
     "title": "Tonight",
     "artist": "Kryss",
-    "year": "2009",
-    "album": "Grandes Exitos",
-    "synopsis": "\"Tonight\" (2009) de Kryss es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "year": "1991",
+    "originalAlbum": "Made in Spain",
+    "releaseYear": "1991",
+    "releaseDate": "1991-01-01",
+    "composers": "Kryss",
+    "label": "Max Music",
+    "genre": "Eurodance / Italo-Disco",
+    "synopsis": "Tonight es un exponente paradigmático del sonido 'Made in Spain' de principios de los 90, caracterizado por una producción sintética de alta energía. La obra fusiona la estética del Italo-Disco tardío con los incipientes ritmos del Eurodance, destacando por su uso intensivo de cajas de ritmos analógicas y sintetizadores polifónicos que definieron la escena de clubes española de la época.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de Kryss",
-        "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de Kryss, \"Tonight\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
-        "points": [
-          {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
-          }
-        ]
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción se apoya en una base rítmica de 4/4 constante, utilizando cajas de ritmos icónicas como la Roland TR-909 para el bombo y la caja. Los arreglos presentan una estructura de capas donde los sintetizadores (probablemente Korg M1 o Roland D-50) ejecutan líneas melódicas brillantes y arpegios que ocupan el espectro de frecuencias medias-altas. La mezcla prioriza la claridad vocal sobre una instrumentación densa, utilizando técnicas de compresión típicas de la era para mantener la pegada en sistemas de sonido de discoteca."
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
-        "icon": "fa-drum",
-        "text": "La producción de \"Tonight\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
-        "points": [
-          {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
-          },
-          {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
-          },
-          {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
-          }
-        ]
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La lírica sigue los cánones del pop bailable de los 90, centrada en la euforia nocturna y la conexión emocional en la pista de baile. El uso del inglés es funcional y directo, diseñado para una audiencia internacional. Versos como 'Tonight, I feel the fire' actúan como ganchos emocionales que refuerzan la temática de evasión y libertad, utilizando la noche como un espacio liminal donde las inhibiciones desaparecen bajo la influencia del ritmo."
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
-        "icon": "fa-quote-left",
-        "text": "Líricamente, \"Tonight\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
-        "points": [
-          {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de Kryss aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
-          }
-        ]
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Dada la naturaleza de la producción de Max Music en 1991, la estética visual se centra en la iconografía del artista y la puesta en escena minimalista propia de los programas de televisión musicales de la época. La portada del álbum 'Made in Spain' refleja una estética de diseño gráfico digital temprano, con colores saturados y tipografías geométricas que buscaban proyectar una imagen de modernidad tecnológica y vanguardia europea."
       },
       {
-        "title": "El Impacto Cultural & Legado",
-        "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Tonight\" se mantiene como un himno atemporal dentro de la discografía de Kryss y una de las composiciones más celebradas de su generación.",
-        "points": [
-          {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Kryss."
-          }
-        ]
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "Kryss se convirtió en un nombre recurrente en las compilaciones de Max Music, sello que dominó el mercado de la música de baile en España durante los 90. 'Tonight' funcionó como un track de alta rotación en las emisoras de radiofórmula y discotecas, consolidando el fenómeno de la música de baile producida localmente para competir con las importaciones italianas y alemanas, marcando un hito en la industria discográfica española de la década."
       }
-    ]
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "New Limit - In My Heart": {
     "title": "In My Heart",

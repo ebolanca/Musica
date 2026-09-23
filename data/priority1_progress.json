@@ -1,0 +1,1925 @@
+{
+  "completed": {
+    "Siglo XXI:::David Guetta Zara Larsson - This Ones for You feat Zara Larsson Official Song UEFA EURO 2016.mp3": {
+      "date": "2026-09-23T18:28:54.000Z",
+      "oldMean": -68,
+      "newMean": -9.2,
+      "gain": 58.8,
+      "version": "This One's For You (Lyrics)"
+    },
+    "Siglo XXI:::Dua Lipa - Were Good.mp3": {
+      "date": "2026-09-23T18:28:32.000Z",
+      "oldMean": -91,
+      "newMean": -11.7,
+      "gain": 79.3,
+      "version": "We're Good (Lyrics)"
+    },
+    "Dance:::Spanic - Sister Golden Hair.mp3": {
+      "date": "2026-09-23T18:29:45.000Z",
+      "oldMean": -35.2,
+      "newMean": -17.3,
+      "gain": 17.9,
+      "version": "Sister Golden Hair"
+    },
+    "Música viejuna:::George Michael - Faith.mp3": {
+      "date": "2026-09-23T18:30:05.000Z",
+      "oldMean": -33.1,
+      "newMean": -16,
+      "gain": 17.1,
+      "version": "Faith (Lyrics)"
+    },
+    "Música viejuna Roberto:::George Michael - Faith.mp3": {
+      "date": "2026-09-23T18:30:20.000Z",
+      "oldMean": -32.6,
+      "newMean": -20.3,
+      "gain": 12.3,
+      "version": "Faith (Remastered) Lyrics"
+    },
+    "Música viejuna:::Roxette - Spending My Time.mp3": {
+      "date": "2026-09-23T18:30:35.000Z",
+      "oldMean": -30.9,
+      "newMean": -13.4,
+      "gain": 17.5,
+      "version": "Spending My Time (Lyrics)"
+    },
+    "Siglo XXI:::Taylor Swift - Love Story.mp3": {
+      "date": "2026-09-23T18:30:50.000Z",
+      "oldMean": -30.9,
+      "newMean": -12.3,
+      "gain": 18.6,
+      "version": "Love Story (Lyrics)"
+    },
+    "Música viejuna:::Roxette - The Big L.mp3": {
+      "date": "2026-09-23T18:31:05.000Z",
+      "oldMean": -30,
+      "newMean": -11.2,
+      "gain": 18.8,
+      "version": "The Big L (Lyrics)"
+    },
+    "Española:::Aleks Syntek Ana Torroja - Duele El Amor.mp3": {
+      "date": "2026-09-23T18:31:20.000Z",
+      "oldMean": -28.7,
+      "newMean": -12.1,
+      "gain": 16.6,
+      "version": "Duele el Amor (Letra)"
+    },
+    "Música viejuna:::Guns N Roses - November Rain.mp3": {
+      "date": "2026-09-23T18:31:35.000Z",
+      "oldMean": -28.6,
+      "newMean": -20.9,
+      "gain": 7.7,
+      "version": "November Rain (Lyrics)"
+    },
+    "Música viejuna:::Roxette - The Look.mp3": {
+      "date": "2026-09-23T18:31:50.000Z",
+      "oldMean": -28.4,
+      "newMean": -10.5,
+      "gain": 17.9,
+      "version": "The Look (Lyrics)"
+    },
+    "Siglo XXI:::Gotye Kimbra - Somebody That I Used To Know.mp3": {
+      "date": "2026-09-23T18:34:14.000Z",
+      "oldMean": -28.3,
+      "newMean": -13.1,
+      "gain": 15.2,
+      "version": "Somebody That I Used To Know (Official Estudio 320k Normalized)"
+    },
+    "Música viejuna:::Roxette - Dressed For Success.mp3": {
+      "date": "2026-09-23T18:51:03.613Z",
+      "oldBitrate": 232,
+      "oldMean": -28.1,
+      "newBitrate": 261,
+      "newMean": -11,
+      "gain": 17.1,
+      "version": "Roxette - Dressed For Success (Lyrics + Vietsub)"
+    },
+    "Música viejuna Roberto:::Roxette - Dressed For Success.mp3": {
+      "date": "2026-09-23T18:51:15.350Z",
+      "oldBitrate": 229,
+      "oldMean": -28.1,
+      "newBitrate": 229,
+      "newMean": -13.1,
+      "gain": 15,
+      "version": "Roxette - Dressed for Success Subtitulado Español/Ingles Lyrics!"
+    },
+    "Dance:::The Sacre - Bring on the Night.mp3": {
+      "date": "2026-09-23T18:51:50.165Z",
+      "oldBitrate": 210,
+      "oldMean": -27.9,
+      "newBitrate": 230,
+      "newMean": -13.3,
+      "gain": 14.6,
+      "version": "Ghost Atlas - Sacred Organs Lyrics [Traducido]"
+    },
+    "Música viejuna:::Roxette - It Must Have Been Love - From the Film Pretty Woman.mp3": {
+      "date": "2026-09-23T18:52:03.649Z",
+      "oldBitrate": 238,
+      "oldMean": -27.9,
+      "newBitrate": 262,
+      "newMean": -15.1,
+      "gain": 12.8,
+      "version": "Roxette - It Have Must Been Love | From Pretty Woman (Lyrics)"
+    },
+    "Música viejuna:::Black - Wonderful Life.mp3": {
+      "date": "2026-09-23T18:52:17.983Z",
+      "oldBitrate": 252,
+      "oldMean": -27.8,
+      "newBitrate": 224,
+      "newMean": -11.1,
+      "gain": 16.7,
+      "version": "Black - Wonderful Life [Official music video w/ lyrics]"
+    },
+    "Música viejuna Roberto:::Black - Wonderful Life.mp3": {
+      "date": "2026-09-23T18:52:30.790Z",
+      "oldBitrate": 252,
+      "oldMean": -27.8,
+      "newBitrate": 261,
+      "newMean": -14.9,
+      "gain": 12.9,
+      "version": "Black - Wonderful Life (Lyrics)"
+    },
+    "Música latina:::Fulanito - Guallando.mp3": {
+      "date": "2026-09-23T18:52:45.101Z",
+      "oldBitrate": 131,
+      "oldMean": -27.3,
+      "newBitrate": 253,
+      "newMean": -14.5,
+      "gain": 12.8,
+      "version": "Guallando (Letra) - Fulanito"
+    },
+    "Española:::Camela - Corazon Indomable.mp3": {
+      "date": "2026-09-23T18:52:58.576Z",
+      "oldBitrate": 268,
+      "oldMean": -26.9,
+      "newBitrate": 251,
+      "newMean": -14.4,
+      "gain": 12.5,
+      "version": "Camela Corazón Indomable]Letra"
+    },
+    "Música viejuna:::Michael Jackson - Heal the World.mp3": {
+      "date": "2026-09-23T18:53:28.562Z",
+      "oldBitrate": 234,
+      "oldMean": -26.9,
+      "newBitrate": 320,
+      "newMean": -15.6,
+      "gain": 11.3,
+      "version": "Heal the World - Michael Jackson [Lyrics] [Sub. Español]"
+    },
+    "Española:::Melendi - Con sólo una sonrisa.mp3": {
+      "date": "2026-09-23T18:53:39.540Z",
+      "oldBitrate": 233,
+      "oldMean": -26.8,
+      "newBitrate": 251,
+      "newMean": -10.7,
+      "gain": 16.1,
+      "version": "Melendi - Con sólo una sonrisa (Letra)"
+    },
+    "Música viejuna:::The Cure - Lullaby.mp3": {
+      "date": "2026-09-23T18:53:51.194Z",
+      "oldBitrate": 239,
+      "oldMean": -26.7,
+      "newBitrate": 243,
+      "newMean": -13.4,
+      "gain": 13.3,
+      "version": "The Cure - Lullaby (lyrics)"
+    },
+    "Española:::Macaco - Con La Mano Levantá feat Estopa.mp3": {
+      "date": "2026-09-23T18:54:03.671Z",
+      "oldBitrate": 233,
+      "oldMean": -26.5,
+      "newBitrate": 223,
+      "newMean": -15.6,
+      "gain": 10.9,
+      "version": "Macaco - Con La Mano Levanta"
+    },
+    "Música viejuna:::Robert Miles Maria Nayler - One and One - Radio Version.mp3": {
+      "date": "2026-09-23T18:54:23.809Z",
+      "oldBitrate": 215,
+      "oldMean": -26.3,
+      "newBitrate": 277,
+      "newMean": -6.9,
+      "gain": 19.4,
+      "version": "Robert Miles   One and One with lyrics"
+    },
+    "Música viejuna:::Spice Girls - Say Youll Be There.mp3": {
+      "date": "2026-09-23T18:54:39.195Z",
+      "oldBitrate": 246,
+      "oldMean": -26.3,
+      "newBitrate": 235,
+      "newMean": -14.4,
+      "gain": 11.9,
+      "version": "Spice Girls Say You'll Be There lyrics"
+    },
+    "Música viejuna Roberto:::Spice Girls - Say Youll Be There - Single Mix.mp3": {
+      "date": "2026-09-23T18:54:51.373Z",
+      "oldBitrate": 246,
+      "oldMean": -26.3,
+      "newBitrate": 241,
+      "newMean": -14.7,
+      "gain": 11.6,
+      "version": "Spice Girls - Say You'll Be There [Lyrics]"
+    },
+    "Dance:::Robert Miles - Children.mp3": {
+      "date": "2026-09-23T18:55:04.475Z",
+      "oldBitrate": 128,
+      "oldMean": -26.2,
+      "newBitrate": 237,
+      "newMean": -10.1,
+      "gain": 16.1,
+      "version": "Robert Miles - Children (Without Lyrics)"
+    },
+    "Española:::David Otero - Buscando El Sol.mp3": {
+      "date": "2026-09-23T18:55:15.836Z",
+      "oldBitrate": 131,
+      "oldMean": -25.9,
+      "newBitrate": 241,
+      "newMean": -15.4,
+      "gain": 10.5,
+      "version": "Buscando el sol - El Pescao (Con Letra)"
+    },
+    "Música viejuna:::Limahl - Never Ending Story.mp3": {
+      "date": "2026-09-23T18:55:34.361Z",
+      "oldBitrate": 259,
+      "oldMean": -25.9,
+      "newBitrate": 231,
+      "newMean": -14.1,
+      "gain": 11.8,
+      "version": "Limahl - Never Ending Story. Clip , ♬ ( Lyrics ) ♫"
+    },
+    "Música viejuna:::Mike Oldfield - Moonlight Shadow.mp3": {
+      "date": "2026-09-23T18:55:49.198Z",
+      "oldBitrate": 237,
+      "oldMean": -25.8,
+      "newBitrate": 240,
+      "newMean": -16.6,
+      "gain": 9.2,
+      "version": "Mike Oldfield - Moonlight Shadow (Lyrics)"
+    },
+    "Siglo XXI:::Sonique - It Feels So Good.mp3": {
+      "date": "2026-09-23T18:55:59.897Z",
+      "oldBitrate": 226,
+      "oldMean": -25.8,
+      "newBitrate": 158,
+      "newMean": -14.3,
+      "gain": 11.5,
+      "version": "Sonique- It Feels So Good with Lyrics"
+    },
+    "Siglo XXI Roberto:::Maroon 5 Wiz Khalifa - Payphone.mp3": {
+      "date": "2026-09-23T18:56:24.226Z",
+      "oldBitrate": 228,
+      "oldMean": -25.7,
+      "newBitrate": 320,
+      "newMean": -14.4,
+      "gain": 11.3,
+      "version": "Maroon 5, Wiz Khalifa – Payphone (Lyrics)"
+    },
+    "Música viejuna:::Michael Bolton - How Am I Supposed to Live Without You.mp3": {
+      "date": "2026-09-23T18:56:46.226Z",
+      "oldBitrate": 260,
+      "oldMean": -25.5,
+      "newBitrate": 320,
+      "newMean": -14.2,
+      "gain": 11.3,
+      "version": "Michael Bolton - How Am I Supposed To Live Without You [Lyrics]"
+    },
+    "Música viejuna:::Michael Jackson - They Dont Care About Us.mp3": {
+      "date": "2026-09-23T18:57:00.077Z",
+      "oldBitrate": 239,
+      "oldMean": -25.5,
+      "newBitrate": 237,
+      "newMean": -15.9,
+      "gain": 9.6,
+      "version": "Michael Jackson-They Don't Care About Us (Lyrics)"
+    },
+    "Música viejuna:::The Proclaimers - Im Gonna Be 500 Miles.mp3": {
+      "date": "2026-09-23T18:57:12.059Z",
+      "oldBitrate": 245,
+      "oldMean": -25.5,
+      "newBitrate": 164,
+      "newMean": -15.6,
+      "gain": 9.9,
+      "version": "The Proclaimers - I'm Gonna Be (500 Miles) Lyrics"
+    },
+    "Música viejuna:::Roxette - Dangerous.mp3": {
+      "date": "2026-09-23T18:57:41.585Z",
+      "oldBitrate": 201,
+      "oldMean": -25.3,
+      "newBitrate": 253,
+      "newMean": -12,
+      "gain": 13.3,
+      "version": "Dangerous  - ROXETTE Lyrics Vietsub"
+    },
+    "Siglo XXI:::Meghan Trainor - Lips Are Movin.mp3": {
+      "date": "2026-09-23T18:57:53.842Z",
+      "oldBitrate": 238,
+      "oldMean": -25.3,
+      "newBitrate": 233,
+      "newMean": -11.2,
+      "gain": 14.1,
+      "version": "Meghan Trainor - Lips Are Movin' (Lyrics)"
+    },
+    "Música viejuna:::Red Hot Chili Peppers - Under the Bridge.mp3": {
+      "date": "2026-09-23T18:58:17.119Z",
+      "oldBitrate": 253,
+      "oldMean": -25.1,
+      "newBitrate": 320,
+      "newMean": -15.9,
+      "gain": 9.2,
+      "version": "Red Hot Chili Peppers - Under The Bridge (Lyrics)"
+    },
+    "Música viejuna:::Crash Test Dummies - Mmm Mmm Mmm Mmm.mp3": {
+      "date": "2026-09-23T18:58:28.804Z",
+      "oldBitrate": 130,
+      "oldMean": -25,
+      "newBitrate": 233,
+      "newMean": -15.9,
+      "gain": 9.1,
+      "version": "Crash Test Dummies-Mmmm Mmmm Mmmm Mmmm(Lyrics)"
+    },
+    "Siglo XXI:::Robin Schulz Francesco Yates - Sugar feat Francesco Yates.mp3": {
+      "date": "2026-09-23T18:58:41.382Z",
+      "oldBitrate": 227,
+      "oldMean": -25,
+      "newBitrate": 250,
+      "newMean": -13.7,
+      "gain": 11.3,
+      "version": "Robin Schulz - Sugar (Feat. Francesco Yates) (Lyrics)"
+    },
+    "Dance:::Cascada - Everytime We Touch.mp3": {
+      "date": "2026-09-23T18:58:52.417Z",
+      "oldBitrate": 236,
+      "oldMean": -24.9,
+      "newBitrate": 223,
+      "newMean": -10.1,
+      "gain": 14.8,
+      "version": "Everytime We Touch - Cascada // Lyrics / Sub Español"
+    },
+    "Española:::Melendi - Caminando por la vida.mp3": {
+      "date": "2026-09-23T18:59:02.944Z",
+      "oldBitrate": 244,
+      "oldMean": -24.9,
+      "newBitrate": 252,
+      "newMean": -9.8,
+      "gain": 15.1,
+      "version": "Melendi, David Bisbal ❤️ Caminando por la vida ( letra )"
+    },
+    "Siglo XXI:::Cascada - Everytime We Touch.mp3": {
+      "date": "2026-09-23T18:59:14.448Z",
+      "oldBitrate": 236,
+      "oldMean": -24.9,
+      "newBitrate": 256,
+      "newMean": -5.8,
+      "gain": 19.1,
+      "version": "Everytime We Touch - Cascada (Lyrics) "
+    },
+    "Música latina:::Luis Enrique - Yo No Sé Mañana.mp3": {
+      "date": "2026-09-23T18:59:26.108Z",
+      "oldBitrate": 210,
+      "oldMean": -24.8,
+      "newBitrate": 242,
+      "newMean": -11.5,
+      "gain": 13.3,
+      "version": "Luis Enrique — Yo No Sé Mañana [Letra]"
+    },
+    "Música viejuna:::Jennifer Lopez - Waiting for Tonight.mp3": {
+      "date": "2026-09-23T18:59:38.576Z",
+      "oldBitrate": 233,
+      "oldMean": -24.8,
+      "newBitrate": 267,
+      "newMean": -12.5,
+      "gain": 12.3,
+      "version": "Jennifer Lopez - Waiting For Tonight (Lyrics)"
+    },
+    "Música viejuna:::Katrina  The Waves - Walking On Sunshine.mp3": {
+      "date": "2026-09-23T18:59:53.883Z",
+      "oldBitrate": 241,
+      "oldMean": -24.8,
+      "newBitrate": 259,
+      "newMean": -18.8,
+      "gain": 6,
+      "version": "Walking On Sunshine by Katrina and the Waves Lyrics"
+    },
+    "Dance:::Attica - Timewarp.mp3": {
+      "date": "2026-09-23T19:00:21.743Z",
+      "oldBitrate": 128,
+      "oldMean": -24.5,
+      "newBitrate": 320,
+      "newMean": -13.1,
+      "gain": 11.4,
+      "version": "Mezcla3platos"
+    },
+    "Música viejuna:::Ace of Base - The Sign.mp3": {
+      "date": "2026-09-23T19:00:33.903Z",
+      "oldBitrate": 224,
+      "oldMean": -24.4,
+      "newBitrate": 222,
+      "newMean": -12.4,
+      "gain": 12,
+      "version": "The Sign - Ace Of Base (Lyrics)"
+    },
+    "Música viejuna Roberto:::Ace of Base - The Sign.mp3": {
+      "date": "2026-09-23T19:00:43.640Z",
+      "oldBitrate": 224,
+      "oldMean": -24.4,
+      "newBitrate": 236,
+      "newMean": -12,
+      "gain": 12.4,
+      "version": "Ace of Base - The Sign (Lyrics)"
+    },
+    "Música viejuna Roberto:::Tom Petty - Free Fallin.mp3": {
+      "date": "2026-09-23T19:00:58.628Z",
+      "oldBitrate": 245,
+      "oldMean": -24.4,
+      "newBitrate": 258,
+      "newMean": -14.2,
+      "gain": 10.2,
+      "version": "Free Fallin' -  Tom Petty - with lyrics"
+    },
+    "Música viejuna:::Bryan Ferry - Slave To Love.mp3": {
+      "date": "2026-09-23T19:01:13.179Z",
+      "oldBitrate": 243,
+      "oldMean": -24.3,
+      "newBitrate": 246,
+      "newMean": -15.6,
+      "gain": 8.7,
+      "version": "Slave to Love - Bryan Ferry | Lyrics"
+    },
+    "Dance:::Milk Inc - Wide Awake.mp3": {
+      "date": "2026-09-23T19:01:24.089Z",
+      "oldBitrate": 218,
+      "oldMean": -24.2,
+      "newBitrate": 252,
+      "newMean": -12.1,
+      "gain": 12.1,
+      "version": "Milk inc - Wide Awake tradução"
+    },
+    "Española:::Carlos Vives - La Gota Fria.mp3": {
+      "date": "2026-09-23T19:01:34.343Z",
+      "oldBitrate": 276,
+      "oldMean": -24.2,
+      "newBitrate": 243,
+      "newMean": -15.7,
+      "gain": 8.5,
+      "version": "\"La Gota Fría\" -- Carlos Vives. ( CON LETRA )"
+    },
+    "Música latina:::Juan Luis Guerra 440 - Bachata En Fukuoka.mp3": {
+      "date": "2026-09-23T19:01:44.885Z",
+      "oldBitrate": 130,
+      "oldMean": -24.2,
+      "newBitrate": 259,
+      "newMean": -13.1,
+      "gain": 11.1,
+      "version": "Juan Luis Guerra – Bachata En Fukuoka [Letra]"
+    },
+    "Española:::Conchita - Nada Que Perder.mp3": {
+      "date": "2026-09-23T19:01:57.554Z",
+      "oldBitrate": 130,
+      "oldMean": -24.1,
+      "newBitrate": 242,
+      "newMean": -13.1,
+      "gain": 11,
+      "version": "Conchita -Nada que perder- letra"
+    },
+    "Española:::Nena Daconte - En Que Estrella Estara.mp3": {
+      "date": "2026-09-23T19:02:13.037Z",
+      "oldBitrate": 236,
+      "oldMean": -24.1,
+      "newBitrate": 320,
+      "newMean": -15.1,
+      "gain": 9,
+      "version": "en qué estrella estará; nena daconte (letra)"
+    },
+    "Música viejuna:::Whitney Houston - I Will Always Love You.mp3": {
+      "date": "2026-09-23T19:02:37.089Z",
+      "oldBitrate": 259,
+      "oldMean": -24.1,
+      "newBitrate": 320,
+      "newMean": -15.7,
+      "gain": 8.4,
+      "version": "Whitney Houston - I Will Always Love You (Lyrics)"
+    },
+    "Música viejuna:::Will Smith - Gettin Jiggy Wit It.mp3": {
+      "date": "2026-09-23T19:02:49.829Z",
+      "oldBitrate": 262,
+      "oldMean": -24.1,
+      "newBitrate": 249,
+      "newMean": -13.2,
+      "gain": 10.9,
+      "version": "Will Smith - Gettin' Jiggy Wit It (Lyrics)"
+    },
+    "Española:::Maldita Nerea - El Secreto de las Tortugas - Version 2010.mp3": {
+      "date": "2026-09-23T19:03:00.453Z",
+      "oldBitrate": 243,
+      "oldMean": -23.9,
+      "newBitrate": 259,
+      "newMean": -10.4,
+      "gain": 13.5,
+      "version": "El Secreto De Las Tortugas (MN&M Edition)"
+    },
+    "Música viejuna:::Yazoo - Only You.mp3": {
+      "date": "2026-09-23T19:03:12.291Z",
+      "oldBitrate": 256,
+      "oldMean": -23.8,
+      "newBitrate": 262,
+      "newMean": -14.3,
+      "gain": 9.5,
+      "version": "Yazoo - Only You (Lyrics)"
+    },
+    "Siglo XXI:::Lorde - Royals.mp3": {
+      "date": "2026-09-23T19:03:23.090Z",
+      "oldBitrate": 239,
+      "oldMean": -23.8,
+      "newBitrate": 228,
+      "newMean": -16.4,
+      "gain": 7.4,
+      "version": "Lorde - Royals (Lyrics)"
+    },
+    "Dance:::Darude - Sandstorm.mp3": {
+      "date": "2026-09-23T19:03:35.383Z",
+      "oldBitrate": 244,
+      "oldMean": -23.6,
+      "newBitrate": 249,
+      "newMean": -11.1,
+      "gain": 12.5,
+      "version": "Darude - Sandstorm | LYRICS"
+    },
+    "Música viejuna:::Guns N Roses - Yesterdays.mp3": {
+      "date": "2026-09-23T19:03:46.870Z",
+      "oldBitrate": 262,
+      "oldMean": -23.6,
+      "newBitrate": 257,
+      "newMean": -12.7,
+      "gain": 10.9,
+      "version": "Guns N' Roses - Yesterdays (Lyrics)"
+    },
+    "Dance:::Rui Da Silva - Touch Me.mp3": {
+      "date": "2026-09-23T19:03:59.350Z",
+      "oldBitrate": 262,
+      "oldMean": -23.5,
+      "newBitrate": 253,
+      "newMean": -13.8,
+      "gain": 9.7,
+      "version": "Rui Da Silva Feat Cassandra - Touch Me (Lyric Video Official)"
+    },
+    "Española:::Alaska Y Dinarama - A quién le importa.mp3": {
+      "date": "2026-09-23T19:04:09.722Z",
+      "oldBitrate": 223,
+      "oldMean": -23.5,
+      "newBitrate": 248,
+      "newMean": -12.2,
+      "gain": 11.3,
+      "version": "A quien le importa- Alaska (letra)"
+    },
+    "Siglo XXI:::Tom Odell - Another Love.mp3": {
+      "date": "2026-09-23T19:04:31.991Z",
+      "oldBitrate": 250,
+      "oldMean": -23.5,
+      "newBitrate": 320,
+      "newMean": -16.6,
+      "gain": 6.9,
+      "version": "Tom Odell - Another Love (Lyrics)"
+    },
+    "Dance:::After Hours - Strange.mp3": {
+      "date": "2026-09-23T19:04:51.605Z",
+      "oldBitrate": 179,
+      "oldMean": -23.4,
+      "newBitrate": 254,
+      "newMean": -14.7,
+      "gain": 8.7,
+      "version": "twenty one pilots - Heathens (Lyrics)"
+    },
+    "Música viejuna:::OMC - How Bizarre.mp3": {
+      "date": "2026-09-23T19:05:04.079Z",
+      "oldBitrate": 238,
+      "oldMean": -23.4,
+      "newBitrate": 234,
+      "newMean": -17.6,
+      "gain": 5.8,
+      "version": "OMC - How Bizarre (Lyrics) \"Pele speaks \"righteous, \"Sister Zina says \"funky\" [Tiktok Song]"
+    },
+    "Música viejuna:::Underworld - Born Slippy Nuxx.mp3": {
+      "date": "2026-09-23T19:05:54.294Z",
+      "oldBitrate": 158,
+      "oldMean": -23.3,
+      "newBitrate": 320,
+      "newMean": -15.5,
+      "gain": 7.8,
+      "version": "\"Born Slippy (Nuxx)\" com letras, por Underworld"
+    },
+    "Española:::Chenoa - Cuando Tú Vas.mp3": {
+      "date": "2026-09-23T19:06:12.520Z",
+      "oldBitrate": 252,
+      "oldMean": -23.2,
+      "newBitrate": 320,
+      "newMean": -16.5,
+      "gain": 6.7,
+      "version": "Cuando Tu Vas | Chenoa | 2002 | Letras "
+    },
+    "Música viejuna:::Serge Gainsbourg Jane Birkin - Je taime moi non plus.mp3": {
+      "date": "2026-09-23T19:06:24.311Z",
+      "oldBitrate": 253,
+      "oldMean": -23.2,
+      "newBitrate": 247,
+      "newMean": -17.1,
+      "gain": 6.1,
+      "version": "Jane Birkin, Serge Gainsbourg - Je t'aime... moi non plus「Sub. Español (Lyrics)」"
+    },
+    "Española:::Manuel Carrasco Malú - Que Nadie.mp3": {
+      "date": "2026-09-23T19:06:49.695Z",
+      "oldBitrate": 131,
+      "oldMean": -23.1,
+      "newBitrate": 262,
+      "newMean": -10.1,
+      "gain": 13,
+      "version": "Raphael, Manuel Carrasco - Me Olvidé De Vivir"
+    },
+    "Siglo XXI:::James Morrison Nelly Furtado - Broken Strings.mp3": {
+      "date": "2026-09-23T19:07:03.409Z",
+      "oldBitrate": 217,
+      "oldMean": -23.1,
+      "newBitrate": 233,
+      "newMean": -12.9,
+      "gain": 10.2,
+      "version": "James Morrison & Nelly Furtado |  Broken Strings| Lyrics"
+    },
+    "Siglo XXI:::The Killers - Human.mp3": {
+      "date": "2026-09-23T19:07:15.103Z",
+      "oldBitrate": 129,
+      "oldMean": -23.1,
+      "newBitrate": 225,
+      "newMean": -13.2,
+      "gain": 9.9,
+      "version": "The Killers - Human (lyrics)"
+    },
+    "Música viejuna:::Mariah Carey - Hero.mp3": {
+      "date": "2026-09-23T19:07:26.775Z",
+      "oldBitrate": 245,
+      "oldMean": -23,
+      "newBitrate": 239,
+      "newMean": -17.1,
+      "gain": 5.9,
+      "version": "Mariah Carey - Hero Lyrics (on screen)"
+    },
+    "Dance:::Kate Ryan - Désenchantée.mp3": {
+      "date": "2026-09-23T19:07:40.044Z",
+      "oldBitrate": 220,
+      "oldMean": -22.9,
+      "newBitrate": 219,
+      "newMean": -12.6,
+      "gain": 10.3,
+      "version": "kate ryan desenchantee lyrics"
+    },
+    "Española:::Conchita - Puede Ser.mp3": {
+      "date": "2026-09-23T19:07:51.990Z",
+      "oldBitrate": 264,
+      "oldMean": -22.9,
+      "newBitrate": 201,
+      "newMean": -12.5,
+      "gain": 10.4,
+      "version": "Puede ser- Conchita (CON LETRA!)"
+    },
+    "Siglo XXI:::Robbie Williams - Feel.mp3": {
+      "date": "2026-09-23T19:08:04.675Z",
+      "oldBitrate": 130,
+      "oldMean": -22.9,
+      "newBitrate": 227,
+      "newMean": -19,
+      "gain": 3.9,
+      "version": "Robbie Williams - Feel // Lyrics + Español // Video Oficial"
+    },
+    "Dance:::Sash Tina Cousins - Mysterious Times.mp3": {
+      "date": "2026-09-23T19:08:25.306Z",
+      "oldBitrate": 266,
+      "oldMean": -22.7,
+      "newBitrate": 320,
+      "newMean": -14.7,
+      "gain": 8,
+      "version": "Lyrics    Mysterious Time (feat. Tina Cousins) Sash!"
+    },
+    "Música viejuna:::Bloodhound Gang - The Bad Touch.mp3": {
+      "date": "2026-09-23T19:08:36.432Z",
+      "oldBitrate": 250,
+      "oldMean": -22.7,
+      "newBitrate": 198,
+      "newMean": -11.7,
+      "gain": 11,
+      "version": "BloodHound Gang-The Bad Touch (Lyrics)"
+    },
+    "Música viejuna:::Foreigner - I Want to Know What Love Is.mp3": {
+      "date": "2026-09-23T19:09:03.485Z",
+      "oldBitrate": 253,
+      "oldMean": -22.7,
+      "newBitrate": 220,
+      "newMean": -19.2,
+      "gain": 3.5,
+      "version": "Foreigner - I Want to Know What Love Is (Sub Español + Lyrics)"
+    },
+    "Música viejuna Roberto:::Bloodhound Gang - The Bad Touch.mp3": {
+      "date": "2026-09-23T19:09:15.641Z",
+      "oldBitrate": 250,
+      "oldMean": -22.7,
+      "newBitrate": 215,
+      "newMean": -17,
+      "gain": 5.7,
+      "version": "Bloodhound Gang - The Bad Touch [Lyrics English - Español Subtitulado]"
+    },
+    "Música viejuna Roberto:::Foreigner - I Want to Know What Love Is - 1999 Remaster.mp3": {
+      "date": "2026-09-23T19:09:27.329Z",
+      "oldBitrate": 251,
+      "oldMean": -22.7,
+      "newBitrate": 241,
+      "newMean": -13.5,
+      "gain": 9.2,
+      "version": "Foreigner - I Want To Know What Love Is (Lyrics)"
+    },
+    "Española:::Manuel Carrasco - Que Nadie.mp3": {
+      "date": "2026-09-23T19:09:53.350Z",
+      "oldBitrate": 236,
+      "oldMean": -22.6,
+      "newBitrate": 222,
+      "newMean": -14.3,
+      "gain": 8.3,
+      "version": "Siendo uno mismo LETRA - Manuel Carrasco"
+    },
+    "Siglo XXI:::MIKA - Grace Kelly.mp3": {
+      "date": "2026-09-23T19:10:18.797Z",
+      "oldBitrate": 220,
+      "oldMean": -22.6,
+      "newBitrate": 320,
+      "newMean": -14.5,
+      "gain": 8.1,
+      "version": "MIKA - Grace Kelly"
+    },
+    "Música viejuna:::George Michael - Careless Whisper.mp3": {
+      "date": "2026-09-23T19:10:45.871Z",
+      "oldBitrate": 267,
+      "oldMean": -22.5,
+      "newBitrate": 320,
+      "newMean": -17.5,
+      "gain": 5,
+      "version": "George Michael - Careless Whisper (Lyrics)"
+    },
+    "Siglo XXI:::Cheryl - Fight For This Love.mp3": {
+      "date": "2026-09-23T19:10:57.988Z",
+      "oldBitrate": 239,
+      "oldMean": -22.4,
+      "newBitrate": 260,
+      "newMean": -11.4,
+      "gain": 11,
+      "version": "Cheryl Cole - Fight For This Love (Lyrics)"
+    },
+    "Música latina:::Aventura - Mi Corazoncito.mp3": {
+      "date": "2026-09-23T19:11:08.798Z",
+      "oldBitrate": 255,
+      "oldMean": -22.3,
+      "newBitrate": 243,
+      "newMean": -15.4,
+      "gain": 6.9,
+      "version": "Aventura - Mi Corazoncito - (LETRA) ESPAÑOL, PORTUGUÊS"
+    },
+    "Música viejuna:::Diana King - I Say A Little Prayer.mp3": {
+      "date": "2026-09-23T19:11:19.778Z",
+      "oldBitrate": 245,
+      "oldMean": -22.2,
+      "newBitrate": 259,
+      "newMean": -8.8,
+      "gain": 13.4,
+      "version": "Diana King + I Say A Little Prayer + Lyrics / HQ"
+    },
+    "Música viejuna:::Tasmin Archer - Sleeping Satellite.mp3": {
+      "date": "2026-09-23T19:11:46.355Z",
+      "oldBitrate": 247,
+      "oldMean": -22.1,
+      "newBitrate": 320,
+      "newMean": -15.2,
+      "gain": 6.9,
+      "version": "Tasmin Archer -  Sleeping Satellite (Official EU video w lyrics)"
+    },
+    "Siglo XXI:::Coldplay - Viva La Vida.mp3": {
+      "date": "2026-09-23T19:11:58.017Z",
+      "oldBitrate": 262,
+      "oldMean": -22.1,
+      "newBitrate": 208,
+      "newMean": -19.1,
+      "gain": 3,
+      "version": "Viva la Vida Lyrics - Coldplay"
+    },
+    "Española:::Alex Ubago - Qué pides tú.mp3": {
+      "date": "2026-09-23T19:12:09.116Z",
+      "oldBitrate": 169,
+      "oldMean": -22,
+      "newBitrate": 243,
+      "newMean": -11.5,
+      "gain": 10.5,
+      "version": "Alex Ubago - ¿Qué pides tú? [letra]"
+    },
+    "Siglo XXI:::Jason Derulo 2 Chainz - Talk Dirty feat 2 Chainz.mp3": {
+      "date": "2026-09-23T19:12:32.875Z",
+      "oldBitrate": 236,
+      "oldMean": -22,
+      "newBitrate": 259,
+      "newMean": -10.5,
+      "gain": 11.5,
+      "version": "Jason Derulo - If I'm Lucky Part 2 [Official Music Video with Lyrics]"
+    },
+    "Música viejuna Roberto:::Frankie Goes To Hollywood - Relax Come Fighting.mp3": {
+      "date": "2026-09-23T19:12:47.130Z",
+      "oldBitrate": 247,
+      "oldMean": -21.9,
+      "newBitrate": 272,
+      "newMean": -13.5,
+      "gain": 8.4,
+      "version": "Frankie goes to hollywood : Relax - With Lyrics"
+    },
+    "Siglo XXI:::Missy Elliott - Get Ur Freak On.mp3": {
+      "date": "2026-09-23T19:12:59.303Z",
+      "oldBitrate": 269,
+      "oldMean": -21.9,
+      "newBitrate": 262,
+      "newMean": -10.9,
+      "gain": 11,
+      "version": "Missy Elliot - Get Ur Freak On | Lyrics"
+    },
+    "Dance:::Jones  Stephenson - The First Rebirth.mp3": {
+      "date": "2026-09-23T19:13:34.303Z",
+      "oldBitrate": 248,
+      "oldMean": -21.8,
+      "newBitrate": 320,
+      "newMean": -16.3,
+      "gain": 5.5,
+      "version": "Jones & Stephenson - The First Rebirth (Original Mix)"
+    },
+    "Española:::Maldita Nerea - Tu Mirada Me Hace Grande.mp3": {
+      "date": "2026-09-23T19:13:54.093Z",
+      "oldBitrate": 163,
+      "oldMean": -21.8,
+      "newBitrate": 320,
+      "newMean": -14.5,
+      "gain": 7.3,
+      "version": "Tu Mirada Me Hace Grande - Maldita Nerea [letra // lyrics]"
+    },
+    "Música viejuna:::Texas - Summer Son.mp3": {
+      "date": "2026-09-23T19:14:05.194Z",
+      "oldBitrate": 250,
+      "oldMean": -21.8,
+      "newBitrate": 244,
+      "newMean": -13.6,
+      "gain": 8.2,
+      "version": "Texas - Summer Son (Lyrics)"
+    },
+    "Española:::Alejandro Sanz - Amiga mía.mp3": {
+      "date": "2026-09-23T19:14:35.041Z",
+      "oldBitrate": 247,
+      "oldMean": -21.7,
+      "newBitrate": 229,
+      "newMean": -13.9,
+      "gain": 7.8,
+      "version": "Alejandro Sanz - Amiga Mía | Letra / Lyrics"
+    },
+    "Española:::Nek - Laura no està.mp3": {
+      "date": "2026-09-23T19:14:45.559Z",
+      "oldBitrate": 258,
+      "oldMean": -21.7,
+      "newBitrate": 245,
+      "newMean": -13.2,
+      "gain": 8.5,
+      "version": "Laura Pausini - Entre Tú Y Mil Mares (Letra)"
+    },
+    "Española:::Ole Ole - No Controles.mp3": {
+      "date": "2026-09-23T19:14:56.195Z",
+      "oldBitrate": 220,
+      "oldMean": -21.7,
+      "newBitrate": 246,
+      "newMean": -16.6,
+      "gain": 5.1,
+      "version": "No controles - Olé Olé |Letra|"
+    },
+    "Siglo XXI:::Flo Rida Robin Thicke Verdine White - I Dont Like It I Love It feat Robin Thicke  Verdine White.mp3": {
+      "date": "2026-09-23T19:15:18.320Z",
+      "oldBitrate": 268,
+      "oldMean": -21.7,
+      "newBitrate": 320,
+      "newMean": -14.5,
+      "gain": 7.2,
+      "version": "Flo Rida feat. Robin Thicke - I don't like it, I love it - LYRICS"
+    },
+    "Siglo XXI:::Pnk - Raise Your Glass.mp3": {
+      "date": "2026-09-23T19:15:30.839Z",
+      "oldBitrate": 248,
+      "oldMean": -21.7,
+      "newBitrate": 232,
+      "newMean": -12,
+      "gain": 9.7,
+      "version": "P!nk - Raise Your Glass (Lyrics)"
+    },
+    "Siglo XXI Roberto:::BoB Bruno Mars - Nothin on You feat Bruno Mars.mp3": {
+      "date": "2026-09-23T19:15:55.765Z",
+      "oldBitrate": 240,
+      "oldMean": -21.7,
+      "newBitrate": 320,
+      "newMean": -15.2,
+      "gain": 6.5,
+      "version": "Nothin' On You - B.O.B ft. Bruno Mars (lyrics)"
+    },
+    "Española:::Revolver - El roce de tu piel - En directo 1993.mp3": {
+      "date": "2026-09-23T19:16:08.476Z",
+      "oldBitrate": 129,
+      "oldMean": -21.6,
+      "newBitrate": 240,
+      "newMean": -15.7,
+      "gain": 5.9,
+      "version": "Revolver - El dorado (Letra)"
+    },
+    "Música latina:::Maelo Ruiz - Si Supieras.mp3": {
+      "date": "2026-09-23T19:16:24.516Z",
+      "oldBitrate": 273,
+      "oldMean": -21.6,
+      "newBitrate": 230,
+      "newMean": -16.6,
+      "gain": 5,
+      "version": "Maelo Ruiz - Si Supieras - CON LETRA"
+    },
+    "Dance:::Suspicious - Maid of Orleans Take My Hand - Wales in Love Mix.mp3": {
+      "date": "2026-09-23T19:17:15.198Z",
+      "oldBitrate": 229,
+      "oldMean": -21.5,
+      "newBitrate": 320,
+      "newMean": -15.4,
+      "gain": 6.1,
+      "version": "Maid of Orleans (Take My Hand) (Wales in Love Mix)"
+    },
+    "Música latina:::Jerry Rivera - Amores Como el Nuestro.mp3": {
+      "date": "2026-09-23T19:17:41.477Z",
+      "oldBitrate": 272,
+      "oldMean": -21.5,
+      "newBitrate": 320,
+      "newMean": -15.6,
+      "gain": 5.9,
+      "version": "Jerry Rivera - Amores Como el Nuestro (LETRA)"
+    },
+    "Música viejuna:::Queen - I Want To Break Free.mp3": {
+      "date": "2026-09-23T19:18:06.817Z",
+      "oldBitrate": 240,
+      "oldMean": -21.5,
+      "newBitrate": 320,
+      "newMean": -15.9,
+      "gain": 5.6,
+      "version": "Queen - I Want To Break Free (Lyrics)"
+    },
+    "Siglo XXI:::Lady Gaga Bradley Cooper - Shallow.mp3": {
+      "date": "2026-09-23T19:18:18.295Z",
+      "oldBitrate": 243,
+      "oldMean": -21.5,
+      "newBitrate": 244,
+      "newMean": -19.5,
+      "gain": 2,
+      "version": "Lady Gaga, Bradley Cooper - Shallow (Lyrics) (A Star Is Born Soundtrack)"
+    },
+    "Siglo XXI:::Selena Gomez - Kill Em With Kindness.mp3": {
+      "date": "2026-09-23T19:18:29.611Z",
+      "oldBitrate": 244,
+      "oldMean": -21.5,
+      "newBitrate": 254,
+      "newMean": -12.4,
+      "gain": 9.1,
+      "version": "Selena Gomez - Kill Em With Kindness (Lyrics)"
+    },
+    "Española:::Chenoa - Todo Irá Bien.mp3": {
+      "date": "2026-09-23T19:18:47.871Z",
+      "oldBitrate": 223,
+      "oldMean": -21.4,
+      "newBitrate": 320,
+      "newMean": -16.4,
+      "gain": 5,
+      "version": "Chenoa-Todo irá bien Letra (Lyrics)"
+    },
+    "Música viejuna:::Eric Carmen - Hungry Eyes - From Dirty Dancing Soundtrack.mp3": {
+      "date": "2026-09-23T19:19:10.594Z",
+      "oldBitrate": 267,
+      "oldMean": -21.4,
+      "newBitrate": 320,
+      "newMean": -16.4,
+      "gain": 5,
+      "version": "Eric Carmen - Hungry Eyes (Lyrics)"
+    },
+    "Música viejuna:::Phil Collins - In the Air Tonight.mp3": {
+      "date": "2026-09-23T19:19:23.623Z",
+      "oldBitrate": 241,
+      "oldMean": -21.4,
+      "newBitrate": 260,
+      "newMean": -17.2,
+      "gain": 4.2,
+      "version": "Phil Collins - In The Air Tonight (Lyrics)"
+    },
+    "Música viejuna Roberto:::Phil Collins - In the Air Tonight - 2015 Remaster.mp3": {
+      "date": "2026-09-23T19:19:53.624Z",
+      "oldBitrate": 239,
+      "oldMean": -21.4,
+      "newBitrate": 320,
+      "newMean": -14.9,
+      "gain": 6.5,
+      "version": "In The Air Tonight - Phil Collins | Subtitulada al Español"
+    },
+    "Siglo XXI:::Avril Lavigne - My Happy Ending.mp3": {
+      "date": "2026-09-23T19:20:06.332Z",
+      "oldBitrate": 263,
+      "oldMean": -21.4,
+      "newBitrate": 273,
+      "newMean": -10.1,
+      "gain": 11.3,
+      "version": "Avril Lavigne - My Happy Ending (Lyrics)"
+    },
+    "Siglo XXI Roberto:::Eminem Rihanna - The Monster.mp3": {
+      "date": "2026-09-23T19:20:34.568Z",
+      "oldBitrate": 253,
+      "oldMean": -21.4,
+      "newBitrate": 320,
+      "newMean": -14.6,
+      "gain": 6.8,
+      "version": "Eminem  - The Monster (Lyrics) ft. Rihanna"
+    },
+    "Española:::Ella Baila Sola - Amores de barra.mp3": {
+      "date": "2026-09-23T19:20:44.882Z",
+      "oldBitrate": 250,
+      "oldMean": -21.3,
+      "newBitrate": 241,
+      "newMean": -13.7,
+      "gain": 7.6,
+      "version": "Ella Baila Sola - Amores de barra [letra]"
+    },
+    "Música viejuna:::Jennifer Lopez - Love Dont Cost a Thing.mp3": {
+      "date": "2026-09-23T19:20:55.792Z",
+      "oldBitrate": 224,
+      "oldMean": -21.3,
+      "newBitrate": 259,
+      "newMean": -13.4,
+      "gain": 7.9,
+      "version": "Jennifer Lopez - Love Don't Cost a Thing (Lyrics)"
+    },
+    "Música viejuna Roberto:::Alannah Myles - Black Velvet.mp3": {
+      "date": "2026-09-23T19:21:07.710Z",
+      "oldBitrate": 247,
+      "oldMean": -21.3,
+      "newBitrate": 242,
+      "newMean": -17.7,
+      "gain": 3.6,
+      "version": "Alannah Myles - Black Velvet (Lyrics)"
+    },
+    "Siglo XXI:::Britney Spears - Till the World Ends.mp3": {
+      "date": "2026-09-23T19:21:30.281Z",
+      "oldBitrate": 252,
+      "oldMean": -21.3,
+      "newBitrate": 320,
+      "newMean": -13.7,
+      "gain": 7.6,
+      "version": "Till The World Ends - Britney Spears (Lyrics)"
+    },
+    "Siglo XXI Roberto:::Britney Spears - Till the World Ends.mp3": {
+      "date": "2026-09-23T19:21:52.606Z",
+      "oldBitrate": 251,
+      "oldMean": -21.3,
+      "newBitrate": 320,
+      "newMean": -13.7,
+      "gain": 7.6,
+      "version": "Till the World Ends-Britney Spears [LYRICS] HD"
+    },
+    "Dance:::Monelli - Lultimo di Mohicani.mp3": {
+      "date": "2026-09-23T19:22:17.752Z",
+      "oldBitrate": 128,
+      "oldMean": -21.2,
+      "newBitrate": 269,
+      "newMean": -18.5,
+      "gain": 2.7,
+      "version": "Arkimed - L'ultimo dei Mohicani (official video)"
+    },
+    "Música viejuna:::Guns N Roses - Sweet Child O Mine.mp3": {
+      "date": "2026-09-23T19:22:31.782Z",
+      "oldBitrate": 251,
+      "oldMean": -21.2,
+      "newBitrate": 237,
+      "newMean": -14.7,
+      "gain": 6.5,
+      "version": "Guns N' Roses - Sweet Child O' Mine (Traducido al Español) | sub esp ; letra ; lyrics"
+    },
+    "Música viejuna:::Whitney Houston - Greatest Love of All.mp3": {
+      "date": "2026-09-23T19:22:44.624Z",
+      "oldBitrate": 130,
+      "oldMean": -21.2,
+      "newBitrate": 257,
+      "newMean": -16.6,
+      "gain": 4.6,
+      "version": "Whitney Houston - Greatest Love Of All (Lyrics)"
+    },
+    "Siglo XXI:::DJ Sammy Yanou Do - Heaven.mp3": {
+      "date": "2026-09-23T19:22:55.259Z",
+      "oldBitrate": 128,
+      "oldMean": -21.1,
+      "newBitrate": 173,
+      "newMean": -11.7,
+      "gain": 9.4,
+      "version": "Dj Sammy - Heaven (With Lyrics)"
+    },
+    "Española:::Amaral - Cómo hablar.mp3": {
+      "date": "2026-09-23T19:23:05.466Z",
+      "oldBitrate": 256,
+      "oldMean": -21,
+      "newBitrate": 246,
+      "newMean": -12,
+      "gain": 9,
+      "version": "Como Hablar Amaral Letra"
+    },
+    "Española:::Amaral - Cómo hablar.temp.mp3": {
+      "date": "2026-09-23T19:23:16.089Z",
+      "oldBitrate": 235,
+      "oldMean": -21,
+      "newBitrate": 246,
+      "newMean": -12,
+      "gain": 9,
+      "version": "Como Hablar Amaral Letra"
+    },
+    "Música viejuna:::Kylie Minogue - The Loco-Motion.mp3": {
+      "date": "2026-09-23T19:23:26.317Z",
+      "oldBitrate": 282,
+      "oldMean": -21,
+      "newBitrate": 201,
+      "newMean": -14.4,
+      "gain": 6.6,
+      "version": "Locomotion - Kylie Minogue (Lyrics) 🎵"
+    },
+    "Siglo XXI:::Kelis - Trick Me.mp3": {
+      "date": "2026-09-23T19:23:37.313Z",
+      "oldBitrate": 236,
+      "oldMean": -21,
+      "newBitrate": 246,
+      "newMean": -9.6,
+      "gain": 11.4,
+      "version": "Kelis - Trick Me (Lyrics)"
+    },
+    "Española:::La Mosca - Yo Te Quiero Dar.mp3": {
+      "date": "2026-09-23T19:23:48.424Z",
+      "oldBitrate": 248,
+      "oldMean": -20.9,
+      "newBitrate": 256,
+      "newMean": -11.3,
+      "gain": 9.6,
+      "version": "La Mosca - Yo Te Quiero Dar (Letra/Lyrics)"
+    },
+    "Música viejuna:::The Primitives - Crash.mp3": {
+      "date": "2026-09-23T19:24:05.262Z",
+      "oldBitrate": 239,
+      "oldMean": -20.9,
+      "newBitrate": 320,
+      "newMean": -15.8,
+      "gain": 5.1,
+      "version": "CRASH - The Primitives [Lyrics] 🎵"
+    },
+    "Siglo XXI:::Madonna - Hung Up.mp3": {
+      "date": "2026-09-23T19:24:18.380Z",
+      "oldBitrate": 256,
+      "oldMean": -20.9,
+      "newBitrate": 257,
+      "newMean": -11.9,
+      "gain": 9,
+      "version": "Madonna - Hung Up (Lyrics)"
+    },
+    "Música viejuna:::Nick Kamen - I Promised Myself.mp3": {
+      "date": "2026-09-23T19:24:31.752Z",
+      "oldBitrate": 252,
+      "oldMean": -20.8,
+      "newBitrate": 250,
+      "newMean": -12.8,
+      "gain": 8,
+      "version": "Nick Kamen I Promised Myself lyrics"
+    },
+    "Siglo XXI:::Green Day - Wake Me up When September Ends.mp3": {
+      "date": "2026-09-23T19:24:43.577Z",
+      "oldBitrate": 264,
+      "oldMean": -20.8,
+      "newBitrate": 262,
+      "newMean": -15.5,
+      "gain": 5.3,
+      "version": "Green Day - Wake Me Up When September Ends (Lyrics)"
+    },
+    "Siglo XXI:::The Wanted - Glad You Came.mp3": {
+      "date": "2026-09-23T19:24:54.554Z",
+      "oldBitrate": 243,
+      "oldMean": -20.8,
+      "newBitrate": 255,
+      "newMean": -10.1,
+      "gain": 10.7,
+      "version": "The Wanted - Glad You Came (Lyrics)"
+    },
+    "Música viejuna:::Gloria Gaynor - I Will Survive.mp3": {
+      "date": "2026-09-23T19:25:04.654Z",
+      "oldBitrate": 268,
+      "oldMean": -20.7,
+      "newBitrate": 251,
+      "newMean": -11.8,
+      "gain": 8.9,
+      "version": "Gloria Gaynor - I Will Survive (Lyrics Spanish-English) (Español-Inglés)"
+    },
+    "Música viejuna:::Madonna - Holiday.mp3": {
+      "date": "2026-09-23T19:25:26.496Z",
+      "oldBitrate": 139,
+      "oldMean": -20.7,
+      "newBitrate": 259,
+      "newMean": -15,
+      "gain": 5.7,
+      "version": "Madonna - Holiday (Lyrics HD)"
+    },
+    "Música viejuna Roberto:::All Saints - Never Ever.mp3": {
+      "date": "2026-09-23T19:25:57.939Z",
+      "oldBitrate": 243,
+      "oldMean": -20.7,
+      "newBitrate": 258,
+      "newMean": -13.4,
+      "gain": 7.3,
+      "version": "All Saints - Never Ever [Lyrics Audio HQ]"
+    },
+    "Española:::Mecano - Hijo de la Luna.mp3": {
+      "date": "2026-09-23T19:26:20.703Z",
+      "oldBitrate": 260,
+      "oldMean": -20.6,
+      "newBitrate": 320,
+      "newMean": -14.5,
+      "gain": 6.1,
+      "version": "Hijo De La Luna- Mecano (Letra/Video) Official"
+    },
+    "Española:::Seguridad Social - Chiquilla.mp3": {
+      "date": "2026-09-23T19:26:37.610Z",
+      "oldBitrate": 263,
+      "oldMean": -20.6,
+      "newBitrate": 320,
+      "newMean": -17,
+      "gain": 3.6,
+      "version": "Chiquilla - Seguridad social (letras)"
+    },
+    "Música latina:::Willie Colón Héctor Lavoe - El Día De Mi Suerte.mp3": {
+      "date": "2026-09-23T19:27:06.184Z",
+      "oldBitrate": 256,
+      "oldMean": -20.6,
+      "newBitrate": 320,
+      "newMean": -16.4,
+      "gain": 4.2,
+      "version": "El Día De Mi Suerte - Héctor Lavoe & Willie Colón (Letra)"
+    },
+    "Siglo XXI:::Adele - Rolling in the Deep.mp3": {
+      "date": "2026-09-23T19:27:18.882Z",
+      "oldBitrate": 245,
+      "oldMean": -20.6,
+      "newBitrate": 235,
+      "newMean": -13.8,
+      "gain": 6.8,
+      "version": "Adele - Rolling in The Deep (Lyrics)"
+    },
+    "Música viejuna:::Metallica - Nothing Else Matters.mp3": {
+      "date": "2026-09-23T19:27:52.424Z",
+      "oldBitrate": 247,
+      "oldMean": -20.5,
+      "newBitrate": 320,
+      "newMean": -13.9,
+      "gain": 6.6,
+      "version": "Metallica - Nothing Else Matters - Lyrics"
+    },
+    "Siglo XXI:::Atomic Kitten - Eternal Flame.mp3": {
+      "date": "2026-09-23T19:28:04.149Z",
+      "oldBitrate": 246,
+      "oldMean": -20.5,
+      "newBitrate": 257,
+      "newMean": -12.4,
+      "gain": 8.1,
+      "version": "Automic kitten - Eternal flame (lyrics)"
+    },
+    "Dance:::Sylver - Skin.mp3": {
+      "date": "2026-09-23T19:28:17.380Z",
+      "oldBitrate": 130,
+      "oldMean": -20.3,
+      "newBitrate": 251,
+      "newMean": -11.5,
+      "gain": 8.8,
+      "version": "Skin"
+    },
+    "Música viejuna:::Crowded House - Fall At Your Feet.mp3": {
+      "date": "2026-09-23T19:28:27.946Z",
+      "oldBitrate": 245,
+      "oldMean": -20.3,
+      "newBitrate": 225,
+      "newMean": -14.9,
+      "gain": 5.4,
+      "version": "Crowded House Fall At Your Feet Lyrics"
+    },
+    "Siglo XXI:::Pitbull AFROJACK Ne-Yo Nayer - Give Me Everything feat Nayer.mp3": {
+      "date": "2026-09-23T19:28:52.194Z",
+      "oldBitrate": 248,
+      "oldMean": -20.3,
+      "newBitrate": 320,
+      "newMean": -14.9,
+      "gain": 5.4,
+      "version": "Pitbull - Give Me Everything (Lyrics) Ft. Ne-Yo, Afrojack, Nayer"
+    },
+    "Dance:::Milk Inc - Land of the Living - Radio Mix.mp3": {
+      "date": "2026-09-23T19:29:03.091Z",
+      "oldBitrate": 130,
+      "oldMean": -20.2,
+      "newBitrate": 251,
+      "newMean": -11.3,
+      "gain": 8.9,
+      "version": "Milk Inc. - \"Land Of The Living\" (Lyrics)"
+    },
+    "Española:::Heroes Del Silencio - Maldito duende.mp3": {
+      "date": "2026-09-23T19:29:25.732Z",
+      "oldBitrate": 250,
+      "oldMean": -20.2,
+      "newBitrate": 320,
+      "newMean": -16.2,
+      "gain": 4,
+      "version": "héroes del silencio — maldito duende (letra)"
+    },
+    "Española:::Navajita Platea - Noches de bohemia.mp3": {
+      "date": "2026-09-23T19:29:36.208Z",
+      "oldBitrate": 131,
+      "oldMean": -20.1,
+      "newBitrate": 250,
+      "newMean": -19.8,
+      "gain": 0.3,
+      "version": "Navajita Platea - Noches de Bohemia (Videoclip Oficial)"
+    },
+    "Música latina:::Prince Royce - Incondicional.mp3": {
+      "date": "2026-09-23T19:29:46.803Z",
+      "oldBitrate": 252,
+      "oldMean": -20.1,
+      "newBitrate": 275,
+      "newMean": -10.2,
+      "gain": 9.9,
+      "version": "Prince Royce - Incondicional (Letra)"
+    },
+    "Siglo XXI:::Calvin Harris Ellie Goulding - I Need Your Love feat Ellie Goulding.mp3": {
+      "date": "2026-09-23T19:30:00.980Z",
+      "oldBitrate": 256,
+      "oldMean": -20.1,
+      "newBitrate": 242,
+      "newMean": -11.6,
+      "gain": 8.5,
+      "version": "I need your Love - Calvin Harris feat. Ellie Goulding Lyrics"
+    },
+    "Siglo XXI:::Sean Paul - Temperature.mp3": {
+      "date": "2026-09-23T19:30:14.553Z",
+      "oldBitrate": 233,
+      "oldMean": -20.1,
+      "newBitrate": 253,
+      "newMean": -10.9,
+      "gain": 9.2,
+      "version": "Sean Paul - Temperature | Lyrics"
+    },
+    "Española:::Malú - Blanco y Negro.mp3": {
+      "date": "2026-09-23T19:30:25.074Z",
+      "oldBitrate": 129,
+      "oldMean": -20,
+      "newBitrate": 241,
+      "newMean": -11.1,
+      "gain": 8.9,
+      "version": "Blanco y Negro - Malú | Letra"
+    },
+    "Música viejuna:::Queen - Another One Bites The Dust.mp3": {
+      "date": "2026-09-23T19:30:35.925Z",
+      "oldBitrate": 227,
+      "oldMean": -20,
+      "newBitrate": 255,
+      "newMean": -13.5,
+      "gain": 6.5,
+      "version": "Queen - Another One Bites The Dust [Lyrics]"
+    },
+    "Música latina:::David Pabon - Aquel Viejo Motel.mp3": {
+      "date": "2026-09-23T19:30:47.586Z",
+      "oldBitrate": 193,
+      "oldMean": -19.9,
+      "newBitrate": 167,
+      "newMean": -16.7,
+      "gain": 3.2,
+      "version": "Aquel Viejo Motel - David Pavón |LETRA|"
+    },
+    "Dance:::Milk Inc - You And Me.mp3": {
+      "date": "2026-09-23T19:31:20.863Z",
+      "oldBitrate": 237,
+      "oldMean": -19.8,
+      "newBitrate": 241,
+      "newMean": -16.6,
+      "gain": 3.2,
+      "version": "MILK INC - Inside of me (1998).,.wmv"
+    },
+    "Música viejuna:::Alanis Morissette - Thank U.mp3": {
+      "date": "2026-09-23T19:31:33.828Z",
+      "oldBitrate": 238,
+      "oldMean": -19.8,
+      "newBitrate": 239,
+      "newMean": -13.4,
+      "gain": 6.4,
+      "version": "Alanis Morissette - Thank You (lyrics)"
+    },
+    "Música viejuna Roberto:::Alanis Morissette - Thank U.mp3": {
+      "date": "2026-09-23T19:31:44.655Z",
+      "oldBitrate": 238,
+      "oldMean": -19.8,
+      "newBitrate": 213,
+      "newMean": -13.7,
+      "gain": 6.1,
+      "version": "Thank U - Alanis Morissette (Lyrics) 🎶"
+    },
+    "Española:::Navajita Plateá - Noches de bohemia.mp3": {
+      "date": "2026-09-23T19:31:55.062Z",
+      "oldBitrate": 251,
+      "oldMean": -19.7,
+      "newBitrate": 272,
+      "newMean": -14,
+      "gain": 5.7,
+      "version": "Noches de bohemia"
+    },
+    "Siglo XXI:::Duffy - Mercy.mp3": {
+      "date": "2026-09-23T19:32:08.972Z",
+      "oldBitrate": 226,
+      "oldMean": -19.7,
+      "newBitrate": 229,
+      "newMean": -10,
+      "gain": 9.7,
+      "version": "Duffy - Mercy (lyrics)"
+    },
+    "Española:::La Guardia - El Mundo Tras el Cristal.mp3": {
+      "date": "2026-09-23T19:32:19.000Z",
+      "oldBitrate": 243,
+      "oldMean": -19.6,
+      "newBitrate": 196,
+      "newMean": -17.3,
+      "gain": 2.3,
+      "version": "Cartas en el Cajon La Guardia Letra"
+    },
+    "Música latina:::Eddy Herrera - Demasiado Niña.mp3": {
+      "date": "2026-09-23T19:32:30.706Z",
+      "oldBitrate": 135,
+      "oldMean": -19.6,
+      "newBitrate": 277,
+      "newMean": -14.8,
+      "gain": 4.8,
+      "version": "Demasiado Niña - Eddy Herrera (LETRA)"
+    },
+    "Española:::Nek - Para ti serìa.mp3": {
+      "date": "2026-09-23T19:32:41.132Z",
+      "oldBitrate": 267,
+      "oldMean": -19.4,
+      "newBitrate": 256,
+      "newMean": -15.8,
+      "gain": 3.6,
+      "version": "Nek y El Sueño de Morfeo - Para Ti Sería [con letra subtitulada]"
+    },
+    "Música viejuna Roberto:::Netzwerk - Memories.mp3": {
+      "date": "2026-09-23T19:32:55.590Z",
+      "oldBitrate": 205,
+      "oldMean": -19.4,
+      "newBitrate": 268,
+      "newMean": -12.5,
+      "gain": 6.9,
+      "version": "Memories"
+    },
+    "Música latina:::Bachata Heightz Héctor Acosta El Torito - Me Puedo Matar feat Hector El Torito Acosta.mp3": {
+      "date": "2026-09-23T19:33:06.879Z",
+      "oldBitrate": 255,
+      "oldMean": -19.3,
+      "newBitrate": 189,
+      "newMean": -17.3,
+      "gain": 2,
+      "version": "Bachata Heightz ft Hector Acosta-Me puedo matar con letra"
+    },
+    "Española:::David Civera - Que La Detengan.mp3": {
+      "date": "2026-09-23T19:33:16.746Z",
+      "oldBitrate": 148,
+      "oldMean": -19.2,
+      "newBitrate": 306,
+      "newMean": -9.3,
+      "gain": 9.9,
+      "version": "DAVID CIVERA - QUE LA DETENGAN (Video Con Letra)"
+    },
+    "Música latina:::Romeo Santos - You.mp3": {
+      "date": "2026-09-23T19:33:27.721Z",
+      "oldBitrate": 256,
+      "oldMean": -19.2,
+      "newBitrate": 256,
+      "newMean": -9.4,
+      "gain": 9.8,
+      "version": "Romeo Santos - Eres Mía (Letra)"
+    },
+    "Siglo XXI Roberto:::Imagine Dragons - Demons.mp3": {
+      "date": "2026-09-23T19:33:37.130Z",
+      "oldBitrate": 212,
+      "oldMean": -19.2,
+      "newBitrate": 212,
+      "newMean": -18.5,
+      "gain": 0.7,
+      "version": "Imagine Dragons - Demons (Lyrics)"
+    },
+    "Dance:::Milk Inc - Time.mp3": {
+      "date": "2026-09-23T19:33:58.026Z",
+      "oldBitrate": 186,
+      "oldMean": -19.1,
+      "newBitrate": 320,
+      "newMean": -15.6,
+      "gain": 3.5,
+      "version": "Milk Inc. - Walk on Water (lyrics)"
+    },
+    "Siglo XXI:::Eminem, Rihanna - The Monster.mp3": {
+      "date": "2026-09-23T19:34:08.661Z",
+      "oldBitrate": 258,
+      "oldMean": -18.9,
+      "newBitrate": 233,
+      "newMean": -10.1,
+      "gain": 8.8,
+      "version": "Eminem ft. Rihanna - The Monster Lyrics"
+    },
+    "Música latina:::Binomio de Oro de América - Me Ilusioné.mp3": {
+      "date": "2026-09-23T19:34:21.791Z",
+      "oldBitrate": 240,
+      "oldMean": -18.6,
+      "newBitrate": 261,
+      "newMean": -13,
+      "gain": 5.6,
+      "version": "Me Ilusioné, Binomio De Oro De América, Video Letra - Sentir Vallenato"
+    },
+    "Siglo XXI:::Evanescence - My Immortal.mp3": {
+      "date": "2026-09-23T19:34:33.701Z",
+      "oldBitrate": 253,
+      "oldMean": -18.6,
+      "newBitrate": 232,
+      "newMean": -12.9,
+      "gain": 5.7,
+      "version": "Evanescence- My Immortal lyrics [HD]"
+    },
+    "Dance:::Joachim Garraud JD Davis David Guetta - The World Is Mine.mp3": {
+      "date": "2026-09-23T19:34:45.409Z",
+      "oldBitrate": 257,
+      "oldMean": -18.4,
+      "newBitrate": 241,
+      "newMean": -9.9,
+      "gain": 8.5,
+      "version": "David Guetta- The World Is Mine (lyrics)"
+    },
+    "Música viejuna:::Culture Club - Karma Chameleon.mp3": {
+      "date": "2026-09-23T19:34:55.990Z",
+      "oldBitrate": 247,
+      "oldMean": -18.4,
+      "newBitrate": 247,
+      "newMean": -18.4,
+      "gain": 0,
+      "version": "Culture Club - Karma Chameleon (Lyrics)"
+    },
+    "Española:::David DeMaría - Barcos de papel.mp3": {
+      "date": "2026-09-23T19:35:07.422Z",
+      "oldBitrate": 249,
+      "oldMean": -18.2,
+      "newBitrate": 219,
+      "newMean": -11.4,
+      "gain": 6.8,
+      "version": "David de maria \" Barcos de papel \" ( Letra )"
+    },
+    "Música latina:::Grupo Galé - Ya No Te Puedo Amar.mp3": {
+      "date": "2026-09-23T19:35:21.404Z",
+      "oldBitrate": 238,
+      "oldMean": -18.2,
+      "newBitrate": 225,
+      "newMean": -12.5,
+      "gain": 5.7,
+      "version": "Ya No Te Puedo Amar, Grupo Galé, Video Letra - Salsa Power"
+    },
+    "Música latina:::Romeo Santos - Doble Filo.mp3": {
+      "date": "2026-09-23T19:35:32.914Z",
+      "oldBitrate": 236,
+      "oldMean": -18.2,
+      "newBitrate": 236,
+      "newMean": -18.2,
+      "gain": 0,
+      "version": "Romeo Santos - Doble Filo (Letra)"
+    },
+    "Siglo XXI:::Lady Gaga - The Edge Of Glory.mp3": {
+      "date": "2026-09-23T19:35:46.139Z",
+      "oldBitrate": 246,
+      "oldMean": -18.2,
+      "newBitrate": 250,
+      "newMean": -12.1,
+      "gain": 6.1,
+      "version": "Lady Gaga - The Edge Of Glory (Lyrics)"
+    },
+    "Siglo XXI:::Of Monsters and Men - Little Talks.mp3": {
+      "date": "2026-09-23T19:35:58.244Z",
+      "oldBitrate": 269,
+      "oldMean": -18.2,
+      "newBitrate": 272,
+      "newMean": -11.4,
+      "gain": 6.8,
+      "version": "Of Monsters And Men - Little Talks (Lyrics)"
+    },
+    "Dance:::Lasgo - Alone.mp3": {
+      "date": "2026-09-23T19:36:09.302Z",
+      "oldBitrate": 130,
+      "oldMean": -18.1,
+      "newBitrate": 265,
+      "newMean": -9.7,
+      "gain": 8.4,
+      "version": "Lasgo - Alone"
+    },
+    "Española:::El Pescao - Buscando El Sol.mp3": {
+      "date": "2026-09-23T19:36:20.743Z",
+      "oldBitrate": 258,
+      "oldMean": -18,
+      "newBitrate": 253,
+      "newMean": -9,
+      "gain": 9,
+      "version": "El pescao - Buscando el sol"
+    },
+    "Española:::Maná - Rayando el Sol.mp3": {
+      "date": "2026-09-23T19:36:31.576Z",
+      "oldBitrate": 252,
+      "oldMean": -18,
+      "newBitrate": 250,
+      "newMean": -11.3,
+      "gain": 6.7,
+      "version": "Maná - Rayando el sol (Letra/Lyrics)"
+    },
+    "Siglo XXI:::Carly Rae Jepsen - I Really Like You.mp3": {
+      "date": "2026-09-23T19:36:42.085Z",
+      "oldBitrate": 252,
+      "oldMean": -18,
+      "newBitrate": 255,
+      "newMean": -10.4,
+      "gain": 7.6,
+      "version": "Carly Rae Jepsen - I Really Like You (Lyrics)"
+    },
+    "Siglo XXI:::Carly Rae Jepsen - Call Me Maybe.mp3": {
+      "date": "2026-09-23T19:36:54.262Z",
+      "oldBitrate": 250,
+      "oldMean": -17.9,
+      "newBitrate": 254,
+      "newMean": -11.4,
+      "gain": 6.5,
+      "version": "Carly Rae Jepsen - Call Me Maybe Lyrics Video"
+    },
+    "Siglo XXI:::Flo Rida - Whistle.mp3": {
+      "date": "2026-09-23T19:37:06.025Z",
+      "oldBitrate": 258,
+      "oldMean": -17.8,
+      "newBitrate": 238,
+      "newMean": -18.5,
+      "gain": -0.7,
+      "version": "Flo Rida - Whistle (Lyrics)"
+    },
+    "Siglo XXI:::Maroon 5 - One More Night.mp3": {
+      "date": "2026-09-23T19:37:17.474Z",
+      "oldBitrate": 245,
+      "oldMean": -17.8,
+      "newBitrate": 262,
+      "newMean": -10.8,
+      "gain": 7,
+      "version": "Maroon 5 - One More Night (Lyrics)"
+    },
+    "Siglo XXI:::Avicii - Hey Brother.mp3": {
+      "date": "2026-09-23T19:37:28.126Z",
+      "oldBitrate": 253,
+      "oldMean": -17.7,
+      "newBitrate": 250,
+      "newMean": -11.6,
+      "gain": 6.1,
+      "version": "Avicii - Hey Brother (Lyrics)"
+    },
+    "Dance:::Newton - Streamline.mp3": {
+      "date": "2026-09-23T19:37:38.940Z",
+      "oldBitrate": 134,
+      "oldMean": -17.6,
+      "newBitrate": 176,
+      "newMean": -14.1,
+      "gain": 3.5,
+      "version": "Newton - Streamline"
+    },
+    "Española:::Heroes Del Silencio - Entre dos tierras.mp3": {
+      "date": "2026-09-23T19:37:51.619Z",
+      "oldBitrate": 128,
+      "oldMean": -17.4,
+      "newBitrate": 252,
+      "newMean": -15.8,
+      "gain": 1.6,
+      "version": "Héroes del Silencio - Entre dos tierras (lyrics /letra English /español subtitles translate)"
+    },
+    "Española:::Macaco - Moving.mp3": {
+      "date": "2026-09-23T19:38:02.236Z",
+      "oldBitrate": 274,
+      "oldMean": -17.3,
+      "newBitrate": 265,
+      "newMean": -10.6,
+      "gain": 6.7,
+      "version": "moving macaco con letra"
+    },
+    "Siglo XXI:::Robin Thicke TI Pharrell Williams - Blurred Lines.mp3": {
+      "date": "2026-09-23T19:38:16.670Z",
+      "oldBitrate": 251,
+      "oldMean": -17.2,
+      "newBitrate": 251,
+      "newMean": -12.4,
+      "gain": 4.8,
+      "version": "Robin Thicke, Ft.TI , Pharrell Williams - Blurred Lines (Lyrics)"
+    },
+    "Española:::Amaral - El universo sobre mí.mp3": {
+      "date": "2026-09-23T19:38:28.129Z",
+      "oldBitrate": 170,
+      "oldMean": -17,
+      "newBitrate": 242,
+      "newMean": -9.9,
+      "gain": 7.1,
+      "version": "El universo sobre mi - Amaral Letra"
+    },
+    "Española:::Héroes del Silencio - Entre dos tierras.mp3": {
+      "date": "2026-09-23T19:38:44.289Z",
+      "oldBitrate": 262,
+      "oldMean": -17,
+      "newBitrate": 244,
+      "newMean": -10.9,
+      "gain": 6.1,
+      "version": "Héroes del Silencio - Entre dos tierras // Letra"
+    },
+    "Española:::Loquillo Y Los Trogloditas - Feo Fuerte y Formal.mp3": {
+      "date": "2026-09-23T19:38:57.680Z",
+      "oldBitrate": 204,
+      "oldMean": -16.9,
+      "newBitrate": 271,
+      "newMean": -9.9,
+      "gain": 7,
+      "version": "Loquillo y los trogloditas - Feo, fuerte y formal (LETRA)"
+    },
+    "Siglo XXI Roberto:::Capital Cities - Safe And Sound.mp3": {
+      "date": "2026-09-23T19:39:08.321Z",
+      "oldBitrate": 257,
+      "oldMean": -16.9,
+      "newBitrate": 257,
+      "newMean": -16.9,
+      "gain": 0,
+      "version": "Capital Cities - Safe And Sound (Lyrics)"
+    },
+    "Siglo XXI:::fun Janelle Monáe - We Are Young feat Janelle Monáe.mp3": {
+      "date": "2026-09-23T19:39:21.300Z",
+      "oldBitrate": 238,
+      "oldMean": -16.6,
+      "newBitrate": 248,
+      "newMean": -12,
+      "gain": 4.6,
+      "version": "Fun. - We Are Young (Lyrics) ft. Janelle Monáe"
+    },
+    "Siglo XXI:::Tiësto Matthew Koma - Wasted.mp3": {
+      "date": "2026-09-23T19:39:32.563Z",
+      "oldBitrate": 246,
+      "oldMean": -16.6,
+      "newBitrate": 256,
+      "newMean": -18.9,
+      "gain": -2.3,
+      "version": "Tiesto ft Mathew Koma   Wasted LYRICS"
+    },
+    "Siglo XXI:::HUNTRX EJAE AUDREY NUNA REI AMI KPop Demon Hunters Cast - Golden.mp3": {
+      "date": "2026-09-23T19:39:44.760Z",
+      "oldBitrate": 251,
+      "oldMean": -16.5,
+      "newBitrate": 254,
+      "newMean": -9.2,
+      "gain": 7.3,
+      "version": "Huntrix - Golden (Lyrics) KPop Demon Hunters"
+    },
+    "Siglo XXI:::Katy Perry Juicy J - Dark Horse.mp3": {
+      "date": "2026-09-23T19:39:57.244Z",
+      "oldBitrate": 255,
+      "oldMean": -16.2,
+      "newBitrate": 264,
+      "newMean": -10.1,
+      "gain": 6.1,
+      "version": "Katy Perry - Dark Horse (Lyrics) ft. Juicy J"
+    },
+    "Siglo XXI:::Jessie J - Domino.mp3": {
+      "date": "2026-09-23T19:40:08.603Z",
+      "oldBitrate": 238,
+      "oldMean": -16.1,
+      "newBitrate": 231,
+      "newMean": -16.5,
+      "gain": -0.4,
+      "version": "Jessie J - Domino (Lyrics) \"take me down like a domino\" (tiktok)"
+    },
+    "Siglo XXI:::ZAYN Taylor Swift - I Dont Wanna Live Forever Fifty Shades Darker.mp3": {
+      "date": "2026-09-23T19:40:20.264Z",
+      "oldBitrate": 246,
+      "oldMean": -16,
+      "newBitrate": 264,
+      "newMean": -10.7,
+      "gain": 5.3,
+      "version": "ZAYN, Taylor Swift - I Don’t Wanna Live Forever (Lyrics)"
+    },
+    "Siglo XXI:::Imagine Dragons - Its Time.mp3": {
+      "date": "2026-09-23T19:40:31.279Z",
+      "oldBitrate": 262,
+      "oldMean": -15.9,
+      "newBitrate": 268,
+      "newMean": -9.4,
+      "gain": 6.5,
+      "version": "Imagine Dragons - It's Time (Lyrics)"
+    },
+    "Siglo XXI:::Rixton - Me And My Broken Heart.mp3": {
+      "date": "2026-09-23T19:40:43.095Z",
+      "oldBitrate": 261,
+      "oldMean": -15.9,
+      "newBitrate": 252,
+      "newMean": -9.8,
+      "gain": 6.1,
+      "version": "Rixton - Me and My Broken Heart (Lyrics)"
+    },
+    "Siglo XXI:::Charly Black - Gyal You a Party Animal.mp3": {
+      "date": "2026-09-23T19:40:55.350Z",
+      "oldBitrate": 265,
+      "oldMean": -15.8,
+      "newBitrate": 270,
+      "newMean": -9.2,
+      "gain": 6.6,
+      "version": "Charly Black - Gyal You A Party Animal Lyrics Ingles-Español"
+    },
+    "Siglo XXI:::Maroon 5 - Memories.mp3": {
+      "date": "2026-09-23T19:41:06.090Z",
+      "oldBitrate": 130,
+      "oldMean": -15.6,
+      "newBitrate": 244,
+      "newMean": -13,
+      "gain": 2.6,
+      "version": "Maroon 5 - Memories (Lyrics)"
+    },
+    "Siglo XXI:::Zedd Hayley Williams - Stay The Night - Featuring Hayley Williams Of Paramore.mp3": {
+      "date": "2026-09-23T19:41:17.701Z",
+      "oldBitrate": 246,
+      "oldMean": -15.6,
+      "newBitrate": 232,
+      "newMean": -8.2,
+      "gain": 7.4,
+      "version": "ZEDD - Stay the Night [ Ft. Hayley Williams] (Lyrics)"
+    },
+    "Siglo XXI Roberto:::Ariana Grande Iggy Azalea - Problem.mp3": {
+      "date": "2026-09-23T19:41:29.417Z",
+      "oldBitrate": 238,
+      "oldMean": -15.6,
+      "newBitrate": 238,
+      "newMean": -15.4,
+      "gain": 0.2,
+      "version": "Problem   Ariana Grande lyrics HQ AUDIO1"
+    },
+    "Siglo XXI:::JAŸ-Z Alicia Keys - Empire State Of Mind.mp3": {
+      "date": "2026-09-23T19:41:41.244Z",
+      "oldBitrate": 235,
+      "oldMean": -15.4,
+      "newBitrate": 237,
+      "newMean": -8.3,
+      "gain": 7.1,
+      "version": "Empire State Of Mind - Jay-Z Feat. Alicia Keys // Lyrics On Screen [HD]"
+    },
+    "Siglo XXI:::LMFAO - Sexy And I Know It.mp3": {
+      "date": "2026-09-23T19:41:51.650Z",
+      "oldBitrate": 269,
+      "oldMean": -15.2,
+      "newBitrate": 270,
+      "newMean": -15.4,
+      "gain": -0.2,
+      "version": "LMFAO - Sexy And I Know It // Lyrics + Español // Video Official"
+    },
+    "Siglo XXI:::Peggy Gou - It Goes Like Nanana.mp3": {
+      "date": "2026-09-23T19:42:15.172Z",
+      "oldBitrate": 205,
+      "oldMean": -15.1,
+      "newBitrate": 252,
+      "newMean": -9.1,
+      "gain": 6,
+      "version": "[It Goes Like] Nanana"
+    },
+    "Siglo XXI:::Taio Cruz Ludacris - Break Your Heart.mp3": {
+      "date": "2026-09-23T19:42:26.193Z",
+      "oldBitrate": 258,
+      "oldMean": -15,
+      "newBitrate": 237,
+      "newMean": -12.7,
+      "gain": 2.3,
+      "version": "Taio Cruz Break your Heart lyrics"
+    },
+    "Siglo XXI:::David Guetta Kid Cudi - Memories feat Kid Cudi.mp3": {
+      "date": "2026-09-23T19:42:50.772Z",
+      "oldBitrate": 172,
+      "oldMean": -14.2,
+      "newBitrate": 231,
+      "newMean": -17.2,
+      "gain": -3,
+      "version": "David Guetta - Memories (Lyrics) ft. Kid Cudi"
+    }
+  },
+  "failed": {
+    "Dance:::Cosmic Gate - Fire Wire.mp3": {
+      "date": "2026-09-23T18:57:30.477Z",
+      "error": "No se encontraron más versiones viables disponibles (todas descartadas o con bloqueo DRM)."
+    },
+    "Siglo XXI:::Taylor Swift - The Fate of Ophelia.mp3": {
+      "date": "2026-09-23T19:42:42.041Z",
+      "error": "No se encontraron más versiones viables disponibles (todas descartadas o con bloqueo DRM)."
+    }
+  }
+}
