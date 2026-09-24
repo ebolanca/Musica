@@ -85924,65 +85924,39 @@
     ]
   },
   "Spacio - Dancer (Spacio Mix)": {
-    "title": "Dancer",
+    "title": "Dancer (Spacio Mix)",
     "artist": "Spacio",
     "year": "2009",
-    "album": "MDT Millenium 2000, Vol. 2",
-    "synopsis": "\"Dancer\" (2009) de Spacio es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "originalAlbum": "MDT Millenium 2000, Vol. 2",
+    "releaseYear": "2000",
+    "releaseDate": "2000-01-01",
+    "composers": "Jordi Carreras, Toni Peret, Quique Tejada",
+    "label": "Max Music",
+    "genre": "Eurodance / Italodance",
+    "synopsis": "Dancer (Spacio Mix) representa la culminación del sonido Eurodance de finales de los 90, caracterizado por una producción rítmica de alta energía y sintetizadores envolventes. La obra destaca por su estructura optimizada para pistas de baile, utilizando técnicas de compresión dinámica típicas de la era dorada de Max Music. Es un testimonio sonoro de la transición hacia el nuevo milenio, consolidando el estilo 'Dream' y 'Dance' que definió la escena electrónica española de la época.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de Spacio",
-        "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de Spacio, \"Dancer\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
-        "points": [
-          {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
-          }
-        ]
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción se basa en un patrón rítmico de 4/4 con un bombo (kick) procesado con una fuerte saturación armónica para maximizar el impacto en sistemas de sonido de club. Los sintetizadores utilizan osciladores tipo 'supersaw' que crean una atmósfera expansiva, mientras que la línea de bajo (bassline) se mantiene constante para sostener la energía. La mezcla destaca por una ecualización en 'V' que enfatiza los transitorios de percusión y la claridad de las voces, logrando una separación estéreo amplia que permite que cada elemento sintético ocupe su propio espacio en el espectro frecuencial."
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
-        "icon": "fa-drum",
-        "text": "La producción de \"Dancer\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
-        "points": [
-          {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
-          },
-          {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
-          },
-          {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
-          }
-        ]
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La lírica es minimalista y funcional, diseñada para ser un gancho (hook) rítmico más que una narrativa compleja. El tema central es la liberación a través del baile, utilizando la repetición de la palabra 'Dancer' como un mantra que sincroniza el pulso del oyente con el BPM de la canción. El uso de vocales procesadas con efectos de 'reverb' y 'delay' refuerza la sensación de espacio y movimiento, convirtiendo la voz en un instrumento percusivo adicional dentro del arreglo."
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
-        "icon": "fa-quote-left",
-        "text": "Líricamente, \"Dancer\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
-        "points": [
-          {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de Spacio aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
-          }
-        ]
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Al no existir un videoclip oficial de gran presupuesto, la estética se define a través de la identidad visual de la compilación 'MDT Millenium 2000'. La portada utiliza una iconografía futurista y minimalista, con tipografías tecnológicas y colores fríos que evocan la estética del 'Y2K'. Esta imagen refuerza la idea de una música diseñada para el futuro, alineándose con la tendencia de la época de asociar la electrónica con la tecnología digital y el espacio exterior."
       },
       {
-        "title": "El Impacto Cultural & Legado",
-        "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Dancer\" se mantiene como un himno atemporal dentro de la discografía de Spacio y una de las composiciones más celebradas de su generación.",
-        "points": [
-          {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Spacio."
-          }
-        ]
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "El tema fue un pilar fundamental en las sesiones de radio y discotecas de España a principios de los 2000, siendo parte esencial de la serie de recopilatorios MDT, que dominaron las listas de ventas nacionales. Su relevancia radica en ser un ejemplo perfecto de la curaduría de los 'Dream Team' (Carreras, Peret, Tejada), quienes lograron democratizar el sonido dance europeo para el gran público, convirtiendo a Spacio en un proyecto de culto dentro del género Eurodance."
       }
-    ]
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "Nikolai - Ready to Flow": {
     "title": "Ready to Flow",
@@ -87334,31 +87308,31 @@
     "year": "2000",
     "originalAlbum": "Rhythm & Drums",
     "releaseYear": "2000",
-    "releaseDate": "2000-11-20",
-    "composers": "Stefan Bossems, Claus Terhoeven",
-    "label": "EMI Electrola",
-    "genre": "Trance",
-    "synopsis": "Fire Wire es un pilar fundamental del Hard Trance europeo de principios del milenio, caracterizado por su agresivo diseño de sonido y su icónico riff de sintetizador ácido. La pista ejemplifica la transición del sonido rave hacia estructuras melódicas más complejas, utilizando una percusión contundente y una progresión armónica que definió el estándar de los clubes de la época.",
+    "releaseDate": "2000-09-18",
+    "composers": "Stefan Bossems, Claus Terhoeven, Olaf Dieckmann",
+    "label": "E-Park",
+    "genre": "Trance / Hard Trance",
+    "synopsis": "Fire Wire es un pilar fundamental del Hard Trance europeo de principios del milenio, caracterizado por su agresivo diseño sonoro y un uso icónico de sintetizadores ácidos. La pista destaca por su estructura de alta energía, un bajo contundente y un gancho melódico que definió el sonido de la escena club alemana, consolidando a Cosmic Gate como referentes del género.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La producción se basa en un diseño de sonido centrado en sintetizadores analógicos y virtuales de la era, destacando el uso de osciladores con modulación de filtro resonante. El 'lead' principal presenta una envolvente de filtro agresiva que corta a través de la mezcla, apoyado por una base rítmica de bombos 'four-on-the-floor' con compresión sidechain pronunciada. La estructura utiliza capas de percusión metálica y efectos de ruido blanco para crear tensión, con una mezcla final que prioriza la claridad en las frecuencias medias-altas para maximizar el impacto en sistemas de sonido de gran escala."
+        "text": "La producción se basa en un diseño de sonido agresivo centrado en el Roland TB-303, procesado con distorsión y filtros resonantes para crear el característico 'acid lead'. La percusión utiliza samples de caja de ritmos con una compresión side-chain pronunciada que genera un efecto de bombeo constante. El arreglo sigue una estructura progresiva típica del trance, con capas de pads atmosféricos que contrastan con la dureza de los sintetizadores principales, todo mezclado con una ecualización que prioriza el impacto en sistemas de sonido de gran formato."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "La canción es predominantemente instrumental, centrada en la energía sónica más que en la narrativa verbal. El uso de la voz es puramente funcional, tratada como un instrumento rítmico más dentro de la mezcla. El título 'Fire Wire' actúa como una metáfora de la descarga eléctrica y la intensidad del flujo de datos, reflejando la estética tecnológica y futurista del trance de los años 2000, donde la voz procesada con vocoder o efectos de distorsión refuerza la frialdad mecánica del género."
+        "text": "La canción es predominantemente instrumental, con el uso de vocales procesadas y fragmentadas que funcionan más como un instrumento rítmico que como una narrativa lírica. El uso de la voz sirve para enfatizar la energía de la pista, con frases cortas y repetitivas que actúan como un mantra para la pista de baile, eliminando la necesidad de una estructura de verso-estribillo convencional para enfocarse en la inmersión sonora."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "El videoclip oficial adopta una estética de ciencia ficción de bajo presupuesto típica de la época, utilizando efectos visuales digitales tempranos y una iluminación de alto contraste. La narrativa visual se centra en la velocidad, el movimiento y la tecnología, alineándose con el concepto de 'cable de fuego' mediante el uso de luces estroboscópicas y transiciones rápidas que emulan la energía cinética de la pista, consolidando la identidad visual de Cosmic Gate como arquitectos del sonido electrónico industrial."
+        "text": "La estética visual de la era 'Rhythm & Drums' se alinea con la cultura rave de finales de los 90 y principios de los 2000, utilizando una paleta de colores neón, elementos futuristas y una edición rápida que intenta emular la intensidad de la música. La portada del álbum y los materiales promocionales refuerzan una imagen técnica y cibernética, coherente con el título 'Fire Wire' y la naturaleza electrónica de la composición."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "Fire Wire se convirtió en un himno global del trance, alcanzando posiciones destacadas en las listas de éxitos alemanas y británicas. Su impacto fue tal que definió el sonido de Cosmic Gate durante años y fue objeto de múltiples remezclas, incluyendo la famosa versión de Wippenberg. Es considerada una pieza de culto que ayudó a consolidar el Hard Trance como un género comercialmente viable fuera de los circuitos underground."
+        "text": "Fire Wire se convirtió en un himno de los festivales de trance, alcanzando posiciones notables en las listas de éxitos alemanas y siendo pinchado por los DJs más influyentes de la época, como Tiësto y Armin van Buuren. Su éxito fue tal que ha sido objeto de múltiples remezclas y versiones a lo largo de las décadas, siendo considerada una pieza esencial para entender la transición del Hard Trance hacia sonidos más melódicos y comerciales."
       }
     ],
     "_aiModel": "gemini-3.1-flash-lite"
@@ -88884,37 +88858,37 @@
   "Natural Born Deejays - Airplay": {
     "title": "Airplay",
     "artist": "Natural Born Deejays",
-    "year": "2005",
-    "originalAlbum": "Single",
-    "releaseYear": "2000",
-    "releaseDate": "2000-01-01",
-    "composers": "Natural Born Deejays",
-    "label": "Banshee Eyes",
-    "genre": "Trance / Hard Trance",
-    "synopsis": "\"Airplay\" de Natural Born Deejays es una pieza contundente de música electronic dance de principios de los 2000, caracterizada por su energía arrolladora y su enfoque en las pistas de baile. La producción combina sintetizadores estridentes con líneas de bajo ácidas y rítmicas contundentes, típicas del sonido hard trance europeo de la época. Su estructura está diseñada para maximizar la tensión y la euforia en los clubes nocturnos mediante la manipulación dinámica de frecuencias y filtros.",
+    "year": "1997",
+    "originalAlbum": "Today",
+    "releaseYear": "1997",
+    "releaseDate": "1997-01-01",
+    "composers": "Patrick De Meyer, Peter Luts, David Vervoort",
+    "label": "Antler-Subway",
+    "genre": "Eurodance / Trance",
+    "synopsis": "Airplay es una pieza fundamental del Eurodance belga de finales de los 90, caracterizada por una producción de alta energía que fusiona sintetizadores trance melódicos con una base rítmica de club contundente. La obra destaca por su diseño sonoro optimista y su estructura diseñada para la pista de baile, consolidando el sonido característico de la escena dance europea de la época.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La producción de 'Airplay' se basa en un arreglo instrumental electrónico denso, con un bombo (kick) procesado con compresión paralela para asegurar un impacto contundente en sistemas de sonido de gran potencia. Las frecuencias medias-altas están dominadas por sintetizadores en sierra (saw waves) con modulación de filtro de corte (cutoff filter) que generan el característico barrido eufórico del género trance. La mezcla emplea compresión sidechain agresiva para mantener la claridad del ritmo principal, mientras que los efectos de reverberación y delay estéreo en las melodías secundarias crean una sensación de espacialidad y profundidad inmersiva."
+        "text": "La producción se apoya en un sintetizador principal de tipo 'supersaw' que domina el espectro de frecuencias medias-altas, creando una atmósfera eufórica. La base rítmica utiliza un bombo (kick) comprimido con un side-chain marcado sobre el bajo, típico del sonido trance de finales de los 90. La mezcla equilibra voces procesadas con efectos de reverb y delay que aportan profundidad, mientras que la percusión electrónica mantiene un tempo constante de 140 BPM, optimizado para la energía de los clubes."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "Al tratarse de una producción de música electrónica enfocada principalmente en el ámbito instrumental y de club, 'Airplay' carece de una estructura lírica tradicional con estrofas y versos hablados. Los elementos vocales se reducen a intervenciones sampleadas de corta duración, utilizadas como un instrumento rítmico o textural más dentro de la mezcla. Estos fragmentos vocales repetitivos funcionan como ganchos (hooks) psicoacústicos que refuerzan la atmósfera enérgica y la identidad del tema sin necesidad de una narrativa verbal compleja."
+        "text": "La lírica es minimalista y funcional, diseñada para ser un gancho (hook) pegadizo más que una narrativa compleja. El uso de frases cortas y repetitivas como 'Airplay' refuerza la temática de la difusión radiofónica y la omnipresencia de la música en el espacio público. El enfoque psicológico es la evasión a través del sonido, utilizando la voz como un instrumento rítmico adicional que se integra en la textura de los sintetizadores."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "Dado que el lanzamiento funcionó primordialmente como un maxi-sencillo enfocado en la cultura de los DJ y las pistas de baile underground, no contó con una producción cinematográfica de videoclip de alta rotación en cadenas comerciales. Su identidad visual quedó plasmada en el diseño de las portadas de los vinilos y CD singles, que utilizaban una estética minimalista pero contundente, reflejando la frialdad industrial y la modernidad tecnológica de la música trance europea de finales del milenio."
+        "text": "La estética visual de la era de Natural Born Deejays se alinea con la iconografía del dance noventero: colores saturados, efectos de post-producción digital de la época y una puesta en escena que enfatiza la energía del grupo. La portada del álbum 'Today' refleja esta misma estética minimalista y futurista, centrada en la identidad del proyecto como arquitectos del sonido electrónico."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "'Airplay' se convirtió en un elemento básico en las maletas de numerosos DJs de música trance y hard dance durante la primera mitad de la década de 2000. Sonó con fuerza en discotecas y sesiones de radio especializadas en toda Europa, consolidando la reputación del proyecto Natural Born Deejays dentro de la escena electrónica underground y dejando una huella perdurable en la evolución del sonido club de la época."
+        "text": "La canción fue un éxito significativo en el circuito de clubes europeos y en las listas de radio dance, ayudando a cimentar la reputación de Peter Luts y su equipo. Representa la transición del Eurodance clásico hacia sonidos más cercanos al trance comercial, siendo un ejemplo de cómo la producción belga influyó en la estandarización del sonido dance global a finales del milenio."
       }
     ],
-    "_aiModel": "gemini-3.5-flash-lite"
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "Vincent de Moor - Between 2 Fires": {
     "title": "Between 2 Fires",
@@ -90702,34 +90676,34 @@
     "year": "2000",
     "originalAlbum": "Episode II",
     "releaseYear": "2000",
-    "releaseDate": "2000-05-29",
-    "composers": "Uffe Savery, Morten Friis, Michael Parsberg",
+    "releaseDate": "2000-06-05",
+    "composers": "Morten Friis, Uffe Savery, Michael Parsberg",
     "label": "Universal Music Denmark",
-    "genre": "Trance / Tribal House",
-    "synopsis": "\"Played-A\" (también conocida como \"Played-A-Live (The Bongo Song)\") es un hito de la música electrónica de club del año 2000 que fusiona con maestría la percusión orquestal acústica con la síntesis trance contemporánea. Producida por Uffe Savery, Morten Friis y Michael Parsberg, la obra destaca por su icónico patrón de bongos y timbales, diseñado con una pegada transitoria excepcionalmente alta y compresión multibanda agresiva. Se convirtió en un fenómeno global al demostrar que los elementos rítmicos orgánicos podían coexistir orgánicamente con los sintetizadores supersaw en los grandes escenarios europeos.",
+    "genre": "Tribal House / Trance",
+    "synopsis": "Played-A-Live (The Bongo Song) es una pieza seminal que fusiona la percusión orquestal virtuosa con la arquitectura del trance europeo de los 2000. Su tesis sónica reside en la yuxtaposición de polirritmias tribales orgánicas sobre una base sintética de 138 BPM, logrando un equilibrio entre la complejidad técnica de la percusión en vivo y la accesibilidad del clubbing global.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La producción de 'Played-A' se cimenta sobre un loop de percusión acústica (marimba, bongos y timbales) procesado con compresión paralela para maximizar el impacto transitorio y la presencia en frecuencias medias-altas (entre 2 kHz y 5 kHz). El bajo electrónico, un sintetizador Roland JP-8000 o similar de la época, utiliza modulación de pulso (PWM) y una envolvente de filtro con alta resonancia en los momentos de tensión. El diseño sonoro integra una mezcla estéreo ultra ancha en los pads de fondo, mientras que la percusión principal se mantiene sólida en el centro para asegurar la compatibilidad con sistemas de sonido de discoteca en mono. La masterización prioriza el volumen RMS elevado característico de la era dorada del trance, manteniendo la pegada del bombo en los 60 Hz y controlando los graves profundos mediante compresión sidechain sutil con los elementos percusivos."
+        "text": "La producción destaca por el uso de samples de percusión real procesados con compresión paralela para mantener el punch en sistemas de sonido de gran escala. El arreglo se fundamenta en un loop de bongos y congas que evoluciona mediante filtros de corte (cutoff) y resonancia. La estructura armónica es minimalista, utilizando sintetizadores tipo 'supersaw' para crear una atmósfera envolvente que permite que el protagonismo recaiga en la dinámica de los tambores, grabados con una técnica de microfonía cercana para capturar el ataque transitorio de los parches."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "Al tratarse de una obra instrumental, 'Played-A' carece de una estructura lírica tradicional con versos y estribillos cantados. La 'voz' de la canción reside en su motivo melódico interpretado mediante percusión de afinación determinada (marimbas/xilófonos) y efectos vocales troceados (vocal chops) que actúan como un instrumento rítmico adicional. La ausencia de letra permite que la composición trascienda barreras idiomáticas, utilizando el ritmo como lenguaje universal. Los impulsos vocales dispersos a lo largo de la mezcla funcionan puramente como textura ambiental y ganchos psicoacústicos que incrementan la urgencia y la tensión dinámica antes de cada caída (drop) del sintetizador."
+        "text": "La obra es predominantemente instrumental, lo que la clasifica como una pieza de narrativa sonora pura. El uso de la voz es puramente textural y rítmico, funcionando como un instrumento más dentro de la mezcla. No existe un desglose lírico tradicional, ya que la 'letra' se limita a vocalizaciones que refuerzan el pulso tribal, eliminando las barreras idiomáticas y permitiendo que la emoción sea transmitida exclusivamente a través de la cadencia y la intensidad rítmica."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "El videoclip oficial de 'Played-A' muestra a Uffe Savery y Morten Friis interpretando enérgicamente sus sets de percusión acústica y electrónica en un entorno futurista e industrial, intercalando imágenes de multitudes extasiadas en festivales y discotecas. La fotografía destaca por un uso intensivo de luces estroboscópicas, láseres y una paleta de colores fríos (azules y plateados) que contrastan con la calidez orgánica de la madera de los tambores. La edición está rigurosamente sincronizada con los transitorios de la percusión, creando un montaje vertiginoso que refleja la euforia de la música trance de principios de los 2000 y visibiliza el esfuerzo físico real requerido para tocar los instrumentos en directo."
+        "text": "El videoclip oficial subraya la naturaleza performativa del dúo, mostrando a Morten Friis y Uffe Savery en un entorno de estudio/escenario que enfatiza su destreza técnica. La estética visual utiliza una paleta de colores fríos y contrastes lumínicos que reflejan la frialdad del sonido electrónico frente a la calidez orgánica de la madera de los tambores. El montaje es frenético, sincronizado con los golpes de percusión, reforzando la idea de que la música es una extensión física de los intérpretes."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "Lanzado como el sencillo principal del álbum 'Episode II', 'Played-A' se convirtió rápidamente en el sencillo más vendido en Dinamarca en el año 2000 y alcanzó los primeros puestos en las listas de éxitos de toda Europa, incluyendo Alemania, Suiza, España y el Reino Unido. Se consolidó como el himno oficial de innumerables eventos deportivos y recopilatorios de música dance. Como curiosidad, el éxito masivo del tema obligó a Safri Duo —originalmente un dúo de percusión clásica enfocado en la música contemporánea de concierto— a reinventarse como un acto de música electrónica en vivo, girando por los escenarios y festivales más importantes del mundo entero."
+        "text": "La canción se convirtió en un fenómeno global, alcanzando el Top 10 en múltiples listas europeas y consolidándose como un himno de festivales. Su éxito fue fundamental para popularizar el subgénero 'Tribal Trance'. Curiosamente, el dúo, siendo percusionistas clásicos de formación, logró romper el estigma de la música electrónica al demostrar que la ejecución en vivo de instrumentos acústicos podía coexistir con la síntesis digital, influyendo en la producción de música dance durante la siguiente década."
       }
     ],
-    "_aiModel": "gemini-3.5-flash-lite"
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "Safri Duo - Played-A-Live (The Bongo Song)": {
     "title": "Played-A",
