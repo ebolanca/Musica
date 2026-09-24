@@ -1928,9 +1928,48 @@ function formatTime(seconds) {
 // ==========================================================================
     // 🔁 Sistema de Reproducción Aleatoria Sin Repeticiones (Persistente)
     // ==========================================================================
+    // 🎲 Motor de Aleatoriedad Real (Fisher-Yates) & Historial Sin Repeticiones
+    // ==========================================================================
     function getTrackUniqueId(track) {
         if (!track) return '';
         return `${normalizeText(track.artist)}__${normalizeText(track.title)}`;
+    }
+
+    // Algoritmo Fisher-Yates (Knuth Shuffle): aleatoriedad matemática 100% uniforme e imparcial
+    function fisherYatesShuffle(array) {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    // Evita que suenen 2 canciones seguidas del mismo artista (efecto DJ inteligente)
+    function smartDeclusterArtists(tracks) {
+        if (!tracks || tracks.length <= 2) return tracks;
+        const result = [tracks[0]];
+        const remaining = tracks.slice(1);
+        
+        while (remaining.length > 0) {
+            const prevArtist = normalizeText(result[result.length - 1].artist || '');
+            let foundIdx = -1;
+            
+            for (let i = 0; i < remaining.length; i++) {
+                const candArtist = normalizeText(remaining[i].artist || '');
+                if (candArtist !== prevArtist) {
+                    foundIdx = i;
+                    break;
+                }
+            }
+            
+            if (foundIdx !== -1) {
+                result.push(remaining.splice(foundIdx, 1)[0]);
+            } else {
+                result.push(remaining.shift());
+            }
+        }
+        return result;
     }
 
     function getUnplayedPool(playlistName, allTracks) {
@@ -1943,19 +1982,31 @@ function formatTime(seconds) {
             playedIds = [];
         }
 
-        let unplayed = allTracks.filter(t => !playedIds.includes(getTrackUniqueId(t)));
+        // Deduplicación estricta por ID único para evitar que canciones presentes
+        // en múltiples listas (o añadidas dos veces) entren repetidas al pool
+        const seenIds = new Set();
+        const uniqueAllTracks = [];
+        allTracks.forEach(t => {
+            const tid = getTrackUniqueId(t);
+            if (tid && !seenIds.has(tid)) {
+                seenIds.add(tid);
+                uniqueAllTracks.push(t);
+            }
+        });
+
+        let unplayed = uniqueAllTracks.filter(t => !playedIds.includes(getTrackUniqueId(t)));
 
         // Si ya han sonado todas las canciones de la lista, reiniciamos el ciclo limpio
-        if (unplayed.length === 0 && allTracks.length > 0) {
+        if (unplayed.length === 0 && uniqueAllTracks.length > 0) {
             playedIds = [];
             try { safeStorage.setItem(poolKey, JSON.stringify([])); } catch(e){}
-            unplayed = [...allTracks];
+            unplayed = [...uniqueAllTracks];
             if (typeof showSyncNotification === 'function') {
                 showSyncNotification(`🎉 ¡Has escuchado todas las canciones de ${playlistName}! Reiniciando ciclo.`);
             }
         }
 
-        return { unplayed, playedCount: playedIds.length, total: allTracks.length };
+        return { unplayed, playedCount: playedIds.length, total: uniqueAllTracks.length };
     }
 
     function markTrackAsPlayed(playlistName, track) {
@@ -2010,8 +2061,8 @@ function formatTime(seconds) {
         // Obtener canciones que NO han sonado aún en ninguna sesión
         const { unplayed, playedCount, total } = getUnplayedPool(playlistName, tracks);
         
-        // Barajar únicamente las pendientes
-        const shuffled = [...unplayed].sort(() => Math.random() - 0.5);
+        // Barajado Fisher-Yates con separación de artista para máxima variedad
+        const shuffled = smartDeclusterArtists(fisherYatesShuffle(unplayed));
         playbackMode = 'playlist_shuffle';
         activePlaylistQueue = shuffled;
         currentQueueIndex = 0;
@@ -2026,8 +2077,8 @@ function formatTime(seconds) {
         const poolKey = 'search_' + normalizeText(queryLabel);
         const { unplayed, playedCount, total } = getUnplayedPool(poolKey, tracks);
         
-        // Barajar únicamente las pendientes
-        const shuffled = [...unplayed].sort(() => Math.random() - 0.5);
+        // Barajado Fisher-Yates con separación de artista
+        const shuffled = smartDeclusterArtists(fisherYatesShuffle(unplayed));
         playbackMode = 'search_shuffle';
         activePlaylistQueue = shuffled;
         currentQueueIndex = 0;
@@ -2064,7 +2115,7 @@ function formatTime(seconds) {
             if (allTracks.length === 0) return;
 
             const { unplayed, playedCount, total } = getUnplayedPool('global_party', allTracks);
-            const shuffled = [...unplayed].sort(() => Math.random() - 0.5);
+            const shuffled = smartDeclusterArtists(fisherYatesShuffle(unplayed));
             playbackMode = 'party_dj';
             activePlaylistQueue = shuffled;
             currentQueueIndex = 0;

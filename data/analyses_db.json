@@ -56357,31 +56357,31 @@
     "releaseDate": "2000-09-26",
     "composers": "Alejandro Sanz",
     "label": "WEA Latina",
-    "genre": "Pop latino / Balada romántica / Flamenco pop",
-    "synopsis": "\"Cuando nadie me ve\" es una obra maestra de la balada pop contemporánea, producida por Emanuelle Ruffinengo junto al propio Alejandro Sanz. La tesis sónica de la obra radica en la fusión minimalista inicial que escala hacia una instrumentación orgánica y sinfónica, reflejando la dualidad entre la exposición pública del artista y su intimidad más vulnerable. Su trascendencia reside en la honestidad brutal de su lírica y en la sofisticación armónica que redefinió los estándares del pop en español a comienzos del milenio.",
+    "genre": "Pop Latino / Balada",
+    "synopsis": "Obra maestra de la introspección pop, caracterizada por una producción minimalista que prioriza la vulnerabilidad vocal sobre la instrumentación. La canción redefine la balada española mediante un uso magistral de la dinámica, donde el silencio y la pausa actúan como elementos estructurales, consolidando a Sanz como un letrista de profundidad psicológica inusual en el mainstream.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La producción de Emanuelle Ruffinengo se caracteriza por una mezcla impecable donde predominan las guitarras acústicas con cuerdas de nailon, un piano de cola con una reverberación sutil que aporta profundidad espacial, y sutiles arreglos de cuerdas grabados en Londres que aportan un carácter cinematográfico. En el plano técnico, la voz principal de Alejandro Sanz fue registrada con un micrófono de condensador de alta gama (posiblemente un Neumann U87), realzando su timbre rasgado y cercano, con una compresión paralela moderada que preserva la dinámica natural de su interpretación. El bajo eléctrico mantiene frecuencias graves redondas pero contenidas, permitiendo que la voz y las guitarras ocupuen el rango medio-alto sin enmascaramiento."
+        "text": "Producida por Emanuele Ruffinengo, la canción destaca por una base de piano acústico con una reverberación sutil que crea un espacio íntimo. La instrumentación se expande orgánicamente con cuerdas que aportan una textura cinematográfica sin saturar el espectro. La voz de Sanz se grabó con una técnica de proximidad (close-miking) que captura cada matiz de su respiración y quiebres vocales, enfatizando la honestidad emocional. El rango dinámico es amplio, permitiendo que el clímax instrumental no opaque la fragilidad del registro medio."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "La temática central gira en torno a la máscara social frente a la verdad desmedida que solo emerge en la más estricta intimidad. Versos como 'Y nadie sabe qué es lo que pienso / Qué es lo que busco, qué es lo que pierdo' exponen la alienación de la fama y la necesidad de despojarse de los artificios. Sanz utiliza metáforas cotidianas pero de profundo calado psicológico, donde el concepto de la vulnerabilidad se convierte en un acto de valentía. La estructura métrica, de versos libres con rimas consonantes y asonantes irregulares, aporta una cadencia conversacional que simula una confesión en primera persona."
+        "text": "La letra es un tratado sobre la dualidad entre la máscara pública y el 'yo' privado. Versos como 'Cuando nadie me ve, puedo ser o no ser' aluden directamente al existencialismo. El uso de metáforas sobre la invisibilidad y la libertad de ser imperfecto ('puedo ser un ladrón, puedo ser un santo') desmantela la presión de la fama. La estructura lírica es circular, reforzando la idea de que el refugio del individuo es su propia soledad, un espacio donde las convenciones sociales se disuelven."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "El videoclip oficial, dirigido con una estética cinematográfica y sobria, juega con la dualidad de la luz y la sombra, los espacios abiertos frente al encierro emocional. La dirección de fotografía prioriza los tonos sepia y fríos para contraponer la calidez de la interpretación vocal de Sanz. A través de planos detalle y secuencias pausadas, el lenguaje visual acompaña la narrativa de introspección, mostrando al artista tanto en su faceta pública como en momentos de aislamiento reflexivo, reforzando el mensaje central de la canción."
+        "text": "El videoclip oficial utiliza una estética sobria y desaturada que complementa la melancolía de la composición. La narrativa visual se centra en planos cerrados de Alejandro Sanz, evitando distracciones externas para centrar la atención en la interpretación. El uso de sombras y luces tenues refuerza el concepto de 'cuando nadie me ve', sugiriendo que la verdadera identidad solo emerge en la penumbra, lejos del escrutinio mediático."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "Lanzada como uno de los sencillos principales del álbum 'El alma al aire', la canción contribuyó de manera determinante a romper récords de ventas en España y América Latina, superando el millón de copias en sus primeras semanas. Se convirtió instantáneamente en un himno generacional y en una de las composiciones más versionadas del repertorio de Sanz. Además, su calado lírico ha inspirado a múltiples artistas de diversos géneros, consolidando a Alejandro Sanz no solo como un fenómeno comercial, sino como un autor esencial de la poesía cantada en castellano."
+        "text": "Considerada una de las canciones más emblemáticas de la discografía de Sanz, se convirtió en un himno de la autenticidad. Ha sido versionada por artistas de diversos géneros, incluyendo una notable interpretación de Niña Pastori. Su éxito no solo fue comercial, alcanzando los primeros puestos en las listas de radio en España y Latinoamérica, sino que elevó el estándar de composición para baladistas en el nuevo milenio, siendo un referente constante en la enseñanza de composición pop en español."
       }
     ],
-    "_aiModel": "gemini-3.5-flash-lite"
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "La Oreja de Van Gogh - Cuídate": {
     "title": "Cuídate",
@@ -80280,62 +80280,36 @@
     "title": "Talk to Me - Full Vocal Mix",
     "artist": "Head Horny's, Dj Miguel Serna, Eva Marti",
     "year": "2010",
-    "album": "Talk To Me",
-    "synopsis": "\"Talk to Me - Full Vocal Mix\" (2010) de Head Horny's, Dj Miguel Serna, Eva Marti es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "originalAlbum": "Talk To Me",
+    "releaseYear": "2010",
+    "releaseDate": "2010-06-21",
+    "composers": "Miguel Serna, Eva Marti, Head Horny's",
+    "label": "Bit Music",
+    "genre": "Dance / Makina / Eurodance",
+    "synopsis": "Talk to Me es un estandarte del sonido dance español de finales de la década de los 2000, caracterizado por una producción de alta energía y una línea de bajo contundente. La pieza destaca por la potente interpretación vocal de Eva Marti, que se entrelaza con sintetizadores melódicos y una estructura rítmica diseñada para el clubbing, consolidándose como un himno del género en la escena nacional.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de Head Horny's, Dj Miguel Serna, Eva Marti",
-        "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de Head Horny's, Dj Miguel Serna, Eva Marti, \"Talk to Me - Full Vocal Mix\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
-        "points": [
-          {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
-          }
-        ]
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción se apoya en un bombo (kick) de alta compresión con un ataque rápido, típico del sonido Makina/Dance de la época. Las capas de sintetizadores (leads) presentan un diseño sonoro brillante con un uso intensivo de sidechain para crear el efecto de bombeo. La voz de Eva Marti está procesada con una ecualización que resalta las frecuencias medias-altas, con una reverberación tipo 'hall' que aporta profundidad sin perder la presencia necesaria en la mezcla final."
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
-        "icon": "fa-drum",
-        "text": "La producción de \"Talk to Me - Full Vocal Mix\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
-        "points": [
-          {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
-          },
-          {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
-          },
-          {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
-          }
-        ]
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra explora la necesidad de comunicación y conexión emocional en un contexto de pista de baile. Versos como 'Talk to me, tell me what you feel' actúan como un gancho emocional directo. La lírica es sencilla pero efectiva, centrada en la urgencia del deseo y la interacción, utilizando la repetición como herramienta para generar un estado de trance hipnótico en el oyente."
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
-        "icon": "fa-quote-left",
-        "text": "Líricamente, \"Talk to Me - Full Vocal Mix\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
-        "points": [
-          {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de Head Horny's, Dj Miguel Serna, Eva Marti aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
-          }
-        ]
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "La estética del proyecto se alinea con la iconografía del dance europeo de la época: una puesta en escena centrada en la energía de los intérpretes y el uso de luces estroboscópicas. La portada y la identidad visual refuerzan la imagen de Dj Miguel Serna y Eva Marti como figuras centrales de la noche, utilizando una paleta de colores vibrantes que evocan la intensidad de las discotecas de la época."
       },
       {
-        "title": "El Impacto Cultural & Legado",
-        "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Talk to Me - Full Vocal Mix\" se mantiene como un himno atemporal dentro de la discografía de Head Horny's, Dj Miguel Serna, Eva Marti y una de las composiciones más celebradas de su generación.",
-        "points": [
-          {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Head Horny's, Dj Miguel Serna, Eva Marti."
-          }
-        ]
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "La canción se convirtió en un éxito rotundo en las listas de éxitos de música dance en España, siendo un elemento recurrente en las sesiones de radio y discotecas de todo el país. Su impacto radica en la combinación de la voz icónica de Eva Marti con la producción técnica de Head Horny's, logrando que el tema trascendiera su lanzamiento original para convertirse en un clásico de culto dentro de la escena dance española."
       }
-    ]
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "Fragma, Maria Rubia - Everytime You Need Me": {
     "title": "Everytime You Need Me",
@@ -80504,126 +80478,74 @@
     "_aiModel": "gemini-3.5-flash-lite"
   },
   "Milk Inc. - Losing Love - Radio Edit": {
-    "title": "Losing Love",
+    "title": "Losing Love - Radio Edit",
     "artist": "Milk Inc.",
     "year": "2005",
-    "album": "Land Of The Living",
-    "synopsis": "\"Losing Love\" (2005) de Milk Inc. es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "originalAlbum": "Land Of The Living",
+    "releaseYear": "2002",
+    "releaseDate": "2002-01-01",
+    "composers": "Regi Penxten, Filip Vandueren",
+    "label": "Antler-Subway",
+    "genre": "Eurodance / Trance",
+    "synopsis": "Losing Love representa la cúspide del sonido Euro-Trance belga de principios de los 2000, caracterizado por una producción de alta fidelidad centrada en sintetizadores arpegiados y una línea de bajo contundente. La pista destaca por la ejecución vocal melancólica de Linda Mertens, que contrasta con la energía rítmica del arreglo, consolidando el sello distintivo de Milk Inc. en la escena electrónica europea.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de Milk Inc.",
-        "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de Milk Inc., \"Losing Love\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
-        "points": [
-          {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
-          }
-        ]
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción se basa en un tempo de 140 BPM, utilizando sintetizadores hardware clásicos de la época como el Access Virus para los leads de sierra. La estructura sigue el canon del dance comercial: intro percusiva, versos atmosféricos con pads envolventes y un drop de alta energía. La mezcla destaca por una compresión side-chain agresiva en los bajos y una ecualización que prioriza la claridad de las frecuencias medias-altas para resaltar la voz de Linda Mertens, procesada con sutiles efectos de reverb y delay para crear profundidad espacial."
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
-        "icon": "fa-drum",
-        "text": "La producción de \"Losing Love\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
-        "points": [
-          {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
-          },
-          {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
-          },
-          {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
-          }
-        ]
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra explora la vulnerabilidad emocional y el miedo a la pérdida afectiva. Versos como 'I'm losing love, I'm losing you' encapsulan la temática central de la desconexión sentimental. El uso de un lenguaje directo y repetitivo es una técnica deliberada para facilitar la memorabilidad en pistas de baile, donde la voz funciona tanto como instrumento melódico como vehículo narrativo de una ruptura inminente."
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
-        "icon": "fa-quote-left",
-        "text": "Líricamente, \"Losing Love\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
-        "points": [
-          {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de Milk Inc. aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
-          }
-        ]
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial mantiene la estética minimalista y futurista característica de los vídeos de Milk Inc. en esa era. Se utiliza una paleta de colores fríos y una iluminación de alto contraste que subraya la frialdad emocional de la letra. La puesta en escena alterna entre planos de la vocalista en entornos urbanos desolados y secuencias de estudio, reforzando la sensación de aislamiento y soledad que propone la canción."
       },
       {
-        "title": "El Impacto Cultural & Legado",
-        "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Losing Love\" se mantiene como un himno atemporal dentro de la discografía de Milk Inc. y una de las composiciones más celebradas de su generación.",
-        "points": [
-          {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Milk Inc.."
-          }
-        ]
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "La canción fue un éxito masivo en las listas de éxitos de Bélgica y los Países Bajos, consolidando a Milk Inc. como un referente del género. Es considerada una pieza fundamental en la transición del sonido Eurodance de los 90 hacia el Trance comercial más pulido. Su longevidad se debe a su inclusión constante en recopilatorios de música electrónica y su estatus como himno en festivales de dance europeos."
       }
-    ]
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "Milk Inc. - Walk on Water - H2O Radio Mix": {
     "title": "Walk on Water - H2O Radio Mix",
     "artist": "Milk Inc.",
     "year": "2005",
-    "album": "Land Of The Living",
-    "synopsis": "\"Walk on Water - H2O Radio Mix\" (2005) de Milk Inc. es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "originalAlbum": "Land Of The Living",
+    "releaseYear": "2000",
+    "releaseDate": "2000-05-22",
+    "composers": "Regi Penxten, Filip Vandueren",
+    "label": "Antler-Subway",
+    "genre": "Eurodance / Trance",
+    "synopsis": "Walk on Water es un pilar del Euro-Trance belga que fusiona sintetizadores melódicos de alta energía con una estructura vocal pop accesible. La producción destaca por su uso de arpegios de sintetizador envolventes y una compresión dinámica que define el sonido 'Antler-Subway' de finales de los 90, consolidando a Milk Inc. como referentes del género en Europa.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de Milk Inc.",
-        "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de Milk Inc., \"Walk on Water - H2O Radio Mix\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
-        "points": [
-          {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
-          }
-        ]
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La pista se construye sobre un tempo de 140 BPM, característico del trance comercial de la época. La instrumentación se basa en un sintetizador lead tipo 'SuperSaw' procesado con un delay de corchea con puntillo que genera profundidad espacial. La voz de Linda Mertens está tratada con una ecualización brillante en los 5kHz para resaltar la presencia, mientras que el bombo (kick) presenta una pegada contundente con sidechaining agresivo sobre los pads para crear el efecto de bombeo rítmico esencial en el género."
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
-        "icon": "fa-drum",
-        "text": "La producción de \"Walk on Water - H2O Radio Mix\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
-        "points": [
-          {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
-          },
-          {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
-          },
-          {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
-          }
-        ]
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra explora la superación personal y la fe en una relación, utilizando la metáfora de 'caminar sobre el agua' como símbolo de imposibilidad vencida. Versos como 'I can walk on water, I can fly' reflejan un estado de euforia inducido por el amor. El lenguaje es sencillo pero altamente evocador, diseñado para ser coreado en festivales, donde la repetición del estribillo actúa como un mantra emocional que refuerza la catarsis del oyente."
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
-        "icon": "fa-quote-left",
-        "text": "Líricamente, \"Walk on Water - H2O Radio Mix\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
-        "points": [
-          {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de Milk Inc. aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
-          }
-        ]
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial utiliza una estética futurista y minimalista típica del cambio de milenio. Se apoya en el uso de fondos de alto contraste y efectos de post-producción digital que juegan con la luz y el movimiento de Linda Mertens. La narrativa visual se centra en la presencia escénica de la vocalista, utilizando cortes rápidos que sincronizan con los cambios de intensidad en la percusión, reforzando la naturaleza energética de la canción."
       },
       {
-        "title": "El Impacto Cultural & Legado",
-        "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Walk on Water - H2O Radio Mix\" se mantiene como un himno atemporal dentro de la discografía de Milk Inc. y una de las composiciones más celebradas de su generación.",
-        "points": [
-          {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Milk Inc.."
-          }
-        ]
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "La canción se convirtió en uno de los mayores éxitos de Milk Inc., alcanzando el top 10 en las listas belgas y ganando tracción internacional en clubes de toda Europa. Es considerada un himno del género dance de los 2000 y ha sido objeto de múltiples remezclas a lo largo de las décadas, demostrando una longevidad inusual para un track de Eurodance, manteniéndose como un elemento básico en las listas de reproducción de música electrónica retro."
       }
-    ]
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "Milk Inc. - Land of the Living": {
     "title": "Land of the Living",
@@ -80757,65 +80679,39 @@
     "_aiModel": "gemini-3.5-flash-lite"
   },
   "Milk Inc. - Promise - Radio Edit": {
-    "title": "Promise",
+    "title": "Promise - Radio Edit",
     "artist": "Milk Inc.",
     "year": "1999",
-    "album": "Apocalypse Cow (The Millenium Edition)",
-    "synopsis": "\"Promise\" (1999) de Milk Inc. es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "originalAlbum": "Apocalypse Cow",
+    "releaseYear": "1999",
+    "releaseDate": "1999-05-17",
+    "composers": "Regi Penxten, Filip Vandueren",
+    "label": "Antler-Subway",
+    "genre": "Eurodance / Trance",
+    "synopsis": "Promise es un pilar del Eurodance belga de finales de los 90, caracterizado por una producción de alta energía que fusiona sintetizadores trance melódicos con una base rítmica de 138 BPM. La pista destaca por la ejecución vocal de Ann Vervoort, cuya entrega emocional se integra en una estructura de capas densas, definiendo el sonido comercial de la época con una ingeniería de sonido pulida y accesible.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de Milk Inc.",
-        "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de Milk Inc., \"Promise\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
-        "points": [
-          {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
-          }
-        ]
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción se basa en un diseño de sonido centrado en arpegios de sintetizador tipo 'SuperSaw' y un bajo contundente (side-chained) que dicta el pulso del género. La mezcla equilibra una voz principal procesada con sutiles efectos de reverb y delay, superpuesta sobre una percusión programada con cajas de ritmos clásicas de la época. El arreglo sigue una estructura progresiva típica del trance, con un 'build-up' que culmina en un estribillo eufórico, demostrando una maestría en la gestión de frecuencias para asegurar la claridad en sistemas de sonido de discoteca."
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
-        "icon": "fa-drum",
-        "text": "La producción de \"Promise\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
-        "points": [
-          {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
-          },
-          {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
-          },
-          {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
-          }
-        ]
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra explora la vulnerabilidad y la promesa de lealtad en una relación sentimental. Versos como 'I'll be there for you, I'll be your light' utilizan metáforas de guía y apoyo incondicional. El lenguaje es directo y emocional, diseñado para conectar con la audiencia en un contexto de pista de baile, donde la repetición de frases clave funciona como un ancla emocional que refuerza el mensaje de compromiso frente a la incertidumbre."
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
-        "icon": "fa-quote-left",
-        "text": "Líricamente, \"Promise\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
-        "points": [
-          {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de Milk Inc. aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
-          }
-        ]
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial refleja la estética futurista y minimalista de finales de los 90, utilizando una paleta de colores fríos y efectos visuales digitales que eran vanguardia en aquel momento. La puesta en escena se centra en la carismática presencia de Ann Vervoort, alternando planos de performance con secuencias abstractas que refuerzan la atmósfera etérea y tecnológica de la canción, consolidando la identidad visual de Milk Inc. como un proyecto de música electrónica de alta gama."
       },
       {
-        "title": "El Impacto Cultural & Legado",
-        "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Promise\" se mantiene como un himno atemporal dentro de la discografía de Milk Inc. y una de las composiciones más celebradas de su generación.",
-        "points": [
-          {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Milk Inc.."
-          }
-        ]
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "Promise se convirtió en uno de los mayores éxitos internacionales de Milk Inc., alcanzando posiciones destacadas en las listas de éxitos europeas y consolidando al grupo como un referente del sonido 'Antler-Subway'. Su éxito fue fundamental para la expansión del trance comercial fuera de las fronteras belgas, siendo una pieza recurrente en compilaciones de música dance de la época y un elemento básico en la cultura de clubes de finales del milenio."
       }
-    ]
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "Head Horny's - Do U Believe In You (Spanish Mix)": {
     "title": "Do U Believe In You (Spanish Mix)",
@@ -80856,62 +80752,36 @@
     "title": "Groove 1.0",
     "artist": "Abel The Kid, Raul Ortiz",
     "year": "2002",
-    "album": "Groove 2.0 the Music",
-    "synopsis": "\"Groove 1.0\" (2002) de Abel The Kid, Raul Ortiz es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "originalAlbum": "Groove 2.0 the Music",
+    "releaseYear": "2002",
+    "releaseDate": "2002-01-01",
+    "composers": "Abel Ramos, Raul Ortiz",
+    "label": "Subliminal Records",
+    "genre": "House / Tech House",
+    "synopsis": "Groove 1.0 representa un pilar fundamental en la escena electrónica española de principios de los 2000, consolidando el sonido 'Groove' característico de la dupla. La pieza destaca por su percusión orgánica, líneas de bajo profundas y una estructura diseñada para la pista de baile, marcando la transición hacia un sonido house más técnico y sofisticado que definió la carrera de ambos productores.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de Abel The Kid, Raul Ortiz",
-        "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de Abel The Kid, Raul Ortiz, \"Groove 1.0\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
-        "points": [
-          {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
-          }
-        ]
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción se basa en un diseño sonoro minimalista pero altamente efectivo, centrado en un kick drum con gran pegada y un uso magistral de la compresión sidechain. Los elementos percusivos, con influencias tribales, se entrelazan con sintetizadores analógicos que aportan texturas cálidas. La mezcla prioriza la claridad en el rango de frecuencias medias-bajas, permitiendo que el groove principal mantenga una energía constante y envolvente durante toda la pieza."
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
-        "icon": "fa-drum",
-        "text": "La producción de \"Groove 1.0\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
-        "points": [
-          {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
-          },
-          {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
-          },
-          {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
-          }
-        ]
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "Al ser una pieza predominantemente instrumental, el 'lenguaje' de la canción reside en su narrativa rítmica. La ausencia de lírica vocal convencional permite que los samples de voz procesados funcionen como un instrumento más, enfatizando la atmósfera de club. El enfoque se centra en la repetición hipnótica y la evolución de los filtros, creando una progresión emocional que sustituye a la narrativa verbal tradicional."
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
-        "icon": "fa-quote-left",
-        "text": "Líricamente, \"Groove 1.0\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
-        "points": [
-          {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de Abel The Kid, Raul Ortiz aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
-          }
-        ]
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "La estética asociada a este lanzamiento refleja la identidad visual de la escena clubbing de principios de milenio: minimalismo, tipografías industriales y una paleta de colores sobria. La portada del álbum 'Groove 2.0 the Music' actúa como el principal referente visual, utilizando elementos gráficos que evocan la tecnología y la vanguardia electrónica, alineándose con el carácter futurista y técnico de la producción sonora."
       },
       {
-        "title": "El Impacto Cultural & Legado",
-        "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Groove 1.0\" se mantiene como un himno atemporal dentro de la discografía de Abel The Kid, Raul Ortiz y una de las composiciones más celebradas de su generación.",
-        "points": [
-          {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Abel The Kid, Raul Ortiz."
-          }
-        ]
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "Esta obra fue instrumental para posicionar a Abel The Kid y Raul Ortiz en el circuito internacional, siendo pinchada por figuras de renombre mundial en la escena house. Su inclusión en el sello Subliminal Records, liderado por Erick Morillo, validó la calidad de la producción española a nivel global, convirtiéndose en un himno de culto en las discotecas de Ibiza y Madrid durante la época dorada del tech-house."
       }
-    ]
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "Weekend, Salva Albiach - In the Rhythm of the Night": {
     "title": "In the Rhythm of the Night",
@@ -80975,65 +80845,39 @@
     ]
   },
   "Weekend, Salva Albiach - In the Rhythm of the Night - Original Mix": {
-    "title": "In the Rhythm of the Night",
+    "title": "In the Rhythm of the Night - Original Mix",
     "artist": "Weekend, Salva Albiach",
     "year": "2010",
-    "album": "In The Rhythm Of The Night",
-    "synopsis": "\"In the Rhythm of the Night\" (2010) de Weekend, Salva Albiach es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "originalAlbum": "In The Rhythm Of The Night",
+    "releaseYear": "2010",
+    "releaseDate": "2010-06-21",
+    "composers": "Salva Albiach",
+    "label": "Blanco y Negro Music",
+    "genre": "Eurodance / Dance-Pop",
+    "synopsis": "Esta pieza representa un ejercicio de nostalgia sonora que reinterpreta los códigos del Eurodance de los 90 bajo una óptica de producción contemporánea. Con una estructura rítmica de 128 BPM, la canción destaca por su línea de bajo sintética y una progresión armónica diseñada para la pista de baile, consolidándose como un exponente del sonido dance español de principios de la década de 2010.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de Weekend, Salva Albiach",
-        "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de Weekend, Salva Albiach, \"In the Rhythm of the Night\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
-        "points": [
-          {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
-          }
-        ]
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción se fundamenta en un diseño sonoro centrado en sintetizadores de onda cuadrada y diente de sierra, típicos del género. La percusión utiliza samples de caja con una fuerte compresión side-chain que genera el efecto de 'bombeo' característico. La mezcla prioriza el rango de los 100-200 Hz para el bombo, mientras que las voces presentan un procesamiento con reverb de tipo 'hall' y un ligero delay para expandir la imagen estéreo en el estribillo."
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
-        "icon": "fa-drum",
-        "text": "La producción de \"In the Rhythm of the Night\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
-        "points": [
-          {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
-          },
-          {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
-          },
-          {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
-          }
-        ]
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La lírica sigue la tradición del hedonismo nocturno, centrada en la liberación a través del baile. Versos como 'In the rhythm of the night' actúan como un mantra rítmico. El lenguaje es directo y funcional, diseñado para ser fácilmente coreable en entornos de club, utilizando la noche como metáfora de un espacio atemporal donde las preocupaciones cotidianas se disuelven bajo el pulso constante de la música electrónica."
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
-        "icon": "fa-quote-left",
-        "text": "Líricamente, \"In the Rhythm of the Night\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
-        "points": [
-          {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de Weekend, Salva Albiach aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
-          }
-        ]
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "La estética visual asociada a este lanzamiento se alinea con la iconografía del dance comercial de la época, utilizando una paleta de colores saturados y contrastes lumínicos que evocan la atmósfera de una discoteca. La portada del sencillo refuerza esta idea con elementos gráficos minimalistas y tipografías de corte futurista, buscando capturar la esencia de la energía nocturna sin recurrir a una narrativa compleja."
       },
       {
-        "title": "El Impacto Cultural & Legado",
-        "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"In the Rhythm of the Night\" se mantiene como un himno atemporal dentro de la discografía de Weekend, Salva Albiach y una de las composiciones más celebradas de su generación.",
-        "points": [
-          {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Weekend, Salva Albiach."
-          }
-        ]
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "La canción fue un elemento recurrente en las listas de éxitos de música dance en España durante el verano de 2010. Su inclusión en recopilatorios emblemáticos de la época, como 'Disco Estrella', validó su relevancia en el circuito comercial. Es un ejemplo de cómo los productores independientes españoles lograron mantener vivo el legado del Eurodance adaptándolo a los estándares de producción de la era digital."
       }
-    ]
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "Juanjo Martin, Rebeka Brown - Millenium": {
     "title": "Millenium",
@@ -81071,65 +80915,39 @@
     "_aiModel": "gemini-3.5-flash-lite"
   },
   "Juanjo Martin, Rebeka Brown - Millenium (feat. Rebeka Brown)": {
-    "title": "Millenium",
+    "title": "Millenium (feat. Rebeka Brown)",
     "artist": "Juanjo Martin, Rebeka Brown",
     "year": "2011",
-    "album": "Star 69 PresentsTake Me Higher",
-    "synopsis": "\"Millenium\" (2011) de Juanjo Martin, Rebeka Brown es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "originalAlbum": "Millenium",
+    "releaseYear": "2011",
+    "releaseDate": "2011-05-30",
+    "composers": "Juanjo Martin, Rebeka Brown",
+    "label": "Subliminal Records",
+    "genre": "Progressive House / Electro House",
+    "synopsis": "Millenium es un estandarte del sonido house ibérico de principios de la década de 2010, caracterizado por una producción de alta energía orientada a clubes de gran formato. La pista destaca por la potencia vocal de Rebeka Brown, que se entrelaza con una instrumentación sintética agresiva y una estructura rítmica diseñada para maximizar el impacto en pistas de baile, consolidando la colaboración entre el productor y la vocalista como un referente del género.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de Juanjo Martin, Rebeka Brown",
-        "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de Juanjo Martin, Rebeka Brown, \"Millenium\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
-        "points": [
-          {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
-          }
-        ]
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción se basa en un diseño de sonido centrado en el 'sidechain' agresivo sobre los sintetizadores, permitiendo que el bombo (kick) de 4/4 domine el espectro de frecuencias bajas. Se utilizan sintetizadores tipo lead con alta presencia en medios-agudos y una reverberación expansiva en las voces para crear una sensación de inmensidad. La mezcla prioriza la claridad de la voz de Rebeka Brown, aplicando compresión multibanda para mantener su presencia constante sobre el denso arreglo de sintetizadores y percusiones electrónicas."
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
-        "icon": "fa-drum",
-        "text": "La producción de \"Millenium\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
-        "points": [
-          {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
-          },
-          {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
-          },
-          {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
-          }
-        ]
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La lírica de 'Millenium' aborda la temática de la trascendencia y la conexión emocional a través de la música en un contexto de fiesta. La letra es minimalista y repetitiva, diseñada para ser coreada en festivales. Versos como 'We are the ones, we are the light' actúan como un mantra de empoderamiento colectivo. El uso del lenguaje es directo, buscando una respuesta visceral del oyente, donde la voz no solo transmite un mensaje, sino que funciona como un instrumento melódico más dentro de la estructura del track."
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
-        "icon": "fa-quote-left",
-        "text": "Líricamente, \"Millenium\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
-        "points": [
-          {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de Juanjo Martin, Rebeka Brown aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
-          }
-        ]
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial refuerza la estética de la cultura clubbing de la época, utilizando una paleta de colores vibrantes y efectos de iluminación estroboscópica que sincronizan con los picos de energía de la canción. La narrativa visual se centra en la figura de Rebeka Brown como una diva de la música electrónica, rodeada de una atmósfera de sofisticación y energía nocturna, utilizando planos rápidos que mantienen el dinamismo del montaje al ritmo de la percusión."
       },
       {
-        "title": "El Impacto Cultural & Legado",
-        "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Millenium\" se mantiene como un himno atemporal dentro de la discografía de Juanjo Martin, Rebeka Brown y una de las composiciones más celebradas de su generación.",
-        "points": [
-          {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Juanjo Martin, Rebeka Brown."
-          }
-        ]
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "El lanzamiento a través de Subliminal Records, sello de Erick Morillo, otorgó a la canción una proyección internacional significativa, convirtiéndose en un himno en las islas baleares y en clubes de todo el mundo. Fue un punto de inflexión en la carrera de Juanjo Martin, consolidándolo como productor de referencia en la escena EDM española. La canción es recordada como uno de los temas más emblemáticos de la colaboración entre Martin y Brown, marcando una era dorada del house vocal en España."
       }
-    ]
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "Lasgo - Alone": {
     "title": "Alone",
@@ -86106,39 +85924,65 @@
     ]
   },
   "Spacio - Dancer (Spacio Mix)": {
-    "title": "Dancer (Spacio Mix)",
+    "title": "Dancer",
     "artist": "Spacio",
     "year": "2009",
-    "originalAlbum": "MDT Millenium 2000, Vol. 2",
-    "releaseYear": "2000",
-    "releaseDate": "2000-01-01",
-    "composers": "Desconocido",
-    "label": "MDT Records",
-    "genre": "Italo-Disco / Eurodance",
-    "synopsis": "\"Dancer (Spacio Mix)\" es una producción paradigmática de la música electrónica de baile de principios de los 2000, destacando por su uso intensivo de sintetizadores analógicos emulados y una potente línea de bajo secuenciada. La mezcla equilibra elementos nostálgicos del sonido Italo-Disco de los años 80 con la pegada rítmica del Eurodance contemporáneo. Su estructura sonora prioriza frecuencias medias y agudas hipercomprimidas para maximizar el impacto en pistas de baile y sistemas de sonido de club.",
+    "album": "MDT Millenium 2000, Vol. 2",
+    "synopsis": "\"Dancer\" (2009) de Spacio es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
     "sections": [
       {
-        "title": "1. Anatomía Musical y Producción de Estudio",
-        "icon": "fa-sliders",
-        "text": "La producción se cimenta sobre un patrón rítmico de cuatro por cuatro a un tempo acelerado, característico del género. Destaca el uso de cajas de ritmos clásicas tipo Roland TR-909 procesadas con compresión paralela para aportar mayor pegada al bombo. Los colchones de sintetizador (pads) proporcionan una atmósfera espacial y envolvente, mientras que los arpegios de alta frecuencia conducen la progresión armónica. La mezcla vocal emplea efectos de retardo (delay) y reverberación de placa corta para dotar de profundidad a la voz principal, manteniéndola siempre en el primer plano perceptual frente a la densa instrumentación electrónica."
+        "title": "El Origen & Trayectoria: La consagración de Spacio",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Spacio, \"Dancer\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
       },
       {
-        "title": "2. Análisis Lírico y Desglose Verso a Verso",
-        "icon": "fa-align-left",
-        "text": "La letra gira en torno a la temática clásica de la liberación nocturna a través del baile, funcionando como un himno de evasión juvenil. El uso repetitivo y rítmico de las palabras clave busca la memorización inmediata por parte del oyente, priorizando la fonética y la musicalidad de las palabras sobre la complejidad poética. Las estrofas funcionan como un mantra que incita al movimiento físico, utilizando el baile como metáfora de la libertad individual y la conexión colectiva en el entorno de la discoteca."
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Dancer\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
       },
       {
-        "title": "3. Narrativa Visual y Videoclip",
-        "icon": "fa-film",
-        "text": "Al carecer de un videoclip oficial de alta producción debido a su naturaleza underground y orientada al circuito de recopilatorios de música de baile, el análisis visual recae en la estética de su arte gráfico original. Las portadas y libretos asociados a lanzamientos como MDT Millenium utilizaban tipografías futuristas, elementos metálicos y efectos visuales generados por ordenador característicos de la estética milenial, reflejando una visión optimista y cibernética del cambio de era."
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Dancer\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Spacio aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
       },
       {
-        "title": "4. Impacto Cultural y Curiosidades",
-        "icon": "fa-award",
-        "text": "Este remix formó parte del fenómeno de recopilatorios musicales que dominaron el mercado en España y Europa a finales de los 90 y principios de los 2000. Aunque no alcanzó listas de éxitos comerciales masivas, se convirtió en una pieza de culto entre los DJ de salas medianas y seguidores del sonido Makina e Italo-Dance de la época, perdurando en la memoria colectiva de los entusiastas de la música electrónica retro."
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Dancer\" se mantiene como un himno atemporal dentro de la discografía de Spacio y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Spacio."
+          }
+        ]
       }
-    ],
-    "_aiModel": "gemini-3.5-flash-lite"
+    ]
   },
   "Nikolai - Ready to Flow": {
     "title": "Ready to Flow",
@@ -98121,5 +97965,451 @@
       }
     ],
     "_aiModel": "gemini-3.1-flash-lite"
+  },
+  "Ian van Dahl, Marsha - Castles in the Sky": {
+    "title": "Castles in the Sky",
+    "artist": "Ian van Dahl, Marsha",
+    "year": "2000",
+    "originalAlbum": "Ace",
+    "releaseYear": "2000",
+    "releaseDate": "2000-09-18",
+    "composers": "Christophe Chantzis, Erik Vanspauwen, Annemie Coenen",
+    "label": "Antler-Subway",
+    "genre": "Trance / Eurodance",
+    "synopsis": "Un pilar fundamental del trance vocal europeo de principios de los 2000, caracterizado por una producción de sintetizadores arpegiados de alta energía y una línea melódica eufórica. La pista destaca por el contraste entre la fragilidad vocal de Marsha y una base rítmica contundente, consolidándose como un himno definitorio de la era del 'uplifting trance'.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción se basa en un tempo de 138 BPM, utilizando sintetizadores hardware clásicos de la época como el Access Virus y el Roland JP-8000 para los leads tipo 'supersaw'. La estructura sigue el canon del trance: un intro percusivo, un breakdown atmosférico con pads envolventes, y un clímax donde la voz de Marsha se integra con arpegios de alta frecuencia. La mezcla prioriza el 'sidechain' en el bajo para generar el efecto de bombeo característico, mientras que las voces fueron procesadas con una compresión dinámica agresiva y una reverberación tipo 'hall' para expandir la espacialidad."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra explora el escapismo y la búsqueda de un ideal inalcanzable. 'I'm flying away, to castles in the sky' funciona como una metáfora de la libertad emocional. El verso 'You're my dream, you're my life' establece una dualidad entre la devoción romántica y la desconexión con la realidad terrenal. El uso de un lenguaje sencillo pero evocador permite que la voz actúe como un instrumento más, enfatizando la melancolía que subyace bajo la euforia del ritmo bailable."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial utiliza una estética de ciencia ficción de bajo presupuesto típica de los 2000, con una paleta de colores fríos (azules y plateados) que refuerza la temática etérea. La narrativa visual alterna entre planos de Marsha en entornos abstractos y secuencias de luces urbanas, simbolizando la transición entre el mundo físico y el plano onírico de los 'castillos en el cielo'. La edición es rítmica, sincronizando los cortes de cámara con los golpes de bombo y los cambios de acordes en el sintetizador."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "La canción alcanzó el puesto número 3 en la UK Singles Chart, convirtiéndose en un éxito masivo en las pistas de baile de toda Europa. Es considerada una de las piezas más versionadas y sampleadas del género trance. Curiosamente, el proyecto Ian van Dahl fue concebido como un colectivo de estudio, lo que permitió que la voz de Annemie Coenen (Marsha) se convirtiera en la cara icónica del grupo, definiendo el sonido comercial del trance vocal durante la primera mitad de la década."
+      }
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
+  },
+  "Spanic - Bring on the Night - Tecnotower": {
+    "title": "Bring on the Night - Tecnotower",
+    "artist": "Spanic",
+    "year": "1992",
+    "originalAlbum": "Spanic",
+    "releaseYear": "1992",
+    "releaseDate": "1992-01-01",
+    "composers": "Sergio Mauri, Ivano Spanò",
+    "label": "Tecnotower",
+    "genre": "Italo Dance / Euro House",
+    "synopsis": "Análisis exhaustivo de una producción seminal del sonido club europeo de principios de los noventa, donde convergen sintetizadores de onda de sierra, cajas de ritmos contundentes de la era Roland y una atmósfera nocturna distintiva del género Italo Dance. La obra destaca por su mezcla de texturas electrónicas densas y un groove bailable optimizado para las pistas de baile underground de la época.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción de 'Bring on the Night - Tecnotower' se cimenta sobre una base rítmica programada con cajas de ritmos clásicas como la Roland TR-909, destacando un bombo con pegada en frecuencias subgraves (60-80 Hz) y una caja brillante con compresión paralela. Los colchones de pads analógicos y los arpegios de sintetizador definen la identidad armónica, utilizando filtros resonantes de corte bajo para generar tensión antes de cada caída. Las voces, procesadas con reverbs de placas y retardos sincronizados al tempo, flotan sobre una mezcla estéreo amplia que prioriza la claridad de los medios-altos en las líneas de bajo secuenciadas."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra funciona como un himno hedonista enfocado en la liberación nocturna, la evasión de la realidad diurna y la energía visceral de la cultura de club. A través de versos directos y repetitivos diseñados para la memorización instantánea, la canción explora el simbolismo de la oscuridad como espacio de refugio y expresión personal. El estribillo actúa como un mantra liberador, utilizando juegos vocales en capas para enfatizar la urgencia y el éxtasis del momento nocturno."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Ante la ausencia de un videoclip de alta rotación televisiva, la obra se sostiene sobre la estética icónica de su portada y la identidad visual del sello Tecnotower. Los diseños gráficos de la época recurrían a tipografías futuristas, paletas de colores oscuras contrastadas con luces de neón cian y magenta, y texturas digitales primitivas que encapsulaban perfectamente el espíritu ciberespacial y underground del movimiento dance europeo de principios de los 90."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "Publicado bajo el sello independiente Tecnotower, este sencillo se convirtió en una pieza de culto dentro de las discotecas de Europa meridional, siendo pinchado por DJs pioneros de la escena clubbing. Con los años, el tema ha trascendido como un objeto de coleccionismo altamente valorado por los entusiastas del vinilo de Italo House y Euro Dance primigenio, representando la transición analógico-digital de la música de baile europea."
+      }
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
+  },
+  "Cascada, Maurice West - Everytime We Touch": {
+    "title": "Everytime We Touch",
+    "artist": "Cascada, Maurice West",
+    "year": "2021",
+    "originalAlbum": "Everytime We Touch",
+    "releaseYear": "2021",
+    "releaseDate": "2021-08-27",
+    "composers": "Yanou, Manian, Natalie Horler, Maggie Reilly, Stuart MacMackin, Peter Risavy",
+    "label": "Rude Records",
+    "genre": "Hardstyle / Hands Up",
+    "synopsis": "Esta versión de 2021 realizada por Maurice West revitaliza el clásico eurodance de Cascada transformándolo en un potente himno de hardstyle moderno. Combina melodías vocales icónicas y eufóricas con un diseño sonoro de baja frecuencia masivo, graves distorsionados característicos y una compresión agresiva orientada a festivales de música electrónica contemporánea.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción a cargo de Maurice West reinterpreta el clásico original elevando los tempos y reestructurando la mezcla hacia los cánones del hardstyle actual. El diseño de sonido destaca por bombos de hardstyle fuertemente saturados y ecualizados con una pegada prominente (punch) en la zona de los 100-150 Hz y un cuerpo sub-bajo profundo por debajo de los 60 Hz. Las voces principales, interpretadas originalmente por Natalie Horler, han sido afinadas, re-procesadas con capas de armonías en octavas y tratadas con una reverberación de placa amplia para mantener la sensación épica. Los sintetizadores principales utilizan ondas en diente de sierra (supersaw) apiladas, con compresión de cadena lateral (sidechain) muy marcada para dejar espacio al bombo en cada compás."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra original, basada en la composición homónima de Maggie Reilly, aborda la temática del éxtasis emocional y la dependencia afectiva generada por la presencia de la persona amada. Versos como 'I still hear your voice when you sleep next to me' reflejan una intimidad vulnerable contrastada inmediatamente con la energía eufórica del coro: 'Cause I get so lost inside your eyes, and every time we touch I get this feeling'. Líricamente, funciona como un puente perfecto entre la vulnerabilidad del pop romántico y la intensidad catártica de la pista de baile."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Al tratarse de una remezcla y relanzamiento oficial enfocado en la escena club y de festivales, este lanzamiento se apoyó en visualizadores para plataformas de streaming digital y visuales diseñados específicamente para actuaciones en directo (stage visuals). La estética visual combina la nostalgia de la era dorada del eurodance de mediados de los 2000 con la paleta de colores neón, láseres y la agresividad visual típica de los macrofestivales de música electrónica actuales."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "La versión original de Cascada de 2005 se convirtió en un fenómeno global y uno de los mayores exponentes del género hands-up/eurodance, alcanzando los primeros puestos en listas internacionales y el Billboard Hot 100 en Estados Unidos. La revisión de Maurice West en 2021 logró conectar el legado histórico del tema con las nuevas generaciones de oyentes y DJs de hardstyle, demostrando la atemporalidad de su melodía principal y su capacidad para trascender barreras de género musical."
+      }
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
+  },
+  "Spacio - Dancer": {
+    "title": "Dancer",
+    "artist": "Spacio",
+    "year": "2009",
+    "album": "MDT Millenium 2000, Vol. 2",
+    "synopsis": "\"Dancer\" (2009) de Spacio es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "sections": [
+      {
+        "title": "El Origen & Trayectoria: La consagración de Spacio",
+        "icon": "fa-book-open",
+        "text": "Compuesta en un momento crucial en la carrera de Spacio, \"Dancer\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
+        "points": [
+          {
+            "name": "El punto de inflexión creativo",
+            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
+          }
+        ]
+      },
+      {
+        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
+        "icon": "fa-drum",
+        "text": "La producción de \"Dancer\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
+        "points": [
+          {
+            "name": "La base rítmica y el tempo",
+            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
+          },
+          {
+            "name": "Capas de instrumentación y arreglos",
+            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
+          },
+          {
+            "name": "El gancho melódico (Hook)",
+            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
+          }
+        ]
+      },
+      {
+        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
+        "icon": "fa-quote-left",
+        "text": "Líricamente, \"Dancer\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
+        "points": [
+          {
+            "name": "La narrativa vocal",
+            "desc": "La interpretación de Spacio aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
+          }
+        ]
+      },
+      {
+        "title": "El Impacto Cultural & Legado",
+        "icon": "fa-trophy",
+        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Dancer\" se mantiene como un himno atemporal dentro de la discografía de Spacio y una de las composiciones más celebradas de su generación.",
+        "points": [
+          {
+            "name": "Permanencia en el imaginario colectivo",
+            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Spacio."
+          }
+        ]
+      }
+    ]
+  },
+  "GIGI D'AGOSTINO - L' Amour Toujours": {
+    "title": "L' Amour Toujours",
+    "artist": "GIGI D'AGOSTINO",
+    "year": "1999",
+    "originalAlbum": "L'Amour Toujours",
+    "releaseYear": "1999",
+    "releaseDate": "1999-10-01",
+    "composers": "Luigino Celestino Di Agostino, Paolo Sandrini, Diego Leoni, Carlo Alberto Conectini",
+    "label": "Media Records",
+    "genre": "Italodance / Progressive House",
+    "synopsis": "Himno generacional del italodance y la progressive house que combina una línea de bajo rotunda con sintetizadores melódicos altamente memorables y una atmósfera vocal etérea. La producción de Gigi D'Agostino redefine el sonido de los clubes europeos de finales de los noventa mediante una compresión precisa y ganchos armónicos de alcance masivo.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "El tema está construido sobre un tempo de aproximadamente 136 BPM, impulsado por un bombo contundente procesado con compresión paralela para maximizar el impacto en pista. Destaca el uso de sintetizadores analógicos y digitales típicos de la factoría Media Records, con arpegios brillantes en las altas frecuencias y una línea de bajo monofónica de onda cuadrada con filtro pasa-bajos modulado. La mezcla prioriza la claridad en el rango medio-agudo para que las melodías vocales sintetizadas y los pads envolventes coexistan sin enmascarar la pegada rítmica."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra es minimalista pero sumamente evocadora, centrada en la búsqueda universal del amor y la conexión emocional por encima de las barreras idiomáticas. El verso icónico 'I'll fly with you' (derivado de la versión en inglés, aunque el álbum original contiene temas principalmente instrumentales e híbridos) funciona como un mantra de evasión y libertad nocturna. La estructura prioriza la repetición hipnótica para inducir un estado de trance eufórico en el oyente."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El concepto visual que acompaña a la obra refuerza la estética ciberdelicada y futurista de Gigi D'Agostino, combinando secuencias de actuaciones en directo con animaciones y efectos visuales psicodélicos. La portada del álbum y la iconografía asociada utilizan el característico logotipo 'Gigi Dag' como un sello de identidad tribal que unificó a la tribu urbana de los 'tamarri' en Italia y expandió la cultura rave por toda Europa."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "'L'Amour Toujours' se convirtió en un éxito rotundo en las listas de ventas de toda Europa, alcanzando el número uno en varios países y consolidando a Gigi D'Agostino como el máximo exponente del progressive y el italodance. Con los años, la melodía principal ha trascendido la música electrónica para convertirse en un cántico universal interpretado en estadios de fútbol, festivales de múltiples géneros y adaptaciones virales globales."
+      }
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
+  },
+  "Absolom - Secret - Extended Vocal Mix": {
+    "title": "Secret - Extended Vocal Mix",
+    "artist": "Absolom",
+    "year": "1999",
+    "originalAlbum": "Secret",
+    "releaseYear": "1999",
+    "releaseDate": "1999-01-01",
+    "composers": "Christophe Chantzis, Erik Wauthy",
+    "label": "Antler-Subway",
+    "genre": "Trance / Eurodance",
+    "synopsis": "\"Secret - Extended Vocal Mix\" de Absolom representa un pilar efervescente del sonido euro-trance y dance de finales de los noventa, caracterizado por arpegios de sintetizador ácidos, una línea de bajo rotunda y una atmósfera melancólica pero altamente enérgica. La producción destaca por su cuidada mezcla de voces etéreas y contundentes beats electrónicos diseñados tanto para las pistas de baile como para la radio. Esta mezcla extendida permite un desarrollo armónico profundo, expandiendo los pasajes instrumentales y maximizando la tensión y liberación característica del género trancero de la época.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción, liderada por Christophe Chantzis, emplea un arsenal de sintetizadores hardware típicos de finales de los 90, destacando el Roland JP-8000 para los característicos leads en modo Supersaw y los bajos secuenciados mediante tecnología MIDI. El tema se estructura sobre un tempo de aproximadamente 138 BPM, con un bombo comprimido y contundente acompañado de un hi-hat abierto y brillante que marca el ritmo en los tiempos off-beat. Las voces principales, procesadas con reverbs espaciales y sutiles delays, flotan por encima de una densa capa de colchones de pads analógicos, mientras que el desglose (breakdown) central reduce la base rítmica para construir tensión mediante filtros de paso alto antes de la explosión sincopada del clímax."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra aborda la temática clásica del misterio emocional, el ocultamiento y la vulnerabilidad en las relaciones interpersonales. Utilizando un inglés directo y melódico, la voz principal transmite una urgencia casi confesional. Versos clave como 'Tell me your secret, and I'll keep it safe' reflejan el deseo de intimidad y confianza absoluta frente al vértigo de la noche. El análisis lírico revela una dualidad constante entre la euforia inducida por el ritmo frenético de la música y la contención emocional que sugieren los versos, creando un contraste dramático muy efectivo en las producciones club de la época."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Aunque no cuenta con una producción cinematográfica de presupuesto masivo, la estética visual asociada a Absolom y a este lanzamiento se nutre de la iconografía ciberpunk y futurista de finales del milenio. Las portadas de los maxisencillos y las proyecciones utilizadas en sus presentaciones en vivo combinaban tipografías metálicas, tonos oscuros con destellos fluorescentes y figuras humanas siluetas en entornos virtuales abstractos, reflejando perfectamente la alienación y la modernidad tecnológica que respiraba la música dance europea de aquel entonces."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "\"Secret\" se convirtió rápidamente en un éxito rotundo en las listas de baile de Bélgica y otros países europeos, consolidando a Absolom como uno de los proyectos más respetados del sello Antler-Subway. El formato 'Extended Vocal Mix' fue un elemento básico en las maletas de los DJs de música trance y makina durante el cambio de milenio, siendo pinchado en grandes macrodiscotecas y recopilatorios emblemáticos del género. Con los años, la canción ha mantenido un estatus de culto nostálgico entre los coleccionistas y puristas del sonido euro-trance de los 90."
+      }
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
+  },
+  "Absolom - Secret - Extended Instrumental Mix": {
+    "title": "Secret - Extended Instrumental Mix",
+    "artist": "Absolom",
+    "year": "1999",
+    "originalAlbum": "Secret",
+    "releaseYear": "1999",
+    "releaseDate": "1999-01-01",
+    "composers": "Christophe Chantzis, Erik Wauthy",
+    "label": "Antler-Subway",
+    "genre": "Trance / Eurodance",
+    "synopsis": "Análisis técnico de la mezcla instrumental extendida de 'Secret' de Absolom, destacando su producción orientada a la pista de baile de finales de los 90. La obra se sostiene sobre una sólida base rítmica de 138 BPM, secuenciadores Roland TB-303 y JP-8000, y una arquitectura armónica diseñada para maximizar la tensión y liberación en grandes recintos clubbing.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción destaca por un bombo contundente procesado con compresión multibanda pesada y sidechain hacia los sintetizadores melódicos. Utiliza superposiciones de ondas supersaw características del sintetizador Roland JP-8000, creando colchones estéreo amplios y envolventes. La mezcla prioriza los rangos de frecuencias sub-graves (alrededor de 40-60 Hz) y los agudos cristalinos (10-14 kHz) para dar brillo a los hi-hats y arpegios, dejando el rango medio libre para los leads principales sin enmascaramiento."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "Al tratarse de una versión 'Instrumental Mix', la pista carece de voz principal, lo que traslada el peso narrativo a los elementos melódicos y estructurales en lugar de los versos tradicionales. La ausencia de letras permite que los ganchos de sintetizador actúen como la voz principal, comunicando la misma urgencia emocional y atmósfera misteriosa que la versión vocal original a través de progresiones de acordes menores y modulaciones efectivas."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "A falta de un videoclip específico para la versión instrumental, la estética visual de este lanzamiento está intrínsecamente ligada al arte de la portada del maxi-singles de Absolom. Predominan los tonos oscuros, iluminación de neón típica de la cultura club de finales de los noventa, y un diseño gráfico minimalista pero de alto impacto visual que evoca el misterio y la tecnología analógica/digital de la época."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "Lanzado bajo el influyente sello belga Antler-Subway, 'Secret' se convirtió en un himno de las pistas de baile en Europa central durante el apogeo del sonido trance y progressive de 1999. Las versiones extendidas e instrumentales fueron herramientas esenciales para los DJs residentes en discotecas de referencia, permitiendo transiciones largas y mezclas armónicas avanzadas en sesiones maratonianas."
+      }
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
+  },
+  "Da Hool - Meet Her At the Love Parade": {
+    "title": "Meet Her At the Love Parade",
+    "artist": "Da Hool",
+    "year": "1997",
+    "originalAlbum": "Meet Her at the Loveparade",
+    "releaseYear": "1997",
+    "releaseDate": "1997-04-21",
+    "composers": "Frank Tomiczek, Jens Kindervater",
+    "label": "Cosmic Records",
+    "genre": "Trance / Techno",
+    "synopsis": "Un pilar fundamental del sonido rave de finales de los 90, caracterizado por su icónico riff de sintetizador ácido y una estructura minimalista pero hipnótica. La pista encapsula la energía eufórica de la cultura Love Parade, utilizando una percusión contundente y un diseño sonoro que prioriza la inmersión en la pista de baile mediante capas de sintetizadores analógicos.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción se basa en un sintetizador principal (posiblemente un Roland TB-303 o emulación similar) que ejecuta un arpegio repetitivo y punzante, procesado con una distorsión sutil y un filtro de paso bajo que se abre progresivamente. La base rítmica utiliza un bombo 'four-on-the-floor' comprimido con un sidechain agresivo para dejar espacio a los elementos melódicos. La mezcla destaca por su claridad en las frecuencias medias-altas, permitiendo que el riff principal corte a través de la densa percusión, mientras que el bajo profundo sostiene la estructura armónica con una progresión minimalista."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La lírica es extremadamente escasa, funcionando más como un elemento percusivo que como una narrativa tradicional. La frase 'Meet her at the Love Parade' actúa como un gancho mnemotécnico que vincula la canción con el evento cultural homónimo en Berlín. El uso de la voz, procesada con efectos de eco y reverberación, sirve para invitar al oyente a un espacio físico y mental específico, convirtiendo la canción en un himno de convocatoria para la comunidad electrónica."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial captura la estética cruda y energética de la escena rave de los 90. Utiliza imágenes de archivo del Love Parade, destacando la multitud, el movimiento frenético y la atmósfera de libertad colectiva. La edición es rápida, sincronizada con los golpes de percusión, y emplea filtros de color saturados que refuerzan la sensación de euforia y el carácter psicodélico inherente al género trance de la época."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "La canción se convirtió en un éxito global inesperado, alcanzando los primeros puestos en las listas de éxitos de toda Europa y consolidando a Da Hool como una figura clave del techno. Su impacto fue tal que se convirtió en el himno no oficial del Love Parade durante años. Ha sido remezclada innumerables veces, incluyendo versiones de artistas como Tiësto y Dimitri Vegas & Like Mike, demostrando su longevidad y su estatus como pieza fundamental en la historia de la música electrónica de baile."
+      }
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
+  },
+  "Fragma, Maria Rubia - Everytime You Need Me - Extendet Version": {
+    "title": "Everytime You Need Me - Extendet Version",
+    "artist": "Fragma, Maria Rubia",
+    "year": "2001",
+    "originalAlbum": "Toca",
+    "releaseYear": "2001",
+    "releaseDate": "2001-01-22",
+    "composers": "Dirk Duderstadt, Marco Duderstadt, Ramon Zenker, Maria Rubia",
+    "label": "Gang Go Music",
+    "genre": "Trance, Eurodance",
+    "synopsis": "Everytime You Need Me representa la consolidación del sonido trance vocal europeo a inicios del milenio, caracterizado por una producción pulida de alta fidelidad. La pista destaca por su línea de bajo pulsante, sintetizadores atmosféricos tipo 'supersaw' y la interpretación vocal melancólica de Maria Rubia. Es un ejemplo paradigmático de la transición del trance de club hacia el crossover comercial de radiofórmula.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción se basa en un tempo de 138 BPM, utilizando una caja de ritmos Roland TR-909 para el kick drum, procesado con compresión sidechain para crear el efecto de 'bombeo' característico. Los sintetizadores principales emplean capas de osciladores detuned para lograr una textura expansiva. La voz de Maria Rubia está tratada con una reverberación de placa (plate reverb) y un delay sutil para situarla en un espacio etéreo, mientras que el arreglo se estructura mediante una progresión armónica ascendente que culmina en un drop melódico de alta energía."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra explora la dependencia emocional y la vulnerabilidad en las relaciones. Versos como 'Everytime you need me, I'll be there' reflejan una entrega incondicional. El uso de la repetición lírica funciona como un mantra, reforzando la sensación de urgencia y devoción. El vocabulario es sencillo pero efectivo, diseñado para ser memorizado rápidamente, lo cual es un sello distintivo de la composición pop-dance de la época."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial utiliza una estética de principios de los 2000, con una paleta de colores fríos y azules que complementan la naturaleza atmosférica de la canción. La narrativa visual se centra en Maria Rubia interpretando el tema en entornos urbanos y abstractos, intercalando planos de los productores. La edición es dinámica, sincronizada con los cortes de percusión, reforzando la identidad visual del proyecto Fragma como una entidad de estudio y performance."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "El sencillo alcanzó el puesto número 3 en la UK Singles Chart, consolidando a Fragma como un fenómeno global tras el éxito de 'Toca's Miracle'. La canción es considerada un himno del trance vocal y ha sido objeto de múltiples remixes a lo largo de las décadas. Su éxito demostró que el trance podía ser un género viable para el mercado masivo, influyendo en la producción de música electrónica comercial durante toda la primera mitad de la década de 2000."
+      }
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
+  },
+  "Orion Too, Caitlin - You And Me - Extended": {
+    "title": "You And Me - Extended",
+    "artist": "Orion Too, Caitlin",
+    "year": "2023",
+    "originalAlbum": "You And Me",
+    "releaseYear": "2002",
+    "releaseDate": "2002-01-01",
+    "composers": "Patrick De Meyer, Serge Ramaekers, Dominique Sas",
+    "label": "Antler-Subway",
+    "genre": "Euro-Trance / Dance-Pop",
+    "synopsis": "You And Me es un pilar del Euro-Trance de principios de los 2000, caracterizado por una producción de alta fidelidad centrada en sintetizadores arpegiados y una línea de bajo pulsante. La voz de Caitlin aporta una calidez melódica que contrasta con la rigidez rítmica del género, consolidando un sonido que definió la era del dance europeo comercial.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción destaca por un diseño sonoro limpio, típico de la escuela belga de trance. La base rítmica utiliza un kick drum comprimido con sidechaining preciso para dejar espacio a los pads atmosféricos. La versión 'Extended' permite apreciar la progresión armónica, con un uso extensivo de sintetizadores tipo Supersaw y una estructura que prioriza el build-up hacia un drop melódico eufórico. La voz fue procesada con una ligera reverberación de sala para añadir profundidad sin perder la presencia en el espectro de frecuencias medias."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra explora la vulnerabilidad y la conexión emocional en una relación, utilizando una estructura clásica de verso-estribillo. Frases como 'I'm waiting for you' y 'You and me, we're meant to be' refuerzan la temática de la devoción romántica. El lenguaje es sencillo y directo, diseñado para ser coreado en pistas de baile, donde la repetición lírica actúa como un mantra que refuerza la catarsis emocional del oyente."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "La estética visual de la época se centraba en la imagen de la vocalista como figura central, rodeada de entornos minimalistas o futuristas propios del estilo visual de los sellos dance de los 2000. La portada del sencillo utiliza una tipografía geométrica y colores fríos, reforzando la identidad sonora del trance europeo, priorizando la modernidad tecnológica sobre la narrativa cinematográfica compleja."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "La canción se convirtió en un éxito rotundo en las listas de dance europeas, especialmente en Bélgica y los Países Bajos. Su longevidad se debe a su inclusión constante en recopilatorios de música electrónica de la década, convirtiéndose en un himno nostálgico para la generación que vivió el auge del Euro-Trance. Es considerada una pieza fundamental para entender la transición del sonido rave de los 90 hacia el pop electrónico más pulido."
+      }
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
+  },
+  "Lasgo - Alone - Extended": {
+    "title": "Alone - Extended",
+    "artist": "Lasgo",
+    "year": "2002",
+    "originalAlbum": "Some Things",
+    "releaseYear": "2001",
+    "releaseDate": "2001-04-23",
+    "composers": "Peter Luts, David Vervoort, Annemie Coenen",
+    "label": "Antler-Subway",
+    "genre": "Euro-Trance",
+    "synopsis": "Alone es un pilar fundamental del Euro-Trance de principios de los 2000, caracterizado por una producción pulida que fusiona sintetizadores melódicos de alta frecuencia con una base rítmica de 138 BPM. La obra destaca por la voz etérea de Annemie Coenen, que actúa como contrapunto emocional a la estructura técnica rígida del género, consolidando el sonido 'Belgian Trance' a nivel global.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción se basa en un diseño de sonido centrado en el 'Super Saw' característico de los sintetizadores Roland JP-8000. El arreglo utiliza una estructura de capas donde el bajo (bassline) de 16 notas proporciona el impulso cinético, mientras que los pads atmosféricos crean una profundidad espacial. La mezcla destaca por una compresión side-chain agresiva que permite que el bombo (kick) de 4/4 domine el espectro de bajas frecuencias sin opacar la claridad de las voces procesadas con reverb de placa y delay sincronizado."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La lírica explora la vulnerabilidad y la soledad post-ruptura. Versos como 'I'm alone, I'm all alone' funcionan como un mantra emocional. La estructura lírica es minimalista, diseñada para ser un gancho (hook) de pista de baile. El uso de la repetición refuerza la sensación de aislamiento, mientras que la progresión armónica menor subraya la melancolía inherente a la letra, permitiendo que el oyente conecte con la narrativa de pérdida a pesar de la energía rítmica del track."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial presenta una estética futurista y minimalista propia de la era del trance europeo. Con una paleta de colores fríos (azules y plateados), el vídeo utiliza efectos visuales de post-producción que juegan con la distorsión y la luz, reflejando la temática de la canción. La puesta en escena se centra en la figura de la vocalista, Annemie Coenen, proyectando una imagen de frialdad tecnológica que contrasta con la calidez de su interpretación vocal."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "Alone se convirtió en un éxito masivo, alcanzando el Top 10 en múltiples listas europeas y logrando una penetración significativa en el mercado estadounidense (Billboard Hot 100). Fue fundamental para la exportación del sonido dance belga y se considera un himno de la cultura clubbing de 2001-2002. Su éxito permitió a Lasgo realizar giras internacionales, estableciendo un estándar de producción para el género trance comercial de la década."
+      }
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
+  },
+  "La Luna - Here I Am - Club Mix": {
+    "title": "Here I Am - Club Mix",
+    "artist": "La Luna",
+    "year": "2021",
+    "originalAlbum": "From the Inside",
+    "releaseYear": "2000",
+    "releaseDate": "2000-01-01",
+    "composers": "Nico Janssens, Els Helewaut, Peter Decraene",
+    "label": "Antler-Subway",
+    "genre": "Trance / Eurodance",
+    "synopsis": "\"Here I Am (Club Mix)\" es un himno seminal del sonido trance y vocal eurodance de finales de los noventa y principios de los dos mil, consolidando la estética melódica contundente de la productora belga Antler-Subway. La pista destaca por su sinergia entre sintetizadores superpuestos en dientes de sierra, una línea de bajo rotunda orientada a la pista de baile y la icónica y etérea voz principal de Els Helewaut. Su producción prioriza un rango dinámico comprimido pero expansivo, optimizado para grandes sistemas de sonido de club mediante el uso de reverberaciones de placa y retardos estéreo sincronizados al tempo.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción del Club Mix se estructura sobre un tempo acelerado típico del trance comercial de la época (~138 BPM). Utiliza una caja de ritmos Roland TR-909 para los elementos percusivos principales: un bombo contundente con un perfil de ecualización tallado en los medios-bajos para dejar espacio a la línea de bajo ácido, y un charles abierto con paneo sutil. Los arpegios de sintetizador, generados probablemente en equipos hardware como el Roland JP-8000 o Access Virus, dominan el espectro medio-alto con filtros resonantes automatizados que abren el espacio armónico durante la transición hacia el clímax. La voz de Els Helewaut está procesada con afinación sutil, compresión paralela y una reverberación expansiva de tipo Hall, creando una atmósfera flotante que contrasta con la crudeza rítmica de la base."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "Líricamente, la canción explora temas de autodescubrimiento, resiliencia emocional y liberación a través de la música y la conexión nocturna. El estribillo, directo y repetitivo (\"Here I Am, lost in the rhythm again\"), funciona como un mantra eufórico diseñado para la catarsis colectiva en la pista de baile. A diferencia de las baladas complejas, la estructura de las letras es intencionalmente minimalista para potenciar la memorabilidad y la integración con las progresiones armónicas de los sintetizadores. Cada verso actúa como un ancla emocional antes de las largas caídas instrumentales características del género trance."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Al tratarse de una versión orientada específicamente a discotecas y sesiones de radio especializadas, el \"Club Mix\" se apoya en la estética visual global del proyecto de La Luna, fuertemente ligada a la cultura rave de la Europa central. Las portadas y presentaciones en directo de la época utilizaban una paleta de colores fría (azules eléctricos, púrpuras y plateados) que emulaba la atmósfera futurista de los clubes nocturnos. Los elementos visuales refuerzan la dualidad entre la vulnerabilidad de la interpretación vocal y la energía implacable de la infraestructura electrónica."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "La Luna, proyecto liderado por el productor Nico Janssens y la vocalista Els Helewaut, logró un notable éxito internacional con este sencillo, convirtiéndose en un elemento básico de los recopilatorios de música dance de la época como las series 'Dancemania' y 'Max Mix'. El \"Club Mix\" en particular se convirtió en el favorito de DJs de trance y progressive house, sonando ininterrumpidamente en discotecas de Benelux, España y el Reino Unido, y perdurando hoy en día como un clásico de culto del sonido eurotrance del año 2000."
+      }
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
   }
 }
