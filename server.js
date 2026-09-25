@@ -734,7 +734,7 @@ async function generateGeminiAnalysis(artist, title, album, year) {
 
     if (geminiKey) {
         const prompt = `Instrucciones para análisis técnico, musicológico y forense de canciones:
-Actúa como un productor musical, musicólogo e ingeniero de sonido experto. Realiza un análisis exhaustivo y técnico en profundidad de la canción "${cleanT}" de ${artist}.
+Actúa como un productor musical, musicólogo e ingeniero de sonido experto. Realiza un análisis exhaustivo y técnico en profundidad de la canción "${cleanT}" de ${artist}.${(album && album !== "Álbum Desconocido" && album !== "N/A") ? ` (Álbum confirmado del catálogo: "${album}"${(year && year !== "2000" && year !== "N/A") ? `, Año: ${year}` : ""})` : ""}
 
 IMPORTANTE - REGLA DE ORO DE METADATOS Y ÁLBUM:
 Determina con rigor enciclopédico los metadatos canónicos de su lanzamiento ORIGINAL:

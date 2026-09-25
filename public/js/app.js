@@ -3646,12 +3646,13 @@ function formatTime(seconds) {
     function populateCreditsTab(detail, song) {
         detail = detail || {};
         song = song || {};
-        const artist = detail.composers || detail.artist || song.artist || 'Artista Principal';
-        const album = detail.album || song.album || 'Álbum Desconocido';
-        const year = detail.releaseYear || detail.year || song.releaseYear || '2000';
-        const duration = song.durationFmt || detail.durationFmt || '03:30';
-        const label = detail.label || 'Sello Discográfico Principal';
-        const genre = detail.genre || 'Pop / Rock / Dance';
+        const cleanCredit = (val, fb) => (!val || val === 'null' || val === 'N/A' || val === 'undefined') ? fb : val;
+        const artist = cleanCredit(detail.composers, cleanCredit(detail.artist, cleanCredit(song.artist, 'Artista Principal')));
+        const album = cleanCredit(detail.album, cleanCredit(song.album, 'Álbum Oficial'));
+        const year = cleanCredit(detail.releaseYear, cleanCredit(detail.year, cleanCredit(song.releaseYear, 'Año Desconocido')));
+        const duration = cleanCredit(song.durationFmt, cleanCredit(detail.durationFmt, '03:30'));
+        const label = cleanCredit(detail.label, 'Sello Discográfico Principal');
+        const genre = cleanCredit(detail.genre, 'Pop / Rock / Dance');
         const isVerified = detail.geminiEnriched === true;
 
         document.getElementById('tab-credits').innerHTML = `
