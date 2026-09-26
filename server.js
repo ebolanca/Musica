@@ -2468,8 +2468,20 @@ app.post('/api/covers/save', blockInPublicMode, (req, res) => {
             }
         }
 
-        newMeta.coverUrl = effectiveCoverUrl;
-        if (album && album.trim()) {
+                newMeta.coverUrl = effectiveCoverUrl;
+
+        // Proteger el álbum de estudio original verificado:
+        // Solo actualizar el nombre del álbum si la canción NO tenía álbum previo o tenía un genérico/desconocido,
+        // o si se solicita forzarlo explícitamente con updateAlbum === true.
+        const currentAlbum = (newMeta.album || '').trim();
+        const isGenericAlbum = !currentAlbum || 
+                               currentAlbum === 'Álbum Desconocido' || 
+                               currentAlbum === 'Álbum' || 
+                               currentAlbum === 'N/A' || 
+                               currentAlbum === 'Álbum Oficial';
+
+        const { updateAlbum } = req.body;
+        if (album && album.trim() && (isGenericAlbum || updateAlbum === true)) {
             newMeta.album = album.trim();
         }
 

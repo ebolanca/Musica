@@ -643,31 +643,36 @@
     "title": "The Sign",
     "artist": "Ace of Base",
     "year": "1993",
-    "album": "Ace of Base: Singles of the 90s",
-    "synopsis": "The Sign es una obra maestra del Euro-reggae pop que fusiona una base rítmica de influencia dub con la precisión matemática del pop escandinavo. Con un tempo de 97 BPM, la pista destaca por su minimalismo estructural, un uso quirúrgico del espacio sónico y una producción vocal hiperbrillante diseñada por Denniz Pop que redefinió la radiofórmula global de mediados de los noventa.",
+    "originalAlbum": "Happy Nation",
+    "releaseYear": "1993",
+    "releaseDate": "1993-11-01",
+    "composers": "Jonas Berggren, Ulf Ekberg, Malin Berggren, Linn Berggren",
+    "label": "Mega Records",
+    "genre": "Europop, Reggae-fusion",
+    "synopsis": "The Sign represents the pinnacle of 90s Swedish pop production, blending Eurodance sensibilities with a distinct reggae-inflected rhythmic foundation. Its sonic architecture relies on a crisp, digital-forward mix, characterized by a signature synth-bass pulse and layered vocal harmonies that defined the 'Swedish sound' of the decade. The track remains a masterclass in minimalist arrangement, utilizing space and clean frequency separation to achieve global commercial dominance.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La arquitectura sónica de 'The Sign' se sostiene sobre un compás de 4/4 a 97 BPM en la tonalidad de Sol mayor / Mi menor. Basándonos en un análisis acústico deductivo de las sesiones en los estudios Cheiron, la base rítmica prescinde de baterías acústicas en favor de cajas de ritmos (probablemente muestras de Roland TR-909 y Akai S1000). El bombo (kick) presenta un corte quirúrgico en los 250 Hz para evitar el enmascaramiento, con un realce de pegada en los 60 Hz y un 'click' transitorio en los 3 kHz para cortar a través de la mezcla de radio. El bajo sintético, de timbre redondo y subgrave (deducido como un parche analógico de Roland Juno-106 o similar), está fuertemente limitado y filtrado con un paso-bajo estricto a partir de los 150 Hz. El elemento rítmico orgánico lo aporta una guitarra acústica con cuerdas de acero que ejecuta el 'skank' clásico del reggae en los contratiempos (beats 2 y 4); esta señal fue procesada con un filtro paso-alto drástico por debajo de los 300 Hz para eliminar resonancias y comprimida con un ratio rápido (estilo 1176) para maximizar el ataque. Las voces de Linn y Jenny Berggren exhiben el característico brillo de Cheiron: grabadas presumiblemente con micrófonos de condensador de diafragma grande (como el Neumann U87), muestran una ecualización con un realce tipo 'air band' por encima de los 10 kHz, compresión óptica en serie (estilo LA-2A) para un control dinámico imperceptible, y un doblaje estricto (double-tracking) en los estribillos que ensancha la imagen estéreo. Los efectos espaciales incluyen una reverberación de placas (plate) corta y brillante en las voces, combinada con un delay de corchea (1/8 note) sincronizado con el tempo en palabras clave como 'sign'."
+        "text": "La producción, liderada por Denniz Pop y Max Martin, destaca por un uso magistral de la síntesis digital y cajas de ritmos (Roland TR-909). El arreglo se basa en un groove de reggae-pop con un bajo sintetizado prominente que ocupa el espectro de 60-100Hz. Las voces están procesadas con una compresión dinámica precisa y un uso sutil de chorus y reverb de placa, permitiendo que las armonías de las hermanas Berggren se sitúen en el centro de la mezcla sin saturar las frecuencias medias-altas."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "Líricamente, la canción aborda la emancipación psicológica y la ruptura de una relación codependiente tras un momento de revelación o epifanía. En la estrofa de apertura: 'I got a new life, you would hardly recognize me, I'm so glad / How can a person like me care for you?', se plantea un cambio drástico de identidad y autoestima; el uso de 'hardly recognize me' denota una reconstrucción del ego post-traumática. El estribillo icónico: 'I saw the sign and it opened up my eyes, I saw the sign / Life is demanding without understanding', utiliza 'the sign' (el signo/la señal) como un catalizador cognitivo. La frase 'demanding without understanding' es un modismo adaptado del sueco al inglés que, aunque sintácticamente laxo, encapsula perfectamente la fatiga mental de intentar descifrar una dinámica de pareja disfuncional. En el puente: 'Under the pale moon, for so many years I've wondered who you are', se introduce una imaginería gótica y melancólica ('pale moon') que contrasta con la naturaleza rítmica optimista del tema, revelando una disonancia cognitiva donde el sujeto reconoce haber estado proyectando una identidad falsa sobre su pareja durante años."
+        "text": "La letra explora la epifanía tras una ruptura amorosa tóxica. Frases como 'I saw the sign and it opened up my eyes' funcionan como una metáfora de claridad mental. El desglose revela una narrativa de empoderamiento: el 'sign' no es una señal divina, sino el reconocimiento de la propia valía frente a una relación que 'wasn't worth the time'. El uso de un lenguaje sencillo pero directo facilita una conexión emocional universal, evitando ambigüedades líricas."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "El videoclip oficial, dirigido por Mathias Julien, es un documento estético de la transición tecnológica de 1993. Combina tomas de rendimiento de la banda con gráficos digitales primitivos generados por ordenador y superpuestos mediante inserción por croma (green screen). El concepto artístico gira en torno a la simbología mística y el abandono del pasado. Un elemento central es la presencia de un signo digital flotante que muta entre una llave, un ankh egipcio (símbolo de la vida) y una estructura similar a un espejo de mano, reforzando visualmente la idea de la autorreflexión y la liberación espiritual. La dirección de fotografía utiliza una iluminación de alto contraste (chiaroscuro) sobre los rostros de las vocalistas Jenny y Linn, alternando entre primeros planos dramáticos y planos generales coreografiados con movimientos rígidos y estilizados típicos del pop europeo de la época. La paleta de colores contrasta tonos fríos (azules y grises metalizados de fondo) con los tonos cálidos de la iluminación sobre los miembros de la banda, simbolizando el tránsito de la frialdad de la incomprensión a la calidez de la liberación personal."
+        "text": "El videoclip oficial, dirigido por Mathias Julien, utiliza una estética de estudio minimalista con fondos neutros y una iluminación de alto contraste. El simbolismo se centra en la introspección y la libertad, con los miembros de la banda interactuando en un espacio que sugiere un limbo creativo. La dirección de arte prioriza la imagen icónica de los integrantes, consolidando la identidad visual de Ace of Base como un grupo accesible pero sofisticado."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "A nivel de rendimiento comercial, 'The Sign' es uno de los sencillos más exitosos de la década de 1990. Alcanzó el puesto número 1 en el Billboard Hot 100 de EE. UU., permaneciendo allí durante seis semanas no consecutivas en 1994, y coronando la lista de fin de año de Billboard. Este éxito no fue un fenómeno aislado, sino el catalizador de la exportación masiva del pop sueco. La producción de Denniz Pop (Dag Volle) en este track sentó las bases metodológicas y estéticas del sonido del sello Cheiron Studios, el cual posteriormente daría forma a las carreras de Backstreet Boys, *NSYNC y Britney Spears bajo la tutela de su pupilo, Max Martin. Como curiosidad documentada, la estructura rítmica de la canción influyó directamente en producciones de pop anglosajón contemporáneas que buscaban replicar su 'groove' relajado pero bailable. El tema ha sido integrado en la cultura popular a través de múltiples sincronizaciones y versiones, destacando su uso satírico en series como 'South Park' y 'Los Simpson', así como su reinterpretación coral en la película 'Pitch Perfect' (2012), lo que demuestra la perennidad de su gancho melódico en el imaginario colectivo."
+        "text": "La canción alcanzó el número 1 en el Billboard Hot 100, convirtiéndose en uno de los mayores éxitos de la historia del pop sueco. Fue fundamental para la 'invasión sueca' en EE. UU. y es citada frecuentemente como una de las canciones más reconocibles de los años 90. Curiosamente, la canción fue grabada en un estudio pequeño en Gotemburgo, demostrando que la calidad de la composición y la mezcla superan a los presupuestos de producción masivos."
       }
     ],
-    "_aiModel": "gemini-3.5-flash"
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "New Kids On The Block - You Got It (The Right Stuff)": {
     "title": "You Got It (The Right Stuff)",
@@ -22449,34 +22454,34 @@
     "year": "2000",
     "originalAlbum": "Hear My Cry",
     "releaseYear": "2000",
-    "releaseDate": "2000-05-29",
-    "composers": "Sonia Clarke, Rick Mitra, Brian Dee",
+    "releaseDate": "2000-05-22",
+    "composers": "Sonia Clarke, Rick Nowels, Graham Stack",
     "label": "Serious Records",
-    "genre": "Eurodance / Trance-Pop / Club House",
-    "synopsis": "\"Sky\" de Sonique es un himno magistral del dance-pop milenario que combina una producción electrónica vibrante con la potente y conmovedora voz góspel de Sonia Clarke. Concebida bajo la dirección sonora de la época dorada del clubbing europeo, la canción fusiona sintetizadores eufóricos y ritmos contundentes con una narrativa de superación personal. Su trascendencia radica en la capacidad de elevar la pista de baile a un plano emocional profundo, consolidando a Sonique como una de las voces femeninas más icónicas de la música de baile electrónica de principios del 2000.",
+    "genre": "Trance-pop / Eurodance",
+    "synopsis": "Sky es una pieza fundamental del pop electrónico europeo de finales de los 90, caracterizada por una producción de alta fidelidad que fusiona la energía del trance con una estructura melódica pop accesible. La canción destaca por el uso de sintetizadores atmosféricos, una línea de bajo pulsante y la voz distintiva de Sonique, que aporta una profundidad emocional que trasciende el género dance convencional.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La producción de \"Sky\" destaca por una mezcla equilibrada entre la energía del trance melódico y la estructura pop radial. El tema se construye sobre un tempo cercano a los 130 BPM impulsado por un bombo de cuatro en el suelo (four-on-the-floor) con una compresión lateral (sidechain) muy limpia que deja espacio a los elementos armónicos. Los sintetizadores en forma de colchones (pads) envolventes y arpegios pulsantes definen la atmósfera espacial, mientras que la voz principal de Sonique está tratada con una compresión paralela y una reverberación de placa sutil para mantener su presencia frontal sin perder eco ambiental. Los ingenieros priorizaron un rango medio-alto brillante para garantizar su impacto en los sistemas de sonido de los clubes."
+        "text": "La producción, liderada por Graham Stack, emplea una arquitectura de capas típica del sonido trance comercial de la época. Se basa en un tempo de 130 BPM, utilizando sintetizadores analógicos y digitales (posiblemente Roland JP-8000) para crear pads envolventes. La voz de Sonique está procesada con una compresión dinámica precisa y una ligera reverberación de sala para mantener la calidez frente a la frialdad de los sintetizadores. La mezcla prioriza el bombo (kick) en el espectro de los 60-100Hz, dejando espacio en los medios para la voz y los arpegios de alta frecuencia."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "La letra aborda la liberación emocional, la superación del dolor y la búsqueda de la libertad personal tras una ruptura o periodo de oscuridad. Estrofas como \"I want to fly into the sky / So high, I can't see the world below\" utilizan la metáfora cenital de volar por encima de los problemas terrenales. El trasfondo psicológico refleja la catarsis a través del baile y la autoafirmación. Sonique emplea un fraseo con raíces en el soul y el R&B, dotando a versos repetitivos de una intensidad creciente que transforma un mensaje simple de autoayuda en un mantra espiritual y bailable."
+        "text": "La letra explora la liberación emocional y la superación personal tras una ruptura. Versos como 'I'm not afraid to cry' marcan una postura de vulnerabilidad empoderada. La metáfora del 'cielo' (Sky) funciona como un símbolo de libertad y perspectiva infinita. El uso de un lenguaje sencillo pero directo permite que la audiencia conecte con la catarsis de la intérprete, convirtiendo el dolor en una experiencia de vuelo y desapego."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "El videoclip oficial de \"Sky\" presenta a Sonique adoptando diferentes avatares y roles en escenarios futuristas y urbanos, destacando su imagen icónica con su característico peinado y una presencia magnética ante la cámara. La dirección visual utiliza paletas de colores fríos contrastados con iluminación láser y estroboscópica típica de los videoclips de música electrónica del año 2000. La narrativa visual acompaña la sensación de ingravidez y vuelo que sugiere la letra, intercalando tomas de la artista interpretando el tema con energía cinética y coreografías minimalistas que refuerzan la estética clubber."
+        "text": "El videoclip oficial presenta una estética minimalista y futurista, centrada en la presencia escénica de Sonique. La dirección utiliza una paleta de colores fríos y contrastes de luz que refuerzan la temática aérea y espacial de la canción. La puesta en escena es sobria, permitiendo que la narrativa visual se enfoque en la expresión corporal y la mirada de la artista, evitando distracciones innecesarias y manteniendo la coherencia con el sonido electrónico del track."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "\"Sky\" se convirtió en un enorme éxito comercial a nivel global tras el triunfo previo de su sencillo \"It Feels So Good\". Alcanzó el número 2 en la lista de singles del Reino Unido y lideró las listas de éxitos en varios países europeos. Su omnipresencia en las discotecas, emisoras de radio y recopilatorios de música dance de la época la convirtieron en la banda sonora de la transición al nuevo milenio. Curiosamente, consolidó a Sonique como una de las pocas discjockeys y cantantes solistas femeninas en dominar simultáneamente las listas de pop comercial y los circuitos underground de música electrónica."
+        "text": "Sky fue un éxito masivo en el Reino Unido, alcanzando el puesto número 2 en la UK Singles Chart. Consolidó a Sonique como una de las pocas artistas femeninas en dominar la escena dance-pop de principios de milenio. La canción es recordada como un himno de las pistas de baile de 2000, siendo un ejemplo perfecto de cómo la música electrónica de club pudo integrarse con éxito en la rotación de la radio comercial global."
       }
     ],
-    "_aiModel": "gemini-3.5-flash-lite"
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "Damiano David - Born With a Broken Heart": {
     "title": "Born With a Broken Heart",
@@ -28927,31 +28932,31 @@
     "releaseDate": "2000-11-13",
     "composers": "Thomas Bangalter, Guy-Manuel de Homem-Christo, Anthony Moore",
     "label": "Virgin Records",
-    "genre": "French House / Electronic Pop",
-    "synopsis": "Obra maestra fundacional del french house que fusiona la estética disco de la era dorada con un procesamiento vocal masivo a través de un vocoder Electro-Harmonix. Su producción maximiza la compresión y la saturación armónica, estableciendo un nuevo estándar para la música de baile comercial y electrónica global.",
+    "genre": "French House",
+    "synopsis": "One More Time es un hito de la música electrónica que fusiona el house clásico con una producción pop altamente procesada. Su tesis sónica se basa en el uso intensivo de Auto-Tune como instrumento creativo, una estructura de crescendo constante y un sampleo magistral que redefine la nostalgia disco para la era digital, consolidándose como un himno generacional de euforia bailable.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "El tema se construye alrededor de un sample altamente manipulado del tema 'More Spell On You' de Eddie Johns. A nivel de mezcla, destaca por un uso extremo de compresión multibanda y limitadores en el bus estéreo para lograr una densidad sónica hipercomprimida característica de la era. La voz principal está procesada con un vocoder y afinación artificial, creando esa textura robótica pero profundamente emotiva. El arreglo rítmico presenta un bombo en negras de cuatro por cuatro con una EQ muy marcada en los graves y agudos (estilo smiley face), acompañado de una línea de bajo sintética y arreglos de cuerdas y metales sampleados que aportan una calidez analógica contrapuesta a la percusión digital."
+        "text": "La producción destaca por el uso pionero del Auto-Tune aplicado a la voz de Romanthony, no para corregir afinación, sino como un sintetizador vocal. La base rítmica utiliza un sample de 'More Spell on You' de Eddie Johns, procesado con compresión side-chain agresiva. La mezcla presenta un espectro de frecuencias optimizado para clubes, con un énfasis en los medios-altos para el brillo de los sintetizadores y una pegada de bombo (kick) que domina el rango sub-grave, logrando una densidad sonora que se siente expansiva a pesar de su estructura minimalista."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "La letra encapsula la filosofía hedonista y de liberación a través de la pista de baile, un himno atemporal de optimismo y conexión humana. Verso clave: 'One more time, we're gonna celebrate, oh yeah, all right, don't stop the dancing'. La repetición insistente funciona como un mantra hipnótico, eliminando la complejidad verbal en favor de una comunicación puramente visceral y emocional, donde la voz actúa más como un sintetizador rítmico que como un vehículo narrativo tradicional."
+        "text": "La letra es una oda a la liberación a través del baile. 'One more time, we're gonna celebrate' funciona como un mantra de resiliencia. El uso de la repetición ('One more time') actúa como un ancla rítmica que elimina la barrera entre el oyente y la pista de baile. El trasfondo psicológico es la búsqueda de la catarsis colectiva, donde el individuo se disuelve en el ritmo, eliminando las preocupaciones cotidianas mediante la repetición obsesiva y el optimismo lírico."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "El videoclip forma parte del largometraje de anime 'Interstella 5555: The 5tory of the 5ecret 5tar 5ystem', concebido por Daft Punk en colaboración con Leiji Matsumoto y Toei Animation. La obra visual narra el secuestro y rescate de una banda de alienígenas músicos, sirviendo como una metáfora visual sobre la mercantilización de la industria musical, el proceso de producción discográfica y la falsificación artística, todo ello renderizado con la estética icónica del anime espacial de los años 70 y 80."
+        "text": "El videoclip es un fragmento de la película 'Interstella 5555: The 5tory of the 5ecret 5tar 5ystem', dirigida por Kazuhisa Takenouchi bajo la supervisión de Leiji Matsumoto. La estética de anime clásico de los 70 y 80 subraya la fascinación de Daft Punk por la cultura pop japonesa. La narrativa visual presenta a una banda alienígena secuestrada, estableciendo una mitología visual que acompaña la música y refuerza la identidad de los robots como narradores de historias intergalácticas."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "'One More Time' se convirtió en un éxito mundial rotundo, alcanzando los primeros puestos en las listas de numerosos países y consolidando a Daft Punk como los máximos exponentes de la música electrónica de baile. Es frecuentemente catalogada por publicaciones especializadas como una de las mejores canciones de la década del 2000 y de la historia de la música electrónica, influenciando a generaciones posteriores de productores de EDM y pop electrónico."
+        "text": "La canción alcanzó el número 1 en las listas de Francia y el Reino Unido, convirtiéndose en el mayor éxito comercial del dúo. Es considerada una de las mejores canciones de la década de los 2000 por publicaciones como Rolling Stone y Pitchfork. Su legado es incalculable, habiendo normalizado el uso del Auto-Tune en el pop mainstream y consolidando el sonido 'French Touch' como un estándar global de la música de baile."
       }
     ],
-    "_aiModel": "gemini-3.5-flash-lite"
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "Weezer - Island In The Sun": {
     "title": "Island In The Sun",
@@ -29030,33 +29035,33 @@
     "originalAlbum": "A Day Without Rain",
     "releaseYear": "2000",
     "releaseDate": "2000-11-20",
-    "composers": "Enya, Nicky Ryan, Roma Ryan",
-    "label": "Reprise Records / Warner Music",
-    "genre": "New Age / Ambient Pop",
-    "synopsis": "'Only Time' es una obra maestra de la producción ambient-pop y new age, construida sobre el característico y monumental muro de sonido vocal de Enya. La ingeniosa superposición de hasta cientos de pistas vocales, combinada con sintetizadores Roland y una atmósfera de reverb hiperrealista, genera una textura ingrávida. Su tesis sónica explora la transitoriedad del dolor humano y el fluir inexorable del tiempo a través de una arquitectura armónica circular y minimalista.",
+    "composers": "Enya, Roma Ryan",
+    "label": "Warner Music",
+    "genre": "New Age",
+    "synopsis": "Only Time es una pieza fundamental del New Age que destaca por su minimalismo orquestal y la técnica de sobregrabación vocal característica de Enya. La canción explora la naturaleza cíclica del tiempo y la aceptación de la incertidumbre, logrando una atmósfera etérea mediante el uso de sintetizadores pads y una estructura armónica circular que evoca serenidad y melancolía introspectiva.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "Producida por Nicky Ryan en los Aigle Studios, la pista destaca por su ausencia de percusión acústica tradicional, dependiendo en su lugar de colchones de sintetizador analógico y digital (como el Roland D-50 y cadenas de delay/reverb Lexicon). El núcleo de la canción es la técnica 'vocal layering', donde Enya grabó su propia voz docenas de veces para harmonizar acordes complejos, emulando un coro catedralicio de polifonía renacentista. La ingeniería prioriza un rango medio-alto muy aireado, suprimiendo transitorios agresivos para lograr una escucha flotante y homogénea."
+        "text": "La producción, liderada por Nicky Ryan, se basa en la técnica de 'vocal stacking' donde Enya graba cientos de pistas de su propia voz para crear un coro denso y celestial. La instrumentación es predominantemente sintética, utilizando pads de cuerdas y texturas de piano procesadas con reverberaciones largas y envolventes. La mezcla prioriza una imagen estéreo amplia, manteniendo la voz principal en un plano seco y cercano, mientras que los coros se desplazan hacia los bordes del espectro para generar una sensación de inmensidad espacial."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "Escrita por Roma Ryan, la letra aborda la inevitabilidad del cambio y el consuelo que ofrece el paso del tiempo ante el sufrimiento emocional. Versos clave como 'Who can say why the road takes you where it stays?' plantean una reflexión existencial. El uso de la interrogación retórica ('Who can say...') funciona como un mantra que desarma la ansiedad, sugiriendo que solo el tiempo posee las respuestas que la mente humana busca desesperadamente en momentos de crisis."
+        "text": "La letra, escrita por Roma Ryan, aborda la inevitabilidad del cambio. Versos como 'Who can say where the road goes, where the day flows?' plantean una retórica sobre la incertidumbre existencial. La estructura es cíclica, reforzando la idea de que el tiempo es el único juez y sanador. El uso de preguntas abiertas invita al oyente a la reflexión personal, evitando respuestas dogmáticas y permitiendo que la lírica funcione como un mantra de aceptación frente a las transiciones de la vida."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "El videoclip oficial, dirigido por Nathan Rissman, presenta dos versiones principales (incluyendo la famosa remezcla pop). Visualmente, se apoya en una paleta de colores otoñales y fríos, donde Enya aparece inmóvil mientras el mundo a su alrededor —representado por elementos estacionales como hojas cayendo, lluvia y cambios de luz— se transforma velozmente. Este contraste visual refuerza el concepto lírico de la quietud del observador frente al flujo dinámico y temporal del universo."
+        "text": "El videoclip oficial presenta a Enya en un entorno natural, caminando a través de un bosque y un campo durante un cambio estacional, simbolizando el paso del tiempo. La estética utiliza una paleta de colores desaturados y una iluminación suave que refuerza la atmósfera contemplativa. La dirección se centra en la quietud de la artista, contrastando con el movimiento sutil de la naturaleza, lo que subraya el mensaje de que, aunque todo cambia, la esencia permanece."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "'Only Time' se convirtió en un fenómeno global masivo, impulsado en parte por su uso ubicuo en la cobertura mediática de los atentados del 11 de septiembre de 2001 en Estados Unidos, sirviendo como himno de duelo y reflexión. Asimismo, experimentó una segunda juventud viral en plataformas como TikTok, consolidándose como uno de los estándares más reconocibles de la música New Age y alcanzando altas posiciones en listas internacionales como el Billboard Hot 100."
+        "text": "La canción alcanzó un estatus icónico tras ser utilizada en la cobertura mediática de los atentados del 11 de septiembre de 2001 en EE. UU., convirtiéndose en un himno de consuelo nacional. Comercialment, alcanzó el puesto número 10 en el Billboard Hot 100, un logro inusual para el género New Age. Su uso recurrente en cine, televisión y memes de internet ha consolidado su legado como una de las piezas más reconocibles de la música contemporánea."
       }
     ],
-    "_aiModel": "gemini-3.5-flash-lite"
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "Destiny's Child - Survivor": {
     "title": "Survivor",
@@ -29103,27 +29108,27 @@
     "composers": "Ira Shickman, Osborne Bingham, Kara DioGuardi, Paula Abdul",
     "label": "Parlophone",
     "genre": "Dance-pop, Disco",
-    "synopsis": "Spinning Around representa el renacimiento artístico de Kylie Minogue, marcando su transición definitiva hacia el dance-pop sofisticado y el revival disco. La producción destaca por un groove infeccioso, líneas de bajo sintéticas y una estructura pop impecable que consolidó su estatus como icono global tras un periodo de experimentación. Es una pieza fundamental que define la estética sonora del pop europeo de principios del milenio.",
+    "synopsis": "Spinning Around representa el renacimiento artístico de Kylie Minogue, marcando su transición definitiva hacia el dance-pop sofisticado y el nu-disco. La producción destaca por un groove de bajo funk-sintético impecable y una estructura de pop eufórico diseñada para la pista de baile. Es un manifiesto de resiliencia profesional que consolidó su estatus como icono global del pop en el nuevo milenio.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La producción, a cargo de Mike Spencer, se basa en un tempo de 120 BPM con una instrumentación que fusiona elementos orgánicos y sintéticos. Destaca el uso prominente de un bajo funk sintetizado, cuerdas disco brillantes y un arreglo de percusión nítido con un kick drum comprimido que domina el espectro de frecuencias bajas. La voz de Minogue está procesada con una compresión vocal transparente y capas de armonías sutiles en el estribillo que añaden profundidad espacial."
+        "text": "La producción, a cargo de Mike Spencer, se fundamenta en un loop de bajo funk procesado con compresión paralela para maximizar el impacto en frecuencias graves. La instrumentación integra sintetizadores analógicos con arreglos de cuerdas brillantes que emulan la era disco de los 70. La voz de Kylie presenta una técnica de 'double-tracking' precisa, con una ecualización que enfatiza las frecuencias medias-altas para cortar a través de la densa mezcla rítmica, logrando una textura sonora cristalina y altamente dinámica."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "La letra es un himno de empoderamiento y resiliencia tras una ruptura o periodo de estancamiento. Versos como 'I'm spinning around, move out of my way' simbolizan la superación personal y la liberación. El uso de la metáfora del movimiento circular ('spinning') sugiere una transformación constante y una energía cinética inagotable, reflejando la capacidad de la artista para reinventarse frente a la crítica."
+        "text": "La letra es una oda a la superación personal y la liberación tras un periodo de estancamiento. Versos como 'I'm spinning around, move out of my way' funcionan como un mantra de empoderamiento. El uso de metáforas circulares ('spinning') simboliza el cambio de ciclo y la energía cinética. El lenguaje es directo, optimista y carente de ambigüedades, diseñado para conectar con la audiencia mediante un mensaje universal de renovación y confianza en uno mismo."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "Dirigido por Dawn Shadforth, el videoclip es un ejercicio de minimalismo pop. La estética se centra en la figura de Kylie en un club nocturno, destacando el uso icónico de los 'hot pants' dorados que se convirtieron en un símbolo cultural. La fotografía utiliza una iluminación cálida y saturada que refuerza la atmósfera festiva y hedonista, consolidando la imagen de Minogue como una diva moderna y accesible."
+        "text": "Dirigido por Dawn Shadforth, el videoclip es un ejercicio de minimalismo icónico. La estética se centra en Kylie bailando en un club nocturno, destacando el uso de los famosos 'hot pants' dorados que se convirtieron en un símbolo cultural de la moda de los 2000. La fotografía utiliza una iluminación cálida y saturada que refuerza la atmósfera disco, mientras que el montaje dinámico subraya la energía incesante de la coreografía, posicionando a Kylie como una figura de autoridad visual."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "La canción debutó en el número uno en el Reino Unido y Australia, siendo un éxito comercial masivo que revitalizó la carrera de Kylie. Es ampliamente reconocida por su papel en la consolidación del 'Kylie-mania' a finales de los 90. Curiosamente, la canción fue ofrecida originalmente a Paula Abdul, quien la rechazó, permitiendo que Minogue la convirtiera en uno de los temas más emblemáticos de su discografía."
+        "text": "El sencillo debutó en el número uno en el Reino Unido y Australia, revitalizando la carrera de Minogue tras su etapa experimental. Es considerada una de las canciones más importantes de su discografía, siendo un pilar fundamental en sus giras mundiales. Curiosamente, la canción fue ofrecida originalmente a Paula Abdul, quien la rechazó, permitiendo que Kylie la convirtiera en el himno que definió su 'segundo acto' en la industria musical."
       }
     ],
     "_aiModel": "gemini-3.1-flash-lite"
@@ -29167,28 +29172,28 @@
     "releaseDate": "2000-08-21",
     "composers": "Madonna Ciccone, Mirwais Ahmadzaï",
     "label": "Maverick Records",
-    "genre": "Electro-funk, Dance-pop",
-    "synopsis": "Producida por Mirwais Ahmadzaï, 'Music' representa un punto de inflexión en la carrera de Madonna, fusionando el electro-funk minimalista con texturas digitales vanguardistas. La canción es un himno hedonista que celebra la capacidad unificadora de la música, utilizando una producción cruda y distorsionada que rompió con el sonido pulido del pop de finales de los 90.",
+    "genre": "Electropop, Dance-pop, Nu-disco",
+    "synopsis": "Music representa un punto de inflexión en la carrera de Madonna, fusionando la vanguardia electrónica de Mirwais con un minimalismo pop altamente efectivo. La pista destaca por su uso disruptivo de la distorsión vocal, el vocoder y un beat seco y contundente que redefinió el sonido de los clubes a inicios del milenio. Es una oda a la capacidad unificadora de la música, ejecutada con una estética cruda y futurista.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La producción se caracteriza por un uso intensivo de vocoder y procesamiento de voz que altera el timbre de Madonna, otorgándole una cualidad robótica y deshumanizada. La base rítmica es un loop de electro-funk seco, con un bajo sintetizado prominente y una percusión minimalista. Destaca el uso de técnicas de 'glitch' y compresión agresiva, donde la voz se sitúa al frente de una mezcla densa pero espacial, logrando un sonido futurista que definió la estética del álbum."
+        "text": "La producción se caracteriza por un minimalismo agresivo. El beat principal es un loop seco y procesado que prioriza la pegada sobre la complejidad armónica. Se emplea un uso intensivo de filtros de paso bajo y distorsión digital en la voz de Madonna, especialmente en el estribillo, donde el procesamiento de audio crea una textura metálica y robótica. El arreglo incluye elementos de vocoder, sintetizadores analógicos de Mirwais y una línea de bajo funk-sintético que aporta el groove necesario para la pista de baile."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "La letra es una oda a la democratización de la pista de baile. Versos como 'Music makes the people come together' actúan como un mantra universal. Madonna utiliza un lenguaje sencillo pero directo para explorar la conexión social: 'Do you like to boogie-woogie?', apelando a la nostalgia disco mientras se posiciona en la vanguardia electrónica. La lírica subraya la música como un lenguaje común que trasciende clases sociales y barreras culturales."
+        "text": "La letra es un manifiesto hedonista sobre la democratización de la pista de baile. Versos como 'Music makes the people come together' actúan como un mantra universal. La estructura es sencilla pero efectiva: 'Hey Mr. DJ, put a record on' establece una jerarquía clara donde la música es el agente de cohesión social. El uso de jerga urbana y referencias a la cultura de club ('bourgeois and the rebel') subraya la intención de Madonna de eliminar las barreras de clase a través del ritmo."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "Dirigido por Jonas Åkerlund, el videoclip es una sátira de la cultura 'bling-bling' y el estilo de vida de los raperos de la época. Con una estética de bajo presupuesto intencional, Madonna aparece en una limusina con Ali G, realizando coreografías exageradas y caricaturizando el exceso. El uso de animaciones de estilo cómic y planos desenfocados refuerza la naturaleza lúdica y autoconsciente de la artista."
+        "text": "Dirigido por Jonas Åkerlund, el videoclip es una pieza de culto que retrata a Madonna como una diva del hip-hop y la cultura urbana, rodeada de excesos, limusinas y personajes excéntricos. El uso de la animación estilo caricatura y la edición frenética refuerzan la estética 'trash-chic' de la era. El simbolismo de la limusina como un espacio de libertad y descontrol es central, consolidando la imagen de la artista como una figura que transita entre el lujo y la subcultura."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "La canción alcanzó el número uno en el Billboard Hot 100, convirtiéndose en el duodécimo sencillo de Madonna en lograr esta hazaña. Fue un éxito global que consolidó la colaboración con Mirwais, influyendo profundamente en la producción pop de la década siguiente. Es recordada como un momento definitorio donde Madonna abrazó la cultura de club europea, alejándose de las baladas tradicionales para abrazar la experimentación electrónica."
+        "text": "La canción alcanzó el número uno en el Billboard Hot 100, convirtiéndose en el duodécimo sencillo de Madonna en lograr esta hazaña. Fue un éxito global que validó la experimentación electrónica de la artista tras el éxito de 'Ray of Light'. Como curiosidad, el sonido de la canción fue tan distintivo que influyó en la producción pop de la década siguiente, consolidando la asociación creativa entre Madonna y Mirwais Ahmadzaï."
       }
     ],
     "_aiModel": "gemini-3.1-flash-lite"
@@ -29260,33 +29265,33 @@
     "originalAlbum": "No Strings Attached",
     "releaseYear": "2000",
     "releaseDate": "2000-01-11",
-    "composers": "Kristian Lundin, Andreas Carlsson, Jake Schulze",
+    "composers": "Andreas Carlsson, Kristian Lundin, Jake Schulze",
     "label": "Jive Records",
-    "genre": "Teen Pop, Dance-Pop, Synth-Pop",
-    "synopsis": "\"Bye Bye Bye\" de *NSYNC es un hito monumental del pop de principios de milenio, impulsado por una producción vanguardista a cargo de Kristian Lundin y Jake Schulze. Fusiona ritmos acelerados de sintetizador, bajos metálicos agresivos y ganchos vocales hiperprocesados con Pro Tools para reflejar la ruptura con su antigua discográfica. Su estética sónica definió la transición del sonido pop adolescente hacia una era más electrónica, futurista y mecánicamente precisa.",
+    "genre": "Teen Pop, Dance-Pop",
+    "synopsis": "Bye Bye Bye es el epítome del sonido pop de finales de los 90, caracterizado por una producción de alta fidelidad con sintetizadores agresivos y una estructura rítmica sincopada. La canción marcó un punto de inflexión en la industria al consolidar la transición del grupo hacia un sonido más maduro y electrónico, convirtiéndose en un estándar de la producción pop sueca exportada a Estados Unidos.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La producción destaca por su famoso y distintivo riff de bajo con sintetizador y guitarra acústica procesada, que crea una tensión rítmica constante a 160 BPM. El arreglo vocal multicapa utiliza la afinación de Pro Tools y sutiles efectos de vocoder y delay para empastar las voces principales de Justin Timberlake y JC Chasez con densos coros de armonía cerrada. La mezcla prioriza los transitorios agudos en los drums electrónicos y una compresión agresiva en el bus master, logrando un sonido brillante, estéril y metálico que maximizaba el impacto en la radio FM y los sistemas de sonido de la época."
+        "text": "Producida por Kristian Lundin y Jake Schulze, la pista destaca por su icónico riff de sintetizador en staccato que abre la canción, estableciendo una tensión armónica inmediata. La mezcla utiliza una compresión agresiva en la batería para lograr un impacto percusivo constante, mientras que las voces están apiladas con múltiples armonías que crean una textura densa y brillante. El uso de efectos de sonido tipo 'glitch' y transiciones rápidas refleja la estética futurista del cambio de milenio."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "Escrita originalmente como un himno de empoderamiento romántico, la letra adquirió un doble sentido profético y literal sobre la salida del grupo de su mánager Lou Pearlman y su discográfica RCA. Versos clave como 'Don't want to be a fool for you, just another player in your game for two' denuncian la manipulación contractual. El icónico coro 'Bye, bye, bye / It ain't no lie, baby, bye, bye, bye' funciona como un gancho lingüístico bailable y directo, despojándose de toda culpa y estableciendo límites definitivos en una relación tóxica."
+        "text": "La letra aborda la ruptura definitiva desde una perspectiva de empoderamiento y liberación. Frases como 'Don't want to be a fool for you' y el estribillo 'Bye bye bye' funcionan como un mantra de independencia. El uso de la metáfora de las marionetas en el puente ('I'm doing this tonight, you're probably gonna start a fight') subraya el conflicto con su antigua gestión, dotando a la canción de un subtexto autobiográfico sobre el control creativo."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "Dirigido por Wayne Isham, el videoclip es una obra maestra de la cultura pop que representa visualmente el título del álbum 'No Strings Attached'. Los miembros de *NSYNC aparecen como marionetas controladas por hilos en una atmósfera distópica e industrial, antes de cortarlos físicamente para ganar su libertad. La coreografía, creada por Shannon Holtzapffel y Darrin Henson, incluye la icónica secuencia de los movimientos robóticos y el salto con los brazos cruzados, convirtiéndose en un fenómeno viral global mucho antes de la era de las redes sociales."
+        "text": "Dirigido por Wayne Isham, el videoclip es una pieza fundamental de la cultura pop que utiliza el concepto de los miembros del grupo como marionetas controladas por hilos. La coreografía, diseñada por Darrin Henson, se convirtió en un fenómeno global, integrando elementos de acción cinematográfica y una estética de 'película de atracos' que reforzó la imagen de los integrantes como individuos autónomos frente a la industria."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "El sencillo debutó con rotundo éxito comercial, alcanzando el top 10 en el Billboard Hot 100 y consolidando a *NSYNC como la boy band dominante del cambio de milenio. Obtuvo una nominación al premio Grammy en la categoría de Mejor Interpretación Vocal Pop de un Dúo o Grupo en 2001. Décadas más tarde, la canción experimentó un renacimiento masivo y viral al ser utilizada en la secuencia de apertura de la película de Marvel 'Deadpool & Wolverine' (2024), demostrando su vigencia inquebrantable en la cultura popular."
+        "text": "La canción alcanzó el puesto número 4 en el Billboard Hot 100 y fue nominada al Grammy por Grabación del Año. Su impacto fue tan profundo que definió la estética de las 'boy bands' de la era digital. Recientemente, su inclusión en la película 'Deadpool & Wolverine' (2024) provocó un resurgimiento masivo en las plataformas de streaming, demostrando su atemporalidad y capacidad para conectar con nuevas generaciones."
       }
     ],
-    "_aiModel": "gemini-3.5-flash-lite"
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "Bon Jovi - It's My Life": {
     "title": "It's My Life",
@@ -29297,31 +29302,31 @@
     "releaseDate": "2000-05-23",
     "composers": "Jon Bon Jovi, Richie Sambora, Max Martin",
     "label": "Island Records",
-    "genre": "Hard Rock / Pop Rock",
-    "synopsis": "\"It's My Life\" es el himno definitivo de la reinvención comercial de Bon Jovi en el cambio de milenio, producido por Luke Ebbin junto a la banda. Combina la agresividad del hard rock melódico con la factoría de estribillos pop aportada por Max Martin. Su tesis sónica descansa sobre el uso pionero de un sintetizador Talk Box y una estructura diseñada para estadios masivos.",
+    "genre": "Hard Rock, Pop Rock",
+    "synopsis": "It's My Life representa el renacimiento comercial de Bon Jovi en el nuevo milenio, fusionando la potencia del hard rock con la pulida producción pop de Max Martin. La canción destaca por su uso pionero del talk box en un contexto moderno y un estribillo diseñado para estadios, consolidando un himno de resiliencia generacional que definió el sonido de la banda en la era post-grunge.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La producción destaca por la hibridación entre el rock clásico de guitarras y la modernidad de la música de baile electrónica y pop de finales de los 90. El elemento sónico más icónico es la introducción ejecutada por Richie Sambora utilizando una guitarra eléctrica combinada con un Talk Box (Heil Sound Talk Box), modulando el sonido a través de un tubo conectado a un micrófono. Las guitarras rítmicas presentan una compresión moderada para dejar espacio a la potente línea de bajo sintetizado y a las programaciones de batería que refuerzan el groove bailable sin perder la pegada del rock. Las voces principales de Jon Bon Jovi están dobladas (double-tracking) en los estribillos y arropadas por densas armonías vocales en los coros ('It's now or never...'), diseñadas con un ecologismo de frecuencias medias-altas para cortar a través de densas paredes de guitarras distorsionadas."
+        "text": "Producida por Luke Ebbin, la pista destaca por una compresión agresiva y una estructura de capas que equilibra guitarras eléctricas saturadas con sintetizadores sutiles. El uso del talk box de Richie Sambora en el riff principal es el sello distintivo, procesado con una ecualización que enfatiza las frecuencias medias-altas para cortar a través de la mezcla densa. La batería presenta un sonido 'gated' típico de la época, con un bombo con mucho punch y una caja brillante, mientras que la voz de Jon Bon Jovi está tratada con una ligera saturación armónica para añadir textura y autoridad."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "Líricamente, la canción aborda la resiliencia, la clase trabajadora y la urgencia de vivir el presente sin arrepentimientos, consolidando el arquetipo del 'underdog' que lucha por su destino. Hace un guiño intertextual a Frank Sinatra ('My Way') y a personajes míticos de canciones anteriores de la banda como Tommy y Gina. Verso clave: 'This is for the ones who stood their ground / For Tommy and Gina who never backed down.' Aquí se utiliza un vocabulario de resistencia ('stood their ground', 'never backed down') que eleva la lucha cotidiana a una épica personal. El estribillo funciona como un mantra generacional donde la autoafirmación ('It's my life, it's now or never') actúa como un catalizador psicológico de liberación y empoderamiento."
+        "text": "La lírica es un manifiesto de autodeterminación y persistencia. Versos como 'This ain't a song for the broken-hearted' establecen una postura desafiante. La referencia a 'Tommy and Gina' conecta con su éxito de 1986 'Livin' on a Prayer', creando una continuidad narrativa de lucha obrera. El estribillo 'It's my life, it's now or never' utiliza una estructura de rima simple pero poderosa, diseñada para la memorabilidad masiva, explorando el existencialismo frente a la presión social."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "Dirigido por Wayne Isham, el videoclip oficial combina la estética de cine de acción con la urgencia del videoclip de interpretación en directo. La trama sigue a un joven mensajero (interpretado por Will Estes) que debe entregar un pendrive o dispositivo crítico mientras esquiva la seguridad, acompañado de una joven (Shoshana Bush), mientras la banda toca en los túneles del metro de Los Ángeles iluminados por luces estroboscópicas. El uso de la cámara en movimiento, cortes dinámicos y una paleta de colores fría azulada y verdosa contrasta con la calidez del mensaje motivacional de la canción, simbolizando la carrera contra el tiempo y las estructuras opresivas del sistema."
+        "text": "Dirigido por Wayne Isham, el videoclip es una pieza de acción frenética que sigue a un fan, Tommy, en una carrera de obstáculos urbana para llegar a un concierto de la banda. Utiliza una estética de videojuego y edición rápida, simbolizando la lucha del individuo común contra las adversidades. La integración de efectos visuales de la época y la energía cinética del montaje refuerzan la temática de la canción sobre tomar el control del propio destino."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "El sencillo revitalizó la carrera de Bon Jovi a nivel global tras un paréntesis a finales de los 90, alcanzando el número 1 en múltiples listas europeas y nominación a los Premios Grammy como Mejor Interpretación Vocal Rock de un Dúo o Grupo. Se convirtió rápidamente en un himno deportivo y un elemento básico en la cultura popular, siendo versionado y referenciado en numerosas ocasiones. Curiosamente, la inclusión de Max Martin en las sesiones de composición aportó la precisión matemática del pop escandinavo a la maquinaria compositiva de Nueva Jersey, demostrando que el rock clásico podía adaptarse con éxito al nuevo milenio."
+        "text": "La canción alcanzó el número 1 en varios países europeos y revitalizó la carrera de la banda tras un periodo de incertidumbre en los años 90. Fue nominada a un Grammy y se convirtió en un elemento básico en eventos deportivos y cultura popular. Curiosamente, la inclusión de Max Martin en la composición fue una decisión estratégica para asegurar un sonido contemporáneo, logrando que Bon Jovi se mantuviera relevante ante una audiencia más joven sin alienar a su base de fans tradicional."
       }
     ],
-    "_aiModel": "gemini-3.5-flash-lite"
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "t.A.T.u. - All About Us": {
     "title": "All About Us",
@@ -30260,33 +30265,33 @@
     "originalAlbum": "Sing When You're Winning",
     "releaseYear": "2000",
     "releaseDate": "2000-07-31",
-    "composers": "Robbie Williams, Guy Chambers, Kelvin Andrews, Nelson Pigford, Ekundayo Paris",
+    "composers": "Robbie Williams, Guy Chambers, Kelvin Andrews, Nelson Pigford, Ekkehard Ehlers",
     "label": "Chrysalis Records",
-    "genre": "Dance-pop, Funk rock, Disco",
-    "synopsis": "Rock DJ es un tour de force de producción que fusiona la fanfarria del funk-rock con la estética de club de finales del milenio. Anclada por un sampleo icónico de Barry White, la canción establece una tesis festiva pero cínica sobre la fama, la necesidad de aprobación y el exceso en la cultura pop. Con una mezcla impecable a cargo de Steve Power, destaca por su uso agresivo de metales, líneas de bajo sintéticas y un ritmo dance implacable.",
+    "genre": "Dance-pop, Disco, Funk",
+    "synopsis": "Rock DJ es una pieza de pop electrónico con fuertes influencias de disco y funk de los años 70, caracterizada por un groove de bajo sintético y una producción rítmica frenética. La canción encapsula la transición de Williams hacia un sonido más orientado a la pista de baile, utilizando técnicas de sampling y una estructura de capas que prioriza la energía cinética sobre la instrumentación orgánica tradicional.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La producción, liderada por Guy Chambers y Steve Power, se cimenta en un groove dinámico impulsado por el sampleo de batería y metales del tema 'It's Barry' de Barry White. El arreglo integra una sección de vientos real que aporta brillo en el registro medio-alto (2 kHz - 5 kHz), compitiendo armónicamente con la voz principal. La línea de bajo combina el bajo eléctrico analógico con sintetizadores Moog para dar un cuerpo sub-graves profundo (60 Hz - 100 Hz). Las voces de acompañamiento están densamente apiladas y paneadas en estéreo para crear un muro coral de estilo góspel-disco, mientras que la compresión del bus de mezcla es agresiva (estilo lado B de la era dorada del club) para maximizar la pegada rítmica en la pista de baile."
+        "text": "La producción, liderada por Guy Chambers y Steve Power, destaca por el uso de un loop de batería procesado y una línea de bajo funk que recuerda a Barry White. Se emplean técnicas de compresión agresiva en la voz para mantenerla al frente de una mezcla densa, llena de sintetizadores analógicos y efectos de sonido de vinilo. La estructura se basa en una progresión armónica cíclica que aumenta la tensión mediante la adición de capas percusivas y arreglos de vientos sintetizados."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "La letra aborda la desesperación por llamar la atención en la industria del espectáculo y la alienación del artista frente a su público. Versos clave como 'Pardon me, if I'm being rude / But this is getting something I can't ignore' exponen la franqueza descarada de Williams. Utiliza juegos de palabras sobre la cultura de los disc jockeys y la noche ('Rock DJ, please play that song') como una metáfora de la manipulación emocional: el artista está dispuesto a despojarse de todo ('All of my love / All of my life') solo para que lo miren, anticipando de forma profética la naturaleza performativa de las redes sociales."
+        "text": "La letra es una oda hedonista a la fama y la necesidad de atención. Versos como 'I'm the rock DJ, and I'm gonna rock the DJ' reflejan la obsesión de Williams por el control de la pista y la validación pública. El uso de jerga británica y referencias a la cultura de club subraya un tono desafiante y narcisista, donde el protagonista está dispuesto a 'desnudarse' (metafórica y literalmente en el video) para mantener el interés de su audiencia."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "Dirigido por Vaughan Arnell, el videoclip es una de las piezas más polémicas y recordadas de la cultura pop de los 2000. Ambientado en una pista de patinaje, Robbie Williams intenta llamar la atención de las mujeres presentes desnudándose primero, y luego arrancándose literalmente la piel, la carne y los músculos hasta quedar como un esqueleto danzante. Esta impactante metáfora visual subvierte el narcisismo de la fama, mostrando hasta qué punto una estrella del pop está dispuesta a destruirse a sí misma literalmente para entretener a las masas."
+        "text": "Dirigido por Vaughan Arnell, el videoclip es una pieza de culto que utiliza efectos visuales avanzados para la época. La narrativa muestra a Williams despojándose de su ropa y, posteriormente, de su propia piel y músculos en un striptease macabro para impresionar a un grupo de modelos. Este simbolismo visual representa la entrega total del artista a su público, sacrificando su integridad física por el espectáculo, lo que generó una fuerte controversia y censura en varios países."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "'Rock DJ' fue un éxito masivo a nivel global, alcanzando el número 1 en el UK Singles Chart y dominando las listas europeas y de Oceanía. Ganó el premio al Mejor Single Británico en los Brit Awards de 2001 y el Mejor Vídeo en los MTV Europe Music Awards. Debido a su naturaleza gráfica, el videoclip fue censurado o prohibido en varios países durante el horario diurno, lo que paradójicamente aumentó su notoriedad y lo convirtió en un hito de la televisión musical en la transición hacia la era digital."
+        "text": "La canción alcanzó el número uno en el Reino Unido y se convirtió en un himno de las pistas de baile globales. Ganó el premio al 'Mejor Sencillo Británico' en los Brit Awards de 2001 y el premio MTV al 'Mejor Efecto Especial'. Su éxito consolidó a Robbie Williams como una superestrella internacional capaz de fusionar el pop comercial con una estética provocadora y vanguardista."
       }
     ],
-    "_aiModel": "gemini-3.5-flash-lite"
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "Nelly Furtado - All Good Things (Come To An End) [feat. Rea Garvey]": {
     "title": "All Good Things (Come To An End) [feat. Rea Garvey]",
@@ -30324,34 +30329,34 @@
     "year": "2000",
     "originalAlbum": "Whoa, Nelly!",
     "releaseYear": "2000",
-    "releaseDate": "2000-10-24",
+    "releaseDate": "2000-11-28",
     "composers": "Nelly Furtado",
     "label": "DreamWorks Records",
-    "genre": "Folk Pop / Pop Rock",
-    "synopsis": "\"I'm Like A Bird\" es el radiante sencillo debut de Nelly Furtado que fusiona magistralmente la composición acústica de raíz folk con texturas de pop alternativo y producción moderna. Su instrumentación orgánica, dominada por guitarras acústicas rítmicas y arreglos de cuerdas sutiles, sirve de vehículo para una interpretación vocal etérea y tecnológicamente pulida. La obra supuso un soplo de aire fresco en el pop comercial del año 2000, destacando por su autenticidad compositiva y su sofisticado diseño sonoro.",
+    "genre": "Pop, Folk-pop",
+    "synopsis": "Un himno de pop acústico que definió el sonido de principios de los 2000, fusionando la sensibilidad del folk con una producción urbana pulida. La canción destaca por su honestidad lírica sobre el compromiso y una estructura melódica que equilibra la vulnerabilidad vocal con un estribillo de alta densidad comercial.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La producción estuvo a cargo de Gerald Eaton y Brian West (The Trackmasters / Track & Field), quienes construyeron un colchón sonoro orgánico pero comercialmente contundente. El arreglo se cimenta sobre un loop de guitarra acústica ejecutado con precisión rítmica, complementado por sutiles toques de guitarra eléctrica limpia y un bajo eléctrico melódico que aporta peso en los graves sin saturar el espectro. En la mezcla, destaca el uso de compresión multibanda transparente en la voz principal de Furtado para mantener la inteligibilidad y el brillo en la región de los 3kHz-5kHz. Los coros están doblados y paneados sutilmente hacia los extremos estéreo, creando una sensación de amplitud espacial. Hacia el puente y el estribillo final, se introducen arreglos de cuerdas reales que añaden dramatismo y textura cinematográfica, equilibrando la inmediatez del pop con la profundidad del folk-rock."
+        "text": "Producida por Gerald Eaton y Brian West, la pista se construye sobre una base de guitarra acústica con un groove orgánico. La mezcla destaca por una compresión vocal transparente que permite apreciar los matices de la voz de Furtado, apoyada por capas sutiles de percusión programada y arreglos de cuerdas que añaden profundidad atmosférica. La ingeniería prioriza la calidez de los medios, manteniendo una separación clara entre la instrumentación acústica y los elementos sintéticos de la base rítmica."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "Temáticamente, la canción explora la paradoja del anhelo de libertad frente a las ataduras del compromiso afectivo. Furtado utiliza la metáfora de un ave migratoria para definir su naturaleza evasiva y su incapacidad para echar raíces definitivas. Versos clave como 'You're beautiful, that's for sure, but it's more than that' desmontan el cliché del halago superficial, priorizando la conexión emocional genuina. En el estribillo, 'I'm like a bird, I'll only fly away / I don't know where my soul is, I don't know where my home is', se expone una vulnerabilidad existencial envuelta en una melodía eufórica, demostrando una madurez lírica inusual para un debut discográfico."
+        "text": "La letra explora la disonancia cognitiva entre el deseo de intimidad y la necesidad innata de libertad personal. Versos como 'You're the beautiful thing, I'm the beautiful thing' reflejan una dualidad existencial. El estribillo 'I'm like a bird, I'll only fly away' utiliza la metáfora aviar para justificar la incapacidad de la protagonista para establecer vínculos permanentes, revelando una autoconciencia emocional que evita el cliché de la canción de amor tradicional."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "Dirigido por Francis Lawrence, el videoclip oficial complementa perfectamente la ligereza y el concepto aéreo de la canción. La pieza visual muestra a Nelly Furtado en diversos escenarios naturales y urbanos, incluyendo tomas donde literalmente simula volar mediante efectos visuales y fondos en movimiento inspirados en cielos abiertos y paisajes naturales. La paleta de colores es cálida y terrosa, alejándose de los artificios futuristas predominantes en los videos pop del cambio de milenio. La estética refuerza la imagen de Furtado como una artista bohemia, auténtica y conectada con la naturaleza."
+        "text": "Dirigido por Francis Lawrence, el videoclip utiliza una estética naturalista y minimalista. La narrativa visual se centra en Furtado en diversos entornos, desde un campo abierto hasta un entorno urbano, reforzando el concepto de 'nómada' emocional. El uso de planos secuencia y una paleta de colores cálidos subraya la autenticidad y la sencillez que la artista buscaba proyectar en su debut, alejándose de las producciones excesivamente coreografiadas de la época."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "'I'm Like A Bird' se convirtió en un éxito global inmediato, catapultando a Nelly Furtado a la fama internacional y estableciéndola como una de las compositoras más prometedoras de su generación. El sencillo recibió nominaciones a los premios Grammy, ganando el galardón a la Mejor Interpretación Vocal Pop Femenina en 2002. Su éxito demostró que había espacio en las listas de radio comercial para propuestas impulsadas por instrumentos acústicos y una autoría genuina, allanando el camino para la subsecuente ola de cantautoras alternativo-pop de la década de los 2000."
+        "text": "La canción catapultó a Nelly Furtado al estrellato mundial, ganando el Premio Grammy a la Mejor Interpretación Vocal Pop Femenina en 2002. Fue un éxito masivo en las listas de Billboard, consolidando el sonido 'folk-pop' en la radio comercial. Curiosamente, Furtado ha mencionado en entrevistas que la canción fue escrita en un momento de introspección profunda, y su éxito inesperado la obligó a adaptarse rápidamente a la industria musical global."
       }
     ],
-    "_aiModel": "gemini-3.5-flash-lite"
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "Robbie Williams - Feel": {
     "title": "Feel",
@@ -33477,28 +33482,28 @@
     "releaseDate": "2000-11-20",
     "composers": "Craig David, Mark Hill",
     "label": "Wildstar Records",
-    "genre": "UK Garage / R&B",
-    "synopsis": "Walking Away es una pieza fundamental del UK Garage de principios de los 2000, caracterizada por una producción minimalista centrada en el groove y la calidez vocal. La canción destaca por su equilibrio entre la percusión sincopada del 2-step y una estructura melódica pop introspectiva, consolidando a Craig David como un innovador en la fusión de ritmos urbanos y soul.",
+    "genre": "UK Garage, R&B",
+    "synopsis": "Walking Away es una pieza fundamental del UK Garage que fusiona la calidez del R&B con una producción rítmica de 2-step. La canción destaca por su minimalismo melódico y una ejecución vocal que prioriza la vulnerabilidad emocional sobre el virtuosismo técnico, consolidando el sonido característico de la escena británica de principios de los 2000.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La producción, a cargo de Mark Hill (Artful Dodger), se basa en un beat de 2-step garage con un bombo desplazado y un hi-hat con swing característico. La instrumentación es austera: un piano eléctrico Rhodes procesado con un ligero chorus, líneas de bajo sub-graves profundas y armonías vocales multicapa que crean una atmósfera íntima. La mezcla prioriza la voz de David, tratada con una compresión suave y una reverberación de placa que le otorga una textura aterciopelada, permitiendo que los matices del vibrato brillen sobre la base rítmica."
+        "text": "La producción, a cargo de Mark Hill (Artful Dodger), se basa en un patrón rítmico de 2-step con un bombo desplazado y un hi-hat sincopado que aporta una sensación de urgencia. El arreglo es minimalista, utilizando acordes de sintetizador suaves y una línea de bajo profunda que sostiene la armonía. La voz de Craig David está procesada con una compresión sutil y una reverberación de sala corta, manteniendo la intimidad necesaria para la narrativa de desamor."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "La letra explora la resignación ante una relación desgastada. Versos como 'I'm walking away from the troubles in my life' encapsulan la temática de la autoprotección emocional. El uso de la repetición en el estribillo funciona como un mantra de liberación. El lenguaje es directo y coloquial, evitando metáforas complejas para enfatizar la vulnerabilidad del narrador. La estructura verso-estribillo-puente permite una progresión dramática donde la voz de David pasa de la duda a la resolución firme de abandonar el conflicto."
+        "text": "La letra explora la resignación ante una relación que se desmorona. El estribillo 'I'm walking away from the troubles in my life' actúa como un mantra de liberación personal. El uso de la repetición y la estructura de llamada-respuesta refuerza la sensación de una conversación interna. Líricamente, la canción evita el melodrama excesivo, optando por una honestidad cruda sobre la necesidad de priorizar la salud mental frente a la toxicidad emocional."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "El videoclip oficial utiliza una estética urbana minimalista, rodada en locaciones que evocan soledad y tránsito. La dirección se centra en planos medios y primeros planos de Craig David, reforzando la narrativa de introspección. El uso de una paleta de colores desaturados y una iluminación naturalista subraya el tono melancólico de la canción, alejándose de los excesos visuales típicos del R&B de la época para centrarse en la autenticidad del artista."
+        "text": "El videoclip oficial presenta una estética urbana y melancólica, utilizando tonos fríos y una iluminación de bajo contraste que subraya el aislamiento del protagonista. La narrativa visual sigue a David caminando por entornos metropolitanos, simbolizando el desapego físico y emocional. La dirección se enfoca en planos medios y primeros planos que capturan la introspección del artista, evitando distracciones visuales para centrarse en la interpretación vocal."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "La canción alcanzó el puesto número 3 en la UK Singles Chart, consolidando el éxito global del álbum 'Born to Do It'. Fue un punto de inflexión que ayudó a llevar el sonido del UK Garage desde los clubes underground hacia el mainstream internacional. Se considera un estándar del género y ha sido versionada y sampleada múltiples veces, demostrando una longevidad inusual para un track de su estilo, siendo un referente obligado para la producción de R&B contemporáneo."
+        "text": "La canción alcanzó el puesto número 3 en la UK Singles Chart y se convirtió en un himno generacional del sonido garage. Su éxito ayudó a catapultar el álbum 'Born to Do It' a nivel internacional, siendo una de las canciones más versionadas y remezcladas de la carrera de David. Es considerada un estándar moderno del R&B británico que definió la transición del sonido underground a las listas de éxitos globales."
       }
     ],
     "_aiModel": "gemini-3.1-flash-lite"
@@ -45495,30 +45500,30 @@
     "originalAlbum": "All That You Can't Leave Behind",
     "releaseYear": "2000",
     "releaseDate": "2000-10-09",
-    "composers": "Bono, The Edge, Adam Clayton, Larry Mullen Jr.",
+    "composers": "Paul Hewson (Bono), David Evans (The Edge), Adam Clayton, Larry Mullen Jr.",
     "label": "Island Records",
     "genre": "Alternative Rock",
-    "synopsis": "Beautiful Day representa el retorno de U2 a sus raíces sónicas tras la experimentación electrónica de los 90. Producida por Brian Eno y Daniel Lanois, la canción destaca por su optimismo lírico y una arquitectura sonora que equilibra el uso de sintetizadores atmosféricos con el icónico delay de la guitarra de The Edge, consolidándose como un himno de resiliencia post-milenio.",
+    "synopsis": "Beautiful Day marca el retorno de U2 a un sonido orgánico y expansivo, alejándose de la experimentación electrónica de los 90. La producción de Brian Eno y Daniel Lanois prioriza la calidez analógica, destacando el uso de sintetizadores atmosféricos y el icónico delay de The Edge, consolidando un himno de optimismo resiliente frente a la adversidad.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La producción se basa en una estructura de capas donde la batería de Larry Mullen Jr. proporciona un pulso constante y orgánico. El uso de sintetizadores analógicos y loops de percusión sutiles crea un colchón atmosférico sobre el cual la guitarra de The Edge, procesada con su característico delay rítmico, construye ganchos melódicos. La voz de Bono se grabó con una compresión dinámica que resalta su rango medio, permitiendo que la mezcla mantenga una claridad cristalina incluso en el clímax del estribillo."
+        "text": "La canción se construye sobre un loop de batería procesado y una línea de bajo melódica que sostiene la estructura. La guitarra de The Edge utiliza su característico pedal de delay (corchea con puntillo) para crear texturas espaciales. La producción destaca por la transición dinámica entre versos minimalistas y un estribillo con capas densas de sintetizadores y guitarras acústicas, logrando una mezcla equilibrada donde la voz de Bono se sitúa al frente con una compresión suave que enfatiza su rango dinámico."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "La letra explora la belleza en la pérdida y la aceptación de la realidad. Frases como 'It's a beautiful day, don't let it get away' funcionan como un mantra de gratitud. El verso 'See the bird with a leaf in her mouth, after the flood all the colors came out' utiliza una metáfora bíblica del diluvio para simbolizar la esperanza tras la adversidad. El vocabulario es directo pero cargado de simbolismo sobre la redención personal."
+        "text": "La letra explora la idea de encontrar belleza en la pérdida y la imperfección. 'The heart is a bloom, shoots up through stony ground' utiliza una metáfora botánica para describir la resiliencia. 'You're on the road, but you've got no destination' refleja el existencialismo moderno. La canción funciona como un mantra de aceptación, donde el 'Beautiful Day' no es una realidad externa, sino una elección de perspectiva ante la desolación."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "Dirigido por Jonas Åkerlund, el videoclip fue filmado en el Aeropuerto Charles de Gaulle de París. La estética es documental y minimalista, mostrando a la banda caminando por las pistas de aterrizaje y terminales, mezclando tomas de aviones despegando con la actuación del grupo. El simbolismo radica en el movimiento, el tránsito y la idea de que, a pesar del caos del mundo moderno, el día sigue siendo hermoso."
+        "text": "Dirigido por Jonas Åkerlund, el videoclip fue filmado en el Aeropuerto Charles de Gaulle de París. Utiliza una estética de alta velocidad y planos secuencia que siguen a la banda caminando por la pista de aterrizaje mientras aviones despegan y aterrizan a su alrededor. El simbolismo del aeropuerto refuerza la idea de tránsito, partida y la posibilidad de un nuevo comienzo, capturando la esencia de la canción como un viaje emocional."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "La canción ganó tres premios Grammy en 2001, incluyendo Grabación del Año y Canción del Año. Fue un éxito comercial masivo, alcanzando el número 1 en múltiples países. Se convirtió en el himno no oficial de la recuperación tras los eventos del 11 de septiembre, siendo utilizada en innumerables eventos deportivos y ceremonias, consolidando a U2 como la banda de estadios definitiva de su generación."
+        "text": "El tema fue un éxito masivo, alcanzando el número 1 en el Reino Unido y ganando tres premios Grammy en 2001, incluyendo Grabación del Año y Canción del Año. Es considerada una de las canciones más importantes de la década de los 2000, siendo utilizada frecuentemente en eventos globales y consolidando el estatus de U2 como una banda capaz de reinventarse sin perder su identidad sonora esencial."
       }
     ],
     "_aiModel": "gemini-3.1-flash-lite"
@@ -48217,27 +48222,27 @@
     "composers": "Guy Berryman, Jonny Buckland, Will Champion, Chris Martin",
     "label": "Parlophone",
     "genre": "Alternative Rock / Piano Rock",
-    "synopsis": "Trouble es una pieza fundamental del Britpop post-milennial, caracterizada por su minimalismo melódico y una producción orgánica centrada en el piano acústico. La canción destaca por su atmósfera introspectiva, donde la voz de Chris Martin se sitúa en un primer plano íntimo, respaldada por una sección rítmica contenida que prioriza la dinámica emocional sobre el artificio técnico.",
+    "synopsis": "Trouble es una balada minimalista que define la identidad sonora temprana de Coldplay, fundamentada en un piano melancólico y una producción orgánica. La canción destaca por su equilibrio entre la vulnerabilidad vocal de Chris Martin y una instrumentación contenida que prioriza la dinámica emocional sobre el artificio técnico, consolidándose como un estándar del rock alternativo británico de inicios del milenio.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La canción se construye sobre un riff de piano melancólico en Do mayor. La producción, a cargo de Ken Nelson y la banda, destaca por una captura de audio muy natural, evitando la compresión excesiva. El arreglo incluye un sutil acompañamiento de cuerdas y una batería con un sonido 'seco' y directo, grabado con micrófonos de cinta para suavizar los transitorios. La mezcla equilibra la calidez del piano con una línea de bajo melódica que aporta profundidad armónica sin saturar el espectro de frecuencias medias."
+        "text": "La pieza se construye sobre un riff de piano icónico en Do mayor, grabado con una calidez analógica que resalta los armónicos naturales del instrumento. La producción, a cargo de Ken Nelson, utiliza una compresión sutil en la voz de Martin para mantener la intimidad del registro. La batería de Will Champion es minimalista, utilizando escobillas y un patrón de bombo constante que aporta una base rítmica 'soft-rock'. La sección de cuerdas, añadida con moderación, expande el espectro frecuencial en el clímax, mientras que la guitarra eléctrica de Buckland se mantiene en un segundo plano, aportando texturas ambientales mediante efectos de delay y reverb de placa."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "La letra explora el arrepentimiento y la autocrítica tras un error personal. Versos como 'I never meant to cause you trouble' y 'I never meant to do you wrong' revelan una vulnerabilidad cruda. El uso de la metáfora 'Spiderweb' (telaraña) sugiere una situación de la que es difícil escapar. El lenguaje es sencillo pero altamente evocador, centrándose en la honestidad emocional y la aceptación de la culpa como mecanismo de catarsis."
+        "text": "La lírica explora el arrepentimiento y la autocrítica tras una ruptura o conflicto personal. Versos como 'Oh, no, I never meant to cause you trouble' revelan una disculpa honesta y directa. La frase 'I never meant to do you wrong' subraya la temática de la negligencia emocional involuntaria. El uso de la palabra 'spiderweb' (telaraña) actúa como una metáfora de la complejidad de las relaciones humanas, sugiriendo que el protagonista se siente atrapado en sus propios errores, una lección de introspección lírica que se convirtió en sello distintivo de la banda."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "El videoclip oficial, dirigido por Sophie Muller, presenta una estética gótica y surrealista. La banda aparece en una habitación que se eleva lentamente, simbolizando el aislamiento y la inestabilidad emocional. La paleta de colores desaturada y el uso de iluminación tenue refuerzan el tono sombrío de la composición, creando una narrativa visual que complementa la sensación de estar atrapado en un ciclo de problemas personales."
+        "text": "El videoclip oficial, dirigido por Sophie Muller, presenta una estética de realismo mágico. Chris Martin aparece sentado en una silla en una habitación que se eleva lentamente hacia el cielo, mientras los demás miembros de la banda son arrastrados por cuerdas en un entorno surrealista. El uso de colores desaturados y una iluminación suave refuerza la sensación de aislamiento y vulnerabilidad, alineándose perfectamente con la atmósfera introspectiva de la composición musical."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "Alcanzó el puesto número 10 en la UK Singles Chart, consolidando a Coldplay como una fuerza comercial tras el éxito de 'Yellow'. La canción ha sido versionada por artistas como Kelly Clarkson y ha aparecido en numerosas series de televisión, incluyendo 'The O.C.' y 'Smallville'. Es considerada una de las baladas definitivas de la banda, marcando el estándar para su sonido característico de principios de los 2000."
+        "text": "Alcanzó el puesto número 10 en la UK Singles Chart, consolidando a Coldplay como una fuerza comercial tras el éxito de 'Yellow'. La canción ha sido objeto de múltiples versiones y es considerada una de las composiciones más influyentes del catálogo de la banda. Un dato curioso es que la canción fue escrita en un piano vertical en los estudios de grabación, capturando una toma casi en vivo que preservó la imperfección humana, un elemento clave para su autenticidad sonora."
       }
     ],
     "_aiModel": "gemini-3.1-flash-lite"
@@ -48431,31 +48436,31 @@
     "year": "2000",
     "originalAlbum": "J. Lo",
     "releaseYear": "2000",
-    "releaseDate": "2000-12-05",
-    "composers": "Stefan Skarbek, Gregory Lawson, Damon Sharpe, Wayne Hector, Edsel Dumatrait",
+    "releaseDate": "2000-12-12",
+    "composers": "Stefan Skarbek, Gregory Lawson, Damon Sharpe, Wayne Hector, Ed Martin",
     "label": "Epic Records",
-    "genre": "R&B, Pop, Dance-pop",
-    "synopsis": "Un pilar del pop de principios del milenio que fusiona texturas de R&B contemporáneo con una producción rítmica pulida. La canción define la transición de Lopez hacia una superestrella global, utilizando una instrumentación sintética precisa y una interpretación vocal que equilibra la vulnerabilidad con la asertividad materialista, consolidando el sonido característico de la era 'J. Lo'.",
+    "genre": "R&B, Pop",
+    "synopsis": "Love Don't Cost a Thing es un pilar del R&B pop de principios del milenio, caracterizado por una producción pulida que fusiona ritmos urbanos con texturas melódicas accesibles. La obra consolidó a Jennifer Lopez como una fuerza dominante en la industria, destacando por su enfoque en la independencia emocional y una instrumentación que equilibra la percusión sintética con arreglos vocales multicapa.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La producción destaca por un groove de batería programada con un swing marcado, típico del sonido R&B de finales de los 90. Se emplean sintetizadores de onda cuadrada para los bajos y arpegios brillantes que proporcionan una atmósfera 'glam'. La mezcla prioriza la voz de Lopez en el centro, con una compresión dinámica que mantiene la presencia constante, mientras que los coros en capas crean una textura armónica densa en el estribillo. La ingeniería de sonido destaca por un uso inteligente de la reverberación corta para dar espacio sin perder la inmediatez del beat."
+        "text": "La producción, liderada por Ric Wake y Cory Rooney, se basa en un groove de tempo medio (aprox. 95 BPM) con una línea de bajo sintética prominente y un loop de percusión nítido. La mezcla destaca por el uso de capas vocales (doubling) que otorgan cuerpo a la voz de Lopez, mientras que los sintetizadores proporcionan un brillo en las frecuencias altas. La estructura sigue el estándar pop, con una progresión armónica que prioriza la claridad en el estribillo y una compresión dinámica que mantiene la energía constante para la radio."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "La letra aborda la independencia emocional frente al materialismo. El verso 'All that you have is not enough' establece la tesis: el dinero no compensa la falta de atención o afecto. El estribillo 'Love don't cost a thing' actúa como un mantra de empoderamiento. Líricamente, la canción utiliza un lenguaje directo y coloquial, contrastando el valor de los regalos costosos con el valor intrínseco de la conexión humana, un tema recurrente en el pop de la época."
+        "text": "La letra aborda el rechazo al materialismo en las relaciones sentimentales. Versos como 'All that you have, all that you've given, doesn't mean a thing' establecen una postura de empoderamiento. El vocabulario es directo y coloquial, utilizando el contraste entre 'things' (objetos materiales) y 'love' (el valor intrínseco de la persona). La narrativa psicológica es clara: la protagonista exige atención emocional genuina por encima de los regalos costosos, marcando un límite saludable en la dinámica de poder de la pareja."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "Dirigido por Paul Hunter, el videoclip es una pieza icónica de la cultura pop que simboliza la liberación. La secuencia donde Lopez se despoja de sus joyas, abrigo y accesorios mientras camina por la playa es una metáfora visual de la desmaterialización del afecto. La fotografía utiliza una paleta de colores cálidos y una estética de alta moda, reforzando la imagen de Lopez como un icono de estilo que trasciende la ostentación."
+        "text": "Dirigido por Paul Hunter, el videoclip es una pieza icónica de la estética de los 2000. La narrativa visual muestra a Lopez despojándose de sus accesorios (joyas, abrigo, gafas) mientras camina por una playa, simbolizando la liberación de las expectativas materiales. La fotografía utiliza una paleta de colores cálidos y una edición rítmica que sincroniza los movimientos de baile con los acentos de la percusión, reforzando el mensaje de autenticidad y desapego."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "La canción alcanzó el número 3 en el Billboard Hot 100 y fue un éxito masivo en Europa, consolidando a Jennifer Lopez como una fuerza dominante en la música pop. Es recordada como el sencillo que definió su transición de actriz a cantante de primer nivel. Curiosamente, la canción fue escrita originalmente por Stefan Skarbek y otros compositores británicos, siendo un ejemplo perfecto de cómo el sonido R&B estadounidense fue interpretado y refinado por la escena de composición europea."
+        "text": "El sencillo fue un éxito global, alcanzando el número uno en el Reino Unido y el top 5 en el Billboard Hot 100. Se convirtió en el himno que definió la transición de Lopez de actriz a superestrella musical. Curiosamente, la canción fue escrita originalmente para el grupo pop 'The 3rd Party', pero fue reelaborada para encajar con el rango vocal y la imagen de Jennifer, convirtiéndose en uno de los temas más reconocibles de su discografía."
       }
     ],
     "_aiModel": "gemini-3.1-flash-lite"
@@ -48467,33 +48472,33 @@
     "originalAlbum": "Born to Do It",
     "releaseYear": "2000",
     "releaseDate": "2000-07-24",
-    "composers": "Craig David, Mark Hill",
+    "composers": "Craig David, Mark Hill, Darren Hill",
     "label": "Wildstar Records",
     "genre": "UK Garage / R&B",
-    "synopsis": "Obra maestra fundacional del UK Garage y el R&B británico que fusiona ritmos sincopados de 2Step con melodías vocales ultra suaves. Producida por Mark Hill, la canción establece un estándar técnico en la mezcla de voces superpuestas y una narrativa cronológica semanal única.",
+    "synopsis": "7 Days es una pieza fundamental del UK Garage comercial, caracterizada por su producción minimalista pero rítmicamente compleja. La canción fusiona la calidez del R&B vocal con el swing sincopado del 2-step, estableciendo un estándar de producción que definió el sonido británico de principios de los 2000 mediante el uso magistral de percusiones digitales y armonías vocales estratificadas.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La producción destaca por su ritmo 2Step característico, construido mediante la manipulación minuciosa de percusión electrónica, bombos con compresión paralela y cajas con delay sutil para dar sensación de espacio. El bajo, un sub-bajo profundo y redondo, se entrelaza rítmicamente con los cortes sincopados de la batería. Las armonías vocales están apiladas en múltiples capas (double-tracking y afinación milimétrica), creando un colchón armónico denso que contrasta con la crudeza rítmica de la caja de ritmos."
+        "text": "La producción, liderada por Mark Hill (Artful Dodger), destaca por un beat de 2-step garage con un bombo 'four-on-the-floor' suavizado y un patrón de hi-hats con swing agresivo. La instrumentación es austera: una línea de bajo sintética profunda y un riff de guitarra acústica con procesamiento de compresión rápida que aporta textura orgánica. Las voces de Craig David están grabadas con múltiples capas (doubling) y un uso preciso de reverberación de placa para dar profundidad sin empañar la nitidez de la dicción rítmica."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "La letra narra una semana condensada en una relación amorosa fugaz pero intensa, desde el encuentro casual en lunes ('I met this girl on a Monday') hasta el desenlace íntimo el fin de semana. Craig David utiliza un flujo rítmico ('cadence') que imita el tempo de la percusión, encajando las sílabas con precisión matemática en los espacios entre los tiempos fuertes del compás, demostrando una técnica vocal de micro-timing impecable."
+        "text": "La letra narra una cronología amorosa de una semana, desde el encuentro el lunes hasta el clímax el domingo. El uso de la estructura narrativa lineal permite una progresión dramática. Versos como 'Monday, I met her' establecen una inmediatez coloquial. El juego de palabras reside en la transición de la seducción casual a la intimidad, utilizando un vocabulario sencillo pero efectivo que resuena con la cultura urbana juvenil de la época, evitando la complejidad metafórica en favor de la verosimilitud narrativa."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "El videoclip oficial acompaña la narrativa cronológica de la semana con una estética urbana y nocturna propia del Londres de principios de los 2000. Utiliza paletas de colores fríos para las escenas callejeras y tonos cálidos para los momentos íntimos de club. La dirección de fotografía enfatiza la naturalidad y el carisma de Craig David, mostrando escenas cotidianas en transporte público, calles mojadas y discotecas que reflejan la cultura musical urbana británica de la época."
+        "text": "El videoclip, dirigido por Max & Dania, utiliza una estética urbana minimalista. La narrativa visual sigue la estructura de la canción, mostrando a Craig David en diversos escenarios de Londres que refuerzan la autenticidad del artista. La edición está sincronizada con los cortes rítmicos del beat, utilizando transiciones rápidas y una paleta de colores desaturada que enfatiza el ambiente nocturno y cosmopolita del UK Garage."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "'7 Days' se convirtió en un éxito rotundo a nivel mundial, alcanzando el número 1 en las listas del Reino Unido y consolidando a Craig David como el máximo exponente del UK Garage en la escena global. La canción recibió nominaciones a los premios Brit y estableció un puente definitivo entre la música club underground británica y las listas de pop comercial internacional."
+        "text": "La canción alcanzó el número 1 en el UK Singles Chart, consolidando a Craig David como una estrella global. Fue fundamental para llevar el sonido underground del UK Garage al mainstream internacional. Su éxito demostró que la producción electrónica británica podía competir con el R&B estadounidense, influyendo en una generación de productores que buscaron replicar su equilibrio entre sofisticación técnica y accesibilidad pop."
       }
     ],
-    "_aiModel": "gemini-3.5-flash-lite"
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "LeAnn Rimes - Can't Fight The Moonlight": {
     "title": "Can't Fight The Moonlight",
@@ -48504,28 +48509,28 @@
     "releaseDate": "2000-08-22",
     "composers": "Diane Warren",
     "label": "Curb Records",
-    "genre": "Pop, Country Pop",
-    "synopsis": "Producida por Trevor Horn, esta pieza representa el pináculo del pop cinematográfico de finales de los 90. Combina una instrumentación pulida con una estructura de balada rítmica que explota la versatilidad vocal de Rimes. Su diseño sonoro es un estudio de caso sobre la transición del country al pop mainstream mediante una producción de alta fidelidad y ganchos melódicos diseñados para la sincronización visual.",
+    "genre": "Pop, Dance-pop",
+    "synopsis": "Producida por Trevor Horn, esta pieza es un pilar del pop de transición al milenio que fusiona elementos de country-pop con una producción electrónica pulida. Destaca por su estructura de 'power ballad' bailable y la versatilidad vocal de Rimes, consolidándose como un fenómeno global gracias a su integración en la banda sonora de 'Coyote Ugly'.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La producción de Trevor Horn destaca por una base rítmica programada con precisión quirúrgica, apoyada por sintetizadores atmosféricos y guitarras eléctricas con un ligero 'chorus'. La voz de Rimes está procesada con una compresión transparente que mantiene su presencia en el centro del espectro, mientras que las armonías en el estribillo crean una pared de sonido envolvente. La mezcla prioriza una ecualización brillante en las frecuencias altas para realzar la claridad de la dicción y la potencia de los registros medios-agudos."
+        "text": "La producción de Trevor Horn es magistral, utilizando una base rítmica programada con precisión quirúrgica que contrasta con sintetizadores atmosféricos y cuerdas sintéticas. La voz de Rimes está procesada con una compresión transparente que resalta su rango medio, mientras que los coros están densamente apilados para crear una sensación de amplitud estéreo. La mezcla prioriza la claridad de la voz principal sobre un arreglo de percusión constante que mantiene un tempo de 120 BPM, ideal para la radio y las pistas de baile."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "Escrita por Diane Warren, la letra explora la inevitabilidad del deseo y la rendición emocional. Frases como 'You can try to resist, try to hide from my kiss' utilizan la metáfora de la luz de la luna como una fuerza natural ineludible. El desglose revela una estructura de 'crescendo' emocional, donde el verso establece la tensión y el estribillo actúa como una liberación catártica, consolidando el tema del romance predestinado."
+        "text": "Escrita por Diane Warren, la letra explora la inevitabilidad del deseo y la entrega emocional. Versos como 'You can try to resist, try to hide from my kiss' utilizan la metáfora de la luz de la luna como una fuerza natural incontrolable. El vocabulario es directo pero evocador, centrándose en la tensión romántica. La estructura lírica sigue el patrón clásico de Warren: una construcción de tensión en las estrofas que explota en un estribillo altamente melódico y memorable."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "El videoclip, dirigido por David Hogan, utiliza una estética de club nocturno inspirada en la película 'Coyote Ugly'. La puesta en escena juega con claroscuros y luces de neón que refuerzan la temática de la 'luz de luna'. La coreografía y los planos cerrados sobre Rimes enfatizan su transición de una imagen country tradicional a una estrella pop global, utilizando el entorno del bar como un escenario de empoderamiento femenino."
+        "text": "El videoclip oficial, dirigido por David Hogan, capitaliza la estética de 'Coyote Ugly'. Utiliza una iluminación cálida y contrastes de sombras para enfatizar la temática nocturna de la canción. La puesta en escena alterna entre Rimes actuando como una estrella de club y secuencias de la película, creando una sinergia visual que refuerza la imagen de la artista como una figura empoderada y seductora, consolidando el 'look' icónico de principios de los 2000."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "La canción alcanzó el número 1 en las listas de varios países, convirtiéndose en el mayor éxito internacional de LeAnn Rimes. Su inclusión en la banda sonora de 'Coyote Ugly' fue fundamental para su longevidad, convirtiéndose en un himno de karaoke y un estándar del pop de los 2000. Curiosamente, a pesar de su éxito, la canción fue inicialmente rechazada por varios sellos antes de que Rimes la grabara bajo la dirección de Warren."
+        "text": "La canción se convirtió en el mayor éxito internacional de LeAnn Rimes, alcanzando el número uno en varios países, incluyendo el Reino Unido y Australia. Su éxito fue impulsado masivamente por su inclusión en la película 'Coyote Ugly', lo que permitió a Rimes trascender su nicho original en la música country. Es considerada un himno de la cultura pop de los 2000 y un ejemplo perfecto de cómo una sincronización cinematográfica puede redefinir la carrera de un artista."
       }
     ],
     "_aiModel": "gemini-3.1-flash-lite"
@@ -48784,27 +48789,27 @@
     "composers": "Mylène Farmer, Laurent Boutonnat",
     "label": "Polydor",
     "genre": "Synth-pop, Europop",
-    "synopsis": "Obra maestra del pop francés de principios de milenio, producida por el tándem Farmer-Boutonnat. Combina una instrumentación electrónica sofisticada con una estética lírica ambigua y provocadora. Su éxito radica en la yuxtaposición de una producción de alta fidelidad con la voz etérea y juvenil de Alizée, definiendo el sonido pop europeo de la década.",
+    "synopsis": "Moi... Lolita es una pieza maestra del pop francés de principios de los 2000, definida por una producción pulida de Laurent Boutonnat que fusiona texturas electrónicas con arreglos orquestales sutiles. La canción establece un contraste icónico entre la voz etérea y juvenil de Alizée y una lírica cargada de ambigüedad narrativa, consolidándose como un fenómeno cultural que redefinió el pop adolescente europeo.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La producción destaca por un uso magistral de sintetizadores analógicos y cajas de ritmos programadas con precisión quirúrgica. La estructura se apoya en un riff de guitarra eléctrica con chorus y un bajo sintetizado profundo que marca el pulso bailable. La mezcla equilibra la voz de Alizée, procesada con una ligera compresión y reverb de placa, permitiendo que las frecuencias medias-altas destaquen sobre una base rítmica densa y texturizada."
+        "text": "La producción destaca por un uso magistral de sintetizadores analógicos y cajas de ritmos programadas con precisión milimétrica. El arreglo se apoya en un riff de guitarra eléctrica con chorus y un bajo sintetizado que aporta profundidad rítmica. La mezcla prioriza la voz de Alizée con una compresión suave y una reverberación tipo 'plate' que le otorga un aura angelical, mientras que la estructura armónica utiliza progresiones menores que evocan melancolía pop, equilibradas por un estribillo altamente pegadizo y brillante."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "La letra juega con la dualidad entre la inocencia y la seducción, haciendo referencia a la novela 'Lolita' de Nabokov. Versos como 'C'est pas ma faute à moi, si j'entends tout bas' (No es mi culpa si escucho todo en voz baja) establecen una narrativa de desamparo fingido. El uso de juegos de palabras y la ambigüedad semántica son sellos distintivos de Mylène Farmer, creando una atmósfera de 'femme fatale' adolescente que desafía las convenciones sociales."
+        "text": "La letra, escrita por Mylène Farmer, juega con la dualidad entre la inocencia y la seducción. Versos como 'C'est pas ma faute à moi' (No es mi culpa) establecen una narrativa de desdén juvenil. La canción utiliza el arquetipo de la 'Lolita' de Nabokov para explorar el poder de la juventud sobre el deseo adulto. El uso de juegos de palabras en francés, como 'Moi, Lolita', funciona como una declaración de identidad que oscila entre la vulnerabilidad y el control consciente sobre el observador."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "Dirigido por Laurent Boutonnat, el videoclip presenta a Alizée en un entorno urbano nocturno, contrastando su imagen de chica de pueblo con la vida cosmopolita de París. La estética utiliza una paleta de colores fríos y una iluminación cinematográfica que enfatiza la soledad y el misterio. El simbolismo de la 'Lolita' se refuerza mediante el vestuario icónico y una coreografía que mezcla timidez con una confianza escénica calculada."
+        "text": "Dirigido por Laurent Boutonnat, el videoclip presenta a Alizée en un entorno urbano nocturno, contrastando su imagen de adolescente con la vida nocturna de París. La estética utiliza una paleta de colores fríos y luces de neón, reforzando la idea de una 'Lolita' moderna. La coreografía, precisa y juvenil, se convirtió en un sello distintivo de la artista, enfatizando la transición de la niñez a la madurez a través de una puesta en escena cinematográfica y estilizada."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "El sencillo se convirtió en un fenómeno global, alcanzando el top 10 en numerosos países europeos y asiáticos. Fue el trampolín que consolidó a Alizée como un icono pop internacional. Curiosamente, la canción fue objeto de múltiples remezclas de club que extendieron su vida útil en las pistas de baile durante años, demostrando la versatilidad de su composición original."
+        "text": "La canción fue un éxito masivo, alcanzando el top 10 en numerosos países europeos y convirtiéndose en un himno del pop francófono. Su impacto fue tal que catapultó a Alizée a la fama internacional, siendo una de las pocas canciones en francés en lograr un éxito comercial significativo en mercados anglosajones y asiáticos. Es considerada un referente de la producción pop de la era dorada de la colaboración entre Farmer y Boutonnat."
       }
     ],
     "_aiModel": "gemini-3.1-flash-lite"
@@ -48880,27 +48885,27 @@
     "composers": "Guy Berryman, Jonny Buckland, Will Champion, Chris Martin",
     "label": "Parlophone",
     "genre": "Alternative Rock",
-    "synopsis": "Yellow es una pieza fundamental del post-britpop que define el sonido atmosférico y emocional de Coldplay. Caracterizada por su icónico riff de guitarra distorsionada y una progresión armónica ascendente, la canción equilibra la vulnerabilidad lírica de Chris Martin con una producción expansiva que captura una sensación de devoción absoluta, consolidándose como un himno generacional de finales de los 90.",
+    "synopsis": "Yellow es una pieza fundamental del post-britpop que define la transición hacia el rock atmosférico de los 2000. Su tesis sónica se basa en una progresión de acordes épica, guitarras eléctricas con capas de delay y una interpretación vocal cruda y vulnerable. La canción consolidó a Coldplay como una fuerza global, equilibrando una producción orgánica con una ambición melódica de estadio.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "Producida por Ken Nelson y la banda, la canción destaca por el uso de guitarras eléctricas con un tono saturado pero cálido, cortesía de Jonny Buckland. La base rítmica es sólida y minimalista, permitiendo que la voz de Martin, grabada con una compresión sutil para resaltar su rango dinámico, sea el eje central. La mezcla prioriza una espacialidad envolvente, utilizando capas de guitarras que crean un muro de sonido que crece orgánicamente hacia el clímax, apoyado por una percusión precisa y un bajo melódico que ancla la progresión armónica."
+        "text": "La producción, a cargo de Ken Nelson y la banda, destaca por su enfoque minimalista pero expansivo. La guitarra de Jonny Buckland utiliza un afinado abierto y un uso intensivo de pedales de saturación y delay que crean un muro de sonido envolvente. La base rítmica es sólida y directa, con una batería que prioriza el groove sobre la complejidad técnica. El rango dinámico es notable, construyendo desde un verso íntimo hasta un clímax de guitarras distorsionadas que ocupan el espectro de frecuencias medias-altas, dejando espacio para la voz de Chris Martin en el centro de la mezcla."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "La letra es una oda a la devoción incondicional. Versos como 'Look at the stars, look how they shine for you' establecen una conexión cósmica entre el sujeto y el objeto de afecto. El uso del color amarillo ('Yellow') es una metáfora abstracta de la luz, la calidez y la felicidad. Líricamente, la canción explora la entrega total ('I'd bleed myself dry for you'), utilizando un lenguaje sencillo pero cargado de una intensidad emocional que evita la cursilería mediante una entrega vocal cruda y honesta."
+        "text": "La letra es una oda a la devoción incondicional. Versos como 'Look at the stars, look how they shine for you' establecen una metáfora cósmica donde el sujeto lírico se siente pequeño ante la magnitud de su amor. El color 'amarillo' no tiene un significado literal, sino que representa un estado de ánimo, una luz cálida y una sensación de seguridad. La repetición de 'You know I love you so' funciona como un mantra emocional que eleva la canción de una simple balada a un himno de entrega absoluta."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "Dirigido por James Frost y Alex & Martin, el video es un plano secuencia minimalista filmado en la playa de Studland Bay. La estética es deliberadamente cruda, con una corrección de color que vira hacia tonos fríos y desaturados, contrastando con la calidez de la letra. La decisión de filmar a Chris Martin caminando solo bajo la lluvia, en tiempo real y a cámara lenta, refuerza la sensación de aislamiento y vulnerabilidad, convirtiendo el video en un ejercicio de autenticidad visual que rompió con los estándares de producción excesiva de la época."
+        "text": "El videoclip, dirigido por James Frost y Alex Smith, es un ejercicio de simplicidad efectiva. Filmado en una sola toma continua en la playa de Studland Bay, muestra a Chris Martin caminando y cantando bajo un cielo que cambia de la oscuridad del amanecer a la luz del día. La falta de cortes y la paleta de colores desaturada enfatizan la autenticidad y la vulnerabilidad del artista, convirtiendo el vídeo en una pieza icónica de la estética visual de principios de milenio."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "Yellow fue el sencillo que catapultó a Coldplay a la fama mundial, alcanzando el puesto número 4 en la UK Singles Chart. La canción es famosa por su origen accidental: el título surgió cuando Martin miró las Páginas Amarillas (Yellow Pages) mientras buscaba un nombre. Ha sido versionada por artistas de diversos géneros y es considerada una de las canciones más influyentes del siglo XXI, marcando el inicio de la era de las 'bandas de estadio' que dominarían la década siguiente."
+        "text": "Yellow fue el sencillo que catapultó a Coldplay al estrellato internacional, alcanzando el puesto número 4 en las listas del Reino Unido. La canción ha sido versionada por múltiples artistas y es considerada un estándar del rock moderno. Como curiosidad, el título surgió de la nada cuando Chris Martin vio una guía telefónica (Yellow Pages) mientras buscaba una palabra que encajara con la melodía, demostrando que la genialidad a menudo nace de la casualidad cotidiana."
       }
     ],
     "_aiModel": "gemini-3.1-flash-lite"
@@ -48976,27 +48981,27 @@
     "composers": "Cristiano Spiller, Sophie Ellis-Bextor, Rob Davis, Vincent Montana Jr., Ronnie Walker",
     "label": "Positiva Records",
     "genre": "House, Disco-House",
-    "synopsis": "Groovejet es un pilar fundamental del sonido house de principios de los 2000, destacando por su sampleo magistral de 'Love Is You' de Carol Williams. La producción fusiona una línea de bajo funk orgánica con sintetizadores brillantes y la voz etérea de Ellis-Bextor, creando un equilibrio perfecto entre la sofisticación del disco clásico y la energía de la pista de baile contemporánea.",
+    "synopsis": "Groovejet es un pilar fundamental del house europeo de los 2000, definido por su sampleo magistral de 'Love Is You' de Carol Williams. La producción combina una línea de bajo funk sintética con la voz etérea y sofisticada de Ellis-Bextor, creando un equilibrio perfecto entre la pista de baile underground y el pop comercial. Su éxito marcó la transición del sonido disco-house hacia el mainstream global.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La pista se construye sobre un loop de percusión y cuerdas sampleado de 'Love Is You' de Carol Williams, procesado con una compresión side-chain que le otorga ese característico bombeo. La instrumentación incluye un bajo sintetizado profundo y brillante, acordes de piano house y una línea de sintetizador lead que aporta el gancho melódico. La voz de Sophie Ellis-Bextor fue grabada con una técnica de capas sutiles, utilizando una reverberación de placa que le otorga una textura aireada, contrastando con la densidad rítmica de la base."
+        "text": "La pista se construye sobre un loop de percusión disco procesado con compresión paralela para maximizar el impacto del bombo. El elemento central es el sample de cuerdas y piano de 'Love Is You', filtrado mediante un paso bajo (low-pass filter) que se abre en el estribillo. La voz de Sophie fue grabada con un micrófono de condensador de gran diafragma, aplicando una reverberación de placa corta para darle una textura aireada que flota sobre la base rítmica de 124 BPM."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "La letra explora la incertidumbre y la euforia del enamoramiento temprano. Frases como 'If this ain't love, why does it feel so good?' encapsulan la duda existencial frente a la gratificación sensorial. El uso de la repetición en el estribillo refuerza la naturaleza hipnótica del género house, mientras que el vocabulario sencillo pero evocador permite que la voz actúe como un instrumento más dentro de la densa mezcla sonora."
+        "text": "La letra explora la incertidumbre y la euforia del enamoramiento temprano. Frases como 'If this ain't love, why does it feel so good?' encapsulan la duda existencial frente a la gratificación sensorial. El uso de un lenguaje directo y melódico permite que la voz actúe como un instrumento más, integrándose en la estructura cíclica del house. La lírica es minimalista, diseñada para ser repetitiva y memorable, reforzando el gancho emocional del track."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "El videoclip, dirigido por Phil Griffin, presenta a Sophie Ellis-Bextor en un entorno de cafetería futurista y minimalista en Bangkok. La estética es limpia, con una paleta de colores fríos que contrasta con la calidez de la canción. El simbolismo de la 'vida en la ciudad' y la desconexión social se entrelaza con la presencia de Spiller, creando una narrativa visual que define la estética 'cool' y cosmopolita de la música dance europea de la época."
+        "text": "El videoclip, dirigido por Sophie Muller, presenta a Sophie Ellis-Bextor en un entorno de aeropuerto y cafetería, proyectando una imagen de 'diva glacial' y distante. La estética es minimalista y urbana, utilizando una paleta de colores fríos que contrasta con la calidez del sonido disco. El simbolismo del viaje y la espera refuerza la temática de la canción sobre la búsqueda de conexión emocional en un mundo acelerado."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "La canción es históricamente significativa por haber ganado la famosa 'batalla por el número uno' contra 'Take a Bow' de Victoria Beckham en las listas británicas. Se convirtió en un himno global, consolidando a Sophie Ellis-Bextor como una estrella pop y a Spiller como un productor de referencia. Su legado perdura como uno de los ejemplos más exitosos de la transición del sonido disco de los 70 hacia la era digital del house comercial."
+        "text": "La canción es históricamente famosa por su 'batalla' en las listas británicas contra 'Most Girls' de P!nk, logrando el número uno. Fue el primer sencillo en ser reproducido comercialmente en un iPod. Su éxito consolidó la carrera de Sophie Ellis-Bextor como solista y definió el sonido del 'Filter House' que dominaría las radios europeas durante los primeros años del nuevo milenio."
       }
     ],
     "_aiModel": "gemini-3.1-flash-lite"
@@ -97441,5 +97446,110 @@
       }
     ],
     "_aiModel": "gemini-3.5-flash"
+  },
+  "Avantgarde - Get Down": {
+    "title": "Get Down",
+    "artist": "Avantgarde",
+    "year": "1996",
+    "originalAlbum": "Avantgarde",
+    "releaseYear": "1996",
+    "releaseDate": "1996-01-01",
+    "composers": "Flavio Galuppi, Antonio Galbiati",
+    "label": "New Music International",
+    "genre": "Eurodance",
+    "synopsis": "Get Down es un pilar del Eurodance italiano de mediados de los 90, caracterizado por una producción de sintetizadores brillantes y una estructura rítmica diseñada para el club. La pista destaca por su energía cinética, el uso de voces procesadas y una línea de bajo pulsante que define la estética sonora de la época en el mercado europeo.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción se basa en un tempo de 130 BPM, utilizando cajas de ritmos clásicas de la era como la Roland TR-909 para el kick y el snare. La instrumentación se apoya en sintetizadores polifónicos tipo 'supersaw' y arpegios digitales que crean una atmósfera eufórica. La mezcla prioriza la claridad en las frecuencias medias-altas, permitiendo que la voz principal destaque sobre una base rítmica densa y comprimida, típica del sonido 'Italo-Dance' de los noventa."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra sigue la convención del género: un llamado a la liberación a través del baile y la música. El estribillo 'Get down, get down' funciona como un gancho rítmico más que semántico, diseñado para la memoria auditiva inmediata. El uso de imperativos busca la interacción directa con el oyente en la pista de baile, eliminando barreras complejas para centrarse en la catarsis física."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "La estética visual de Avantgarde se alinea con el minimalismo tecnológico de la época. El videoclip utiliza técnicas de edición rápida, juegos de luces estroboscópicas y una puesta en escena que enfatiza el movimiento constante. La paleta de colores saturados y los efectos de post-producción analógica refuerzan la naturaleza futurista y sintética de la propuesta musical."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "La canción se convirtió en un éxito en las listas de baile europeas, consolidando a Avantgarde como un referente del Eurodance italiano. Su impacto perdura en la cultura 'nostalgia 90s', siendo frecuentemente incluida en recopilatorios de la era dorada del dance. La producción es un ejemplo de cómo el mercado italiano logró exportar un sonido altamente comercial y técnicamente pulido a nivel global."
+      }
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
+  },
+  "Marc Anthony - Vivir lo nuestro": {
+    "title": "Vivir lo nuestro",
+    "artist": "Marc Anthony",
+    "year": "1993",
+    "originalAlbum": "Otra Nota",
+    "releaseYear": "1993",
+    "releaseDate": "1993-01-01",
+    "composers": "Rudy Pérez",
+    "label": "RMM Records",
+    "genre": "Salsa / Salsa Romántica",
+    "synopsis": "\"Vivir lo nuestro\", interpretada originalmente por Marc Anthony a dúo con La India en el álbum 'Otra Nota', es una obra maestra indiscutible de la salsa romántica de los años 90. Producida y arreglada por Sergio George, la canción fusiona la agresividad de la salsa dura con melodías pop altamente comerciales, destacando por sus complejas armonías vocales, arreglos de metales punzantes y una ejecución rítmica implacable que redefinió el estándar de la salsa moderna en Nueva York.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "Bajo la dirección y arreglos de Sergio George, la producción de este tema marca un hito en la salsa neoyorquina de los 90. La base rítmica destaca por un patrón de piano sincopado (montuno) ejecutado con precisión milimétrica, una sección de metales (trombones y trompetas) brillante y contundente con paneos estéreo definidos, y una percusión rica en capas (congas, timbales y bongó) que mantiene un groove dinámico y bailable. A nivel de mezcla, las voces principales de Marc Anthony y La India se ubican al frente con compresión transparente y sutiles efectos de sala, logrando una presencia arrolladora que compite perfectamente con la densidad instrumental."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "Compuesta por Rudy Pérez, la letra explora la urgencia, la pasión desbordante y la resistencia de un amor intenso frente a los prejuicios y obstáculos externos. Versos clave como 'Vivir lo nuestro, es lo que importa, y que lo demás se muera' encapsulan una declaración de independencia emocional y entrega total. La estructura lírica dialoga de forma simétrica entre las intervenciones de Marc Anthony y La India, creando una tensión dramática que culmina en un coro explosivo e inolvidable."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "La estética del proyecto visual y fotográfico que acompañó a 'Otra Nota' y sus sencillos consolidó la imagen de Marc Anthony como un artista urbano y elegante, alejado del estereotipo tradicional de la salsa antigua. Las presentaciones en vivo de la época y los videoclips promocionales transmiten una energía desbordante en el estudio y en el escenario, capturando la química innegable entre los intérpretes y la sofisticación de la orquestación en directo."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "Incluida en el álbum debut de estudio de Marc Anthony como solista, 'Otra Nota', esta canción se convirtió rápidamente en un himno generacional y un clásico rotundo de la salsa romántica a nivel mundial. El éxito del tema catapultó la carrera de Marc Anthony hacia el estrellato internacional y reafirmó la visión vanguardista de Sergio George y RMM Records en la renovación del género tropical."
+      }
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
+  },
+  "Eiffel 65, Gabry Ponte - Blue (Da Ba Dee)": {
+    "title": "Blue (Da Ba Dee)",
+    "artist": "Eiffel 65, Gabry Ponte",
+    "year": "1998",
+    "originalAlbum": "Europop",
+    "releaseYear": "1998",
+    "releaseDate": "1998-10-13",
+    "composers": "Jeffrey Jey, Maurizio Lobina, Gianfranco Randone",
+    "label": "Bliss Corporation",
+    "genre": "Eurodance",
+    "synopsis": "Blue (Da Ba Dee) es un hito del Eurodance de finales de los 90, caracterizado por el uso pionero del procesador de voz Antares Auto-Tune para crear un efecto robótico distintivo. Su estructura minimalista, basada en un riff de sintetizador pegadizo y un beat de 128 BPM, definió el sonido comercial de la época y consolidó el éxito global del proyecto italiano.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción destaca por el uso del sintetizador Access Virus para el riff principal, que se convirtió en el gancho melódico central. La voz de Jeffrey Jey fue procesada agresivamente con Auto-Tune, una técnica que en 1998 era incipiente y que aquí se utilizó como un instrumento creativo más que como una herramienta de corrección. La mezcla presenta un espectro de frecuencias optimizado para clubes, con un bombo (kick) comprimido con sidechain para dar espacio al bajo, creando una dinámica rítmica constante y bailable."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra es un ejercicio de surrealismo pop. El estribillo 'I'm blue, da ba dee da ba di' carece de significado semántico, funcionando como una onomatopeya rítmica. La narrativa explora la alienación a través de un protagonista que vive en un mundo monocromático ('I have a blue house with a blue window'). El uso de la repetición y la fonética simple facilita la memorización, mientras que el trasfondo sugiere una melancolía existencial disfrazada de euforia electrónica."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip, dirigido por Vitali Koshman, fue revolucionario por su uso extensivo de animación 3D por computadora. Presenta a los miembros de la banda en un entorno virtual futurista, interactuando con alienígenas y naves espaciales. Esta estética 'low-poly' capturó la fascinación de finales de los 90 por la tecnología digital, convirtiéndose en un referente visual que ayudó a la canción a dominar la rotación en canales como MTV."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "La canción alcanzó el número 1 en 17 países y vendió más de 8 millones de copias. Es considerada una de las canciones más reconocibles de la historia del dance. Curiosamente, el riff principal fue compuesto por Maurizio Lobina en un piano, y la letra fue improvisada por Jeffrey Jey para encajar en la melodía, demostrando que la simplicidad técnica, cuando es ejecutada con precisión, puede generar un fenómeno cultural masivo."
+      }
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
   }
 }
