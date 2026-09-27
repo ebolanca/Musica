@@ -4,10 +4,20 @@ function saveLyricsDbDebounced() {
     if (lyricsSaveDebounceTimer) clearTimeout(lyricsSaveDebounceTimer);
     lyricsSaveDebounceTimer = setTimeout(() => {
         try {
-            fs.writeFile(LYRICS_DB_PATH, JSON.stringify(cachedLyricsDb), 'utf8', (err) => {
+            const dataStr = JSON.stringify(cachedLyricsDb);
+            fs.writeFile(LYRICS_DB_PATH, dataStr, 'utf8', (err) => {
                 if (err) console.error('Error guardando LYRICS_DB_PATH:', err.message);
-                else console.log('💾 [LYRICS DB] Base de datos guardada en disco en segundo plano.');
+                else console.log('💾 [LYRICS DB] Base de datos guardada en disco en local.');
             });
+
+            // Replicar en caliente a OMEN para que ambos PCs tengan siempre la misma versión y sincronización exacta
+            const REMOTE_LYRICS_DB = "\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\lyrics_db.json";
+            if (fs.existsSync(path.dirname(REMOTE_LYRICS_DB))) {
+                fs.writeFile(REMOTE_LYRICS_DB, dataStr, 'utf8', (errRemote) => {
+                    if (errRemote) console.error('Error replicando LYRICS_DB a OMEN:', errRemote.message);
+                    else console.log('🌐 [LYRICS DB] Sincronizado en tiempo real con OMEN.');
+                });
+            }
         } catch(e) {
             console.error('Error en saveLyricsDbDebounced:', e.message);
         }
