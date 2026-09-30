@@ -5024,15 +5024,30 @@ function formatTime(seconds) {
 
     const retroState = {
         selectedList: 'Música viejuna',
-        mode: 'timeline', // 'timeline' o 'radar'
+        mode: 'radar', // 'radar', 'timeline' o 'dismissed'
         selectedYear: null,
         selectedStation: 'ALL',
         radarAirplayFilter: 'all',
         filter: 'missing', // 'missing', 'all', 'owned', 'dismissed'
         cachedCatalog: null,
         previewAudio: new Audio(),
-        currentPreviewTrack: null
+        currentPreviewTrack: null,
+        dismissedKeys: new Set(),
+        dismissedCount: 0
     };
+
+    function updateDismissedBadge() {
+        const badge = document.getElementById('badge-dismissed-count');
+        if (badge) {
+            if (retroState.dismissedCount > 0) {
+                badge.style.display = 'inline-block';
+                badge.textContent = retroState.dismissedCount;
+            } else {
+                badge.style.display = 'none';
+                badge.textContent = '';
+            }
+        }
+    }
 
     function normalizeSearchText(str) {
         if (!str) return '';
@@ -5132,7 +5147,10 @@ function formatTime(seconds) {
     }
 
     async function dismissRetroHit(artist, title, cardEl) {
-        cardEl.classList.add('dismissing');
+        if (cardEl) cardEl.classList.add('dismissing');
+        const k = normalizeSearchText(artist) + '_' + normalizeSearchText(cleanSongTitle(title));
+        retroState.dismissedKeys.add(k);
+
         try {
             const res = await fetch('/api/recommendations/dismiss', {
                 method: 'POST',
@@ -5141,7 +5159,12 @@ function formatTime(seconds) {
             });
             const data = await res.json();
             if (res.ok && data.success) {
-                // Eliminar del DOM TODAS las tarjetas coincidentes con esta canción (independientemente de la emisora o lista)
+                if (typeof data.totalDismissed === 'number') {
+                    retroState.dismissedCount = data.totalDismissed;
+                    updateDismissedBadge();
+                }
+
+                // Eliminar del DOM todas las tarjetas coincidentes con esta canción
                 const targetNormArt = normalizeSearchText(artist);
                 const targetNormTit = normalizeSearchText(cleanSongTitle(title));
 
@@ -5160,7 +5183,7 @@ function formatTime(seconds) {
                     }
                 });
 
-                if (matchingCards.length === 0) matchingCards.push(cardEl);
+                if (matchingCards.length === 0 && cardEl) matchingCards.push(cardEl);
 
                 matchingCards.forEach(c => {
                     c.style.transition = 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)';
@@ -5175,24 +5198,27 @@ function formatTime(seconds) {
                     }, 350);
                 });
 
-                showToastNotification(`🗑️ "${title}" omitida globalmente de todas las emisoras y sugerencias.`);
+                showToastNotification(`🗑️ "${title}" omitida globalmente de todas las sugerencias.`);
 
                 const bRetro = document.getElementById('badge-retro');
                 if (bRetro && parseInt(bRetro.textContent, 10) > 0) {
                     bRetro.textContent = Math.max(0, parseInt(bRetro.textContent, 10) - matchingCards.length);
                 }
             } else {
-                cardEl.classList.remove('dismissing');
+                if (cardEl) cardEl.classList.remove('dismissing');
                 alert('No se pudo omitir la sugerencia: ' + (data?.error || 'Error desconocido'));
             }
         } catch(e) {
-            cardEl.classList.remove('dismissing');
+            if (cardEl) cardEl.classList.remove('dismissing');
             console.error('Error omitiendo:', e);
             alert('Error al omitir la pista: ' + e.message);
         }
     }
 
     async function restoreRetroHit(artist, title, cardEl) {
+        const k = normalizeSearchText(artist) + '_' + normalizeSearchText(cleanSongTitle(title));
+        retroState.dismissedKeys.delete(k);
+
         try {
             const res = await fetch('/api/recommendations/undismiss', {
                 method: 'POST',
@@ -5201,8 +5227,26 @@ function formatTime(seconds) {
             });
             const data = await res.json();
             if (res.ok && data.success) {
+                if (typeof data.totalDismissed === 'number') {
+                    retroState.dismissedCount = data.totalDismissed;
+                    updateDismissedBadge();
+                }
                 showToastNotification(`↩️ "${title}" restaurada a sugerencias.`);
-                renderRetroHitsView();
+
+                if (cardEl) {
+                    cardEl.style.transition = 'all 0.35s ease';
+                    cardEl.style.opacity = '0';
+                    cardEl.style.transform = 'scale(0.85)';
+                    setTimeout(() => {
+                        cardEl.remove();
+                        const grid = document.getElementById('dismissed-tracks-grid');
+                        if (grid && grid.querySelectorAll('.retro-card').length === 0) {
+                            grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted);"><i class="fa-solid fa-circle-check" style="font-size:2.5rem;color:#10b981;margin-bottom:12px;"></i><p style="font-size:1.05rem;font-weight:600;">No tienes ninguna canción ignorada.</p></div>';
+                        }
+                    }, 350);
+                } else {
+                    renderRetroHitsView();
+                }
             }
         } catch(e) {
             console.error('Error restaurando:', e);
@@ -5272,8 +5316,19 @@ function formatTime(seconds) {
 
     async function renderRetroHitsView() {
         const curList = retroState.selectedList || 'Música viejuna';
-        currentSectionTitle.innerHTML = `<i class="fa-solid fa-tower-broadcast" style="color: #10b981;"></i> Radar de Emisoras FM: ${curList}`;
-        resultsCountText.textContent = `Radar en vivo para ${curList}...`;
+        const curMode = retroState.mode || 'radar';
+
+        if (curMode === 'radar') {
+            currentSectionTitle.innerHTML = `<i class="fa-solid fa-tower-broadcast" style="color: #10b981;"></i> Radar de Emisoras FM: ${curList}`;
+            resultsCountText.textContent = `Radar en vivo para ${curList}...`;
+        } else if (curMode === 'timeline') {
+            currentSectionTitle.innerHTML = `<i class="fa-solid fa-trophy" style="color: #f59e0b;"></i> Catálogo Histórico de Éxitos: ${curList}`;
+            resultsCountText.textContent = `Catálogo cronológico para ${curList}...`;
+        } else if (curMode === 'dismissed') {
+            currentSectionTitle.innerHTML = `<i class="fa-solid fa-eye-slash" style="color: #ef4444;"></i> Canciones Omitidas e Ignoradas`;
+            resultsCountText.textContent = `Lista de sugerencias descartadas...`;
+        }
+
         songsGrid.className = 'songs-grid';
         songsGrid.innerHTML = '';
 
@@ -5281,8 +5336,8 @@ function formatTime(seconds) {
         wrapper.id = 'retro-hits-main-wrapper';
         wrapper.style.gridColumn = '1 / -1';
 
-        // Selector de Lista / Género Musical (Chips Superiores)
-        let playlistChipsHtml = '<div class="recommendation-playlists-bar" style="display:flex;gap:10px;margin-bottom:14px;overflow-x:auto;padding-bottom:6px;">';
+        // 1. Selector de Lista / Género Musical (Chips Superiores)
+        let playlistChipsHtml = '<div class="recommendation-playlists-bar" style="display:flex;gap:10px;margin-bottom:12px;overflow-x:auto;padding-bottom:6px;">';
         recommendationPlaylists.forEach(pl => {
             const isActive = pl.id === curList;
             playlistChipsHtml += `
@@ -5294,7 +5349,23 @@ function formatTime(seconds) {
         });
         playlistChipsHtml += '</div>';
 
-        wrapper.innerHTML = playlistChipsHtml;
+        // 2. Barra de Pestañas Principales (Radar FM / Catálogo Éxitos / Omitidas)
+        let navTabsHtml = `
+            <div class="retro-view-switch" style="display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:14px;">
+                <button class="retro-switch-btn ${curMode === 'radar' ? 'active' : ''}" id="btn-mode-radar" style="font-size:0.86rem;padding:7px 16px;display:flex;align-items:center;gap:8px;">
+                    <i class="fa-solid fa-tower-broadcast"></i> Radar FM en Directo
+                </button>
+                <button class="retro-switch-btn ${curMode === 'timeline' ? 'active' : ''}" id="btn-mode-timeline" style="font-size:0.86rem;padding:7px 16px;display:flex;align-items:center;gap:8px;">
+                    <i class="fa-solid fa-trophy"></i> Catálogo de Éxitos
+                </button>
+                <button class="retro-switch-btn ${curMode === 'dismissed' ? 'active' : ''}" id="btn-mode-dismissed" style="font-size:0.86rem;padding:7px 16px;display:flex;align-items:center;gap:8px;border-color:rgba(239,68,68,0.3);color:${curMode === 'dismissed' ? '#fff' : '#f87171'};background:${curMode === 'dismissed' ? '#dc2626' : 'rgba(220,38,38,0.08)'};" title="Ver y recuperar canciones que omitiste">
+                    <i class="fa-solid fa-eye-slash"></i> Omitidas / Ignoradas
+                    <span id="badge-dismissed-count" style="display:${retroState.dismissedCount > 0 ? 'inline-block' : 'none'};background:rgba(0,0,0,0.35);padding:1px 7px;border-radius:10px;font-size:0.75rem;font-weight:700;margin-left:4px;">${retroState.dismissedCount || ''}</span>
+                </button>
+            </div>
+        `;
+
+        wrapper.innerHTML = playlistChipsHtml + navTabsHtml;
         songsGrid.appendChild(wrapper);
 
         // Listeners de los chips de lista
@@ -5309,7 +5380,156 @@ function formatTime(seconds) {
             });
         });
 
-        renderRetroRadarView();
+        // Listeners de los botones de modo
+        document.getElementById('btn-mode-radar')?.addEventListener('click', () => {
+            retroState.mode = 'radar';
+            renderRetroHitsView();
+        });
+        document.getElementById('btn-mode-timeline')?.addEventListener('click', () => {
+            retroState.mode = 'timeline';
+            renderRetroHitsView();
+        });
+        document.getElementById('btn-mode-dismissed')?.addEventListener('click', () => {
+            retroState.mode = 'dismissed';
+            renderRetroHitsView();
+        });
+
+        // Cargar contenido según la pestaña seleccionada
+        if (curMode === 'radar') {
+            renderRetroRadarView();
+        } else if (curMode === 'timeline') {
+            try {
+                const res = await fetch(`/api/recommendations/catalog?playlist=${encodeURIComponent(curList)}`);
+                if (!res.ok) throw new Error('Error cargando catálogo');
+                const data = await res.json();
+                renderTimelineContent(data, wrapper);
+            } catch(e) {
+                console.error('Error cargando catálogo:', e);
+                wrapper.innerHTML += `<div style="text-align:center;padding:40px;color:#ef4444;"><p>Error cargando catálogo: ${e.message}</p></div>`;
+            }
+        } else if (curMode === 'dismissed') {
+            renderDismissedRecommendationsView(wrapper);
+        }
+    }
+
+    async function renderDismissedRecommendationsView(wrapper) {
+        const curList = retroState.selectedList || 'Música viejuna';
+        const container = document.createElement('div');
+        container.id = 'dismissed-recommendations-wrapper';
+        container.style.marginTop = '4px';
+
+        container.innerHTML = `
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:12px;">
+                <div>
+                    <h3 style="color:#fff;font-size:1.1rem;font-weight:700;display:flex;align-items:center;gap:8px;margin:0;">
+                        <i class="fa-solid fa-eye-slash" style="color:#ef4444;"></i> Canciones Omitidas e Ignoradas
+                    </h3>
+                    <p style="color:var(--text-muted);font-size:0.85rem;margin-top:3px;margin-bottom:0;">
+                        Estas canciones no se volverán a recomendar ni aparecerán en el Radar FM. Si te equivocaste o quieres darles otra oportunidad, pulsa <strong>Restaurar</strong>.
+                    </p>
+                </div>
+                <button class="retro-switch-btn" id="btn-refresh-dismissed" style="font-size:0.8rem;padding:6px 14px;color:#38bdf8;border-color:rgba(56,189,248,0.4);">
+                    <i class="fa-solid fa-rotate-right"></i> Actualizar
+                </button>
+            </div>
+            <div id="dismissed-tracks-grid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:16px;">
+                <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted);">
+                    <i class="fa-solid fa-spinner fa-spin" style="font-size:2rem;color:#ef4444;margin-bottom:12px;"></i>
+                    <p>Cargando canciones ignoradas...</p>
+                </div>
+            </div>
+        `;
+
+        wrapper.appendChild(container);
+
+        document.getElementById('btn-refresh-dismissed')?.addEventListener('click', () => {
+            renderDismissedRecommendationsView(wrapper);
+        });
+
+        try {
+            const res = await fetch('/api/recommendations/dismissed');
+            if (!res.ok) throw new Error('Error consultando canciones omitidas');
+            const data = await res.json();
+
+            retroState.dismissedCount = data.count || (data.dismissed ? data.dismissed.length : 0);
+            updateDismissedBadge();
+
+            // Sincronizar dismissedKeys en memoria
+            (data.dismissed || []).forEach(item => {
+                const k = normalizeSearchText(item.artist) + '_' + normalizeSearchText(cleanSongTitle(item.title));
+                retroState.dismissedKeys.add(k);
+            });
+
+            const grid = document.getElementById('dismissed-tracks-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            const list = data.dismissed || [];
+            if (list.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column:1/-1;text-align:center;padding:50px 20px;color:var(--text-muted);">
+                        <i class="fa-solid fa-circle-check" style="font-size:3rem;color:#10b981;margin-bottom:14px;opacity:0.8;"></i>
+                        <h4 style="color:#fff;font-size:1.15rem;margin-bottom:6px;">No tienes canciones omitidas</h4>
+                        <p style="font-size:0.88rem;max-width:480px;margin:0 auto;">Todas las sugerencias del catálogo y las emisiones del Radar FM están totalmente habilitadas y activas.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            list.forEach(item => {
+                const card = document.createElement('div');
+                card.className = item.isOwned ? 'retro-card owned' : 'retro-card';
+
+                const trackKey = `${item.artist} - ${item.title}`;
+                const dateStr = item.dismissedAt ? new Date(item.dismissedAt).toLocaleDateString() : '';
+
+                card.innerHTML = `
+                    <div class="retro-card-header">
+                        <div class="retro-cover-box">
+                            <i class="fa-solid fa-record-vinyl retro-cover-icon" style="color:#ef4444;opacity:0.7;"></i>
+                        </div>
+                        <div class="retro-info">
+                            <div class="retro-title" title="${escapeHtml(item.title)}">${escapeHtml(item.title)}</div>
+                            <div class="retro-artist" title="${escapeHtml(item.artist)}">${escapeHtml(item.artist)}</div>
+                            <div class="retro-meta-row">
+                                <span class="retro-badge-peak" style="border-color:rgba(239,68,68,0.4);color:#f87171;background:rgba(239,68,68,0.12);">
+                                    <i class="fa-solid fa-ban"></i> Omitida ${dateStr ? 'el ' + dateStr : ''}
+                                </span>
+                                ${item.isOwned ? '<span class="badge-owned-tag"><i class="fa-solid fa-check"></i> En colección</span>' : ''}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="retro-card-actions" style="justify-content:space-between;align-items:center;">
+                        <button class="btn-retro-preview" data-track-key="${escapeHtml(trackKey)}">
+                            <i class="fa-solid fa-play"></i> Escuchar
+                        </button>
+                        <button class="btn-retro-restore" style="background:#10b981;color:#fff;border:none;border-radius:8px;padding:6px 14px;font-size:0.82rem;font-weight:600;display:flex;align-items:center;gap:6px;cursor:pointer;transition:all 0.2s ease;">
+                            <i class="fa-solid fa-rotate-left"></i> Restaurar
+                        </button>
+                    </div>
+                `;
+
+                const prevBtn = card.querySelector('.btn-retro-preview');
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        toggleRetroPreview(item.artist, item.title, prevBtn);
+                    });
+                }
+
+                const restoreBtn = card.querySelector('.btn-retro-restore');
+                if (restoreBtn) {
+                    restoreBtn.addEventListener('click', () => {
+                        restoreRetroHit(item.artist, item.title, card);
+                    });
+                }
+
+                grid.appendChild(card);
+            });
+        } catch(e) {
+            console.error('Error cargando ignoradas:', e);
+            const grid = document.getElementById('dismissed-tracks-grid');
+            if (grid) grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:#ef4444;"><p>Error cargando canciones omitidas: ${e.message}</p></div>`;
+        }
     }
 
     function renderTimelineContent(data, container) {
@@ -5604,6 +5824,18 @@ function formatTime(seconds) {
 
             // Descartar de la vista cualquier canción que ya esté en la colección
             let displayRadarTracks = (data.tracks || []).filter(t => !t.isOwned);
+
+            // FILTRADO ESTRICTO DE EMISORA EN EL CLIENTE: Si el usuario seleccionó una emisora concreta, mostrar SOLO esa emisora
+            if (curStation !== 'ALL') {
+                displayRadarTracks = displayRadarTracks.filter(t => t.stationId === curStation);
+            }
+
+            // Filtrar canciones que hayan sido omitidas por el usuario
+            displayRadarTracks = displayRadarTracks.filter(t => {
+                const k = normalizeSearchText(t.artist) + '_' + normalizeSearchText(cleanSongTitle(t.title));
+                return !retroState.dismissedKeys.has(k);
+            });
+
             if (retroState.radarAirplayFilter === 'frequent') {
                 displayRadarTracks = displayRadarTracks.filter(t => (t.playCount || 1) >= 2);
             }

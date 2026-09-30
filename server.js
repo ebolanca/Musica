@@ -3928,24 +3928,38 @@ function isRecommendationDismissed(artist, title) {
     const k = getRecommendationDismissedKey(artist, title);
     if (d[k]) return true;
 
-    // Búsqueda inteligente por tokens si el artista o el formato difieren ligeramente (comas, feats, extras en título)
     const cleanTit = normalizeSearchText(cleanSongTitle(title));
     if (!cleanTit || cleanTit.length < 2) return false;
     const tokens = getArtistTokens(artist);
+    const fullArt = normalizeSearchText(artist);
 
     for (const [key, item] of Object.entries(d)) {
         const itemTit = normalizeSearchText(cleanSongTitle(item.title || ''));
         if (!itemTit || itemTit.length < 2) continue;
 
-        // Coincidencia exacta o coincidencia parcial de títulos si la longitud es suficiente
+        // Coincidencia de títulos exacta o si uno contiene al otro
         const titleMatches = (itemTit === cleanTit) || 
             (cleanTit.length >= 4 && itemTit.length >= 4 && (cleanTit.includes(itemTit) || itemTit.includes(cleanTit)));
 
         if (titleMatches) {
+            const itemFullArt = normalizeSearchText(item.artist || '');
+            if (fullArt && itemFullArt) {
+                if (fullArt === itemFullArt) return true;
+                if (fullArt.length >= 4 && itemFullArt.length >= 4 && (fullArt.includes(itemFullArt) || itemFullArt.includes(fullArt))) {
+                    return true;
+                }
+            }
+
             const itemTokens = getArtistTokens(item.artist || '');
             if (tokens.length === 0 || itemTokens.length === 0) return true;
-            if (tokens.some(t => itemTokens.includes(t)) || itemTokens.some(t => tokens.includes(t))) {
-                return true;
+            
+            // Comprobación de tokens cruzada con inclusión parcial
+            for (const t of tokens) {
+                for (const it of itemTokens) {
+                    if (t === it || (t.length >= 3 && it.length >= 3 && (t.includes(it) || it.includes(t)))) {
+                        return true;
+                    }
+                }
             }
         }
     }
@@ -3962,8 +3976,9 @@ function normalizeSearchText(str) {
 function cleanSongTitle(rawTitle) {
     if (!rawTitle) return '';
     return rawTitle
-        .replace(/\s*[\(\[][^)\]]*(feat\.?|featuring|with|version|remaster|remastered|edit|mix|live|en vivo|directo|album|single|radio|soundtrack|bso|ost|video|oficial|official|audio|lyric|lyrics|letra|clip|hd|4k|exclusivo|estreno|full)[^)\]]*[\)\]]/gi, '')
-        .replace(/\s*-\s*.*(version|remaster|edit|mix|live|directo|remix|video|oficial|official|audio|lyric|lyrics|letra|clip).*/gi, '')
+        .replace(/\s*[\(\[]\s*(19\d\d|20\d\d)\s*[\)\]]/gi, '')
+        .replace(/\s*[\(\[][^)]]*(feat\.?|featuring|with|version|remaster|remastered|edit|mix|live|en vivo|directo|album|single|radio|soundtrack|bso|ost|video|oficial|official|audio|lyric|lyrics|letra|clip|hd|4k|exclusivo|estreno|full|extended|original)[^)]]*[\)\]]/gi, '')
+        .replace(/\s*-\s*.*(version|remaster|edit|mix|live|directo|remix|video|oficial|official|audio|lyric|lyrics|letra|clip|extended).*/gi, '')
         .replace(/\s+/g, ' ')
         .trim();
 }
@@ -4642,10 +4657,14 @@ async function handleRecommendationsRadioRadar(req, res) {
             const k = `${cleanArt}_${cleanTit}`;
             if (seen.has(k)) continue;
 
-            // Filtrar por emisoras de esta playlist
+            // Filtrar por emisoras de esta playlist (y por emisora concreta si no es ALL)
             const itemStations = Array.isArray(item.stations) ? item.stations : [];
-            const matchesPlaylistStations = availableStationKeys.some(stKey => itemStations.includes(stKey));
-            if (!matchesPlaylistStations) continue;
+            if (stationParam !== 'ALL') {
+                if (!itemStations.includes(stationParam)) continue;
+            } else {
+                const matchesPlaylistStations = availableStationKeys.some(stKey => itemStations.includes(stKey));
+                if (!matchesPlaylistStations) continue;
+            }
 
             // Filtrar si el usuario la omitió o ya la tiene en su colección
             if (isRecommendationDismissed(item.artist, item.title)) continue;
@@ -4662,7 +4681,9 @@ async function handleRecommendationsRadioRadar(req, res) {
             if (playCount >= 5) rotationLevel = 'heavy';
             else if (playCount >= 2) rotationLevel = 'medium';
 
-            const primaryStationId = itemStations.find(st => availableStationKeys.includes(st)) || itemStations[0] || availableStationKeys[0];
+            const primaryStationId = (stationParam !== 'ALL' && itemStations.includes(stationParam))
+                ? stationParam
+                : (itemStations.find(st => availableStationKeys.includes(st)) || itemStations[0] || availableStationKeys[0]);
             const stationConf = RADAR_STATIONS_CONFIG[primaryStationId] || {};
 
             unique.push({
@@ -4678,7 +4699,7 @@ async function handleRecommendationsRadioRadar(req, res) {
             });
         }
 
-        // Contabilizar repeticiones y rotaciones por emisora
+        // Contabilizar repeticiones y rotaciones por emisora (sobre el conjunto de la lista)
         const stationStats = {};
         for (const k of availableStationKeys) {
             stationStats[k] = {
@@ -4713,9 +4734,9 @@ async function handleRecommendationsRadioRadar(req, res) {
         }
 
         // Ordenar canciones:
-        // 1. CRITERIO PRINCIPAL ESTRICTO: Mayor número de repeticiones (5, 4, 3, 2, 1...)
-        // 2. A igual número de repeticiones: Canciones faltantes en colección primero
-        // 3. Emisora con mayor volumen de repeticiones
+        // 1. Mayor número de repeticiones (Hit/rotación alta primero)
+        // 2. Faltantes en colección primero
+        // 3. Emisora con mayor volumen
         // 4. Momento de emisión más reciente
         unique.sort((a, b) => {
             const countA = a.playCount || 1;
@@ -4757,14 +4778,22 @@ async function handleRecommendationsRadioRadar(req, res) {
             return b.totalPlays - a.totalPlays;
         });
 
+        // FILTRO ESTRICTO FINAL: Si el usuario eligió una emisora, devolver ÚNICAMENTE canciones de esa emisora
+        let finalTracks = unique;
+        if (stationParam !== 'ALL') {
+            finalTracks = finalTracks.filter(t => t.stationId === stationParam);
+        }
+        // Doble filtro de seguridad: nunca devolver canciones omitidas ni ya poseídas
+        finalTracks = finalTracks.filter(t => !isRecommendationDismissed(t.artist, t.title) && !isSongInCollection(t.artist, t.title));
+
         res.json({
             playlist,
             station: stationParam,
             availableStations,
-            count: unique.length,
-            missingCount: unique.filter(i => !i.isOwned).length,
-            frequentCount: unique.filter(i => !i.isOwned && (i.playCount || 1) >= 2).length,
-            tracks: unique
+            count: finalTracks.length,
+            missingCount: finalTracks.filter(i => !i.isOwned).length,
+            frequentCount: finalTracks.filter(i => !i.isOwned && (i.playCount || 1) >= 2).length,
+            tracks: finalTracks
         });
     } catch(e) {
         console.error('Error en /api/recommendations/radio-radar:', e.message);
@@ -4990,9 +5019,34 @@ async function handleRecommendationsDownload(req, res) {
     }
 }
 
+function handleRecommendationsGetDismissed(req, res) {
+    try {
+        const playlist = req.query.playlist ? normalizePlaylistKey(req.query.playlist) : null;
+        const d = loadDismissedRecommendations();
+        const list = Object.entries(d).map(([key, item]) => ({
+            key,
+            artist: item.artist,
+            title: item.title,
+            dismissedAt: item.dismissedAt || null,
+            playlist: item.playlist || null,
+            isOwned: isSongInCollection(item.artist, item.title)
+        }));
+
+        list.sort((a, b) => new Date(b.dismissedAt || 0) - new Date(a.dismissedAt || 0));
+
+        res.json({
+            count: list.length,
+            dismissed: list
+        });
+    } catch(e) {
+        console.error('Error en /api/recommendations/dismissed:', e.message);
+        res.status(500).json({ error: e.message });
+    }
+}
+
 function handleRecommendationsDismiss(req, res) {
     try {
-        const { artist, title } = req.body;
+        const { artist, title, playlist } = req.body;
         if (!artist || !title) return res.status(400).json({ error: 'Faltan parámetros' });
 
         const d = loadDismissedRecommendations();
@@ -5000,6 +5054,7 @@ function handleRecommendationsDismiss(req, res) {
         d[k] = {
             artist,
             title,
+            playlist: playlist || null,
             dismissedAt: new Date().toISOString()
         };
         saveDismissedRecommendations();
@@ -5025,11 +5080,28 @@ function handleRecommendationsUndismiss(req, res) {
 
         const cleanTit = normalizeSearchText(cleanSongTitle(title));
         const tokens = getArtistTokens(artist);
+        const fullArt = normalizeSearchText(artist);
+
         for (const [key, item] of Object.entries(d)) {
             const itemTit = normalizeSearchText(cleanSongTitle(item.title || ''));
-            if (itemTit === cleanTit) {
-                const itemTokens = getArtistTokens(item.artist || '');
-                if (tokens.some(t => itemTokens.includes(t)) || tokens.length === 0 || itemTokens.length === 0) {
+            const titleMatches = (itemTit === cleanTit) || 
+                (cleanTit.length >= 4 && itemTit.length >= 4 && (cleanTit.includes(itemTit) || itemTit.includes(cleanTit)));
+
+            if (titleMatches) {
+                const itemFullArt = normalizeSearchText(item.artist || '');
+                let artMatches = (fullArt === itemFullArt) || 
+                    (fullArt.length >= 4 && itemFullArt.length >= 4 && (fullArt.includes(itemFullArt) || itemFullArt.includes(fullArt)));
+
+                if (!artMatches) {
+                    const itemTokens = getArtistTokens(item.artist || '');
+                    if (tokens.length === 0 || itemTokens.length === 0) {
+                        artMatches = true;
+                    } else {
+                        artMatches = tokens.some(t => itemTokens.some(it => t === it || (t.length >= 3 && it.length >= 3 && (t.includes(it) || it.includes(t)))));
+                    }
+                }
+
+                if (artMatches) {
                     delete d[key];
                     removed = true;
                 }
@@ -5047,6 +5119,7 @@ function handleRecommendationsUndismiss(req, res) {
 }
 
 // Registro de Rutas (todo el radar de emisoras/descubridor de éxitos: fuera del acceso público)
+app.get('/api/recommendations/dismissed', blockInPublicMode, handleRecommendationsGetDismissed);
 app.get('/api/recommendations/catalog', blockInPublicMode, handleRecommendationsCatalog);
 app.get('/api/recommendations/radio-radar', blockInPublicMode, handleRecommendationsRadioRadar);
 app.get('/api/recommendations/preview', blockInPublicMode, handleRecommendationsPreview);
