@@ -141,12 +141,17 @@ async function analyzeAndEnrichTrack(artist, title, currentAlbum, currentYear) {
 Actúa como un musicólogo experto, productor e ingeniero de sonido. Realiza un análisis exhaustivo y técnico en profundidad de la canción "${cleanT}" de ${artist}.
 
 Identificación de Metadatos Canónicos (Estricto):
-1. "originalAlbum": Nombre exacto del ÁLBUM DE ESTUDIO ORIGINAL donde se publicó por primera vez (PROHIBIDO poner Grandes Éxitos, recopilatorios, 'Best Of', 'Anniversary', directos o reediciones).
-2. "releaseYear": Año original de lanzamiento (ej: "1983").
-3. "releaseDate": Fecha original (YYYY-MM-DD o YYYY-01-01).
-4. "composers": Nombres de los compositores y autores reales (personas físicas).
-5. "label": Sello discográfico original de la primera edición.
-6. "genre": Género musical preciso.
+1. "originalAlbum": Nombre exacto del ÁLBUM DE ESTUDIO ORIGINAL donde se publicó por primera vez esta versión de ${artist} (o si fue un single debut/BSO estelar como 'The Bodyguard' para Whitney Houston, indica dicho álbum). PROHIBIDO poner Grandes Éxitos, recopilatorios genéricos, 'Best Of', 'Anniversary', directos o reediciones tardías.
+2. "releaseYear": Año original de lanzamiento de la versión de ${artist} (ej: para Whitney Houston es "1992", no "1974").
+3. "releaseDate": Fecha original de lanzamiento (YYYY-MM-DD o YYYY-01-01).
+4. "composers": Nombres de los compositores y autores reales de la composición musical (personas físicas, ej: "Dolly Parton" para 'I Will Always Love You').
+5. "label": Sello discográfico de la edición de ${artist} (ej: "Arista Records" para Whitney Houston).
+6. "genre": Género musical preciso de esta versión (ej: "R&B / Soul / Pop Ballad").
+
+REGLA DE ORO DE VERSIONES / COVERS (CRÍTICO):
+Si la canción es una versión o cover interpretada por ${artist} (ej: 'I Will Always Love You' cantada por Whitney Houston, 'Knockin' on Heaven's Door' por Guns N' Roses, 'Hurt' por Johnny Cash):
+- El 'originalAlbum', 'releaseYear', 'releaseDate', 'label' y 'genre' DEBEN CORRESPONDER OBLIGATORIAMENTE A LA GRABACIÓN / VERSIÓN DEL ARTISTA SOLICITADO (${artist}). NUNCA atribuyas el álbum, año ni sello de la versión anterior de otro artista.
+- En 'composers' sí debes indicar los autores reales de la obra.
 
 Debes responder ÚNICAMENTE con un objeto JSON válido con esta estructura exacta:
 {

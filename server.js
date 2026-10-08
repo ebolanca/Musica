@@ -560,8 +560,8 @@ function syncMetadataFromGemini(artist, title, geminiData) {
     const rawGemAlbum = geminiData.originalAlbum || geminiData.album || '';
     let verifiedAlbum = cleanAlbumTitle(rawGemAlbum);
 
-    // Descartar si el nuevo álbum es una BSO ajena o lista
-    const isBadAlbum = (a) => /\b(les nuits fauves|soundtrack|bso|ost|banda sonora|motion picture|various artists|list of)\b/i.test(a);
+    // Descartar si el nuevo álbum es una BSO ajena genérica o lista de varios artistas (PERO permitir BSOs icónicas donde el artista es protagonista como The Bodyguard, Purple Rain, 8 Mile, etc.)
+    const isBadAlbum = (a) => /\b(les nuits fauves|various artists|varios artistas|list of)\b/i.test(a);
     if (isBadAlbum(verifiedAlbum) && currentMeta.album && !isBadAlbum(currentMeta.album)) {
         verifiedAlbum = currentMeta.album;
     }
@@ -627,13 +627,18 @@ async function enrichTrackMetadataWithGemini(artist, title) {
 Para la canción "${cleanT}" del artista o grupo "${artist}":
 
 Determina los metadatos canónicos y originales de esta canción:
-1. "originalAlbum": El título exacto del ÁLBUM DE ESTUDIO ORIGINAL en el que se publicó por primera vez esta canción (o si fue un single inicial que luego formó parte de su primer álbum de estudio, indica el título de dicho álbum de estudio original).
+1. "originalAlbum": El título exacto del ÁLBUM DE ESTUDIO ORIGINAL en el que se publicó por primera vez esta versión de ${artist} (o si fue un single debut/BSO estelar como 'The Bodyguard' para Whitney Houston, indica dicho álbum original).
    ¡ESTRICTAMENTE PROHIBIDO poner discos recopilatorios, grandes éxitos, 'Greatest Hits', 'Best Of', 'Esencial', recopilaciones digitales o directos! (Por ejemplo, para "Hoy no me puedo levantar" de Mecano, pon "Mecano", NUNCA "Esencial Mecano").
-2. "releaseYear": Año exacto del lanzamiento original (ej: "1981" o "1982").
-3. "releaseDate": Fecha original de lanzamiento en formato YYYY-MM-DD si se conoce, o YYYY-01-01.
-4. "composers": Nombres de los compositores y autores reales (personas físicas, ej: "José María Cano, Nacho Cano").
-5. "label": Sello discográfico original de la primera edición (ej: "CBS", "Columbia", "Hispavox", etc.).
-6. "genre": Género musical preciso (ej: "Tecnopop / Synth-pop / New Wave").
+2. "releaseYear": Año exacto del lanzamiento de la versión de ${artist} (ej: para Whitney Houston es "1992", no "1974").
+3. "releaseDate": Fecha de lanzamiento de esta grabación en formato YYYY-MM-DD si se conoce, o YYYY-01-01.
+4. "composers": Nombres de los compositores y autores reales de la obra (personas físicas, ej: "Dolly Parton" para 'I Will Always Love You', "José María Cano, Nacho Cano" para temas de Mecano).
+5. "label": Sello discográfico de la edición de ${artist} (ej: "Arista Records" para Whitney Houston, "Columbia", etc.).
+6. "genre": Género musical preciso de esta versión (ej: "R&B / Soul / Pop Ballad").
+
+REGLA DE ORO DE VERSIONES / COVERS (CRÍTICO):
+Si la canción es una versión o cover interpretada por ${artist} (como 'I Will Always Love You' cantada por Whitney Houston, 'Knockin' on Heaven's Door' por Guns N' Roses, 'Hurt' por Johnny Cash, 'Respect' por Aretha Franklin):
+- El 'originalAlbum', 'releaseYear', 'releaseDate', 'label' y 'genre' DEBEN CORRESPONDER OBLIGATORIAMENTE A LA GRABACIÓN / VERSIÓN DEL ARTISTA SOLICITADO (${artist}). NUNCA atribuyas el álbum, año ni sello de la versión anterior de otro artista.
+- En 'composers' sí debes indicar los autores reales de la composición musical.
 
 Responde ÚNICAMENTE en JSON válido con esta estructura:
 {
@@ -748,13 +753,18 @@ Actúa como un productor musical, musicólogo e ingeniero de sonido experto. Rea
 
 IMPORTANTE - REGLA DE ORO DE METADATOS Y ÁLBUM:
 Determina con rigor enciclopédico los metadatos canónicos de su lanzamiento ORIGINAL:
-1. "originalAlbum": El título exacto del ÁLBUM DE ESTUDIO ORIGINAL en el que se editó por primera vez (o si fue un single debut que luego encabezó su primer álbum de estudio, indica dicho álbum de estudio original).
+1. "originalAlbum": El título exacto del ÁLBUM DE ESTUDIO ORIGINAL en el que se editó por primera vez esta versión de ${artist} (o si fue un single debut/BSO estelar como 'The Bodyguard' para Whitney Houston, indica dicho álbum original).
    ¡ESTRICTAMENTE PROHIBIDO incluir recopilatorios de grandes éxitos, 'Greatest Hits', 'Best Of', 'Esencial', 'Antología', reediciones tardías o directos! (Ejemplo: para "Hoy no me puedo levantar" de Mecano, el álbum original es "Mecano", NUNCA "Esencial Mecano").
-2. "releaseYear": Año original de lanzamiento (ej: "1981").
+2. "releaseYear": Año exacto del lanzamiento de la versión de ${artist} (ej: para Whitney Houston es "1992", no "1974").
 3. "releaseDate": Fecha de lanzamiento original (YYYY-MM-DD o YYYY-01-01).
-4. "composers": Nombres de los compositores y autores reales (personas físicas, ej: "José María Cano, Nacho Cano").
-5. "label": Sello discográfico original de la primera edición (ej: "CBS", "Columbia", "Hispavox", etc.).
-6. "genre": Género musical preciso (ej: "Tecnopop / Synth-pop / New Wave").
+4. "composers": Nombres de los compositores y autores reales (personas físicas, ej: "Dolly Parton" para 'I Will Always Love You', "José María Cano, Nacho Cano" para Mecano).
+5. "label": Sello discográfico de la edición de ${artist} (ej: "Arista Records" para Whitney Houston, "Columbia", etc.).
+6. "genre": Género musical preciso de esta versión (ej: "R&B / Soul / Pop Ballad").
+
+REGLA DE ORO DE VERSIONES / COVERS (CRÍTICO):
+Si la canción es una versión o cover interpretada por ${artist} (como 'I Will Always Love You' cantada por Whitney Houston, 'Knockin' on Heaven's Door' por Guns N' Roses, 'Hurt' por Johnny Cash, 'Respect' por Aretha Franklin):
+- El 'originalAlbum', 'releaseYear', 'releaseDate', 'label' y 'genre' DEBEN CORRESPONDER OBLIGATORIAMENTE A LA GRABACIÓN / VERSIÓN DEL ARTISTA SOLICITADO (${artist}). NUNCA atribuyas el álbum, año ni sello de la versión anterior de otro artista.
+- En 'composers' sí debes indicar los autores reales de la composición musical.
 
 Protocolo de verificación y cero alucinaciones (Estricto):
 - Prohibido inventar datos técnicos: Si no hay registros documentados sobre estudio exacto, modelos de micrófonos o consolas, haz un análisis acústico deductivo indicando con claridad que es una deducción basada en la escucha.

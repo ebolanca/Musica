@@ -111,10 +111,27 @@ async function fetchWikipediaInfobox(artist, title, lang = 'en') {
 
             if (!wikitext || !wikitext.toLowerCase().includes('infobox')) continue;
 
+            // Si el artículo contiene varias infoboxes, seleccionar la que corresponda a este artista
+            const infoboxBlocks = [];
+            const infoRegex = /\{\{Infobox(?:\s+song)?[\s\S]*?(?=\n\}\}\n|\n\}\}\s*$)/gi;
+            let match;
+            while ((match = infoRegex.exec(wikitext)) !== null) {
+                infoboxBlocks.push(match[0]);
+            }
+
+            let targetText = wikitext;
+            if (infoboxBlocks.length > 1) {
+                const normArt = mainArt.toLowerCase();
+                const matchingBlock = infoboxBlocks.find(b => b.toLowerCase().includes(normArt));
+                if (matchingBlock) {
+                    targetText = matchingBlock;
+                }
+            }
+
             const extractInfoboxField = (fieldNames) => {
                 for (const name of fieldNames) {
                     const regex = new RegExp(`^[\\t ]*\\|[\\t ]*${name}[\\t ]*=[\\t ]*([\\s\\S]*?)(?=\\n[\\t ]*\\||\\n[\\t ]*\\}\\}|$)`, 'im');
-                    const m = wikitext.match(regex);
+                    const m = targetText.match(regex);
                     if (m && m[1]) {
                         const val = cleanWikitext(m[1]);
                         if (val && val.length > 0 && !val.toLowerCase().startsWith('infobox')) {
@@ -124,6 +141,23 @@ async function fetchWikipediaInfobox(artist, title, lang = 'en') {
                 }
                 return null;
             };
+
+            const boxArtist = extractInfoboxField(['artist', 'artista']);
+            // Si la infobox encontrada pertenece explícitamente a otro artista completamente distinto (ej: Dolly Parton cuando buscamos Whitney Houston), no usar este álbum/año
+            if (boxArtist && mainArt) {
+                const normBox = boxArtist.toLowerCase();
+                const normMain = mainArt.toLowerCase();
+                if (!normBox.includes(normMain) && !normMain.includes(normBox)) {
+                    // Si el artículo tiene otra sección para nuestro artista, comprobar si está más abajo
+                    const artistSectionRegex = new RegExp(`==+[^=]*${mainArt}[^=]*==+([\\s\\S]*?)(?===+|$)`, 'i');
+                    const secMatch = wikitext.match(artistSectionRegex);
+                    if (secMatch) {
+                        targetText = secMatch[1];
+                    } else {
+                        continue; // Descartar infobox de otro artista
+                    }
+                }
+            }
 
             const album = extractInfoboxField(['from_album', 'from album', 'album', 'álbum']);
             const released = extractInfoboxField(['released', 'publicación', 'lanzamiento']);
@@ -145,7 +179,7 @@ async function fetchWikipediaInfobox(artist, title, lang = 'en') {
                 }
             }
             if (!year) {
-                const ym2 = wikitext.match(/\b(?:released|publicado|grabado|lanzado).*?\b(19\d\d|20\d\d)\b/i);
+                const ym2 = targetText.match(/\b(?:released|publicado|grabado|lanzado).*?\b(19\d\d|20\d\d)\b/i);
                 if (ym2) year = ym2[1];
             }
             if (!dateStr && year) {
@@ -186,7 +220,7 @@ async function fetchMusicBrainzInfo(artist, title) {
         const recordings = data.recordings || [];
         if (recordings.length === 0) return null;
 
-        const forbiddenSecondary = ['compilation', 'soundtrack', 'live', 'remix', 'dj-mix', 'mixtape/street', 'demo'];
+        const forbiddenSecondary = ['compilation', 'live', 'remix', 'dj-mix', 'mixtape/street', 'demo'];
 
         for (const rec of recordings) {
             const releases = rec.releases || [];
