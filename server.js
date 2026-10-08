@@ -1320,31 +1320,30 @@ function getTrackMetadata(artist, title) {
 
 function cleanDisplayTitle(rawTitle) {
     if (!rawTitle) return '';
-    let title = rawTitle.trim();
+    let title = String(rawTitle).trim();
 
     // 1. Quitar corchetes enteros tipo [The Official 2010 FIFA World Cup (TM) Song] o [feat. ...]
     title = title.replace(/\s*\[[^\]]+\]/g, '');
 
     // 2. Quitar menciones promocionales, bandas sonoras, eventos y películas tras guión o en paréntesis
     title = title.replace(/\s*-\s*(?:From\s+.*?Soundtrack|From\s+the\s+Film|From\s+Barbie|From\s+["“].*?["”]|from\s+the\s+series|Spider-Man:.*?|The\s+Gong\s+Gong\s+Song.*?|Operación\s+Triunfo\s+\d{4}|Serenade\s+From\s+the\s+Stars).*/gi, '');
-    title = title.replace(/\s*[\(\[]\s*(?:The\s+Official\s+\d{4}\s+FIFA.*?|Official\s+Song\s+UEFA.*?|from\s+DreamWorks.*?|Fifty\s+Shades\s+Darker)\s*[\)\]]/gi, '');
-    title = title.replace(/\s*[\(\[]\s*From\s+.*?Soundtrack\s*[\)\]]/gi, '');
+    title = title.replace(/\s*[\(\[]\s*(?:The\s+Official\s+\d{4}\s+FIFA.*?|Official\s+Song\s+UEFA.*?|from\s+DreamWorks.*?|Fifty\s+Shades\s+Darker|From\s+.*?Soundtrack)\s*[\)\]]/gi, '');
 
-    // 3. Quitar colaboraciones / feat redundantes (tanto tras guión como entre paréntesis)
+    // 3. Quitar videos oficiales, audios, lyric videos entre paréntesis
+    title = title.replace(/\s*\(\s*(?:Official\s+(?:Music\s+)?Video|Video\s+Oficial|Music\s+Video|Official\s+Audio|Audio\s+Oficial|Lyric\s+Video|Video\s+con\s+Letra|Visualizer)\s*\)/gi, '');
+
+    // 4. Quitar colaboraciones / feat redundantes (tanto tras guión como entre paréntesis)
     title = title.replace(/\s*-\s*(?:Featuring\s+.*|feat\.?\s+.*|ft\.?\s+.*|with\s+.*)$/i, '');
     title = title.replace(/\s*\(\s*(?:feat\.?|ft\.?|featuring|with)\s+[^)]+\)/gi, '');
 
-    // 4. Quitar remasters y años de reedición
-    title = title.replace(/\s*-\s*(?:\d{4}\s+Remaster|Remaster(?:ed)?(?:\s+\d{4})?|Re-Recorded(?:\s+Version)?|Remastered\s+Version).*/gi, '');
-    title = title.replace(/\s*\(\s*(?:\d{4}\s+Remaster|Remaster(?:ed)?(?:\s+\d{4})?|Re-Recorded(?:\s+Version)?|Remastered\s+Version)\s*\)/gi, '');
+    // 5. Quitar remasters y años de reedición
+    title = title.replace(/\s*-\s*(?:\d{4}\s+Remaster(?:ed)?|Remaster(?:ed)?(?:\s+\d{4})?|Re-Recorded(?:\s+Version)?|Remastered\s+Version).*/gi, '');
 
-    // 5. Quitar radio edits, álbum version, single version, cortes técnicos
-    title = title.replace(/\s*-\s*(?:Radio\s+Edit|Radio\s+Mix|Final\s+Edit\s+Version|Single\s+Version|Album\s+Version|Spanish\s+Version|Dopamine\s+Re-Edit|Klaas\s+Vocal\s+Edit|Main\s*\/\s*Radio\s+Mix|Vocal\s+Version\s*\/\s*Radio\s+Edit|Nicktim\s*\/\s*Radio\s+Edit|Edit|Original\s+Mix|Single\s+Mix).*/gi, '');
-    title = title.replace(/\s*\(\s*(?:Radio\s+Edit|Radio\s+Mix|Single\s+Version|Album\s+Version|Edit|Original\s+Mix)\s*\)/gi, '');
+    // 6. Quitar cualquier versión técnica o corte entre paréntesis: Mix, Edit, Version, Remix, Remaster, Live, Acoustic, Dub, Instrumental
+    title = title.replace(/\s*\(\s*[^)]*?\b(?:Mix|Edit|Version|Versión|Remix|Remaster(?:ed)?|Re-Recorded|Live|En\s+Directo|En\s+Vivo|Ao\s+Vivo|Acoustic|Ac[uú]stico|Ac[uú]stica|Dub|Instrumental|12["'\u201d\u2019]?|7["'\u201d\u2019]?)\b[^)]*?\)/gi, '');
 
-    // 6. Quitar directos / live
-    title = title.replace(/\s*-\s*(?:Ao\s+Vivo|En\s+Directo|En\s+Vivo|Live).*/gi, '');
-    title = title.replace(/\s*\(\s*(?:Ao\s+Vivo|En\s+Directo|En\s+Vivo|Live)\s*\)/gi, '');
+    // 7. Quitar cortes técnicos tras guión al final del título
+    title = title.replace(/\s*-\s*(?:.*?\b(?:Radio\s+Edit|Radio\s+Mix|Radio\s+Version|Single\s+Version|Single\s+Mix|Album\s+Version|Original\s+Mix|Club\s+Mix|Extended\s+Mix|Extended\s+Version|Maxi\s+Version|Remaster(?:ed)?(?:\s+\d{4})?|\d{4}\s+Remaster|Re-Recorded|Live|En\s+Directo|En\s+Vivo|Ao\s+Vivo|Acoustic|Ac[uú]stico|Remix|Edit)\b.*)$/gi, '');
 
     // Limpieza final de espacios o guiones colgantes
     title = title.replace(/\s+-\s*$/, '').trim();
