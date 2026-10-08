@@ -993,15 +993,27 @@ function formatTime(seconds) {
             const elHeight = elRect.height;
 
             const idx = parseInt(el.getAttribute('data-index') || '-1', 10);
-            // Para las líneas iniciales del tema, mantener arriba del todo sin movimientos bruscos
-            const targetScroll = (idx <= 1 || elTopInScroll < 80)
+            
+            // Para las líneas iniciales del tema o antes de 8s de canción, mantener arriba del todo
+            const isNearStart = (idx <= 2) || (mainMusicAudio && mainMusicAudio.currentTime < 8) || (elTopInScroll < 90);
+            const targetScroll = isNearStart
                 ? 0
                 : Math.max(0, elTopInScroll - (containerHeight * 0.35));
 
-            cinemaLyrics.scrollTo({
-                top: targetScroll,
-                behavior: instant ? 'instant' : 'smooth'
-            });
+            // 🛑 REGLA DE ORO: Si tenemos que retroceder hacia arriba o estamos al inicio de la pista,
+            // NUNCA hacer scroll animado ("smooth") que recorra toda la letra desde abajo hacia arriba.
+            // El reseteo debe ser INSTANTÁNEO ("instant") y clavado en la posición inicial.
+            const isScrollingUpwards = targetScroll < currentScroll;
+            const forceInstant = instant || isNearStart || (targetScroll === 0) || (isScrollingUpwards && currentScroll > 80);
+
+            if (forceInstant) {
+                cinemaLyrics.scrollTop = targetScroll;
+            } else {
+                cinemaLyrics.scrollTo({
+                    top: targetScroll,
+                    behavior: 'smooth'
+                });
+            }
         });
     }
 
@@ -1754,16 +1766,21 @@ function formatTime(seconds) {
             img.src = nextTrack.coverUrl;
         }
 
-        // 3. Precarga de letras sincronizadas y análisis detallado
-        const key = getTrackPreloadKey(nextTrack);
-        if (!preloadedDetailsCache.has(key)) {
-            const trackTitleQuery = nextTrack.rawTitle || nextTrack.title;
-            fetch(`/api/track/detail?artist=${encodeURIComponent(nextTrack.artist)}&title=${encodeURIComponent(trackTitleQuery)}`)
-                .then(r => r.json())
-                .then(d => {
-                    if (d) preloadedDetailsCache.set(key, d);
-                })
-                .catch(() => {});
+        // 3. Precarga anticipada de letras sincronizadas y análisis de las próximas pistas (Buffer de 3 temas)
+        for (let i = 1; i <= Math.min(3, activePlaylistQueue.length - 1); i++) {
+            const queueIdx = (currentQueueIndex + i) % activePlaylistQueue.length;
+            const qTrack = activePlaylistQueue[queueIdx];
+            if (!qTrack) continue;
+            const qKey = getTrackPreloadKey(qTrack);
+            if (!preloadedDetailsCache.has(qKey)) {
+                const qTitleQuery = qTrack.rawTitle || qTrack.title;
+                fetch(`/api/track/detail?artist=${encodeURIComponent(qTrack.artist)}&title=${encodeURIComponent(qTitleQuery)}`)
+                    .then(r => r.json())
+                    .then(d => {
+                        if (d) preloadedDetailsCache.set(qKey, d);
+                    })
+                    .catch(() => {});
+            }
         }
     }
 
@@ -2259,10 +2276,18 @@ function formatTime(seconds) {
                 </div>
             `;
         }).join('');
-        if (keepPosition) {
+        // Solo preservar scroll si realmente estamos a mitad de tema (currentTime > 5s)
+        const isMidSong = mainMusicAudio && mainMusicAudio.currentTime > 5;
+        if (keepPosition && isMidSong) {
             cinemaLyrics.scrollTop = prevScroll;
         } else {
+            cinemaLyrics.scrollTop = 0;
             cinemaLyrics.scrollTo({ top: 0, behavior: 'instant' });
+            requestAnimationFrame(() => {
+                if (cinemaLyrics && (!mainMusicAudio || mainMusicAudio.currentTime < 5)) {
+                    cinemaLyrics.scrollTop = 0;
+                }
+            });
         }
         updateCinemaActiveLines(currentCinemaActiveLine);
 
@@ -4250,9 +4275,11 @@ function formatTime(seconds) {
         }
         document.body.style.overflow = 'hidden';
         document.documentElement.style.overflow = 'hidden';
-        window.scrollTo(0, 0);
         cinemaOverlay.style.display = 'flex';
-        if (cinemaLyrics) cinemaLyrics.scrollTo({ top: 0, behavior: 'instant' });
+        if (cinemaLyrics) {
+            cinemaLyrics.scrollTop = 0;
+            cinemaLyrics.scrollTo({ top: 0, behavior: 'instant' });
+        }
         requestWakeLock();
 
         // Activar Pantalla Completa Nativa de Hardware (Oculta navegador, pestañas y barra de tareas)
@@ -4821,6 +4848,7 @@ function formatTime(seconds) {
         if (cinemaLyrics) {
             currentCinemaActiveLine = -1;
             cinemaParsedLyrics = [];
+            cinemaLyrics.scrollTop = 0;
             cinemaLyrics.scrollTo({ top: 0, behavior: 'instant' });
 
             const key = getTrackPreloadKey(track);
@@ -4841,7 +4869,14 @@ function formatTime(seconds) {
                         return { ...l, seconds: sec, index: idx, hasTimestamp: sec !== null };
                     });
 
-                    renderCinemaLyricLines();
+                    renderCinemaLyricLines(false);
+                    cinemaLyrics.scrollTop = 0;
+                    cinemaLyrics.scrollTo({ top: 0, behavior: 'instant' });
+                    requestAnimationFrame(() => {
+                        if (cinemaLyrics && (!mainMusicAudio || mainMusicAudio.currentTime < 5)) {
+                            cinemaLyrics.scrollTop = 0;
+                        }
+                    });
                     updateCinemaSubsDurationBadge();
 
                     // (Auto-alineación bajo demanda: sólo al pulsar 🪄 Auto o por anclaje manual con 1 clic en la estrofa)
