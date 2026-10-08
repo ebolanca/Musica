@@ -5573,7 +5573,7 @@ video {
     overflow-y: auto;
     padding: 10px 14px 40px 14px;
     box-sizing: border-box;
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     animation: fadeInAnalysis 0.3s ease-out;
 }
 

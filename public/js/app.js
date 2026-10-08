@@ -110,10 +110,17 @@ function switchModalTab(targetTabId) {
     document.querySelectorAll('.modal-tab-content').forEach(c => {
         if (c.id === targetTabId) {
             c.classList.add('active');
+            c.scrollTop = 0;
+            c.scrollTo({ top: 0, behavior: 'instant' });
         } else {
             c.classList.remove('active');
         }
     });
+    const modalContent = document.querySelector('.song-modal-content') || document.querySelector('.modal-body');
+    if (modalContent) {
+        modalContent.scrollTop = 0;
+        modalContent.scrollTo({ top: 0, behavior: 'instant' });
+    }
 }
 
 function formatTime(seconds) {
@@ -990,6 +997,10 @@ function formatTime(seconds) {
                         if (data.durationFmt && data.durationMs) {
                             editingTrack.durationFmt = data.durationFmt;
                             editingTrack.durationMs = data.durationMs;
+                            if (currentPlayingSong && (currentPlayingSong === editingTrack || (currentPlayingSong.title === editingTrack.title && currentPlayingSong.artist === editingTrack.artist))) {
+                                currentPlayingSong.durationFmt = data.durationFmt;
+                                currentPlayingSong.durationMs = data.durationMs;
+                            }
                             if (cinemaTimeDur) cinemaTimeDur.textContent = data.durationFmt;
                             if (musicTimeDur) musicTimeDur.textContent = data.durationFmt;
                         }
@@ -2413,6 +2424,14 @@ function formatTime(seconds) {
                 }
             }
 
+            // Duración esperada de estudio: dar prioridad absoluta a la duración asignada a la canción
+            let expectedDurationSec = null;
+            if (currentSong.durationMs && !isNaN(currentSong.durationMs) && currentSong.durationMs > 20000) {
+                expectedDurationSec = Math.round(currentSong.durationMs / 1000);
+            } else if (subsSec && subsSec > 20) {
+                expectedDurationSec = subsSec;
+            }
+
             try {
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 60000);
@@ -2426,7 +2445,7 @@ function formatTime(seconds) {
                         title: currentSong.rawTitle || currentSong.title,
                         category: getTrackPlaylistName(currentSong),
                         discardCurrent: true,
-                        expectedDurationSec: subsSec || null
+                        expectedDurationSec: expectedDurationSec || null
                     })
                 });
                 clearTimeout(timeoutId);
@@ -3623,12 +3642,19 @@ function formatTime(seconds) {
     // Eventos Modal - Cambios de pestaña interna del modal
     document.querySelectorAll('.modal-nav-tab').forEach(tabBtn => {
         tabBtn.addEventListener('click', () => {
-            document.querySelectorAll('.modal-nav-tab').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('.modal-tab-content').forEach(c => c.classList.remove('active'));
-
-            tabBtn.classList.add('active');
             const targetId = tabBtn.getAttribute('data-modal-tab');
-            document.getElementById(targetId).classList.add('active');
+            if (typeof switchModalTab === 'function') {
+                switchModalTab(targetId);
+            } else {
+                document.querySelectorAll('.modal-nav-tab').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.modal-tab-content').forEach(c => c.classList.remove('active'));
+                tabBtn.classList.add('active');
+                const targetContent = document.getElementById(targetId);
+                if (targetContent) {
+                    targetContent.classList.add('active');
+                    targetContent.scrollTop = 0;
+                }
+            }
         });
     });
 
@@ -3639,6 +3665,14 @@ function formatTime(seconds) {
         document.getElementById('modal-artist-text').textContent = song.artist;
 
         switchModalTab(initialTab);
+
+        const modalBody = document.querySelector('.modal-body') || document.querySelector('.song-modal-content');
+        if (modalBody) {
+            modalBody.scrollTop = 0;
+            if (typeof modalBody.scrollTo === 'function') {
+                modalBody.scrollTo({ top: 0, behavior: 'instant' });
+            }
+        }
 
         // Mostrar de inmediato los créditos con los datos que ya tenemos del catálogo, y
         // limpiar letra/análisis a un estado neutro para no dejar ver por un instante (o si
@@ -3994,6 +4028,32 @@ function formatTime(seconds) {
 
         container.innerHTML = html;
 
+        // Resetear scroll a la parte superior de forma instantánea al cargar un análisis
+        const resetAnalysisScroll = () => {
+            try {
+                container.scrollTop = 0;
+                if (typeof container.scrollTo === 'function') {
+                    container.scrollTo({ top: 0, behavior: 'instant' });
+                }
+                const cinemaContainer = document.getElementById('cinema-analysis-container');
+                if (cinemaContainer && (container === cinemaContainer || cinemaContainer.contains(container))) {
+                    cinemaContainer.scrollTop = 0;
+                    if (typeof cinemaContainer.scrollTo === 'function') {
+                        cinemaContainer.scrollTo({ top: 0, behavior: 'instant' });
+                    }
+                }
+                const modalBody = document.querySelector('.modal-body') || document.querySelector('.song-modal-content');
+                if (modalBody && (container.id === 'tab-microscope' || (container && container.closest && container.closest('.modal-body')))) {
+                    modalBody.scrollTop = 0;
+                    if (typeof modalBody.scrollTo === 'function') {
+                        modalBody.scrollTo({ top: 0, behavior: 'instant' });
+                    }
+                }
+            } catch(e) {}
+        };
+        resetAnalysisScroll();
+        requestAnimationFrame(resetAnalysisScroll);
+
         const reanalyzeBtn = document.getElementById('btn-reanalyze-ai');
         if (reanalyzeBtn) {
             reanalyzeBtn.addEventListener('click', () => triggerReanalysis(artist, title));
@@ -4201,7 +4261,13 @@ function formatTime(seconds) {
 
         if (isCinemaAnalysisOpen) {
             if (btnAnalysis) btnAnalysis.classList.add('active');
-            if (container) container.style.display = 'flex';
+            if (container) {
+                container.style.display = 'flex';
+                container.scrollTop = 0;
+                if (typeof container.scrollTo === 'function') {
+                    container.scrollTo({ top: 0, behavior: 'instant' });
+                }
+            }
             if (topToolbars) topToolbars.style.display = 'none';
             if (lyrics) lyrics.style.display = 'none';
 
@@ -4223,8 +4289,16 @@ function formatTime(seconds) {
     }
 
     function loadCinemaAnalysis(track) {
+        const container = document.getElementById('cinema-analysis-container');
         const bodyEl = document.getElementById('cinema-analysis-body');
         if (!bodyEl || !track) return;
+
+        if (container) {
+            container.scrollTop = 0;
+            if (typeof container.scrollTo === 'function') container.scrollTo({ top: 0, behavior: 'instant' });
+        }
+        bodyEl.scrollTop = 0;
+        if (typeof bodyEl.scrollTo === 'function') bodyEl.scrollTo({ top: 0, behavior: 'instant' });
 
         bodyEl.innerHTML = `
             <div style="text-align: center; padding: 50px 20px; color: var(--text-muted);">
@@ -4237,6 +4311,13 @@ function formatTime(seconds) {
         const cachedDetail = preloadedDetailsCache.get(key);
 
         const applyData = (d) => {
+            if (container) {
+                container.scrollTop = 0;
+                if (typeof container.scrollTo === 'function') container.scrollTo({ top: 0, behavior: 'instant' });
+            }
+            bodyEl.scrollTop = 0;
+            if (typeof bodyEl.scrollTo === 'function') bodyEl.scrollTo({ top: 0, behavior: 'instant' });
+
             if (!d || !d.analysis) {
                 bodyEl.innerHTML = `
                     <div style="text-align: center; padding: 40px 20px; color: var(--text-muted); background: rgba(15, 23, 42, 0.5); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.08);">
@@ -4262,6 +4343,14 @@ function formatTime(seconds) {
                 return;
             }
             populateAnalysisTab(d, track.artist, track.title, bodyEl);
+            requestAnimationFrame(() => {
+                if (container) {
+                    container.scrollTop = 0;
+                    if (typeof container.scrollTo === 'function') container.scrollTo({ top: 0, behavior: 'instant' });
+                }
+                bodyEl.scrollTop = 0;
+                if (typeof bodyEl.scrollTo === 'function') bodyEl.scrollTo({ top: 0, behavior: 'instant' });
+            });
         };
 
         if (cachedDetail && cachedDetail.analysis) {

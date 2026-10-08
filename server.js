@@ -2372,21 +2372,43 @@ app.post('/api/track/rename', blockInPublicMode, async (req, res) => {
             }
         }
 
-        try {
-            let resolved = await resolveTrackMetadataOnline(cleanNewArtist, cleanNewTitle) || {};
-            if (updatedDurationMs) {
-                resolved.durationMs = updatedDurationMs;
-                resolved.durationFmt = updatedDurationFmt;
-            }
+        // Si se actualizó la duración, fijarla INMEDIATAMENTE en la caché sin esperar llamadas online
+        if (updatedDurationMs) {
             const cleanT = cleanTrackTitle(cleanNewTitle);
-            metadataCache[`${cleanNewArtist} - ${cleanNewTitle}`.toLowerCase()] = resolved;
-            metadataCache[`${cleanNewArtist} - ${cleanT}`.toLowerCase()] = resolved;
-            metadataCache[cleanT.toLowerCase()] = resolved;
-            const normKey = `${cleanNewArtist}${cleanT}`.toLowerCase().replace(/[^a-z0-9]/g, '');
-            metadataCache[normKey] = resolved;
-            saveMetadataCacheDebounced();
-        } catch(e) {
-            console.error('Error re-resolviendo metadata tras renombrar:', e.message);
+            const directKeys = [
+                `${cleanNewArtist} - ${cleanNewTitle}`.toLowerCase(),
+                `${cleanNewArtist} - ${cleanT}`.toLowerCase(),
+                `${oldArtist} - ${oldTitle}`.toLowerCase(),
+                `${cleanTrackKey(cleanNewArtist)}_${cleanTrackKey(cleanT)}`,
+                cleanT.toLowerCase()
+            ];
+            for (const dk of directKeys) {
+                metadataCache[dk] = metadataCache[dk] || {};
+                metadataCache[dk].durationMs = updatedDurationMs;
+                metadataCache[dk].durationFmt = updatedDurationFmt;
+            }
+            try { saveMetadataCache(); } catch(e){}
+        }
+
+        // Si solo se cambió la duración y no el artista ni el título, no demorar la respuesta con búsquedas online
+        const onlyDurationChanged = (oldArtist === cleanNewArtist && oldTitle === cleanNewTitle);
+        if (!onlyDurationChanged) {
+            try {
+                let resolved = await resolveTrackMetadataOnline(cleanNewArtist, cleanNewTitle) || {};
+                if (updatedDurationMs) {
+                    resolved.durationMs = updatedDurationMs;
+                    resolved.durationFmt = updatedDurationFmt;
+                }
+                const cleanT = cleanTrackTitle(cleanNewTitle);
+                metadataCache[`${cleanNewArtist} - ${cleanNewTitle}`.toLowerCase()] = resolved;
+                metadataCache[`${cleanNewArtist} - ${cleanT}`.toLowerCase()] = resolved;
+                metadataCache[cleanT.toLowerCase()] = resolved;
+                const normKey = `${cleanNewArtist}${cleanT}`.toLowerCase().replace(/[^a-z0-9]/g, '');
+                metadataCache[normKey] = resolved;
+                saveMetadataCacheDebounced();
+            } catch(e) {
+                console.error('Error re-resolviendo metadata tras renombrar:', e.message);
+            }
         }
 
         invalidatePlaylistsCache();
@@ -3424,10 +3446,22 @@ app.post('/api/track/replace-clean-audio', blockInPublicMode, async (req, res) =
 
         // 1. Obtener duración esperada oficial de estudio (en segundos) con máxima fidelidad
         let expectedDurationSec = null;
-        const meta = getTrackMetadata(artist, title);
-        if (meta && meta.durationMs) {
-            expectedDurationSec = Math.round(meta.durationMs / 1000);
+
+        // PRIORIDAD 1: Duración explícita enviada por el cliente (ej. modificada en el modal o enviada desde la app)
+        if (req.body.expectedDurationSec && !isNaN(req.body.expectedDurationSec) && Number(req.body.expectedDurationSec) > 20) {
+            expectedDurationSec = Math.round(Number(req.body.expectedDurationSec));
+            console.log(`[CLEAN DOWNLOAD] 🎯 Prioridad cliente: Duración esperada = ${expectedDurationSec}s (${Math.floor(expectedDurationSec/60)}:${(expectedDurationSec%60).toString().padStart(2, '0')})`);
         }
+
+        // PRIORIDAD 2: Metadatos locales de la pista
+        if (!expectedDurationSec) {
+            const meta = getTrackMetadata(artist, title);
+            if (meta && meta.durationMs && meta.durationMs > 20000) {
+                expectedDurationSec = Math.round(meta.durationMs / 1000);
+            }
+        }
+
+        // PRIORIDAD 3: Consulta en iTunes si no tenemos duración registrada
         if (!expectedDurationSec || isNaN(expectedDurationSec)) {
             try {
                 const mainArtist = artist.split(/[,&]/)[0].trim();
@@ -3442,11 +3476,6 @@ app.post('/api/track/replace-clean-audio', blockInPublicMode, async (req, res) =
                     }
                 }
             } catch(e) {}
-        }
-        if (!expectedDurationSec || isNaN(expectedDurationSec)) {
-            if (req.body.expectedDurationSec && !isNaN(req.body.expectedDurationSec) && req.body.expectedDurationSec > 30) {
-                expectedDurationSec = Number(req.body.expectedDurationSec);
-            }
         }
         if (!expectedDurationSec || isNaN(expectedDurationSec)) {
             const lyrics = findLyricsForTrack(artist, title);
