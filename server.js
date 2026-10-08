@@ -1318,55 +1318,46 @@ function getTrackMetadata(artist, title) {
 
 
 
+function cleanDisplayTitle(rawTitle) {
+    if (!rawTitle) return '';
+    let title = rawTitle.trim();
+
+    // 1. Quitar corchetes enteros tipo [The Official 2010 FIFA World Cup (TM) Song] o [feat. ...]
+    title = title.replace(/\s*\[[^\]]+\]/g, '');
+
+    // 2. Quitar menciones promocionales, bandas sonoras, eventos y películas tras guión o en paréntesis
+    title = title.replace(/\s*-\s*(?:From\s+.*?Soundtrack|From\s+the\s+Film|From\s+Barbie|From\s+["“].*?["”]|from\s+the\s+series|Spider-Man:.*?|The\s+Gong\s+Gong\s+Song.*?|Operación\s+Triunfo\s+\d{4}|Serenade\s+From\s+the\s+Stars).*/gi, '');
+    title = title.replace(/\s*[\(\[]\s*(?:The\s+Official\s+\d{4}\s+FIFA.*?|Official\s+Song\s+UEFA.*?|from\s+DreamWorks.*?|Fifty\s+Shades\s+Darker)\s*[\)\]]/gi, '');
+    title = title.replace(/\s*[\(\[]\s*From\s+.*?Soundtrack\s*[\)\]]/gi, '');
+
+    // 3. Quitar colaboraciones / feat redundantes (tanto tras guión como entre paréntesis)
+    title = title.replace(/\s*-\s*(?:Featuring\s+.*|feat\.?\s+.*|ft\.?\s+.*|with\s+.*)$/i, '');
+    title = title.replace(/\s*\(\s*(?:feat\.?|ft\.?|featuring|with)\s+[^)]+\)/gi, '');
+
+    // 4. Quitar remasters y años de reedición
+    title = title.replace(/\s*-\s*(?:\d{4}\s+Remaster|Remaster(?:ed)?(?:\s+\d{4})?|Re-Recorded(?:\s+Version)?|Remastered\s+Version).*/gi, '');
+    title = title.replace(/\s*\(\s*(?:\d{4}\s+Remaster|Remaster(?:ed)?(?:\s+\d{4})?|Re-Recorded(?:\s+Version)?|Remastered\s+Version)\s*\)/gi, '');
+
+    // 5. Quitar radio edits, álbum version, single version, cortes técnicos
+    title = title.replace(/\s*-\s*(?:Radio\s+Edit|Radio\s+Mix|Final\s+Edit\s+Version|Single\s+Version|Album\s+Version|Spanish\s+Version|Dopamine\s+Re-Edit|Klaas\s+Vocal\s+Edit|Main\s*\/\s*Radio\s+Mix|Vocal\s+Version\s*\/\s*Radio\s+Edit|Nicktim\s*\/\s*Radio\s+Edit|Edit|Original\s+Mix|Single\s+Mix).*/gi, '');
+    title = title.replace(/\s*\(\s*(?:Radio\s+Edit|Radio\s+Mix|Single\s+Version|Album\s+Version|Edit|Original\s+Mix)\s*\)/gi, '');
+
+    // 6. Quitar directos / live
+    title = title.replace(/\s*-\s*(?:Ao\s+Vivo|En\s+Directo|En\s+Vivo|Live).*/gi, '');
+    title = title.replace(/\s*\(\s*(?:Ao\s+Vivo|En\s+Directo|En\s+Vivo|Live)\s*\)/gi, '');
+
+    // Limpieza final de espacios o guiones colgantes
+    title = title.replace(/\s+-\s*$/, '').trim();
+    return title.replace(/\s+/g, ' ');
+}
+
 function cleanSoundtrackTitle(title) {
-    if (!title) return '';
-    return title
-        .replace(/\s*[\(\[][^)\]]*(from\s+[\"“].*?[\"”]|from\s+the\s+|from\s+[\"“]|theme\s+from|love\s+theme\s+from|music\s+from|original\s+song\s+from|soundtrack|motion\s+picture|original\s+motion\s+picture|bso\b|b\.s\.o\.|ost\b)[^)\]]*[\)\]]/gi, '')
-        .replace(/\s*[\(\[]\s*from\s+[^)\]]+[\)\]]/gi, '')
-        .replace(/\s*-\s*(from\s+[\"“].*?[\"”]|from\s+the\s+.*|theme\s+from\s+.*|soundtrack\b|original\s+soundtrack\b|ost\b|bso\b).*/gi, '')
-        .replace(/\s+/g, ' ')
-        .trim();
+    return cleanDisplayTitle(title);
 }
 
 function cleanTrackTitle(rawTitle) {
     if (!rawTitle) return '';
-    let clean = rawTitle
-        // Quitar colaboraciones/features
-        .replace(/\s*-\s*[A-Za-z0-9\s]+\s+featuring\s+.*$/i, '')
-        .replace(/\s*-\s*[A-Za-z0-9\s]+\s+feat\.?\s+.*$/i, '')
-        .replace(/\s*\([A-Za-z0-9\s]+\s+featuring\s+.*\)/gi, '')
-        .replace(/\s*\([A-Za-z0-9\s]+\s+feat\.?\s+.*\)/gi, '')
-        .replace(/\s*\(feat\.?\s+.*\)/gi, '')
-        .replace(/\s*\(featuring\s+.*\)/gi, '')
-        .replace(/\s*\(with\s+.*\)/gi, '')
-        .replace(/^\s*\.\.\.\s*/, '')
-        // Quitar Bandas Sonoras / Soundtracks / Films / BSO / OST
-        .replace(/\s*[\(\[][^)\]]*(from\s+[\"“].*?[\"”]|from\s+the\s+|from\s+[\"“]|theme\s+from|love\s+theme\s+from|music\s+from|original\s+song\s+from|soundtrack|motion\s+picture|original\s+motion\s+picture|bso\b|b\.s\.o\.|ost\b)[^)\]]*[\)\]]/gi, '')
-        .replace(/\s*[\(\[]\s*from\s+[^)\]]+[\)\]]/gi, '')
-        .replace(/\s*-\s*(from\s+[\"“].*?[\"”]|from\s+the\s+.*|theme\s+from\s+.*|soundtrack\b|original\s+soundtrack\b|ost\b|bso\b).*/gi, '')
-        // Quitar cualquier sufijo entre paréntesis o corchetes que sea versión, remaster, edit, mix, directo, sinfónico, etc.
-        .replace(/\s*[\(\[]\s*[^)\]]*\b(non-film|film|radio|album|single|\d{4}|short|extended|original|deluxe|anniversary|acoustic|live|en vivo|directo|sinfónico|remaster|remastered|edit|mix)\b[^)\]]*version[^)\]]*[\)\]]/gi, '')
-        .replace(/\s*[\(\[]\s*[^)\]]*\b(version|versión)\b[^)\]]*[\)\]]/gi, '')
-        .replace(/\s*\([^)]*(en vivo|en directo|en concierto|directo|sinfónico|sinfonico|acústico|acustico)[^)]*\)/gi, '')
-        .replace(/\s*\([^)]*(radio edit|club edit|extended mix|club mix|radio mix|dance vault|re-edit|edit|mixed)[^)]*\)/gi, '')
-        .replace(/\s*\([^)]*(remastered|\d{4} remaster|remaster|20\d\d remaster|19\d\d remaster)[^)]*\)/gi, '')
-        .replace(/\s*\([^)]*(remix|revisited|dub|vip mix|acoustic|unplugged|live|demo|deluxe|evolutions)[^)]*\)/gi, '')
-        // Cajón de sastre: cualquier paréntesis/corchete que contenga la palabra "mix" pero
-        // con un nombre de remezcla propio no listado arriba (p.ej. "(Nu-NRG Mix)"), para que
-        // no se quede pegado al título "limpio" contaminando la búsqueda de otra versión.
-        .replace(/\s*[\(\[][^)\]]*\bmix\b[^)\]]*[\)\]]/gi, '')
-        // Quitar sufijos precedidos por guión
-        .replace(/\s*-\s*[^-\n]*\b(non-film|film|radio|album|single|\d{4}|short|extended|original|deluxe|anniversary|acoustic|live|en vivo|directo|sinfónico|remaster|remastered|edit|mix)\b[^-\n]*version.*/gi, '')
-        .replace(/\s*-\s*.*version.*/gi, '')
-        .replace(/\s*-\s*(en vivo|en directo|directo|sinfónico|sinfonico|acústico|acustico|live).*/gi, '')
-        .replace(/\s*-\s*(radio edit|club edit|extended mix|club mix|radio mix|edit).*/gi, '')
-        .replace(/\s*-\s*(remastered|\d{4} remaster|remaster|20\d\d remaster|19\d\d remaster).*/gi, '')
-        .replace(/\s*-\s*(remix|acoustic|unplugged|live|demo|extended|mono|stereo|original).*/gi, '')
-        .replace(/\s*-\s*[^-\n]*\b(mix|remix)\b.*/gi, '')
-        .trim();
-
-    clean = clean.replace(/^[(\[]+([^)\]]+)[)\]]\s*/, '$1 ');
-    return clean.replace(/\s+/g, ' ').trim();
+    return cleanDisplayTitle(rawTitle);
 }
 
 
@@ -1884,11 +1875,7 @@ app.get('/api/playlists', (req, res) => {
                 }
             }
 
-            // Si el título viene de una corrección manual, no dejar que el "displayTitle"
-            // cacheado (de una búsqueda de metadatos hecha con el título viejo) lo pise.
-            const finalTitle = override
-                ? cleanTitle
-                : ((/dance/i.test(listName)) ? cleanSoundtrackTitle(meta.displayTitle || cleanTitle) : cleanTrackTitle(meta.displayTitle || cleanTitle));
+            const finalTitle = cleanDisplayTitle(override ? cleanTitle : (meta.displayTitle || cleanTitle));
 
             enrichedTracks.push({
                 artist: artist,

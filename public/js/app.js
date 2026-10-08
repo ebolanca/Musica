@@ -163,6 +163,42 @@ function formatTime(seconds) {
     let userScrollTimer = null;
 
     // ==========================================================================
+    // ✨ Limpiador Inteligente de Títulos Visuales (DisplayTitle)
+    // ==========================================================================
+    function cleanDisplayTitle(rawTitle) {
+        if (!rawTitle) return '';
+        let title = String(rawTitle).trim();
+
+        // 1. Quitar corchetes enteros tipo [The Official 2010 FIFA World Cup (TM) Song] o [feat. ...]
+        title = title.replace(/\s*\[[^\]]+\]/g, '');
+
+        // 2. Quitar menciones promocionales, bandas sonoras, eventos y películas tras guión o en paréntesis
+        title = title.replace(/\s*-\s*(?:From\s+.*?Soundtrack|From\s+the\s+Film|From\s+Barbie|From\s+["“].*?["”]|from\s+the\s+series|Spider-Man:.*?|The\s+Gong\s+Gong\s+Song.*?|Operación\s+Triunfo\s+\d{4}|Serenade\s+From\s+the\s+Stars).*/gi, '');
+        title = title.replace(/\s*[\(\[]\s*(?:The\s+Official\s+\d{4}\s+FIFA.*?|Official\s+Song\s+UEFA.*?|from\s+DreamWorks.*?|Fifty\s+Shades\s+Darker)\s*[\)\]]/gi, '');
+        title = title.replace(/\s*[\(\[]\s*From\s+.*?Soundtrack\s*[\)\]]/gi, '');
+
+        // 3. Quitar colaboraciones / feat redundantes (tanto tras guión como entre paréntesis)
+        title = title.replace(/\s*-\s*(?:Featuring\s+.*|feat\.?\s+.*|ft\.?\s+.*|with\s+.*)$/i, '');
+        title = title.replace(/\s*\(\s*(?:feat\.?|ft\.?|featuring|with)\s+[^)]+\)/gi, '');
+
+        // 4. Quitar remasters y años de reedición
+        title = title.replace(/\s*-\s*(?:\d{4}\s+Remaster|Remaster(?:ed)?(?:\s+\d{4})?|Re-Recorded(?:\s+Version)?|Remastered\s+Version).*/gi, '');
+        title = title.replace(/\s*\(\s*(?:\d{4}\s+Remaster|Remaster(?:ed)?(?:\s+\d{4})?|Re-Recorded(?:\s+Version)?|Remastered\s+Version)\s*\)/gi, '');
+
+        // 5. Quitar radio edits, álbum version, single version, cortes técnicos
+        title = title.replace(/\s*-\s*(?:Radio\s+Edit|Radio\s+Mix|Final\s+Edit\s+Version|Single\s+Version|Album\s+Version|Spanish\s+Version|Dopamine\s+Re-Edit|Klaas\s+Vocal\s+Edit|Main\s*\/\s*Radio\s+Mix|Vocal\s+Version\s*\/\s*Radio\s+Edit|Nicktim\s*\/\s*Radio\s+Edit|Edit|Original\s+Mix|Single\s+Mix).*/gi, '');
+        title = title.replace(/\s*\(\s*(?:Radio\s+Edit|Radio\s+Mix|Single\s+Version|Album\s+Version|Edit|Original\s+Mix)\s*\)/gi, '');
+
+        // 6. Quitar directos / live
+        title = title.replace(/\s*-\s*(?:Ao\s+Vivo|En\s+Directo|En\s+Vivo|Live).*/gi, '');
+        title = title.replace(/\s*\(\s*(?:Ao\s+Vivo|En\s+Directo|En\s+Vivo|Live)\s*\)/gi, '');
+
+        // Limpieza final de espacios o guiones colgantes
+        title = title.replace(/\s+-\s*$/, '').trim();
+        return title.replace(/\s+/g, ' ');
+    }
+
+    // ==========================================================================
     // 🖼️ Funcionalidad para Cambiar Carátula del Álbum (Modal & Búsqueda)
     // ==========================================================================
     
