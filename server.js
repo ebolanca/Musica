@@ -1605,6 +1605,84 @@ function scanVideoFiles() {
     return getCachedVideoFiles();
 }
 
+function enrichMissingPlaylistsFromDisk(playlistsData) {
+    if (!fs.existsSync(OMEN_MUSIC_DIR)) return playlistsData;
+
+    const targetPlaylists = [
+        { key: 'Música viejuna', files: ['Música viejuna Roberto.m3u', 'Música viejuna.m3u'], dir: 'Música viejuna' },
+        { key: 'Siglo XXI', files: ['Siglo XXI Roberto.m3u', 'Siglo XXI.m3u'], dir: 'Siglo XXI' },
+        { key: 'Dance', files: ['Dance.m3u'], dir: 'Dance' },
+        { key: 'Española', files: ['Española.m3u', 'Espanola.m3u'], dir: 'Española' },
+        { key: 'Música latina', files: ['Música latina.m3u', 'Musica latina.m3u'], dir: 'Música latina' }
+    ];
+
+    for (const target of targetPlaylists) {
+        const hasExisting = Object.keys(playlistsData).some(k => {
+            const norm = normalizePlaylistKey(k);
+            return norm === target.key && Array.isArray(playlistsData[k]) && playlistsData[k].length > 0;
+        });
+        if (hasExisting) continue;
+
+        let loadedTracks = [];
+        for (const m3uName of target.files) {
+            const m3uPath = path.join(OMEN_MUSIC_DIR, m3uName);
+            if (fs.existsSync(m3uPath)) {
+                try {
+                    const lines = fs.readFileSync(m3uPath, 'utf8').split(/\r?\n/);
+                    for (let line of lines) {
+                        line = line.trim();
+                        if (!line || line.startsWith('#')) continue;
+                        const base = path.basename(line, path.extname(line));
+                        const dashIdx = base.indexOf(' - ');
+                        if (dashIdx !== -1) {
+                            const artist = base.slice(0, dashIdx).trim();
+                            const title = base.slice(dashIdx + 3).trim();
+                            if (artist && title) loadedTracks.push([artist, title]);
+                        }
+                    }
+                    if (loadedTracks.length > 0) break;
+                } catch(e) {
+                    console.error(`Error leyendo ${m3uName}:`, e.message);
+                }
+            }
+        }
+
+        if (loadedTracks.length === 0) {
+            const folderCandidates = [
+                path.join(OMEN_MUSIC_DIR, target.dir + ' Roberto'),
+                path.join(OMEN_MUSIC_DIR, target.dir)
+            ];
+            for (const fPath of folderCandidates) {
+                if (fs.existsSync(fPath)) {
+                    try {
+                        const files = fs.readdirSync(fPath);
+                        for (const file of files) {
+                            const ext = path.extname(file).toLowerCase();
+                            if (['.mp3', '.m4a', '.flac', '.wav', '.ogg'].includes(ext)) {
+                                const base = path.basename(file, ext);
+                                const dashIdx = base.indexOf(' - ');
+                                if (dashIdx !== -1) {
+                                    const artist = base.slice(0, dashIdx).trim();
+                                    const title = base.slice(dashIdx + 3).trim();
+                                    if (artist && title) loadedTracks.push([artist, title]);
+                                }
+                            }
+                        }
+                        if (loadedTracks.length > 0) break;
+                    } catch(e) {}
+                }
+            }
+        }
+
+        if (loadedTracks.length > 0) {
+            playlistsData[target.key] = loadedTracks;
+            console.log(`📂 [FALLBACK DISCO] Lista '${target.key}' completada desde librería (${loadedTracks.length} canciones)`);
+        }
+    }
+
+    return playlistsData;
+}
+
 // API: Obtener todas las playlists y sus canciones
 app.get('/api/playlists', (req, res) => {
     const now = Date.now();
@@ -1621,6 +1699,9 @@ app.get('/api/playlists', (req, res) => {
             console.error("Error leyendo tracks_cache.json de OMEN:", e.message);
         }
     }
+
+    // Completar cualquier lista faltante o vacía directamente desde los .m3u y carpetas del disco
+    playlistsData = enrichMissingPlaylistsFromDisk(playlistsData);
 
     // Datos por defecto/backup si no se puede leer el caché remoto
     if (Object.keys(playlistsData).length === 0) {
