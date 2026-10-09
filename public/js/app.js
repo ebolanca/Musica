@@ -134,7 +134,18 @@ function formatTime(seconds) {
     // Acceso público (musicamix.majecruz.es): oculta edición de subtítulos/audio/carátulas
     // y el radar de emisoras. El bloqueo real está en el servidor (blockInPublicMode); esto
     // solo evita mostrar botones que darían 403 al pulsarlos.
-    fetch('/api/session-info').then(r => r.json()).then(data => {
+    fetch('/api/session-info').then(r => {
+        if (r.status === 401) {
+            window.location.href = '/login.html';
+            return null;
+        }
+        return r.json();
+    }).then(data => {
+        if (!data) return;
+        if (data.error === 'No autenticado') {
+            window.location.href = '/login.html';
+            return;
+        }
         if (data && data.publicMode) {
             document.body.classList.add('public-mode');
         }
@@ -1576,8 +1587,18 @@ function formatTime(seconds) {
 
     function fetchPlaylists() {
         fetch('/api/playlists', { cache: 'no-store' })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 401) {
+                    window.location.href = '/login.html';
+                    throw new Error('No autenticado');
+                }
+                return res.json();
+            })
             .then(data => {
+                if (data && data.error === 'No autenticado') {
+                    window.location.href = '/login.html';
+                    return;
+                }
                 allPlaylists = sanitizePlaylistTracks(data);
                 updateTabBadges();
                 renderSongs();

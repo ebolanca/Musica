@@ -138,18 +138,9 @@ function parseCookies(req) {
     return out;
 }
 
-function isAuthenticated(req) {
-    if (!APP_PASSWORD || !SESSION_SECRET) return true; // sin configurar -> no bloquear (uso local sin login)
-    const cookies = parseCookies(req);
-    return verifySession(cookies[SESSION_COOKIE_NAME]);
-}
-
 // Acceso público (musicamix.majecruz.es, vía Cloudflare Tunnel) = funciones reducidas
-// (listas, radios, modo cine/TV con karaoke, ver análisis, transmitir). Entrando por la red
-// Tailscale/localhost se conserva siempre la app completa (edición de subtítulos/audio,
-// radar de emisoras, análisis IA bajo demanda, etc.). La distinción es por el host con el
-// que se accedió, no por contraseña: hay una única sesión, pero el mismo host determina el
-// nivel de funciones disponible en cada visita.
+// y autenticación obligatoria. Entrando por la red Tailscale/localhost se conserva siempre
+// la app completa y acceso directo de confianza sin requerir contraseña.
 const PUBLIC_HOSTNAME = 'musicamix.majecruz.es';
 function isMobileClient(req) {
     const ua = (req.headers['user-agent'] || '').toLowerCase();
@@ -157,6 +148,14 @@ function isMobileClient(req) {
 }
 function isPublicHost(req) {
     return (req.hostname || '').toLowerCase() === PUBLIC_HOSTNAME;
+}
+
+function isAuthenticated(req) {
+    if (!APP_PASSWORD || !SESSION_SECRET) return true; // sin configurar -> no bloquear (uso local sin login)
+    // Red privada Tailscale / local / IP directa: acceso transparente directo sin bloqueo de sesión
+    if (!isPublicHost(req)) return true;
+    const cookies = parseCookies(req);
+    return verifySession(cookies[SESSION_COOKIE_NAME]);
 }
 function blockInPublicMode(req, res, next) {
     // En PC / escritorio se habilitan todas las funciones; solo se limitan en móviles para ahorrar datos
@@ -1414,7 +1413,7 @@ app.use((req, res, next) => {
     if (req.path.startsWith('/api/')) {
         return res.status(401).json({ error: 'No autenticado' });
     }
-    res.status(401).sendFile(path.join(__dirname, 'public', 'login.html'));
+    res.redirect('/login.html');
 });
 
 // El frontend la consulta al arrancar para saber si debe ocultar las funciones de edición
