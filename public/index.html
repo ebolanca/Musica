@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Música - Plataforma de Videoclips & Análisis Sónico</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
-    <link rel="stylesheet" href="css/style.css?v=1.8.2">
+    <link rel="stylesheet" href="css/style.css?v=2.2.8">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -723,7 +723,7 @@
 
     <!-- Modal: Corregir Artista/Título mal etiquetados -->
     <div class="modal-backdrop" id="modal-edit-title" style="display: none;">
-        <div class="modal-container" style="max-width: 460px;">
+        <div class="modal-container" style="max-width: 480px; width: 95%; box-sizing: border-box; overflow-x: hidden;">
             <div class="modal-header">
                 <div class="modal-title-group">
                     <h3 class="modal-title" style="color:#fff; font-size:1.25rem; font-weight:800; display:flex; align-items:center; gap:10px;">
@@ -735,7 +735,7 @@
                 </div>
                 <button class="btn-close-modal" id="btn-close-edit-title" title="Cerrar"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <div class="modal-body" style="padding: 20px 24px; display: flex; flex-direction: column; gap: 14px;">
+            <div class="modal-body" style="padding: 20px 24px; display: flex; flex-direction: column; gap: 14px; overflow-x: hidden; box-sizing: border-box;">
                 <div>
                     <label style="display:block; font-size:0.82rem; color:var(--text-muted); margin-bottom:6px;">Artista</label>
                     <input type="text" id="input-edit-title-artist" class="cover-search-input" placeholder="Artista">
@@ -780,7 +780,7 @@
 
                     <!-- Botones de ajuste rápido en segundos (+ / -) -->
                     <div class="edit-duration-quick-adjust">
-                        <span class="quick-adjust-label">Ajuste fino:</span>
+                        <span class="quick-adjust-label"><i class="fa-solid fa-sliders"></i> Ajuste fino:</span>
                         <div class="quick-adjust-buttons">
                             <button type="button" class="btn-quick-adjust" data-delta="-30">-30s</button>
                             <button type="button" class="btn-quick-adjust" data-delta="-10">-10s</button>
@@ -800,6 +800,6 @@
     </div>
 
     <script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
-    <script src="js/app.js?v=2.2.7"></script>
+    <script src="js/app.js?v=2.2.8"></script>
 </body>
 </html>
