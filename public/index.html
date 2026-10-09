@@ -18,7 +18,7 @@
             </div>
             <div class="logo-title">
                 <h1>Música</h1>
-                <p>Plataforma de Videoclips & Análisis Sónico v2.2.4</p>
+                <p>Plataforma de Videoclips & Análisis Sónico v2.2.5</p>
             </div>
         </div>
 
@@ -452,8 +452,8 @@
                 <button id="music-btn-cast" class="btn-music-icon" title="Transmitir a Smart TV / Chromecast">
                     <i class="fa-brands fa-chromecast"></i>
                 </button>
-                <button id="music-btn-normalize" class="btn-music-icon active-magic" title="Normalización Inteligente (-14 LUFS / Estándar Spotify): Activada">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <button id="music-btn-edit-track" class="btn-music-icon" title="Editar datos de la canción (artista, título, duración)">
+                    <i class="fa-solid fa-pen-to-square"></i>
                 </button>
                 <button id="music-btn-cinema" class="btn-music-cinema" title="Abrir en Modo Cine / Pantalla Completa">
                     <i class="fa-solid fa-tv"></i> Modo Cine
@@ -727,10 +727,10 @@
             <div class="modal-header">
                 <div class="modal-title-group">
                     <h3 class="modal-title" style="color:#fff; font-size:1.25rem; font-weight:800; display:flex; align-items:center; gap:10px;">
-                        <i class="fa-solid fa-pen" style="color: var(--spotify-green, #1db954);"></i> Corregir Artista/Título
+                        <i class="fa-solid fa-pen-to-square" style="color: var(--spotify-green, #1db954);"></i> Editar Datos de Canción
                     </h3>
                     <p class="modal-subtitle" style="color:var(--text-muted); font-size:0.86rem; margin-top:3px;">
-                        Úsalo cuando el título traiga texto de más (años, sufijos...) y por eso no encuentre letra ni versión de audio.
+                        Modifica artista, título o ajusta fácilmente la duración de la pista.
                     </p>
                 </div>
                 <button class="btn-close-modal" id="btn-close-edit-title" title="Cerrar"><i class="fa-solid fa-xmark"></i></button>
@@ -744,19 +744,62 @@
                     <label style="display:block; font-size:0.82rem; color:var(--text-muted); margin-bottom:6px;">Título</label>
                     <input type="text" id="input-edit-title-title" class="cover-search-input" placeholder="Título">
                 </div>
-                <div>
-                    <label style="display:block; font-size:0.82rem; color:var(--text-muted); margin-bottom:6px;">Duración esperada de estudio <span style="font-size:0.75rem; color:#888;">(formato mm:ss, ej: 3:41)</span></label>
-                    <input type="text" id="input-edit-title-duration" class="cover-search-input" placeholder="3:41">
+                <div class="edit-track-duration-section">
+                    <div class="edit-duration-header">
+                        <label class="edit-duration-label"><i class="fa-regular fa-clock"></i> Duración esperada</label>
+                        <span id="edit-duration-preview" class="edit-duration-preview-text"></span>
+                    </div>
+                    <!-- Fila principal de duración: Input manual + Steppers directos Min y Seg -->
+                    <div class="edit-duration-row">
+                        <div class="edit-duration-input-wrapper">
+                            <input type="text" id="input-edit-title-duration" class="cover-search-input edit-duration-input" placeholder="3:41">
+                        </div>
+                        <div class="edit-duration-steppers">
+                            <div class="duration-stepper-group" title="Ajustar Minutos">
+                                <button type="button" class="btn-duration-step" id="btn-duration-min-dec" title="Restar 1 minuto"><i class="fa-solid fa-minus"></i></button>
+                                <span class="duration-step-label"><span id="lbl-duration-min">0</span>m</span>
+                                <button type="button" class="btn-duration-step" id="btn-duration-min-inc" title="Sumar 1 minuto"><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                            <div class="duration-stepper-group" title="Ajustar Segundos">
+                                <button type="button" class="btn-duration-step" id="btn-duration-sec-dec" title="Restar 1 segundo"><i class="fa-solid fa-minus"></i></button>
+                                <span class="duration-step-label"><span id="lbl-duration-sec">00</span>s</span>
+                                <button type="button" class="btn-duration-step" id="btn-duration-sec-inc" title="Sumar 1 segundo"><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botones de captura rápida inteligente en 1 clic -->
+                    <div class="edit-duration-smart-actions">
+                        <button type="button" id="btn-duration-current-pos" class="btn-duration-action-chip" title="Fijar duración al punto exacto donde va la reproducción actual">
+                            <i class="fa-solid fa-location-dot"></i> Posición actual: <span id="txt-duration-current-pos">--:--</span>
+                        </button>
+                        <button type="button" id="btn-duration-audio-length" class="btn-duration-action-chip" title="Fijar a la duración total del archivo de audio cargado">
+                            <i class="fa-solid fa-wave-square"></i> Audio real: <span id="txt-duration-audio-length">--:--</span>
+                        </button>
+                    </div>
+
+                    <!-- Botones de ajuste rápido en segundos (+ / -) -->
+                    <div class="edit-duration-quick-adjust">
+                        <span class="quick-adjust-label">Ajuste fino:</span>
+                        <div class="quick-adjust-buttons">
+                            <button type="button" class="btn-quick-adjust" data-delta="-30">-30s</button>
+                            <button type="button" class="btn-quick-adjust" data-delta="-10">-10s</button>
+                            <button type="button" class="btn-quick-adjust" data-delta="-5">-5s</button>
+                            <button type="button" class="btn-quick-adjust" data-delta="5">+5s</button>
+                            <button type="button" class="btn-quick-adjust" data-delta="10">+10s</button>
+                            <button type="button" class="btn-quick-adjust" data-delta="30">+30s</button>
+                        </div>
+                    </div>
                 </div>
                 <div id="edit-title-status-msg" style="display: none; padding: 10px; border-radius: 8px; font-size: 0.88rem; text-align: center;"></div>
                 <button class="btn-action" id="btn-save-edit-title" style="background: var(--spotify-green, #1db954); color: #000; font-weight: 700; justify-content: center;">
-                    <i class="fa-solid fa-floppy-disk"></i> Guardar corrección
+                    <i class="fa-solid fa-floppy-disk"></i> Guardar cambios
                 </button>
             </div>
         </div>
     </div>
 
     <script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
-    <script src="js/app.js?v=2.2.4"></script>
+    <script src="js/app.js?v=2.2.5"></script>
 </body>
 </html>

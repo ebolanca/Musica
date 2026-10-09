@@ -899,7 +899,61 @@ function formatTime(seconds) {
         const btnSaveEditTitle = document.getElementById('btn-save-edit-title');
         const editTitleStatusMsg = document.getElementById('edit-title-status-msg');
 
+        // Controles interactivos de duración
+        const editDurationPreview = document.getElementById('edit-duration-preview');
+        const btnDurationMinDec = document.getElementById('btn-duration-min-dec');
+        const btnDurationMinInc = document.getElementById('btn-duration-min-inc');
+        const lblDurationMin = document.getElementById('lbl-duration-min');
+        const btnDurationSecDec = document.getElementById('btn-duration-sec-dec');
+        const btnDurationSecInc = document.getElementById('btn-duration-sec-inc');
+        const lblDurationSec = document.getElementById('lbl-duration-sec');
+        const btnDurationCurrentPos = document.getElementById('btn-duration-current-pos');
+        const txtDurationCurrentPos = document.getElementById('txt-duration-current-pos');
+        const btnDurationAudioLength = document.getElementById('btn-duration-audio-length');
+        const txtDurationAudioLength = document.getElementById('txt-duration-audio-length');
+
         let editingTrack = null;
+
+        function parseDurationToSec(str) {
+            if (!str) return 0;
+            const raw = String(str).trim().replace(',', '.');
+            if (!raw) return 0;
+            if (raw.includes(':')) {
+                const parts = raw.split(':');
+                const m = parseInt(parts[0], 10) || 0;
+                const s = parseFloat(parts[1]) || 0;
+                return Math.max(0, Math.round(m * 60 + s));
+            } else if (raw.includes('.')) {
+                const parts = raw.split('.');
+                const m = parseInt(parts[0], 10) || 0;
+                const s = parseFloat(parts[1]) || 0;
+                return Math.max(0, Math.round(m * 60 + s));
+            } else if (!isNaN(raw)) {
+                return Math.max(0, Math.round(parseFloat(raw)));
+            }
+            return 0;
+        }
+
+        function formatSecToMmSs(totalSec) {
+            const sec = Math.max(0, Math.round(totalSec || 0));
+            const m = Math.floor(sec / 60);
+            const s = sec % 60;
+            return `${m}:${s.toString().padStart(2, '0')}`;
+        }
+
+        function syncDurationUI(totalSec, updateInputField = true) {
+            const sec = Math.max(0, Math.round(totalSec || 0));
+            const m = Math.floor(sec / 60);
+            const s = sec % 60;
+            if (updateInputField && inputEditDurationField) {
+                inputEditDurationField.value = sec > 0 ? formatSecToMmSs(sec) : '';
+            }
+            if (lblDurationMin) lblDurationMin.textContent = m;
+            if (lblDurationSec) lblDurationSec.textContent = s.toString().padStart(2, '0');
+            if (editDurationPreview) {
+                editDurationPreview.textContent = sec > 0 ? `⏱️ ${m}m ${s}s (${sec}s)` : '';
+            }
+        }
 
         function showEditTitleError(msg) {
             if (!editTitleStatusMsg) return;
@@ -917,14 +971,41 @@ function formatTime(seconds) {
             }
             if (inputEditArtist) inputEditArtist.value = editingTrack.artist || '';
             if (inputEditTitleField) inputEditTitleField.value = editingTrack.title || '';
-            if (inputEditDurationField) {
-                let dFmt = editingTrack.durationFmt;
-                if (!dFmt && editingTrack.durationMs) {
-                    const sec = Math.round(editingTrack.durationMs / 1000);
-                    dFmt = `${Math.floor(sec / 60)}:${(sec % 60).toString().padStart(2, '0')}`;
-                }
-                inputEditDurationField.value = dFmt || '';
+            
+            // Cargar y sincronizar duración existente de la pista
+            let initialSec = 0;
+            if (editingTrack.durationMs) {
+                initialSec = Math.round(editingTrack.durationMs / 1000);
+            } else if (editingTrack.durationFmt) {
+                initialSec = parseDurationToSec(editingTrack.durationFmt);
             }
+            syncDurationUI(initialSec, true);
+
+            // Obtener estado real de reproducción para los botones inteligentes
+            const currAudioSec = (mainMusicAudio && !isNaN(mainMusicAudio.currentTime) && mainMusicAudio.currentTime > 0) ? Math.floor(mainMusicAudio.currentTime) : 0;
+            if (btnDurationCurrentPos && txtDurationCurrentPos) {
+                if (currAudioSec > 0) {
+                    txtDurationCurrentPos.textContent = formatSecToMmSs(currAudioSec);
+                    btnDurationCurrentPos.disabled = false;
+                    btnDurationCurrentPos.setAttribute('data-sec', currAudioSec);
+                } else {
+                    txtDurationCurrentPos.textContent = '--:--';
+                    btnDurationCurrentPos.disabled = true;
+                }
+            }
+
+            const totalAudioSec = (mainMusicAudio && !isNaN(mainMusicAudio.duration) && isFinite(mainMusicAudio.duration) && mainMusicAudio.duration > 0) ? Math.round(mainMusicAudio.duration) : 0;
+            if (btnDurationAudioLength && txtDurationAudioLength) {
+                if (totalAudioSec > 0) {
+                    txtDurationAudioLength.textContent = formatSecToMmSs(totalAudioSec);
+                    btnDurationAudioLength.disabled = false;
+                    btnDurationAudioLength.setAttribute('data-sec', totalAudioSec);
+                } else {
+                    txtDurationAudioLength.textContent = '--:--';
+                    btnDurationAudioLength.disabled = true;
+                }
+            }
+
             if (editTitleStatusMsg) editTitleStatusMsg.style.display = 'none';
             if (modalEditTitle) {
                 modalEditTitle.style.display = 'flex';
@@ -939,13 +1020,87 @@ function formatTime(seconds) {
             }
         }
 
+        // Listener para cambios manuales en el input de duración
+        if (inputEditDurationField) {
+            inputEditDurationField.addEventListener('input', () => {
+                const sec = parseDurationToSec(inputEditDurationField.value);
+                syncDurationUI(sec, false);
+            });
+        }
+
+        // Botones inteligentes de 1 solo clic
+        if (btnDurationCurrentPos) {
+            btnDurationCurrentPos.addEventListener('click', () => {
+                const sec = parseInt(btnDurationCurrentPos.getAttribute('data-sec'), 10) || 0;
+                if (sec > 0) syncDurationUI(sec, true);
+            });
+        }
+        if (btnDurationAudioLength) {
+            btnDurationAudioLength.addEventListener('click', () => {
+                const sec = parseInt(btnDurationAudioLength.getAttribute('data-sec'), 10) || 0;
+                if (sec > 0) syncDurationUI(sec, true);
+            });
+        }
+
+        // Steppers de minutos (+ / -)
+        if (btnDurationMinInc) {
+            btnDurationMinInc.addEventListener('click', () => {
+                const currentSec = parseDurationToSec(inputEditDurationField ? inputEditDurationField.value : '');
+                syncDurationUI(currentSec + 60, true);
+            });
+        }
+        if (btnDurationMinDec) {
+            btnDurationMinDec.addEventListener('click', () => {
+                const currentSec = parseDurationToSec(inputEditDurationField ? inputEditDurationField.value : '');
+                syncDurationUI(Math.max(0, currentSec - 60), true);
+            });
+        }
+
+        // Steppers de segundos (+ / -)
+        if (btnDurationSecInc) {
+            btnDurationSecInc.addEventListener('click', () => {
+                const currentSec = parseDurationToSec(inputEditDurationField ? inputEditDurationField.value : '');
+                syncDurationUI(currentSec + 1, true);
+            });
+        }
+        if (btnDurationSecDec) {
+            btnDurationSecDec.addEventListener('click', () => {
+                const currentSec = parseDurationToSec(inputEditDurationField ? inputEditDurationField.value : '');
+                syncDurationUI(Math.max(0, currentSec - 1), true);
+            });
+        }
+
+        // Botones de ajuste rápido en segundos (+ / -)
+        if (modalEditTitle) {
+            modalEditTitle.querySelectorAll('.btn-quick-adjust').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const delta = parseInt(btn.getAttribute('data-delta'), 10) || 0;
+                    const currentSec = parseDurationToSec(inputEditDurationField ? inputEditDurationField.value : '');
+                    syncDurationUI(Math.max(10, currentSec + delta), true);
+                });
+            });
+        }
+
+        // Botón de edición en Modo Cine
         if (btnEditTitle) {
             btnEditTitle.addEventListener('click', (e) => {
                 e.stopPropagation();
                 openEditTitleModal();
             });
         }
+
+        // Botón de edición en Barra Flotante Inferior (reemplaza al botón de normalización)
+        const musicBtnEditTrack = document.getElementById('music-btn-edit-track');
+        if (musicBtnEditTrack) {
+            musicBtnEditTrack.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openEditTitleModal();
+            });
+        }
+
         if (btnCloseEditTitle) btnCloseEditTitle.addEventListener('click', closeEditTitleModal);
+
+        // Clic en la duración de Modo Cine para editar
         if (cinemaTimeDur) {
             cinemaTimeDur.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -953,6 +1108,16 @@ function formatTime(seconds) {
                 if (inputEditDurationField) setTimeout(() => inputEditDurationField.focus(), 150);
             });
         }
+
+        // Clic en la duración de Barra Flotante para editar directamente
+        if (musicTimeDur) {
+            musicTimeDur.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openEditTitleModal();
+                if (inputEditDurationField) setTimeout(() => inputEditDurationField.focus(), 150);
+            });
+        }
+
         if (modalEditTitle) {
             modalEditTitle.addEventListener('click', (e) => {
                 if (e.target === modalEditTitle) closeEditTitleModal();
@@ -985,7 +1150,7 @@ function formatTime(seconds) {
                     const data = await res.json();
                     if (res.ok && data.success) {
                         closeEditTitleModal();
-                        showSyncNotification('✅ Título corregido');
+                        showSyncNotification('✅ Datos actualizados');
                         // getTrackPreloadKey usa rawTitle antes que title: sin borrar la
                         // clave vieja de la caché de letras/análisis precargados, seguía
                         // devolviendo el resultado "no encontrado" guardado antes de corregir.
@@ -993,6 +1158,12 @@ function formatTime(seconds) {
                         preloadedDetailsCache.delete(oldKey);
                         editingTrack.artist = data.artist;
                         editingTrack.title = data.title;
+                        if (currentPlayingSong && (currentPlayingSong === editingTrack || (currentPlayingSong.title === editingTrack.title && currentPlayingSong.artist === editingTrack.artist))) {
+                            currentPlayingSong.artist = data.artist;
+                            currentPlayingSong.title = data.title;
+                            if (musicBarTitle) musicBarTitle.textContent = data.title;
+                            if (musicBarArtist) musicBarArtist.textContent = data.artist;
+                        }
                         if (data.durationFmt && data.durationMs) {
                             editingTrack.durationFmt = data.durationFmt;
                             editingTrack.durationMs = data.durationMs;
@@ -1014,7 +1185,7 @@ function formatTime(seconds) {
                     showEditTitleError('Error: ' + err.message);
                 } finally {
                     btnSaveEditTitle.disabled = false;
-                    btnSaveEditTitle.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Guardar corrección';
+                    btnSaveEditTitle.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Guardar cambios';
                 }
             });
         }
@@ -1133,7 +1304,7 @@ function formatTime(seconds) {
     const musicBtnMute = document.getElementById('music-btn-mute');
     const musicBtnClose = document.getElementById('music-btn-close');
     const musicBtnCinema = document.getElementById('music-btn-cinema');
-    const musicBtnNormalize = document.getElementById('music-btn-normalize');
+    const musicBtnEditTrack = document.getElementById('music-btn-edit-track');
 
     // Cinema Mode Elements
     const cinemaOverlay = document.getElementById('cinema-overlay');
@@ -2886,7 +3057,7 @@ function formatTime(seconds) {
     let normalizerGainNode = null;
     let analyserNode = null;
     let agcInterval = null;
-    let isAudioNormalizationActive = safeStorage.getItem('audio_normalization_enabled') !== 'false'; // Activo por defecto
+    let isAudioNormalizationActive = true; // Siempre activo de forma permanente
 
     function initAudioNormalizationGraph() {
         if (audioCtx) return;
@@ -2984,28 +3155,7 @@ function formatTime(seconds) {
     }
 
     function updateNormalizationButtonState() {
-        if (!musicBtnNormalize) return;
-        if (isAudioNormalizationActive) {
-            musicBtnNormalize.classList.add('active-magic');
-            musicBtnNormalize.title = 'Normalización Inteligente (-14 LUFS / Nivelación Adaptativa): Activada';
-        } else {
-            musicBtnNormalize.classList.remove('active-magic');
-            musicBtnNormalize.title = 'Normalización de Audio: Desactivada (Volumen Original)';
-        }
-    }
-
-    if (musicBtnNormalize) {
-        musicBtnNormalize.addEventListener('click', () => {
-            if (!audioCtx) initAudioNormalizationGraph();
-            if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume().catch(()=>{});
-            isAudioNormalizationActive = !isAudioNormalizationActive;
-            safeStorage.setItem('audio_normalization_enabled', isAudioNormalizationActive ? 'true' : 'false');
-            updateNormalizationButtonState();
-            updateNormalizationRoute();
-            showSyncNotification(isAudioNormalizationActive 
-                ? '✨ Normalización Adaptativa Activada (Nivelación Uniforme -14 LUFS)' 
-                : '🔇 Normalización de Audio Desactivada (Volumen Original)');
-        });
+        // La normalización inteligente está siempre activa de forma permanente
     }
 
     // ==========================================================================

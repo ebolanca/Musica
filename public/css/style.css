@@ -5856,7 +5856,8 @@ body.public-mode .card-cover {
   color: var(--spotify-green, #1db954);
 }
 
-body.public-mode .btn-edit-title {
+body.public-mode .btn-edit-title,
+body.public-mode #music-btn-edit-track {
   display: none !important;
 }
 
@@ -5957,3 +5958,202 @@ body.public-mode .cinema-equalizer-wrap {
     color: var(--spotify-green, #1db954) !important;
     border-bottom-color: var(--spotify-green, #1db954);
 }
+
+/* ⏱️ Duración editable al hacer clic en Mini Player */
+#music-time-dur {
+    cursor: pointer;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.25);
+    transition: all 0.2s ease;
+}
+#music-time-dur:hover {
+    color: var(--spotify-green, #1db954) !important;
+    border-bottom-color: var(--spotify-green, #1db954);
+}
+
+/* ✏️ Botón de edición en barra flotante */
+#music-btn-edit-track {
+    color: var(--text-muted, #999);
+    transition: all 0.2s ease;
+}
+#music-btn-edit-track:hover {
+    color: var(--spotify-green, #1db954) !important;
+    transform: scale(1.1);
+}
+
+/* ==========================================================================
+   🎛️ Sección Avanzada de Ajuste de Duración en Modal de Canción
+   ========================================================================== */
+.edit-track-duration-section {
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.edit-duration-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit-duration-label {
+    font-size: 0.82rem;
+    color: #e2e8f0;
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.edit-duration-preview-text {
+    font-size: 0.78rem;
+    color: var(--spotify-green, #1db954);
+    font-weight: 700;
+}
+
+.edit-duration-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.edit-duration-input-wrapper {
+    flex: 1;
+}
+
+.edit-duration-input {
+    width: 100%;
+    font-size: 1rem !important;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #fff !important;
+}
+
+.edit-duration-steppers {
+    display: flex;
+    gap: 8px;
+}
+
+.duration-stepper-group {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+    padding: 2px 4px;
+    gap: 4px;
+}
+
+.btn-duration-step {
+    background: transparent;
+    border: none;
+    color: #cbd5e1;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.72rem;
+    transition: all 0.15s ease;
+}
+
+.btn-duration-step:hover {
+    background: rgba(29, 185, 84, 0.25);
+    color: var(--spotify-green, #1db954);
+}
+
+.duration-step-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #fff;
+    min-width: 28px;
+    text-align: center;
+}
+
+.edit-duration-smart-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn-duration-action-chip {
+    flex: 1;
+    min-width: 140px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 7px 10px;
+    border-radius: 20px;
+    background: rgba(29, 185, 84, 0.1);
+    border: 1px solid rgba(29, 185, 84, 0.35);
+    color: var(--spotify-green, #1db954);
+    font-size: 0.77rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-duration-action-chip:hover:not(:disabled) {
+    background: rgba(29, 185, 84, 0.22);
+    border-color: var(--spotify-green, #1db954);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(29, 185, 84, 0.2);
+}
+
+.btn-duration-action-chip:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-muted);
+}
+
+.edit-duration-quick-adjust {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 2px;
+}
+
+.quick-adjust-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.quick-adjust-buttons {
+    display: flex;
+    gap: 4px;
+}
+
+.btn-quick-adjust {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #cbd5e1;
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 0.74rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.btn-quick-adjust:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.btn-quick-adjust:active {
+    transform: scale(0.95);
+}
+
