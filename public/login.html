@@ -77,7 +77,13 @@
             <div class="error" id="error-msg"></div>
         </form>
     </div>
+    
     <script>
+        // Si ya hay sesión activa válida, redirigir directo a la app principal
+        fetch('/api/session-info').then(res => {
+            if (res.ok) window.location.href = '/';
+        }).catch(() => {});
+
         const form = document.getElementById('login-form');
         const btn = document.getElementById('submit-btn');
         const errorMsg = document.getElementById('error-msg');
@@ -95,7 +101,7 @@
                 });
                 const data = await res.json().catch(() => ({}));
                 if (res.ok && data.success) {
-                    location.reload();
+                    window.location.href = '/';
                 } else {
                     errorMsg.textContent = data.error || 'No se pudo iniciar sesión';
                     btn.disabled = false;
