@@ -1567,17 +1567,34 @@ function formatTime(seconds) {
     // Load initial data
     updateSidebarActiveBadge(currentTab);
     fetchPlaylists();
+    fetchPlaybackHistory();
     renderQuickPills();
+
+    let serverPlaybackHistory = {};
+
+    function fetchPlaybackHistory() {
+        fetch('/api/playback/history', { cache: 'no-store' })
+            .then(res => res.json())
+            .then(data => {
+                if (data && typeof data === 'object') {
+                    serverPlaybackHistory = data;
+                }
+            })
+            .catch(() => {});
+    }
 
     function sanitizePlaylistTracks(playlists) {
         if (!playlists) return playlists;
         for (const [cat, tracks] of Object.entries(playlists)) {
             if (Array.isArray(tracks)) {
                 tracks.forEach(track => {
-                    if (track && track.title) {
-                        track.rawTitle = track.rawTitle || track.title;
-                        track.displayTitle = cleanDisplayTitle(track.title);
-                        track.title = track.displayTitle;
+                    if (track) {
+                        track.playlistName = track.playlistName || cat;
+                        if (track.title) {
+                            track.rawTitle = track.rawTitle || track.title;
+                            track.displayTitle = cleanDisplayTitle(track.title);
+                            track.title = track.displayTitle;
+                        }
                     }
                 });
             }
@@ -2044,15 +2061,17 @@ function formatTime(seconds) {
     function playQueueTrack(track, modeLabel = null) {
         if (!track || !mainMusicAudio) return;
         
-        // Registrar canción como escuchada en su lista y en el historial persistente
-        if (playbackMode === 'playlist_shuffle' && track.playlistName) {
-            markTrackAsPlayed(track.playlistName, track);
-        } else if (playbackMode === 'party_dj') {
+        // Registrar canción como escuchada en su lista y en el historial persistente multi-sesión
+        const effectivePlaylist = track.playlistName || (currentTab !== 'Radio' && currentTab !== 'Éxitos España' ? currentTab : null);
+        if (effectivePlaylist) {
+            track.playlistName = effectivePlaylist;
+            markTrackAsPlayed(effectivePlaylist, track);
+        }
+        
+        if (playbackMode === 'party_dj') {
             markTrackAsPlayed('global_party', track);
-            if (track.playlistName) markTrackAsPlayed(track.playlistName, track);
-        } else if (playbackMode === 'search_shuffle') {
-            if (currentSearchShufflePoolKey) markTrackAsPlayed(currentSearchShufflePoolKey, track);
-            if (track.playlistName) markTrackAsPlayed(track.playlistName, track);
+        } else if (playbackMode === 'search_shuffle' && currentSearchShufflePoolKey) {
+            markTrackAsPlayed(currentSearchShufflePoolKey, track);
         }
         
         // Stop radio if playing
@@ -2197,7 +2216,8 @@ function formatTime(seconds) {
     // 🛡️ Almacenamiento Seguro (Safe Storage con Fallback en Memoria para Edge/Chrome)
     // ==========================================================================
 // ==========================================================================
-    // 🔁 Sistema de Reproducción Aleatoria Sin Repeticiones (Persistente)
+    // ==========================================================================
+    // 🔁 Sistema de Reproducción Aleatoria Sin Repeticiones (Persistente Centralizado)
     // ==========================================================================
     // 🎲 Motor de Aleatoriedad Real (Fisher-Yates) & Historial Sin Repeticiones
     // ==========================================================================
@@ -2243,6 +2263,35 @@ function formatTime(seconds) {
         return result;
     }
 
+    // Barajado ponderado inteligente: prioriza canciones que NUNCA se han escuchado (playCount = 0)
+    // para asegurar que todo el catálogo se descubra a través de distintas sesiones y evitar la repetición.
+    function smartPrioritizedShuffle(tracks) {
+        if (!tracks || tracks.length <= 1) return tracks || [];
+        
+        const tierNeverHeard = [];
+        const tierRarelyHeard = [];
+        const tierOftenHeard = [];
+
+        for (const t of tracks) {
+            const tid = getTrackUniqueId(t);
+            const count = (serverPlaybackHistory && serverPlaybackHistory[tid] && serverPlaybackHistory[tid].playCount) || 0;
+            if (count === 0) {
+                tierNeverHeard.push(t);
+            } else if (count === 1) {
+                tierRarelyHeard.push(t);
+            } else {
+                tierOftenHeard.push(t);
+            }
+        }
+
+        const shuffledNever = fisherYatesShuffle(tierNeverHeard);
+        const shuffledRare = fisherYatesShuffle(tierRarelyHeard);
+        const shuffledOften = fisherYatesShuffle(tierOftenHeard);
+
+        const combined = [...shuffledNever, ...shuffledRare, ...shuffledOften];
+        return smartDeclusterArtists(combined);
+    }
+
     function getUnplayedPool(playlistName, allTracks) {
         const poolKey = 'played_pool_' + normalizeText(playlistName);
         let playedIds = [];
@@ -2251,6 +2300,17 @@ function formatTime(seconds) {
             playedIds = raw ? JSON.parse(raw) : [];
         } catch(e) {
             playedIds = [];
+        }
+
+        // Combinar con el historial centralizado del servidor para persistencia multi-sesión y multi-dispositivo
+        if (serverPlaybackHistory && typeof serverPlaybackHistory === 'object') {
+            for (const [tid, info] of Object.entries(serverPlaybackHistory)) {
+                if (info && Array.isArray(info.playlists) && info.playlists.includes(playlistName)) {
+                    if (!playedIds.includes(tid)) {
+                        playedIds.push(tid);
+                    }
+                }
+            }
         }
 
         // Deduplicación estricta por ID único para evitar que canciones presentes
@@ -2271,6 +2331,12 @@ function formatTime(seconds) {
         if (unplayed.length === 0 && uniqueAllTracks.length > 0) {
             playedIds = [];
             try { safeStorage.setItem(poolKey, JSON.stringify([])); } catch(e){}
+            fetch('/api/playback/reset-pool', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ playlistName })
+            }).catch(() => {});
+
             unplayed = [...uniqueAllTracks];
             if (typeof showSyncNotification === 'function') {
                 showSyncNotification(`🎉 ¡Has escuchado todas las canciones de ${playlistName}! Reiniciando ciclo.`);
@@ -2291,9 +2357,40 @@ function formatTime(seconds) {
             playedIds = [];
         }
         const tid = getTrackUniqueId(track);
-        if (!playedIds.includes(tid)) {
+        if (tid && !playedIds.includes(tid)) {
             playedIds.push(tid);
             try { safeStorage.setItem(poolKey, JSON.stringify(playedIds)); } catch(e){}
+        }
+
+        if (tid) {
+            if (!serverPlaybackHistory[tid]) {
+                serverPlaybackHistory[tid] = {
+                    artist: track.artist,
+                    title: track.title,
+                    playCount: 1,
+                    lastPlayed: Date.now(),
+                    playlists: [playlistName]
+                };
+            } else {
+                serverPlaybackHistory[tid].playCount = (serverPlaybackHistory[tid].playCount || 0) + 1;
+                serverPlaybackHistory[tid].lastPlayed = Date.now();
+                if (!serverPlaybackHistory[tid].playlists) serverPlaybackHistory[tid].playlists = [];
+                if (!serverPlaybackHistory[tid].playlists.includes(playlistName)) {
+                    serverPlaybackHistory[tid].playlists.push(playlistName);
+                }
+            }
+
+            // Sincronizar en segundo plano con el servidor central para persistencia entre sesiones y dispositivos
+            fetch('/api/playback/mark-played', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    artist: track.artist,
+                    title: track.title,
+                    rawTitle: track.rawTitle,
+                    playlistName: playlistName
+                })
+            }).catch(() => {});
         }
     }
 
@@ -2332,8 +2429,8 @@ function formatTime(seconds) {
         // Obtener canciones que NO han sonado aún en ninguna sesión
         const { unplayed, playedCount, total } = getUnplayedPool(playlistName, tracks);
         
-        // Barajado Fisher-Yates con separación de artista para máxima variedad
-        const shuffled = smartDeclusterArtists(fisherYatesShuffle(unplayed));
+        // Barajado ponderado inteligente: prioriza temas vírgenes (playCount 0) y separa artistas
+        const shuffled = smartPrioritizedShuffle(unplayed);
         playbackMode = 'playlist_shuffle';
         activePlaylistQueue = shuffled;
         currentQueueIndex = 0;
@@ -2348,8 +2445,8 @@ function formatTime(seconds) {
         const poolKey = 'search_' + normalizeText(queryLabel);
         const { unplayed, playedCount, total } = getUnplayedPool(poolKey, tracks);
         
-        // Barajado Fisher-Yates con separación de artista
-        const shuffled = smartDeclusterArtists(fisherYatesShuffle(unplayed));
+        // Barajado ponderado inteligente con separación de artista
+        const shuffled = smartPrioritizedShuffle(unplayed);
         playbackMode = 'search_shuffle';
         activePlaylistQueue = shuffled;
         currentQueueIndex = 0;
@@ -2386,7 +2483,7 @@ function formatTime(seconds) {
             if (allTracks.length === 0) return;
 
             const { unplayed, playedCount, total } = getUnplayedPool('global_party', allTracks);
-            const shuffled = smartDeclusterArtists(fisherYatesShuffle(unplayed));
+            const shuffled = smartPrioritizedShuffle(unplayed);
             playbackMode = 'party_dj';
             activePlaylistQueue = shuffled;
             currentQueueIndex = 0;

@@ -2005,6 +2005,7 @@ app.get('/api/playlists', (req, res) => {
                 artist: artist,
                 title: finalTitle,
                 rawTitle: title,
+                playlistName: listName,
                 album: (/dance/i.test(listName)) ? (meta.album || 'Álbum Desconocido') : cleanAlbumTitle(meta.album),
                 coverUrl: meta.coverUrl || null,
                 releaseDate: releaseDate,
@@ -2217,6 +2218,98 @@ app.post('/api/jellyfin/refresh', blockInPublicMode, async (req, res) => {
 
         await fetchJellyfinVideos();
         res.json({ success: true, count: cachedJellyfinVideos.length });
+    } catch(e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
+// ==========================================================================
+// 🎧 HISTORIAL DE REPRODUCCIÓN CENTRALIZADO (Multi-sesión y Multi-dispositivo)
+// ==========================================================================
+const PLAYBACK_HISTORY_FILE = path.join(__dirname, 'data', 'playback_history.json');
+const OMEN_PLAYBACK_HISTORY_FILE = '\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\playback_history.json';
+let cachedPlaybackHistory = null;
+
+function loadPlaybackHistory() {
+    if (cachedPlaybackHistory) return cachedPlaybackHistory;
+    cachedPlaybackHistory = {};
+    if (fs.existsSync(PLAYBACK_HISTORY_FILE)) {
+        try {
+            cachedPlaybackHistory = JSON.parse(fs.readFileSync(PLAYBACK_HISTORY_FILE, 'utf8'));
+        } catch(e) {
+            console.error('Error leyendo playback_history.json:', e.message);
+        }
+    }
+    return cachedPlaybackHistory;
+}
+
+function savePlaybackHistory() {
+    try {
+        const dataStr = JSON.stringify(cachedPlaybackHistory || {}, null, 2);
+        fs.writeFileSync(PLAYBACK_HISTORY_FILE, dataStr, 'utf8');
+        try {
+            if (fs.existsSync(path.dirname(OMEN_PLAYBACK_HISTORY_FILE))) {
+                fs.writeFileSync(OMEN_PLAYBACK_HISTORY_FILE, dataStr, 'utf8');
+            }
+        } catch(e) {}
+    } catch(e) {
+        console.error('Error guardando playback_history.json:', e.message);
+    }
+}
+
+app.get('/api/playback/history', (req, res) => {
+    res.json(loadPlaybackHistory());
+});
+
+app.post('/api/playback/mark-played', (req, res) => {
+    try {
+        const { artist, title, rawTitle, playlistName } = req.body;
+        if (!artist || (!title && !rawTitle)) {
+            return res.status(400).json({ error: 'Faltan parámetros' });
+        }
+        const hist = loadPlaybackHistory();
+        const normArt = (artist || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]/g, '');
+        const normTit = (title || rawTitle || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]/g, '');
+        const trackId = `${normArt}__${normTit}`;
+
+        const now = Date.now();
+        if (!hist[trackId]) {
+            hist[trackId] = {
+                artist,
+                title: title || rawTitle,
+                playCount: 1,
+                lastPlayed: now,
+                playlists: playlistName ? [playlistName] : []
+            };
+        } else {
+            hist[trackId].playCount = (hist[trackId].playCount || 0) + 1;
+            hist[trackId].lastPlayed = now;
+            if (!hist[trackId].playlists) hist[trackId].playlists = [];
+            if (playlistName && !hist[trackId].playlists.includes(playlistName)) {
+                hist[trackId].playlists.push(playlistName);
+            }
+        }
+
+        savePlaybackHistory();
+        res.json({ success: true, trackId, playCount: hist[trackId].playCount, lastPlayed: now });
+    } catch(e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
+app.post('/api/playback/reset-pool', (req, res) => {
+    try {
+        const { playlistName } = req.body;
+        const hist = loadPlaybackHistory();
+        if (playlistName) {
+            for (const [k, v] of Object.entries(hist)) {
+                if (v && v.playlists && v.playlists.includes(playlistName)) {
+                    v.playlists = v.playlists.filter(p => p !== playlistName);
+                }
+            }
+        }
+        savePlaybackHistory();
+        res.json({ success: true });
     } catch(e) {
         res.status(500).json({ error: e.message });
     }
