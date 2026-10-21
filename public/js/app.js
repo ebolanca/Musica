@@ -2086,29 +2086,75 @@ function formatTime(seconds) {
         }
 
         currentPlayingSong = track;
+
+        // Resetear de inmediato los contadores y deslizadores de tiempo para no mostrar residuos de la pista previa
+        if (musicTimeCurr) musicTimeCurr.textContent = '0:00';
+        if (cinemaTimeCurr) cinemaTimeCurr.textContent = '0:00';
+        if (musicSeekSlider) musicSeekSlider.value = 0;
+        if (cinemaSeekSlider) cinemaSeekSlider.value = 0;
+
+        const estDurationSec = track.durationMs ? Math.round(track.durationMs / 1000) : 0;
+        if (estDurationSec > 0) {
+            if (musicTimeDur) musicTimeDur.textContent = formatTime(estDurationSec);
+            if (cinemaTimeDur) cinemaTimeDur.textContent = formatTime(estDurationSec);
+        }
+
         if (cinemaLyrics) {
             currentCinemaActiveLine = -1;
             cinemaLyrics.scrollTo({ top: 0, behavior: 'instant' });
         }
 
+        // Liberar el preloader anticipado para evitar contención de socket o bloqueo de rango HTTP
+        if (nextTrackAudioPreloader) {
+            try {
+                nextTrackAudioPreloader.pause();
+                nextTrackAudioPreloader.removeAttribute('src');
+                nextTrackAudioPreloader.load();
+            } catch(e) {}
+        }
+
         const playableUrl = track.audioUrl || (track.videoItem ? track.videoItem.streamUrl : null) || track.videoPath;
         if (playableUrl) {
-            if (mainMusicAudio.src !== playableUrl) {
+            // Pausar y resetear limpiamente el reproductor antes de asignar la nueva pista
+            try { mainMusicAudio.pause(); } catch(e){}
+            try { mainMusicAudio.currentTime = 0; } catch(e){}
+
+            let resolvedUrl = playableUrl;
+            try { resolvedUrl = new URL(playableUrl, window.location.href).href; } catch(e){}
+
+            if (mainMusicAudio.src !== resolvedUrl && mainMusicAudio.src !== playableUrl) {
                 mainMusicAudio.src = playableUrl;
+                mainMusicAudio.load();
             }
+
             mainMusicAudio.volume = musicVolSlider ? parseFloat(musicVolSlider.value) : 0.85;
-            // Si el usuario salta de pista varias veces seguidas, esta promesa puede resolver
-            // después de que ya se haya lanzado otra reproducción; comprobar que `track` sigue
-            // siendo la pista activa antes de tocar el estado del reproductor, para no dejarlo
-            // desincronizado con lo que realmente suena.
-            mainMusicAudio.play().then(() => {
-                if (currentPlayingSong === track) updateMusicBarState(true);
-            }).catch(err => {
-                console.log('Autoplay audio blocked or error:', err.message);
-                if (currentPlayingSong === track) updateMusicBarState(false);
-            });
-            // Si ya se estaba transmitiendo a un Chromecast, la pista nueva necesita su
-            // propia URL firmada o el dispositivo remoto se quedará mudo con la siguiente.
+
+            // Iniciar reproducción con reintento automático ante AbortError (cambio de pista en vuelo)
+            const attemptPlay = (retriesLeft = 3) => {
+                const playPromise = mainMusicAudio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        if (currentPlayingSong === track) {
+                            updateMusicBarState(true);
+                        }
+                    }).catch(err => {
+                        console.warn('[Audio Playback] play() pospuesto o bloqueado:', err.name, err.message);
+                        if (currentPlayingSong !== track) return;
+
+                        if (err.name === 'AbortError' && retriesLeft > 0) {
+                            setTimeout(() => {
+                                if (currentPlayingSong === track) attemptPlay(retriesLeft - 1);
+                            }, 100);
+                        } else {
+                            updateMusicBarState(false);
+                        }
+                    });
+                }
+            };
+
+            attemptPlay(3);
+
+            // Transmisión a Chromecast si está conectado
             if (isCastConnected) {
                 if (window.cast && cast.framework && cast.framework.CastContext.getInstance().getCurrentSession()) {
                     loadCurrentTrackOnCast();
@@ -3413,20 +3459,46 @@ function formatTime(seconds) {
             if (remaining <= 1.5) isSilent = true;
         }
 
+        function playNextTrack() {
+            if (playbackMode === 'playlist_shuffle' || playbackMode === 'party_dj' || playbackMode === 'search_shuffle') {
+                if (activePlaylistQueue && activePlaylistQueue.length > 0) {
+                    const nextIdx = currentQueueIndex + 1;
+                    if (nextIdx < activePlaylistQueue.length) {
+                        currentQueueIndex = nextIdx;
+                        playQueueTrack(activePlaylistQueue[currentQueueIndex]);
+                    } else if (playbackMode === 'search_shuffle') {
+                        startSearchShuffle(currentSearchShuffleLabel, currentSearchShuffleTracks);
+                    } else if (playbackMode === 'playlist_shuffle') {
+                        const playlistName = currentPlayingSong?.playlistName || currentTab;
+                        startPlaylistShuffle(playlistName);
+                    } else {
+                        if (btnSmartDj) btnSmartDj.click();
+                    }
+                }
+            } else if (playbackMode === 'single' && activePlaylistQueue.length > 0 && currentQueueIndex + 1 < activePlaylistQueue.length) {
+                currentQueueIndex++;
+                playQueueTrack(activePlaylistQueue[currentQueueIndex]);
+            } else {
+                updateMusicBarState(false);
+                renderSongs();
+            }
+        }
+
         // 4. CANDADO 3: Silencio continuo sostenido
         if (isSilent) {
             silenceConsecutiveDuration += deltaSec;
             if (silenceConsecutiveDuration >= requiredSilenceSec) {
-                console.log(`[Auto-Skip Silencio] Silencio final detectado (${silenceConsecutiveDuration.toFixed(1)}s en remaining ${remaining.toFixed(1)}s). Pasando a siguiente pista...`);
+                console.log(`[Auto-Skip Silencio] Silencio final detectado (${silenceConsecutiveDuration.toFixed(1)}s en remaining ${remaining.toFixed(1)}s). Pasando limpiamente a siguiente pista...`);
                 isAutoSkippingSilence = true;
                 silenceConsecutiveDuration = 0;
                 lastSilenceCheckTimestamp = null;
 
                 showSyncNotification('⏭️ Silencio final omitido: siguiente canción');
 
-                // Avanzar de pista simulando el evento ended nativo del reproductor
-                mainMusicAudio.dispatchEvent(new Event('ended'));
-                setTimeout(() => { isAutoSkippingSilence = false; }, 1500);
+                // Pausar limpiamente la pista actual antes de iniciar la siguiente para evitar colisión de decodificadores
+                try { mainMusicAudio.pause(); } catch(e){}
+                playNextTrack();
+                setTimeout(() => { isAutoSkippingSilence = false; }, 800);
             }
         } else {
             // Si vuelve a sonar cualquier sonido, reiniciar el acumulador
@@ -3453,8 +3525,6 @@ function formatTime(seconds) {
             // Detección de silencios finales en modo aleatorio
             checkEndOfTrackSilence();
 
-
-
             // Karaoke Mode: Real-time Lyric Highlight & Auto-scroll
             if (cinemaOverlay && cinemaOverlay.style.display === 'flex' && cinemaParsedLyrics.length > 0) {
                 let activeIdx = -1;
@@ -3475,35 +3545,22 @@ function formatTime(seconds) {
             }
         });
 
-
-
         mainMusicAudio.addEventListener('ended', () => {
-            if (playbackMode === 'playlist_shuffle' || playbackMode === 'party_dj' || playbackMode === 'search_shuffle') {
-                if (activePlaylistQueue.length > 0) {
-                    const nextIdx = currentQueueIndex + 1;
-                    if (nextIdx < activePlaylistQueue.length) {
-                        // Avanzar a la siguiente canción de la cola
-                        currentQueueIndex = nextIdx;
-                        playQueueTrack(activePlaylistQueue[currentQueueIndex]);
-                    } else if (playbackMode === 'search_shuffle') {
-                        // Cola agotada en búsqueda: reiniciar ciclo o buscar tanda no escuchada
-                        startSearchShuffle(currentSearchShuffleLabel, currentSearchShuffleTracks);
-                    } else if (playbackMode === 'playlist_shuffle') {
-                        // Cola agotada: buscar siguiente tanda de canciones no escuchadas
-                        const playlistName = currentPlayingSong?.playlistName || currentTab;
-                        startPlaylistShuffle(playlistName);
-                    } else {
-                        // Modo Fiesta: renovar pool global de canciones
-                        if (btnSmartDj) btnSmartDj.click();
+            if (!isAutoSkippingSilence) {
+                playNextTrack();
+            }
+        });
+
+        mainMusicAudio.addEventListener('error', (e) => {
+            console.warn('[Audio Tag Error]', mainMusicAudio.error);
+            if (currentPlayingSong && currentPlayingSong.audioUrl) {
+                setTimeout(() => {
+                    if (mainMusicAudio.error && currentPlayingSong) {
+                        console.log('[Audio Recovery] Reintentando carga tras error transitorio...');
+                        mainMusicAudio.load();
+                        mainMusicAudio.play().then(() => updateMusicBarState(true)).catch(() => updateMusicBarState(false));
                     }
-                }
-            } else if (playbackMode === 'single' && activePlaylistQueue.length > 0 && currentQueueIndex + 1 < activePlaylistQueue.length) {
-                // Había una canción añadida "a continuación" sin interrumpir la que sonaba
-                currentQueueIndex++;
-                playQueueTrack(activePlaylistQueue[currentQueueIndex]);
-            } else {
-                updateMusicBarState(false);
-                renderSongs();
+                }, 400);
             }
         });
     }
