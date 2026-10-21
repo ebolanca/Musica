@@ -288,11 +288,27 @@ function loadAnalysesDb() {
 }
 loadAnalysesDb();
 
+function safeAtomicWriteSync(filePath, dataStr) {
+    const tmpPath = `${filePath}.tmp${process.pid}_${Date.now()}`;
+    fs.writeFileSync(tmpPath, dataStr, 'utf8');
+    try {
+        fs.renameSync(tmpPath, filePath);
+    } catch (renameErr) {
+        // En Windows, renameSync falla con EPERM si el archivo destino existe o está abierto temporalmente por otro proceso
+        try {
+            fs.copyFileSync(tmpPath, filePath);
+            fs.unlinkSync(tmpPath);
+        } catch (copyErr) {
+            console.error(`Error en safeAtomicWriteSync para ${filePath}:`, copyErr.message);
+        }
+    }
+}
+
 // scripts/worker_ai_analyses.js (proceso pm2 separado) escribe este mismo archivo en
 // paralelo. Antes de guardar, se relee el disco y se fusiona con la copia en memoria
 // (disco primero, memoria encima) para no perder entradas que el worker haya añadido
-// desde el último load; y se escribe de forma atómica (temp + rename) para evitar tanto
-// los EBUSY por colisión de escritura como archivos truncados si el proceso muere a mitad.
+// desde el último load; y se escribe de forma atómica (safeAtomicWriteSync) para evitar tanto
+// los EBUSY/EPERM por colisión de escritura como archivos truncados si el proceso muere a mitad.
 function persistAnalysesDb() {
     try {
         let diskDb = {};
@@ -301,9 +317,7 @@ function persistAnalysesDb() {
         }
         cachedAnalyses = { ...diskDb, ...cachedAnalyses };
         const dataStr = JSON.stringify(cachedAnalyses, null, 2);
-        const tmpPath = `${ANALYSES_DB_PATH}.tmp${process.pid}`;
-        fs.writeFileSync(tmpPath, dataStr, 'utf8');
-        fs.renameSync(tmpPath, ANALYSES_DB_PATH);
+        safeAtomicWriteSync(ANALYSES_DB_PATH, dataStr);
         if (!IS_RUNNING_ON_OMEN) {
             const REMOTE_ANALYSES_DB = "\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\analyses_db.json";
             fs.writeFile(REMOTE_ANALYSES_DB, dataStr, 'utf8', () => {});
@@ -357,13 +371,27 @@ function fuzzyNormKeyMatches(normA, normB) {
 // quedan huérfanos corriendo indefinidamente. `taskkill /T` sí mata el árbol completo
 // usando el ParentProcessId original, aunque cmd.exe ya haya terminado.
 function execWithTreeKill(cmd, options, callback) {
+    if (typeof options === 'function') {
+        callback = options;
+        options = {};
+    }
     const { exec } = require('child_process');
-    const child = exec(cmd, options, callback);
-    const timeoutMs = options && options.timeout;
+    const safeOptions = Object.assign({
+        windowsHide: true,
+        maxBuffer: 20 * 1024 * 1024
+    }, options || {});
+    safeOptions.windowsHide = true; // Forzar SIEMPRE ocultación de ventana de consola en Windows
+    const child = exec(cmd, safeOptions, callback);
+    const timeoutMs = safeOptions.timeout;
     if (timeoutMs && child.pid) {
         const pid = child.pid;
         const killer = setTimeout(() => {
-            try { require('child_process').execSync(`taskkill /pid ${pid} /T /F`, { windowsHide: true }); } catch(e) {}
+            try {
+                require('child_process').execSync(`taskkill /pid ${pid} /T /F`, {
+                    windowsHide: true,
+                    stdio: 'ignore'
+                });
+            } catch(e) {}
         }, timeoutMs + 500);
         child.once('exit', () => clearTimeout(killer));
     }
@@ -408,6 +436,23 @@ function findLyricsForTrack(artist, title) {
 
 
 
+
+const LRCLIB_USER_AGENT = 'MusicaApp/2.3.1 (https://github.com/ebolanca/Musica; contact@majecruz.es)';
+
+async function fetchLrclib(url, timeoutMs = 8000) {
+    try {
+        const res = await fetch(url, {
+            headers: {
+                'User-Agent': LRCLIB_USER_AGENT,
+                'Accept': 'application/json'
+            },
+            signal: AbortSignal.timeout(timeoutMs)
+        });
+        return res;
+    } catch (e) {
+        return null;
+    }
+}
 
 const LYRICS_CACHE_FILE = path.join(__dirname, 'data', 'lyrics_cache.json');
 let lyricsTransCache = {};
@@ -2751,8 +2796,8 @@ app.post('/api/track/upload-replace', blockInPublicMode, (req, res) => {
                 // Restablecer sincronización de letras a 0.0s
                 try {
                     const lrcurl = `https://lrclib.net/api/get?artist_name=${encodeURIComponent(artist)}&track_name=${encodeURIComponent(cleanT)}`;
-                    const lrcres = await fetch(lrcurl, { signal: AbortSignal.timeout(3000) });
-                    if (lrcres.ok) {
+                    const lrcres = await fetchLrclib(lrcurl, 8000);
+                    if (lrcres && lrcres.ok) {
                         const lrcdata = await lrcres.json();
                         if (lrcdata.syncedLyrics) {
                             let freshLyrics = parseLrc(lrcdata.syncedLyrics);
@@ -2839,8 +2884,8 @@ app.get('/api/track/detail', async (req, res) => {
             try {
                 const cleanT = cleanTrackTitle(title);
                 const lrcurl = `https://lrclib.net/api/get?artist_name=${encodeURIComponent(artist)}&track_name=${encodeURIComponent(cleanT)}`;
-                const lrcres = await fetch(lrcurl, { signal: AbortSignal.timeout(3000) });
-                if (lrcres.ok) {
+                const lrcres = await fetchLrclib(lrcurl, 8000);
+                if (lrcres && lrcres.ok) {
                     const lrcdata = await lrcres.json();
                     if (lrcdata.syncedLyrics) {
                         parsedLyrics = parseLrc(lrcdata.syncedLyrics);
@@ -2849,8 +2894,8 @@ app.get('/api/track/detail', async (req, res) => {
                     }
                 } else {
                     const searchurl = `https://lrclib.net/api/search?q=${encodeURIComponent(artist + ' ' + cleanT)}`;
-                    const sres = await fetch(searchurl, { signal: AbortSignal.timeout(3000) });
-                    if (sres.ok) {
+                    const sres = await fetchLrclib(searchurl, 8000);
+                    if (sres && sres.ok) {
                         const sdata = await sres.json();
                         if (sdata && sdata.length > 0) {
                             // Priorizar siempre el resultado con letra sincronizada (syncedLyrics)
@@ -3306,6 +3351,9 @@ app.post('/api/lyrics/save-offset', blockInPublicMode, (req, res) => {
 // 🔄 Rotar y Escoger Otra Versión de Subtítulos (LRCLIB)
 // ==========================================================================
 let lyricsCycleMap = {};
+// Caché de candidatos de subtítulos en memoria: permite rotar instantáneamente (0ms) sin depender de internet en cada clic
+const lyricsCandidatesCache = new Map(); // cycleKey -> { timestamp, candidates }
+const LYRICS_CACHE_TTL = 30 * 60 * 1000; // 30 minutos
 
 app.post('/api/lyrics/cycle-version', blockInPublicMode, async (req, res) => {
     try {
@@ -3315,51 +3363,73 @@ app.post('/api/lyrics/cycle-version', blockInPublicMode, async (req, res) => {
         }
 
         const cleanT = cleanTrackTitle(title);
-        const searchTerms = [
-            `${artist} ${cleanT}`,
-            `${artist} ${title}`,
-            `${cleanT} ${artist}`
-        ];
-
+        const cycleKey = `${artist} - ${cleanT}`.toLowerCase();
         const normArtist = cleanTrackKey(artist);
+
         let allCandidates = [];
-        const seenLrc = new Set();
 
-        for (const term of searchTerms) {
-            try {
-                const url = `https://lrclib.net/api/search?q=${encodeURIComponent(term)}`;
-                const response = await fetch(url, { signal: AbortSignal.timeout(4000) });
-                if (response.ok) {
-                    const data = await response.json();
-                    if (Array.isArray(data)) {
-                        for (const item of data) {
-                            if (!item.syncedLyrics || item.syncedLyrics.trim().length < 20) continue;
+        // 1. Reutilizar candidatos en memoria si ya se buscaron recientemente (rotación instantánea sin error de red)
+        const cachedEntry = lyricsCandidatesCache.get(cycleKey);
+        if (cachedEntry && (Date.now() - cachedEntry.timestamp < LYRICS_CACHE_TTL) && cachedEntry.candidates.length > 0) {
+            allCandidates = cachedEntry.candidates;
+        }
 
-                            // Filtro estricto: Verificar que el resultado pertenezca al mismo artista
-                            const itemArtist = cleanTrackKey(item.artistName || '');
-                            const isSameArtist = fuzzyNormKeyMatches(itemArtist, normArtist) ||
-                                normArtist.split(' ').some(w => w.length > 3 && itemArtist.includes(w));
+        // 2. Si no están en caché, consultar a LRCLIB con User-Agent oficial y timeout robusto
+        if (allCandidates.length === 0) {
+            const seenLrc = new Set();
+            const searchTerms = [
+                `${artist} ${cleanT}`,
+                `${cleanT} ${artist}`,
+                `${artist} ${title}`
+            ];
 
-                            if (!isSameArtist) continue; // Descartar letras de otros artistas homónimos
+            for (const term of searchTerms) {
+                try {
+                    const url = `https://lrclib.net/api/search?q=${encodeURIComponent(term)}`;
+                    const response = await fetchLrclib(url, 8000);
+                    if (response && response.ok) {
+                        const data = await response.json();
+                        if (Array.isArray(data)) {
+                            for (const item of data) {
+                                if (!item.syncedLyrics || item.syncedLyrics.trim().length < 20) continue;
 
-                            const firstLine = item.syncedLyrics.split('\n')[0].trim();
-                            const sig = `${item.duration || 0}_${firstLine}`;
-                            if (!seenLrc.has(sig)) {
-                                seenLrc.add(sig);
-                                allCandidates.push(item);
+                                // Filtro: Verificar que el resultado pertenezca al mismo artista
+                                const itemArtist = cleanTrackKey(item.artistName || '');
+                                const isSameArtist = fuzzyNormKeyMatches(itemArtist, normArtist) ||
+                                    normArtist.split(' ').some(w => w.length > 3 && itemArtist.includes(w));
+
+                                if (!isSameArtist) continue;
+
+                                const firstLine = item.syncedLyrics.split('\n')[0].trim();
+                                const sig = `${item.duration || 0}_${firstLine}`;
+                                if (!seenLrc.has(sig)) {
+                                    seenLrc.add(sig);
+                                    allCandidates.push(item);
+                                }
                             }
                         }
                     }
+                } catch(e) {
+                    console.warn(`[LYRICS CYCLE] Error consultando término "${term}":`, e.message);
                 }
-            } catch(e) {}
-            if (allCandidates.length >= 6) break;
+
+                // Si ya conseguimos al menos 3 candidatos válidos, no demorar más tiempo haciendo más consultas de red
+                if (allCandidates.length >= 3) break;
+            }
+
+            if (allCandidates.length > 0) {
+                lyricsCandidatesCache.set(cycleKey, { timestamp: Date.now(), candidates: allCandidates });
+            }
         }
 
         if (allCandidates.length === 0) {
-            return res.json({ success: false, candidatesCount: 0, error: 'No se encontraron versiones alternativas de subtítulos' });
+            return res.json({
+                success: false,
+                candidatesCount: 0,
+                error: 'No se encontraron versiones alternativas de subtítulos sincronizados en la base de datos.'
+            });
         }
 
-        const cycleKey = `${artist} - ${cleanT}`.toLowerCase();
         const currentIdx = lyricsCycleMap[cycleKey] || 0;
         const chosenCandidate = allCandidates[currentIdx % allCandidates.length];
         lyricsCycleMap[cycleKey] = currentIdx + 1;
@@ -3369,8 +3439,12 @@ app.post('/api/lyrics/cycle-version', blockInPublicMode, async (req, res) => {
             return res.status(500).json({ error: 'Error procesando los subtítulos seleccionados' });
         }
 
-        // Traducir subtítulos al español por lotes
-        parsedLyrics = await translateLyricsBatch(parsedLyrics);
+        // Traducir subtítulos al español por lotes (con tolerancia a fallos)
+        try {
+            parsedLyrics = await translateLyricsBatch(parsedLyrics);
+        } catch (transErr) {
+            console.warn('[LYRICS CYCLE] Aviso traduciendo subtítulos:', transErr.message);
+        }
 
         // Guardar en la base de datos de subtítulos permanente
         cachedLyricsDb[`${artist} - ${title}`] = parsedLyrics;
@@ -3421,6 +3495,28 @@ app.post('/api/lyrics/cycle-version', blockInPublicMode, async (req, res) => {
 // 🔄 Reemplazar pista por Versión Limpia Oficial de Estudio
 // ==========================================================================
 
+function resolveYtDlpBin() {
+    const localExe = path.join(__dirname, 'bin', 'yt-dlp.exe');
+    if (fs.existsSync(localExe)) return `"${localExe}"`;
+    const omenExe = 'D:\\03_Trabajo\\Musica\\bin\\yt-dlp.exe';
+    if (fs.existsSync(omenExe)) return `"${omenExe}"`;
+    const userProfile = process.env.USERPROFILE || '';
+    const spotdlExe = path.join(userProfile, '.spotdl', 'yt-dlp.exe');
+    if (fs.existsSync(spotdlExe)) return `"${spotdlExe}"`;
+    return 'yt-dlp';
+}
+
+function resolveFfmpegDir() {
+    const binDir = path.join(__dirname, 'bin');
+    if (fs.existsSync(path.join(binDir, 'ffmpeg.exe'))) return binDir;
+    const omenBin = 'D:\\03_Trabajo\\Musica\\bin';
+    if (fs.existsSync(path.join(omenBin, 'ffmpeg.exe'))) return omenBin;
+    const userProfile = process.env.USERPROFILE || '';
+    const spotdlDir = path.join(userProfile, '.spotdl');
+    if (fs.existsSync(path.join(spotdlDir, 'ffmpeg.exe'))) return spotdlDir;
+    return binDir;
+}
+
 function getYtDlpCookiesArg() {
     const candidates = [
         path.join(__dirname, 'bin', 'cookies.txt'),
@@ -3457,6 +3553,7 @@ function isVersionDiscarded(artist, title, urlOrId) {
 }
 
 let activeCleanVersion = {}; // TrackKey -> URL actual para saber cuál descartar si el usuario pulsa "Versión" de nuevo
+const activeCleanAudioJobs = new Map(); // TrackKey -> Promise en vuelo para evitar duplicar descargas al hacer múltiples clics
 
 async function downloadFromOnlineConverter(youtubeUrl, outputPath) {
     // loader.to ha quedado obsoleto / bloqueado tras pasarela de pago.
@@ -3465,6 +3562,7 @@ async function downloadFromOnlineConverter(youtubeUrl, outputPath) {
 }
 
 app.post('/api/track/replace-clean-audio', blockInPublicMode, async (req, res) => {
+    let jobKey = null;
     try {
         let { artist, title, category, discardCurrent } = req.body;
         if (!artist || !title) {
@@ -3477,6 +3575,19 @@ app.post('/api/track/replace-clean-audio', blockInPublicMode, async (req, res) =
         }
 
         const cleanT = cleanTrackTitle(title);
+        jobKey = `${cleanTrackKey(artist)}_${cleanTrackKey(cleanT)}`;
+
+        // Si ya hay una búsqueda/descarga en curso para esta pista, engancharse a la misma Promise en vez de saturar el servidor
+        if (activeCleanAudioJobs.has(jobKey)) {
+            console.log(`[CLEAN DOWNLOAD] ⏳ Ya existe una descarga en curso para ${artist} - ${cleanT}. Esperando al proceso activo...`);
+            try {
+                const sharedResult = await activeCleanAudioJobs.get(jobKey);
+                return res.json(sharedResult);
+            } catch(sharedErr) {
+                return res.status(500).json({ error: sharedErr.message || 'Error en descarga activa' });
+            }
+        }
+
         const targetCategory = resolveTrackCategory(artist, cleanT, category);
         const targetFolder = path.join(OMEN_MUSIC_DIR, targetCategory);
         
@@ -3507,14 +3618,12 @@ app.post('/api/track/replace-clean-audio', blockInPublicMode, async (req, res) =
         }
         const tempOutput = path.join(__dirname, 'data', `temp_clean_${Date.now()}.mp3`);
 
-        const { exec } = require('child_process');
-        const binDir = path.join(__dirname, 'bin');
-        const ytdlpBin = fs.existsSync(path.join(binDir, 'yt-dlp.exe')) ? `"${path.join(binDir, 'yt-dlp.exe')}"` : 'python -m yt_dlp';
-        const ffmpegDir = fs.existsSync(path.join(binDir, 'ffmpeg.exe')) ? binDir : 'C:\\Users\\MSI Roberto\\.spotdl';
+        const ytdlpBin = resolveYtDlpBin();
+        const ffmpegDir = resolveFfmpegDir();
 
         console.log(`[CLEAN DOWNLOAD] Buscando versión limpia y exacta de estudio para: ${artist} - ${cleanT}`);
 
-        const trackCycleKey = `${cleanTrackKey(artist)}_${cleanTrackKey(cleanT)}`;
+        const trackCycleKey = jobKey;
 
         // Si se solicita cambio de versión, descartar de inmediato la versión activa anterior
         if (discardCurrent && activeCleanVersion[trackCycleKey]) {
@@ -3574,7 +3683,7 @@ app.post('/api/track/replace-clean-audio', blockInPublicMode, async (req, res) =
 
         console.log(`[CLEAN DOWNLOAD] Duración oficial esperada: ${expectedDurationSec ? expectedDurationSec + 's (' + Math.floor(expectedDurationSec/60) + ':' + (expectedDurationSec%60).toString().padStart(2, '0') + ')' : 'No especificada'}`);
 
-        // 2. Buscar candidatos en YouTube y SoundCloud con coincidencia limpia de estudio (priorizar letra o lyrics según lista)
+        // 2. Buscar candidatos en YouTube con coincidencia limpia de estudio
         const effectiveNormCat = (targetCategory || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
         const isSpanishOrLatin = effectiveNormCat.includes('espanol') || effectiveNormCat.includes('latina');
         const primaryKw = isSpanishOrLatin ? 'letra' : 'lyrics';
@@ -3583,12 +3692,11 @@ app.post('/api/track/replace-clean-audio', blockInPublicMode, async (req, res) =
 
         console.log(`[CLEAN DOWNLOAD] Lista: "${targetCategory}" -> Prioridad de búsqueda: "${primaryKw}" (secundaria: "${secondaryKw}")`);
 
+        // Búsquedas optimizadas (8 resultados en vez de 20 para agilizar drásticamente la respuesta)
         const searchQueries = [
-            `ytsearch20:${mainArtist} ${cleanT} ${primaryKw}`,
-            `ytsearch20:${mainArtist} ${cleanT} audio`,
-            `scsearch20:${mainArtist} ${cleanT}`,
-            `ytsearch20:${mainArtist} ${cleanT} ${secondaryKw}`,
-            `ytsearch20:${mainArtist} ${cleanT}`
+            `ytsearch8:${mainArtist} ${cleanT} ${primaryKw}`,
+            `ytsearch8:${mainArtist} ${cleanT} audio`,
+            `ytsearch8:${mainArtist} ${cleanT}`
         ];
 
         let bestCandidate = null;
@@ -3601,7 +3709,7 @@ app.post('/api/track/replace-clean-audio', blockInPublicMode, async (req, res) =
                 const cookiesArg = getYtDlpCookiesArg();
                 const dumpCmd = `${ytdlpBin} ${cookiesArg} --dump-json --flat-playlist "${q}"`.replace(/\s+/g, " ");
                 const dumpOutput = await new Promise((resolve) => {
-                    execWithTreeKill(dumpCmd, { maxBuffer: 10 * 1024 * 1024, timeout: 15000, windowsHide: true }, (err, stdout) => {
+                    execWithTreeKill(dumpCmd, { maxBuffer: 10 * 1024 * 1024, timeout: 12000, windowsHide: true }, (err, stdout) => {
                         resolve(stdout || '');
                     });
                 });
@@ -3665,7 +3773,8 @@ app.post('/api/track/replace-clean-audio', blockInPublicMode, async (req, res) =
                     } catch(e) {}
                 }
 
-                if (allValidCandidates.length >= 8) break;
+                // Si ya conseguimos al menos 3 candidatos válidos con duración cercana, detener la búsqueda para no demorar
+                if (allValidCandidates.length >= 3 && allValidCandidates.some(c => c.diff <= 8)) break;
             } catch(e) {
                 console.warn(`Aviso buscando con ${q}:`, e.message);
             }
@@ -3704,12 +3813,12 @@ app.post('/api/track/replace-clean-audio', blockInPublicMode, async (req, res) =
 
                 let candSuccess = false;
 
-                // Descarga directa con yt-dlp local (rápida y fiable, timeout 25s)
+                // Descarga directa con yt-dlp local (rápida y fiable, timeout 35s)
                 const cookiesArg = getYtDlpCookiesArg();
                 const downloadCmd = `${ytdlpBin} ${cookiesArg} --ffmpeg-location "${ffmpegDir}" "${cand.url}" -x --audio-format mp3 --audio-quality 0 -o "${tempOutput}"`.replace(/\s+/g, " ");
 
                 const result = await new Promise((resolve) => {
-                    execWithTreeKill(downloadCmd, { timeout: 25000, windowsHide: true }, (err, stdout, stderr) => {
+                    execWithTreeKill(downloadCmd, { timeout: 35000, windowsHide: true }, (err, stdout, stderr) => {
                         if (fs.existsSync(tempOutput)) {
                             try {
                                 const stats = fs.statSync(tempOutput);
@@ -3757,7 +3866,7 @@ app.post('/api/track/replace-clean-audio', blockInPublicMode, async (req, res) =
                     try {
                         const checkFfmpeg = fs.existsSync(path.join(binDir, 'ffmpeg.exe')) ? `"${path.join(binDir, 'ffmpeg.exe')}"` : 'ffmpeg';
                         const durProbe = await new Promise((resolve) => {
-                            execWithTreeKill(`${checkFfmpeg} -i "${pFile}" 2>&1`, { timeout: 5000 }, (err, stdout, stderr) => {
+                            execWithTreeKill(`${checkFfmpeg} -i "${pFile}" 2>&1`, { timeout: 5000, windowsHide: true }, (err, stdout, stderr) => {
                                 const out = (stdout || '') + (stderr || '');
                                 const m = out.match(/Duration:\s*(\d+):(\d+):([\d.]+)/);
                                 if (m) {
@@ -3774,7 +3883,7 @@ app.post('/api/track/replace-clean-audio', blockInPublicMode, async (req, res) =
 
                             const cutCmd = `${checkFfmpeg} -ss ${introOffsetSec} -t ${expectedDurationSec + 3} -i "${pFile}" -c copy "${tempOutput}" -y`;
                             const cutOk = await new Promise((resolve) => {
-                                execWithTreeKill(cutCmd, { timeout: 10000 }, (err) => {
+                                execWithTreeKill(cutCmd, { timeout: 10000, windowsHide: true }, (err) => {
                                     if (fs.existsSync(tempOutput) && fs.statSync(tempOutput).size >= 900000) {
                                         resolve(true);
                                     } else resolve(false);
@@ -3805,8 +3914,8 @@ app.post('/api/track/replace-clean-audio', blockInPublicMode, async (req, res) =
             // Restablecer retardo a 0.0s y sincronizar letras limpias
             try {
                 const lrcurl = `https://lrclib.net/api/get?artist_name=${encodeURIComponent(artist)}&track_name=${encodeURIComponent(cleanT)}`;
-                const lrcres = await fetch(lrcurl, { signal: AbortSignal.timeout(3000) });
-                if (lrcres.ok) {
+                const lrcres = await fetchLrclib(lrcurl, 8000);
+                if (lrcres && lrcres.ok) {
                     const lrcdata = await lrcres.json();
                     if (lrcdata.syncedLyrics) {
                         let freshLyrics = parseLrc(lrcdata.syncedLyrics);
@@ -3837,6 +3946,8 @@ app.post('/api/track/replace-clean-audio', blockInPublicMode, async (req, res) =
     } catch(e) {
         console.error('Error en replace-clean-audio:', e);
         res.status(500).json({ error: e.message });
+    } finally {
+        if (jobKey) activeCleanAudioJobs.delete(jobKey);
     }
 });
 
@@ -4960,10 +5071,8 @@ async function handleRecommendationsDownload(req, res) {
         const targetFilePath = path.join(targetFolder, targetFileName);
         const tempOutput = path.join(__dirname, 'data', `temp_rec_${Date.now()}.mp3`);
 
-        const { exec } = require('child_process');
-        const binDir = path.join(__dirname, 'bin');
-        const ytdlpBin = fs.existsSync(path.join(binDir, 'yt-dlp.exe')) ? `"${path.join(binDir, 'yt-dlp.exe')}"` : 'python -m yt_dlp';
-        const ffmpegDir = fs.existsSync(path.join(binDir, 'ffmpeg.exe')) ? binDir : 'C:\\Users\\MSI Roberto\\.spotdl';
+        const ytdlpBin = resolveYtDlpBin();
+        const ffmpegDir = resolveFfmpegDir();
 
         console.log(`[RECOMMENDATION DOWNLOAD] Añadiendo a [${targetPlaylist}]: ${artist} - ${cleanT}`);
 

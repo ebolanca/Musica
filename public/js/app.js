@@ -2617,7 +2617,7 @@ function formatTime(seconds) {
 
             btnCinemaReplaceClean.disabled = true;
             btnCinemaReplaceClean.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Descargando...';
-            showSyncNotification('⏳ Descargando versión oficial de estudio...');
+            showSyncNotification('⏳ Descargando versión oficial de estudio (puede tardar hasta 1 minuto)...');
 
             let subsSec = null;
             if (cinemaParsedLyrics && cinemaParsedLyrics.length > 0) {
@@ -2641,7 +2641,8 @@ function formatTime(seconds) {
 
             try {
                 const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 60000);
+                // Timeout amplio de 120s para permitir descarga limpia sin falsos cortes en el navegador
+                const timeoutId = setTimeout(() => controller.abort(), 120000);
 
                 const res = await fetch('/api/track/replace-clean-audio', {
                     method: 'POST',
@@ -2657,8 +2658,14 @@ function formatTime(seconds) {
                 });
                 clearTimeout(timeoutId);
 
-                const data = await res.json();
-                if (data.success) {
+                let data = null;
+                try {
+                    data = await res.json();
+                } catch (jsonErr) {
+                    throw new Error(`Respuesta inválida del servidor (HTTP ${res.status})`);
+                }
+
+                if (res.ok && data.success) {
                     const freshUrl = data.relUrl || `/media-music/${encodeURIComponent(currentSong.playlistName || currentTab || 'Siglo XXI')}/${encodeURIComponent(`${currentSong.artist} - ${currentSong.rawTitle || currentSong.title}.mp3`)}`;
 
                     // 1. Restablecer el desfase a 0.0s
@@ -2702,7 +2709,7 @@ function formatTime(seconds) {
                         btnCinemaReplaceClean.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i> Versión';
                     }, 3000);
                 } else {
-                    throw new Error(data.error || 'Error en la descarga');
+                    throw new Error((data && data.error) || `Error en la descarga (HTTP ${res.status})`);
                 }
             } catch(e) {
                 console.error('Error reemplazando versión limpia:', e);
@@ -2751,17 +2758,28 @@ function formatTime(seconds) {
             showSyncNotification('🔍 Buscando otra versión de subtítulos en la base de datos...');
 
             try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 20000);
+
                 const res = await fetch('/api/lyrics/cycle-version', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
+                    signal: controller.signal,
                     body: JSON.stringify({
                         artist: currentSong.artist,
                         title: currentSong.rawTitle || currentSong.title
                     })
                 });
+                clearTimeout(timeoutId);
 
-                const data = await res.json();
-                if (data.success && data.lyrics && data.lyrics.length > 0) {
+                let data = null;
+                try {
+                    data = await res.json();
+                } catch (jsonErr) {
+                    throw new Error(`Respuesta inválida del servidor (HTTP ${res.status})`);
+                }
+
+                if (res.ok && data.success && data.lyrics && data.lyrics.length > 0) {
                     cinemaParsedLyrics = data.lyrics.map((l, idx) => {
                         let sec = null;
                         if (typeof l.seconds === 'number') sec = l.seconds;
@@ -2793,11 +2811,12 @@ function formatTime(seconds) {
 
                     showSyncNotification(`✨ Versión de subs ${data.candidateIndex}/${data.totalCandidates} cargada (Duración: ${data.subsDuration})`);
                 } else {
-                    showSyncNotification('⚠️ ' + (data.error || 'No se encontraron otras versiones de subtítulos.'));
+                    showSyncNotification('⚠️ ' + ((data && data.error) || 'No se encontraron otras versiones de subtítulos.'));
                 }
             } catch(e) {
                 console.error('Error rotando versión de subtítulos:', e);
-                showSyncNotification('❌ Error al cambiar versión de subtítulos');
+                const errMsg = e.name === 'AbortError' ? 'Tiempo de espera agotado buscando subtítulos' : (e.message || 'Error al cambiar versión de subtítulos');
+                showSyncNotification('❌ ' + errMsg);
             } finally {
                 btnCinemaReplaceSubs.disabled = false;
                 btnCinemaReplaceSubs.innerHTML = '<i class="fa-solid fa-closed-captioning"></i> Versión Subs';
