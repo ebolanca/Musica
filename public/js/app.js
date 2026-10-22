@@ -2210,8 +2210,37 @@ function formatTime(seconds) {
         if (cinemaPlay) {
             cinemaPlay.innerHTML = isPlaying ? '<i class="fa-solid fa-pause"></i>' : '<i class="fa-solid fa-play"></i>';
         }
+    }
 
+    function playNextTrack() {
+        if (playbackMode === 'playlist_shuffle' || playbackMode === 'party_dj' || playbackMode === 'search_shuffle') {
+            if (activePlaylistQueue && activePlaylistQueue.length > 0) {
+                const nextIdx = currentQueueIndex + 1;
+                if (nextIdx < activePlaylistQueue.length) {
+                    currentQueueIndex = nextIdx;
+                    playQueueTrack(activePlaylistQueue[currentQueueIndex]);
+                } else if (playbackMode === 'search_shuffle') {
+                    startSearchShuffle(currentSearchShuffleLabel, currentSearchShuffleTracks);
+                } else if (playbackMode === 'playlist_shuffle') {
+                    const playlistName = currentPlayingSong?.playlistName || currentTab;
+                    startPlaylistShuffle(playlistName);
+                } else if (playbackMode === 'party_dj') {
+                    startPartyDjMode();
+                }
+            }
+        } else if (playbackMode === 'single' && activePlaylistQueue && activePlaylistQueue.length > 0 && currentQueueIndex + 1 < activePlaylistQueue.length) {
+            currentQueueIndex++;
+            playQueueTrack(activePlaylistQueue[currentQueueIndex]);
+        } else {
+            updateMusicBarState(false);
+            renderSongs();
+        }
+    }
 
+    function playPrevTrack() {
+        if (!activePlaylistQueue || activePlaylistQueue.length === 0) return;
+        currentQueueIndex = (currentQueueIndex - 1 + activePlaylistQueue.length) % activePlaylistQueue.length;
+        playQueueTrack(activePlaylistQueue[currentQueueIndex]);
     }
 
     function handleCardPlayClick(song) {
@@ -2520,23 +2549,25 @@ function formatTime(seconds) {
         });
     }
 
+    function startPartyDjMode() {
+        let allTracks = [];
+        for (const [pName, tracks] of Object.entries(allPlaylists)) {
+            tracks.forEach(t => allTracks.push({ ...t, playlistName: pName }));
+        }
+        if (allTracks.length === 0) return;
+
+        const { unplayed, playedCount, total } = getUnplayedPool('global_party', allTracks);
+        const shuffled = smartPrioritizedShuffle(unplayed);
+        playbackMode = 'party_dj';
+        activePlaylistQueue = shuffled;
+        currentQueueIndex = 0;
+
+        playQueueTrack(activePlaylistQueue[0], `Modo Fiesta (${playedCount + 1}/${total})`);
+        maybeOpenCinemaForPublicShuffle();
+    }
+
     if (btnSmartDj) {
-        btnSmartDj.addEventListener('click', () => {
-            let allTracks = [];
-            for (const [pName, tracks] of Object.entries(allPlaylists)) {
-                tracks.forEach(t => allTracks.push({ ...t, playlistName: pName }));
-            }
-            if (allTracks.length === 0) return;
-
-            const { unplayed, playedCount, total } = getUnplayedPool('global_party', allTracks);
-            const shuffled = smartPrioritizedShuffle(unplayed);
-            playbackMode = 'party_dj';
-            activePlaylistQueue = shuffled;
-            currentQueueIndex = 0;
-
-            playQueueTrack(activePlaylistQueue[0], `Modo Fiesta (${playedCount + 1}/${total})`);
-            maybeOpenCinemaForPublicShuffle();
-        });
+        btnSmartDj.addEventListener('click', startPartyDjMode);
     }
 
     
@@ -3459,31 +3490,6 @@ function formatTime(seconds) {
             if (remaining <= 1.5) isSilent = true;
         }
 
-        function playNextTrack() {
-            if (playbackMode === 'playlist_shuffle' || playbackMode === 'party_dj' || playbackMode === 'search_shuffle') {
-                if (activePlaylistQueue && activePlaylistQueue.length > 0) {
-                    const nextIdx = currentQueueIndex + 1;
-                    if (nextIdx < activePlaylistQueue.length) {
-                        currentQueueIndex = nextIdx;
-                        playQueueTrack(activePlaylistQueue[currentQueueIndex]);
-                    } else if (playbackMode === 'search_shuffle') {
-                        startSearchShuffle(currentSearchShuffleLabel, currentSearchShuffleTracks);
-                    } else if (playbackMode === 'playlist_shuffle') {
-                        const playlistName = currentPlayingSong?.playlistName || currentTab;
-                        startPlaylistShuffle(playlistName);
-                    } else {
-                        if (btnSmartDj) btnSmartDj.click();
-                    }
-                }
-            } else if (playbackMode === 'single' && activePlaylistQueue.length > 0 && currentQueueIndex + 1 < activePlaylistQueue.length) {
-                currentQueueIndex++;
-                playQueueTrack(activePlaylistQueue[currentQueueIndex]);
-            } else {
-                updateMusicBarState(false);
-                renderSongs();
-            }
-        }
-
         // 4. CANDADO 3: Silencio continuo sostenido
         if (isSilent) {
             silenceConsecutiveDuration += deltaSec;
@@ -3638,17 +3644,13 @@ function formatTime(seconds) {
 
     if (musicBtnNext) {
         musicBtnNext.addEventListener('click', () => {
-            if (activePlaylistQueue.length === 0) return;
-            currentQueueIndex = (currentQueueIndex + 1) % activePlaylistQueue.length;
-            playQueueTrack(activePlaylistQueue[currentQueueIndex]);
+            playNextTrack();
         });
     }
 
     if (musicBtnPrev) {
         musicBtnPrev.addEventListener('click', () => {
-            if (activePlaylistQueue.length === 0) return;
-            currentQueueIndex = (currentQueueIndex - 1 + activePlaylistQueue.length) % activePlaylistQueue.length;
-            playQueueTrack(activePlaylistQueue[currentQueueIndex]);
+            playPrevTrack();
         });
     }
 
@@ -5454,17 +5456,13 @@ function formatTime(seconds) {
 
     if (cinemaNext) {
         cinemaNext.addEventListener('click', () => {
-            if (activePlaylistQueue.length === 0) return;
-            currentQueueIndex = (currentQueueIndex + 1) % activePlaylistQueue.length;
-            playQueueTrack(activePlaylistQueue[currentQueueIndex]);
+            playNextTrack();
         });
     }
 
     if (cinemaPrev) {
         cinemaPrev.addEventListener('click', () => {
-            if (activePlaylistQueue.length === 0) return;
-            currentQueueIndex = (currentQueueIndex - 1 + activePlaylistQueue.length) % activePlaylistQueue.length;
-            playQueueTrack(activePlaylistQueue[currentQueueIndex]);
+            playPrevTrack();
         });
     }
 
