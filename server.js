@@ -242,13 +242,18 @@ function titleOverrideKey(artist, title) {
 function saveTitleOverrides() {
     try {
         const dataStr = JSON.stringify(titleOverrides, null, 2);
-        const tmpPath = `${TITLE_OVERRIDES_PATH}.tmp${process.pid}`;
-        fs.writeFileSync(tmpPath, dataStr, 'utf8');
-        fs.renameSync(tmpPath, TITLE_OVERRIDES_PATH);
+        safeAtomicWriteSync(TITLE_OVERRIDES_PATH, dataStr);
+        if (!IS_RUNNING_ON_OMEN) {
+            const REMOTE_TITLE_OVERRIDES = "\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\title_overrides.json";
+            if (fs.existsSync(path.dirname(REMOTE_TITLE_OVERRIDES))) {
+                fs.writeFile(REMOTE_TITLE_OVERRIDES, dataStr, 'utf8', () => {});
+            }
+        }
     } catch(e) {
         console.error('Error guardando title_overrides:', e.message);
     }
 }
+
 
 let metadataCache = {};
 function loadMetadataCache() {
@@ -2545,7 +2550,7 @@ app.get('/api/covers/search', blockInPublicMode, async (req, res) => {
 // ==========================================================================
 app.post('/api/track/rename', blockInPublicMode, async (req, res) => {
     try {
-        const { oldArtist, oldTitle, newArtist, newTitle, duration } = req.body;
+        const { oldArtist, oldTitle, newArtist, newTitle, duration } = req.body || {};
         if (!oldArtist || !oldTitle || !newArtist || !newTitle) {
             return res.status(400).json({ error: 'Faltan parámetros requeridos' });
         }
@@ -2573,17 +2578,18 @@ app.post('/api/track/rename', blockInPublicMode, async (req, res) => {
             } else if (!isNaN(rawD)) {
                 durSec = parseFloat(rawD);
             }
-            if (durSec > 20) {
+            if (durSec > 10) {
                 updatedDurationMs = Math.round(durSec * 1000);
                 const s = Math.round(durSec);
                 updatedDurationFmt = `${Math.floor(s / 60)}:${(s % 60).toString().padStart(2, '0')}`;
             }
         }
 
-        // Limpiar claves viejas en metadataCache
-        const oldNormTarget = `${(oldArtist || '').toLowerCase().replace(/,/g, ' ').replace(/&/g, ' ').replace(/[^a-z0-9]/g, '')}${cleanTrackTitle(oldTitle).toLowerCase().replace(/[^a-z0-9]/g, '')}`;
+        // Limpiar claves viejas en metadataCache (con soporte de normalización NFD para no mutilar acentos)
+        const stripAccents = (str) => (str || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+        const oldNormTarget = `${stripAccents(oldArtist).replace(/,/g, ' ').replace(/&/g, ' ').replace(/[^a-z0-9]/g, '')}${stripAccents(cleanTrackTitle(oldTitle)).replace(/[^a-z0-9]/g, '')}`;
         for (const k of Object.keys(metadataCache)) {
-            const normK = k.toLowerCase().replace(/,/g, ' ').replace(/&/g, ' ').replace(/[^a-z0-9]/g, '');
+            const normK = stripAccents(k).replace(/,/g, ' ').replace(/&/g, ' ').replace(/[^a-z0-9]/g, '');
             if (fuzzyNormKeyMatches(normK, oldNormTarget)) {
                 delete metadataCache[k];
             }
@@ -2607,30 +2613,35 @@ app.post('/api/track/rename', blockInPublicMode, async (req, res) => {
             try { saveMetadataCache(); } catch(e){}
         }
 
-        // Si solo se cambió la duración y no el artista ni el título, no demorar la respuesta con búsquedas online
-        const onlyDurationChanged = (oldArtist === cleanNewArtist && oldTitle === cleanNewTitle);
+        // Comprobación insensible a mayúsculas/acentos para ver si solo cambió la duración
+        const normCmp = (s) => stripAccents(s).trim();
+        const onlyDurationChanged = (normCmp(oldArtist) === normCmp(cleanNewArtist) && normCmp(oldTitle) === normCmp(cleanNewTitle));
+        
+        // Si el artista o título cambiaron, re-resolver metadata en segundo plano sin demorar la respuesta HTTP
         if (!onlyDurationChanged) {
-            try {
-                let resolved = await resolveTrackMetadataOnline(cleanNewArtist, cleanNewTitle) || {};
-                if (updatedDurationMs) {
-                    resolved.durationMs = updatedDurationMs;
-                    resolved.durationFmt = updatedDurationFmt;
+            setImmediate(async () => {
+                try {
+                    let resolved = await resolveTrackMetadataOnline(cleanNewArtist, cleanNewTitle) || {};
+                    if (updatedDurationMs) {
+                        resolved.durationMs = updatedDurationMs;
+                        resolved.durationFmt = updatedDurationFmt;
+                    }
+                    const cleanT = cleanTrackTitle(cleanNewTitle);
+                    metadataCache[`${cleanNewArtist} - ${cleanNewTitle}`.toLowerCase()] = resolved;
+                    metadataCache[`${cleanNewArtist} - ${cleanT}`.toLowerCase()] = resolved;
+                    metadataCache[cleanT.toLowerCase()] = resolved;
+                    const normKey = stripAccents(`${cleanNewArtist}${cleanT}`).replace(/[^a-z0-9]/g, '');
+                    metadataCache[normKey] = resolved;
+                    saveMetadataCacheDebounced();
+                } catch(e) {
+                    console.error('Error re-resolviendo metadata en background tras renombrar:', e.message);
                 }
-                const cleanT = cleanTrackTitle(cleanNewTitle);
-                metadataCache[`${cleanNewArtist} - ${cleanNewTitle}`.toLowerCase()] = resolved;
-                metadataCache[`${cleanNewArtist} - ${cleanT}`.toLowerCase()] = resolved;
-                metadataCache[cleanT.toLowerCase()] = resolved;
-                const normKey = `${cleanNewArtist}${cleanT}`.toLowerCase().replace(/[^a-z0-9]/g, '');
-                metadataCache[normKey] = resolved;
-                saveMetadataCacheDebounced();
-            } catch(e) {
-                console.error('Error re-resolviendo metadata tras renombrar:', e.message);
-            }
+            });
         }
 
         invalidatePlaylistsCache();
         console.log(`✏️ [RENOMBRAR] "${oldArtist} - ${oldTitle}" -> "${cleanNewArtist} - ${cleanNewTitle}" (Duración: ${updatedDurationFmt || 'No modificada'})`);
-        res.json({ 
+        return res.json({ 
             success: true, 
             artist: cleanNewArtist, 
             title: cleanNewTitle,
@@ -2639,7 +2650,7 @@ app.post('/api/track/rename', blockInPublicMode, async (req, res) => {
         });
     } catch(err) {
         console.error('Error en /api/track/rename:', err);
-        res.status(500).json({ error: err.message });
+        return res.status(500).json({ error: err.message || 'Error interno del servidor' });
     }
 });
 

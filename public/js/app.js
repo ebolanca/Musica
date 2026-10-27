@@ -1150,6 +1150,7 @@ function formatTime(seconds) {
                     const res = await fetch('/api/track/rename', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
+                        credentials: 'include',
                         body: JSON.stringify({
                             oldArtist: editingTrack.artist,
                             oldTitle: editingTrack.title,
@@ -1158,40 +1159,52 @@ function formatTime(seconds) {
                             duration: inputEditDurationField ? inputEditDurationField.value.trim() : null
                         })
                     });
-                    const data = await res.json();
-                    if (res.ok && data.success) {
-                        closeEditTitleModal();
-                        showSyncNotification('✅ Datos actualizados');
-                        // getTrackPreloadKey usa rawTitle antes que title: sin borrar la
-                        // clave vieja de la caché de letras/análisis precargados, seguía
-                        // devolviendo el resultado "no encontrado" guardado antes de corregir.
-                        const oldKey = getTrackPreloadKey(editingTrack);
-                        preloadedDetailsCache.delete(oldKey);
-                        editingTrack.artist = data.artist;
-                        editingTrack.title = data.title;
-                        if (currentPlayingSong && (currentPlayingSong === editingTrack || (currentPlayingSong.title === editingTrack.title && currentPlayingSong.artist === editingTrack.artist))) {
-                            currentPlayingSong.artist = data.artist;
-                            currentPlayingSong.title = data.title;
-                            if (musicBarTitle) musicBarTitle.textContent = data.title;
-                            if (musicBarArtist) musicBarArtist.textContent = data.artist;
-                        }
-                        if (data.durationFmt && data.durationMs) {
-                            editingTrack.durationFmt = data.durationFmt;
-                            editingTrack.durationMs = data.durationMs;
-                            if (currentPlayingSong && (currentPlayingSong === editingTrack || (currentPlayingSong.title === editingTrack.title && currentPlayingSong.artist === editingTrack.artist))) {
-                                currentPlayingSong.durationFmt = data.durationFmt;
-                                currentPlayingSong.durationMs = data.durationMs;
-                            }
-                            if (cinemaTimeDur) cinemaTimeDur.textContent = data.durationFmt;
-                            if (musicTimeDur) musicTimeDur.textContent = data.durationFmt;
-                        }
-                        editingTrack.rawTitle = data.title;
-                        preloadedDetailsCache.delete(getTrackPreloadKey(editingTrack));
-                        renderCinemaTrack(editingTrack);
-                        fetchPlaylists();
-                    } else {
-                        throw new Error(data.error || 'No se pudo guardar');
+
+                    const rawText = await res.text();
+                    let data = null;
+                    try {
+                        data = rawText ? JSON.parse(rawText) : null;
+                    } catch(parseErr) {
+                        console.error('Respuesta no JSON del servidor al editar canción:', rawText);
                     }
+
+                    if (!res.ok) {
+                        const errMsg = (data && data.error) || (rawText && rawText.length < 150 ? rawText : `Error ${res.status}: ${res.statusText || 'Error en el servidor'}`);
+                        throw new Error(errMsg);
+                    }
+                    if (!data || !data.success) {
+                        throw new Error((data && data.error) || 'No se pudo guardar la información');
+                    }
+
+                    closeEditTitleModal();
+                    showSyncNotification('✅ Datos actualizados');
+                    // getTrackPreloadKey usa rawTitle antes que title: sin borrar la
+                    // clave vieja de la caché de letras/análisis precargados, seguía
+                    // devolviendo el resultado "no encontrado" guardado antes de corregir.
+                    const oldKey = getTrackPreloadKey(editingTrack);
+                    preloadedDetailsCache.delete(oldKey);
+                    editingTrack.artist = data.artist;
+                    editingTrack.title = data.title;
+                    if (currentPlayingSong && (currentPlayingSong === editingTrack || (currentPlayingSong.title === editingTrack.title && currentPlayingSong.artist === editingTrack.artist))) {
+                        currentPlayingSong.artist = data.artist;
+                        currentPlayingSong.title = data.title;
+                        if (musicBarTitle) musicBarTitle.textContent = data.title;
+                        if (musicBarArtist) musicBarArtist.textContent = data.artist;
+                    }
+                    if (data.durationFmt && data.durationMs) {
+                        editingTrack.durationFmt = data.durationFmt;
+                        editingTrack.durationMs = data.durationMs;
+                        if (currentPlayingSong && (currentPlayingSong === editingTrack || (currentPlayingSong.title === editingTrack.title && currentPlayingSong.artist === editingTrack.artist))) {
+                            currentPlayingSong.durationFmt = data.durationFmt;
+                            currentPlayingSong.durationMs = data.durationMs;
+                        }
+                        if (cinemaTimeDur) cinemaTimeDur.textContent = data.durationFmt;
+                        if (musicTimeDur) musicTimeDur.textContent = data.durationFmt;
+                    }
+                    editingTrack.rawTitle = data.title;
+                    preloadedDetailsCache.delete(getTrackPreloadKey(editingTrack));
+                    renderCinemaTrack(editingTrack);
+                    fetchPlaylists();
                 } catch(err) {
                     showEditTitleError('Error: ' + err.message);
                 } finally {
