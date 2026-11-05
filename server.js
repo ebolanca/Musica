@@ -424,23 +424,28 @@ loadLyricsDb();
 function findLyricsForTrack(artist, title) {
     // cachedLyricsDb se carga al arranque; no releer de disco en cada llamada (evita I/O masivo)
     const cleanT = cleanTrackTitle(title);
+    const danceT = cleanDanceTrackTitle(cleanT);
+    const primArtist = getArtistTokens(artist)[0] || artist;
+
     if (cachedLyricsDb[`${artist} - ${title}`]) return cachedLyricsDb[`${artist} - ${title}`];
     if (cachedLyricsDb[`${artist} - ${cleanT}`]) return cachedLyricsDb[`${artist} - ${cleanT}`];
+    if (cachedLyricsDb[`${artist} - ${danceT}`]) return cachedLyricsDb[`${artist} - ${danceT}`];
+    if (cachedLyricsDb[`${primArtist} - ${cleanT}`]) return cachedLyricsDb[`${primArtist} - ${cleanT}`];
+    if (cachedLyricsDb[`${primArtist} - ${danceT}`]) return cachedLyricsDb[`${primArtist} - ${danceT}`];
     if (cachedLyricsDb[cleanT]) return cachedLyricsDb[cleanT];
+    if (cachedLyricsDb[danceT]) return cachedLyricsDb[danceT];
     if (cachedLyricsDb[title]) return cachedLyricsDb[title];
 
     const normTarget = `${artist}${cleanT}`.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const normDanceTarget = `${primArtist}${danceT}`.toLowerCase().replace(/[^a-z0-9]/g, '');
     for (const [k, v] of Object.entries(cachedLyricsDb)) {
         const normK = k.toLowerCase().replace(/[^a-z0-9]/g, '');
-        if (fuzzyNormKeyMatches(normK, normTarget)) {
+        if (fuzzyNormKeyMatches(normK, normTarget) || fuzzyNormKeyMatches(normK, normDanceTarget)) {
             return v;
         }
     }
     return null;
 }
-
-
-
 
 const LRCLIB_USER_AGENT = 'MusicaApp/2.3.1 (https://github.com/ebolanca/Musica; contact@majecruz.es)';
 
@@ -457,6 +462,99 @@ async function fetchLrclib(url, timeoutMs = 8000) {
     } catch (e) {
         return null;
     }
+}
+
+async function searchLrclibCascade(artist, title) {
+    const cleanT = cleanTrackTitle(title);
+    const danceCleanT = cleanDanceTrackTitle(cleanT);
+    const artists = getArtistTokens(artist);
+    const primArtist = artists[0] || artist;
+
+    let bestPlain = null;
+    let isInstrumental = false;
+
+    // Fase 1: Coincidencias exactas con /api/get
+    const getCandidates = [
+        { a: artist, t: danceCleanT },
+        { a: primArtist, t: danceCleanT }
+    ];
+    if (cleanT !== danceCleanT) {
+        getCandidates.push({ a: artist, t: cleanT });
+        getCandidates.push({ a: primArtist, t: cleanT });
+    }
+    if (artists.length > 1 && artists[1]) {
+        getCandidates.push({ a: artists[1], t: danceCleanT });
+    }
+
+    for (const c of getCandidates) {
+        try {
+            const getUrl = `https://lrclib.net/api/get?artist_name=${encodeURIComponent(c.a)}&track_name=${encodeURIComponent(c.t)}`;
+            const res = await fetchLrclib(getUrl, 6000);
+            if (res && res.ok) {
+                const data = await res.json();
+                if (data.syncedLyrics && data.syncedLyrics.trim().length > 10) {
+                    return { syncedLyrics: data.syncedLyrics, data };
+                }
+                if (data.plainLyrics && !bestPlain) {
+                    bestPlain = { plainLyrics: data.plainLyrics, data };
+                }
+                if (data.instrumental) isInstrumental = true;
+            }
+        } catch(e) {}
+    }
+
+    // Fase 2: Búsqueda flexible por queries con /api/search (priorizando syncedLyrics)
+    const searchQueries = new Set();
+    searchQueries.add(`${primArtist} ${danceCleanT}`);
+    searchQueries.add(`${artist} ${danceCleanT}`);
+    if (artists.length > 1 && artists[1]) {
+        searchQueries.add(`${artists[1]} ${danceCleanT}`);
+    }
+    if (cleanT !== danceCleanT) {
+        searchQueries.add(`${primArtist} ${cleanT}`);
+        searchQueries.add(`${artist} ${cleanT}`);
+    }
+    if (danceCleanT.length >= 4) {
+        searchQueries.add(danceCleanT);
+    }
+
+    const normArtistTokens = artists.map(a => cleanTrackKey(a)).filter(Boolean);
+    const normDanceCleanT = cleanTrackKey(danceCleanT);
+
+    for (const q of searchQueries) {
+        try {
+            const sUrl = `https://lrclib.net/api/search?q=${encodeURIComponent(q)}`;
+            const sres = await fetchLrclib(sUrl, 7000);
+            if (sres && sres.ok) {
+                const list = await sres.json();
+                if (Array.isArray(list) && list.length > 0) {
+                    for (const item of list) {
+                        const itemNormArtist = cleanTrackKey(item.artistName);
+                        const itemNormTitle = cleanTrackKey(item.trackName);
+
+                        const matchesArtist = normArtistTokens.some(tok => itemNormArtist.includes(tok) || tok.includes(itemNormArtist));
+                        const matchesTitle = itemNormTitle.includes(normDanceCleanT) || normDanceCleanT.includes(itemNormTitle);
+
+                        if (matchesArtist || (matchesTitle && normArtistTokens.length === 0)) {
+                            if (item.syncedLyrics && item.syncedLyrics.trim().length > 10) {
+                                return { syncedLyrics: item.syncedLyrics, data: item };
+                            }
+                            if (item.plainLyrics && !bestPlain) {
+                                bestPlain = { plainLyrics: item.plainLyrics, data: item };
+                            }
+                            if (item.instrumental) {
+                                isInstrumental = true;
+                            }
+                        }
+                    }
+                }
+            }
+        } catch(e) {}
+    }
+
+    if (bestPlain) return bestPlain;
+    if (isInstrumental) return { instrumental: true };
+    return null;
 }
 
 const LYRICS_CACHE_FILE = path.join(__dirname, 'data', 'lyrics_cache.json');
@@ -1406,6 +1504,24 @@ function cleanSoundtrackTitle(title) {
 function cleanTrackTitle(rawTitle) {
     if (!rawTitle) return '';
     return cleanDisplayTitle(rawTitle);
+}
+
+function cleanDanceTrackTitle(rawTitle) {
+    if (!rawTitle) return '';
+    let t = cleanDisplayTitle(rawTitle);
+    // Quitar mezclas, cortes y coletillas técnicas frecuentes en Dance / Trance / Eurodance / Makina
+    t = t.replace(/\s*-\s*.*?\b(?:Mix|Edit|Version|Versión|Remix|Remaster(?:ed)?|Live|Dub|Instrumental|Club|Extended|Radio|Original|Maxi|Acoustic|Vocal|Rework|Bootleg|Vocal\s+Mix|Club\s+Mix).*/gi, '');
+    t = t.replace(/\s*\(\s*[^)]*?\b(?:Mix|Edit|Version|Versión|Remix|Remaster(?:ed)?|Live|Dub|Instrumental|Club|Extended|Radio|Original|Maxi|Acoustic|Vocal|Rework|Bootleg|Vocal\s+Mix|Club\s+Mix)\b[^)]*?\)/gi, '');
+    t = t.replace(/\s+-\s*$/, '').trim();
+    return t.replace(/\s+/g, ' ');
+}
+
+function getArtistTokens(artistStr) {
+    if (!artistStr) return [];
+    return String(artistStr)
+        .split(/[,&;/]|\b(?:feat\.?|ft\.?|featuring|with|vs\.?|pres\.?|presents)\b/i)
+        .map(a => a.trim())
+        .filter(a => a.length > 1);
 }
 
 
@@ -2970,8 +3086,8 @@ app.get('/api/track/detail', async (req, res) => {
     }
 
     let parsedLyrics = findLyricsForTrack(artist, title);
-    // Si la letra en caché era solo texto plano sin marcas de tiempo, intentar mejorarla con letra sincronizada
-    if (parsedLyrics && parsedLyrics.length > 0 && !parsedLyrics.some(l => l.seconds !== undefined || l.time !== undefined)) {
+    // Si la letra en caché era solo texto plano sin marcas de tiempo, intentar mejorarla con letra sincronizada (salvo que sea instrumental)
+    if (parsedLyrics && parsedLyrics.length > 0 && !parsedLyrics.some(l => l.seconds !== undefined || l.time !== undefined || l.instrumental)) {
         parsedLyrics = null;
     }
     const videoMap = scanVideoFiles();
@@ -2986,61 +3102,60 @@ app.get('/api/track/detail', async (req, res) => {
 
         if (!parsedLyrics) {
             try {
-                const cleanT = cleanTrackTitle(title);
-                const lrcurl = `https://lrclib.net/api/get?artist_name=${encodeURIComponent(artist)}&track_name=${encodeURIComponent(cleanT)}`;
-                const lrcres = await fetchLrclib(lrcurl, 8000);
-                if (lrcres && lrcres.ok) {
-                    const lrcdata = await lrcres.json();
-                    if (lrcdata.syncedLyrics) {
-                        parsedLyrics = parseLrc(lrcdata.syncedLyrics);
-                    } else if (lrcdata.plainLyrics) {
-                        parsedLyrics = lrcdata.plainLyrics.split('\n').filter(l => l.trim()).map(l => ({ text: l.trim() }));
-                    }
-                } else {
-                    const searchurl = `https://lrclib.net/api/search?q=${encodeURIComponent(artist + ' ' + cleanT)}`;
-                    const sres = await fetchLrclib(searchurl, 8000);
-                    if (sres && sres.ok) {
-                        const sdata = await sres.json();
-                        if (sdata && sdata.length > 0) {
-                            // Priorizar siempre el resultado con letra sincronizada (syncedLyrics)
-                            const item = sdata.find(i => i.syncedLyrics) || sdata[0];
-                            if (item.syncedLyrics) {
-                                parsedLyrics = parseLrc(item.syncedLyrics);
-                            } else if (item.plainLyrics) {
-                                parsedLyrics = item.plainLyrics.split('\n').filter(l => l.trim()).map(l => ({ text: l.trim() }));
-                            }
-                        }
+                const lrcRes = await searchLrclibCascade(artist, title);
+                if (lrcRes) {
+                    if (lrcRes.syncedLyrics) {
+                        parsedLyrics = parseLrc(lrcRes.syncedLyrics);
+                    } else if (lrcRes.plainLyrics) {
+                        parsedLyrics = lrcRes.plainLyrics.split('\n').filter(l => l.trim()).map(l => ({ text: l.trim() }));
+                    } else if (lrcRes.instrumental) {
+                        parsedLyrics = [{ instrumental: true, text: 'Pista Instrumental' }];
                     }
                 }
             } catch(e) {
-                console.error('Error buscando letra en LRCLIB:', e.message);
+                console.error('Error buscando letra en cascada LRCLIB:', e.message);
             }
         }
 
-        // Traducir inmediatamente con caché en memoria y guardar
+        // Traducir inmediatamente con caché en memoria y guardar (si no es instrumental)
         if (parsedLyrics && parsedLyrics.length > 0) {
-            try {
-                parsedLyrics = await translateLyricsBatch(parsedLyrics);
-            } catch(e){}
+            const isInst = parsedLyrics.some(l => l.instrumental);
+            if (!isInst) {
+                try {
+                    parsedLyrics = await translateLyricsBatch(parsedLyrics);
+                } catch(e){}
+            }
             const cleanT = cleanTrackTitle(title);
+            const danceT = cleanDanceTrackTitle(cleanT);
+            const primArtist = getArtistTokens(artist)[0] || artist;
             cachedLyricsDb[`${artist} - ${title}`] = parsedLyrics;
             cachedLyricsDb[`${artist} - ${cleanT}`] = parsedLyrics;
+            cachedLyricsDb[`${artist} - ${danceT}`] = parsedLyrics;
+            cachedLyricsDb[`${primArtist} - ${cleanT}`] = parsedLyrics;
+            cachedLyricsDb[`${primArtist} - ${danceT}`] = parsedLyrics;
             cachedLyricsDb[cleanT] = parsedLyrics;
+            cachedLyricsDb[danceT] = parsedLyrics;
             try {
                 saveLyricsDbDebounced();
             } catch(e){}
         }
     }
 
-    if (parsedLyrics && parsedLyrics.length > 0) {
+    if (parsedLyrics && parsedLyrics.length > 0 && !parsedLyrics.some(l => l.instrumental)) {
         const hasUntranslated = parsedLyrics.some(l => (l.text || '').trim().length > 3 && !l.translation);
         if (hasUntranslated) {
             try {
                 parsedLyrics = await translateLyricsBatch(parsedLyrics);
                 const cleanT = cleanTrackTitle(title);
+                const danceT = cleanDanceTrackTitle(cleanT);
+                const primArtist = getArtistTokens(artist)[0] || artist;
                 cachedLyricsDb[`${artist} - ${title}`] = parsedLyrics;
                 cachedLyricsDb[`${artist} - ${cleanT}`] = parsedLyrics;
+                cachedLyricsDb[`${artist} - ${danceT}`] = parsedLyrics;
+                cachedLyricsDb[`${primArtist} - ${cleanT}`] = parsedLyrics;
+                cachedLyricsDb[`${primArtist} - ${danceT}`] = parsedLyrics;
                 cachedLyricsDb[cleanT] = parsedLyrics;
+                cachedLyricsDb[danceT] = parsedLyrics;
                 try {
                     saveLyricsDbDebounced();
                 } catch(e){}
@@ -3067,6 +3182,8 @@ app.get('/api/track/detail', async (req, res) => {
         finalAlbum = analysis.originalAlbum || analysis.album;
     }
 
+    const isInst = (parsedLyrics && (parsedLyrics.isInstrumental || parsedLyrics.some(l => l.instrumental))) || false;
+
     res.json({
         artist: artist,
         title: cleanTrackTitle(meta.displayTitle || title),
@@ -3082,7 +3199,8 @@ app.get('/api/track/detail', async (req, res) => {
                    jellyfinVideosLookup.get(cleanTrackKey(`${artist} - ${title}`)) || null,
         composers: meta.composers || (analysis && analysis.composers) || artist,
         geminiEnriched: meta.geminiEnriched || false,
-        lyrics: (parsedLyrics || []).map(l => ({
+        isInstrumental: isInst,
+        lyrics: isInst ? [] : (parsedLyrics || []).map(l => ({
             ...l,
             translation: (l.translation && l.translation.trim().toLowerCase() !== (l.text || '').trim().toLowerCase()) ? l.translation : null
         })),
@@ -3355,7 +3473,7 @@ app.get('/api/radio/now-playing', async (req, res) => {
 // ==========================================================================
 app.post('/api/lyrics/save-offset', blockInPublicMode, (req, res) => {
     try {
-        const { artist, title, rawTitle, offsetSec, lyrics, lyricsArray } = req.body;
+        const { artist, title, rawTitle, offsetSec, lyrics, lyricsArray, isInstrumental } = req.body;
         if (!artist || !title) {
             return res.status(400).json({ error: 'Faltan parámetros requeridos (artist, title)' });
         }
@@ -3363,7 +3481,9 @@ app.post('/api/lyrics/save-offset', blockInPublicMode, (req, res) => {
         const incomingLyrics = lyrics || lyricsArray;
         let updatedLyrics = null;
 
-        if (incomingLyrics && Array.isArray(incomingLyrics) && incomingLyrics.length > 0) {
+        if (isInstrumental) {
+            updatedLyrics = [{ instrumental: true, text: 'Pista Instrumental' }];
+        } else if (incomingLyrics && Array.isArray(incomingLyrics) && incomingLyrics.length > 0) {
             // El cliente ya calculó las marcas de tiempo exactas finales deseadas
             updatedLyrics = incomingLyrics.map((l, idx) => {
                 let sec = 0;
@@ -3410,15 +3530,22 @@ app.post('/api/lyrics/save-offset', blockInPublicMode, (req, res) => {
         }
 
         const cleanT = cleanTrackTitle(title);
+        const danceT = cleanDanceTrackTitle(cleanT);
         const cleanRaw = rawTitle ? cleanTrackTitle(rawTitle) : cleanT;
+        const primArtist = getArtistTokens(artist)[0] || artist;
         const normTarget = `${artist}${cleanT}`.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const normDanceTarget = `${primArtist}${danceT}`.toLowerCase().replace(/[^a-z0-9]/g, '');
         const normRawTarget = rawTitle ? `${artist}${cleanRaw}`.toLowerCase().replace(/[^a-z0-9]/g, '') : normTarget;
 
         // 1. Guardar en todas las variantes directas
         const directKeys = [
             `${artist} - ${title}`,
             `${artist} - ${cleanT}`,
+            `${artist} - ${danceT}`,
+            `${primArtist} - ${cleanT}`,
+            `${primArtist} - ${danceT}`,
             cleanT,
+            danceT,
             `${artist} ${cleanT}`,
             title
         ];
@@ -3433,14 +3560,14 @@ app.post('/api/lyrics/save-offset', blockInPublicMode, (req, res) => {
         // 2. Buscar y actualizar cualquier clave coincidente por normalización en la BD
         for (const k of Object.keys(cachedLyricsDb)) {
             const normK = k.toLowerCase().replace(/[^a-z0-9]/g, '');
-            if (fuzzyNormKeyMatches(normK, normTarget) || fuzzyNormKeyMatches(normK, normRawTarget)) {
+            if (fuzzyNormKeyMatches(normK, normTarget) || fuzzyNormKeyMatches(normK, normDanceTarget) || fuzzyNormKeyMatches(normK, normRawTarget)) {
                 cachedLyricsDb[k] = updatedLyrics;
             }
         }
 
         // 3. Responder de inmediato con las letras actualizadas
-        res.json({ success: true, lyrics: updatedLyrics });
-        console.log(`💾 [LYRICS SYNC] Sincronización guardada al instante para ${artist} - ${title}`);
+        res.json({ success: true, lyrics: updatedLyrics, isInstrumental: Boolean(isInstrumental) });
+        console.log(`💾 [LYRICS SYNC] Sincronización guardada al instante para ${artist} - ${title}${isInstrumental ? ' (INSTRUMENTAL)' : ''}`);
 
         // 4. Persistir a disco
         saveLyricsDbDebounced();
@@ -3467,8 +3594,12 @@ app.post('/api/lyrics/cycle-version', blockInPublicMode, async (req, res) => {
         }
 
         const cleanT = cleanTrackTitle(title);
+        const danceCleanT = cleanDanceTrackTitle(cleanT);
+        const artists = getArtistTokens(artist);
+        const primArtist = artists[0] || artist;
         const cycleKey = `${artist} - ${cleanT}`.toLowerCase();
         const normArtist = cleanTrackKey(artist);
+        const normArtistTokens = artists.map(a => cleanTrackKey(a)).filter(Boolean);
 
         let allCandidates = [];
 
@@ -3478,28 +3609,35 @@ app.post('/api/lyrics/cycle-version', blockInPublicMode, async (req, res) => {
             allCandidates = cachedEntry.candidates;
         }
 
-        // 2. Si no están en caché, consultar a LRCLIB con User-Agent oficial y timeout robusto
+        // 2. Si no están en caché, consultar a LRCLIB con cascada multicandidato
         if (allCandidates.length === 0) {
             const seenLrc = new Set();
             const searchTerms = [
+                `${primArtist} ${danceCleanT}`,
+                `${artist} ${danceCleanT}`,
+                `${primArtist} ${cleanT}`,
                 `${artist} ${cleanT}`,
-                `${cleanT} ${artist}`,
+                `${cleanT} ${primArtist}`,
                 `${artist} ${title}`
             ];
+            if (artists.length > 1 && artists[1]) {
+                searchTerms.push(`${artists[1]} ${danceCleanT}`);
+            }
 
             for (const term of searchTerms) {
                 try {
                     const url = `https://lrclib.net/api/search?q=${encodeURIComponent(term)}`;
-                    const response = await fetchLrclib(url, 8000);
+                    const response = await fetchLrclib(url, 7000);
                     if (response && response.ok) {
                         const data = await response.json();
                         if (Array.isArray(data)) {
                             for (const item of data) {
                                 if (!item.syncedLyrics || item.syncedLyrics.trim().length < 20) continue;
 
-                                // Filtro: Verificar que el resultado pertenezca al mismo artista
+                                // Filtro: Verificar que el resultado pertenezca al artista o sus colaboradores
                                 const itemArtist = cleanTrackKey(item.artistName || '');
-                                const isSameArtist = fuzzyNormKeyMatches(itemArtist, normArtist) ||
+                                const isSameArtist = normArtistTokens.some(tok => itemArtist.includes(tok) || tok.includes(itemArtist)) ||
+                                    fuzzyNormKeyMatches(itemArtist, normArtist) ||
                                     normArtist.split(' ').some(w => w.length > 3 && itemArtist.includes(w));
 
                                 if (!isSameArtist) continue;
@@ -3517,8 +3655,8 @@ app.post('/api/lyrics/cycle-version', blockInPublicMode, async (req, res) => {
                     console.warn(`[LYRICS CYCLE] Error consultando término "${term}":`, e.message);
                 }
 
-                // Si ya conseguimos al menos 3 candidatos válidos, no demorar más tiempo haciendo más consultas de red
-                if (allCandidates.length >= 3) break;
+                // Si ya conseguimos al menos 5 candidatos válidos, no demorar más tiempo haciendo más consultas de red
+                if (allCandidates.length >= 5) break;
             }
 
             if (allCandidates.length > 0) {

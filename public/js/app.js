@@ -2909,9 +2909,13 @@ function formatTime(seconds) {
     }
 
     
-    function updateCinemaSubsDurationBadge() {
+    function updateCinemaSubsDurationBadge(customText) {
         const durBadge = document.getElementById('cinema-subs-dur-text');
         if (!durBadge) return;
+        if (customText) {
+            durBadge.textContent = customText;
+            return;
+        }
         if (!cinemaParsedLyrics || cinemaParsedLyrics.length === 0) {
             durBadge.textContent = '--:--';
             return;
@@ -4255,6 +4259,21 @@ function formatTime(seconds) {
         const lyricsContainer = document.getElementById('lyrics-content-list');
         lyricsContainer.innerHTML = '';
 
+        if (detail && detail.isInstrumental) {
+            lyricsContainer.innerHTML = `
+                <div style="text-align: center; padding: 50px 20px; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 14px;">
+                    <div style="width: 80px; height: 80px; border-radius: 50%; border: 2px dashed rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; background: radial-gradient(circle, rgba(99,102,241,0.2) 0%, rgba(0,0,0,0) 70%);">
+                        <i class="fa-solid fa-compact-disc fa-spin" style="font-size: 2.6rem; color: var(--primary, #6366f1); opacity: 0.9; --fa-animation-duration: 9s;"></i>
+                    </div>
+                    <div>
+                        <h4 style="color: #fff; font-size: 1.2rem; margin: 0 0 6px 0;">Pista Instrumental</h4>
+                        <p style="font-size: 0.9rem; margin: 0; opacity: 0.7;">Esta canción es instrumental y no contiene letra vocal registrada.</p>
+                    </div>
+                </div>
+            `;
+            return;
+        }
+
         if (!detail || !detail.lyrics || detail.lyrics.length === 0) {
             lyricsContainer.innerHTML = `
                 <div style="text-align: center; padding: 40px; color: var(--text-muted);">
@@ -5361,6 +5380,28 @@ function formatTime(seconds) {
             const cachedDetail = preloadedDetailsCache.get(key);
 
             const applyLyricsData = (d) => {
+                if (d && d.isInstrumental) {
+                    cinemaParsedLyrics = [];
+                    cinemaLyrics.innerHTML = `
+                        <div class="cinema-instrumental-wrapper" style="text-align:center; padding:60px 20px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;">
+                            <div style="width:100px; height:100px; border-radius:50%; border:2px dashed rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; background:radial-gradient(circle, rgba(99,102,241,0.2) 0%, rgba(0,0,0,0) 70%);">
+                                <i class="fa-solid fa-compact-disc fa-spin" style="font-size:3.2rem; color:var(--primary, #6366f1); opacity:0.9; --fa-animation-duration: 9s;"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size:1.35rem; font-weight:700; color:#fff; margin:0 0 6px 0; letter-spacing:0.5px;">Pista Instrumental</h3>
+                                <p style="font-size:0.92rem; opacity:0.7; margin:0 0 16px 0; color:var(--text-muted);">Esta canción no contiene letra vocal registrada</p>
+                                <button id="btn-cinema-unmark-inst" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18); border-radius:8px; padding:6px 14px; color:#c7d2fe; cursor:pointer; font-size:0.8rem; transition:all 0.2s;"><i class="fa-solid fa-arrows-rotate"></i> Buscar letra alternativa</button>
+                            </div>
+                        </div>
+                    `;
+                    updateCinemaSubsDurationBadge('Instrumental');
+                    const btnUnmark = document.getElementById('btn-cinema-unmark-inst');
+                    if (btnUnmark && btnCinemaReplaceSubs) {
+                        btnUnmark.addEventListener('click', () => btnCinemaReplaceSubs.click());
+                    }
+                    return;
+                }
+
                 if (d && d.lyrics && d.lyrics.length > 0) {
                     const hasRealTimestamps = d.lyrics.some(l => (typeof l.seconds === 'number' && l.seconds > 0) || (l.time && l.time !== '00:00'));
                     cinemaParsedLyrics = d.lyrics.map((l, idx) => {
@@ -5376,6 +5417,13 @@ function formatTime(seconds) {
                     });
 
                     renderCinemaLyricLines(false);
+                    if (!hasRealTimestamps) {
+                        const banner = document.createElement('div');
+                        banner.className = 'plain-lyrics-banner';
+                        banner.style.cssText = 'background:rgba(99,102,241,0.18); border:1px solid rgba(99,102,241,0.35); border-radius:8px; padding:8px 14px; margin-bottom:16px; font-size:0.82rem; color:#e0e7ff; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.3);';
+                        banner.innerHTML = '<i class="fa-solid fa-hand-pointer" style="margin-right:6px; color:#818cf8;"></i><strong>Letra en texto plano:</strong> Haz clic en una estrofa cuando suene para sincronizarla y pulsa 💾 para guardarla.';
+                        cinemaLyrics.insertBefore(banner, cinemaLyrics.firstChild);
+                    }
                     cinemaLyrics.scrollTop = 0;
                     cinemaLyrics.scrollTo({ top: 0, behavior: 'instant' });
                     requestAnimationFrame(() => {
@@ -5383,7 +5431,7 @@ function formatTime(seconds) {
                             cinemaLyrics.scrollTop = 0;
                         }
                     });
-                    updateCinemaSubsDurationBadge();
+                    updateCinemaSubsDurationBadge(hasRealTimestamps ? null : 'Texto');
 
                     // (Auto-alineación bajo demanda: sólo al pulsar 🪄 Auto o por anclaje manual con 1 clic en la estrofa)
 
@@ -5412,8 +5460,57 @@ function formatTime(seconds) {
 
                     // Listeners de desplazamiento manual gestionados globalmente
                 } else {
-                    updateCinemaSubsDurationBadge();
-                    cinemaLyrics.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);"><i class="fa-solid fa-microphone-slash" style="font-size:2rem;margin-bottom:12px;opacity:0.4;"></i><p>No hay letra sincronizada disponible para esta canción.</p></div>';
+                    updateCinemaSubsDurationBadge('--:--');
+                    cinemaLyrics.innerHTML = `
+                        <div style="text-align:center; padding:50px 20px; color:var(--text-muted); display:flex; flex-direction:column; align-items:center; gap:14px;">
+                            <i class="fa-solid fa-microphone-slash" style="font-size:2.4rem; opacity:0.4;"></i>
+                            <p style="font-size:1.05rem; margin:0;">No hay letra sincronizada disponible para esta canción.</p>
+                            <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:6px;">
+                                <button id="btn-cinema-find-alt" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18); border-radius:8px; padding:7px 14px; color:#fff; cursor:pointer; font-size:0.83rem; display:flex; align-items:center; gap:6px;"><i class="fa-solid fa-arrows-rotate"></i> Buscar versión alternativa</button>
+                                <button id="btn-cinema-mark-inst" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18); border-radius:8px; padding:7px 14px; color:#c7d2fe; cursor:pointer; font-size:0.83rem; display:flex; align-items:center; gap:6px;"><i class="fa-solid fa-compact-disc"></i> Marcar como Instrumental</button>
+                            </div>
+                        </div>
+                    `;
+                    const btnFindAlt = document.getElementById('btn-cinema-find-alt');
+                    if (btnFindAlt && btnCinemaReplaceSubs) {
+                        btnFindAlt.addEventListener('click', () => btnCinemaReplaceSubs.click());
+                    }
+                    const btnMarkInst = document.getElementById('btn-cinema-mark-inst');
+                    if (btnMarkInst) {
+                        btnMarkInst.addEventListener('click', async () => {
+                            btnMarkInst.disabled = true;
+                            btnMarkInst.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Guardando...';
+                            try {
+                                const res = await fetch('/api/lyrics/save-offset', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    credentials: 'include',
+                                    body: JSON.stringify({
+                                        artist: track.artist,
+                                        title: track.title,
+                                        rawTitle: track.rawTitle,
+                                        isInstrumental: true
+                                    })
+                                });
+                                const data = await res.json();
+                                if (res.ok && data.success) {
+                                    showSyncNotification('🎧 ¡Canción marcada como Instrumental con éxito!');
+                                    const cachedDetail = preloadedDetailsCache.get(key);
+                                    if (cachedDetail) {
+                                        cachedDetail.isInstrumental = true;
+                                        cachedDetail.lyrics = [];
+                                    }
+                                    applyLyricsData({ isInstrumental: true, lyrics: [] });
+                                } else {
+                                    showSyncNotification('⚠️ No se pudo guardar: ' + ((data && data.error) || 'Error'));
+                                    btnMarkInst.disabled = false;
+                                }
+                            } catch(e) {
+                                showSyncNotification('❌ Error de conexión al guardar como instrumental');
+                                btnMarkInst.disabled = false;
+                            }
+                        });
+                    }
                 }
             };
 
