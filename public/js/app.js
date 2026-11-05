@@ -1147,29 +1147,52 @@ function formatTime(seconds) {
                 btnSaveEditTitle.disabled = true;
                 btnSaveEditTitle.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Guardando...';
                 try {
-                    const res = await fetch('/api/track/rename', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        credentials: 'include',
-                        body: JSON.stringify({
-                            oldArtist: editingTrack.artist,
-                            oldTitle: editingTrack.title,
-                            newArtist,
-                            newTitle,
-                            duration: inputEditDurationField ? inputEditDurationField.value.trim() : null
-                        })
-                    });
-
-                    const rawText = await res.text();
+                    let res = null;
+                    let rawText = '';
                     let data = null;
-                    try {
-                        data = rawText ? JSON.parse(rawText) : null;
-                    } catch(parseErr) {
-                        console.error('Respuesta no JSON del servidor al editar canción:', rawText);
+                    let attempts = 0;
+                    const maxAttempts = 2;
+
+                    while (attempts < maxAttempts) {
+                        attempts++;
+                        try {
+                            res = await fetch('/api/track/rename', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                credentials: 'include',
+                                body: JSON.stringify({
+                                    oldArtist: editingTrack.artist,
+                                    oldTitle: editingTrack.title,
+                                    newArtist,
+                                    newTitle,
+                                    duration: inputEditDurationField ? inputEditDurationField.value.trim() : null
+                                })
+                            });
+
+                            rawText = await res.text();
+                            try {
+                                data = rawText ? JSON.parse(rawText) : null;
+                            } catch(parseErr) {
+                                data = null;
+                            }
+
+                            // Si devuelve 502/503/504 por un microcorte del túnel, reintentar tras 1s
+                            if ((res.status === 502 || res.status === 503 || res.status === 504) && attempts < maxAttempts) {
+                                await new Promise(r => setTimeout(r, 1000));
+                                continue;
+                            }
+                            break;
+                        } catch(netErr) {
+                            if (attempts < maxAttempts) {
+                                await new Promise(r => setTimeout(r, 1000));
+                                continue;
+                            }
+                            throw netErr;
+                        }
                     }
 
-                    if (!res.ok) {
-                        const errMsg = (data && data.error) || (rawText && rawText.length < 150 ? rawText : `Error ${res.status}: ${res.statusText || 'Error en el servidor'}`);
+                    if (!res || !res.ok) {
+                        const errMsg = (data && data.error) || (rawText && rawText.length < 150 ? rawText : `Error ${res ? res.status : 'de conexión'}: ${res && res.statusText ? res.statusText : 'Servidor no disponible momentáneamente'}`);
                         throw new Error(errMsg);
                     }
                     if (!data || !data.success) {

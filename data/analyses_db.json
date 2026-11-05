@@ -22457,28 +22457,28 @@
     "releaseDate": "2000-05-22",
     "composers": "Sonia Clarke, Rick Nowels, Graham Stack",
     "label": "Serious Records",
-    "genre": "Eurodance / Trance-Pop",
-    "synopsis": "Sky es un pilar del dance-pop europeo de principios del milenio, caracterizado por una producción de trance melódico que fusiona la calidez vocal de Sonique con una instrumentación sintética expansiva. La pista destaca por su progresión armónica ascendente y una estructura rítmica de 130 BPM que equilibra la introspección lírica con la energía de las pistas de baile globales.",
+    "genre": "Trance-pop / Eurodance",
+    "synopsis": "Sky es un pilar del dance-pop europeo de finales de los 90, caracterizado por una producción de alta fidelidad que fusiona la calidez vocal de Sonique con texturas de sintetizador atmosféricas. La canción destaca por su estructura de crescendo emocional, equilibrando la melancolía lírica con un ritmo propulsivo que definió el sonido de la transición al nuevo milenio.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La producción, liderada por Graham Stack y Rick Nowels, utiliza una base de sintetizadores analógicos y digitales que crean un 'pad' atmosférico envolvente. La voz de Sonique está procesada con una compresión moderada y una reverb de placa que le otorga una presencia etérea. El arreglo destaca por un bajo pulsante (side-chain compression) típico del trance comercial, mientras que los arreglos de cuerdas sintéticas añaden una textura cinemática que eleva el estribillo hacia una resolución armónica épica."
+        "text": "La producción, liderada por Graham Stack, emplea una base rítmica de 130 BPM con un diseño de sonido que prioriza la claridad en las frecuencias medias-altas. Se utilizan sintetizadores de tipo 'pad' que crean una atmósfera etérea, contrastando con un bajo sintético profundo y comprimido. La voz de Sonique está tratada con una reverberación de placa sutil y una compresión paralela que mantiene su presencia constante sobre la densa instrumentación electrónica."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "La letra explora la liberación emocional y la superación de la adversidad. Versos como 'I'm not afraid to fly' simbolizan la transición hacia la autonomía personal. El uso de la metáfora del cielo ('Sky') funciona como un espacio de infinitas posibilidades. La estructura lírica es circular, reforzando la idea de un viaje de autodescubrimiento donde el sujeto lírico finalmente se desprende de las ataduras del pasado para alcanzar su propio potencial."
+        "text": "La letra explora la liberación emocional y la superación personal tras una ruptura. Versos como 'I'm looking at the sky, and I'm feeling so high' funcionan como una metáfora de claridad mental. El uso de la palabra 'sky' simboliza el horizonte infinito y la libertad, mientras que la estructura lírica es directa, enfocada en la resiliencia y la autoafirmación, evitando la complejidad metafórica en favor de una conexión emocional inmediata con el oyente."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "El videoclip oficial presenta una estética minimalista y futurista, centrada en la figura de Sonique. La fotografía utiliza una paleta de colores fríos y contrastes lumínicos que refuerzan la temática del 'cielo' y la elevación. La dirección se enfoca en la interpretación gestual de la artista, utilizando planos cerrados que enfatizan la vulnerabilidad y la fuerza de su mensaje, alejándose de las narrativas complejas para priorizar el impacto emocional directo."
+        "text": "El videoclip oficial presenta una estética minimalista y futurista, muy propia de la cultura visual del año 2000. Con una paleta de colores fríos y tomas de Sonique en entornos urbanos y espacios abiertos, el vídeo enfatiza la soledad introspectiva que se transforma en empoderamiento. La edición es rítmica, sincronizando los cortes con los golpes de percusión, reforzando la naturaleza bailable del track."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "Tras el éxito masivo de 'It Feels So Good', 'Sky' consolidó a Sonique como una de las voces más relevantes del dance europeo. Alcanzó el puesto número 2 en la lista de singles del Reino Unido y fue un éxito rotundo en las listas de radio de toda Europa. La canción es recordada como un himno de empoderamiento que definió el sonido de la transición entre los años 90 y 2000, siendo un elemento básico en las sesiones de DJ de la época."
+        "text": "Tras el éxito masivo de 'It Feels So Good', 'Sky' consolidó a Sonique como una de las artistas más importantes del Reino Unido en el año 2000. Alcanzó el puesto número 2 en la UK Singles Chart y se convirtió en un himno de las pistas de baile internacionales. Su éxito demostró la viabilidad comercial de fusionar la música dance con una composición pop de corte tradicional, influyendo en la producción de artistas dance posteriores."
       }
     ],
     "_aiModel": "gemini-3.1-flash-lite"

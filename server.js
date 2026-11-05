@@ -1,4 +1,53 @@
 
+const express = require('express');
+const cors = require('cors');
+const fs = require('fs');
+const path = require('path');
+const http = require('http');
+const crypto = require('crypto');
+const { fetchTrackMetadataFromWikiAndMB } = require('./scripts/metadata_wiki_provider');
+
+// Detección de entorno
+const IS_RUNNING_ON_OMEN = fs.existsSync("D:\\media-library") || __dirname.toLowerCase().startsWith('d:\\');
+
+// Rutas de datos centralizadas
+const DATA_DIR = path.join(__dirname, 'data');
+const LYRICS_DB_PATH = path.join(DATA_DIR, 'lyrics_db.json');
+const TITLE_OVERRIDES_PATH = path.join(DATA_DIR, 'title_overrides.json');
+const METADATA_CACHE_FILE = path.join(DATA_DIR, 'metadata_cache.json');
+const ANALYSES_DB_PATH = path.join(DATA_DIR, 'analyses_db.json');
+const PLAYBACK_HISTORY_FILE = path.join(DATA_DIR, 'playback_history.json');
+
+// Utilidades robustas de I/O y sanitización de BOM UTF-8
+function stripBom(str) {
+    if (typeof str !== 'string') return str;
+    return str.charCodeAt(0) === 0xFEFF ? str.slice(1) : str;
+}
+
+function safeJsonParse(raw, fallback = {}) {
+    if (!raw) return fallback;
+    try {
+        return JSON.parse(stripBom(raw));
+    } catch(e) {
+        return fallback;
+    }
+}
+
+function safeAtomicWriteSync(filePath, dataStr) {
+    const tmpPath = `${filePath}.tmp${process.pid}_${Date.now()}`;
+    try {
+        fs.writeFileSync(tmpPath, dataStr, 'utf8');
+        try {
+            fs.renameSync(tmpPath, filePath);
+        } catch (renameErr) {
+            fs.copyFileSync(tmpPath, filePath);
+            try { fs.unlinkSync(tmpPath); } catch(e){}
+        }
+    } catch (err) {
+        console.error(`Error en safeAtomicWriteSync para ${filePath}:`, err.message);
+    }
+}
+
 let lyricsSaveDebounceTimer = null;
 function saveLyricsDbDebounced() {
     if (lyricsSaveDebounceTimer) clearTimeout(lyricsSaveDebounceTimer);
@@ -24,7 +73,6 @@ function saveLyricsDbDebounced() {
     }, 300);
 }
 
-
 function normalizePlaylistKey(name) {
     if (!name) return 'Música viejuna';
     const clean = name.trim();
@@ -36,46 +84,19 @@ function normalizePlaylistKey(name) {
     return clean;
 }
 
-const express = require('express');
-const cors = require('cors');
-const fs = require('fs');
-const path = require('path');
-const http = require('http');
-const { fetchTrackMetadataFromWikiAndMB } = require('./scripts/metadata_wiki_provider');
-
-// Sin estos handlers, un error async fuera del ciclo request/response (una promesa sin
-// .catch(), una excepción en un setTimeout/setInterval) tumba el proceso sin dejar rastro
-// claro en los logs de pm2. Se deja que el proceso termine igualmente (pm2 lo reinicia
-// solo, que es el comportamiento correcto ante estado potencialmente inconsistente), pero
-// con un log identificable para saber qué pasó.
-//
-// Excepción deliberada: DOMException/TimeoutError de AbortSignal.timeout(). Es un fallo
-// conocido de Node (el temporizador interno del abort puede dispararse igualmente aunque
-// el fetch ya se haya resuelto por otra vía, p.ej. Gemini devolviendo 503) y llega aquí
-// SIN pasar por ningún try/catch del código porque se lanza desde el propio temporizador
-// interno de Node, no desde la promesa del fetch. Tumbar el servidor entero por esto
-// mataba también peticiones completamente ajenas en curso (p.ej. una descarga de audio),
-// para un error que no corrompe ningún estado real de la app: se registra y se sigue.
 function isBenignTimeoutArtifact(err) {
     return err && (err.name === 'TimeoutError' || err.name === 'AbortError') &&
         /aborted due to timeout/i.test(err.message || '');
 }
 
+// Handlers globales tolerantes a fallos (no tumban el proceso para mantener alta disponibilidad 24/7)
 process.on('unhandledRejection', (reason) => {
-    if (isBenignTimeoutArtifact(reason)) {
-        console.warn('⚠️ [UNHANDLED REJECTION] Timeout de fetch ignorado (no corrompe estado, no se reinicia):', reason.message);
-        return;
-    }
-    console.error('🔥 [UNHANDLED REJECTION] El servidor se reiniciará por un error no controlado:', reason);
-    process.exit(1);
+    if (isBenignTimeoutArtifact(reason)) return;
+    console.warn('⚠️ [UNHANDLED REJECTION] (Capturado sin reiniciar servidor):', reason && (reason.stack || reason.message || reason));
 });
 process.on('uncaughtException', (err) => {
-    if (isBenignTimeoutArtifact(err)) {
-        console.warn('⚠️ [UNCAUGHT EXCEPTION] Timeout de fetch ignorado (no corrompe estado, no se reinicia):', err.message);
-        return;
-    }
-    console.error('🔥 [UNCAUGHT EXCEPTION] El servidor se reiniciará por un error no controlado:', err);
-    process.exit(1);
+    if (isBenignTimeoutArtifact(err)) return;
+    console.error('⚠️ [UNCAUGHT EXCEPTION] (Capturado sin reiniciar servidor):', err && (err.stack || err.message || err));
 });
 
 // Cargar variables de entorno desde .env si existe
@@ -96,7 +117,6 @@ if (fs.existsSync(ENV_PATH)) {
 // ==========================================================================
 // 🔐 Autenticación (contraseña única compartida, sesión de ~30 días)
 // ==========================================================================
-const crypto = require('crypto');
 const APP_PASSWORD = process.env.APP_PASSWORD || '';
 const SESSION_SECRET = process.env.SESSION_SECRET || '';
 const SESSION_MAX_AGE_MS = 30 * 24 * 60 * 60 * 1000; // 30 días
@@ -219,26 +239,20 @@ function isValidMediaTokenRequest(req) {
     }
 }
 
-const LYRICS_DB_PATH = path.join(__dirname, 'data', 'lyrics_db.json');
-const METADATA_CACHE_FILE = path.join(__dirname, 'data', 'metadata_cache.json');
-const ANALYSES_DB_PATH = path.join(__dirname, 'data', 'analyses_db.json');
-
-// Correcciones manuales de artista/título: tracks_cache.json lo genera y resincroniza un
-// proceso externo (el contenedor spotdl-sync), así que cualquier corrección que hiciéramos
-// ahí se perdería en el siguiente sync. Esto vive aparte y se aplica como capa por encima,
-// justo al leer tracks_cache.json en /api/playlists, así que todo lo que pasa después
-// (búsqueda de audio, letras, portada, "buscar otra versión") ya ve el título correcto.
-const TITLE_OVERRIDES_PATH = path.join(__dirname, 'data', 'title_overrides.json');
 let titleOverrides = {};
 function loadTitleOverrides() {
     if (fs.existsSync(TITLE_OVERRIDES_PATH)) {
-        try { titleOverrides = JSON.parse(fs.readFileSync(TITLE_OVERRIDES_PATH, 'utf8')); } catch(e) {}
+        try { 
+            titleOverrides = safeJsonParse(fs.readFileSync(TITLE_OVERRIDES_PATH, 'utf8'), {}); 
+        } catch(e) {}
     }
 }
 loadTitleOverrides();
+
 function titleOverrideKey(artist, title) {
     return `${String(artist || '').toLowerCase().trim()} - ${String(title || '').toLowerCase().trim()}`;
 }
+
 function saveTitleOverrides() {
     try {
         const dataStr = JSON.stringify(titleOverrides, null, 2);
@@ -254,14 +268,15 @@ function saveTitleOverrides() {
     }
 }
 
-
 let metadataCache = {};
 function loadMetadataCache() {
     if (fs.existsSync(METADATA_CACHE_FILE)) {
-        try { metadataCache = JSON.parse(fs.readFileSync(METADATA_CACHE_FILE, 'utf8')); } catch(e){}
+        try { 
+            metadataCache = safeJsonParse(fs.readFileSync(METADATA_CACHE_FILE, 'utf8'), {}); 
+        } catch(e){}
     }
 }
-const IS_RUNNING_ON_OMEN = fs.existsSync("D:\\media-library") || __dirname.toLowerCase().startsWith('d:\\');
+loadMetadataCache();
 
 let metaSaveTimer = null;
 function saveMetadataCacheDebounced() {
@@ -269,9 +284,7 @@ function saveMetadataCacheDebounced() {
     metaSaveTimer = setTimeout(() => {
         try {
             const dataStr = JSON.stringify(metadataCache, null, 2);
-            fs.writeFile(METADATA_CACHE_FILE, dataStr, 'utf8', (err) => {
-                if (err) console.error("Error guardando metadata_cache:", err.message);
-            });
+            safeAtomicWriteSync(METADATA_CACHE_FILE, dataStr);
             if (!IS_RUNNING_ON_OMEN) {
                 const REMOTE_METADATA_CACHE = "\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\metadata_cache.json";
                 fs.writeFile(REMOTE_METADATA_CACHE, dataStr, 'utf8', () => {});
@@ -288,26 +301,12 @@ function saveMetadataCache() {
 let cachedAnalyses = {};
 function loadAnalysesDb() {
     if (fs.existsSync(ANALYSES_DB_PATH)) {
-        try { cachedAnalyses = JSON.parse(fs.readFileSync(ANALYSES_DB_PATH, 'utf8')); } catch(e){}
+        try { 
+            cachedAnalyses = safeJsonParse(fs.readFileSync(ANALYSES_DB_PATH, 'utf8'), {}); 
+        } catch(e){}
     }
 }
 loadAnalysesDb();
-
-function safeAtomicWriteSync(filePath, dataStr) {
-    const tmpPath = `${filePath}.tmp${process.pid}_${Date.now()}`;
-    fs.writeFileSync(tmpPath, dataStr, 'utf8');
-    try {
-        fs.renameSync(tmpPath, filePath);
-    } catch (renameErr) {
-        // En Windows, renameSync falla con EPERM si el archivo destino existe o está abierto temporalmente por otro proceso
-        try {
-            fs.copyFileSync(tmpPath, filePath);
-            fs.unlinkSync(tmpPath);
-        } catch (copyErr) {
-            console.error(`Error en safeAtomicWriteSync para ${filePath}:`, copyErr.message);
-        }
-    }
-}
 
 // scripts/worker_ai_analyses.js (proceso pm2 separado) escribe este mismo archivo en
 // paralelo. Antes de guardar, se relee el disco y se fusiona con la copia en memoria
@@ -1539,6 +1538,15 @@ app.use(cors({ origin: 'https://musicamix.majecruz.es', credentials: true }));
 // 100kb las rechaza con PayloadTooLargeError en cada intento de subida local).
 app.use(express.json({ limit: '15mb' }));
 
+// Captura segura de errores en parseo JSON de body-parser (evita que un body malformado devuelva 502/tumba la conexión)
+app.use((err, req, res, next) => {
+    if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+        console.warn('⚠️ [EXPRESS JSON PARSE] Cuerpo JSON malformado recibido en:', req.method, req.path);
+        return res.status(400).json({ error: 'Cuerpo de petición JSON malformado o inválido' });
+    }
+    next(err);
+});
+
 app.post('/api/login', (req, res) => {
     const ip = req.ip || (req.socket && req.socket.remoteAddress) || 'unknown';
     if (isLoginRateLimited(ip)) {
@@ -2347,7 +2355,6 @@ app.post('/api/jellyfin/refresh', blockInPublicMode, async (req, res) => {
 // ==========================================================================
 // 🎧 HISTORIAL DE REPRODUCCIÓN CENTRALIZADO (Multi-sesión y Multi-dispositivo)
 // ==========================================================================
-const PLAYBACK_HISTORY_FILE = path.join(__dirname, 'data', 'playback_history.json');
 const OMEN_PLAYBACK_HISTORY_FILE = '\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\playback_history.json';
 let cachedPlaybackHistory = null;
 
@@ -2356,7 +2363,7 @@ function loadPlaybackHistory() {
     cachedPlaybackHistory = {};
     if (fs.existsSync(PLAYBACK_HISTORY_FILE)) {
         try {
-            cachedPlaybackHistory = JSON.parse(fs.readFileSync(PLAYBACK_HISTORY_FILE, 'utf8'));
+            cachedPlaybackHistory = safeJsonParse(fs.readFileSync(PLAYBACK_HISTORY_FILE, 'utf8'), {});
         } catch(e) {
             console.error('Error leyendo playback_history.json:', e.message);
         }
@@ -2367,12 +2374,14 @@ function loadPlaybackHistory() {
 function savePlaybackHistory() {
     try {
         const dataStr = JSON.stringify(cachedPlaybackHistory || {}, null, 2);
-        fs.writeFileSync(PLAYBACK_HISTORY_FILE, dataStr, 'utf8');
-        try {
-            if (fs.existsSync(path.dirname(OMEN_PLAYBACK_HISTORY_FILE))) {
-                fs.writeFileSync(OMEN_PLAYBACK_HISTORY_FILE, dataStr, 'utf8');
-            }
-        } catch(e) {}
+        safeAtomicWriteSync(PLAYBACK_HISTORY_FILE, dataStr);
+        if (!IS_RUNNING_ON_OMEN) {
+            try {
+                if (fs.existsSync(path.dirname(OMEN_PLAYBACK_HISTORY_FILE))) {
+                    fs.writeFile(OMEN_PLAYBACK_HISTORY_FILE, dataStr, 'utf8', () => {});
+                }
+            } catch(e) {}
+        }
     } catch(e) {
         console.error('Error guardando playback_history.json:', e.message);
     }
@@ -5600,6 +5609,14 @@ app.post('/api/retro-hits/add-to-viejuna', blockInPublicMode, (req, res) => {
     return handleRecommendationsDownload(req, res);
 });
 
+
+// Manejador global de errores de Express (evita que cualquier excepción no capturada rompa la conexión HTTP con 502)
+app.use((err, req, res, next) => {
+    console.error('⚠️ [EXPRESS ROUTE ERROR]', req.method, req.path, ':', err && (err.stack || err.message || err));
+    if (!res.headersSent) {
+        res.status(err.status || 500).json({ error: err.message || 'Error interno del servidor' });
+    }
+});
 
 const PORT = 8087;
 app.listen(PORT, '0.0.0.0', () => {
