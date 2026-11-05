@@ -3075,13 +3075,17 @@ function formatTime(seconds) {
             fetch('/api/lyrics/save-offset', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
                 body: JSON.stringify({
                     artist: currentSong.artist,
                     title: currentSong.title,
                     rawTitle: currentSong.rawTitle,
                     lyrics: cinemaParsedLyrics
                 })
-            }).then(r => r.json()).then(data => {
+            }).then(r => {
+                if (!r.ok) throw new Error(`HTTP ${r.status}`);
+                return r.json();
+            }).then(data => {
                 if (data && data.success && data.lyrics) {
                     cinemaParsedLyrics = data.lyrics.map((l, idx) => ({
                         ...l,
@@ -3092,9 +3096,12 @@ function formatTime(seconds) {
                     if (cached1) cached1.lyrics = cinemaParsedLyrics;
                     if (cached2) cached2.lyrics = cinemaParsedLyrics;
                     renderCinemaLyricLines(true);
+                } else {
+                    showSyncNotification('⚠️ Error al guardar en servidor: ' + ((data && data.error) || 'desconocido'));
                 }
             }).catch(err => {
                 console.error('Error guardando sincronización en servidor:', err);
+                showSyncNotification('❌ No se pudo conectar con el servidor para guardar las letras');
             });
         });
     }

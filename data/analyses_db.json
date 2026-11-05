@@ -28942,28 +28942,28 @@
     "releaseDate": "2000-11-13",
     "composers": "Thomas Bangalter, Guy-Manuel de Homem-Christo, Anthony Moore",
     "label": "Virgin Records",
-    "genre": "French House / Nu-Disco / Dance-Pop",
-    "synopsis": "One More Time es el pilar fundamental del house francés que definió el sonido del milenio. La pista destaca por su uso intensivo de compresión side-chain y el procesamiento vocal mediante Auto-Tune, transformando la voz de Romanthony en un instrumento sintético que encapsula la euforia de la cultura de club. Su estructura es una clase maestra de progresión armónica y diseño sonoro, consolidando a Daft Punk como arquitectos de la música electrónica moderna.",
+    "genre": "French House / Nu-Disco",
+    "synopsis": "One More Time es el pilar fundamental del sonido French House, caracterizado por un uso magistral del auto-tune como instrumento melódico y un sampleo agresivo de funk de los años 70. La pista encapsula la transición de Daft Punk hacia una estética retro-futurista, logrando una euforia colectiva mediante una estructura de crescendo constante y una compresión dinámica que define la producción electrónica de principios de los 2000.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La producción se basa en un sampleo magistral del tema 'More Spell on You' de Eddie Johns, procesado con filtros resonantes característicos de la era Discovery. La técnica de 'side-chain compression' es agresiva, creando un efecto de bombeo que dicta el ritmo. El uso de Auto-Tune no se emplea para corregir afinación, sino como un efecto creativo de distorsión armónica, otorgando a la voz una textura robótica y metálica que se integra perfectamente con los sintetizadores analógicos y la percusión programada."
+        "text": "La canción se construye sobre un sample de 'More Spell on You' de Eddie Johns, procesado con un filtro de paso alto y una compresión side-chain extrema. La voz de Romanthony fue tratada con una corrección de tono (Auto-Tune) deliberadamente exagerada, convirtiendo la voz humana en un sintetizador más. La mezcla destaca por un 'kick' con gran pegada en los 60Hz y un arreglo de cuerdas sintéticas que aporta una textura orquestal, equilibrando la crudeza del house con una sofisticación pop inusual para la época."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "La letra es un himno de liberación hedonista: 'One more time, we're gonna celebrate'. El mensaje es una invitación a la catarsis colectiva en la pista de baile, ignorando las preocupaciones mundanas. La repetición constante de frases como 'Music's got me feeling so free' funciona como un mantra que refuerza la función de la canción como un catalizador de energía positiva, eliminando la barrera entre el individuo y la masa sonora."
+        "text": "La letra es un himno minimalista a la liberación a través del baile. 'One more time, we're gonna celebrate' funciona como un mantra de resiliencia. El uso de la repetición no es solo un recurso rítmico, sino una invitación a la pérdida del ego en la pista de baile. La frase 'Music's got me feeling so free' resume la tesis del álbum Discovery: la música como vehículo de evasión y catarsis emocional, eliminando la barrera entre el artista y la audiencia."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "El videoclip es un segmento del largometraje 'Interstella 5555: The 5tory of the 5ecret 5tar 5ystem', una colaboración con el legendario mangaka Leiji Matsumoto. La estética de anime retro-futurista narra el secuestro de una banda alienígena, estableciendo una mitología visual que acompaña a todo el álbum. La animación subraya la naturaleza 'robótica' y 'espacial' del sonido de Daft Punk, convirtiendo a los músicos en personajes de una ópera espacial."
+        "text": "El videoclip es un fragmento de la película 'Interstella 5555: The 5tory of the 5ecret 5tar 5ystem', dirigida por Kazuhisa Takenouchi bajo la supervisión de Leiji Matsumoto. La estética de anime clásico de los 70 y 80 refuerza la nostalgia que impregna todo el álbum. La narrativa visual presenta a una banda alienígena secuestrada, estableciendo una mitología visual que acompañaría a Daft Punk durante toda la era Discovery, fusionando la cultura pop japonesa con la electrónica europea."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "Alcanzó el número 1 en las listas francesas y se convirtió en un éxito global masivo. Es considerada una de las mejores canciones de la década de 2000 por publicaciones como Rolling Stone y Pitchfork. Su legado es incalculable, habiendo normalizado el uso del Auto-Tune en el pop mainstream y redefiniendo las posibilidades del house al fusionarlo con elementos de disco, funk y synth-pop de los años 70 y 80."
+        "text": "Considerada una de las mejores canciones de la década de los 2000 por publicaciones como Rolling Stone y Pitchfork. Fue un éxito masivo en las listas de éxitos mundiales, consolidando el sonido French House en el mainstream. Curiosamente, la canción fue grabada en 1998, pero Daft Punk esperó dos años para lanzarla, perfeccionando la mezcla para asegurar que el impacto sonoro fuera disruptivo en el cambio de milenio."
       }
     ],
     "_aiModel": "gemini-3.1-flash-lite"
@@ -56114,34 +56114,34 @@
     "year": "2000",
     "originalAlbum": "El alma al aire",
     "releaseYear": "2000",
-    "releaseDate": "2000-09-26",
+    "releaseDate": "2000-06-26",
     "composers": "Alejandro Sanz",
-    "label": "WEA International",
-    "genre": "Latin Pop / Pop Ballad",
-    "synopsis": "Obra cumbre de la balada pop española, 'Cuando nadie me ve' destaca por su introspección lírica y una producción minimalista que prioriza la calidez vocal. La canción explora la dualidad entre la figura pública y la fragilidad del individuo, consolidándose como un estándar emocional gracias a su progresión armónica sofisticada y la entrega interpretativa cruda de Sanz.",
+    "label": "WEA Latina",
+    "genre": "Latin Pop / Balada romántica",
+    "synopsis": "Obra maestra de la balada contemporánea en español, producida con una exquisitez acústica que fusiona la intimidad del piano de cola con arreglos orquestales sutiles. La interpretación vocal de Sanz destaca por su uso característico de la quejío flamenca adaptada al pop melódico, explorando la vulnerabilidad y la dualidad entre la exposición pública y la absoluta intimidad emocional.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La producción, a cargo de Emanuele Ruffinengo, se aleja de los arreglos orquestales densos para centrarse en una instrumentación orgánica. El piano es el eje conductor, con una reverberación sutil que aporta profundidad espacial. La voz de Sanz se grabó con una compresión dinámica mínima para preservar los matices de su respiración y el fraseo quebradizo. La sección rítmica es austera, permitiendo que la línea de bajo y los sutiles arreglos de cuerda en el puente construyan una tensión emocional que culmina en un clímax contenido."
+        "text": "La producción, liderada por Emanuelle Ruffinengo junto al propio Alejandro Sanz, se cimenta en una dinámica de contraste entre la extrema cercanía de un piano acústico y la espacialidad de una sección de cuerdas grabada con reverberación de placa. Las frecuencias graves están controladas minuciosamente para dar protagonismo a la voz principal, la cual utiliza múltiples capas de coros sutiles en los estribillos para generar un efecto envolvente. El uso de la guitarra acústica con técnica de plectro añade un brillo percusivo en los medios-altos, mientras que la mezcla prioriza la calidez analógica sobre la compresión digital excesiva, permitiendo respirar cada matiz interpretativo."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "La letra es un ejercicio de desnudez psicológica. Versos como 'Cuando nadie me ve, puedo ser o no ser' reflejan la crisis de identidad del artista frente a la fama. Sanz utiliza metáforas sobre la máscara social ('me disfrazo de mí') para cuestionar la autenticidad. El uso del lenguaje es coloquial pero cargado de una profundidad existencialista, donde el 'nadie' funciona como un espacio seguro donde el sujeto puede finalmente reconciliarse con sus miedos y deseos más ocultos."
+        "text": "La letra aborda la compleja dualidad del artista frente a la fama y la necesidad de despojarse de los personajes públicos para mostrar la fragilidad real. Versos clave como 'Y busco mi centro / en medio de este ruido' reflejan la búsqueda de identidad. Sanz emplea metáforas cotidianas pero cargadas de tensión psicológica, donde 'cuando nadie me ve' funciona como un mantra de liberación y autenticidad, revelando los miedos, secretos y verdaderos deseos que solo emergen en la absoluta soledad."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "El videoclip oficial apuesta por una estética sobria y cinematográfica, utilizando una paleta de colores desaturados que refuerza la melancolía de la canción. La narrativa visual se centra en planos cerrados de Alejandro Sanz, alternando con secuencias que sugieren aislamiento urbano. La dirección evita artificios, permitiendo que el lenguaje corporal del artista y su mirada transmitan la vulnerabilidad que la letra exige, convirtiendo el vídeo en un retrato íntimo más que en una pieza de espectáculo."
+        "text": "El videoclip oficial acompaña la atmósfera melancólica de la canción mediante una fotografía de tonos desaturados y una dirección que privilegia los planos detalle y los primeros planos del artista. La iluminación juega con sombras pronunciadas y claroscuros, simbolizando visualmente el concepto central del tema: la delgada línea entre la luz de la exposición pública y la penumbra del refugio personal e íntimo."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "Esta canción se convirtió en uno de los pilares del álbum 'El alma al aire', el cual rompió récords de ventas en España. Ha sido versionada por artistas de diversos géneros, incluyendo una notable interpretación de Niña Pastori, lo que demuestra su versatilidad melódica. Es considerada por la crítica como una de las mejores composiciones de Sanz, marcando su transición hacia una madurez artística donde la calidad de la composición prevalece sobre las tendencias comerciales del momento."
+        "text": "Incluida en el álbum 'El alma al aire', esta canción se convirtió rápidamente en un hito de la música en español y en uno de los temas más coreados en los conciertos de Sanz. Su trascendencia creció con los años, siendo reinterpretada por múltiples artistas de diversos géneros (como la célebre versión de Niña Pastori). Consolidó la madurez compositiva de Sanz tras el fenómeno masivo de 'Más', demostrando su capacidad para conectar con el público desde una honestidad lírica descarnada."
       }
     ],
-    "_aiModel": "gemini-3.1-flash-lite"
+    "_aiModel": "gemini-3.5-flash-lite"
   },
   "La Oreja de Van Gogh - Cuídate": {
     "title": "Cuídate",
@@ -119852,6 +119852,216 @@
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
         "text": "La canción alcanzó un éxito masivo en Europa, liderando las listas en Italia, Alemania y Austria. Se convirtió en un fenómeno cultural que definió el sonido de una década y ha sido objeto de innumerables remixes y samples, incluyendo el éxito viral de Sagi Abitbul. Su longevidad es notable, manteniéndose como un elemento básico en festivales de música electrónica y siendo reconocida como una de las piezas más influyentes del género Italo Dance, trascendiendo su contexto original para convertirse en un estándar de la cultura pop global."
+      }
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
+  },
+  "Luis Miguel Del Amargue - Pa Que Me Llamas": {
+    "title": "Pa Que Me Llamas",
+    "artist": "Luis Miguel Del Amargue",
+    "year": "2016",
+    "originalAlbum": "A Escondidas",
+    "releaseYear": "2016",
+    "releaseDate": "2016-01-01",
+    "composers": "Luis Miguel Del Amargue",
+    "label": "Planet Records",
+    "genre": "Bachata",
+    "synopsis": "Análisis técnico y forense de 'Pa Que Me Llamas' de Luis Miguel Del Amargue, un exponente magistral de la bachata dominicana moderna. La obra destaca por su refinada fusión de guitarras requinto melódicas, una base rítmica de bongó y güira estrictamente ejecutada, y una producción vocal cargada de la melancolía y el desgarro característicos del género de amargue.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción de 'Pa Que Me Llamas' se cimenta sobre el sonido tradicional de la bachata pero adaptado a los estándares de la mezcla digital contemporánea. Destaca el uso de guitarras de doce cuerdas y el requinto ejecutado con un delay sutil y reverb de placa para otorgarle amplitud espacial. La sección rítmica mantiene el patrón clásico: la güira marca el pulso metálico en altas frecuencias (agudos limpios sin estridencias), mientras que el bongó intercala repiques dinámicos en los puentes. El bajo eléctrico posee un perfil profundo y comprimido, anclando la fundamental en el rango de los 60Hz-90Hz para garantizar pegada en sistemas de reproducción masivos. La voz principal está procesada con una compresión paralela moderada para mantener la inteligibilidad y el calor emotivo frente al denso colchón de cuerdas."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "Temáticamente, la canción aborda el dolor y la confusión generados por el contacto inoportuno de una expareja. Líricamente, explora el dilema psicológico de mantener la distancia emocional frente a la tentación de la nostalgia. El uso del lenguaje es directo, coloquial y profundamente arraigado en la jerga del despecho caribeño, donde 'llamar' simboliza no solo la comunicación telefónica, sino la interrupción dolosa de un proceso de sanación afectiva."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "A falta de un videoclip de alta superproducción, la estética visual de la obra se sostiene en su portada y en los lyric videos oficiales distribuidos por su sello discográfico. Predominan los tonos nocturnos, la iluminación de neón y una atmósfera sobria que refleja la soledad del protagonista, elementos visuales que complementan fielmente la narrativa de desamor y la estética de la bachata urbana."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "'Pa Que Me Llamas' consolidó la posición de Luis Miguel Del Amargue dentro del circuito internacional de la bachata moderna, especialmente en Europa y América Latina. El tema se convirtió en un favorito de las pistas de baile latinas y en plataformas de streaming, reafirmando la capacidad del artista para conectar con las raíces del amargue tradicional mientras abraza la modernidad sonora."
+      }
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
+  },
+  "Pignoise, Melendi - Estoy enfermo": {
+    "title": "Estoy enfermo",
+    "artist": "Pignoise, Melendi",
+    "year": "2009",
+    "originalAlbum": "Cuestión de directos",
+    "releaseYear": "2009",
+    "releaseDate": "2009-11-17",
+    "composers": "Álvaro Benito",
+    "label": "DRO / Warner Music Spain",
+    "genre": "Pop Rock / Rock Español",
+    "synopsis": "Esta colaboración une el característico sonido de rock urbano y melódico de Pignoise con la inconfundible voz y estilo rumbero-rock de Melendi. La reinterpretación del clásico de Pignoise adquiere una nueva dimensión en directo, fusionando guitarras distorsionadas con la energía vocal desgarrada de ambos artistas. El resultado es un himno generacional que refuerza la crudeza emocional de la letra mediante una producción orgánica y enérgica.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción prioriza la dinámica de una actuación en directo, destacando el contraste entre las guitarras eléctricas rítmicas con overdrive y los pasajes acústicos. La base rítmica de bajo y batería mantiene un tempo medio-alto con un beat sólido y directo, típico del pop-rock español de los 2000. Las voces principales, compartidas entre Álvaro Benito y Melendi, presentan un tratamiento de compresión moderada para conservar la naturalidad y el carácter rasgado de ambos timbres, generando una interesante fricción tonal entre el tono más punk-rock de Pignoise y el deje melódico y quejumbroso de Melendi."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra aborda la dependencia emocional, la culpa y el vacío existencial tras una ruptura amorosa. El concepto de 'estar enfermo' funciona como una metáfora clínica del desamor y el síndrome de abstinencia afectiva. Versos como 'Y es que estoy enfermo de dolor / y ya no sé muy bien qué es lo peor' encapsulan la vulnerabilidad del protagonista, mientras que la aportación vocal de Melendi dota al mensaje de una urgencia callejera y confesional que amplifica el dramatismo de la composición original."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El soporte visual de esta versión se nutre principalmente de grabaciones en directo y momentos en el estudio de grabación, mostrando la complicidad y la energía sobre el escenario entre Pignoise y Melendi. La estética es sobria, enfocada en la interpretación instrumental y la conexión con el público, priorizando la autenticidad del formato en vivo frente a la narrativa ficcionada."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "Incluida en el álbum 'Cuestión de directos' (2009) de Pignoise, esta colaboración se convirtió rápidamente en uno de los temas más sonados de las radios musicales españolas de la época. Representó la unión de dos de los máximos exponentes del rock y pop alternativo comercial de la década de los 2000 en España, consolidando el estatus de himno intergeneracional para la canción original."
+      }
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
+  },
+  "C. Tangana - Tú Me Dejaste De Querer": {
+    "title": "Tú Me Dejaste De Querer",
+    "artist": "C. Tangana",
+    "year": "2020",
+    "originalAlbum": "El Madrileño",
+    "releaseYear": "2020",
+    "releaseDate": "2020-11-06",
+    "composers": "Antón Álvarez Alfaro, Cristian Quirante Catalina (Alizzz), Víctor Martínez, Antonio Suárez Salazar (Ketama), Javier Riba",
+    "label": "Sony Music Spain",
+    "genre": "Nuevo Flamenco / Pop Latino / R&B Alternativo",
+    "synopsis": "\"Tú Me Dejaste De Querer\" marca un punto de inflexión radical en la carrera de C. Tangana, transicionando desde el trap urbano hacia un sonido de raíces profundamente ibéricas. Producida por Alizzz y el propio artista, la canción fusiona la rumba flamenca con arreglos orquestales, percusión orgánica y texturas modernas. Su tesis sónica radica en la reinvención de la copla y el folclore español bajo una óptica contemporánea, consolidándose como un hito cultural y comercial de la música en español del siglo XXI.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción, a cargo de Alizzz y C. Tangana, destaca por la integración magistral de guitarras flamencas de toque tradicional, palmas y coros de estilo rumbero, combinados con una base de bajo sub-grave y sintetizadores sutiles. Estructuralmente, prescinde del estribillo convencional para apostar por un crescendo emocional impulsado por vientos y una sección de cuerdas grabada con arreglos cinematográficos. A nivel de mezcla y masterización, se buscó un equilibrio entre la calidez orgánica de los instrumentos acústicos (cajón, guitarra española) y la pegada contundente propia de la música urbana contemporánea, logrando un rango dinámico amplio que realza la interpretación vocal de Antón Álvarez."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "Líricamente, la canción aborda el desamor, el despecho y la aceptación de la pérdida desde una perspectiva madura pero visceral. Mezcla códigos de la calle con el lenguaje castizo de la copla y la rumba. Versos como \"Tú me dejaste de querer / Cuando te fuiste con él\" entran de lleno en el arquetipo del luto amoroso tradicional. El uso de la ironía, la jactancia defensiva y el orgullo herido configuran un retrato psicológico complejo del protagonista, quien asume su vulnerabilidad tras haber ostentado una falsa invulnerabilidad en su etapa previa de trapero puro."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Dirigido por Santos Bacana (del colectivo Little Spain), el videoclip es una pieza clave en la construcción del nuevo imaginario estético de C. Tangana. Rodado en la T4 del Aeropuerto Adolfo Suárez Madrid-Barajas y en parajes de carretera, muestra al artista en un entorno lujoso pero melancólico, rodeado de figuras ilustres de la cultura española como Kiko Veneno, Antonio Carmona o La Húngara. La dirección de fotografía juega con la luz natural y los atardeceres, evocando la estética de las películas de carretera y del cine quinqui, reforzando la idea de un viaje sin retorno y de una catarsis artística."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "El tema batió récords históricos de reproducción en España en su primer día de lanzamiento en plataformas de streaming como Spotify, convirtiéndose instantáneamente en el himno indiscutible del año 2020. Su éxito demostró que la música de raíz española podía dialogar con los estándares de la producción global sin perder identidad. La canción sirvió como perfecto caballo de Troya para el lanzamiento del álbum 'El Madrileño', redefiniendo el estatus de C. Tangana de estrella urbana underground a artista intergeneracional de referencia mundial."
+      }
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
+  },
+  "Danza Invisible - Sabor de amor": {
+    "title": "Sabor de amor",
+    "artist": "Danza Invisible",
+    "year": "1988",
+    "originalAlbum": "A tu alcance",
+    "releaseYear": "1988",
+    "releaseDate": "1988-06-01",
+    "composers": "Javier Ojeda, Ricardo Texidó, Antonio Gil, Manolo Rubio",
+    "label": "Ariola",
+    "genre": "Pop Rock / New Wave / Funk",
+    "synopsis": "Sabor de amor es la pieza definitoria del pop español de finales de los 80, destacando por una producción que fusiona la estética new wave con texturas funk y una línea de bajo melódica altamente infecciosa. La canción encapsula la transición de la banda desde sus raíces post-punk hacia un sonido comercial sofisticado, consolidándose como un himno generacional gracias a su equilibrio entre sensualidad lírica y precisión rítmica.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción destaca por una sección rítmica tight, donde el bajo eléctrico asume un rol melódico protagonista, emulando influencias del funk británico de la época. La instrumentación incluye sintetizadores analógicos que aportan texturas atmosféricas, contrastando con guitarras eléctricas de corte limpio y brillante. La voz de Javier Ojeda se sitúa en un plano frontal, con una reverberación sutil que añade profundidad sin perder la inmediatez pop, mientras que la percusión, apoyada por cajas de ritmos programadas con precisión, sostiene un tempo constante que invita al baile."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra es una oda hedonista al deseo y la sensualidad, utilizando metáforas gastronómicas para describir la experiencia erótica. Versos como 'Sabor de amor, todo me sabe a ti' actúan como un estribillo pegadizo que simplifica la complejidad del sentimiento amoroso. El uso de un lenguaje directo y sugerente, alejado de la introspección oscura de sus primeros trabajos, marca el giro de la banda hacia una lírica más accesible, centrada en la celebración del placer y la conexión física."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "La estética asociada a la canción refleja la transición de la banda hacia una imagen más pulida y profesional. El videoclip oficial utiliza una puesta en escena minimalista y luminosa, típica de la televisión española de finales de los 80, donde se prioriza la presencia escénica de Javier Ojeda. La iconografía visual refuerza la idea de frescura y vitalidad, alejándose de la estética lúgubre del post-punk para abrazar colores vibrantes y una actitud desenfadada."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "La canción se convirtió en el mayor éxito comercial de Danza Invisible, catapultándolos a la fama masiva en España y Latinoamérica. Su longevidad es notable, siendo considerada un estándar del pop español que sigue sonando en radiofórmulas décadas después. Fue fundamental para que el grupo pasara de ser una banda de culto en la escena malagueña a un referente nacional, demostrando que la fusión de géneros como el funk y el pop podía ser un éxito rotundo en el mercado hispanohablante."
+      }
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
+  },
+  "Lionel Richie - All Night Long": {
+    "title": "All Night Long (All Night)",
+    "artist": "Lionel Richie",
+    "year": "1983",
+    "originalAlbum": "Can't Slow Down",
+    "releaseYear": "1983",
+    "releaseDate": "1983-08-31",
+    "composers": "Lionel Richie",
+    "label": "Motown",
+    "genre": "Dance-pop / Funk / Caribbean-pop",
+    "synopsis": "All Night Long es una pieza maestra de la producción pop de los 80 que fusiona magistralmente el funk sintético con texturas de percusión caribeña y world music. La canción destaca por su intrincada arquitectura de capas vocales y un uso pionero de la tecnología de sintetizadores de la época, consolidando a Richie como un arquitecto del sonido global capaz de integrar ritmos multirraciales en un formato comercial altamente accesible.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción, a cargo de Richie y James Anthony Carmichael, se caracteriza por una base rítmica densa que integra cajas de ritmos (LinnDrum) con percusión orgánica (congas, timbales) para evocar una atmósfera de carnaval. El arreglo destaca por el uso de sintetizadores Prophet-5 y el icónico solo de sintetizador que aporta un brillo melódico. La mezcla es notable por su separación estéreo, permitiendo que las armonías vocales en capas (overdubbing) creen un efecto de coro masivo, mientras que la línea de bajo sintetizado proporciona el anclaje funk necesario para la pista de baile."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra es una celebración hedonista de la vida y la comunidad. Versos como 'Well, my friends, the time has come / Raise the roof and have some fun' actúan como un llamado a la acción colectiva. El uso de frases en un idioma inventado (patois caribeño estilizado) como 'Tom bo likka de nu ga de' añade un elemento de misticismo y universalidad, eliminando barreras lingüísticas. La estructura lírica es circular, diseñada para mantener el impulso energético de la fiesta sin interrupciones, enfatizando la unidad a través del baile."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Dirigido por Bob Rafelson, el videoclip es un hito de la era MTV. Presenta una narrativa cinematográfica que transcurre en un entorno urbano que se transforma en una fiesta multicultural. El uso de efectos especiales avanzados para la época, como la levitación de personas y la coreografía masiva, refuerza el concepto de 'magia' y 'alegría' que Richie quería transmitir. La estética es vibrante, utilizando una paleta de colores cálidos que complementa la naturaleza festiva de la composición."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "La canción alcanzó el número 1 en el Billboard Hot 100 y se convirtió en un himno global, siendo interpretada incluso en la ceremonia de clausura de los Juegos Olímpicos de Los Ángeles 1984. Su éxito fue fundamental para que el álbum 'Can't Slow Down' ganara el Grammy al Álbum del Año en 1985. Es considerada una de las canciones más influyentes en la transición del R&B tradicional hacia el pop globalizado de los años 80."
+      }
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
+  },
+  "Andy  Lucas - Y en Tu Ventana": {
+    "title": "Y en Tu Ventana",
+    "artist": "Andy & Lucas",
+    "year": "2003",
+    "originalAlbum": "Andy & Lucas",
+    "releaseYear": "2003",
+    "releaseDate": "2003-05-27",
+    "composers": "Lucas González Gómez",
+    "label": "BMG Music Spain",
+    "genre": "Flamenco-pop / Rumba pop",
+    "synopsis": "Obra fundacional del fenómeno pop español de principios de los 2000, 'Y en tu ventana' fusiona la rumba flamenca con estructuras melódicas del pop comercial. La producción destaca por su honestidad acústica, centrada en la interacción vocal del dúo y una instrumentación orgánica que definió el sonido de una generación en España.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción se basa en una instrumentación de corte acústico donde destaca la guitarra española con rasgueos de rumba, apoyada por una base rítmica de percusión latina (cajón flamenco y shakers). Las voces, grabadas con un enfoque directo y sin excesivos procesamientos, utilizan armonías en terceras que son sello distintivo del dúo. La mezcla prioriza la calidez de las frecuencias medias, dejando espacio para que la voz principal mantenga la narrativa emocional sin ser opacada por la instrumentación."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra aborda el desamor y la nostalgia desde una perspectiva juvenil y cotidiana. Versos como 'Y en tu ventana, se refleja mi cara, y en tu ventana, se refleja mi alma' utilizan la metáfora del cristal como barrera infranqueable entre el deseo y la realidad. El lenguaje es sencillo, directo y cargado de una melancolía propia de la adolescencia, utilizando el léxico del 'barrio' para conectar con una audiencia masiva que se identifica con el dolor de la ruptura."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial presenta una estética sencilla y naturalista, característica de la época. Se centra en el dúo interpretando la canción en entornos urbanos y espacios que evocan la cotidianidad de Cádiz. La fotografía utiliza tonos cálidos y una iluminación suave que refuerza el carácter sentimental de la balada, evitando artificios visuales para centrarse en la autenticidad y cercanía de los artistas con su público."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "La canción fue el trampolín definitivo para el éxito masivo de Andy & Lucas, alcanzando los primeros puestos en las listas de ventas españolas y convirtiéndose en un himno generacional. Su impacto fue tal que ayudó a consolidar el género 'flamenco-pop' en el mainstream radiofónico, demostrando que una propuesta basada en la sencillez melódica y la temática emocional podía dominar el mercado discográfico español durante años."
       }
     ],
     "_aiModel": "gemini-3.1-flash-lite"
