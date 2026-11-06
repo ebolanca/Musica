@@ -1242,65 +1242,72 @@ function formatTime(seconds) {
 
 
     // Función centralizada para centrar suavemente la línea de karaoke activa con su traducción
+    let prevCinemaActiveLine = -1;
+    let prevCinemaNextLine = -1;
+
     function scrollCinemaActiveLyric(el, instant = false) {
         if (!cinemaLyrics || !el) return;
         if (isUserScrollingCinema) return;
 
-        requestAnimationFrame(() => {
-            if (!cinemaLyrics || !el) return;
-            const containerRect = cinemaLyrics.getBoundingClientRect();
-            const elRect = el.getBoundingClientRect();
-            const currentScroll = cinemaLyrics.scrollTop;
+        // el.offsetTop calcula directamente la distancia al contenedor sin forzar recálculo geométrico (cero reflows)
+        const elTopInScroll = el.offsetTop;
+        const containerHeight = cinemaLyrics.clientHeight;
+        const currentScroll = cinemaLyrics.scrollTop;
 
-            const elTopInScroll = elRect.top - containerRect.top + currentScroll;
-            const containerHeight = containerRect.height;
-            const elHeight = elRect.height;
+        const idx = parseInt(el.getAttribute('data-index') || '-1', 10);
+        
+        // Para las líneas iniciales del tema o antes de 8s de canción, mantener arriba del todo
+        const isNearStart = (idx <= 2) || (mainMusicAudio && mainMusicAudio.currentTime < 8) || (elTopInScroll < 90);
+        const targetScroll = isNearStart
+            ? 0
+            : Math.max(0, elTopInScroll - (containerHeight * 0.35));
 
-            const idx = parseInt(el.getAttribute('data-index') || '-1', 10);
-            
-            // Para las líneas iniciales del tema o antes de 8s de canción, mantener arriba del todo
-            const isNearStart = (idx <= 2) || (mainMusicAudio && mainMusicAudio.currentTime < 8) || (elTopInScroll < 90);
-            const targetScroll = isNearStart
-                ? 0
-                : Math.max(0, elTopInScroll - (containerHeight * 0.35));
+        // 🛑 REGLA DE ORO: Si tenemos que retroceder hacia arriba o estamos al inicio de la pista,
+        // NUNCA hacer scroll animado ("smooth") que recorra toda la letra desde abajo hacia arriba.
+        // El reseteo debe ser INSTANTÁNEO ("instant") y clavado en la posición inicial.
+        const isScrollingUpwards = targetScroll < currentScroll;
+        const forceInstant = instant || isNearStart || (targetScroll === 0) || (isScrollingUpwards && currentScroll > 80);
 
-            // 🛑 REGLA DE ORO: Si tenemos que retroceder hacia arriba o estamos al inicio de la pista,
-            // NUNCA hacer scroll animado ("smooth") que recorra toda la letra desde abajo hacia arriba.
-            // El reseteo debe ser INSTANTÁNEO ("instant") y clavado en la posición inicial.
-            const isScrollingUpwards = targetScroll < currentScroll;
-            const forceInstant = instant || isNearStart || (targetScroll === 0) || (isScrollingUpwards && currentScroll > 80);
-
-            if (forceInstant) {
-                cinemaLyrics.scrollTop = targetScroll;
-            } else {
-                cinemaLyrics.scrollTo({
-                    top: targetScroll,
-                    behavior: 'smooth'
-                });
-            }
-        });
+        if (forceInstant) {
+            cinemaLyrics.scrollTop = targetScroll;
+        } else {
+            cinemaLyrics.scrollTo({
+                top: targetScroll,
+                behavior: 'smooth'
+            });
+        }
     }
 
     // Actualiza tanto la línea en curso (.active) como la siguiente (.next-up) para anticipar lectura de karaoke
     function updateCinemaActiveLines(activeIdx) {
         currentCinemaActiveLine = activeIdx;
-        let targetActiveEl = null;
         const total = (cinemaParsedLyrics && cinemaParsedLyrics.length) ? cinemaParsedLyrics.length : 0;
         const nextIdx = (activeIdx === -1) ? (total > 0 ? 0 : -1) : ((activeIdx + 1 < total) ? (activeIdx + 1) : -1);
 
-        document.querySelectorAll('.cinema-lyric-line').forEach((el, idx) => {
-            if (idx === activeIdx) {
-                el.classList.add('active');
-                el.classList.remove('next-up');
-                targetActiveEl = el;
-            } else if (idx === nextIdx) {
-                el.classList.remove('active');
-                el.classList.add('next-up');
-            } else {
-                el.classList.remove('active');
-                el.classList.remove('next-up');
-            }
-        });
+        const allLines = document.querySelectorAll('.cinema-lyric-line');
+        if (!allLines || allLines.length === 0) return;
+
+        // Limpiar únicamente las líneas previas afectadas para evitar reescribir todo el DOM
+        if (prevCinemaActiveLine >= 0 && prevCinemaActiveLine < allLines.length && prevCinemaActiveLine !== activeIdx) {
+            allLines[prevCinemaActiveLine].classList.remove('active');
+        }
+        if (prevCinemaNextLine >= 0 && prevCinemaNextLine < allLines.length && prevCinemaNextLine !== nextIdx) {
+            allLines[prevCinemaNextLine].classList.remove('next-up');
+        }
+
+        let targetActiveEl = null;
+        if (activeIdx >= 0 && activeIdx < allLines.length) {
+            targetActiveEl = allLines[activeIdx];
+            targetActiveEl.classList.add('active');
+            targetActiveEl.classList.remove('next-up');
+        }
+        if (nextIdx >= 0 && nextIdx < allLines.length && nextIdx !== activeIdx) {
+            allLines[nextIdx].classList.add('next-up');
+            allLines[nextIdx].classList.remove('active');
+        }
+
+        prevCinemaActiveLine = activeIdx;
+        prevCinemaNextLine = nextIdx;
 
         if (targetActiveEl && cinemaLyrics && !isUserScrollingCinema) {
             scrollCinemaActiveLyric(targetActiveEl);
@@ -2728,6 +2735,8 @@ function formatTime(seconds) {
     // Función reutilizable para renderizar las líneas del karaoke
     function renderCinemaLyricLines(keepPosition = false) {
         if (!cinemaLyrics || !cinemaParsedLyrics || cinemaParsedLyrics.length === 0) return;
+        prevCinemaActiveLine = -1;
+        prevCinemaNextLine = -1;
         const prevScroll = cinemaLyrics.scrollTop;
         cinemaLyrics.innerHTML = cinemaParsedLyrics.map(l => {
             const hasTrans = l.translation && typeof l.translation === 'string' && l.translation.trim().length > 0;
@@ -5126,13 +5135,66 @@ function formatTime(seconds) {
     const eqPeakBars = new Float32Array(EQ_NUM_BARS);
     const eqPeakDropSpeeds = new Float32Array(EQ_NUM_BARS);
 
+    // Optimización de alto rendimiento: dimensiones cacheadas y límite a 60 FPS fijos
+    let cachedEqDisplayW = 0;
+    let cachedEqDisplayH = 0;
+    let cachedEqDpr = 1;
+    let lastEqFrameTimestamp = 0;
+    const EQ_TARGET_FRAME_MS = 1000 / 60; // 16.6ms exactos
+
+    const EQ_SEGMENT_COLORS = [
+        '#ff1744', // 0: Rojo eléctrico base (< 0.16)
+        '#ff6d00', // 1: Naranja intenso (< 0.35)
+        '#ffd600', // 2: Amarillo vivo (< 0.54)
+        '#00e676', // 3: Verde lima neón (< 0.72)
+        '#00e5ff', // 4: Cian brillante (< 0.88)
+        '#7c4dff'  // 5: Púrpura / Azul cima (>= 0.88)
+    ];
+
+    function getSegmentColorByFrac(frac) {
+        if (frac < 0.16) return EQ_SEGMENT_COLORS[0];
+        if (frac < 0.35) return EQ_SEGMENT_COLORS[1];
+        if (frac < 0.54) return EQ_SEGMENT_COLORS[2];
+        if (frac < 0.72) return EQ_SEGMENT_COLORS[3];
+        if (frac < 0.88) return EQ_SEGMENT_COLORS[4];
+        return EQ_SEGMENT_COLORS[5];
+    }
+
+    function updateEqualizerDimensions() {
+        if (!eqCanvas) eqCanvas = document.getElementById('cinema-equalizer-canvas');
+        if (!eqCanvas) return;
+        const rect = eqCanvas.getBoundingClientRect();
+        const displayW = Math.floor(rect.width);
+        const displayH = Math.floor(rect.height);
+        if (displayW <= 0 || displayH <= 0) return;
+
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        cachedEqDisplayW = displayW;
+        cachedEqDisplayH = displayH;
+        cachedEqDpr = dpr;
+
+        const targetW = Math.floor(displayW * dpr);
+        const targetH = Math.floor(displayH * dpr);
+        if (eqCanvas.width !== targetW || eqCanvas.height !== targetH) {
+            eqCanvas.width = targetW;
+            eqCanvas.height = targetH;
+        }
+    }
+
+    window.addEventListener('resize', () => {
+        if (artistGalleryActiveView === 'equalizer' && cinemaOverlay && cinemaOverlay.style.display === 'flex') {
+            updateEqualizerDimensions();
+        }
+    }, { passive: true });
 
     function startCinemaEqualizer() {
         if (!eqCanvas) {
             eqCanvas = document.getElementById('cinema-equalizer-canvas');
-            if (eqCanvas) eqCtx = eqCanvas.getContext('2d');
+            if (eqCanvas) eqCtx = eqCanvas.getContext('2d', { alpha: false });
         }
         if (!eqCanvas || !eqCtx) return;
+
+        updateEqualizerDimensions();
 
         if (!audioCtx) initAudioNormalizationGraph();
         if (audioCtx && audioCtx.state === 'suspended') {
@@ -5144,6 +5206,7 @@ function formatTime(seconds) {
         }
 
         if (!eqAnimFrameId) {
+            lastEqFrameTimestamp = 0;
             eqAnimFrameId = requestAnimationFrame(renderCinemaEqualizerFrame);
         }
     }
@@ -5166,26 +5229,27 @@ function formatTime(seconds) {
             return;
         }
 
-        const dpr = Math.min(window.devicePixelRatio || 1, 2);
-        const rect = eqCanvas.getBoundingClientRect();
-        const displayW = Math.floor(rect.width);
-        const displayH = Math.floor(rect.height);
-
-        if (displayW <= 0 || displayH <= 0) {
+        // Limitador estricto a 60 FPS: evita saturar GPU/IPC en pantallas de 144Hz o 240Hz
+        if (timestamp && (timestamp - lastEqFrameTimestamp) < (EQ_TARGET_FRAME_MS - 2)) {
             eqAnimFrameId = requestAnimationFrame(renderCinemaEqualizerFrame);
             return;
         }
+        lastEqFrameTimestamp = timestamp || performance.now();
 
-        if (eqCanvas.width !== Math.floor(displayW * dpr) || eqCanvas.height !== Math.floor(displayH * dpr)) {
-            eqCanvas.width = Math.floor(displayW * dpr);
-            eqCanvas.height = Math.floor(displayH * dpr);
+        if (cachedEqDisplayW <= 0 || cachedEqDisplayH <= 0) {
+            updateEqualizerDimensions();
+            if (cachedEqDisplayW <= 0 || cachedEqDisplayH <= 0) {
+                eqAnimFrameId = requestAnimationFrame(renderCinemaEqualizerFrame);
+                return;
+            }
         }
+
+        const dpr = cachedEqDpr;
+        const w = cachedEqDisplayW;
+        const h = cachedEqDisplayH;
 
         eqCtx.save();
         eqCtx.scale(dpr, dpr);
-
-        const w = displayW;
-        const h = displayH;
 
         // Fondo oscuro con atmósfera sónica
         eqCtx.fillStyle = '#05060a';
@@ -5196,7 +5260,6 @@ function formatTime(seconds) {
         if (isAudioPlaying && analyserNode && eqFftDataArray) {
             analyserNode.getByteFrequencyData(eqFftDataArray);
         } else if (!isAudioPlaying) {
-            // Decaimiento suave a reposo
             if (eqFftDataArray) eqFftDataArray.fill(0);
         }
 
@@ -5224,49 +5287,39 @@ function formatTime(seconds) {
                 }
                 const avgChunk = count > 0 ? (sumChunk / count) : 0;
 
-                // Calibración acústica por bandas para evitar que los medios y graves queden pegados al techo
                 let bandGain = 1.0;
                 if (i < 6) {
-                    bandGain = 0.72; // Sub-graves y bombo
+                    bandGain = 0.72;
                 } else if (i < 15) {
-                    bandGain = 0.68; // Bajos y medios-bajos
+                    bandGain = 0.68;
                 } else if (i < 24) {
-                    bandGain = 0.74; // Medios vocales y cuerpo
+                    bandGain = 0.74;
                 } else if (i < 30) {
-                    bandGain = 0.88; // Medios-altos
+                    bandGain = 0.88;
                 } else {
-                    bandGain = 1.05; // Agudos y platos
+                    bandGain = 1.05;
                 }
 
-                // Balance entre energía sostenida (avg) y transitorios (max)
                 const rawEnergy = (avgChunk * 0.65 + maxChunk * 0.35);
-
-                // Descartar umbral de suelo de ruido (compresión / AGC) y normalizar
                 const normalized = Math.max(0, (rawEnergy - 35) / 195.0);
-
-                // Curva exponencial (pow 1.65): abre gran rango dinámico. Silencios y partes suaves
-                // quedan abajo (15-35%), y los golpes de percusión saltan limpiamente al 65-85%,
-                // dejando aire libre arriba como en los analizadores de estudio.
                 targetVal = Math.min(0.88, Math.pow(normalized, 1.65) * bandGain);
             }
 
-            // Suavizado temporal ágil: subida reactiva inmediata y caída rápida para sentir cada beat
             const currentVal = eqSmoothedBars[i];
             const lerpSpeed = targetVal > currentVal ? 0.52 : 0.25;
             eqSmoothedBars[i] = currentVal + (targetVal - currentVal) * lerpSpeed;
 
-            // Retención de picos (Peak Hold) que caen con gravedad natural
             if (eqSmoothedBars[i] >= eqPeakBars[i]) {
                 eqPeakBars[i] = eqSmoothedBars[i];
                 eqPeakDropSpeeds[i] = 0;
             } else {
-                eqPeakDropSpeeds[i] += 0.0024; // Aceleración de caída
+                eqPeakDropSpeeds[i] += 0.0024;
                 eqPeakBars[i] = Math.max(0, eqPeakBars[i] - eqPeakDropSpeeds[i]);
             }
         }
 
         // Geometría del ecualizador
-        const horizonY = Math.floor(h * 0.67); // Línea del horizonte a 67% para mayor profundidad
+        const horizonY = Math.floor(h * 0.67);
         const maxBarH = horizonY - 14;
         const gap = 3.5;
         const totalGaps = (EQ_NUM_BARS + 1) * gap;
@@ -5277,45 +5330,35 @@ function formatTime(seconds) {
         const segStep = segmentH + segmentGap;
         const maxSegments = Math.floor(maxBarH / segStep);
 
-        // Paleta vibrante arcoíris por altura (idéntica a la referencia de estudio)
-        function getSegmentColor(frac, alpha = 1.0) {
-            if (frac < 0.16) return `rgba(255, 23, 68, ${alpha})`;    // Rojo eléctrico base
-            if (frac < 0.35) return `rgba(255, 109, 0, ${alpha})`;   // Naranja intenso
-            if (frac < 0.54) return `rgba(255, 214, 0, ${alpha})`;   // Amarillo vivo
-            if (frac < 0.72) return `rgba(0, 230, 118, ${alpha})`;   // Verde lima neón
-            if (frac < 0.88) return `rgba(0, 229, 255, ${alpha})`;   // Cian brillante
-            return `rgba(124, 77, 255, ${alpha})`;                   // Púrpura / Azul cima
-        }
-
-        // 1. Dibujar barras superiores de frecuencias (hacia arriba)
+        // 1. Barras superiores
+        eqCtx.globalAlpha = 0.95;
         for (let i = 0; i < EQ_NUM_BARS; i++) {
             const x = gap + i * (barW + gap);
             const val = eqSmoothedBars[i];
             const peak = eqPeakBars[i];
             const numSegs = Math.floor(val * maxSegments);
 
-            // Bloques LED segmentados de la barra
             for (let s = 0; s < numSegs; s++) {
                 const segFrac = s / maxSegments;
                 const segY = horizonY - (s + 1) * segStep;
-                eqCtx.fillStyle = getSegmentColor(segFrac, 0.95);
+                eqCtx.fillStyle = getSegmentColorByFrac(segFrac);
                 eqCtx.fillRect(x, segY, barW, segmentH);
             }
 
-            // Peak Hold (cap flotante superior)
             if (peak > 0.04) {
                 const peakSegIdx = Math.min(maxSegments - 1, Math.floor(peak * maxSegments));
                 const peakY = horizonY - (peakSegIdx + 1) * segStep;
                 const peakFrac = peakSegIdx / maxSegments;
-                eqCtx.fillStyle = getSegmentColor(peakFrac, 1.0);
+                eqCtx.fillStyle = getSegmentColorByFrac(peakFrac);
                 eqCtx.fillRect(x, peakY, barW, segmentH);
             }
         }
 
-        // 2. Fondo ambiental de la masa de agua (suave degradado acuático nocturno)
+        // 2. Fondo ambiental de la masa de agua
         const reflectionMaxH = h - horizonY;
         const timeSec = (timestamp || 0) * 0.0028;
 
+        eqCtx.globalAlpha = 1.0;
         const waterGrad = eqCtx.createLinearGradient(0, horizonY, 0, h);
         waterGrad.addColorStop(0, 'rgba(12, 24, 48, 0.35)');
         waterGrad.addColorStop(0.35, 'rgba(8, 16, 32, 0.20)');
@@ -5323,34 +5366,34 @@ function formatTime(seconds) {
         eqCtx.fillStyle = waterGrad;
         eqCtx.fillRect(0, horizonY, w, reflectionMaxH);
 
-        // 3. Dibujar superficie reflectante líquida (reflejo invertido con ondas de agua vivas)
+        // 3. Superficie reflectante líquida con globalAlpha nativo (cero allocations de strings)
         for (let i = 0; i < EQ_NUM_BARS; i++) {
             const x = gap + i * (barW + gap);
             const val = eqSmoothedBars[i];
             const numSegs = Math.floor(val * maxSegments * 0.85);
 
             for (let s = 0; s < numSegs; s++) {
-                const segFrac = s / maxSegments;
                 const distFromWaterline = (s + 1) * segStep;
                 if (distFromWaterline >= reflectionMaxH - 4) break;
 
-                // Ondulaciones orgánicas en el agua que cambian según profundidad y tiempo
+                const segFrac = s / maxSegments;
                 const wavePhase = distFromWaterline * 0.18 + timeSec * 1.8 + i * 0.32;
                 const waveShift = Math.sin(wavePhase) * (2.2 + (distFromWaterline / reflectionMaxH) * 5.2);
                 const refY = horizonY + distFromWaterline;
 
-                // Caída suave de luminosidad: inicia vívida en la orilla (~0.72) y se desvanece con la distancia
                 const depthRatio = distFromWaterline / reflectionMaxH;
                 const depthFade = Math.pow(Math.max(0, 1.0 - depthRatio), 0.70);
                 const shimmer = 0.86 + 0.14 * Math.cos(wavePhase * 1.25);
-                const refAlpha = Math.max(0.08, 0.72 * depthFade * shimmer);
+                const refAlpha = Math.max(0.08, Math.min(1.0, 0.72 * depthFade * shimmer));
 
-                eqCtx.fillStyle = getSegmentColor(segFrac, refAlpha);
+                eqCtx.fillStyle = getSegmentColorByFrac(segFrac);
+                eqCtx.globalAlpha = refAlpha;
                 eqCtx.fillRect(x + waveShift, refY, barW, segmentH);
             }
         }
 
-        // 4. Línea de horizonte de agua (borde cristalino con resplandor)
+        // 4. Línea de horizonte de agua
+        eqCtx.globalAlpha = 1.0;
         const waterLineGrad = eqCtx.createLinearGradient(0, horizonY - 1, 0, horizonY + 3);
         waterLineGrad.addColorStop(0, 'rgba(255, 255, 255, 0.55)');
         waterLineGrad.addColorStop(0.4, 'rgba(80, 220, 255, 0.40)');
@@ -5358,17 +5401,19 @@ function formatTime(seconds) {
         eqCtx.fillStyle = waterLineGrad;
         eqCtx.fillRect(0, horizonY - 1, w, 4);
 
-        // Ondas líquidas sutiles horizontales que se desplazan por la superficie
+        // Ondas líquidas sutiles horizontales
+        eqCtx.fillStyle = 'rgb(180, 235, 255)';
         for (let y = horizonY + 4; y < h - 4; y += 7) {
             const rowFrac = (y - horizonY) / reflectionMaxH;
             const waveOpacity = 0.09 * (1.0 - rowFrac);
             if (waveOpacity > 0.015) {
                 const waveOffset = Math.sin(y * 0.28 + timeSec * 2.2) * 1.6;
-                eqCtx.fillStyle = `rgba(180, 235, 255, ${waveOpacity})`;
+                eqCtx.globalAlpha = waveOpacity;
                 eqCtx.fillRect(0, y + waveOffset, w, 1);
             }
         }
 
+        eqCtx.globalAlpha = 1.0;
         eqCtx.restore();
         eqAnimFrameId = requestAnimationFrame(renderCinemaEqualizerFrame);
     }
