@@ -8,7 +8,7 @@ const crypto = require('crypto');
 const { fetchTrackMetadataFromWikiAndMB } = require('./scripts/metadata_wiki_provider');
 
 // Detección de entorno
-const IS_RUNNING_ON_OMEN = fs.existsSync("D:\\media-library") || __dirname.toLowerCase().startsWith('d:\\');
+const IS_RUNNING_ON_OMEN = fs.existsSync("D:\\media-library") || __dirname.toLowerCase().startsWith('d:\\') || fs.existsSync("/mnt/d/media-library") || __dirname.startsWith('/mnt/d');
 
 // Rutas de datos centralizadas
 const DATA_DIR = path.join(__dirname, 'data');
@@ -59,7 +59,7 @@ function saveLyricsDbDebounced() {
 
             // Replicar en caliente a OMEN si no estamos ya ejecutando en OMEN
             if (!IS_RUNNING_ON_OMEN) {
-                const REMOTE_LYRICS_DB = "\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\lyrics_db.json";
+                const REMOTE_LYRICS_DB = "\\\\100.95.0.24\\omen D\\03_Trabajo\\Musica\\data\\lyrics_db.json";
                 if (fs.existsSync(path.dirname(REMOTE_LYRICS_DB))) {
                     fs.writeFile(REMOTE_LYRICS_DB, dataStr, 'utf8', (errRemote) => {
                         if (errRemote) console.error('Error replicando LYRICS_DB a OMEN:', errRemote.message);
@@ -258,7 +258,7 @@ function saveTitleOverrides() {
         const dataStr = JSON.stringify(titleOverrides, null, 2);
         safeAtomicWriteSync(TITLE_OVERRIDES_PATH, dataStr);
         if (!IS_RUNNING_ON_OMEN) {
-            const REMOTE_TITLE_OVERRIDES = "\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\title_overrides.json";
+            const REMOTE_TITLE_OVERRIDES = "\\\\100.95.0.24\\omen D\\03_Trabajo\\Musica\\data\\title_overrides.json";
             if (fs.existsSync(path.dirname(REMOTE_TITLE_OVERRIDES))) {
                 fs.writeFile(REMOTE_TITLE_OVERRIDES, dataStr, 'utf8', () => {});
             }
@@ -286,7 +286,7 @@ function saveMetadataCacheDebounced() {
             const dataStr = JSON.stringify(metadataCache, null, 2);
             safeAtomicWriteSync(METADATA_CACHE_FILE, dataStr);
             if (!IS_RUNNING_ON_OMEN) {
-                const REMOTE_METADATA_CACHE = "\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\metadata_cache.json";
+                const REMOTE_METADATA_CACHE = "\\\\100.95.0.24\\omen D\\03_Trabajo\\Musica\\data\\metadata_cache.json";
                 fs.writeFile(REMOTE_METADATA_CACHE, dataStr, 'utf8', () => {});
             }
         } catch(e) {
@@ -323,7 +323,7 @@ function persistAnalysesDb() {
         const dataStr = JSON.stringify(cachedAnalyses, null, 2);
         safeAtomicWriteSync(ANALYSES_DB_PATH, dataStr);
         if (!IS_RUNNING_ON_OMEN) {
-            const REMOTE_ANALYSES_DB = "\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\analyses_db.json";
+            const REMOTE_ANALYSES_DB = "\\\\100.95.0.24\\omen D\\03_Trabajo\\Musica\\data\\analyses_db.json";
             fs.writeFile(REMOTE_ANALYSES_DB, dataStr, 'utf8', () => {});
         }
     } catch(e) {
@@ -1011,7 +1011,8 @@ Debes responder ÚNICAMENTE con un objeto JSON válido con esta estructura exact
 
     // Fallback to Ollama if OMEN is reachable
     try {
-        const ollamaRes = await fetch('http://100.95.217.45:11434/api/generate', {
+        const ollamaHost = IS_RUNNING_ON_OMEN ? 'http://127.0.0.1:11434' : 'http://100.95.0.24:11434';
+        const ollamaRes = await fetch(`${ollamaHost}/api/generate`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -1619,15 +1620,20 @@ app.get('/api/media-token', (req, res) => {
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Rutas compatibles tanto en local OMEN (D:\) como remoto MSI (red Tailscale)
-const LOCAL_OMEN_CACHE = "D:\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json";
-const REMOTE_OMEN_CACHE = "\\\\100.95.217.45\\omen D\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json";
-const OMEN_CACHE_PATH = fs.existsSync(LOCAL_OMEN_CACHE) ? LOCAL_OMEN_CACHE : REMOTE_OMEN_CACHE;
+// Rutas compatibles tanto en local OMEN (D:\ en Windows o /mnt/d en Linux) como remoto MSI (red Tailscale)
+const CANDIDATE_CACHE_PATHS = [
+    "D:\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json",
+    "/mnt/d/Docker/media-server/spotdl-sync/cache/tracks_cache.json",
+    "\\\\100.95.0.24\\omen D\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json"
+];
+const OMEN_CACHE_PATH = CANDIDATE_CACHE_PATHS.find(p => fs.existsSync(p)) || CANDIDATE_CACHE_PATHS[0];
 
-
-const LOCAL_OMEN_MUSIC = "D:\\media-library\\music";
-const REMOTE_OMEN_MUSIC = "\\\\100.95.217.45\\omen D\\media-library\\music";
-const OMEN_MUSIC_DIR = fs.existsSync(LOCAL_OMEN_MUSIC) ? LOCAL_OMEN_MUSIC : REMOTE_OMEN_MUSIC;
+const CANDIDATE_MUSIC_DIRS = [
+    "D:\\media-library\\music",
+    "/mnt/d/media-library/music",
+    "\\\\100.95.0.24\\omen D\\media-library\\music"
+];
+const OMEN_MUSIC_DIR = CANDIDATE_MUSIC_DIRS.find(p => fs.existsSync(p)) || CANDIDATE_MUSIC_DIRS[0];
 
 if (fs.existsSync(OMEN_MUSIC_DIR)) {
     app.use('/media-music', (req, res, next) => {
@@ -1706,9 +1712,12 @@ function scanAudioFiles(force = false) {
     return cachedAudioMap;
 }
 
-const LOCAL_OMEN_VIDEOS = "D:\\media-library\\music-videos";
-const REMOTE_OMEN_VIDEOS = "\\\\100.95.217.45\\omen D\\media-library\\music-videos";
-const OMEN_VIDEOS_DIR = fs.existsSync(LOCAL_OMEN_VIDEOS) ? LOCAL_OMEN_VIDEOS : REMOTE_OMEN_VIDEOS;
+const CANDIDATE_VIDEO_DIRS = [
+    "D:\\media-library\\music-videos",
+    "/mnt/d/media-library/music-videos",
+    "\\\\100.95.0.24\\omen D\\media-library\\music-videos"
+];
+const OMEN_VIDEOS_DIR = CANDIDATE_VIDEO_DIRS.find(p => fs.existsSync(p)) || CANDIDATE_VIDEO_DIRS[0];
 
 // Servir la carpeta de videoclips de OMEN como estática si está disponible
 if (fs.existsSync(OMEN_VIDEOS_DIR)) {
@@ -2240,7 +2249,7 @@ function findAnalysisForTrack(artist, title) {
 // ==========================================================================
 // 🎬 Jellyfin Music Videos Integration (OMEN :8096)
 // ==========================================================================
-const JELLYFIN_HOST = process.env.JELLYFIN_HOST || 'http://100.95.217.45:8096';
+const JELLYFIN_HOST = process.env.JELLYFIN_HOST || (IS_RUNNING_ON_OMEN ? 'http://127.0.0.1:8096' : 'http://100.95.0.24:8096');
 const JELLYFIN_TOKEN = process.env.JELLYFIN_TOKEN || '128c3d9a51bd4b22bacaccad03ef9328';
 const JELLYFIN_USER_ID = process.env.JELLYFIN_USER_ID || '9f5ea2fca2c7415ba5a030c05821e9f9';
 
@@ -2337,7 +2346,8 @@ app.post('/api/jellyfin/refresh', blockInPublicMode, async (req, res) => {
         
         // También disparar sincronización de spotdl-sync en OMEN para descargar nuevos temas de Spotify
         try {
-            await fetch('http://100.95.217.45:4000/api/docker/restart', {
+            const omenDashboardHost = IS_RUNNING_ON_OMEN ? 'http://127.0.0.1:4000' : 'http://100.95.0.24:4000';
+            await fetch(`${omenDashboardHost}/api/docker/restart`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name: 'spotdl-sync' }),
@@ -2355,7 +2365,7 @@ app.post('/api/jellyfin/refresh', blockInPublicMode, async (req, res) => {
 // ==========================================================================
 // 🎧 HISTORIAL DE REPRODUCCIÓN CENTRALIZADO (Multi-sesión y Multi-dispositivo)
 // ==========================================================================
-const OMEN_PLAYBACK_HISTORY_FILE = '\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\playback_history.json';
+const OMEN_PLAYBACK_HISTORY_FILE = IS_RUNNING_ON_OMEN ? PLAYBACK_HISTORY_FILE : '\\\\100.95.0.24\\omen D\\03_Trabajo\\Musica\\data\\playback_history.json';
 let cachedPlaybackHistory = null;
 
 function loadPlaybackHistory() {
@@ -2841,12 +2851,14 @@ app.post('/api/covers/save', blockInPublicMode, (req, res) => {
             effectiveCoverUrl = `/img/covers/${filename}`;
 
             // Copiar al OMEN si aplica
-            const remoteCoversDir = '\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\public\\img\\covers';
-            if (fs.existsSync(path.dirname(remoteCoversDir))) {
-                try {
-                    if (!fs.existsSync(remoteCoversDir)) fs.mkdirSync(remoteCoversDir, { recursive: true });
-                    fs.copyFileSync(path.join(coversDir, filename), path.join(remoteCoversDir, filename));
-                } catch(e){}
+            if (!IS_RUNNING_ON_OMEN) {
+                const remoteCoversDir = '\\\\100.95.0.24\\omen D\\03_Trabajo\\Musica\\public\\img\\covers';
+                if (fs.existsSync(path.dirname(remoteCoversDir))) {
+                    try {
+                        if (!fs.existsSync(remoteCoversDir)) fs.mkdirSync(remoteCoversDir, { recursive: true });
+                        fs.copyFileSync(path.join(coversDir, filename), path.join(remoteCoversDir, filename));
+                    } catch(e){}
+                }
             }
         }
 
@@ -3772,8 +3784,10 @@ function getYtDlpCookiesArg() {
     const candidates = [
         path.join(__dirname, 'bin', 'cookies.txt'),
         path.join(__dirname, 'cookies.txt'),
-        '\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\bin\\cookies.txt',
-        '\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\cookies.txt'
+        '/mnt/d/03_Trabajo/Musica/bin/cookies.txt',
+        '/mnt/d/03_Trabajo/Musica/cookies.txt',
+        '\\\\100.95.0.24\\omen D\\03_Trabajo\\Musica\\bin\\cookies.txt',
+        '\\\\100.95.0.24\\omen D\\03_Trabajo\\Musica\\cookies.txt'
     ];
     let cookieArg = '';
     for (const c of candidates) {
