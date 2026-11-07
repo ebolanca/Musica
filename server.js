@@ -1733,14 +1733,11 @@ function scanAudioFiles(force = false) {
                 if (ext === '.mp3' || ext === '.m4a' || ext === '.flac' || ext === '.ogg') {
                     const rawName = path.basename(file, ext);
                     const baseName = rawName.toLowerCase().replace(/[^a-z0-9]/g, '');
-                    let sizeBytes = 0;
-                    try { sizeBytes = fs.statSync(path.join(folderPath, file)).size; } catch(e){}
-                    const isTruncated = sizeBytes > 0 && sizeBytes < 2.5 * 1024 * 1024; // < 2.5MB is truncated/preview
                     const entry = {
                         category,
                         fileName: file,
-                        sizeBytes,
-                        isTruncated,
+                        sizeBytes: 0,
+                        isTruncated: false,
                         relUrl: `/media-music/${encodeURIComponent(category)}/${encodeURIComponent(file)}`
                     };
                     audioMap.set(baseName, entry);
