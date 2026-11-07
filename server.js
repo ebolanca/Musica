@@ -269,12 +269,32 @@ function saveTitleOverrides() {
 }
 
 let metadataCache = {};
+let fastNormMetaMap = new Map();
+let fastTitleMetaMap = new Map();
+
+function buildFastMetadataIndex() {
+    fastNormMetaMap.clear();
+    fastTitleMetaMap.clear();
+    for (const [k, meta] of Object.entries(metadataCache)) {
+        if (!meta || !meta.coverUrl) continue;
+        const normK = k.toLowerCase().replace(/,/g, ' ').replace(/&/g, ' ').replace(/[^a-z0-9]/g, '');
+        if (normK) fastNormMetaMap.set(normK, meta);
+        if (meta.title) {
+            const cleanT = cleanTrackTitle(meta.title).toLowerCase().replace(/[^a-z0-9]/g, '');
+            if (cleanT && cleanT.length >= 4 && !fastTitleMetaMap.has(cleanT)) {
+                fastTitleMetaMap.set(cleanT, meta);
+            }
+        }
+    }
+}
+
 function loadMetadataCache() {
     if (fs.existsSync(METADATA_CACHE_FILE)) {
         try { 
             metadataCache = safeJsonParse(fs.readFileSync(METADATA_CACHE_FILE, 'utf8'), {}); 
         } catch(e){}
     }
+    buildFastMetadataIndex();
 }
 loadMetadataCache();
 
@@ -299,12 +319,23 @@ function saveMetadataCache() {
 }
 
 let cachedAnalyses = {};
+let fastAnalysesMap = new Map();
+
+function buildFastAnalysesIndex() {
+    fastAnalysesMap.clear();
+    for (const [k, v] of Object.entries(cachedAnalyses)) {
+        const normK = k.toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (normK) fastAnalysesMap.set(normK, v);
+    }
+}
+
 function loadAnalysesDb() {
     if (fs.existsSync(ANALYSES_DB_PATH)) {
         try { 
             cachedAnalyses = safeJsonParse(fs.readFileSync(ANALYSES_DB_PATH, 'utf8'), {}); 
         } catch(e){}
     }
+    buildFastAnalysesIndex();
 }
 loadAnalysesDb();
 
@@ -413,15 +444,25 @@ function sanitizeArtistTitleInput(str) {
         .slice(0, 200);
 }
 
+let fastLyricsMap = new Map();
+
+function buildFastLyricsIndex() {
+    fastLyricsMap.clear();
+    for (const [k, v] of Object.entries(cachedLyricsDb)) {
+        const normK = k.toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (normK) fastLyricsMap.set(normK, v);
+    }
+}
+
 function loadLyricsDb() {
     if (fs.existsSync(LYRICS_DB_PATH)) {
         try { cachedLyricsDb = JSON.parse(fs.readFileSync(LYRICS_DB_PATH, 'utf8')); } catch(e){}
     }
+    buildFastLyricsIndex();
 }
 loadLyricsDb();
 
 function findLyricsForTrack(artist, title) {
-    // cachedLyricsDb se carga al arranque; no releer de disco en cada llamada (evita I/O masivo)
     const cleanT = cleanTrackTitle(title);
     const danceT = cleanDanceTrackTitle(cleanT);
     const primArtist = getArtistTokens(artist)[0] || artist;
@@ -437,12 +478,8 @@ function findLyricsForTrack(artist, title) {
 
     const normTarget = `${artist}${cleanT}`.toLowerCase().replace(/[^a-z0-9]/g, '');
     const normDanceTarget = `${primArtist}${danceT}`.toLowerCase().replace(/[^a-z0-9]/g, '');
-    for (const [k, v] of Object.entries(cachedLyricsDb)) {
-        const normK = k.toLowerCase().replace(/[^a-z0-9]/g, '');
-        if (fuzzyNormKeyMatches(normK, normTarget) || fuzzyNormKeyMatches(normK, normDanceTarget)) {
-            return v;
-        }
-    }
+    const fastMatch = fastLyricsMap.get(normTarget) || fastLyricsMap.get(normDanceTarget);
+    if (fastMatch) return fastMatch;
     return null;
 }
 
@@ -1434,25 +1471,14 @@ function getTrackMetadata(artist, title) {
     let normTit = cleanTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
     let normTarget = `${normArt}${normTit}`;
 
-    for (const [k, meta] of Object.entries(metadataCache)) {
-        if (!meta || !meta.coverUrl) continue;
-        let normK = k.toLowerCase().replace(/,/g, ' ').replace(/&/g, ' ').replace(/[^a-z0-9]/g, '');
-        if (fuzzyNormKeyMatches(normK, normTarget)) {
-            return meta;
-        }
-    }
+    // ⚡ Búsqueda O(1) instantánea en índice de memoria (0 ms)
+    const exactNorm = fastNormMetaMap.get(normTarget);
+    if (exactNorm) return exactNorm;
 
-    // Secondary match: título + palabra principal del artista, ambos con longitud mínima
-    // (antes, un artista corto se saltaba la comprobación de artista por completo).
-    const primaryArtist = normArt.split(' ')[0] || '';
-    if (normTit.length >= MIN_FUZZY_MATCH_LEN) {
-        for (const [k, meta] of Object.entries(metadataCache)) {
-            if (!meta || !meta.coverUrl) continue;
-            let normK = k.toLowerCase().replace(/,/g, ' ').replace(/&/g, ' ').replace(/[^a-z0-9]/g, '');
-            if (normK.includes(normTit) && primaryArtist.length >= 2 && normK.includes(primaryArtist)) {
-                return meta;
-            }
-        }
+    // ⚡ Búsqueda O(1) por título limpio
+    if (normTit.length >= 4) {
+        const titleMatch = fastTitleMetaMap.get(normTit);
+        if (titleMatch) return titleMatch;
     }
 
     if (metadataCache[key1]) return metadataCache[key1];
@@ -1653,19 +1679,33 @@ if (fs.existsSync(OMEN_MUSIC_DIR)) {
 }
 
 let cachedAudioMap = new Map();
+let cachedAudioByTitleMap = new Map();
 let lastAudioScanTime = 0;
 
 let cachedPlaylistsResponse = null;
 let lastPlaylistsResponseTime = 0;
+let isRecomputingPlaylists = false;
 
 function invalidatePlaylistsCache() {
-    cachedPlaylistsResponse = null;
     lastPlaylistsResponseTime = 0;
+    if (!isRecomputingPlaylists) {
+        isRecomputingPlaylists = true;
+        setImmediate(() => {
+            try {
+                computePlaylistsResponse();
+            } catch(e) {
+                console.error("Error recomputando playlists en background:", e.message);
+            } finally {
+                isRecomputingPlaylists = false;
+            }
+        });
+    }
 }
 
 function invalidateAudioCache() {
     lastAudioScanTime = 0;
     cachedAudioMap.clear();
+    cachedAudioByTitleMap.clear();
     invalidatePlaylistsCache();
 }
 
@@ -1676,6 +1716,7 @@ function scanAudioFiles(force = false) {
     }
 
     const audioMap = new Map();
+    const titleMap = new Map();
     if (!fs.existsSync(OMEN_MUSIC_DIR)) return audioMap;
 
     try {
@@ -1690,21 +1731,31 @@ function scanAudioFiles(force = false) {
             for (const file of files) {
                 const ext = path.extname(file).toLowerCase();
                 if (ext === '.mp3' || ext === '.m4a' || ext === '.flac' || ext === '.ogg') {
-                    const baseName = path.basename(file, ext).toLowerCase().replace(/[^a-z0-9]/g, '');
+                    const rawName = path.basename(file, ext);
+                    const baseName = rawName.toLowerCase().replace(/[^a-z0-9]/g, '');
                     let sizeBytes = 0;
                     try { sizeBytes = fs.statSync(path.join(folderPath, file)).size; } catch(e){}
                     const isTruncated = sizeBytes > 0 && sizeBytes < 2.5 * 1024 * 1024; // < 2.5MB is truncated/preview
-                    audioMap.set(baseName, {
+                    const entry = {
                         category,
                         fileName: file,
                         sizeBytes,
                         isTruncated,
                         relUrl: `/media-music/${encodeURIComponent(category)}/${encodeURIComponent(file)}`
-                    });
+                    };
+                    audioMap.set(baseName, entry);
+                    if (rawName.includes(' - ')) {
+                        const parts = rawName.split(' - ');
+                        const tClean = cleanTrackTitle(parts.slice(1).join(' - ')).toLowerCase().replace(/[^a-z0-9]/g, '');
+                        if (tClean && tClean.length >= 4 && !titleMap.has(tClean)) {
+                            titleMap.set(tClean, entry);
+                        }
+                    }
                 }
             }
         }
         cachedAudioMap = audioMap;
+        cachedAudioByTitleMap = titleMap;
         lastAudioScanTime = now;
     } catch(e) {
         console.error("Error escaneando archivos de audio:", e.message);
@@ -1740,6 +1791,7 @@ if (fs.existsSync(OMEN_VIDEOS_DIR)) {
 // Función auxiliar para escanear archivos de vídeo y letras
 
 let cachedLocalVideoMap = new Map();
+let cachedVideoByTitleMap = new Map();
 let lastVideoScanTime = 0;
 
 function getCachedVideoFiles() {
@@ -1753,6 +1805,7 @@ function getCachedVideoFiles() {
 
 function scanAudioFilesAndVideos() {
     const videoFilesMap = new Map();
+    const videoTitleMap = new Map();
     if (!fs.existsSync(OMEN_VIDEOS_DIR)) return videoFilesMap;
 
     try {
@@ -1766,7 +1819,8 @@ function scanAudioFilesAndVideos() {
 
             for (const file of files) {
                 const ext = path.extname(file).toLowerCase();
-                const baseName = path.basename(file, ext).toLowerCase().replace(/[^a-z0-9]/g, '');
+                const rawName = path.basename(file, ext);
+                const baseName = rawName.toLowerCase().replace(/[^a-z0-9]/g, '');
                 
                 if (!videoFilesMap.has(baseName)) {
                     videoFilesMap.set(baseName, { category, mp4: null, srt: null, lrc: null, rawName: file });
@@ -1775,8 +1829,18 @@ function scanAudioFilesAndVideos() {
                 if (ext === '.mp4') entry.mp4 = path.join(category, file);
                 if (ext === '.srt') entry.srt = path.join(category, file);
                 if (ext === '.lrc') entry.lrc = path.join(category, file);
+
+                if (rawName.includes(' - ')) {
+                    const parts = rawName.split(' - ');
+                    const tClean = cleanTrackTitle(parts.slice(1).join(' - ')).toLowerCase().replace(/[^a-z0-9]/g, '');
+                    if (tClean && tClean.length >= 4 && !videoTitleMap.has(tClean)) {
+                        videoTitleMap.set(tClean, entry);
+                    }
+                }
             }
         }
+        cachedLocalVideoMap = videoFilesMap;
+        cachedVideoByTitleMap = videoTitleMap;
     } catch (e) {
         console.error("Error escaneando carpeta de videoclips:", e.message);
     }
@@ -1866,12 +1930,8 @@ function enrichMissingPlaylistsFromDisk(playlistsData) {
     return playlistsData;
 }
 
-// API: Obtener todas las playlists y sus canciones
-app.get('/api/playlists', (req, res) => {
-    const now = Date.now();
-    if (cachedPlaylistsResponse && (now - lastPlaylistsResponseTime < 300000)) { // 5 minutos de caché en memoria
-        return res.json(cachedPlaylistsResponse);
-    }
+// Generador síncrono/optimizado de datos de playlists (enriquecimiento O(1))
+function computePlaylistsResponse() {
 
     let playlistsData = {};
 
@@ -2054,31 +2114,20 @@ app.get('/api/playlists', (req, res) => {
             const cleanKey2 = `${artist} ${cleanTitle}`.toLowerCase().replace(/[^a-z0-9]/g, '');
             let audioInfo = audioMap.get(cleanKey) || audioMap.get(cleanKey2);
             
-            // Fuzzy search for audio files if exact match failed
+            // ⚡ Búsqueda O(1) de audio en índice de memoria
             if (!audioInfo) {
                 const titleKey = cleanTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
-                const artistKey = (artist || '').toLowerCase().replace(/[^a-z0-9]/g, '');
                 if (titleKey.length >= 4) {
-                    for (const [k, v] of audioMap.entries()) {
-                        if (k.includes(titleKey) && (artistKey.length < 4 || k.includes(artistKey.slice(0, 8)) || artistKey.includes(k.slice(0, 8)))) {
-                            audioInfo = v;
-                            break;
-                        }
-                    }
+                    audioInfo = cachedAudioByTitleMap.get(titleKey);
                 }
             }
 
+            // ⚡ Búsqueda O(1) de vídeo en índice de memoria
             let videoInfo = videoMap.get(cleanKey) || videoMap.get(cleanKey2);
             if (!videoInfo) {
                 const titleKey = cleanTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
-                const artistKey = (artist || '').toLowerCase().replace(/[^a-z0-9]/g, '');
                 if (titleKey.length >= 4) {
-                    for (const [k, v] of videoMap.entries()) {
-                        if (k.includes(titleKey) && (artistKey.length < 4 || k.includes(artistKey.slice(0, 8)) || artistKey.includes(k.slice(0, 8)))) {
-                            videoInfo = v;
-                            break;
-                        }
-                    }
+                    videoInfo = cachedVideoByTitleMap.get(titleKey);
                 }
             }
 
@@ -2172,7 +2221,36 @@ app.get('/api/playlists', (req, res) => {
 
     cachedPlaylistsResponse = response;
     lastPlaylistsResponseTime = Date.now();
-    res.json(response);
+    return response;
+}
+
+// Endpoint no bloqueante Stale-While-Revalidate para /api/playlists
+app.get('/api/playlists', (req, res) => {
+    const now = Date.now();
+    if (cachedPlaylistsResponse) {
+        res.json(cachedPlaylistsResponse);
+        if (now - lastPlaylistsResponseTime > 300000 && !isRecomputingPlaylists) {
+            isRecomputingPlaylists = true;
+            setImmediate(() => {
+                try {
+                    computePlaylistsResponse();
+                } catch(e) {
+                    console.error("Error recomputando playlists en background:", e.message);
+                } finally {
+                    isRecomputingPlaylists = false;
+                }
+            });
+        }
+        return;
+    }
+
+    try {
+        const response = computePlaylistsResponse();
+        res.json(response);
+    } catch(err) {
+        console.error("Error generando playlists:", err);
+        res.status(500).json({ error: "Error interno generando playlists" });
+    }
 });
 
 // Helper para parsear archivos .srt o .lrc a array de objetos { time, text }
@@ -2230,14 +2308,10 @@ function findAnalysisForTrack(artist, title) {
     const key2 = `${artist} - ${cleanT}`;
     if (cachedAnalyses[key2]) return cachedAnalyses[key2];
 
-    // Normalized search: solo si coinciden tanto el artista como el título juntos
+    // Normalized search O(1) instantáneo
     const normTarget = `${artist}${cleanT}`.toLowerCase().replace(/[^a-z0-9]/g, '');
-    for (const [k, v] of Object.entries(cachedAnalyses)) {
-        const normK = k.toLowerCase().replace(/[^a-z0-9]/g, '');
-        if (normK === normTarget) {
-            return v;
-        }
-    }
+    const fastMatch = fastAnalysesMap.get(normTarget);
+    if (fastMatch) return fastMatch;
 
     return null;
 }
@@ -5635,6 +5709,17 @@ app.use((err, req, res, next) => {
 const PORT = 8087;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Servidor de Música corriendo en http://localhost:${PORT}`);
+    // Precalentar caché de playlists en memoria para respuesta instantánea (<5ms)
+    setTimeout(() => {
+        try {
+            console.log("⚡ Precalentando caché de playlists en memoria...");
+            computePlaylistsResponse();
+            console.log("⚡ Caché de playlists precalentada.");
+        } catch(e) {
+            console.error("Error precalentando playlists:", e.message);
+        }
+    }, 1000);
+
     // Iniciar muestreador 24/7 en segundo plano (cada 20 minutos)
     setTimeout(() => {
         autoCollectRadioAirplayInBackground();
