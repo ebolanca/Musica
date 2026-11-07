@@ -3464,8 +3464,15 @@ function formatTime(seconds) {
 
     // Re-adquirir el Wake Lock automáticamente si se cambia de pestaña mientras suena
     document.addEventListener('visibilitychange', async () => {
-        if (document.visibilityState === 'visible' && mainMusicAudio && !mainMusicAudio.paused) {
-            await requestWakeLock();
+        if (document.visibilityState === 'visible') {
+            if (mainMusicAudio && !mainMusicAudio.paused) {
+                await requestWakeLock();
+            }
+            if (artistGalleryActiveView === 'equalizer' && cinemaOverlay && cinemaOverlay.style.display === 'flex') {
+                startCinemaEqualizer();
+            }
+        } else {
+            stopCinemaEqualizer();
         }
     });
 
@@ -5141,6 +5148,8 @@ function formatTime(seconds) {
     let cachedEqDpr = 1;
     let lastEqFrameTimestamp = 0;
     const EQ_TARGET_FRAME_MS = 1000 / 60; // 16.6ms exactos
+    let cachedWaterGrad = null;
+    let cachedWaterLineGrad = null;
 
     const EQ_SEGMENT_COLORS = [
         '#ff1744', // 0: Rojo eléctrico base (< 0.16)
@@ -5179,6 +5188,19 @@ function formatTime(seconds) {
             eqCanvas.width = targetW;
             eqCanvas.height = targetH;
         }
+
+        if (eqCtx) {
+            const horizonY = Math.floor(displayH * 0.67);
+            cachedWaterGrad = eqCtx.createLinearGradient(0, horizonY, 0, displayH);
+            cachedWaterGrad.addColorStop(0, 'rgba(12, 24, 48, 0.35)');
+            cachedWaterGrad.addColorStop(0.35, 'rgba(8, 16, 32, 0.20)');
+            cachedWaterGrad.addColorStop(1, 'rgba(3, 5, 10, 0.75)');
+
+            cachedWaterLineGrad = eqCtx.createLinearGradient(0, horizonY - 1, 0, horizonY + 3);
+            cachedWaterLineGrad.addColorStop(0, 'rgba(255, 255, 255, 0.55)');
+            cachedWaterLineGrad.addColorStop(0.4, 'rgba(80, 220, 255, 0.40)');
+            cachedWaterLineGrad.addColorStop(1, 'rgba(0, 140, 255, 0.0)');
+        }
     }
 
     window.addEventListener('resize', () => {
@@ -5205,7 +5227,7 @@ function formatTime(seconds) {
             eqFftDataArray = new Uint8Array(analyserNode.frequencyBinCount);
         }
 
-        if (!eqAnimFrameId) {
+        if (!eqAnimFrameId && !document.hidden) {
             lastEqFrameTimestamp = 0;
             eqAnimFrameId = requestAnimationFrame(renderCinemaEqualizerFrame);
         }
@@ -5219,7 +5241,7 @@ function formatTime(seconds) {
     }
 
     function renderCinemaEqualizerFrame(timestamp) {
-        if (artistGalleryActiveView !== 'equalizer' || !cinemaOverlay || cinemaOverlay.style.display !== 'flex') {
+        if (artistGalleryActiveView !== 'equalizer' || !cinemaOverlay || cinemaOverlay.style.display !== 'flex' || document.hidden) {
             eqAnimFrameId = null;
             return;
         }
@@ -5229,8 +5251,8 @@ function formatTime(seconds) {
             return;
         }
 
-        // Limitador estricto a 60 FPS: evita saturar GPU/IPC en pantallas de 144Hz o 240Hz
-        if (timestamp && (timestamp - lastEqFrameTimestamp) < (EQ_TARGET_FRAME_MS - 2)) {
+        // Limitador suave: sólo en pantallas de muy alta tasa de refresco (>100Hz) evitando stutter a 60Hz
+        if (timestamp && lastEqFrameTimestamp && (timestamp - lastEqFrameTimestamp) < 11.5) {
             eqAnimFrameId = requestAnimationFrame(renderCinemaEqualizerFrame);
             return;
         }
@@ -5354,52 +5376,56 @@ function formatTime(seconds) {
             }
         }
 
-        // 2. Fondo ambiental de la masa de agua
+        // 2. Fondo ambiental de la masa de agua (gradiente precalculado sin allocations)
         const reflectionMaxH = h - horizonY;
         const timeSec = (timestamp || 0) * 0.0028;
 
         eqCtx.globalAlpha = 1.0;
-        const waterGrad = eqCtx.createLinearGradient(0, horizonY, 0, h);
-        waterGrad.addColorStop(0, 'rgba(12, 24, 48, 0.35)');
-        waterGrad.addColorStop(0.35, 'rgba(8, 16, 32, 0.20)');
-        waterGrad.addColorStop(1, 'rgba(3, 5, 10, 0.75)');
-        eqCtx.fillStyle = waterGrad;
-        eqCtx.fillRect(0, horizonY, w, reflectionMaxH);
+        if (!cachedWaterGrad) updateEqualizerDimensions();
+        if (cachedWaterGrad) {
+            eqCtx.fillStyle = cachedWaterGrad;
+            eqCtx.fillRect(0, horizonY, w, reflectionMaxH);
+        }
 
-        // 3. Superficie reflectante líquida con globalAlpha nativo (cero allocations de strings)
+        // 3. Superficie reflectante líquida optimizada (precalculada por fila)
+        const maxRefSegs = Math.min(maxSegments, Math.floor((reflectionMaxH - 4) / segStep));
+        const refRowData = [];
+        for (let s = 0; s < maxRefSegs; s++) {
+            const distFromWaterline = (s + 1) * segStep;
+            const depthRatio = distFromWaterline / reflectionMaxH;
+            refRowData.push({
+                distFromWaterline,
+                color: getSegmentColorByFrac(s / maxSegments),
+                depthFade: Math.pow(Math.max(0, 1.0 - depthRatio), 0.70),
+                refY: horizonY + distFromWaterline
+            });
+        }
+
         for (let i = 0; i < EQ_NUM_BARS; i++) {
             const x = gap + i * (barW + gap);
             const val = eqSmoothedBars[i];
-            const numSegs = Math.floor(val * maxSegments * 0.85);
+            const numSegs = Math.min(maxRefSegs, Math.floor(val * maxSegments * 0.85));
+            const barPhaseBase = timeSec * 1.8 + i * 0.32;
 
             for (let s = 0; s < numSegs; s++) {
-                const distFromWaterline = (s + 1) * segStep;
-                if (distFromWaterline >= reflectionMaxH - 4) break;
-
-                const segFrac = s / maxSegments;
-                const wavePhase = distFromWaterline * 0.18 + timeSec * 1.8 + i * 0.32;
-                const waveShift = Math.sin(wavePhase) * (2.2 + (distFromWaterline / reflectionMaxH) * 5.2);
-                const refY = horizonY + distFromWaterline;
-
-                const depthRatio = distFromWaterline / reflectionMaxH;
-                const depthFade = Math.pow(Math.max(0, 1.0 - depthRatio), 0.70);
+                const row = refRowData[s];
+                const wavePhase = row.distFromWaterline * 0.18 + barPhaseBase;
+                const waveShift = Math.sin(wavePhase) * (2.2 + (row.distFromWaterline / reflectionMaxH) * 5.2);
                 const shimmer = 0.86 + 0.14 * Math.cos(wavePhase * 1.25);
-                const refAlpha = Math.max(0.08, Math.min(1.0, 0.72 * depthFade * shimmer));
+                const refAlpha = Math.max(0.08, Math.min(1.0, 0.72 * row.depthFade * shimmer));
 
-                eqCtx.fillStyle = getSegmentColorByFrac(segFrac);
+                eqCtx.fillStyle = row.color;
                 eqCtx.globalAlpha = refAlpha;
-                eqCtx.fillRect(x + waveShift, refY, barW, segmentH);
+                eqCtx.fillRect(x + waveShift, row.refY, barW, segmentH);
             }
         }
 
         // 4. Línea de horizonte de agua
         eqCtx.globalAlpha = 1.0;
-        const waterLineGrad = eqCtx.createLinearGradient(0, horizonY - 1, 0, horizonY + 3);
-        waterLineGrad.addColorStop(0, 'rgba(255, 255, 255, 0.55)');
-        waterLineGrad.addColorStop(0.4, 'rgba(80, 220, 255, 0.40)');
-        waterLineGrad.addColorStop(1, 'rgba(0, 140, 255, 0.0)');
-        eqCtx.fillStyle = waterLineGrad;
-        eqCtx.fillRect(0, horizonY - 1, w, 4);
+        if (cachedWaterLineGrad) {
+            eqCtx.fillStyle = cachedWaterLineGrad;
+            eqCtx.fillRect(0, horizonY - 1, w, 4);
+        }
 
         // Ondas líquidas sutiles horizontales
         eqCtx.fillStyle = 'rgb(180, 235, 255)';
