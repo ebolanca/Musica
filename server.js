@@ -3830,6 +3830,7 @@ app.post('/api/lyrics/cycle-version', blockInPublicMode, async (req, res) => {
 // ==========================================================================
 
 function resolveYtDlpBin() {
+    if (process.platform === 'linux') return '/usr/local/bin/yt-dlp';
     const localExe = path.join(__dirname, 'bin', 'yt-dlp.exe');
     if (fs.existsSync(localExe)) return `"${localExe}"`;
     const omenExe = 'D:\\03_Trabajo\\Musica\\bin\\yt-dlp.exe';
@@ -3841,6 +3842,7 @@ function resolveYtDlpBin() {
 }
 
 function resolveFfmpegDir() {
+    if (process.platform === 'linux') return '/usr/bin';
     const binDir = path.join(__dirname, 'bin');
     if (fs.existsSync(path.join(binDir, 'ffmpeg.exe'))) return binDir;
     const omenBin = 'D:\\03_Trabajo\\Musica\\bin';

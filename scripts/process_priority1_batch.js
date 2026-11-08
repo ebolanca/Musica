@@ -6,7 +6,7 @@ const ENV_PATH = "C:\\Users\\MSI Roberto\\Documents\\GitHub\\Musica\\.env";
 const AUDIT_FILE = "C:\\Users\\MSI Roberto\\Documents\\GitHub\\Musica\\data\\audio_quality_audit.json";
 const PROGRESS_FILE = "C:\\Users\\MSI Roberto\\Documents\\GitHub\\Musica\\data\\priority1_progress.json";
 const FFMPEG = "C:\\Users\\MSI Roberto\\Documents\\GitHub\\Musica\\bin\\ffmpeg.exe";
-const OMEN_MUSIC_DIR = "\\\\100.95.217.45\\omen D\\media-library\\music";
+const OMEN_MUSIC_DIR = "\\\\100.95.0.24\\omen D\\media-library\\music";
 
 // Cargar contraseña
 let password = '';

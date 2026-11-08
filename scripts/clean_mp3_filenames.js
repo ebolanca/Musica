@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const baseDir = '\\\\100.95.217.45\\omen D\\media-library\\music';
+const baseDir = '\\\\100.95.0.24\\omen D\\media-library\\music';
 const folders = fs.readdirSync(baseDir, { withFileTypes: true })
   .filter(d => d.isDirectory() && !/dance/i.test(d.name))
   .map(d => d.name);

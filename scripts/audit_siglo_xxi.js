@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const METADATA_CACHE_PATH = path.join(__dirname, '..', 'data', 'metadata_cache.json');
-const OMEN_CACHE_PATH = '\\\\100.95.217.45\\omen D\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json';
+const OMEN_CACHE_PATH = '\\\\100.95.0.24\\omen D\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json';
 
 let playlistsData;
 try {

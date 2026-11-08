@@ -4,7 +4,7 @@ const path = require('path');
 const DB_PATH = path.join(__dirname, '../data/analyses_db.json');
 const OMEN_CACHE_PATH = fs.existsSync("D:\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json")
     ? "D:\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json"
-    : "\\\\100.95.217.45\\omen D\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json";
+    : "\\\\100.95.0.24\\omen D\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json";
 
 function loadDb() {
     if (fs.existsSync(DB_PATH)) {

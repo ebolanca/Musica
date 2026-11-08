@@ -41,7 +41,7 @@ function cleanTrackTitle(rawTitle) {
 
 const isCompilation = (title) => /greatest hits|best of|essential|compilation|singles|collection|top hits|remix|recopilatorio|exitos|various artists|hit parade|los nº1|remember/i.test(title);
 
-const SPOTDL_CACHE_PATH = "\\\\100.95.217.45\\omen D\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json";
+const SPOTDL_CACHE_PATH = "\\\\100.95.0.24\\omen D\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json";
 let playlistsData = {};
 if (fs.existsSync(SPOTDL_CACHE_PATH)) {
     playlistsData = JSON.parse(fs.readFileSync(SPOTDL_CACHE_PATH, 'utf8'));

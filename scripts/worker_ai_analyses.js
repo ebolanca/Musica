@@ -4,10 +4,10 @@ const crypto = require('crypto');
 const { fetchTrackMetadataFromWikiAndMB } = require('./metadata_wiki_provider');
 
 const DB_PATH = path.join(__dirname, '../data/analyses_db.json');
-const OMEN_DB_PATH = '\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\analyses_db.json';
+const OMEN_DB_PATH = '\\\\100.95.0.24\\omen D\\03_Trabajo\\Musica\\data\\analyses_db.json';
 
 const META_PATH = path.join(__dirname, '../data/metadata_cache.json');
-const OMEN_META_PATH = '\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\metadata_cache.json';
+const OMEN_META_PATH = '\\\\100.95.0.24\\omen D\\03_Trabajo\\Musica\\data\\metadata_cache.json';
 
 const ENV_PATH = path.join(__dirname, '../.env');
 
@@ -245,7 +245,7 @@ async function fetchPlaylists() {
         authHeader = { Cookie: `musica_session=${exp}.${hmac}` };
     }
 
-    const hosts = ['http://100.95.217.45:8087', 'http://localhost:8087'];
+    const hosts = ['http://100.95.0.24:8087', 'http://localhost:8087'];
     for (const host of hosts) {
         try {
             const res = await fetch(`${host}/api/playlists`, { headers: authHeader, signal: AbortSignal.timeout(5000) });
@@ -253,7 +253,7 @@ async function fetchPlaylists() {
         } catch(e) {}
     }
 
-    const localOmenCache = '\\\\100.95.217.45\\omen D\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json';
+    const localOmenCache = '\\\\100.95.0.24\\omen D\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json';
     if (fs.existsSync(localOmenCache)) {
         try {
             const raw = JSON.parse(fs.readFileSync(localOmenCache, 'utf8'));

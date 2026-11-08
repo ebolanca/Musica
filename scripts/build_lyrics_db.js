@@ -4,11 +4,11 @@ const path = require('path');
 const LYRICS_DB_PATH = path.join(__dirname, '../data/lyrics_db.json');
 const LYRICS_CACHE_FILE = path.join(__dirname, '../data/lyrics_cache.json');
 const LOCAL_OMEN_CACHE = "D:\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json";
-const REMOTE_OMEN_CACHE = "\\\\100.95.217.45\\omen D\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json";
+const REMOTE_OMEN_CACHE = "\\\\100.95.0.24\\omen D\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json";
 const OMEN_CACHE_PATH = fs.existsSync(LOCAL_OMEN_CACHE) ? LOCAL_OMEN_CACHE : REMOTE_OMEN_CACHE;
 
 const LOCAL_OMEN_VIDEOS = "D:\\media-library\\music-videos";
-const REMOTE_OMEN_VIDEOS = "\\\\100.95.217.45\\omen D\\media-library\\music-videos";
+const REMOTE_OMEN_VIDEOS = "\\\\100.95.0.24\\omen D\\media-library\\music-videos";
 const OMEN_VIDEOS_DIR = fs.existsSync(LOCAL_OMEN_VIDEOS) ? LOCAL_OMEN_VIDEOS : REMOTE_OMEN_VIDEOS;
 
 let lyricsDb = {};

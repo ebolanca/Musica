@@ -12,7 +12,7 @@ for (const l of lines) {
 }
 
 const FFMPEG = "C:\\Users\\MSI Roberto\\Documents\\GitHub\\Musica\\bin\\ffmpeg.exe";
-const OMEN_MUSIC_DIR = "\\\\100.95.217.45\\omen D\\media-library\\music";
+const OMEN_MUSIC_DIR = "\\\\100.95.0.24\\omen D\\media-library\\music";
 
 function inspectAudio(filePath) {
     if (!fs.existsSync(filePath)) return null;

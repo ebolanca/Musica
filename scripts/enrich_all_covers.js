@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const META_PATH = path.join(__dirname, '../data/metadata_cache.json');
-const OMEN_META_PATH = '\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\metadata_cache.json';
+const OMEN_META_PATH = '\\\\100.95.0.24\\omen D\\03_Trabajo\\Musica\\data\\metadata_cache.json';
 
 const isCompilation = (title) => /greatest hits|best of|essential|compilation|singles|collection|top hits|remix|recopilatorio|exitos|various artists|hit parade|los nº1|remember/i.test(title);
 
@@ -89,7 +89,7 @@ async function fetchBestCover(artist, title, preferredAlbum) {
     // Obtener todas las playlists
     let playlists = {};
     try {
-        const res = await fetch('http://100.95.217.45:8087/api/playlists');
+        const res = await fetch('http://100.95.0.24:8087/api/playlists');
         playlists = await res.json();
     } catch(e) {
         console.error("Error conectando a OMEN, usando metadata local.");

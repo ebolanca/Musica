@@ -3,7 +3,7 @@ const path = require('path');
 const { spawn } = require('child_process');
 
 const LOCAL_OMEN_MUSIC = "D:\\media-library\\music";
-const REMOTE_OMEN_MUSIC = "\\\\100.95.217.45\\omen D\\media-library\\music";
+const REMOTE_OMEN_MUSIC = "\\\\100.95.0.24\\omen D\\media-library\\music";
 const OMEN_MUSIC_DIR = fs.existsSync(LOCAL_OMEN_MUSIC) ? LOCAL_OMEN_MUSIC : REMOTE_OMEN_MUSIC;
 const FFMPEG = "C:\\Users\\MSI Roberto\\Documents\\GitHub\\Musica\\bin\\ffmpeg.exe";
 const OUTPUT_FILE = path.join(__dirname, '../data/audio_quality_audit.json');

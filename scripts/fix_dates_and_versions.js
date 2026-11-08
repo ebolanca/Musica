@@ -5,7 +5,7 @@ const DATA_DIR = path.join(__dirname, '..', 'data');
 const METADATA_CACHE_PATH = path.join(DATA_DIR, 'metadata_cache.json');
 const ANALYSES_DB_PATH = path.join(DATA_DIR, 'analyses_db.json');
 const LOCAL_OMEN_CACHE = "D:\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json";
-const REMOTE_OMEN_CACHE = "\\\\100.95.217.45\\omen D\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json";
+const REMOTE_OMEN_CACHE = "\\\\100.95.0.24\\omen D\\Docker\\media-server\\spotdl-sync\\cache\\tracks_cache.json";
 const TRACKS_CACHE_PATH = fs.existsSync(LOCAL_OMEN_CACHE) ? LOCAL_OMEN_CACHE : REMOTE_OMEN_CACHE;
 
 let metaCache = {};

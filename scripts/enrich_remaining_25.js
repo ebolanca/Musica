@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const META_PATH = "C:\\Users\\MSI Roberto\\Documents\\GitHub\\Musica\\data\\metadata_cache.json";
-const OMEN_META = "\\\\100.95.217.45\\omen D\\03_Trabajo\\Musica\\data\\metadata_cache.json";
+const OMEN_META = "\\\\100.95.0.24\\omen D\\03_Trabajo\\Musica\\data\\metadata_cache.json";
 const meta = JSON.parse(fs.readFileSync(META_PATH, 'utf8'));
 
 const env = fs.readFileSync('C:\\Users\\MSI Roberto\\Documents\\GitHub\\Musica\\.env', 'utf8');
