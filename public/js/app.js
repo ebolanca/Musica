@@ -1662,6 +1662,7 @@ function formatTime(seconds) {
                 allPlaylists = sanitizePlaylistTracks(data);
                 updateTabBadges();
                 renderSongs();
+                handleAutoStartUrl();
             })
             .catch(err => {
                 console.error('Error cargando playlists:', err);
@@ -2611,6 +2612,60 @@ function formatTime(seconds) {
 
     if (btnSmartDj) {
         btnSmartDj.addEventListener('click', startPartyDjMode);
+    }
+
+    // ==========================================================================
+    // 🚀 Autoarranque por URL (?auto=fiesta-cine o ?fiesta=1&cine=1)
+    // ==========================================================================
+    function handleAutoStartUrl() {
+        try {
+            const params = new URLSearchParams(window.location.search);
+            const autoParam = (params.get('auto') || params.get('modo') || '').toLowerCase();
+            const fiestaParam = params.get('fiesta') === '1' || params.get('fiesta') === 'true';
+            const cineParam = params.get('cine') === '1' || params.get('cine') === 'true';
+
+            const wantsFiesta = autoParam.includes('fiesta') || fiestaParam;
+            const wantsCinema = autoParam.includes('cine') || cineParam;
+
+            if (!wantsFiesta && !wantsCinema) return;
+
+            console.log(`🎉 [AutoStart] Detectado autoarranque: fiesta=${wantsFiesta}, cine=${wantsCinema}`);
+
+            if (wantsFiesta) {
+                startPartyDjMode();
+
+                if (wantsCinema) {
+                    setTimeout(() => {
+                        const trackToOpen = currentPlayingSong || (activePlaylistQueue && activePlaylistQueue.length > 0 ? activePlaylistQueue[0] : null);
+                        if (trackToOpen) {
+                            console.log('🎬 [AutoStart] Abriendo Modo Cine automático...');
+                            openCinemaMode(trackToOpen, activePlaylistQueue);
+                        }
+                    }, 400);
+                }
+            } else if (wantsCinema) {
+                const trackList = allPlaylists[currentTab] || [];
+                if (trackList.length > 0) {
+                    openCinemaMode(trackList[0], trackList);
+                }
+            }
+
+            // Desbloqueo de seguridad de audio si el navegador pausó por política de autoplay
+            const unlockAudioOnClick = () => {
+                if (mainMusicAudio && mainMusicAudio.paused && currentPlayingSong) {
+                    mainMusicAudio.play().then(() => {
+                        updateMusicBarState(true);
+                    }).catch(() => {});
+                }
+                window.removeEventListener('click', unlockAudioOnClick);
+                window.removeEventListener('keydown', unlockAudioOnClick);
+            };
+            window.addEventListener('click', unlockAudioOnClick, { once: true });
+            window.addEventListener('keydown', unlockAudioOnClick, { once: true });
+
+        } catch (err) {
+            console.error('[AutoStart] Error procesando autoarranque:', err);
+        }
     }
 
     

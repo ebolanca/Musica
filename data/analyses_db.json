@@ -97607,124 +97607,72 @@
   "David Tavaré - Summerlove": {
     "title": "Summerlove",
     "artist": "David Tavaré",
-    "year": "2014",
-    "album": "Motion",
-    "synopsis": "\"Summerlove\" (2014) de David Tavaré es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "year": "2006",
+    "originalAlbum": "Summerlove (Single)",
+    "releaseYear": "2006",
+    "releaseDate": "2006-05-01",
+    "composers": "David Tavaré, Jim James, Nathan M. Themis",
+    "label": "Vale Music",
+    "genre": "Eurodance / Electropop / House",
+    "synopsis": "Summerlove es un himno indiscutible de la música de baile veraniega en España y Europa durante la segunda mitad de los 2000. Musicalmente destaca por su base rítmica contundente de club, sintetizadores brillantes de estilo electro-house y una melodía vocal altamente pegadiza que evoca los romances estivales. La producción prioriza la compresión orientada a pistas de baile, logrando un impacto inmediato y festivo.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de David Tavaré",
-        "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de David Tavaré, \"Summerlove\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
-        "points": [
-          {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
-          }
-        ]
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción de 'Summerlove' está construida sobre un beat de cuatro por cuarto (4/4) clásico del dance comercial, con un bombo comprimido y agresivo que marca los tiempos principales y una caja brillante situada en el segundo y cuarto tiempo. Los elementos armónicos se apoyan en sintetizadores virtuales tipo supersaw y leads punzantes que ocupan el rango medio-alto, dejando espacio en los graves para un bajo secuenciado de onda cuadrada. Las voces principales están fuertemente procesadas con afinación digital (Pitch Correction), compresión en paralelo y reverberaciones de corta duración para mantener la presencia y claridad frente a la densa instrumentación electrónica."
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
-        "icon": "fa-drum",
-        "text": "La producción de \"Summerlove\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
-        "points": [
-          {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
-          },
-          {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
-          },
-          {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
-          }
-        ]
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra aborda la temática universal del romance de verano, la pasión efímera y el deseo de retener el tiempo junto a un amor estival. A través de frases directas y estribillos repetitivos optimizados para la memorización rápida, la canción captura la euforia de las noches de fiesta en la costa. Frases como 'Summerlove, oh-oh-oh' funcionan como un gancho translingüe que facilita su adopción masiva en pistas de baile internacionales, priorizando el impacto rítmico y emocional sobre la complejidad poética."
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
-        "icon": "fa-quote-left",
-        "text": "Líricamente, \"Summerlove\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
-        "points": [
-          {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de David Tavaré aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
-          }
-        ]
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial de 'Summerlove' encapsula la estética veraniega por excelencia de mediados de los 2000: playas soleadas, fiestas en piscinas, y grupos de jóvenes bailando. La fotografía utiliza una paleta de colores cálidos y saturados para acentuar la sensación de sol y calor. La dirección intercala tomas de David Tavaré interpretando el tema con coreografías dinámicas y planos detalle de ambiente festivo, reforzando el concepto de la canción como banda sonora del ocio estival."
       },
       {
-        "title": "El Impacto Cultural & Legado",
-        "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Summerlove\" se mantiene como un himno atemporal dentro de la discografía de David Tavaré y una de las composiciones más celebradas de su generación.",
-        "points": [
-          {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de David Tavaré."
-          }
-        ]
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "Publicado originalmente en 2006 por el sello discográfico español Vale Music, 'Summerlove' se convirtió rápidamente en un fenómeno masivo en las listas de éxitos de España, alcanzando posiciones de Top 10 y sonando incansablemente en discotecas, emisoras de radio y recopilatorios de la época (como los discos 'Caribe' o 'Vale Music'). Posteriormente, el tema logró proyección internacional, consolidando a David Tavaré como uno de los exponentes del fenómeno dance-pop español de la década."
       }
-    ]
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
   },
   "C & C Music Factory, Freedom Williams - Gonna Make You Sweat (Everybody Dance Now)": {
     "title": "Gonna Make You Sweat (Everybody Dance Now)",
     "artist": "C & C Music Factory, Freedom Williams",
-    "year": "2017",
-    "album": "Body",
-    "synopsis": "\"Gonna Make You Sweat (Everybody Dance Now)\" (2017) de C & C Music Factory, Freedom Williams es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "year": "1990",
+    "originalAlbum": "Gonna Make You Sweat",
+    "releaseYear": "1990",
+    "releaseDate": "1990-11-13",
+    "composers": "Robert Clivillés, David Cole",
+    "label": "Columbia Records",
+    "genre": "Dance-pop / House / Hip House",
+    "synopsis": "Hito fundacional del género 'hip house' y la música dance de principios de los noventa, producido por Robert Clivillés y David Cole. La obra fusiona magistralmente samplers contundentes de cajas de ritmos Roland TR-808, líneas de bajo sintetizadas y potentes arreglos de metales con la vibrante voz principal de Martha Wash y las rimas enérgicas de Freedom Williams. Su arquitectura sonora maximiza el impacto en las pistas de baile mediante una compresión agresiva y una mezcla orientada a los clubes nocturnos.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de C & C Music Factory, Freedom Williams",
-        "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de C & C Music Factory, Freedom Williams, \"Gonna Make You Sweat (Everybody Dance Now)\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
-        "points": [
-          {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
-          }
-        ]
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción de Clivillés y Cole se cimenta sobre un tempo rápido cercano a los 113 BPM, optimizado para el circuito de clubs. Destaca el uso prominente de la caja de ritmos Roland TR-808, especialmente en los golpes secos de caja y el subgrave profundo que domina el rango de frecuencias bajas (40-80 Hz). Las pistas vocales de Martha Wash fueron grabadas con micrófonos de condensador de gran diafragma para capturar la inmensa potencia de su registro góspel, mientras que las intervenciones de Freedom Williams presentan una compresión multibanda pesada para cortar a través de la densa instrumentación. Se integraron stabs de metales sampleados y acordes de piano de casa estilo Korg M1, creando una textura brillante en los medios-altos que define la estética sonora del sello C & C."
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
-        "icon": "fa-drum",
-        "text": "La producción de \"Gonna Make You Sweat (Everybody Dance Now)\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
-        "points": [
-          {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
-          },
-          {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
-          },
-          {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
-          }
-        ]
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra funciona como un manifiesto imperativo de liberación corporal y energía física, típica de la cultura de club underground de la época. Frases icónicas como 'Everybody dance now!' operan como un comando directo al oyente, eliminando inhibiciones. Las estrofas interpretadas por Freedom Williams combinan el brío del rap moderno con la urgencia urbana ('Music is my life, let me take control'), mientras que el estribillo de Martha Wash eleva la tensión dramática mediante repeticiones melódicas diseñadas para generar máxima catarsis colectiva en la pista de baile."
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
-        "icon": "fa-quote-left",
-        "text": "Líricamente, \"Gonna Make You Sweat (Everybody Dance Now)\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
-        "points": [
-          {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de C & C Music Factory, Freedom Williams aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
-          }
-        ]
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Dirigido por Marcus Nispel, el videoclip oficial captura la estética cruda y urbana de los años noventa combinando actuaciones enérgicas en un estudio con iluminación estroboscópica y proyecciones dinámicas de fondo. La coreografía frenética y la presencia escénica de Freedom Williams y los bailarines (incluyendo a la modelo Zelma Davis, quien inicialmente lip-syncaba la voz de Martha Wash) refuerzan la naturaleza visualmente magnética del tema. El uso de planos contrapicados y cortes de montaje rápidos amplifican la sensación de velocidad y movimiento constante."
       },
       {
-        "title": "El Impacto Cultural & Legado",
-        "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Gonna Make You Sweat (Everybody Dance Now)\" se mantiene como un himno atemporal dentro de la discografía de C & C Music Factory, Freedom Williams y una de las composiciones más celebradas de su generación.",
-        "points": [
-          {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de C & C Music Factory, Freedom Williams."
-          }
-        ]
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "El sencillo alcanzó el número 1 en el Billboard Hot 100 de EE. UU. y se convirtió en un fenómeno global masivo, consolidando el sonido dance-pop y hip house en la radio comercial. Curiosamente, la canción desató una importante controversia legal y de la industria sobre el crédito vocal y la sincronización de labios, ya que en las presentaciones y el video inicial no se reconocía adecuadamente a Martha Wash, lo que impulsó posteriormente leyes y prácticas más estrictas sobre la atribución de créditos a los vocalistas de sesión. Ha sido sampleada, versionada e incluida en cientos de películas, series y eventos deportivos en todo el mundo."
       }
-    ]
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
   },
   "C & C Music Factory, Freedom Williams - Gonna Make You Sweat (Everybody Dance Now) (feat. Freedom Williams)": {
     "title": "Gonna Make You Sweat (Everybody Dance Now)",
@@ -98217,63 +98165,37 @@
   "Bon Jovi - Bed Of Roses": {
     "title": "Bed Of Roses",
     "artist": "Bon Jovi",
-    "year": "2016",
-    "album": "Collection One",
-    "synopsis": "\"Bed Of Roses\" (2016) de Bon Jovi es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "year": "1993",
+    "originalAlbum": "Keep the Faith",
+    "releaseYear": "1993",
+    "releaseDate": "1993-01-12",
+    "composers": "Jon Bon Jovi",
+    "label": "Mercury Records",
+    "genre": "Power Ballad / Arena Rock",
+    "synopsis": "“Bed Of Roses” consolida la maduración sónica y lírica de Bon Jovi en 1993, alejándose de los tópicos del hair metal ochentero hacia un rock de estadios más sobrio y maduro. Producida por Bob Rock, la canción destaca por su icónica introducción de piano acústico, una progresión armónica melancólica y una interpretación vocal desgarradora de Jon Bon Jovi. Su arquitectura de power ballad redefine el sonido de la banda para la nueva década, equilibrando la vulnerabilidad emocional con arreglos orquestales y guitarras de alta resonancia.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de Bon Jovi",
-        "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de Bon Jovi, \"Bed Of Roses\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
-        "points": [
-          {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
-          }
-        ]
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción de Bob Rock en 'Bed Of Roses' prioriza la profundidad espacial y la claridad dinámica frente a la saturación de los ochenta. El tema arranca con un piano de cola procesado con una reverb cálida y orgánica, al que se suma la voz solista con una presencia íntima, casi susurrada, grabada con micrófonos de condensador de alta gama para capturar cada matiz textural. A medida que avanza el minutaje, la instrumentación escala orgánicamente: entra una sección de teclados atmosféricos, seguida de sutiles capas de guitarra acústica y eléctrica doblada con chorus estéreo. En el clímax, la guitarra solista de Richie Sambora entra con un solo melódico y sostenido, ricamente saturado mediante amplificadores valvulares a volumen de estudio, empastando perfectamente con la batería acústica, la cual cuenta con una caja de gran pegada y compresión transparente que sostiene el pulso de la power ballad sin restar emotividad a la mezcla final."
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
-        "icon": "fa-drum",
-        "text": "La producción de \"Bed Of Roses\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
-        "points": [
-          {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
-          },
-          {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
-          },
-          {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
-          }
-        ]
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "Líricamente, la canción aborda el remordimiento, la soledad en la carretera y la redención a través del amor incondicional tras una noche de excesos. Jon Bon Jovi utiliza metáforas nocturnas y urbanas para expresar vulnerabilidad. Versos clave como 'Sitting here wasted and wounded / At this old piano / Trying hard to capture the moments this morning' exponen un realismo crudo desde el primer segundo. La frase central 'I wanna lay you down in a bed of roses / For tonight I's sleep on a bed of nails' contrasta magistralmente el deseo de ofrecer consuelo y refugio a su pareja con el sufrimiento autoinfligido y el sacrificio personal que implica su estilo de vida como estrella de rock itinerante."
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
-        "icon": "fa-quote-left",
-        "text": "Líricamente, \"Bed Of Roses\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
-        "points": [
-          {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de Bon Jovi aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
-          }
-        ]
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Dirigido por Wayne Isham, el videoclip oficial de 'Bed Of Roses' refuerza la estética de transición y madurez de la banda. La pieza visual muestra a Jon Bon Jovi interpretando la canción al piano en diversas localizaciones emblemáticas y solitarias, incluyendo una suite de hotel con vistas panorámicas y sobre un tejado urbano con la niebla matutina. La fotografía destaca por una paleta de colores desaturados y tonos sepia y azules fríos, que acentúan la sensación de aislamiento y añoranza. Las apariciones del resto de la banda tocando sus instrumentos en planos medios y cerrados refuerzan la cohesión del grupo en esta nueva etapa artística."
       },
       {
-        "title": "El Impacto Cultural & Legado",
-        "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Bed Of Roses\" se mantiene como un himno atemporal dentro de la discografía de Bon Jovi y una de las composiciones más celebradas de su generación.",
-        "points": [
-          {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Bon Jovi."
-          }
-        ]
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "Lanzada como el segundo sencillo del álbum 'Keep the Faith', 'Bed Of Roses' fue un rotundo éxito comercial a nivel global, alcanzando el Top 10 en la lista Billboard Hot 100 de Estados Unidos. Se convirtió rápidamente en un himno de los conciertos en directo de la banda, donde el público encendía mecheros y posteriormente teléfonos móviles para iluminar los estadios. Como curiosidad de estudio, Jon Bon Jovi compuso la melodía principal al piano en la habitación de un hotel mientras sufría una fuerte resaca tras una noche de fiesta, lo que dio origen directo a la honestidad visceral plasmada en el primer verso de la letra."
       }
-    ]
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
   },
   "C & C Music Factory, Freedom Williams - Body": {
     "title": "Body",
@@ -98890,63 +98812,37 @@
   "Maria McKee - Show Me Heaven": {
     "title": "Show Me Heaven",
     "artist": "Maria McKee",
-    "year": "2001",
-    "album": "Heaven",
-    "synopsis": "\"Show Me Heaven\" (2001) de Maria McKee es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "year": "1990",
+    "originalAlbum": "Days of Thunder (Music from the Motion Picture Soundtrack)",
+    "releaseYear": "1990",
+    "releaseDate": "1990-06-26",
+    "composers": "Maria McKee, Jay Rifkin, Eric Rackin",
+    "label": "Geffen Records",
+    "genre": "Pop Rock / Power Ballad",
+    "synopsis": "Producida por el legendario Peter Asher para la banda sonora del filme 'Days of Thunder', 'Show Me Heaven' representa la cúspide de la power ballad de transición entre los años 80 y 90. La obra destaca por la desgarradora y virtuosa interpretación vocal de Maria McKee, sustentada sobre una suntuosa arquitectura de sintetizadores analógicos, guitarras arpegiadas y un crescendo emocional devastador. Su impecable diseño sonoro combina la textura acústica del roots rock con la pulidez y compresión del pop cinematográfico de alta definición.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de Maria McKee",
-        "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de Maria McKee, \"Show Me Heaven\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
-        "points": [
-          {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
-          }
-        ]
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción de Peter Asher logra un equilibrio impecable entre la calidez orgánica y el impacto comercial de estudio. La canción se estructura en la tonalidad de Sol mayor (G major) con un tempo moderado de 84 BPM en compás de 4/4. La pista abre con un colchón sutil de sintetizador (Roland D-50 / Yamaha DX7) fundido con guitarras acústicas afinadas en estándar y suaves notas de bajo sintetizado. El elemento vertebrador es el uso del órgano Hammond B3 con efecto Leslie lento, que aporta un matiz réplica del góspel y soul del sur americano. En la batería, las caja conserva un leve tratamiento de reverb de placa (Lexicon 480L) pero libre del gating agresivo propio de mediados de los 80, permitiendo una resonancia más natural. El rendimiento vocal de McKee es una lección magistral de control de dinámicas: inicia en un registro medio contenido con leve vibrato natural, transitando hacia el belting en el registro de pecho en los estribillos, alcanzando notas sostenidas en Sol4 y Re5 con un timbre impregnado de country-rock melancólico. El solo de guitarra eléctrica, procesado con un leve delay estéreo y overdrive suave estilo Tube Screamer, actúa como un puente melódico de textura líquida antes del modulación emocional final."
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
-        "icon": "fa-drum",
-        "text": "La producción de \"Show Me Heaven\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
-        "points": [
-          {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
-          },
-          {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
-          },
-          {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
-          }
-        ]
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra aborda la entrega emocional absoluta, la vulnerabilidad romántica y la búsqueda de refugio espiritual en la intimidad física. Estrofa clave 1: 'There you go, flashing that smile of yours / Playing upon my weakness' ('Ahí vas, luciendo esa sonrisa tuya / Jugando con mi debilidad'). Revela una capitulación voluntaria ante el deseo, usando el verbo 'flash' como un destello cegador que desarma las defensas psicológicas. Estrofa clave 2 (Estribillo): 'Show me heaven, cover me / Leave me breathless, show me heaven, please' ('Muéstrame el cielo, cúbreme / Déjame sin aliento, muéstrame el cielo, por favor'). El uso de la metáfora del 'cielo' une el éxtasis místico con el orgásmico; el imperativo 'cover me' (cúbreme) evoca tanto un abrazo físico protector como una cobertura táctica frente al dolor. Estrofa clave 3: 'If you know what it's like to dream a little dream / Touch me in the dark, hold me when I scream' ('Si sabes lo que es soñar un pequeño sueño / Tócame en la oscuridad, sosténme cuando grite'). Explora el trauma implícito y la necesidad de un ancla emocional frente a las pesadillas o la angustia nocturna, consolidando el amor no solo como pasión, sino como santuario existencial."
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
-        "icon": "fa-quote-left",
-        "text": "Líricamente, \"Show Me Heaven\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
-        "points": [
-          {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de Maria McKee aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
-          }
-        ]
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial fue diseñado conceptualmente para servir como vehículo promocional simultáneo de Maria McKee y del largometraje 'Days of Thunder' (dirigido por Tony Scott). Rodado con cinematografía de alto contraste, tonos cálidos y una paleta de colores desérticos y amarillentos, el metraje alterna a McKee interpretando la canción en una habitación rústica de madera bañada por luz natural con escenas dramáticas de la película (protagonizada por Tom Cruise y Nicole Kidman). La yuxtaposición visual contrasta la velocidad, la adrenalina y el peligro de las carreras de NASCAR con la calma introspectiva, etérea y vulnerable del espacio donde canta McKee. La cámara realiza acercamientos lentos a la cara de la cantante, capturando su expresividad gesticular y la honestidad de su interpretación, convirtiendo el vídeo en una elegante pieza visual de la época de oro de MTV."
       },
       {
-        "title": "El Impacto Cultural & Legado",
-        "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Show Me Heaven\" se mantiene como un himno atemporal dentro de la discografía de Maria McKee y una de las composiciones más celebradas de su generación.",
-        "points": [
-          {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Maria McKee."
-          }
-        ]
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "Inicialmente, Maria McKee (ex-vocalista de la banda de alt-country Lone Justice) se mostró reacia a grabar la canción por considerarla demasiado comercial y ajena a sus raíces de música de raíces. Sin embargo, tras reescribir parte de la letra junto a Jay Rifkin y aportar su propia melodía vocal, la convirtió en su sello personal. El sencillo fue un éxito masivo internacional, alcanzando el número 1 en la lista oficial de sencillos del Reino Unido (UK Singles Chart) durante cuatro semanas consecutivas en el otoño de 1990, además de liderar las listas en Holanda, Irlanda y Noruega. Irónicamente, en los Estados Unidos no se lanzó comercialmente como sencillo individual de pop para no eclipsar el álbum de la banda sonora, aunque tuvo alta rotación en radios Adult Contemporary. Con el paso de los años, 'Show Me Heaven' ha sido versionada por artistas como Laura Branigan, Tina Arena y Robin S, reafirmándose como una de las melodías más perfectas e influyentes de la balada pop contemporánea."
       }
-    ]
+    ],
+    "_aiModel": "gemini-3.6-flash"
   },
   "Maria McKee - Show Me Heaven - From \"Days Of Thunder\"": {
     "title": "Show Me Heaven",
@@ -101085,65 +100981,39 @@
     ]
   },
   "Anastacia - One Day In Your Life - European Version": {
-    "title": "One Day In Your Life",
+    "title": "One Day In Your Life - European Version",
     "artist": "Anastacia",
-    "year": "1998",
-    "album": "Supernatural",
-    "synopsis": "\"One Day In Your Life\" (1998) de Anastacia es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "year": "2002",
+    "originalAlbum": "Freak of Nature",
+    "releaseYear": "2002",
+    "releaseDate": "2002-03-25",
+    "composers": "Anastacia Newkirk, Sam Watters, Louis Biancaniello",
+    "label": "Epic Records / Daylight Records",
+    "genre": "Dance-Pop / Sprock / Pop Rock",
+    "synopsis": "Publicada como el segundo sencillo de su aclamado álbum 'Freak of Nature', 'One Day In Your Life (European Version)' representa el punto culminante de la fusión entre el poderío vocal del soul-rock y la producción dance-pop europea de principios de los 2000. Diseñada bajo el concepto sónico de 'Sprock' (Soul-Pop-Rock), la versión europea acelera el pulso rítmico mediante un patrón *four-on-the-floor* de house-pop sofisticado, sobre el cual la inconfundible voz raspada de mezzo-soprano de Anastacia despliega una demostración de control dinámico, compresión analógica agresiva y resiliencia emocional.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de Anastacia",
-        "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de Anastacia, \"One Day In Your Life\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
-        "points": [
-          {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
-          }
-        ]
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "Producida por el reconocido tándem Louis Biancaniello y Sam Watters, la versión europea de 'One Day In Your Life' adapta la base pop-rock original del álbum a una estructura enfocada en las pistas de baile europeas. La pista está compuesta en la tonalidad de Re menor (con resoluciones al relativo Fa mayor en el coro) a un tempo enérgico de aproximadamente 124 BPM. La base rítmica utiliza un bombo con acento en cada pulso (*four-on-the-floor*) asistido por chaston acelerados y un bajo sintético en modo arpegio que aporta propulsión. Los arreglos se completan con guitarras rítmicas de corte funky lavadas en filtros envelope, puentes de cuerdas sintetizadas de alta densidad armónica y golpes de sintetizador estilo *stab*. En el apartado vocal, la voz de Anastacia fue procesada con micros de condensador de diafragma grande (estilo Neumann U87) pasados por preamplificadores de tubo para maximizar su característico timbre rasgado. Destaca la técnica de *double-tracking* en el estribillo, emparejando la voz solista en el centro con coros estereofónicos superpuestos en quintas y terceras que refuerzan la pared de sonido sin enmascarar las frecuencias medias-altas de su belting."
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
-        "icon": "fa-drum",
-        "text": "La producción de \"One Day In Your Life\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
-        "points": [
-          {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
-          },
-          {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
-          },
-          {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
-          }
-        ]
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La temática central es la autoafirmación tras una ruptura sentimental y la certera profecía del arrepentimiento del amante saliente. Anastacia aborda el dolor desde una postura de poder personal absoluto.\n\n- 'Love is a game for two, but you played it all alone' (El amor es un juego de dos, pero tú jugaste completamente solo): Metáfora directa que denuncia el egoísmo estructural de la pareja. Vocalmente arranca en un registro medio contenido con leve rasgado intencional.\n- 'One day in your life, said you'll be rememberin' the love you found here' (Un día en tu vida, te digo que recordarás el amor que encontraste aquí): El estribillo proyecta una sentencia inapelable. El uso de la contracción rítmica 'said you'll be' enfatiza el fraseo sincopado sobre la melodía principal.\n- 'You'll miss my apple pie, you're gonna cry' (Extrañarás mi tarta de manzana, vas a llorar): Expresión coloquial que combina la calidez del hogar/afecto cotidiano con una advertencia mordaz. Anastacia ejecuta aquí una transición ascendente al registro de pecho rozando notas al límite del overdrive vocal humano."
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
-        "icon": "fa-quote-left",
-        "text": "Líricamente, \"One Day In Your Life\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
-        "points": [
-          {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de Anastacia aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
-          }
-        ]
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Dirigido por el célebre realizador Dave Meyers y rodado en escenarios marinos entre Santa Mónica y Malibú (California), el videoclip captura la estética vibrante del cambio de milenio. La narrativa visual contrapone entornos playeros cálidos con secuencias de danza de alta energía y giros fantásticos, como gigantescos solos de baile en la arena y escenas en una playa futurista. Anastacia proyecta su icónica imagen de los primeros 2000: sus inseparables gafas de sol de cristales tintados de amarillo, vaqueros de tiro bajo y tops cruzados, consolidando una estética de empoderamiento desenfadado. La dirección fotográfica utiliza saturación de color alta, lentes gran angular y cortes de montaje al ritmo del bombo del mix europeo, reforzando la naturaleza festiva e inquebrantable de la canción."
       },
       {
-        "title": "El Impacto Cultural & Legado",
-        "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"One Day In Your Life\" se mantiene como un himno atemporal dentro de la discografía de Anastacia y una de las composiciones más celebradas de su generación.",
-        "points": [
-          {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Anastacia."
-          }
-        ]
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "La 'European Version' catapultó el sencillo al Top 10 en más de diez países europeos, incluidos el Reino Unido, Alemania, Italia, España y Suiza, además de alcanzar el número 1 en la lista Billboard Hot Dance Club Play en Estados Unidos. Este tema consolidó el estatus de Anastacia como una superestrella global capaz de dominar simultáneamente el mercado pop, las listas de baile y el circuito del rock comercial. Como dato curioso de producción, el término 'Sprock' fue acuñado por la propia Anastacia durante las entrevistas promocionales de esta época para describir cómo esta mezcla europea lograba unir armónicamente la contundencia del Soul, la accesibilidad del Pop y la fuerza del Rock dentro del empaque electrónico del Dance."
       }
-    ]
+    ],
+    "_aiModel": "gemini-3.6-flash"
   },
   "DNA, Suzanne Vega, Neal Slateford, Nick Batt - Tom's Diner": {
     "title": "Tom's Diner",
@@ -101697,63 +101567,37 @@
   "Milk & Sugar, John Paul Young - Love Is in the Air": {
     "title": "Love Is in the Air",
     "artist": "Milk & Sugar, John Paul Young",
-    "year": "2015",
-    "album": "Sugar",
-    "synopsis": "\"Love Is in the Air\" (2015) de Milk & Sugar, John Paul Young es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "year": "2001",
+    "originalAlbum": "Love Is in the Air (Single)",
+    "releaseYear": "2001",
+    "releaseDate": "2001-08-20",
+    "composers": "Harry Vanda, George Young",
+    "label": "Milk & Sugar Recordings",
+    "genre": "House / Nu-Disco",
+    "synopsis": "Esta versión representa la revitalización definitiva del clásico de 1977, fusionando la nostalgia del pop-disco australiano con la efervescencia del house europeo de principios de los 2000. La producción de Milk & Sugar transformó una balada rítmica en un himno de pista de baile, logrando un equilibrio perfecto entre el respeto a la interpretación vocal original de John Paul Young y la implementación de texturas electrónicas contemporáneas que definieron el sonido 'club' de la época.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de Milk & Sugar, John Paul Young",
-        "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de Milk & Sugar, John Paul Young, \"Love Is in the Air\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
-        "points": [
-          {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
-          }
-        ]
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción se aleja de la instrumentación orgánica original para abrazar una estructura de House clásico. Se basa en un bombo (kick) de 4/4 con un marcado acento en el 'off-beat' mediante hi-hats abiertos. El bajo es sintético y percusivo, diseñado para el 'groove' de club. Un elemento técnico clave es el uso de filtros 'low-pass' y 'high-pass' que crean tensión en los puentes, junto con el sampleo inteligente de los metales originales, procesados con compresión paralela para ganar pegada. La voz de John Paul Young fue re-ecualizada para resaltar los medios-altos, permitiendo que cortara a través de la densa mezcla electrónica sin perder su calidez característica."
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
-        "icon": "fa-drum",
-        "text": "La producción de \"Love Is in the Air\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
-        "points": [
-          {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
-          },
-          {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
-          },
-          {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
-          }
-        ]
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La lírica explora el optimismo romántico y la percepción sensorial del amor como un fenómeno atmosférico. 'Love is in the air, in the whisper of the trees' utiliza la personificación de la naturaleza para externalizar un sentimiento interno. El estribillo, 'Love is in the air, everywhere I look around', funciona como un mantra eufórico reforzado por la repetición rítmica del house. Se analiza el uso de la anticipación en versos como 'And I don't know if I'm being foolish', que aporta una vulnerabilidad humana que contrasta con la frialdad mecánica de los sintetizadores, creando una conexión emocional inmediata con el oyente."
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
-        "icon": "fa-quote-left",
-        "text": "Líricamente, \"Love Is in the Air\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
-        "points": [
-          {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de Milk & Sugar, John Paul Young aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
-          }
-        ]
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial captura la estética 'clubbing' de los años 2000, utilizando una paleta de colores saturados y una edición dinámica que sigue el BPM de la pista. La narrativa visual se centra en la universalidad del mensaje, mostrando a personas de diversos trasfondos conectando a través del baile. La presencia de John Paul Young en el material visual actúa como un puente generacional, validando la versión moderna. La fotografía utiliza efectos de 'lens flare' y desenfoques selectivos para emular la sensación de euforia y la 'atmósfera' mencionada en la letra, reforzando el concepto de que el amor es algo tangible en el ambiente."
       },
       {
-        "title": "El Impacto Cultural & Legado",
-        "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Love Is in the Air\" se mantiene como un himno atemporal dentro de la discografía de Milk & Sugar, John Paul Young y una de las composiciones más celebradas de su generación.",
-        "points": [
-          {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Milk & Sugar, John Paul Young."
-          }
-        ]
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "Esta versión alcanzó el Top 40 en el Reino Unido y fue un éxito masivo en las listas de baile de Alemania y España, superando en impacto en las discotecas a la versión original. Fue fundamental para el resurgimiento del 'Nu-Disco', demostrando que los clásicos de los 70 podían ser reempaquetados para la generación 'millennial' sin perder su esencia. Como curiosidad, la colaboración surgió tras el éxito de Milk & Sugar en la escena underground, lo que llevó a John Paul Young a regrabar o autorizar el uso de sus pistas vocales originales, algo poco común para artistas de su calibre en esa época."
       }
-    ]
+    ],
+    "_aiModel": "gemini-3-flash-preview"
   },
   "Boys Town Gang - CAN'T TAKE MY EYES OFF YOU": {
     "title": "CAN'T TAKE MY EYES OFF YOU",
@@ -111276,62 +111120,36 @@
     "title": "I Like to Move It - Erick \"More\" Album Mix",
     "artist": "Reel 2 Real, Erick Morillo, The Mad Stuntman",
     "year": "1993",
-    "album": "Move It!",
-    "synopsis": "\"I Like to Move It - Erick \"More\" Album Mix\" (1993) de Reel 2 Real, Erick Morillo, The Mad Stuntman es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "originalAlbum": "Move It!",
+    "releaseYear": "1993",
+    "releaseDate": "1993-01-01",
+    "composers": "Erick Morillo, Mark Quashie",
+    "label": "Strictly Rhythm",
+    "genre": "House / Eurodance / Reggae Fusion",
+    "synopsis": "El 'Erick \"More\" Album Mix' de 'I Like to Move It' es un pilar fundamental de la música de baile de los años 90, fusionando la crudeza del house neoyorquino con la energía del dancehall y las vocales icónicas de The Mad Stuntman. Producida por Erick Morillo, la mezcla destaca por su bajo pesado, percusión tribal y un diseño sonoro optimizado para la pista de baile que definió la era dorada de los sellos independientes de dance.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de Reel 2 Real, Erick Morillo, The Mad Stuntman",
-        "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de Reel 2 Real, Erick Morillo, The Mad Stuntman, \"I Like to Move It - Erick \"More\" Album Mix\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
-        "points": [
-          {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
-          }
-        ]
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción destaca por el uso de sintetizadores analógicos y cajas de ritmos clásicas como la Roland TR-909, proporcionando un bombo contundente y seco. El arreglo instrumental se basa en un riff de teclado hipnótico y repetitive, fusionado con percusiones latinas y efectos de sonido estridentes. La mezcla prioriza el rango dinámico en los graves, permitiendo que el bajo de tipo Roland TB-303 o similar pulse con fuerza debajo de las ráfagas vocales de The Mad Stuntman. La compresión es agresiva pero controlada, logrando el volumen competitivo característico de los antros de club de principios de los noventa."
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
-        "icon": "fa-drum",
-        "text": "La producción de \"I Like to Move It - Erick \"More\" Album Mix\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
-        "points": [
-          {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
-          },
-          {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
-          },
-          {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
-          }
-        ]
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra es un himno directo a la liberación corporal y al movimiento en la pista de baile, impregnada de la cultura sound system caribeña. Destacan frases como 'I like to move it, move it', que funcionan como un gancho memético irresistible. El uso del patois jamaicano y el estilo toasting por parte de The Mad Stuntman aportan autenticidad y urgencia rítmica, incitando físicamente al oyente a bailar y abandonar las inhibiciones."
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
-        "icon": "fa-quote-left",
-        "text": "Líricamente, \"I Like to Move It - Erick \"More\" Album Mix\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
-        "points": [
-          {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de Reel 2 Real, Erick Morillo, The Mad Stuntman aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
-          }
-        ]
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial y la estética del proyecto reflejan la vibrante atmósfera fiestera de la época, combinando actuaciones enérgicas de Erick Morillo y The Mad Stuntman con bailarines en entornos urbanos y de discoteca. La paleta de colores es saturada y dinámica, capturando la esencia subversiva y festiva de la cultura rave y club de principios de los 90."
       },
       {
-        "title": "El Impacto Cultural & Legado",
-        "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"I Like to Move It - Erick \"More\" Album Mix\" se mantiene como un himno atemporal dentro de la discografía de Reel 2 Real, Erick Morillo, The Mad Stuntman y una de las composiciones más celebradas de su generación.",
-        "points": [
-          {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Reel 2 Real, Erick Morillo, The Mad Stuntman."
-          }
-        ]
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "Este sencillo catapultó a Erick Morillo al estrellato internacional y se convirtió en un éxito masivo en las listas de baile de todo el mundo. Su posterior inclusión en la franquicia cinematográfica 'Madagascar' décadas más tarde renovó su popularidad, convirtiéndolo en un fenómeno transgeneracional inolvidable."
       }
-    ]
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
   },
   "Reel 2 Real, Erick Morillo, The Mad Stuntman - I Like to Move It (feat. The Mad Stuntman) - Erick \"More\" Album Mix": {
     "title": "I Like to Move It - Erick \"More\" Album Mix",
@@ -120079,5 +119897,250 @@
       }
     ],
     "_aiModel": "gemini-3.5-flash-lite"
+  },
+  "Mariah Carey - WITHOUT YOU": {
+    "title": "WITHOUT YOU",
+    "artist": "Mariah Carey",
+    "year": "2016",
+    "originalAlbum": "Music Box",
+    "releaseYear": "1993",
+    "releaseDate": "1993-08-31",
+    "composers": "Pete Ham y Tom Evans",
+    "label": "Columbia Records",
+    "genre": "Pop / Adult Contemporary / Power Ballad",
+    "synopsis": "Análisis exhaustivo de la versión definitiva de la balada de Badfinger interpretada por Mariah Carey, destacando su producción cristalina y sus dinámicas vocales de gran escala. Producida por Walter Afanasieff y la propia Carey, la canción se convirtió en un hito global del pop de los años 90. Combina una instrumentación acústica y orquestal sobria con una ejecución vocal desgarradora y técnicamente impecable.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción, a cargo de Walter Afanasieff y Mariah Carey, se cimenta sobre un arreglo minimalista en su primera mitad que escala progresivamente hacia una power ballad orquestal masiva. Comienza con un piano de cola cálido y cercano, microfoneado con técnicas de condensador para capturar los armónicos de los martillos, acompañado sutilmente por un sintetizador de colchón (pad) que aporta profundidad estéreo. En el plano técnico, la voz principal de Mariah está tratada con una compresión transparente y una reverberación de placa (plate reverb) de alta gama que expande el espacio acústico sin enmascarar la inteligibilidad de las consonantes. El clímax incorpora una sección de cuerdas grabada con múltiples capas para dar opulencia, mientras que los coros de apoyo, también interpretados por Mariah mediante técnicas de 'stacking' vocal, crean un muro de sonido armónico perfectamente afinado y ecualizado para destacar en el rango de medios-altos."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "Escrita originalmente por los miembros de Badfinger Pete Ham y Tom Evans, la letra aborda la devastación emocional y el vacío existencial tras una ruptura amorosa. El verso clave 'I can't live, if living is without you' encapsula la dependencia afectiva llevada al límite absoluto, expresada con una franqueza desgarradora. Líricamente, la canción utiliza un vocabulario sencillo pero de alto impacto dramático, donde cada estrofa eleva la tensión psicológica. La interpretación de Carey no solo transmite la tristeza de la pérdida, sino una fuerza resiliente que transforma la vulnerabilidad en un ejercicio de catarsis vocal a través de melismas precisos y control absoluto del vibrato."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial presenta a Mariah Carey interpretando la canción en un entorno íntimo y natural, destacando una estética sobria y atemporal alejada de los excesos visuales de la época. La fotografía prioriza la iluminación suave y natural, enfocándose en primerios planos que capturan la emotividad genuina de la artista frente a la cámara. Se intercalan escenas donde se la ve caminando al aire libre y en momentos de introspección en un estudio, reforzando la sensación de cercanía, autenticidad y dolor contenido que demanda la interpretación de la letra."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "Aunque originalmente fue un éxito de Harry Nilsson en 1971, la versión de Mariah Carey para su álbum 'Music Box' redefinió el estándar para las baladas pop de los 90 y se convirtió en su primer número uno en el Reino Unido, además de dominar listas en todo el mundo. Curiosamente, Carey decidió grabar la canción tras escucharla en un restaurante y sentir una conexión inmediata con su melodía. Este tema consolidó su estatus no solo como una vocalista prodigiosa, sino como una fuerza comercial imparable a nivel internacional, siendo interpretada en prácticamente todas sus giras mundiales desde entonces."
+      }
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
+  },
+  "Binomio de Oro - Me Sobran las Palabras": {
+    "title": "Me Sobran las Palabras",
+    "artist": "Binomio de Oro",
+    "year": "2008",
+    "originalAlbum": "Vuelve y Pica... El Pollo",
+    "releaseYear": "2008",
+    "releaseDate": "2008-09-15",
+    "composers": "Rosendo Romero",
+    "label": "Codiscos",
+    "genre": "Vallenato Romántico",
+    "synopsis": "Una pieza fundamental del vallenato romántico contemporáneo que define la era de Dubán Bayona en la agrupación. La obra destaca por una producción cristalina que equilibra el virtuosismo técnico del acordeón de Israel Romero con una sensibilidad pop-balada, consolidándose como un estándar de la lírica sentimental colombiana del siglo XXI.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La canción está construida sobre un ritmo de 'paseo' vallenato con una cadencia moderada que facilita la introspección lírica. La producción destaca por la separación de frecuencias: el acordeón de Israel Romero actúa como una segunda voz, utilizando registros brillantes y adornos técnicos (pitos) que no saturan el espectro medio. El bajo eléctrico sigue una línea melódica activa pero contenida, mientras que la percusión (caja y guacharaca) mantiene un brillo digital característico de las grabaciones de Codiscos de finales de los 2000. La mezcla sitúa la voz de Dubán Bayona al frente, con una compresión suave y un 'reverb' de sala corta que acentúa su timbre juvenil y melódico."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "Escrita por Rosendo Romero, 'El Poeta de Villanueva', la letra explora la insuficiencia del lenguaje ante la plenitud emocional. El verso central 'Me sobran las palabras para decir que te quiero' es una paradoja poética que utiliza la hipérbole para describir un sentimiento desbordante. La estructura sigue el canon del vallenato lírico: una introducción descriptiva, un puente que eleva la tensión emocional y un coro hímnico. Se observa un uso de metáforas naturales y cotidianas que humanizan el romance, alejándose de la cursilería genérica para abrazar una narrativa de entrega absoluta y vulnerabilidad masculina."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial refuerza la estética de 'boy band' vallenata que el Binomio de Oro de América perfeccionó en esta etapa. Con una fotografía de alto contraste y locaciones que alternan entre interiores elegantes y exteriores urbanos, el video se centra en la interpretación apasionada de los vocalistas. La narrativa visual es sencilla pero efectiva, enfocándose en la expresión facial y el lenguaje corporal para transmitir la nostalgia y el deseo que dicta la letra. La imagen proyectada es de modernidad y sofisticación, buscando atraer a un público joven y urbano sin perder la esencia folclórica del instrumento líder."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "Este tema marcó el éxito definitivo de la transición vocal tras la salida de figuras históricas, demostrando que la 'Universidad del Vallenato' seguía vigente bajo la dirección de Israel Romero. 'Me Sobran las Palabras' se convirtió en un fenómeno en las listas de éxitos de Colombia, Venezuela y Ecuador, siendo hoy un tema obligatorio en el repertorio de serenatas y celebraciones románticas. Es considerada una de las últimas grandes composiciones de Rosendo Romero que logró un impacto masivo global, uniendo la tradición de la composición clásica con los estándares de la industria musical moderna."
+      }
+    ],
+    "_aiModel": "gemini-3-flash-preview"
+  },
+  "El Canto del Loco - Zapatillas": {
+    "title": "Zapatillas",
+    "artist": "El Canto del Loco",
+    "year": "2005",
+    "originalAlbum": "Zapatillas",
+    "releaseYear": "2005",
+    "releaseDate": "2005-05-16",
+    "composers": "Dani Martín y David Otero",
+    "label": "Ariola / Sony BMG",
+    "genre": "Pop Rock / Rock Español",
+    "synopsis": "“Zapatillas” es el himno generacional definitivo de El Canto del Loco, consolidando el sonido pop-rock enérgico, guitarrero y de estribillos hiperventilados que dominó la España de mediados de los 2000. Producida con un enfoque directo y comercial, la canción combina una base rítmica implacable con guitarras distorsionadas pero luminosas, sosteniendo una lírica de rebeldía juvenil, autenticidad y el deseo de escapar de la hipervigilancia adulta.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción, a cargo de Nigel Walker, destaca por su sonido orgánico pero sumamente pulido para el mercado de masas. La instrumentación se cimenta sobre una doble pista de guitarras eléctricas rítmicas con un crunch moderado, paneadas estratégicamente a izquierda y derecha para abrir el espectro estéreo, mientras que la guitarra principal de David Otero ejecuta riffs melódicos de corte afilado en las transiciones. El bajo, interpretado por Chema Ruiz, posee un tono medioso y percusivo que empasta perfectamente con el bombo de la batería, generando un groove de rock acelerado cercano al punk-pop comercial. La voz principal de Dani Martín está grabada con una presencia frontal muy marcada, utilizando compresión rápida para controlar los picos dinámicos de su interpretación vocal rasgada y urgente, apoyada por coros doblados en las octavas altas durante el estribillo para maximizar el impacto emocional y la pegada."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "Temáticamente, la canción aborda el conflicto entre la presión social, el qué dirán y la necesidad visceral de libertad y diversión nocturna sin pretensiones. Versos clave como 'Me he comprado unas zapatillas por 3 euros en el mercadillo / para salir a vacilar' contraponen el desparpajo y la clase obrera juvenil frente al esnobismo. Líricamente, el uso de jerga coloquial española ('vacilar', 'porros', 'camisetas') refuerza la empatía inmediata con la audiencia adolescente, convirtiendo un acto cotidiano de rebeldía en una declaración de principios generacional sobre la autenticidad frente a la impostura adulta."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial refleja la estética desenfadada y gamberra del grupo. Muestra a la banda interpretando el tema en directo en un ambiente de fiesta improvisada, rodeados de fans, con una paleta de colores cálidos y una edición de corte dinámico que simula la energía de un concierto de rock en salas pequeñas. El vestuario, compuesto por ropa urbana informal, zapatillas desgastadas y actitud despreocupada, refuerza el mensaje de accesibilidad y cercanía con su público, alejándose del divismo de las grandes estrellas del rock tradicional."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "'Zapatillas' funcionó como el sencillo principal indiscutible del álbum homónimo, catapultando a El Canto del Loco al número 1 absoluto de las listas de ventas y radiofórmulas en España durante el verano de 2005. Se convirtió en un fenómeno cultural masivo, coreado por cientos de miles de personas en su histórica gira por estadios y plazas de toros, y permanece hasta hoy como uno de los tesoros más preciados del pop-rock español del siglo XXI."
+      }
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
+  },
+  "Suspicious - Maid of Orleans": {
+    "title": "Maid of Orleans",
+    "artist": "Suspicious",
+    "year": "2000",
+    "originalAlbum": "Maid of Orleans",
+    "releaseYear": "2000",
+    "releaseDate": "2000-05-22",
+    "composers": "Douglas McCarthy, Bon Harris",
+    "label": "Alphabet City",
+    "genre": "Trance / Progressive Trance",
+    "synopsis": "Esta versión de Suspicious es una reinterpretación trance del clásico de OMD, caracterizada por una arquitectura sonora de alta energía y sintetizadores envolventes. La producción se aleja del minimalismo new wave original para adoptar un pulso rítmico implacable, diseñado para el apogeo de la cultura club europea de finales de los 90 y principios de los 2000.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción se basa en un diseño de sonido centrado en arpegios de sintetizador multicapa y un 'kick drum' de alta compresión típico del trance de la época. Se utilizan pads atmosféricos que emulan la melancolía del original, pero procesados con efectos de reverb y delay extensivos. La estructura sigue una progresión ascendente, con cortes de frecuencia precisos que permiten que la línea de bajo mantenga el groove mientras los leads melódicos dominan el espectro de frecuencias medias-altas."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra mantiene la esencia histórica sobre Juana de Arco, explorando el sacrificio y la visión mística. Versos como 'The bells of St. Genevieve' se repiten como un mantra hipnótico, integrándose en la textura rítmica. La voz, tratada con vocoder y efectos de modulación, pierde su carácter humano para convertirse en un instrumento más dentro de la amalgama electrónica, reforzando la frialdad y el desapego emocional del género trance."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "La estética visual asociada a este lanzamiento se aleja de la narrativa histórica tradicional, optando por una iconografía futurista y abstracta. La portada y el material promocional utilizan colores fríos, texturas digitales y formas geométricas que reflejan la naturaleza sintética de la producción musical, alejándose de la iconografía medieval del original de 1982."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "Esta versión se convirtió en un elemento básico en las sesiones de DJ de trance en Alemania y el Benelux durante el año 2000. Su éxito radica en la capacidad de Suspicious para adaptar un himno melódico de los 80 a la pista de baile contemporánea, demostrando la longevidad de la composición original de OMD al ser reinterpretada bajo un prisma de música electrónica de baile (EDM) de alta fidelidad."
+      }
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
+  },
+  "Mystic, Dj T.H., Nadi Sunrise - Ritmo De La Noche": {
+    "title": "Ritmo De La Noche",
+    "artist": "Mystic, Dj T.H., Nadi Sunrise",
+    "year": "2021",
+    "originalAlbum": "Ritmo De La Noche (Single)",
+    "releaseYear": "2021",
+    "releaseDate": "2021-07-16",
+    "composers": "Alex Christensen, Peter Könemann, Pierluigi Giombini, Paul Mazzolini",
+    "label": "ZYX Music",
+    "genre": "Uplifting Trance / Eurodance / Electronic",
+    "synopsis": "Esta reinterpretación de 2021 del clásico del Eurodance fusiona la nostalgia vocal de la versión original de Mystic con la arquitectura contemporánea del Uplifting Trance impulsada por DJ T.H. y Nadi Sunrise. Con un tempo elevado a 138 BPM, sintes de tipo supersaw hiperdimensionales y una línea de bajo arpegiada en sidechain, la producción transforma el himno noventero en una pieza de alta energía concebida para escenarios de festivales principales y pistas de baile de gran formato.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción instrumental reconstruye el marco armónico original sobre una cuadrícula métrica de 4/4 a 138 BPM en tonalidad de La menor. La sección rítmica destaca por un bombo fático con punch en los 50 Hz y una cola limpia recortada mediante envolventes de amplitud agresivas. La línea de bajo rolling en tres capas (sub sinusoidal a 40 Hz, mid-bass con onda de sierra saturada y un top-bass con filtro de corte rápido) proporciona la fuerza impulsora característica del trance alemán. Los sintetizadores principales emplean arquitecturas supersaw con desintonización (detune) extendida y un panoramizado estéreo ultra-amplio. Durante la fase de mezcla, la voz de Mystic fue sometida a un ecualizador quirúrgico eliminando frecuencias graves por debajo de los 160 Hz, aplicando compresión multibanda para emparejar el rango dinámico y aderezada con delays estéreo ping-pong sincronizados a corcheas puntillo y reverbs de convolución de gran espacio."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La lírica rinde homenaje al escapismo nocturno y la catarsis festiva, utilizando el español como vehículo de dinamismo rítmico y gancho global. El verso icónico 'Ritmo de la noche / Viva la noche' actúa como mantra central de liberación hedonista. La estructura del texto es intencionadamente minimalista y cíclica, optimizada para la memorización inmediata y el coreo multitudinario en clubes. En la autopsia vocal, la interpretación sostiene un fraseo rítmicamente sincopado que encaja perfectamente con el pulso contratiempo de los hi-hats. Los dobles sentidos residen en la personificación de la 'noche' no como mero espacio temporal, sino como una entidad colectiva de pertenencia y abandono de las tensiones del plano cotidiano."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "La presentación visual de esta versión se apoya en una estética marcadamente electrónica y veraniega, centrada en el concepto del 'Trance de festival'. La portada oficial e iconografía gráfica utilizan tipografía futurista en neón sobre fondos de atardeceres tropicales e iluminaciones de láseres de festival, simbolizando el choque entre la calidez del verano ibicenco y la frialdad sintética de la música Trance de vanguardia. Las secuencias promocionales y visualizadores de audio integran cortes rápidos de espectáculos de luces, pirotecnia de club y multitudes en trance colectivo, alineándose con la identidad visual del sello ZYX Music y los directos de DJ T.H. y Nadi Sunrise."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "El tema original de 'Ritmo de la Noche' (con composiciones entrelazadas que derivan históricamente del sampleo de 'I Like Chopin' de Gazebo y reescrituras de los 90) es uno de los ganchos más versionados de la historia de la música de baile. Esta colaboración entre el grupo icónico Mystic y los productores alemanes de trance DJ T.H. y Nadi Sunrise logró revitalizar la obra para la generación de la escena Trance actual, obteniendo respaldo masivo en programas de radio especializados como 'A State of Trance' (ASOT) y 'Future Sound of Egypt'. Representa un puente generacional perfecto entre el Eurodance comercial noventero y la sofisticación técnica del Uplifting Trance del siglo XXI."
+      }
+    ],
+    "_aiModel": "gemini-3.5-flash"
+  },
+  "Avicii, Nicky Romero - I Could Be the One (Avicii vs. Nicky Romero)": {
+    "title": "I Could Be the One (Avicii vs. Nicky Romero)",
+    "artist": "Avicii, Nicky Romero",
+    "year": "2012",
+    "originalAlbum": "I Could Be the One",
+    "releaseYear": "2012",
+    "releaseDate": "2012-12-26",
+    "composers": "Tim Bergling, Nick Rotteveel, Arash Pournouri, Jonnali Parmenius, Linus Wiklund, Måns Wredenberg",
+    "label": "LE7ELS / Universal Music",
+    "genre": "Progressive House / EDM",
+    "synopsis": "'I Could Be the One' representa la cúspide del Progressive House de la era dorada del EDM (2010-2015). Nacida de la fusión de dos maquetas instrumentales ('Nicktim' y 'Justice'), la colaboración entre Avicii y Nicky Romero sintetiza a la perfección la expresividad melódica del sueco con la contundencia sonora y el diseño de percusión del holandés. Con la voz etérea pero emocional de Noonie Bao, la pista trasciende el formato de club para convertirse en un himno pop global de catarsis y liberación existencial.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La pista está compuesta en la tonalidad de La menor (A minor) con una métrica estándar de 4/4 a un tempo característico de 128 BPM. La arquitectura sonora es un logro de diseño de sintetizadores y estratificación (layering). El gancho principal utiliza parches combinados de LennarDigital Sylenth1 y re-muestreos procesados en reFX Nexus, filtrados con ecualización de corte alto progresivo para crear una apertura dramática antes del 'drop'. Las voces de Noonie Bao (Jonnali Parmenius), no acreditadas en el título principal, se procesaron con sutil pitch-shifting y compresión agresiva (Universal Audio LA-2A) para integrarse limpiamente sobre una densa pared de frecuencias medias. El bombo de Nicky Romero fue afinado para pegarle con precisión al sub-bajo en 55 Hz, mientras que un procesamiento de sidechain extremo (usando Cableguys VolumeShaper) crea ese bombeo rítmico respiratorio característico del EDM que deja espacio dinámico para los supersaw leads."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "Escrita por Noonie Bao y Linus Wiklund, la letra aborda la alienación urbana, el agotamiento laboral y el anhelo de escapismo romántico o existencial.\n\n- 'Do you ever feel like you're stuck in a time loop?' ('¿Alguna vez sientes que estás atrapado en un bucle temporal?'): Establece el diagnóstico psicológico inicial; la monotonía alienante de la rutina diaria y el automatismo del trabajo corporativo.\n- 'I could be the one to set you free / Could be the one to help you be anything you wanna be' ('Yo podría ser quien te libere / Podría ser quien te ayude a ser cualquier cosa que quieras ser'): El estribillo actúa como un catalizador de esperanza y catarsis, ofreciendo la conexión humana y la música como vehículo de redención y transformación personal."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Dirigido por Peter Huang y protagonizado por la actriz Inessa Frantowski, el vídeo musical es una sátira de humor negro sobre el colapso mental provocado por la cultura corporativa. La narrativa sigue a una empleada de oficina apática y maltratada que despierta en un bucle sombrío. Tras una crisis de identidad visualizada con colores desaturados, destroza su oficina y emprende un viaje impulsivo a un resort en Barbados. La fotografía cambia drásticamente a tonos tropicales hiper-saturados mientras ella experimenta la libertad hedonista. El trágico y cómico giro final —donde despierta de su fantasía justo antes de ser atropellada por un autobús— simboliza la brecha ineludible entre la fantasía de evasión del individuo y la cruda realidad del sistema."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "El tema debutó en el número 1 del UK Singles Chart en febrero de 2013, otorgando tanto a Avicii como a Nicky Romero su primer sencillo número uno en el Reino Unido. Acumuló múltiples certificaciones de platino a nivel mundial y se convirtió en uno de los himnos de festivales más dominantes de 2013 (Tomorrowland, Ultra Music Festival). Curiosamente, la canción circuló durante meses en los sets de los DJs como un bootleg instrumental titulado 'Nicktim' (acrónimo de Nicky y Tim). Cuando incorporaron la pista vocal escrita por Noonie Bao —grabada originalmente de forma independiente en Estocolmo—, la estructura del tema cambió para convertirse en un éxito radiofónico definitivo."
+      }
+    ],
+    "_aiModel": "gemini-3.6-flash"
+  },
+  "Amy Macdonald - This is the life": {
+    "title": "This is the life",
+    "artist": "Amy Macdonald",
+    "year": "2007",
+    "originalAlbum": "This Is the Life",
+    "releaseYear": "2007",
+    "releaseDate": "2007-12-10",
+    "composers": "Amy Macdonald",
+    "label": "Vertigo Records",
+    "genre": "Indie Folk / Folk Pop",
+    "synopsis": "Himno generacional del indie-folk europeo de finales de los 2000, 'This is the life' destaca por su propulsión rítmica acústica y la distintiva voz contralto de Macdonald. La obra encapsula la efervescencia de la juventud y la cultura nocturna urbana, logrando un equilibrio técnico entre la crudeza del folk tradicional y la pulcritud de la producción pop-rock contemporánea.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La arquitectura sonora se basa en un rasgueo de guitarra acústica altamente percusivo en 4/4, que actúa como el motor rítmico principal. Producida por Pete Wilkinson, la pista evita la sobreproducción; el bombo (kick drum) mantiene un patrón 'four-on-the-floor' que le otorga una cualidad bailable inusual para el género folk. Se observa un uso estratégico de la compresión en la voz para resaltar el acento escocés y la textura natural de Macdonald, mientras que los arreglos de cuerdas y teclados en el fondo añaden profundidad armónica sin saturar el espectro de frecuencias medias."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La narrativa explora la observación social y el escapismo nocturno. Versos como 'And you're singing the songs, thinking this is the life' capturan la epifanía del momento presente. El trasfondo psicológico refleja la transición de la adolescencia a la madurez, observando a los 'personajes' de la noche con una mezcla de cinismo y pertenencia. La estructura lírica utiliza rimas sencillas pero efectivas que facilitan la memorización, reforzando su naturaleza de himno 'sing-along' en festivales."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Dirigido por Lindy Heymann, el videoclip emplea una estética de realismo social. Alterna entre planos de Macdonald interpretando la canción en una fiesta doméstica y secuencias de ella caminando por entornos urbanos nocturnos. La fotografía utiliza una paleta de colores cálidos y una iluminación naturalista que refuerza la autenticidad de la artista, alejándose de los tropos glamurosos del pop comercial de la época para alinearse con la honestidad del movimiento indie."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "La canción fue un fenómeno comercial masivo, alcanzando el número 1 en diez países europeos. Curiosamente, Macdonald escribió la canción tras asistir a un concierto de Pete Doherty, inspirada por el caos y la energía de la escena musical londinense. A pesar de su sonido optimista, la letra posee una melancolía subyacente sobre la naturaleza efímera de la fiesta. Ha sido certificada con múltiples discos de platino y sigue siendo una de las piezas de indie-folk más radiadas del siglo XXI."
+      }
+    ],
+    "_aiModel": "gemini-3-flash-preview"
   }
 }
