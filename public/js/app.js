@@ -1322,6 +1322,23 @@ function formatTime(seconds) {
     const resultsCountText = document.getElementById('results-count-text');
     const btnJellyfinSync = document.getElementById('btn-jellyfin-sync');
     const btnSmartDj = document.getElementById('btn-smart-dj');
+    const btnPartyConfig = document.getElementById('btn-party-config');
+    const btnSidebarPartyConfig = document.getElementById('btn-sidebar-party-config');
+    const partyModal = document.getElementById('party-modal');
+    const btnClosePartyModal = document.getElementById('btn-close-party-modal');
+    const partyPlaylistsList = document.getElementById('party-playlists-list');
+    const btnPartyPresetAll = document.getElementById('btn-party-preset-all');
+    const btnPartyPresetClassics = document.getElementById('btn-party-preset-classics');
+    const btnPartyPresetModern = document.getElementById('btn-party-preset-modern');
+    const btnPartyPresetClear = document.getElementById('btn-party-preset-clear');
+    const btnPartySaveOnly = document.getElementById('btn-party-save-only');
+    const btnPartyStartNow = document.getElementById('btn-party-start-now');
+    const btnSmartDjLabel = document.getElementById('btn-smart-dj-label');
+    const partySelectedCount = document.getElementById('party-selected-count');
+    const partyTotalTracksCount = document.getElementById('party-total-tracks-count');
+
+    let currentPartyPoolKey = 'global_party';
+    let currentPartySelectedPlaylists = [];
     const btnOpenStats = document.getElementById('btn-open-stats');
     const btnPlaylistShuffle = document.getElementById('btn-playlist-shuffle');
     const quickPillsBar = document.getElementById('quick-pills-bar');
@@ -1661,6 +1678,7 @@ function formatTime(seconds) {
                 }
                 allPlaylists = sanitizePlaylistTracks(data);
                 updateTabBadges();
+                updatePartyDjButtonLabel();
                 renderSongs();
                 handleAutoStartUrl();
             })
@@ -2113,7 +2131,7 @@ function formatTime(seconds) {
         }
         
         if (playbackMode === 'party_dj') {
-            markTrackAsPlayed('global_party', track);
+            markTrackAsPlayed(currentPartyPoolKey || 'global_party', track);
         } else if (playbackMode === 'search_shuffle' && currentSearchShufflePoolKey) {
             markTrackAsPlayed(currentSearchShufflePoolKey, track);
         }
@@ -2269,7 +2287,7 @@ function formatTime(seconds) {
                     const playlistName = currentPlayingSong?.playlistName || currentTab;
                     startPlaylistShuffle(playlistName);
                 } else if (playbackMode === 'party_dj') {
-                    startPartyDjMode();
+                    startPartyDjMode(currentPartySelectedPlaylists);
                 }
             }
         } else if (playbackMode === 'single' && activePlaylistQueue && activePlaylistQueue.length > 0 && currentQueueIndex + 1 < activePlaylistQueue.length) {
@@ -2593,25 +2611,345 @@ function formatTime(seconds) {
         });
     }
 
-    function startPartyDjMode() {
-        let allTracks = [];
-        for (const [pName, tracks] of Object.entries(allPlaylists)) {
-            tracks.forEach(t => allTracks.push({ ...t, playlistName: pName }));
-        }
-        if (allTracks.length === 0) return;
+    // ==========================================================================
+    // 🎛️ MODO FIESTA CONFIGURABLE (Multi-lista inteligente)
+    // ==========================================================================
 
-        const { unplayed, playedCount, total } = getUnplayedPool('global_party', allTracks);
+    function getValidPartyPlaylistNames() {
+        if (!allPlaylists || typeof allPlaylists !== 'object') return [];
+        return Object.keys(allPlaylists).filter(name => {
+            return name !== 'Radio' && 
+                   name !== 'Éxitos España' && 
+                   Array.isArray(allPlaylists[name]) && 
+                   allPlaylists[name].length > 0;
+        });
+    }
+
+    function getSavedPartyPlaylists() {
+        const valid = getValidPartyPlaylistNames();
+        try {
+            const raw = safeStorage.getItem('party_selected_playlists');
+            if (raw) {
+                const parsed = JSON.parse(raw);
+                if (Array.isArray(parsed) && parsed.length > 0) {
+                    if (valid.length > 0) {
+                        const filtered = parsed.filter(p => valid.includes(p));
+                        if (filtered.length > 0) return filtered;
+                    } else {
+                        return parsed;
+                    }
+                }
+            }
+        } catch (e) {
+            console.warn('Error leyendo party_selected_playlists:', e);
+        }
+        return valid.length > 0 ? [...valid] : ['Música viejuna', 'Siglo XXI', 'Dance', 'Española', 'Música latina'];
+    }
+
+    function savePartyPlaylists(list) {
+        if (!Array.isArray(list)) return;
+        safeStorage.setItem('party_selected_playlists', JSON.stringify(list));
+        currentPartySelectedPlaylists = [...list];
+        updatePartyDjButtonLabel();
+    }
+
+    function updatePartyDjButtonLabel() {
+        const valid = getValidPartyPlaylistNames();
+        const saved = getSavedPartyPlaylists();
+        const isAll = valid.length > 0 && valid.every(v => saved.includes(v)) && saved.length >= valid.length;
+
+        if (btnSmartDjLabel) {
+            if (isAll) {
+                btnSmartDjLabel.textContent = 'Modo Fiesta';
+            } else if (saved.length === 0) {
+                btnSmartDjLabel.textContent = 'Fiesta (0 listas)';
+            } else if (saved.length === 1) {
+                btnSmartDjLabel.textContent = `Fiesta (${saved[0]})`;
+            } else {
+                btnSmartDjLabel.textContent = `Fiesta (${saved.length} listas)`;
+            }
+        }
+
+        if (btnSmartDj) {
+            const titleText = isAll
+                ? 'Modo Fiesta: Todas las listas en aleatorio inteligente'
+                : `Modo Fiesta activo en: ${saved.join(' + ')}`;
+            btnSmartDj.setAttribute('title', titleText);
+        }
+    }
+
+    function getPlaylistMeta(name) {
+        const norm = normalizeText(name);
+        if (norm.includes('viejun') || norm.includes('clasic') || norm.includes('70') || norm.includes('80')) {
+            return { icon: 'fa-solid fa-compact-disc', color: '#ffb300', desc: 'Clásicos y retro inolvidables' };
+        }
+        if (norm.includes('siglo') || norm.includes('xxi') || norm.includes('pop')) {
+            return { icon: 'fa-solid fa-bolt', color: '#00d2ff', desc: 'Grandes éxitos modernos y pop' };
+        }
+        if (norm.includes('dance') || norm.includes('electro') || norm.includes('house')) {
+            return { icon: 'fa-solid fa-headphones', color: '#ff007f', desc: 'Electrónica de club y ritmo bailable' };
+        }
+        if (norm.includes('espanol') || norm.includes('spanish')) {
+            return { icon: 'fa-solid fa-guitar', color: '#ff7043', desc: 'Lo mejor del pop y rock en español' };
+        }
+        if (norm.includes('latin') || norm.includes('reggaeton') || norm.includes('bachata') || norm.includes('salsa')) {
+            return { icon: 'fa-solid fa-fire', color: '#ffa000', desc: 'Sabor latino y fiesta bailable' };
+        }
+        return { icon: 'fa-solid fa-music', color: '#00d2ff', desc: 'Lista de reproducción musical' };
+    }
+
+    function renderPartyModalPlaylists() {
+        if (!partyPlaylistsList) return;
+        const validLists = getValidPartyPlaylistNames();
+        const saved = getSavedPartyPlaylists();
+
+        partyPlaylistsList.innerHTML = '';
+
+        if (validLists.length === 0) {
+            partyPlaylistsList.innerHTML = '<div style="padding: 24px; text-align: center; color: var(--text-muted); font-size: 0.95rem;">No hay listas de reproducción disponibles</div>';
+            updatePartyModalSummary();
+            return;
+        }
+
+        validLists.forEach(name => {
+            const meta = getPlaylistMeta(name);
+            const count = (allPlaylists[name] || []).length;
+            const isChecked = saved.includes(name);
+
+            const item = document.createElement('label');
+            item.className = 'party-playlist-item' + (isChecked ? ' selected' : '');
+            item.innerHTML = `
+                <input type="checkbox" class="party-modal-checkbox" data-playlist="${encodeURIComponent(name)}" ${isChecked ? 'checked' : ''}>
+                <div class="party-item-icon" style="background: ${meta.color}20; color: ${meta.color}; border: 1px solid ${meta.color}55;">
+                    <i class="${meta.icon}"></i>
+                </div>
+                <div class="party-item-info">
+                    <div class="party-item-name">${name}</div>
+                    <div class="party-item-desc">${meta.desc}</div>
+                </div>
+                <div class="party-item-count"><i class="fa-solid fa-music"></i> ${count}</div>
+            `;
+
+            const chk = item.querySelector('.party-modal-checkbox');
+            chk.addEventListener('change', () => {
+                if (chk.checked) {
+                    item.classList.add('selected');
+                } else {
+                    item.classList.remove('selected');
+                }
+                updatePartyModalSummary();
+            });
+
+            partyPlaylistsList.appendChild(item);
+        });
+
+        updatePartyModalSummary();
+    }
+
+    function getSelectedModalPlaylists() {
+        if (!partyPlaylistsList) return [];
+        const checkboxes = partyPlaylistsList.querySelectorAll('.party-modal-checkbox:checked');
+        const selected = [];
+        checkboxes.forEach(cb => {
+            const pName = decodeURIComponent(cb.getAttribute('data-playlist'));
+            selected.push(pName);
+        });
+        return selected;
+    }
+
+    function updatePartyModalSummary() {
+        const selected = getSelectedModalPlaylists();
+        let totalTracks = 0;
+        selected.forEach(p => {
+            totalTracks += (allPlaylists[p] || []).length;
+        });
+
+        if (partySelectedCount) {
+            partySelectedCount.textContent = `${selected.length} seleccionada${selected.length === 1 ? '' : 's'}`;
+        }
+        if (partyTotalTracksCount) {
+            partyTotalTracksCount.textContent = `${totalTracks.toLocaleString('es-ES')} canciones en rotación`;
+        }
+
+        if (btnPartyStartNow) {
+            btnPartyStartNow.disabled = selected.length === 0;
+        }
+    }
+
+    function openPartyModal() {
+        if (!partyModal) return;
+        renderPartyModalPlaylists();
+        if (typeof partyModal.showModal === 'function') {
+            partyModal.showModal();
+        } else {
+            partyModal.setAttribute('open', '');
+        }
+    }
+
+    function closePartyModal() {
+        if (!partyModal) return;
+        if (typeof partyModal.close === 'function') {
+            partyModal.close();
+        } else {
+            partyModal.removeAttribute('open');
+        }
+    }
+
+    // Presets del Modal
+    if (btnPartyPresetAll) {
+        btnPartyPresetAll.addEventListener('click', () => {
+            if (!partyPlaylistsList) return;
+            partyPlaylistsList.querySelectorAll('.party-playlist-item').forEach(item => {
+                const chk = item.querySelector('.party-modal-checkbox');
+                if (chk) chk.checked = true;
+                item.classList.add('selected');
+            });
+            updatePartyModalSummary();
+        });
+    }
+
+    if (btnPartyPresetClassics) {
+        btnPartyPresetClassics.addEventListener('click', () => {
+            if (!partyPlaylistsList) return;
+            partyPlaylistsList.querySelectorAll('.party-playlist-item').forEach(item => {
+                const chk = item.querySelector('.party-modal-checkbox');
+                if (!chk) return;
+                const name = decodeURIComponent(chk.getAttribute('data-playlist')).toLowerCase();
+                const isClassic = name.includes('viejun') || name.includes('español') || name.includes('espanol');
+                chk.checked = isClassic;
+                if (isClassic) item.classList.add('selected');
+                else item.classList.remove('selected');
+            });
+            updatePartyModalSummary();
+        });
+    }
+
+    if (btnPartyPresetModern) {
+        btnPartyPresetModern.addEventListener('click', () => {
+            if (!partyPlaylistsList) return;
+            partyPlaylistsList.querySelectorAll('.party-playlist-item').forEach(item => {
+                const chk = item.querySelector('.party-modal-checkbox');
+                if (!chk) return;
+                const name = decodeURIComponent(chk.getAttribute('data-playlist')).toLowerCase();
+                const isModern = name.includes('siglo') || name.includes('dance') || name.includes('latin');
+                chk.checked = isModern;
+                if (isModern) item.classList.add('selected');
+                else item.classList.remove('selected');
+            });
+            updatePartyModalSummary();
+        });
+    }
+
+    if (btnPartyPresetClear) {
+        btnPartyPresetClear.addEventListener('click', () => {
+            if (!partyPlaylistsList) return;
+            partyPlaylistsList.querySelectorAll('.party-playlist-item').forEach(item => {
+                const chk = item.querySelector('.party-modal-checkbox');
+                if (chk) chk.checked = false;
+                item.classList.remove('selected');
+            });
+            updatePartyModalSummary();
+        });
+    }
+
+    if (btnPartySaveOnly) {
+        btnPartySaveOnly.addEventListener('click', () => {
+            const selected = getSelectedModalPlaylists();
+            if (selected.length === 0) {
+                alert('Debes seleccionar al menos una lista para el Modo Fiesta.');
+                return;
+            }
+            savePartyPlaylists(selected);
+            closePartyModal();
+            showSyncNotification(`💾 Guardado: Modo Fiesta configurado con ${selected.length} lista${selected.length === 1 ? '' : 's'}`);
+        });
+    }
+
+    if (btnPartyStartNow) {
+        btnPartyStartNow.addEventListener('click', () => {
+            const selected = getSelectedModalPlaylists();
+            if (selected.length === 0) {
+                alert('Debes seleccionar al menos una lista para reproducir.');
+                return;
+            }
+            savePartyPlaylists(selected);
+            closePartyModal();
+            startPartyDjMode(selected);
+        });
+    }
+
+    if (btnPartyConfig) {
+        btnPartyConfig.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            openPartyModal();
+        });
+    }
+
+    if (btnSidebarPartyConfig) {
+        btnSidebarPartyConfig.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            openPartyModal();
+        });
+    }
+
+    if (btnClosePartyModal) {
+        btnClosePartyModal.addEventListener('click', closePartyModal);
+    }
+
+    if (partyModal) {
+        partyModal.addEventListener('click', (e) => {
+            const rect = partyModal.getBoundingClientRect();
+            const isInDialog = (rect.top <= e.clientY && e.clientY <= rect.top + rect.height
+              && rect.left <= e.clientX && e.clientX <= rect.left + rect.width);
+            if (!isInDialog) {
+                closePartyModal();
+            }
+        });
+    }
+
+    function startPartyDjMode(targetLists = null) {
+        const valid = getValidPartyPlaylistNames();
+        const selected = (Array.isArray(targetLists) && targetLists.length > 0)
+            ? targetLists
+            : getSavedPartyPlaylists();
+
+        currentPartySelectedPlaylists = [...selected];
+
+        let allTracks = [];
+        for (const pName of selected) {
+            const tracks = allPlaylists[pName];
+            if (Array.isArray(tracks)) {
+                tracks.forEach(t => allTracks.push({ ...t, playlistName: pName }));
+            }
+        }
+        if (allTracks.length === 0) {
+            showSyncNotification('⚠️ Las listas seleccionadas para Modo Fiesta están vacías o no disponibles.');
+            return;
+        }
+
+        const isAll = valid.length > 0 && valid.every(v => selected.includes(v)) && selected.length >= valid.length;
+        currentPartyPoolKey = isAll ? 'global_party' : ('party_mix_' + [...selected].sort().map(normalizeText).join('_'));
+
+        const { unplayed, playedCount, total } = getUnplayedPool(currentPartyPoolKey, allTracks);
         const shuffled = smartPrioritizedShuffle(unplayed);
         playbackMode = 'party_dj';
         activePlaylistQueue = shuffled;
         currentQueueIndex = 0;
 
-        playQueueTrack(activePlaylistQueue[0], `Modo Fiesta (${playedCount + 1}/${total})`);
+        const labelPrefix = isAll
+            ? 'Modo Fiesta'
+            : (selected.length === 1 ? `Fiesta (${selected[0]})` : `Fiesta (${selected.length} listas)`);
+
+        playQueueTrack(activePlaylistQueue[0], `${labelPrefix} (${playedCount + 1}/${total})`);
         maybeOpenCinemaForPublicShuffle();
     }
 
     if (btnSmartDj) {
-        btnSmartDj.addEventListener('click', startPartyDjMode);
+        btnSmartDj.addEventListener('click', () => {
+            startPartyDjMode();
+        });
     }
 
     // ==========================================================================

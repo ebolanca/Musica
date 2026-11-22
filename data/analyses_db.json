@@ -7312,31 +7312,36 @@
     "title": "Relax",
     "artist": "Frankie Goes To Hollywood",
     "year": "1983",
-    "album": "Maximum Joy",
-    "synopsis": "«Relax» es un hito de la producción synth-pop de 1983, esculpido magistralmente por Trevor Horn en los estudios Sarm West de Londres. Su tesis sónica combina una densa polifonía de sintetizadores analógicos, secuenciadores hipermetronómicos y una compresión brutal tipo bus-compressor que definió el sonido maximalista de la década. Lejos de ser un producto independiente menor, se convirtió en un fenómeno de masas global catapultado por una audaz estrategia de marketing basada en la controversia sexual.",
+    "originalAlbum": "Welcome to the Pleasuredome",
+    "releaseYear": "1983",
+    "releaseDate": "1983-10-24",
+    "composers": "Peter Gill, Holly Johnson, Brian Nash, Mark O'Toole",
+    "label": "ZTT Records",
+    "genre": "Synth-pop / Hi-NRG / New Wave",
+    "synopsis": "Relax es un hito de la producción de Trevor Horn, caracterizado por su uso pionero de cajas de ritmos Roland TR-808 y sintetizadores modulares que definieron el sonido pop de los 80. La canción combina una estética hedonista con una arquitectura sonora densa y altamente procesada, convirtiéndose en un fenómeno cultural tras su censura por la BBC, lo que catapultó su éxito comercial y su estatus como himno de la cultura club.",
     "sections": [
       {
         "title": "1. Anatomía Musical y Producción de Estudio",
         "icon": "fa-sliders",
-        "text": "La producción de Trevor Horn en «Relax» es una clase magistral de ingeniería de sonido y mezcla maximalista en la era de la transición digital-analógica. Rítmicamente, la pista se cimenta sobre una caja de ritmos Roland TR-809 y LinnDrum, procesadas con compresión agresiva y limitación en picos para conseguir un punch contundente que domina el rango de medios-graves (100 Hz - 250 Hz). El bajo es una secuencia pulsante generada mediante sintetizadores analógicos (predominantemente Roland Jupiter-8 y Minimoog), con un filtro en corte de frecuencias bajo que aporta un subgrave denso, empujado por saturación de cinta para añadir armónicos cálidos en la zona de medios. Las capas de sintetizadores están panoramizadas de forma extrema para maximizar el campo estéreo, utilizando anchos de banda muy definidos que evitan el enmascaramiento con la voz principal de Holly Johnson. Las frecuencias agudas (de 5 kHz en adelante) se reservan para los efectos de modulación de altura (pitch modulation), ráfagas de ruido blanco y colas de reverberación digital Lexicon 224, proporcionando una sensación de espacio tridimensional. Las técnicas de edición incluyeron el uso pionero de samplers Fairlight CMI para fragmentar y repetir voces y percusiones, anticipando los estándares de la producción moderna."
+        "text": "La producción de Trevor Horn es una clase magistral de edición técnica. Se basa en un pulso constante de la Roland TR-808, procesada con una compresión agresiva que le otorga un impacto visceral. La instrumentación incluye líneas de bajo sintetizadas con el Roland SH-2 y texturas de Fairlight CMI que crean una atmósfera envolvente. La voz de Holly Johnson está tratada con múltiples capas de 'double-tracking' y reverberaciones tipo 'gated' que enfatizan la teatralidad de la interpretación, mientras que la mezcla final destaca por una separación estéreo inusualmente amplia para la época."
       },
       {
         "title": "2. Análisis Lírico y Desglose Verso a Verso",
         "icon": "fa-align-left",
-        "text": "La temática central de «Relax» es una provocación hedonista sobre el deseo sexual, el placer y la liberación queer, envuelta en un falso mandato de calma. El trasfondo psicológico desafía la moral puritana de la era Thatcher. Verso clave de apertura: «Relax, don't do it, when you want to come». Análisis léxico y doble sentido: El verbo «relax» se subvierte inmediatamente con el imperativo negativo «don't do it» (no lo hagas), creando una tensión irónica. El término «come» opera en un evidente doble sentido: el significado literal de eyacular o alcanzar el orgasmo y el mandato de rendirse al placer. Estribillo: «Relax, don't do it, when you want to suck». Autopsia verso a verso: La letra utiliza un vocabulario deliberadamente explícito para la época, despojando al pop de su inocencia burguesa. La repetición insistente funciona como un mantra hipnótico, donde la estructura sintáctica es minimalista pero cargada de una fuerte subversión semántica que invita a la desinhibición absoluta."
+        "text": "La letra es una invitación directa al placer y al abandono, cargada de un erotismo explícito que desafió las convenciones de la radio británica. Frases como 'Relax, don't do it, when you want to suck, chew it' utilizan el doble sentido para explorar el deseo sexual sin tapujos. El estribillo, repetitivo y obsesivo, funciona como un mantra de liberación. La lírica no busca la complejidad poética, sino la inmediatez sensorial, convirtiendo la canción en un vehículo de provocación política y social contra el conservadurismo de la era Thatcher."
       },
       {
         "title": "3. Narrativa Visual y Videoclip",
         "icon": "fa-film",
-        "text": "El videoclip oficial de «Relax», dirigido por Bernard Rose (con una versión inicial censurada ambientada en un club sadomasoquista estilo sado-gay y otra posterior más comercial en un restaurante chino), establece una estética de camp decadente y transgresión nocturna. La dirección de fotografía utiliza iluminación de alto contraste (claroscuro), dominada por tonos neón en rojos y azules saturados que realzan la atmósfera de vicio y artificio. El concepto artístico subvierte los roles de género tradicionales mediante la inclusión de personajes marginales, culturistas, drag queens y dominatrices, reflejando el submundo de los clubes nocturnos underground de Londres. La edición intercala planos detalle de expresiones faciales hiperrealistas con coreografías caóticas, reforzando el pulso sincopado de la producción musical de Trevor Horn y convirtiendo la pieza visual en un manifiesto estético de la libertad corporal."
+        "text": "El videoclip original, dirigido por Bernard Rose, presenta una estética de club nocturno decadente y surrealista. Ambientado en un entorno que evoca un ambiente de sadomasoquismo y cultura 'underground', el vídeo utiliza una iluminación de alto contraste y una puesta en escena teatral que refuerza el mensaje de transgresión. La presencia de los miembros de la banda en este contexto de 'fiesta prohibida' fue fundamental para consolidar la imagen pública del grupo como iconos de la subcultura queer y la vanguardia pop."
       },
       {
         "title": "4. Impacto Cultural y Curiosidades",
         "icon": "fa-award",
-        "text": "Comercialmente, «Relax» fue un tsunami global, alcanzando el número 1 en las listas del Reino Unido y manteniéndose en el Top 10 durante un período sin precedentes, impulsado notablemente por la infame prohibición de la BBC (anunciada en directo por Mike Read en la radio nacional), lo que generó un efecto Streisand masivo y disparó las ventas. Curiosidad documentada: Irónicamente, el sencillo anterior prohibido seguía sonando en las discotecas mientras la BBC intentaba vetarlo, convirtiéndolo en un emblema de resistencia contracultural. Aunque en Estados Unidos su impacto inicial en el Billboard Hot 100 fue moderado debido a la censura de su portada y temática, con el tiempo se consolidó como un himno indiscutible de la cultura de club de los años 80 y un referente ineludible en la evolución del dance-pop electrónico."
+        "text": "La canción alcanzó el número uno en el Reino Unido tras ser prohibida por la BBC, un evento que demostró el poder de la censura para generar interés masivo. Se mantuvo en las listas durante meses, convirtiéndose en uno de los singles más vendidos de la década. Su éxito marcó el inicio de la era de ZTT Records y la consolidación de Trevor Horn como el productor más influyente de los años 80, además de ser un pilar fundamental en la historia de la música electrónica de baile."
       }
     ],
-    "_aiModel": "gemini-3.5-flash-lite"
+    "_aiModel": "gemini-3.1-flash-lite"
   },
   "Nik Kershaw - The Riddle": {
     "title": "The Riddle",
@@ -49412,65 +49417,39 @@
     ]
   },
   "Lucenzo, Don Omar - Danza Kuduro - Version MTO": {
-    "title": "Danza Kuduro",
+    "title": "Danza Kuduro - Version MTO",
     "artist": "Lucenzo, Don Omar",
     "year": "2010",
-    "album": "Danza Kuduro 2019",
-    "synopsis": "\"Danza Kuduro\" (2010) de Lucenzo, Don Omar es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "originalAlbum": "Meet the Orphans",
+    "releaseYear": "2010",
+    "releaseDate": "2010-08-17",
+    "composers": "William Landrón (Don Omar), Luís Filipe Oliveira (Lucenzo), Fabrice Toigo, Faouzi Barkati",
+    "label": "Machete Music / El Orfanato",
+    "genre": "Reggaeton / Electronic Dance / Kuduro",
+    "synopsis": "Análisis técnico de la versión incluida en el influyente álbum 'Meet the Orphans' de Don Omar, que fusiona el ritmo angoleño kuduro con bases electrónicas de club y la estética vocal urbana del reggaetón. La producción destaca por su compresión sidechain agresiva, bajos sub-bass sintetizados y una mezcla estéreo amplia diseñada para optimizar el impacto en pistas de baile globales.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de Lucenzo, Don Omar",
-        "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de Lucenzo, Don Omar, \"Danza Kuduro\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
-        "points": [
-          {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
-          }
-        ]
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción de esta versión se cimenta sobre un tempo rápido cercano a los 130 BPM, combinando elementos rítmicos tradicionales del kuduro africano con sintetizadores modernos de música dance europea y percusión latina digitalizada. La mezcla prioriza un bombo contundente con pegada en los 80–100 Hz y un bajo sub-armónico que aporta densidad sin saturar el espectro medio. Las voces principales de Lucenzo y Don Omar están procesadas con afinación melódica transparente, compresión rápida para nivelar la dinámica y efectos de retardo (delay) estéreo que expanden la espacialidad en los estribillos. Los arreglos integran acordes de acordeón sintetizado y ganchos melódicos repetitivos de alta pregnancia."
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
-        "icon": "fa-drum",
-        "text": "La producción de \"Danza Kuduro\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
-        "points": [
-          {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
-          },
-          {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
-          },
-          {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
-          }
-        ]
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra combina fragmentos en portugués e inglés a cargo de Lucenzo con estrofas en español interpretadas por Don Omar. Temáticamente, funciona como un himno de liberación, fiesta y seducción nocturna. Versos icónicos como 'El mano a mano es suavecito' combinan la cadencia caribeña con la invitación directa al baile físico ('Mano pa' arriba, cintura sola, da media vuelta y danza kuduro'), utilizando un lenguaje coloquial accesible pero con una estructura métrica altamente calculada para la repetición y memorización instantánea."
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
-        "icon": "fa-quote-left",
-        "text": "Líricamente, \"Danza Kuduro\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
-        "points": [
-          {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de Lucenzo, Don Omar aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
-          }
-        ]
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Aunque el videoclip oficial de la versión principal fue rodado en las costas de St. Tropez y Miami bajo la dirección de Vincent Egret, esta edición asociada al álbum 'Meet the Orphans' refuerza la estética de hermandad y fiesta veraniega de la discográfica El Orfanato. La fotografía utiliza una paleta de colores cálidos y saturados, planos dinámicos en movimiento de cámara y una edición sincopada que sigue rítmicamente cada golpe de la percusión electrónica, proyectando una imagen de lujo accesible y celebración multicultural."
       },
       {
-        "title": "El Impacto Cultural & Legado",
-        "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"Danza Kuduro\" se mantiene como un himno atemporal dentro de la discografía de Lucenzo, Don Omar y una de las composiciones más celebradas de su generación.",
-        "points": [
-          {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Lucenzo, Don Omar."
-          }
-        ]
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "La inclusión de esta versión en el álbum 'Meet the Orphans' consolidó la internacionalización definitiva de Don Omar y propulsó la carrera global de Lucenzo. El sencillo alcanzó el número uno en numerosas listas de Billboard y listas europeas, convirtiéndose en uno de los mayores fenómenos virales de la música latina antes de la era masiva del streaming. Su posterior sincronización en la banda sonora de la película 'Fast Five' (Fast & Furious 5) amplificó su legado cultural, convirtiéndola en un estándar moderno del crossover entre la música urbana latina y la electrónica global."
       }
-    ]
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
   },
   "Ofenbach, Starsailor - Four To The Floor": {
     "title": "Four To The Floor",
@@ -64740,63 +64719,37 @@
   "Haddaway - What Is Love - 7\" Mix": {
     "title": "What Is Love - 7\" Mix",
     "artist": "Haddaway",
-    "year": "2009",
-    "album": "What Is Love",
-    "synopsis": "\"What Is Love - 7\" Mix\" (2009) de Haddaway es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "year": "1992",
+    "originalAlbum": "The Album",
+    "releaseYear": "1992",
+    "releaseDate": "1992-12-08",
+    "composers": "Dee Dee Halligan, Junior Torello",
+    "label": "Coconut Records",
+    "genre": "Eurodance / Hi-NRG / Synth-pop",
+    "synopsis": "Haddaway's 'What Is Love' defines the golden era of 90s Eurodance, driven by an unstoppable four-on-the-floor beat, iconic brass synth stabs, and a melancholic yet anthemic vocal delivery. Produced by Karin Hartmann (Dee Dee Halligan) and Tony Hendrik (Junior Torello), the track seamlessly bridges club culture with pop accessibility. Its sonic architecture relies heavily on compressed analog synthesizers, punchy drum machines, and a hypnotic rhythm section that became a global phenomenon.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de Haddaway",
-        "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de Haddaway, \"What Is Love - 7\" Mix\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
-        "points": [
-          {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
-          }
-        ]
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción de 'What Is Love' se cimenta en una caja de ritmos Roland TR-909 o similar, entregando un patrón de bombo contundente a 124 BPM típico del Eurodance temprano. El elemento más distintivo es el riff de sintetizador en forma de metal (brass stab) que abre la pista y actúa como gancho melódico principal. Las voces de Haddaway están fuertemente procesadas con compresión paralela y efectos de reverberación corta y brillante para destacar sobre la densa mezcla instrumental. Los bajos, de naturaleza secuenciada y digital (típica de módulos como el Korg M1 o Yamaha SY77), aportan una calidez de frecuencias bajas centrada en los 80Hz-100Hz que garantizaba un impacto masivo en los sistemas de sonido de los clubes europeos."
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
-        "icon": "fa-drum",
-        "text": "La producción de \"What Is Love - 7\" Mix\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
-        "points": [
-          {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
-          },
-          {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
-          },
-          {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
-          }
-        ]
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "A pesar de su energía bailable, la letra encapsula una profunda vulnerabilidad existencial y angustia romántica. El estribillo icónico —¿Qué es el amor? / ¡Cariño, no me lastimes, no me lastimes, no más!— subvierte la alegría habitual de la música de baile con una súplica de protección emocional. Versos como 'I don't know why you're not there / I give you my love, but you don't care' exponen el dolor unilateral de una relación tóxica, contrastando irónicamente con la euforia inducida por el ritmo sincopado y la producción luminosa."
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
-        "icon": "fa-quote-left",
-        "text": "Líricamente, \"What Is Love - 7\" Mix\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
-        "points": [
-          {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de Haddaway aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
-          }
-        ]
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial presenta a Haddaway vestido con trajes extravagantes y sombreros de copa, acompañado de bailarines y modelos en un estudio minimalista. La estética juega con la dualidad de la época: la extravagancia visual de principios de los 90 y la sobriedad de las actuaciones en plató. Su consagración definitiva en la cultura popular llegó años después gracias a la célebre escena del sketch 'Roxbury Guys' en Saturday Night Live (y su posterior adaptación cinematográfica 'A Night at the Roxbury'), donde Will Ferrell y Chris Kattan agitan rítmicamente la cabeza al son de la canción en un coche."
       },
       {
-        "title": "El Impacto Cultural & Legado",
-        "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"What Is Love - 7\" Mix\" se mantiene como un himno atemporal dentro de la discografía de Haddaway y una de las composiciones más celebradas de su generación.",
-        "points": [
-          {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Haddaway."
-          }
-        ]
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "El sencillo se convirtió en un éxito masivo a escala global, alcanzando el número 1 en más de diez países y el número 11 en el Billboard Hot 100 de Estados Unidos. Es considerado uno de los himnos definitivos de la música de baile de los noventa. Curiosamente, el nombre real de los compositores y productores (Dee Dee Halligan y Junior Torello) eran seudónimos alemanes utilizados por Karin Hartmann y Tony Hendrik para darle un toque más anglosajón a la autoría del proyecto."
       }
-    ]
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
   },
   "Ultra Naté, Mood II Swing - Free - Mood II Swing Radio Edit": {
     "title": "Free - Mood II Swing Radio Edit",
@@ -110815,62 +110768,36 @@
     "title": "In the Navy - Original Version 1979",
     "artist": "Village People",
     "year": "1979",
-    "album": "Go West",
-    "synopsis": "\"In the Navy - Original Version 1979\" (1979) de Village People es una pieza fundamental dentro de su género, destacando por su precisión melódica, su arquitectura sonora y un impacto duradero que la mantiene como referencia imprescindible.",
+    "originalAlbum": "Go West",
+    "releaseYear": "1979",
+    "releaseDate": "1979-02-01",
+    "composers": "Jacques Morali, Henri Belolo, Victor Willis",
+    "label": "Casablanca Records",
+    "genre": "Disco / Hi-NRG / Dance-Pop",
+    "synopsis": "Himno icónico de la era disco producido por Jacques Morali, caracterizado por una densa instrumentación de sesión con metales punzantes, una línea de bajo arpegiada típicamente euro-disco y arreglos vocales corales masivos. La producción destaca por su compresión dinámica enfocada en las pistas de baile y un tratamiento de la reverberación de placa que expande el espacio acústico, convirtiéndola en un hito de la producción de finales de los setenta.",
     "sections": [
       {
-        "title": "El Origen & Trayectoria: La consagración de Village People",
-        "icon": "fa-book-open",
-        "text": "Compuesta en un momento crucial en la carrera de Village People, \"In the Navy - Original Version 1979\" surgió de la necesidad de consolidar una identidad sonora propia. Las sesiones de grabación combinaron ideas melódicas directas con una búsqueda obsesiva por un sonido memorable y reconocible desde los primeros compases.",
-        "points": [
-          {
-            "name": "El punto de inflexión creativo",
-            "desc": "El tema no solo definió el álbum en el que fue incluido, sino que redefinió las expectativas comerciales de la banda, convirtiéndose en el estándar con el que se medirían sus producciones posteriores."
-          }
-        ]
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción de 'In the Navy' es un claro ejemplo del sonido disco sofisticado de finales de los 70, orquestado por Jacques Morali y arreglado por Horace Ott. La base instrumental se construyó con músicos de sesión de primer nivel en los Sigma Sound Studios de Nueva York. Destaca una sección rítmica implacable con un bombo en negras ('four-on-the-floor') procesado con compresión rápida para maximizar el impacto en pistas de baile, acompañado de un bajo eléctrico con técnica de slapping y un sintetizador analógico sutil doblando las líneas graves. Los arreglos de metales (trompetas y trombones) aportan un brillo estridente en las frecuencias medias-altas, mientras que las cuerdas añaden dramatismo sinfónico. Las voces principales y los coros están apilados en múltiples capas (overdubbing) para crear un efecto de himno multitudinario, utilizando saturación de cinta magnética para redondear los transitorios agudos."
       },
       {
-        "title": "La Anatomía Musical: Estructura, Texturas & Producción",
-        "icon": "fa-drum",
-        "text": "La producción de \"In the Navy - Original Version 1979\" destaca por un equilibrio quirúrgico entre la pegada rítmica y la elegancia armónica:",
-        "points": [
-          {
-            "name": "La base rítmica y el tempo",
-            "desc": "Construida sobre una línea rítmica envolvente, la canción utiliza dinámicas de tensión y desahogo que atrapan al oyente desde la introducción hasta el clímax final."
-          },
-          {
-            "name": "Capas de instrumentación y arreglos",
-            "desc": "El uso contrastado de instrumentos orgánicos y texturas contemporáneas genera una calidez sonora que resiste el paso del tiempo sin sonar desfasada."
-          },
-          {
-            "name": "El gancho melódico (Hook)",
-            "desc": "El estribillo explota con una melodía vocal expansiva y sumamente adictiva, diseñada milimétricamente para conectar con el público y resonar en grandes recintos."
-          }
-        ]
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "Escrita por Jacques Morali, Henri Belolo y Victor Willis, la letra funciona como un pegadizo anuncio de reclutamiento para la Armada de los Estados Unidos, aunque teñido de la ironía camp y la subcultura queer característica del grupo. La temática explora la aventura, el escapismo y el orgullo colectivo bajo el lema 'They want you, they want you, they want you as a new recruit'. A nivel léxico, utiliza un lenguaje directo y motivacional («Where can you find pleasure, / Search the world for treasure»), empleando pareados sencillos y estribillos masivos diseñados para la participación inmediata del público. El subtexto juega con la estética homoerótica de los arquetipos militares (el marinero, el marino mercante), transformando una institución tradicional en un espacio de celebración festiva."
       },
       {
-        "title": "La Lírica y el Mensaje: Emoción y Resonancia Universal",
-        "icon": "fa-quote-left",
-        "text": "Líricamente, \"In the Navy - Original Version 1979\" aborda vivencias y emociones con las que el oyente conecta de forma inmediata, alejándose de los tópicos superficiales para profundizar en el anhelo, la resiliencia y la experiencia humana.",
-        "points": [
-          {
-            "name": "La narrativa vocal",
-            "desc": "La interpretación de Village People aporta una autenticidad cruda donde cada verso refuerza la carga emotiva de la instrumentación."
-          }
-        ]
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial y la promoción visual de la canción abrazan sin complejos la estética militar recargada y colorista. Los miembros de Village People aparecen ataviados con sus característicos roles (el marinero, el oficial, el marinero con gorra de plato), coreografiando movimientos marciales simplificados que el público podía imitar fácilmente. La Armada de los Estados Unidos (US Navy) adoptó inicialmente la canción para una campaña publicitaria real en televisión, encantados con el potencial de atracción de reclutas, lo que demuestra la poderosa sinergia entre el entretenimiento comercial y la iconografía patriótica de la época."
       },
       {
-        "title": "El Impacto Cultural & Legado",
-        "icon": "fa-trophy",
-        "text": "Con millones de reproducciones en radio y plataformas de streaming, \"In the Navy - Original Version 1979\" se mantiene como un himno atemporal dentro de la discografía de Village People y una de las composiciones más celebradas de su generación.",
-        "points": [
-          {
-            "name": "Permanencia en el imaginario colectivo",
-            "desc": "El tema ha trascendido su época de lanzamiento, siendo versionado, sampleado y celebrado en directo como uno de los momentos cumbre en los conciertos de Village People."
-          }
-        ]
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "'In the Navy' se convirtió en un fenómeno global masivo tras su lanzamiento como single principal del álbum 'Go West', alcanzando el número 3 en el Billboard Hot 100 de EE. UU. y el número 2 en las listas de UK. Curiosamente, tras el estreno del videoclip, la US Navy permitió que se rodara parte del material promocional a bordo de un buque real (el USS Wasp), un hecho insólito para un grupo de música disco con fuertes raíces en la cultura underground gay. Hoy en día, la canción permanece como un estándar imperecedero de la música de baile, sampled y versionada en múltiples contextos cinematográficos y deportivos."
       }
-    ]
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
   },
   "Kaoma - Lambada - Original Version 1989": {
     "title": "Lambada - Original Version 1989",
@@ -120142,5 +120069,320 @@
       }
     ],
     "_aiModel": "gemini-3-flash-preview"
+  },
+  "Bob Seger - Old Time Rock Roll": {
+    "title": "Old Time Rock Roll",
+    "artist": "Bob Seger",
+    "year": "1978",
+    "originalAlbum": "Stranger in Town",
+    "releaseYear": "1978",
+    "releaseDate": "1978-05-05",
+    "composers": "George Jackson, Thomas E. Jones III",
+    "label": "Capitol Records",
+    "genre": "Heartland Rock / Rock and Roll",
+    "synopsis": "Un himno definitorio del Heartland Rock que encapsula la nostalgia por la era dorada del rock and roll de los años 50. Producida con una estética orgánica y cruda, la canción destaca por su icónico riff de piano boogie-woogie y la voz rasposa y visceral de Seger, consolidándose como un estándar cultural de la radio estadounidense.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción, a cargo de Punch Andrews y Bob Seger, prioriza una captura de sonido directa y sin artificios. El elemento central es el piano de estilo boogie-woogie interpretado por Bill Payne (de Little Feat), que dicta el tempo y el swing del tema. La sección rítmica es sólida y constante, con una batería que mantiene un 'backbeat' firme y un bajo que se entrelaza con el piano. La voz de Seger fue grabada con una compresión moderada para resaltar su textura característica, mientras que las guitarras eléctricas aportan un soporte rítmico que evita saturar el espectro medio, permitiendo que el piano y la voz ocupen el protagonismo."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra es una oda a la simplicidad y la autenticidad del rock clásico frente a la música disco de finales de los 70. Versos como 'Just take those old records off the shelf' invitan al oyente a reconectar con sus raíces musicales. El estribillo 'Old time rock and roll' funciona como un mantra de resistencia cultural. La narrativa utiliza la nostalgia no como una queja, sino como una celebración de la energía pura del rock, contrastando la sofisticación técnica de la época con la honestidad de los ritmos de antaño."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Aunque no se produjo un videoclip oficial de alto presupuesto en el momento de su lanzamiento, la canción alcanzó su estatus icónico visual gracias a la famosa escena de la película 'Risky Business' (1983), donde Tom Cruise baila en calcetines por su sala de estar. Esta secuencia se convirtió en la representación visual definitiva de la canción, simbolizando la liberación juvenil y la rebeldía desenfadada, lo que catapultó la popularidad del tema años después de su estreno original."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "La canción alcanzó el puesto número 28 en el Billboard Hot 100 en 1979, pero su impacto real fue a largo plazo. Es considerada una de las '500 canciones que dieron forma al Rock and Roll' por el Salón de la Fama del Rock. Curiosamente, Seger no escribió la canción; fue compuesta por George Jackson y Thomas E. Jones III, quienes le ofrecieron el tema. Seger cambió parte de la letra original para adaptarla a su estilo personal, convirtiéndola en un éxito que define su carrera y el sonido de una generación."
+      }
+    ],
+    "_aiModel": "gemini-3.1-flash-lite"
+  },
+  "Christopher Cross - Best That You Can Do": {
+    "title": "Best That You Can Do",
+    "artist": "Christopher Cross",
+    "year": "1981",
+    "originalAlbum": "Another Page",
+    "releaseYear": "1983",
+    "releaseDate": "1983-02-08",
+    "composers": "Christopher Cross, Burt Bacharach, Carole Bayer Sager, Peter Allen",
+    "label": "Warner Bros. Records",
+    "genre": "Soft Rock / Adult Contemporary",
+    "synopsis": "Análisis técnico de la obra de Christopher Cross, conocida popularmente como el tema principal de la película 'Arthur' ('Arthur's Theme (Best That You Can Do)'). Destaca por la maestría compositiva de Burt Bacharach y Christopher Cross, fusionando armonías vocales etéreas con una producción de estudio pulida típica del sonido West Coast de principios de los 80.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción estuvo a cargo de Michael Omartian, implementando los cánones del soft rock y el adult contemporary de alta gama. Destaca el uso de un piano acústico cálido con compresión sutil, arreglos de cuerda orquestales elegantes y un bajo eléctrico melódico y preciso. Las guitarras rítmicas de Cross aportan el toque característico del 'AOR' californiano, mientras que la mezcla prioriza la claridad vocal, utilizando reverbs de placa clásicas para dar profundidad sin enmascarar la instrumentación acústica."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra aborda la temática de la aceptación personal, el amor y la búsqueda de la felicidad por encima de las expectativas materiales, reflejando perfectamente la dualidad del protagonista de la película 'Arthur'. Versos clave como 'When you get caught between the moon and New York City / I know it's crazy, but it's true' utilizan metáforas urbanas y románticas para ilustrar la vulnerabilidad humana frente a la grandiosidad y el aislamiento de la gran ciudad."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "A falta de un videoclip narrativo tradicional en su lanzamiento inicial, la obra se vinculó indisolublemente a las secuencias clave de la película 'Arthur' protagonizada por Dudley Moore y Liza Minnelli. La estética visual refuerza la melancolía nocturna de Nueva York, combinando la opulencia de la alta sociedad con momentos de genuina intimidad emocional que dialogan directamente con el piano de la introducción."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "El sencillo fue un éxito rotundo a nivel mundial, alcanzando el número 1 en el Billboard Hot 100 de Estados Unidos. Su consagración definitiva llegó al ganar el premio Óscar a la Mejor Canción Original en 1981, consolidando la colaboración estelar entre Christopher Cross y el legendario compositor Burt Bacharach como uno de los hitos compositivos de la década."
+      }
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
+  },
+  "Train - Drops of Jupiter": {
+    "title": "Drops of Jupiter",
+    "artist": "Train",
+    "year": "2001",
+    "originalAlbum": "Drops of Jupiter",
+    "releaseYear": "2001",
+    "releaseDate": "2001-02-27",
+    "composers": "Pat Monahan, Rob Hotchkiss, Jimmy Stafford, Scott Underwood, Charlie Colin",
+    "label": "Aware / Columbia Records",
+    "genre": "Alternative Rock / Pop Rock / Orchestral Pop",
+    "synopsis": "\"Drops of Jupiter\" es una obra maestra del pop-rock alternativo de principios del milenio, impulsada por un arreglo orquestal exuberante dirigido por Paul Buckmaster y una ejecución vocal melancólica y visceral de Pat Monahan. La producción combina la instrumentación orgánica de una banda de rock con capas sinfónicas, creando una atmósfera etérea y terrenal simultáneamente que explora el dolor de la pérdida y el proceso de sanación.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción, a cargo de Brendan O'Brien, destaca por la integración de un piano acústico frontal con arreglos de cuerdas opulentos que evocan la grandiosidad del rock sinfónico de los 70. La mezcla equilibra la voz solista al frente, con una compresión moderada que permite apreciar las dinámicas emocionales de Monahan. Las guitarras acústicas y eléctricas entran en capas sutiles para engrosar el estribillo, mientras que la sección rítmica (bajo y batería) mantiene un pulso firme pero orgánico, evitando saturar el espectro de frecuencias medias donde residen el piano y las cuerdas principales."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "Escrita por Pat Monahan como un tributo agridulce a su difunta madre y a una relación pasada, la letra utiliza metáforas astronómicas para describir un viaje de autodescubrimiento espiritual. Versos como 'Now that she's back in the atmosphere / With drops of Jupiter in her hair' yuxtaponen la inmensidad del cosmos con la intimidad terrenal. El análisis revela un uso magistral de imágenes sensoriales, donde el dolor de la separación se transforma en una aceptación poética del crecimiento personal de la persona amada tras un viaje trascendental."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Dirigido porivati, el videoclip oficial utiliza una estética de colores desaturados y una iluminación cinematográfica que refuerza el tono melancólico y reflexivo de la canción. Muestra a la banda interpretando el tema en un espacio amplio y brumoso, intercalado con imágenes surrealistas y celestiales que complementan la temática espacial y terrenal de la letra, manteniendo una atmósfera íntima a pesar de la escala épica de la música."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "El sencillo se convirtió en un éxito rotundo a nivel mundial, alcanzando el Top 5 en el Billboard Hot 100 y ganando dos premios Grammy en 2002, incluyendo Mejor Canción de Rock. Se consolidó como un himno radiofónico de la década del 2000 y ha sido versionado por múltiples artistas, además de aparecer en numerosas bandas sonoras de cine y televisión, cementando el legado de Train en la historia del pop-rock moderno."
+      }
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
+  },
+  "CNCO - Reggaetón Lento": {
+    "title": "Reggaetón Lento (Bailemos)",
+    "artist": "CNCO",
+    "year": "2016",
+    "originalAlbum": "Primera Cita",
+    "releaseYear": "2016",
+    "releaseDate": "2016-10-07",
+    "composers": "Luis Ángel O'Neill, Eric Pérez, Jamil Derakhshani, Jorge Class, Jean Rodríguez",
+    "label": "Sony Music Latin",
+    "genre": "Reggaeton / Latin Pop",
+    "synopsis": "'Reggaetón Lento (Bailemos)' es el sencillo definitivo que consolidó la transición del pop de boy band hispano hacia los ritmos urbanos contemporáneos. Producido bajo la supervisión ejecutiva de Wisin junto a Eric Pérez 'Lyle' y Mercenary, el tema combina el patrón rítmico clásico del dembow a 94 BPM con texturas melódicas pulidas de synth-pop y arreglos vocales a cinco voces. Su trascendencia radica en purificar el reggaetón explícito mediante una sensibilidad pop romántica accesible, logrando un éxito global masivo que redefinió el alcance comercial del pop latino en la década de 2010.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción musical de 'Reggaetón Lento' se articula en la tonalidad de Si menor (B minor) con un tempo moderado de 94 BPM. La estructura armónica descansa sobre una progresión cíclica I - VI - III - VII (Bm - G - D - A), proporcionando una base melancólica pero altamente bailable. El núcleo rítmico es una variación estilizada del dembow puertorriqueño, donde el bombo marca los cuatro tiempos del compás mientras los datos de caja (snare) y percusiones secundarias ejecutan síncopas medidas con un ataque suave y alto contenido de frecuencias medias para no saturar la mezcla. El diseño sonoro incorpora líneas de bajo sintético (Sub-Bass/808) comprimidas con 'sidechain' vinculado al bombo para garantizar espacio espectral. Vocalmente, la producción maneja un tratamiento meticuloso: las voces solistas de Christopher, Erick, Joel, Zabdiel y Richard se disponen en registros de tenor y barítono, utilizando corrección tonal quirúrgica (Auto-Tune como efecto de pulido) y doble trazado vocal (doubling) en los coros para maximizar la amplitud estéreo. Los puentes de transición aplican reverberaciones tipo 'plate' y ecos con delay en corcheas con puntillo, creando profundidad atmosférica antes de los caídas (drops) rítmicas."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La narrativa lírica aborda la atracción instantánea en la pista de baile, empleando el cortejo dentro del contexto nocturno de un club. A diferencia de las composiciones urbanas más explícitas, el texto recurre a la sensualidad sugerida y el romanticismo juvenil. En el estribillo 'Qué noche tan bella, yo la miraba y me acercaba a ella / Es que me gustaba, me pegaba a ella / Mirándola a los ojos, empecé a cantar', la métrica se divide en frases octosílabas directas con rima asonante que facilitan la memorización inmediata. El término 'Reggaetón lento' actúa como un oxímoron estilístico y una metareferencia a la modalidad de baile conocido como 'perreo' ejecutado a tempo pausado ('La miré, me miró, pegamos los cuerpos y se dio / Justo empezaba el reggaetón lento'). Las estrofas secundarias introducen figuras de seducción clásica donde el ritmo actúa como catalizador de la intimidad física. El uso de modismos latinoamericanos universales amplifica su alcance transnacional sin encasillarse en una sola región dialectal."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Dirigido por Mike Ho y filmado en una bolera/lounge en Fort Lauderdale, Florida, el videoclip oficial adopta una estética 'retro-moderna' con una paleta de colores dominada por tonos neón azules, magenta y cálidos tonos de tungsteno. La iluminación en claroscuro acentúa la atmósfera de fiesta juvenil y sensualidad relajada. La narrativa visual contrapone dos grupos: los cinco integrantes de la banda y un grupo de mujeres jóvenes que compiten en una pista de bolos. El lenguaje corporal combina coreografías estilizadas y miradas a cámara de corte interdependiente con tomas de seguimiento fluidas mediante Steadicam. El montaje rítmico coincide con los acentos de la percusión urbana, alternando planos generales de baile grupal con primeros planos emocionales. El vestuario combina la moda urbana 'streetwear' de alta gama con chaquetas de piel y accesorios de metal, construyendo una imagen aspiracional que consolidó la identidad visual del quinteto."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "El tema se convirtió en un fenómeno de ventas global, superando los 1.500 millones de reproducciones en YouTube y entrando en las listas de éxitos de toda América Latina, España y Estados Unidos. En 2017, la canción experimentó un segundo aire masivo al lanzarse un remix en colaboración con la boy band femenina británica Little Mix. Esta versión logró el número 5 en la lista oficial del Reino Unido (UK Singles Chart), un hito infrecuente para un tema cantado mayoritariamente en español antes de la explosión total del streaming global. Fue la canción que catapultó a CNCO a giras internacionales por Europa y Asia, consagrándolos como los herederos modernos del concepto boy band adaptado a la era del consumo urbano pop."
+      }
+    ],
+    "_aiModel": "gemini-3.6-flash"
+  },
+  "Frank Reyes - Tu Eres Ajena": {
+    "title": "Tu Eres Ajena",
+    "artist": "Frank Reyes",
+    "year": "2001",
+    "originalAlbum": "Atrevido",
+    "releaseYear": "2001",
+    "releaseDate": "2001-05-15",
+    "composers": "Joan Soriano",
+    "label": "Sony Music Tropical",
+    "genre": "Bachata",
+    "synopsis": "'Tu Eres Ajena' es uno de los máximos exponentes de la bachata romántica de principios del milenio, consolidando el estilo inconfundible de Frank Reyes, conocido como 'El Príncipe de la Bachata'. La obra destaca por un tejido instrumental donde la guitarra requinto ejecuta melodías punzantes y melancólicas sobre una base rítmica de bongó y güira pulida digitalmente. A nivel vocal, la interpretación de Reyes destila un desgarro emocional único, convirtiéndola en un himno indiscutible del género a nivel internacional.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción de la canción se estructura sobre los cánones de la bachata moderna de la época, integrando elementos acústicos tradicionales con una mezcla digital nítida. El requinto, grabado con un brillo característico en los agudos mediante micrófonos de condensador de alta gama, guía la melodía con trémolos y punteos precisos que dialogan constantemente con la voz principal. La segunda guitarra (la sección rítmica o armonía) mantiene el compás sincopado clásico. El bajo eléctrico posee un perfil profundo y cálido, asegurando el soporte en las frecuencias graves (sub-graves y bajos), mientras que la güira marca con precisión quirúrgica el pulso y el bongó aporta la textura orgánica en los cortes y repiques. La voz de Frank Reyes está grabada con una compresión moderada que permite apreciar los matices de su vibrato natural, posicionada en el centro absoluto del espectro estéreo con efectos sutiles de reverberación de placa para añadir profundidad sin perder inteligibilidad."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "Temáticamente, la canción aborda el dolor insondable del amor prohibido y la frustración de desear a una mujer que pertenece legal y socialmente a otro hombre. La narrativa lírica se mueve entre la devoción pasional y la resignación trágica. Versos emblemáticos como 'Tú eres ajena, y yo que te quiero tanto' exponen el dilema central del sufrimiento romántico tan propio de la bachata. La composición utiliza un lenguaje directo, coloquial pero sumamente evocador, donde el hablante lírico se posiciona como una víctima de las circunstancias, incapaz de apagar un sentimiento que transgrede las normas morales establecidas, generando una fuerte identificación con el oyente a través del drama pasional."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "Aunque el impacto de la canción se cimentó principalmente en la rotación radial y el consumo en los tradicionales 'colmados' y pistas de baile de la República Dominicana, la estética visual asociada a la era del álbum 'Atrevido' refuerza la imagen de galán sufridor y elegante de Frank Reyes. Las presentaciones en televisión y los subsecuentes videoclips de la época muestran al artista interpretando el tema con una actitud sobria, ataviado formalmente, transmitiendo la solemnidad y el dramatismo que exige la lírica. El uso de la iluminación tenue y planos cerrados sobre el rostro del intérprete busca enfatizar la sinceridad y el dolor del mensaje transmitido."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "'Tu Eres Ajena' se convirtió rápidamente en un éxito rotundo en las listas de música tropical tanto en la República Dominicana como en los Estados Unidos (especialmente en Nueva York y Florida). Este sencillo catapultó a Frank Reyes a la primera línea del género de la bachata, ayudando a expandir su popularidad más allá de las Antillas hacia Centro y Sudamérica. La canción es considerada un clásico indiscutible de las rocola y bares latinos, y ha sido interpretada en innumerables ocasiones por otros artistas y agrupaciones en tributos al llamado 'Príncipe de la Bachata'."
+      }
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
+  },
+  "Tina Turner - We Don't Need Another Hero": {
+    "title": "We Don't Need Another Hero (Thunderdome)",
+    "artist": "Tina Turner",
+    "year": "1985",
+    "originalAlbum": "Mad Max Beyond Thunderdome (Original Motion Picture Soundtrack)",
+    "releaseYear": "1985",
+    "releaseDate": "1985-07-08",
+    "composers": "Terry Britten, Graham Lyle",
+    "label": "Capitol Records",
+    "genre": "Synth-pop / Power Ballad / Pop Rock",
+    "synopsis": "'We Don't Need Another Hero (Thunderdome)' es un monumental himno de synth-pop y power ballad grabado por Tina Turner en 1985 como tema principal de la película 'Mad Max Beyond Thunderdome'. Producida magistralmente por Terry Britten, la obra destaca por su densa producción atmosférica, el uso dramático de sintetizadores digitales, el icónico solo de saxofón de Timmy Cappello y un imponente coro infantil que culmina la pieza. La interpretación vocal de Turner, caracterizada por una rasposa intensidad emocional y un impecable control de dinámicas, convierte la canción en una meditación filosófica sobre la supervivencia, el desencanto con los falsos mesías y la resiliencia en un mundo en ruinas.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción de Terry Britten es un logro cumbre en la estética del synth-pop de mediados de los años 80. La pista está construida sobre una arquitectura sonora estratificada: la base rítmica combina cajas de ritmos programadas (LinnDrum) con percusión electrónica Simmons y batería acústica procesada con un marcado 'gated reverb' característico de la época. En el plano armónico, los sintetizadores Roland Jupiter-8 y Yamaha DX7 generan pads ambientales oscuros y arpegios metálicos que emulan el vacío de un paisaje desértico postapocalíptico.\n\nLa estructura compositiva fluye desde una introducción lenta y misteriosa hacia una crescendo épico. El virtuoso saxofonista Timmy Cappello aporta un solo intermedio lleno de garra y lirismo, utilizando un tono carnoso cargado de delay y reverb estéreo. El punto culminante de la pista ocurre con la inclusión del coro de la escuela King's House School de Richmond, cuyos arreglos vocales corales crean un contraste angelical y trágico con la voz ruda, rasgada y desbordante de poder de Tina Turner, quien transita magistralmente desde tonos graves susurrados hasta cinturones sostenidos en su registro más alto (F#5)."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra explora la desilusión colectiva hacia la figura del 'héroe' o salvador en un entorno desolado, rechazando la retórica bélica y abrazando la búsqueda pragmática de la paz y el hogar.\n\n• 'Out of the ruins / Out from the wreckage' ('Entre las ruinas / Entre los escombros'): Establece la imaginería desoladora de un mundo devastado, donde la humanidad intenta emerger físicamente y moralmente.\n• 'Can't make the same mistake this time / We are the children the last generation' ('No podemos cometer el mismo error esta vez / Somos los niños, la última generación'): Muestra la advertencia generacional contra la repetición del pasado y la responsabilidad de preservar el futuro.\n• 'We don't need another hero / We don't need to know the way home / All we want is life beyond the Thunderdome' ('No necesitamos otro héroe / No necesitamos saber el camino a casa / Todo lo que queremos es vida más allá del Thunderdome'): El estribillo central deconstruye el mito del salvador messiánico. El 'Thunderdome' actúa como metáfora de la arena del conflicto absurdo y la violencia institucionalizada; la prioridad absoluta es la mera supervivencia digna ('life beyond').\n• 'Looking for something we can rely on' ('Buscando algo en lo que podamos confiar'): Refleja el vacío de fe y el pragmatismo desgarrador de los supervivientes."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial fue dirigido por George Miller (director de la franquicia Mad Max) y capta perfectamente el universo estético del filme. Tina Turner aparece caracterizada como su personaje en la película, la imponente Aunty Entity, vestida con un legendario vestido de malla de metal (cadena de acero recortada) de casi 30 kilos creado por el diseñador Azzedine Alaïa, luciendo un voluminoso peinado rubio platino de estilo salvaje.\n\nEl vídeo combina fragmentos cinematográficos de 'Mad Max Beyond Thunderdome' con una puesta en escena de estudio donde Turner canta desde un podio elevado dentro del domo, rodeada de luz cenital dramática y humo denso. Sobresale la presencia escénica del saxofonista Timmy Cappello, musculoso y encadenado, aportando una carga visual de energía brutalista que complementa el concepto de barbarie visual y sofisticación pop."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "El sencillo fue un éxito comercial masivo a nivel global en el verano de 1985. Alcanzó el número 2 en la lista Billboard Hot 100 de EE. UU., el número 3 en la UK Singles Chart y se posicionó en el número 1 en múltiples países europeos como Alemania, Suiza y España.\n\nLa canción recibió nominaciones de alto perfil, incluyendo una nominación al Grammy por 'Mejor Interpretación Vocal Pop Femenina' (1986) y una nominación al Globo de Oro a la 'Mejor Canción Original'. Su éxito afianzó el estatus de Tina Turner no solo como reina del rock sino como icono pop global tras el monumental éxito de su álbum 'Private Dancer' (1984), consolidando su dominio definitivo en las listas y en la cultura popular de los años ochenta."
+      }
+    ],
+    "_aiModel": "gemini-3.6-flash"
+  },
+  "Huecco - Pa´ mi guerrera": {
+    "title": "Pa´ mi guerrera",
+    "artist": "Huecco",
+    "year": "2006",
+    "originalAlbum": "Huecco",
+    "releaseYear": "2006",
+    "releaseDate": "2006-05-23",
+    "composers": "Iván Sevillano Pérez (Huecco)",
+    "label": "DRO / Warner Music Spain",
+    "genre": "Latin Rock / Pop Rock / Rumba Rock",
+    "synopsis": "«Pa' mi guerrera» es el sencillo debut de Huecco tras su etapa en la banda Sugarless, marcando un punto de inflexión con su sonido autodenominado 'rumba-rock'. La producción destaca por la fusión enérgica de guitarras acústicas y eléctricas con bases rítmicas latinas y urbanas, logrando un equilibrio entre la potencia del rock alternativo y la accesibilidad pop. Su tesis sónica se basa en la superación personal y la dedicatoria a las mujeres luchadoras, respaldada por una mezcla cristalina que prioriza la pegada de la batería y la voz desgarrada pero melódica del artista.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción de este tema, concebida en la transición de Huecco desde el metal/rock duro de Sugarless hacia un sonido más ecléctico, destaca por una instrumentación orgánica con fuertes influencias latinas y urbanas. El arreglo principal se sostiene sobre una guitarra acústica con un patrón rítmico frenético de rasgueo, doblada por guitarras eléctricas saturadas en los estribillos para aportar densidad y cuerpo rockero. La sección rítmica combina elementos de la batería acústica tradicional con percusión latina (como cajón y bongós) procesada mediante compresión paralela para ganar pegada y presencia en el espectro dinámico. Las frecuencias graves están dominadas por un bajo eléctrico con un tono cálido y definido, empastado firmemente con el bombo. La voz principal de Huecco, de timbre rasgado y gran potencia, está tratada con una compresión moderada y sutiles capas de coros en octavas y armonías menores que ensanchan el panorama estéreo en los estribillos. La mezcla equilibra con destreza la crudeza del rock con la limpieza exigida por el pop comercial de mediados de los 2000."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "Temáticamente, la canción funciona como un himno de empoderamiento, resiliencia y homenaje a las mujeres que enfrentan batallas diarias, ya sean personales, laborales o de salud. El uso del término 'guerrera' se convierte en el eje central de una narrativa de aliento. En el plano lírico, Huecco emplea un lenguaje directo, callejero pero profundamente poético, huyendo de los clichés románticos tradicionales para adentrarse en el realismo urbano. Destacan versos donde la metáfora bélica se mezcla con la ternura cotidiana, utilizando un vocabulario coloquial español cargado de dinamismo. La estructura métrica prioriza la rima consonante rápida para mantener la agilidad vocal y la tensión emocional, haciendo que cada verso impulse con fuerza hacia un estribillo catártico y de fácil coreo en directo."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial acompaña la propuesta estética del álbum homónimo, mostrando a Huecco en una faceta muy dinámica, interpretando el tema con actitud frontal a cámara y acompañado por su banda. La dirección visual apuesta por una paleta de colores contrastados, donde predominan los tonos cálidos y urbanos que refuerzan el concepto de lucha callejera y optimismo. La edición está cortada al ritmo de los golpes de percusión y los cambios dinámicos de la canción, intercalando interpretaciones en directo con secuencias que retratan escenas cotidianas de esfuerzo y superación. La imagen del artista, con su característico sombrero y estética rock-urbana, se consolidó en este trabajo como un icono visual reconocible dentro del panorama musical español de la época."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "«Pa' mi guerrera» supuso una carta de presentación inmejorable para la etapa en solitario de Huecco, logrando una alta rotación en las principales radiofórmulas españolas y posicionándose rápidamente en las listas de ventas. El tema trascendió el ámbito puramente comercial al convertirse en un himno de apoyo en diversos colectivos sociales, especialmente en causas benéficas y de lucha contra el cáncer de mama, resonando profundamente con su doble sentido de resistencia. Este éxito inicial no solo consolidó la carrera de Huecco como compositor y solista, sino que demostró la viabilidad comercial de fusionar el rock alternativo español con ritmos latinos y flamencos sin perder identidad."
+      }
+    ],
+    "_aiModel": "gemini-3.5-flash-lite"
+  },
+  "Lagarto amarillo - Culpable": {
+    "title": "Culpable",
+    "artist": "Lagarto amarillo",
+    "year": "2012",
+    "originalAlbum": "Estoy Mintiendo De Verdad",
+    "releaseYear": "2012",
+    "releaseDate": "2012-02-14",
+    "composers": "Pablo Mora Moreno",
+    "label": "Darlalata Music",
+    "genre": "Pop Rock / Pop Acústico Español",
+    "synopsis": "'Culpable' representa el punto de inflexión definitivo en el sonido de Lagarto Amarillo, conjugando la rítmica del pop acústico de autor con una arquitectura de producción comercial pulida. La obra destaca por una cadencia métrica sincopada en la voz líder, guitarras acústicas percusivas con un brillo incisivo en agudos y una estructura armónica directa orientada al 'hook' radial, consolidando a la banda madrileña en el panorama del pop en español de la década de 2010.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "Armónicamente construida en una tonalidad directa sobre progresiones diatónicas pop (I - V - vi - IV y variaciones modales en el puente), la canción cimenta su fuerza en el 'strumming' percusivo de guitarra acústica capturado mediante microfonía de condensador de diafragma pequeño en configuración XY para preservar transitorios y aire estéreo. El bajo eléctrico ejecuta líneas sólidas y melódicas centradas en las fundamentales con saturación suave de válvulas, mientras que la percusión hibrida elementos orgánicos (cajón y shaker) con una batería pop moderna comprimida en paralelo para maximizar pegada sin enmascarar las frecuencias medias. La mezcla destaca por el tratamiento vocal de Pablo Mora: un 'slapback delay' milimétrico y compresión óptica que mantiene la inteligibilidad del fraseo rápido característico, acompañado de coros doblados en los extremos del panorama estéreo durante el estribillo."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "Líricamente, 'Culpable' explora la asunción paradójica de la responsabilidad afectiva con un tono que oscila entre la ironía pícara y la rendición emocional. En versos como 'Si soy culpable de quererte tanto así / condéname a la pena de vivir por ti', Mora subvierte el léxico judicial y punitivo transformándolo en un alegato de devoción incondicional. La métrica se caracteriza por versos octosílabos y decasílabos con rima asonante intercalada, ejecutados con una velocidad silábica cercana a la tradición del rap o del 'sprechgesang' acústico, creando un contraste dinámico entre la aceleración de las estrofas y la apertura melódica prolongada del coro."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial apuesta por una estética orgánica y cercana, centrada en la interacción de los tres hermanos Mora (Pablo, Patricia y José María) en situaciones cotidianas y planos de interpretación en directo. La fotografía utiliza iluminación natural y tonos cálidos desaturados que refuerzan la honestidad acústica del tema. Los planos cerrados capturan la gestualidad enfática del vocalista al interpretar el rápido fraseo, alternados con secuencias dinámicas de montaje rítmico que acompasan los golpes de caja y los quiebres instrumentales, eludiendo artificios narrativos complejos para priorizar la identidad visual del grupo."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "Publicado como mascarón de proa del álbum 'Estoy mintiendo de verdad', 'Culpable' catapultó a Lagarto Amarillo a la rotación de máxima audiencia en emisoras como Cadena Dial y Los 40 Principales en España, acumulando millones de reproducciones en plataformas digitales. La canción se convirtió en un estándar del repertorio en vivo de la banda y sirvió como carta de presentación ante el público latinoamericano, demostrando la viabilidad comercial de un formato pop-folk accesible con letras ingeniosas y sin excesos de sobreproducción electrónica."
+      }
+    ],
+    "_aiModel": "gemini-3.8-flash"
+  },
+  "Milk  Sugar, John Paul Young - Love Is in the Air": {
+    "title": "Love Is in the Air",
+    "artist": "Milk & Sugar, John Paul Young",
+    "year": "2001",
+    "originalAlbum": "Love Is in the Air (Single)",
+    "releaseYear": "2001",
+    "releaseDate": "2001-11-12",
+    "composers": "Harry Vanda, George Young",
+    "label": "Milk & Sugar Recordings / Pepper Records",
+    "genre": "House / Funky House / Disco House",
+    "synopsis": "Esta reinterpretación lanzada en 2001 por el dúo alemán Milk & Sugar junto al vocalista original John Paul Young es un hito de la transición del disco setentero al disco-house de principios de los 2000. La producción fusiona la emotiva melodía original compuesta por Vanda & Young con una base rítmica electrónica de 128 BPM, compresión en cadena lateral (sidechain), arreglos de cuerdas dinámicos y bronce sintetizado. El resultado convirtió un clásico del pop/disco de 1977 en un himno de club global que dominó las listas de baile en Ibiza y las radiofórmulas europeas.",
+    "sections": [
+      {
+        "title": "1. Anatomía Musical y Producción de Estudio",
+        "icon": "fa-sliders",
+        "text": "La producción de Milk & Sugar (Michael Kronenberger y Steffen Harning) toma la estructura armónica original en Do mayor y la adapta a un tempo constante de 128 BPM, optimizado para la pista de baile. El núcleo rítmico se basa en un patrón 4-on-the-floor con un bombo estridente (kick) saturado analógicamente, acompañado por hi-hats abiertos en los contratiempos que aportan un groove insigne del funky house. Se emplean filtros de paso alto y paso bajo de corte barrido (filter sweeps) para generar tensión durante las intros y los 'build-ups'. La voz de John Paul Young fue re-grabada y procesada con ecualización de presencia (realce en 3-5 kHz), suave afinación digital y un delay con sincronía de corchea punteada. Los icónicos arreglos de cuerdas originales son emulados y filtrados con automatizaciones de frecuencia de corte de resonancia, mientras que el bajo sintetizado (estilo Roland TB-303 / Juno-106) sostiene la sub-base proporcionando una pegada sólida y bailable en combinación con el 'sidechaining'."
+      },
+      {
+        "title": "2. Análisis Lírico y Desglose Verso a Verso",
+        "icon": "fa-align-left",
+        "text": "La letra explora el optimismo romántico arquetípico, transformado en el contexto de 2001 en una metáfora del escapismo y la euforia colectiva del clubbing.\n\n- Estratrofa 1: 'Love is in the air, everywhere I look around / Love is in the air, every sight and every sound.'\nAnálisis: Establece una percepción sensorial omnipresente. El uso de 'everywhere' y 'every sound' conecta la atmósfera física con el ambiente sonoro del club.\n\n- Estrofa 2: 'And I don't know if I'm being foolish, don't know if I'm being wise / But it's something that I must believe in, and it's there when I look in your eyes.'\nVocabulario clave: 'Foolish' (insensato/ingenuo) vs. 'Wise' (sabio). Presenta la dicotomía entre la vulnerabilidad emocional y la entrega incondicional, un tema recurrente en la lírica de música de baile."
+      },
+      {
+        "title": "3. Narrativa Visual y Videoclip",
+        "icon": "fa-film",
+        "text": "El videoclip oficial refleja la estética kitsch-glam del inicio del milenio y la vibrante cultura de club de verano. Dirigido con un enfoque dinámico y colorido, muestra a Milk & Sugar pinchando en sesiones de DJ intercaladas con actuaciones de John Paul Young. La iluminación saturada en tonos neón, rojos y dorados refuerza la sensación de calidez y euforia. La edición rápida sigue el compás de 128 BPM mediante cortes en cada tiempo fuerte (downbeat), capturando la interacción fluida entre la multitud, la pista de baile y los artistas, convirtiendo el espacio en un microcosmos festivo e incluyente."
+      },
+      {
+        "title": "4. Impacto Cultural y Curiosidades",
+        "icon": "fa-award",
+        "text": "El remix de Milk & Sugar resucitó la carrera de John Paul Young casi 24 años después del lanzamiento original de 1977. La canción se posicionó en el Top 10 del UK Singles Chart y alcanzó el número 1 en las listas de dance en Alemania, España y Australia. Se convirtió en uno de los himnos estivales más importantes de Ibiza en 2001. Curiosamente, Harry Vanda y George Young (compositores del tema y miembros de The Easybeats, además de productores de los primeros álbumes de AC/DC) respaldaron esta reinterpretación electrónica por mantener la esencia melódica de la composición original mientras la introducía a una nueva generación de oyentes."
+      }
+    ],
+    "_aiModel": "gemini-3.6-flash"
   }
 }

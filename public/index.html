@@ -18,7 +18,7 @@
             </div>
             <div class="logo-title">
                 <h1>Música</h1>
-                <p>Plataforma de Videoclips & Análisis Sónico v2.4.6</p>
+                <p>Plataforma de Videoclips & Análisis Sónico v2.4.7</p>
             </div>
         </div>
 
@@ -27,9 +27,14 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" id="search-input" placeholder="Buscar artista, canción o clásico...">
             </div>
-            <button class="btn-action" id="btn-smart-dj" title="Iniciar reproducción continua aleatoria">
-                <i class="fa-solid fa-shuffle"></i> Modo Fiesta
-            </button>
+            <div class="party-dj-group" id="party-dj-group">
+                <button class="btn-action btn-party-main" id="btn-smart-dj" title="Iniciar reproducción continua aleatoria de tus listas seleccionadas">
+                    <i class="fa-solid fa-shuffle"></i> <span id="btn-smart-dj-label">Modo Fiesta</span>
+                </button>
+                <button class="btn-action btn-party-gear" id="btn-party-config" title="Elegir qué listas mezclar en el Modo Fiesta (ej. 2 o 3 listas)">
+                    <i class="fa-solid fa-sliders"></i>
+                </button>
+            </div>
             <button class="btn-action" id="btn-open-stats" title="Ver estadísticas completas de la biblioteca">
                 <i class="fa-solid fa-chart-pie"></i> Estadísticas
             </button>
@@ -273,6 +278,50 @@
         </div>
     </div>
 
+    <!-- Modal: Configuración de Modo Fiesta Multi-Lista -->
+    <div class="modal-backdrop" id="party-modal" style="display: none;">
+        <div class="modal-container party-modal-card">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <h3 class="modal-title" style="color:#fff; font-size:1.3rem; font-weight:800; display:flex; align-items:center; gap:8px;">
+                        <i class="fa-solid fa-shuffle" style="color: var(--spotify-green);"></i> Configurar Modo Fiesta
+                    </h3>
+                    <p class="modal-subtitle" style="color:var(--text-muted); font-size:0.85rem; margin-top:3px;">
+                        Selecciona 2, 3 o las listas que quieras mezclar en reproducción aleatoria continua
+                    </p>
+                </div>
+                <button class="btn-close-modal" id="btn-close-party-modal" title="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body party-modal-body">
+                <div class="party-presets-bar">
+                    <span class="party-presets-label">Selección rápida:</span>
+                    <button type="button" class="party-preset-chip" id="btn-party-preset-all">Todas</button>
+                    <button type="button" class="party-preset-chip" id="btn-party-preset-classics">Clásicos (Viejuna + Española)</button>
+                    <button type="button" class="party-preset-chip" id="btn-party-preset-modern">Ritmo (Dance + Siglo XXI + Latina)</button>
+                    <button type="button" class="party-preset-chip" id="btn-party-preset-clear">Ninguna</button>
+                </div>
+
+                <div class="party-playlists-list" id="party-playlists-list">
+                    <!-- Generado dinámicamente -->
+                </div>
+
+                <div class="party-modal-footer">
+                    <div class="party-summary-info" id="party-summary-info">
+                        <span id="party-selected-count">0</span> listas seleccionadas (<span id="party-total-tracks-count">0</span> canciones)
+                    </div>
+                    <div class="party-footer-actions">
+                        <button type="button" class="btn-action" id="btn-party-save-only" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.18);">
+                            Guardar selección
+                        </button>
+                        <button type="button" class="btn-action btn-party-start" id="btn-party-start-now" style="background: var(--spotify-green); color: #000; font-weight: 700;">
+                            <i class="fa-solid fa-play"></i> Iniciar Modo Fiesta
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Modo Cine / Pantalla Completa (Estilo Spotify TV / Apple Music) -->
     <div class="cinema-overlay" id="cinema-overlay" style="display: none;">
         <div class="cinema-bg" id="cinema-bg"></div>
@@ -487,8 +536,11 @@
         </div>
 
         <div class="sidebar-content">
-            <div class="sidebar-category-header">
+            <div class="sidebar-category-header" style="display:flex; justify-content:space-between; align-items:center;">
                 <span><i class="fa-solid fa-compact-disc"></i> Colecciones Principales</span>
+                <button type="button" class="sidebar-action-btn" id="btn-sidebar-party-config" title="Mezclar varias listas seleccionadas en Modo Fiesta">
+                    <i class="fa-solid fa-sliders"></i> Mezclar
+                </button>
             </div>
             <nav class="sidebar-nav-list" id="sidebar-playlist-tabs">
                 <button class="tab-button sidebar-tab active" data-tab="Música viejuna">
@@ -800,6 +852,6 @@
     </div>
 
     <script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
-    <script src="js/app.js?v=2.4.6"></script>
+    <script src="js/app.js?v=2.4.7"></script>
 </body>
 </html>
