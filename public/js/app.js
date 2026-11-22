@@ -2250,7 +2250,9 @@ function formatTime(seconds) {
             } else if (playbackMode === 'playlist_shuffle') {
                 musicBarMode.innerHTML = `<i class="fa-solid fa-shuffle"></i> ${currentTab}`;
             } else if (playbackMode === 'party_dj') {
-                musicBarMode.innerHTML = `<i class="fa-solid fa-fire"></i> Modo Fiesta`;
+                const sourceBadge = track.playlistName ? ` • <span class="party-source-badge">${track.playlistName}</span>` : '';
+                const progress = activePlaylistQueue && activePlaylistQueue.length > 0 ? ` (${currentQueueIndex + 1}/${activePlaylistQueue.length})` : '';
+                musicBarMode.innerHTML = `<i class="fa-solid fa-fire"></i> Modo Fiesta${sourceBadge}${progress}`;
             } else {
                 musicBarMode.innerHTML = `<i class="fa-solid fa-play"></i> Canción`;
             }
@@ -2779,20 +2781,20 @@ function formatTime(seconds) {
     function openPartyModal() {
         if (!partyModal) return;
         renderPartyModalPlaylists();
-        if (typeof partyModal.showModal === 'function') {
-            partyModal.showModal();
-        } else {
-            partyModal.setAttribute('open', '');
-        }
+        partyModal.style.display = 'flex';
+        setTimeout(() => {
+            partyModal.classList.add('active');
+        }, 10);
     }
 
     function closePartyModal() {
         if (!partyModal) return;
-        if (typeof partyModal.close === 'function') {
-            partyModal.close();
-        } else {
-            partyModal.removeAttribute('open');
-        }
+        partyModal.classList.remove('active');
+        setTimeout(() => {
+            if (!partyModal.classList.contains('active')) {
+                partyModal.style.display = 'none';
+            }
+        }, 250);
     }
 
     // Presets del Modal
@@ -2900,13 +2902,58 @@ function formatTime(seconds) {
 
     if (partyModal) {
         partyModal.addEventListener('click', (e) => {
-            const rect = partyModal.getBoundingClientRect();
-            const isInDialog = (rect.top <= e.clientY && e.clientY <= rect.top + rect.height
-              && rect.left <= e.clientX && e.clientX <= rect.left + rect.width);
-            if (!isInDialog) {
+            if (e.target === partyModal) {
                 closePartyModal();
             }
         });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && partyModal && partyModal.style.display === 'flex') {
+            closePartyModal();
+        }
+    });
+
+    // Barajado balanceado intercalado (Round-Robin Interleaving):
+    // Alterna equilibradamente entre las listas seleccionadas para que una lista con más
+    // canciones no monopolice la reproducción, garantizando que el usuario escuche una de cada lista.
+    function interleaveMultiPlaylistTracks(selectedLists, poolKey) {
+        const queues = [];
+
+        for (const pName of selectedLists) {
+            const listTracks = (allPlaylists[pName] || []).map(t => ({ ...t, playlistName: pName }));
+            if (listTracks.length > 0) {
+                const subPoolKey = `${poolKey}_${normalizeText(pName)}`;
+                let { unplayed } = getUnplayedPool(subPoolKey, listTracks);
+                if (unplayed.length === 0) {
+                    safeStorage.removeItem(`played_pool_${normalizeText(subPoolKey)}`);
+                    unplayed = [...listTracks];
+                }
+                const shuffled = smartPrioritizedShuffle(unplayed);
+                if (shuffled.length > 0) {
+                    queues.push({ name: pName, tracks: shuffled });
+                }
+            }
+        }
+
+        if (queues.length === 0) return [];
+
+        const mixed = [];
+        let hasMore = true;
+
+        while (hasMore) {
+            hasMore = false;
+            // Barajar aleatoriamente el orden de turno en cada ronda para variedad
+            const roundQueues = fisherYatesShuffle([...queues]);
+            for (const q of roundQueues) {
+                if (q.tracks.length > 0) {
+                    mixed.push(q.tracks.shift());
+                    hasMore = true;
+                }
+            }
+        }
+
+        return smartDeclusterArtists(mixed);
     }
 
     function startPartyDjMode(targetLists = null) {
@@ -2932,8 +2979,15 @@ function formatTime(seconds) {
         const isAll = valid.length > 0 && valid.every(v => selected.includes(v)) && selected.length >= valid.length;
         currentPartyPoolKey = isAll ? 'global_party' : ('party_mix_' + [...selected].sort().map(normalizeText).join('_'));
 
-        const { unplayed, playedCount, total } = getUnplayedPool(currentPartyPoolKey, allTracks);
-        const shuffled = smartPrioritizedShuffle(unplayed);
+        let shuffled = [];
+        if (selected.length > 1) {
+            // Mezcla intercalada equitativa entre listas
+            shuffled = interleaveMultiPlaylistTracks(selected, currentPartyPoolKey);
+        } else {
+            const { unplayed } = getUnplayedPool(currentPartyPoolKey, allTracks);
+            shuffled = smartPrioritizedShuffle(unplayed);
+        }
+
         playbackMode = 'party_dj';
         activePlaylistQueue = shuffled;
         currentQueueIndex = 0;
@@ -2942,13 +2996,19 @@ function formatTime(seconds) {
             ? 'Modo Fiesta'
             : (selected.length === 1 ? `Fiesta (${selected[0]})` : `Fiesta (${selected.length} listas)`);
 
-        playQueueTrack(activePlaylistQueue[0], `${labelPrefix} (${playedCount + 1}/${total})`);
+        const firstTrack = activePlaylistQueue[0];
+        const sourceNotice = firstTrack.playlistName ? ` [${firstTrack.playlistName}]` : '';
+        playQueueTrack(firstTrack, `${labelPrefix}${sourceNotice} (1/${activePlaylistQueue.length})`);
         maybeOpenCinemaForPublicShuffle();
     }
 
     if (btnSmartDj) {
         btnSmartDj.addEventListener('click', () => {
             startPartyDjMode();
+        });
+        btnSmartDj.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            openPartyModal();
         });
     }
 

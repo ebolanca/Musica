@@ -5448,14 +5448,18 @@
     "title": "Beautiful Day",
     "displayTitle": "Beautiful Day",
     "artist": "U2",
-    "album": "All That You Can't Leave Behind (20th Anniversary Super Deluxe Edition)",
+    "album": "All That You Can't Leave Behind",
     "year": "2000",
     "date": "2000-10-09",
     "releaseYear": "2000",
     "releaseDate": "2000-10-09",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/2aad2c24dd0166fb13fc9efcfdc91c9f/1000x1000-000000-80-0-0.jpg",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b37725cd9d9771d7674df22fafdcc0a2/1000x1000-000000-80-0-0.jpg",
     "durationMs": 470907,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "U2 (Bono, The Edge, Adam Clayton, Larry Mullen Jr.)",
+    "label": "Island Records / Interscope Records",
+    "genre": "Alternative Rock / Stadium Rock",
+    "geminiEnriched": true
   },
   "coldplay - trouble": {
     "title": "Trouble",
@@ -5468,7 +5472,11 @@
     "releaseDate": "2000-07-10",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/970dce98eeea6729244c0ae71707a83d/1000x1000-000000-80-0-0.jpg",
     "durationMs": 270731,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Chris Martin, Guy Berryman, Jonny Buckland, Will Champion",
+    "label": "Parlophone",
+    "genre": "Post-Britpop / Alternative Rock / Piano Rock",
+    "geminiEnriched": true
   },
   "maroon 5 - one more night": {
     "title": "One More Night",
@@ -9509,12 +9517,16 @@
     "artist": "Craig David",
     "album": "Born to Do It",
     "year": "2000",
-    "date": "2000-08-14",
+    "date": "2000-11-20",
     "releaseYear": "2000",
-    "releaseDate": "2000-08-14",
+    "releaseDate": "2000-11-20",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/2ea24270d49242d3a3f7edaf30d9989e/1000x1000-000000-80-0-0.jpg",
     "durationMs": 204867,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Craig David, Mark Hill",
+    "label": "Wildstar Records",
+    "genre": "UK Garage / R&B / 2-Step",
+    "geminiEnriched": true
   },
   "leona lewis - bleeding love": {
     "title": "Bleeding Love",
@@ -11225,7 +11237,11 @@
     "releaseDate": "2000-10-24",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/93a9609ca602d9162a3c3cc74f4a710d/1000x1000-000000-80-0-0.jpg",
     "durationMs": 243160,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Nelly Furtado",
+    "label": "DreamWorks Records",
+    "genre": "Pop / Folk Pop / Adult Contemporary",
+    "geminiEnriched": true
   },
   "nelly furtado - all good things (come to an end)": {
     "title": "All Good Things (Come To An End)",
@@ -11254,7 +11270,11 @@
     "releaseDate": "2000-07-31",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/d260fa442f925e1eb1c95bb29941f636/1000x1000-000000-80-0-0.jpg",
     "durationMs": 260560,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Robbie Williams, Guy Chambers, Kelvin Andrews, Nelson Pigford, Ekundayo Paris",
+    "label": "Chrysalis Records",
+    "genre": "Nu-disco / Dance-pop / Funk Pop",
+    "geminiEnriched": true
   },
   "geri halliwell - it's raining men": {
     "title": "It's Raining Men",
@@ -11743,25 +11763,33 @@
     "artist": "Bon Jovi",
     "album": "Crush",
     "year": "2000",
-    "date": "2000-05-23",
+    "date": "2000-05-08",
     "releaseYear": "2000",
-    "releaseDate": "2000-05-23",
+    "releaseDate": "2000-05-08",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/08a906bd35e5707ef08ceed3e36db1c7/1000x1000-000000-80-0-0.jpg",
     "durationMs": 224291,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Jon Bon Jovi, Richie Sambora, Max Martin",
+    "label": "Island Records",
+    "genre": "Pop Rock / Hard Rock / Arena Rock",
+    "geminiEnriched": true
   },
   "*nsync - bye bye bye": {
     "title": "Bye Bye Bye",
     "displayTitle": "Bye Bye Bye",
     "artist": "*NSYNC",
-    "album": "Bye Bye Bye - Single",
+    "album": "No Strings Attached",
     "year": "2000",
-    "date": "2000-01-11",
+    "date": "2000-01-18",
     "releaseYear": "2000",
-    "releaseDate": "2000-01-11",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/d2ff2ff23ab29260e5e478ecfd1bd352/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "2000-01-18",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/01fdca2ecf54d678ff005162b5b6cc92/1000x1000-000000-80-0-0.jpg",
     "durationMs": 200400,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Kristian Lundin, Jake Schulze, Andreas Carlsson",
+    "label": "Jive Records",
+    "genre": "Dance-Pop / Teen Pop / Cheiron Pop",
+    "geminiEnriched": true
   },
   "tom jones, mousse t. - sexbomb": {
     "title": "Sexbomb",
@@ -17694,14 +17722,18 @@
     "title": "Cuando nadie me ve",
     "displayTitle": "Cuando nadie me ve",
     "artist": "Alejandro Sanz",
-    "album": "El alma al aire (Edicion 2006)",
+    "album": "El alma al aire",
     "year": "2000",
-    "date": "2000-09-26",
+    "date": "2000-09-04",
     "releaseYear": "2000",
-    "releaseDate": "2000-09-26",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/0f81df47d82408229997789d8d46a3a0/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "2000-09-04",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/71f93eb47e63de7e23da05cd098db3fa/1000x1000-000000-80-0-0.jpg",
     "durationMs": 308560,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Alejandro Sanz",
+    "label": "WEA Latina",
+    "genre": "Latin Pop / Pop Rock / Balada Romántica",
+    "geminiEnriched": true
   },
   "la oreja de van gogh - cuídate": {
     "title": "Cuídate",
@@ -17714,7 +17746,11 @@
     "releaseDate": "2000-09-11",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8aab382313c0a183a422a7ceb01e49e4/1000x1000-000000-80-0-0.jpg",
     "durationMs": 168133,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Xabier San Martín, Pablo Benegas, Amaia Montero, Álvaro Fuentes, Haritz Garde",
+    "label": "Sony Music / Epic",
+    "genre": "Pop Rock / Twee Pop / Pop Acústico",
+    "geminiEnriched": true
   },
   "pastora soler - dámelo ya": {
     "title": "Dámelo ya",
@@ -19619,7 +19655,11 @@
     "releaseDate": "2000-09-11",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8aab382313c0a183a422a7ceb01e49e4/1000x1000-000000-80-0-0.jpg",
     "durationMs": 225227,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Amaia Montero, Xabi San Martín, Pablo Benegas, Álvaro Fuentes, Haritz Garde",
+    "label": "Sony Music / Epic",
+    "genre": "Pop Rock / Pop Acústico",
+    "geminiEnriched": true
   },
   "el canto del loco - peter pan": {
     "title": "Peter Pan",
@@ -22818,14 +22858,18 @@
     "title": "Love Don't Cost a Thing",
     "displayTitle": "Love Don't Cost a Thing",
     "artist": "Jennifer Lopez",
-    "album": "J. Lo",
+    "album": "J.Lo",
     "year": "2000",
-    "date": "2000-12-02",
+    "date": "2000-11-20",
     "releaseYear": "2000",
-    "releaseDate": "2000-12-02",
+    "releaseDate": "2000-11-20",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/fbd79c70fb988d7e7205a99448f81660/1000x1000-000000-80-0-0.jpg",
     "durationMs": 221227,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Damon Sharpe, Greg Lawson, Georgette Franklin, Jeremy Monroe, Amille Harris, Ernie Singleton",
+    "label": "Epic Records",
+    "genre": "Dance-Pop / R&B",
+    "geminiEnriched": true
   },
   "jennifer lopez - waiting for tonight": {
     "title": "Waiting for Tonight",
@@ -24661,14 +24705,18 @@
     "title": "Can't Fight The Moonlight",
     "displayTitle": "Can't Fight The Moonlight",
     "artist": "LeAnn Rimes",
-    "album": "I Need You",
+    "album": "Coyote Ugly",
     "year": "2000",
-    "date": "2000-08-01",
+    "date": "2000-08-22",
     "releaseYear": "2000",
-    "releaseDate": "2000-08-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7b6725e19d0c57ba87d2e9a00ee7be5b/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "2000-08-22",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1f04545888d05920c73ea9d523f822ac/1000x1000-000000-80-0-0.jpg",
     "durationMs": 215507,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Diane Warren",
+    "label": "Curb Records",
+    "genre": "Dance-Pop / Pop Rock / Country Pop",
+    "geminiEnriched": true
   },
   "inxs - need you tonight": {
     "title": "Need You Tonight",
@@ -26892,12 +26940,16 @@
     "artist": "Alizée",
     "album": "Gourmandises",
     "year": "2000",
-    "date": "2000-11-28",
+    "date": "2000-07-04",
     "releaseYear": "2000",
-    "releaseDate": "2000-11-28",
+    "releaseDate": "2000-07-04",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4e7ac0be67df8ee745ff4a0aedf23d4d/1000x1000-000000-80-0-0.jpg",
     "durationMs": 264283,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Mylène Farmer, Laurent Boutonnat",
+    "label": "Polydor / Requiem Publishing",
+    "genre": "French Pop / Synth-pop / Dance-pop",
+    "geminiEnriched": true
   },
   "enigma - return to innocence": {
     "title": "Return To Innocence",
@@ -26980,7 +27032,11 @@
     "releaseDate": "2000-07-24",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/2ea24270d49242d3a3f7edaf30d9989e/1000x1000-000000-80-0-0.jpg",
     "durationMs": 235133,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Craig David, Mark Hill, Darren Hill",
+    "label": "Wildstar Records",
+    "genre": "UK Garage / R&B / 2-step",
+    "geminiEnriched": true
   },
   "the beatles - help! - remastered 2009": {
     "title": "Help!",
@@ -29979,7 +30035,11 @@
     "releaseDate": "2000-10-03",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/63a5523dbf5e1cdc67ad13cab3744f87/1000x1000-000000-80-0-0.jpg",
     "durationMs": 230093,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Max Martin, Rami Yacoub, Lisa Miskovsky",
+    "label": "Jive Records",
+    "genre": "Teen Pop / Pop Ballad / Vocal Pop",
+    "geminiEnriched": true
   },
   "bon jovi - born to be my baby": {
     "title": "Born to Be My Baby",
@@ -35060,14 +35120,18 @@
     "title": "Castles In The Sky",
     "displayTitle": "Castles In The Sky",
     "artist": "Ian van Dahl, Marsha",
-    "album": "Castles in the Sky (feat. Marsha) [Remixes] - Single",
+    "album": "Ace",
     "year": "2000",
-    "date": "2000-05-01",
+    "date": "2000-09-04",
     "releaseYear": "2000",
-    "releaseDate": "2000-05-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/23d0467bc678daee2694d7b362841201/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "2000-09-04",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ea22043984d6d94b4db200b34dd05635/1000x1000-000000-80-0-0.jpg",
     "durationMs": 227133,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Christophe Chantzis, Erik Van Biesen",
+    "label": "A&S Productions",
+    "genre": "Trance / Vocal Trance / Eurodance",
+    "geminiEnriched": true
   },
   "century, john wesley - lover why - vocal dream mix": {
     "title": "Lover Why (Vocal Dream Mix)",
@@ -39542,12 +39606,16 @@
     "artist": "Alizée",
     "album": "Gourmandises",
     "year": "2000",
-    "date": "2000-11-28",
+    "date": "2000-07-04",
     "releaseYear": "2000",
-    "releaseDate": "2000-11-28",
+    "releaseDate": "2000-07-04",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/4e7ac0be67df8ee745ff4a0aedf23d4d/1000x1000-000000-80-0-0.jpg",
     "durationMs": 264283,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Mylène Farmer, Laurent Boutonnat",
+    "label": "Polydor / Requiem Publishing",
+    "genre": "French Pop / Synth-pop / Dance-pop",
+    "geminiEnriched": true
   },
   "moi lolita": {
     "displayTitle": "Moi... Lolita",
@@ -57535,7 +57603,7 @@
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ea22043984d6d94b4db200b34dd05635/1000x1000-000000-80-0-0.jpg",
     "durationMs": 227133,
     "source": "Deezer + Apple Music Resolver",
-    "composers": "Christophe Chantzis, Erik Vanspauwen",
+    "composers": "Christophe Chantzis, Erik Van Biesen",
     "label": "A&S Productions",
     "genre": "Trance / Vocal Trance / Eurodance",
     "geminiEnriched": true
@@ -64093,7 +64161,11 @@
     "releaseDate": "2000-01-01",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a8ab67c182c1f4f9f1ffdb7d90347e5d/1000x1000-000000-80-0-0.jpg",
     "durationMs": 266627,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Roberto Livi, Rafael Ferro",
+    "label": "EMI Latin",
+    "genre": "Merengue / Tropical",
+    "geminiEnriched": true
   },
   "wilfrido vargas - a mover la colita": {
     "title": "A Mover la Colita",
@@ -103029,14 +103101,18 @@
     "title": "Bye Bye Bye",
     "displayTitle": "Bye Bye Bye",
     "artist": "*NSYNC",
-    "album": "Bye Bye Bye - Single",
+    "album": "No Strings Attached",
     "year": "2000",
-    "date": "2000-01-11",
+    "date": "2000-01-18",
     "releaseYear": "2000",
-    "releaseDate": "2000-01-11",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/d2ff2ff23ab29260e5e478ecfd1bd352/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "2000-01-18",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/01fdca2ecf54d678ff005162b5b6cc92/1000x1000-000000-80-0-0.jpg",
     "durationMs": 200400,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Kristian Lundin, Jake Schulze, Andreas Carlsson",
+    "label": "Jive Records",
+    "genre": "Dance-Pop / Teen Pop / Cheiron Pop",
+    "geminiEnriched": true
   },
   "bad": {
     "title": "Bad",
@@ -103146,12 +103222,16 @@
     "artist": "Craig David",
     "album": "Born to Do It",
     "year": "2000",
-    "date": "2000-08-14",
+    "date": "2000-11-20",
     "releaseYear": "2000",
-    "releaseDate": "2000-08-14",
+    "releaseDate": "2000-11-20",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/2ea24270d49242d3a3f7edaf30d9989e/1000x1000-000000-80-0-0.jpg",
     "durationMs": 204867,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Craig David, Mark Hill",
+    "label": "Wildstar Records",
+    "genre": "UK Garage / R&B / 2-Step",
+    "geminiEnriched": true
   },
   "don't you worry child [feat. john martin]": {
     "title": "Don't You Worry Child [feat. John Martin]",
@@ -103242,14 +103322,18 @@
     "title": "Beautiful Day",
     "displayTitle": "Beautiful Day",
     "artist": "U2",
-    "album": "All That You Can't Leave Behind (20th Anniversary Super Deluxe Edition)",
+    "album": "All That You Can't Leave Behind",
     "year": "2000",
     "date": "2000-10-09",
     "releaseYear": "2000",
     "releaseDate": "2000-10-09",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/2aad2c24dd0166fb13fc9efcfdc91c9f/1000x1000-000000-80-0-0.jpg",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/b37725cd9d9771d7674df22fafdcc0a2/1000x1000-000000-80-0-0.jpg",
     "durationMs": 470907,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "U2 (Bono, The Edge, Adam Clayton, Larry Mullen Jr.)",
+    "label": "Island Records / Interscope Records",
+    "genre": "Alternative Rock / Stadium Rock",
+    "geminiEnriched": true
   },
   "in the end": {
     "title": "In the End",
@@ -103279,7 +103363,11 @@
     "releaseDate": "2000-07-10",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/970dce98eeea6729244c0ae71707a83d/1000x1000-000000-80-0-0.jpg",
     "durationMs": 270731,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Chris Martin, Guy Berryman, Jonny Buckland, Will Champion",
+    "label": "Parlophone",
+    "genre": "Post-Britpop / Alternative Rock / Piano Rock",
+    "geminiEnriched": true
   },
   "7 days": {
     "title": "7 Days",
@@ -103292,7 +103380,11 @@
     "releaseDate": "2000-07-24",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/2ea24270d49242d3a3f7edaf30d9989e/1000x1000-000000-80-0-0.jpg",
     "durationMs": 235133,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Craig David, Mark Hill, Darren Hill",
+    "label": "Wildstar Records",
+    "genre": "UK Garage / R&B / 2-step",
+    "geminiEnriched": true
   },
   "te he echado de menos": {
     "title": "Te he echado de menos",
@@ -103847,7 +103939,11 @@
     "releaseDate": "2000-10-03",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/63a5523dbf5e1cdc67ad13cab3744f87/1000x1000-000000-80-0-0.jpg",
     "durationMs": 230093,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Max Martin, Rami Yacoub, Lisa Miskovsky",
+    "label": "Jive Records",
+    "genre": "Teen Pop / Pop Ballad / Vocal Pop",
+    "geminiEnriched": true
   },
   "la quiero a morir": {
     "title": "La Quiero A Morir",
@@ -103877,7 +103973,11 @@
     "releaseDate": "2000-01-01",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/a8ab67c182c1f4f9f1ffdb7d90347e5d/1000x1000-000000-80-0-0.jpg",
     "durationMs": 266627,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Roberto Livi, Rafael Ferro",
+    "label": "EMI Latin",
+    "genre": "Merengue / Tropical",
+    "geminiEnriched": true
   },
   "primavera azul": {
     "title": "Primavera Azul",
@@ -104043,7 +104143,11 @@
     "releaseDate": "2000-06-26",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/970dce98eeea6729244c0ae71707a83d/1000x1000-000000-80-0-0.jpg",
     "durationMs": 269208,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Guy Berryman, Jonny Buckland, Will Champion, Chris Martin",
+    "label": "Parlophone",
+    "genre": "Alternative Rock / Post-Britpop",
+    "geminiEnriched": true
   },
   "yellow": {
     "title": "Yellow",
@@ -104056,7 +104160,11 @@
     "releaseDate": "2000-06-26",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/970dce98eeea6729244c0ae71707a83d/1000x1000-000000-80-0-0.jpg",
     "durationMs": 269208,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Guy Berryman, Jonny Buckland, Will Champion, Chris Martin",
+    "label": "Parlophone",
+    "genre": "Alternative Rock / Post-Britpop",
+    "geminiEnriched": true
   },
   "justin timberlake - cry me a river": {
     "title": "Cry Me a River",
@@ -104103,7 +104211,11 @@
     "releaseDate": "2000-08-14",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8e060e432d4480bfd8e383eec75261f9/1000x1000-000000-80-0-0.jpg",
     "durationMs": 227619,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Cristiano Spiller, Sophie Ellis-Bextor, Rob Davis",
+    "label": "Positiva Records",
+    "genre": "House / Disco / Dance-pop",
+    "geminiEnriched": true
   },
   "groovejet (if this ain't love)": {
     "title": "Groovejet (If This Ain't Love)",
@@ -104116,7 +104228,11 @@
     "releaseDate": "2000-08-14",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8e060e432d4480bfd8e383eec75261f9/1000x1000-000000-80-0-0.jpg",
     "durationMs": 227619,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Cristiano Spiller, Sophie Ellis-Bextor, Rob Davis",
+    "label": "Positiva Records",
+    "genre": "House / Disco / Dance-pop",
+    "geminiEnriched": true
   },
   "in-grid - tu es foutu - radio edit": {
     "title": "Tu Es Foutu",
@@ -113945,12 +114061,16 @@
     "artist": "Bon Jovi",
     "album": "Crush",
     "year": "2000",
-    "date": "2000-05-23",
+    "date": "2000-05-08",
     "releaseYear": "2000",
-    "releaseDate": "2000-05-23",
+    "releaseDate": "2000-05-08",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/08a906bd35e5707ef08ceed3e36db1c7/1000x1000-000000-80-0-0.jpg",
     "durationMs": 224291,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Jon Bon Jovi, Richie Sambora, Max Martin",
+    "label": "Island Records",
+    "genre": "Pop Rock / Hard Rock / Arena Rock",
+    "geminiEnriched": true
   },
   "rock dj": {
     "title": "Rock DJ",
@@ -113963,33 +114083,45 @@
     "releaseDate": "2000-07-31",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/d260fa442f925e1eb1c95bb29941f636/1000x1000-000000-80-0-0.jpg",
     "durationMs": 260560,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Robbie Williams, Guy Chambers, Kelvin Andrews, Nelson Pigford, Ekundayo Paris",
+    "label": "Chrysalis Records",
+    "genre": "Nu-disco / Dance-pop / Funk Pop",
+    "geminiEnriched": true
   },
   "love don't cost a thing": {
     "title": "Love Don't Cost a Thing",
     "displayTitle": "Love Don't Cost a Thing",
     "artist": "Jennifer Lopez",
-    "album": "J. Lo",
+    "album": "J.Lo",
     "year": "2000",
-    "date": "2000-12-02",
+    "date": "2000-11-20",
     "releaseYear": "2000",
-    "releaseDate": "2000-12-02",
+    "releaseDate": "2000-11-20",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/fbd79c70fb988d7e7205a99448f81660/1000x1000-000000-80-0-0.jpg",
     "durationMs": 221227,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Damon Sharpe, Greg Lawson, Georgette Franklin, Jeremy Monroe, Amille Harris, Ernie Singleton",
+    "label": "Epic Records",
+    "genre": "Dance-Pop / R&B",
+    "geminiEnriched": true
   },
   "can't fight the moonlight": {
     "title": "Can't Fight The Moonlight",
     "displayTitle": "Can't Fight The Moonlight",
     "artist": "LeAnn Rimes",
-    "album": "I Need You",
+    "album": "Coyote Ugly",
     "year": "2000",
-    "date": "2000-08-01",
+    "date": "2000-08-22",
     "releaseYear": "2000",
-    "releaseDate": "2000-08-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/7b6725e19d0c57ba87d2e9a00ee7be5b/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "2000-08-22",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/1f04545888d05920c73ea9d523f822ac/1000x1000-000000-80-0-0.jpg",
     "durationMs": 215507,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Diane Warren",
+    "label": "Curb Records",
+    "genre": "Dance-Pop / Pop Rock / Country Pop",
+    "geminiEnriched": true
   },
   "bruno mars - marry you": {
     "title": "Marry You",
@@ -114063,14 +114195,18 @@
     "title": "Cuando nadie me ve",
     "displayTitle": "Cuando nadie me ve",
     "artist": "Alejandro Sanz",
-    "album": "El alma al aire (Edicion 2006)",
+    "album": "El alma al aire",
     "year": "2000",
-    "date": "2000-09-26",
+    "date": "2000-09-04",
     "releaseYear": "2000",
-    "releaseDate": "2000-09-26",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/0f81df47d82408229997789d8d46a3a0/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "2000-09-04",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/71f93eb47e63de7e23da05cd098db3fa/1000x1000-000000-80-0-0.jpg",
     "durationMs": 308560,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Alejandro Sanz",
+    "label": "WEA Latina",
+    "genre": "Latin Pop / Pop Rock / Balada Romántica",
+    "geminiEnriched": true
   },
   "paris": {
     "title": "Paris",
@@ -114083,7 +114219,11 @@
     "releaseDate": "2000-09-11",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8aab382313c0a183a422a7ceb01e49e4/1000x1000-000000-80-0-0.jpg",
     "durationMs": 225227,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Amaia Montero, Xabi San Martín, Pablo Benegas, Álvaro Fuentes, Haritz Garde",
+    "label": "Sony Music / Epic",
+    "genre": "Pop Rock / Pop Acústico",
+    "geminiEnriched": true
   },
   "nacho - báilame": {
     "title": "Báilame",
@@ -130038,7 +130178,11 @@
     "releaseDate": "2000-09-11",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8aab382313c0a183a422a7ceb01e49e4/1000x1000-000000-80-0-0.jpg",
     "durationMs": 168133,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Xabier San Martín, Pablo Benegas, Amaia Montero, Álvaro Fuentes, Haritz Garde",
+    "label": "Sony Music / Epic",
+    "genre": "Pop Rock / Twee Pop / Pop Acústico",
+    "geminiEnriched": true
   },
   "dámelo ya": {
     "title": "Dámelo ya",
@@ -138580,7 +138724,11 @@
     "releaseDate": "2000-10-24",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/93a9609ca602d9162a3c3cc74f4a710d/1000x1000-000000-80-0-0.jpg",
     "durationMs": 243160,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Nelly Furtado",
+    "label": "DreamWorks Records",
+    "genre": "Pop / Folk Pop / Adult Contemporary",
+    "geminiEnriched": true
   },
   "feel": {
     "title": "Feel",
@@ -146574,7 +146722,7 @@
     "date": "2000-08-14",
     "releaseYear": "2000",
     "releaseDate": "2000-08-14",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/3a86cb1a41130efd37208676b6b9645d/1000x1000-000000-80-0-0.jpg",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/8e060e432d4480bfd8e383eec75261f9/1000x1000-000000-80-0-0.jpg",
     "durationMs": 227619,
     "source": "Deezer + Apple Music Resolver",
     "composers": "Cristiano Spiller, Sophie Ellis-Bextor, Rob Davis",
@@ -147155,14 +147303,18 @@
     "title": "Castles In The Sky",
     "displayTitle": "Castles In The Sky",
     "artist": "Ian van Dahl, Marsha",
-    "album": "Castles in the Sky (feat. Marsha) [Remixes] - Single",
+    "album": "Ace",
     "year": "2000",
-    "date": "2000-05-01",
+    "date": "2000-09-04",
     "releaseYear": "2000",
-    "releaseDate": "2000-05-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/23d0467bc678daee2694d7b362841201/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "2000-09-04",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/ea22043984d6d94b4db200b34dd05635/1000x1000-000000-80-0-0.jpg",
     "durationMs": 227133,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Christophe Chantzis, Erik Van Biesen",
+    "label": "A&S Productions",
+    "genre": "Trance / Vocal Trance / Eurodance",
+    "geminiEnriched": true
   },
   "hugel, ultra naté - movin' to the sun": {
     "title": "Movin' To The Sun",
@@ -160588,27 +160740,35 @@
     "title": "Baila Morena - New Spanish Version",
     "displayTitle": "Baila Morena - New Spanish Version",
     "artist": "Zucchero",
-    "album": "Shake (International Spanish Version)",
+    "album": "Shake",
     "year": "2001",
-    "date": "2001-01-01",
+    "date": "2001-09-28",
     "releaseYear": "2001",
-    "releaseDate": "2001-01-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f65aa5cb427df74e4f1d18cbd9fdce02/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "2001-09-28",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/0e1d93cea53dbb90476aafe77555bdc0/1000x1000-000000-80-0-0.jpg",
     "durationMs": 245213,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Adelmo Fornaciari (Zucchero)",
+    "label": "Universal Music",
+    "genre": "Latin Rock / Pop Rock / Mediterranean Blues",
+    "geminiEnriched": true
   },
   "baila morena - new spanish version": {
     "title": "Baila Morena - New Spanish Version",
     "displayTitle": "Baila Morena - New Spanish Version",
     "artist": "Zucchero",
-    "album": "Shake (International Spanish Version)",
+    "album": "Shake",
     "year": "2001",
-    "date": "2001-01-01",
+    "date": "2001-09-28",
     "releaseYear": "2001",
-    "releaseDate": "2001-01-01",
-    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/f65aa5cb427df74e4f1d18cbd9fdce02/1000x1000-000000-80-0-0.jpg",
+    "releaseDate": "2001-09-28",
+    "coverUrl": "https://cdn-images.dzcdn.net/images/cover/0e1d93cea53dbb90476aafe77555bdc0/1000x1000-000000-80-0-0.jpg",
     "durationMs": 245213,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Adelmo Fornaciari (Zucchero)",
+    "label": "Universal Music",
+    "genre": "Latin Rock / Pop Rock / Mediterranean Blues",
+    "geminiEnriched": true
   },
   "eros ramazzotti - fuego en el fuego": {
     "title": "Fuego en el Fuego",
@@ -160616,12 +160776,16 @@
     "artist": "Eros Ramazzotti",
     "album": "Estilolibre",
     "year": "2000",
-    "date": "2000-01-01",
+    "date": "2000-10-30",
     "releaseYear": "2000",
-    "releaseDate": "2000-01-01",
+    "releaseDate": "2000-10-30",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/db88d663e7eb3026abb2b7591c63ebfb/1000x1000-000000-80-0-0.jpg",
     "durationMs": 240893,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Eros Ramazzotti, Claudio Guidetti, Adelio Cogliati",
+    "label": "BMG Ricordi",
+    "genre": "Latin Pop / Pop Rock",
+    "geminiEnriched": true
   },
   "fuego en el fuego": {
     "title": "Fuego en el Fuego",
@@ -160629,12 +160793,16 @@
     "artist": "Eros Ramazzotti",
     "album": "Estilolibre",
     "year": "2000",
-    "date": "2000-01-01",
+    "date": "2000-10-30",
     "releaseYear": "2000",
-    "releaseDate": "2000-01-01",
+    "releaseDate": "2000-10-30",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/db88d663e7eb3026abb2b7591c63ebfb/1000x1000-000000-80-0-0.jpg",
     "durationMs": 240893,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "Eros Ramazzotti, Claudio Guidetti, Adelio Cogliati",
+    "label": "BMG Ricordi",
+    "genre": "Latin Pop / Pop Rock",
+    "geminiEnriched": true
   },
   "mecano - barco a venus": {
     "title": "Barco a Venus",
@@ -162667,27 +162835,35 @@
     "title": "Summerlove",
     "displayTitle": "Summerlove",
     "artist": "David Tavaré",
-    "album": "Summerlove",
+    "album": "La Vida Veneno",
     "year": "2006",
-    "date": "2006-01-01",
+    "date": "2006-06-01",
     "releaseYear": "2006",
-    "releaseDate": "2006-01-01",
+    "releaseDate": "2006-06-01",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/58a564735734d96b80d111e49250ea6f/1000x1000-000000-80-0-0.jpg",
     "durationMs": 328293,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "David Tavaré, DJ Antoine, Mad Mark",
+    "label": "Blanco y Negro Music",
+    "genre": "Dance-Pop / House / Eurodance",
+    "geminiEnriched": true
   },
   "summerlove": {
     "title": "Summerlove",
     "displayTitle": "Summerlove",
     "artist": "David Tavaré",
-    "album": "Summerlove",
+    "album": "La Vida Veneno",
     "year": "2006",
-    "date": "2006-01-01",
+    "date": "2006-06-01",
     "releaseYear": "2006",
-    "releaseDate": "2006-01-01",
+    "releaseDate": "2006-06-01",
     "coverUrl": "https://cdn-images.dzcdn.net/images/cover/58a564735734d96b80d111e49250ea6f/1000x1000-000000-80-0-0.jpg",
     "durationMs": 328293,
-    "source": "Deezer + Apple Music Resolver"
+    "source": "Deezer + Apple Music Resolver",
+    "composers": "David Tavaré, DJ Antoine, Mad Mark",
+    "label": "Blanco y Negro Music",
+    "genre": "Dance-Pop / House / Eurodance",
+    "geminiEnriched": true
   },
   "binomio de oro - me sobran las palabras": {
     "title": "Me Sobran las Palabras",
