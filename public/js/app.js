@@ -1324,18 +1324,15 @@ function formatTime(seconds) {
     const btnSmartDj = document.getElementById('btn-smart-dj');
     const btnPartyConfig = document.getElementById('btn-party-config');
     const btnSidebarPartyConfig = document.getElementById('btn-sidebar-party-config');
-    const partyModal = document.getElementById('party-modal');
-    const btnClosePartyModal = document.getElementById('btn-close-party-modal');
-    const partyPlaylistsList = document.getElementById('party-playlists-list');
-    const btnPartyPresetAll = document.getElementById('btn-party-preset-all');
-    const btnPartyPresetClassics = document.getElementById('btn-party-preset-classics');
-    const btnPartyPresetModern = document.getElementById('btn-party-preset-modern');
-    const btnPartyPresetClear = document.getElementById('btn-party-preset-clear');
-    const btnPartySaveOnly = document.getElementById('btn-party-save-only');
-    const btnPartyStartNow = document.getElementById('btn-party-start-now');
+    const partyDropdownWrapper = document.getElementById('party-dropdown-wrapper');
+    const partyDropdownMenu = document.getElementById('party-dropdown-menu');
+    const partyGearIcon = document.getElementById('party-gear-icon');
+    const partyDdList = document.getElementById('party-dd-list');
+    const partyDdSummary = document.getElementById('party-dd-summary');
+    const partyDdPlayBtn = document.getElementById('party-dd-play-btn');
+    const partyDdAll = document.getElementById('party-dd-all');
+    const partyDdNone = document.getElementById('party-dd-none');
     const btnSmartDjLabel = document.getElementById('btn-smart-dj-label');
-    const partySelectedCount = document.getElementById('party-selected-count');
-    const partyTotalTracksCount = document.getElementById('party-total-tracks-count');
 
     let currentPartyPoolKey = 'global_party';
     let currentPartySelectedPlaylists = [];
@@ -2700,16 +2697,16 @@ function formatTime(seconds) {
         return { icon: 'fa-solid fa-music', color: '#00d2ff', desc: 'Lista de reproducción musical' };
     }
 
-    function renderPartyModalPlaylists() {
-        if (!partyPlaylistsList) return;
+    function renderPartyDropdownItems() {
+        if (!partyDdList) return;
         const validLists = getValidPartyPlaylistNames();
         const saved = getSavedPartyPlaylists();
 
-        partyPlaylistsList.innerHTML = '';
+        partyDdList.innerHTML = '';
 
         if (validLists.length === 0) {
-            partyPlaylistsList.innerHTML = '<div style="padding: 24px; text-align: center; color: var(--text-muted); font-size: 0.95rem;">No hay listas de reproducción disponibles</div>';
-            updatePartyModalSummary();
+            partyDdList.innerHTML = '<div style="padding: 8px; text-align: center; color: var(--text-muted); font-size: 0.8rem;">Cargando listas...</div>';
+            updatePartyDropdownSummary();
             return;
         }
 
@@ -2718,39 +2715,38 @@ function formatTime(seconds) {
             const count = (allPlaylists[name] || []).length;
             const isChecked = saved.includes(name);
 
-            const item = document.createElement('label');
-            item.className = 'party-playlist-item' + (isChecked ? ' selected' : '');
-            item.innerHTML = `
-                <input type="checkbox" class="party-modal-checkbox" data-playlist="${encodeURIComponent(name)}" ${isChecked ? 'checked' : ''}>
-                <div class="party-item-icon" style="background: ${meta.color}20; color: ${meta.color}; border: 1px solid ${meta.color}55;">
-                    <i class="${meta.icon}"></i>
+            const row = document.createElement('label');
+            row.className = 'party-dd-row' + (isChecked ? ' selected' : '');
+            row.innerHTML = `
+                <div class="party-dd-left">
+                    <input type="checkbox" class="party-dd-checkbox" data-playlist="${encodeURIComponent(name)}" ${isChecked ? 'checked' : ''}>
+                    <span class="party-dd-icon" style="color: ${meta.color};"><i class="${meta.icon}"></i></span>
+                    <span class="party-dd-name">${name}</span>
                 </div>
-                <div class="party-item-info">
-                    <div class="party-item-name">${name}</div>
-                    <div class="party-item-desc">${meta.desc}</div>
-                </div>
-                <div class="party-item-count"><i class="fa-solid fa-music"></i> ${count}</div>
+                <span class="party-dd-count">${count}</span>
             `;
 
-            const chk = item.querySelector('.party-modal-checkbox');
+            const chk = row.querySelector('.party-dd-checkbox');
             chk.addEventListener('change', () => {
                 if (chk.checked) {
-                    item.classList.add('selected');
+                    row.classList.add('selected');
                 } else {
-                    item.classList.remove('selected');
+                    row.classList.remove('selected');
                 }
-                updatePartyModalSummary();
+                const selected = getSelectedDropdownPlaylists();
+                savePartyPlaylists(selected);
+                updatePartyDropdownSummary();
             });
 
-            partyPlaylistsList.appendChild(item);
+            partyDdList.appendChild(row);
         });
 
-        updatePartyModalSummary();
+        updatePartyDropdownSummary();
     }
 
-    function getSelectedModalPlaylists() {
-        if (!partyPlaylistsList) return [];
-        const checkboxes = partyPlaylistsList.querySelectorAll('.party-modal-checkbox:checked');
+    function getSelectedDropdownPlaylists() {
+        if (!partyDdList) return [];
+        const checkboxes = partyDdList.querySelectorAll('.party-dd-checkbox:checked');
         const selected = [];
         checkboxes.forEach(cb => {
             const pName = decodeURIComponent(cb.getAttribute('data-playlist'));
@@ -2759,132 +2755,57 @@ function formatTime(seconds) {
         return selected;
     }
 
-    function updatePartyModalSummary() {
-        const selected = getSelectedModalPlaylists();
+    function updatePartyDropdownSummary() {
+        const selected = getSelectedDropdownPlaylists();
         let totalTracks = 0;
         selected.forEach(p => {
             totalTracks += (allPlaylists[p] || []).length;
         });
 
-        if (partySelectedCount) {
-            partySelectedCount.textContent = `${selected.length} seleccionada${selected.length === 1 ? '' : 's'}`;
+        if (partyDdSummary) {
+            partyDdSummary.textContent = `${selected.length} lista${selected.length === 1 ? '' : 's'} (${totalTracks.toLocaleString('es-ES')})`;
         }
-        if (partyTotalTracksCount) {
-            partyTotalTracksCount.textContent = `${totalTracks.toLocaleString('es-ES')} canciones en rotación`;
-        }
-
-        if (btnPartyStartNow) {
-            btnPartyStartNow.disabled = selected.length === 0;
+        if (partyDdPlayBtn) {
+            partyDdPlayBtn.disabled = selected.length === 0;
         }
     }
 
-    function openPartyModal() {
-        if (!partyModal) return;
-        renderPartyModalPlaylists();
-        partyModal.style.display = 'flex';
-        setTimeout(() => {
-            partyModal.classList.add('active');
-        }, 10);
+    function togglePartyDropdown(forceOpen = null) {
+        if (!partyDropdownMenu) return;
+        const isOpen = partyDropdownMenu.style.display !== 'none';
+        const nextState = forceOpen !== null ? forceOpen : !isOpen;
+
+        if (nextState) {
+            openPartyDropdown();
+        } else {
+            closePartyDropdown();
+        }
     }
 
-    function closePartyModal() {
-        if (!partyModal) return;
-        partyModal.classList.remove('active');
-        setTimeout(() => {
-            if (!partyModal.classList.contains('active')) {
-                partyModal.style.display = 'none';
-            }
-        }, 250);
+    function openPartyDropdown() {
+        if (!partyDropdownMenu) return;
+        renderPartyDropdownItems();
+        partyDropdownMenu.style.display = 'block';
+        if (partyGearIcon) {
+            partyGearIcon.classList.remove('fa-chevron-down');
+            partyGearIcon.classList.add('fa-chevron-up');
+        }
     }
 
-    // Presets del Modal
-    if (btnPartyPresetAll) {
-        btnPartyPresetAll.addEventListener('click', () => {
-            if (!partyPlaylistsList) return;
-            partyPlaylistsList.querySelectorAll('.party-playlist-item').forEach(item => {
-                const chk = item.querySelector('.party-modal-checkbox');
-                if (chk) chk.checked = true;
-                item.classList.add('selected');
-            });
-            updatePartyModalSummary();
-        });
-    }
-
-    if (btnPartyPresetClassics) {
-        btnPartyPresetClassics.addEventListener('click', () => {
-            if (!partyPlaylistsList) return;
-            partyPlaylistsList.querySelectorAll('.party-playlist-item').forEach(item => {
-                const chk = item.querySelector('.party-modal-checkbox');
-                if (!chk) return;
-                const name = decodeURIComponent(chk.getAttribute('data-playlist')).toLowerCase();
-                const isClassic = name.includes('viejun') || name.includes('español') || name.includes('espanol');
-                chk.checked = isClassic;
-                if (isClassic) item.classList.add('selected');
-                else item.classList.remove('selected');
-            });
-            updatePartyModalSummary();
-        });
-    }
-
-    if (btnPartyPresetModern) {
-        btnPartyPresetModern.addEventListener('click', () => {
-            if (!partyPlaylistsList) return;
-            partyPlaylistsList.querySelectorAll('.party-playlist-item').forEach(item => {
-                const chk = item.querySelector('.party-modal-checkbox');
-                if (!chk) return;
-                const name = decodeURIComponent(chk.getAttribute('data-playlist')).toLowerCase();
-                const isModern = name.includes('siglo') || name.includes('dance') || name.includes('latin');
-                chk.checked = isModern;
-                if (isModern) item.classList.add('selected');
-                else item.classList.remove('selected');
-            });
-            updatePartyModalSummary();
-        });
-    }
-
-    if (btnPartyPresetClear) {
-        btnPartyPresetClear.addEventListener('click', () => {
-            if (!partyPlaylistsList) return;
-            partyPlaylistsList.querySelectorAll('.party-playlist-item').forEach(item => {
-                const chk = item.querySelector('.party-modal-checkbox');
-                if (chk) chk.checked = false;
-                item.classList.remove('selected');
-            });
-            updatePartyModalSummary();
-        });
-    }
-
-    if (btnPartySaveOnly) {
-        btnPartySaveOnly.addEventListener('click', () => {
-            const selected = getSelectedModalPlaylists();
-            if (selected.length === 0) {
-                alert('Debes seleccionar al menos una lista para el Modo Fiesta.');
-                return;
-            }
-            savePartyPlaylists(selected);
-            closePartyModal();
-            showSyncNotification(`💾 Guardado: Modo Fiesta configurado con ${selected.length} lista${selected.length === 1 ? '' : 's'}`);
-        });
-    }
-
-    if (btnPartyStartNow) {
-        btnPartyStartNow.addEventListener('click', () => {
-            const selected = getSelectedModalPlaylists();
-            if (selected.length === 0) {
-                alert('Debes seleccionar al menos una lista para reproducir.');
-                return;
-            }
-            savePartyPlaylists(selected);
-            closePartyModal();
-            startPartyDjMode(selected);
-        });
+    function closePartyDropdown() {
+        if (!partyDropdownMenu) return;
+        partyDropdownMenu.style.display = 'none';
+        if (partyGearIcon) {
+            partyGearIcon.classList.remove('fa-chevron-up');
+            partyGearIcon.classList.add('fa-chevron-down');
+        }
     }
 
     if (btnPartyConfig) {
         btnPartyConfig.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            openPartyModal();
+            togglePartyDropdown();
         });
     }
 
@@ -2892,25 +2813,64 @@ function formatTime(seconds) {
         btnSidebarPartyConfig.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            openPartyModal();
-        });
-    }
-
-    if (btnClosePartyModal) {
-        btnClosePartyModal.addEventListener('click', closePartyModal);
-    }
-
-    if (partyModal) {
-        partyModal.addEventListener('click', (e) => {
-            if (e.target === partyModal) {
-                closePartyModal();
+            openPartyDropdown();
+            if (partyDropdownWrapper) {
+                partyDropdownWrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
         });
     }
 
+    if (partyDdAll) {
+        partyDdAll.addEventListener('click', () => {
+            if (!partyDdList) return;
+            partyDdList.querySelectorAll('.party-dd-row').forEach(row => {
+                const chk = row.querySelector('.party-dd-checkbox');
+                if (chk) chk.checked = true;
+                row.classList.add('selected');
+            });
+            const selected = getSelectedDropdownPlaylists();
+            savePartyPlaylists(selected);
+            updatePartyDropdownSummary();
+        });
+    }
+
+    if (partyDdNone) {
+        partyDdNone.addEventListener('click', () => {
+            if (!partyDdList) return;
+            partyDdList.querySelectorAll('.party-dd-row').forEach(row => {
+                const chk = row.querySelector('.party-dd-checkbox');
+                if (chk) chk.checked = false;
+                row.classList.remove('selected');
+            });
+            const selected = getSelectedDropdownPlaylists();
+            savePartyPlaylists(selected);
+            updatePartyDropdownSummary();
+        });
+    }
+
+    if (partyDdPlayBtn) {
+        partyDdPlayBtn.addEventListener('click', () => {
+            const selected = getSelectedDropdownPlaylists();
+            if (selected.length === 0) {
+                alert('Selecciona al menos una lista.');
+                return;
+            }
+            savePartyPlaylists(selected);
+            closePartyDropdown();
+            startPartyDjMode(selected);
+        });
+    }
+
+    // Cerrar dropdown si se hace clic fuera
+    document.addEventListener('click', (e) => {
+        if (partyDropdownWrapper && !partyDropdownWrapper.contains(e.target)) {
+            closePartyDropdown();
+        }
+    });
+
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && partyModal && partyModal.style.display === 'flex') {
-            closePartyModal();
+        if (e.key === 'Escape' && partyDropdownMenu && partyDropdownMenu.style.display !== 'none') {
+            closePartyDropdown();
         }
     });
 
@@ -3008,7 +2968,7 @@ function formatTime(seconds) {
         });
         btnSmartDj.addEventListener('contextmenu', (e) => {
             e.preventDefault();
-            openPartyModal();
+            togglePartyDropdown();
         });
     }
 

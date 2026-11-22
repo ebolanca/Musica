@@ -6493,4 +6493,186 @@ body.public-mode .cinema-equalizer-wrap {
   vertical-align: middle;
 }
 
+/* ==========================================================================
+   Party DJ Compact Dropdown (Mismo tamaño de fuente, selector directo)
+   ========================================================================== */
+.party-dropdown-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.party-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 250px;
+  max-width: 300px;
+  background: rgba(15, 23, 42, 0.98);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.8), 0 0 1px rgba(255, 255, 255, 0.25);
+  z-index: 99999;
+  padding: 8px;
+  box-sizing: border-box;
+  animation: partyDropdownFade 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes partyDropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.party-dd-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 6px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+.party-dd-quick-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.party-dd-quick-btn {
+  background: none;
+  border: none;
+  color: var(--spotify-green, #1db954);
+  cursor: pointer;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0 2px;
+  transition: opacity 0.15s;
+}
+
+.party-dd-quick-btn:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.party-dd-sep {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 0.68rem;
+}
+
+.party-dd-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px 0;
+}
+
+.party-dd-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.85rem;
+  color: #e2e8f0;
+  transition: background 0.15s, color 0.15s;
+}
+
+.party-dd-row:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.party-dd-row.selected {
+  background: rgba(29, 185, 84, 0.14);
+  color: #fff;
+  font-weight: 600;
+}
+
+.party-dd-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.party-dd-checkbox {
+  accent-color: var(--spotify-green, #1db954);
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.party-dd-icon {
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+}
+
+.party-dd-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.85rem;
+}
+
+.party-dd-count {
+  font-size: 0.74rem;
+  color: #64748b;
+  font-weight: 600;
+  margin-left: 6px;
+}
+
+.party-dd-row.selected .party-dd-count {
+  color: #a7f3d0;
+}
+
+.party-dd-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 6px 2px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.78rem;
+  color: #94a3b8;
+}
+
+.party-dd-play-btn {
+  background: var(--spotify-green, #1db954);
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: transform 0.1s, opacity 0.15s;
+}
+
+.party-dd-play-btn:hover {
+  transform: scale(1.04);
+}
+
+.party-dd-play-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
 
