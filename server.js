@@ -158,16 +158,17 @@ function parseCookies(req) {
     return out;
 }
 
-// Acceso público (musicamix.majecruz.es, vía Cloudflare Tunnel) = funciones reducidas
+// Acceso público (musicamix.staygandia.es / musicamix.majecruz.es) = funciones reducidas
 // y autenticación obligatoria. Entrando por la red Tailscale/localhost se conserva siempre
 // la app completa y acceso directo de confianza sin requerir contraseña.
-const PUBLIC_HOSTNAME = 'musicamix.majecruz.es';
+const PUBLIC_HOSTNAMES = ['musicamix.staygandia.es', 'musicamix.majecruz.es'];
 function isMobileClient(req) {
     const ua = (req.headers['user-agent'] || '').toLowerCase();
     return /android|iphone|ipad|ipod|mobile|blackberry|iemobile|opera mini/i.test(ua);
 }
 function isPublicHost(req) {
-    return (req.hostname || '').toLowerCase() === PUBLIC_HOSTNAME;
+    const h = (req.hostname || '').toLowerCase();
+    return PUBLIC_HOSTNAMES.includes(h);
 }
 
 function isAuthenticated(req) {
@@ -1560,7 +1561,7 @@ app.set('trust proxy', true);
 // Origen restringido al dominio público una vez publicado (las peticiones del propio
 // frontend servido por esta misma app son same-origin y no pasan por CORS en absoluto;
 // esto solo bloquea que OTRA web use la cookie de sesión del visitante contra esta API).
-app.use(cors({ origin: 'https://musicamix.majecruz.es', credentials: true }));
+app.use(cors({ origin: ['https://musicamix.staygandia.es', 'https://musicamix.majecruz.es'], credentials: true }));
 // Límite ampliado a 15mb: /api/covers/save recibe carátulas HD en base64 (el default de
 // 100kb las rechaza con PayloadTooLargeError en cada intento de subida local).
 app.use(express.json({ limit: '15mb' }));

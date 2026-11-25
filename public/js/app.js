@@ -528,7 +528,7 @@ function formatTime(seconds) {
         // Transmitir: abre selector de Google Cast, AirPlay o Remote Playback API
         async function triggerCast() {
             if (window.location.hostname.startsWith('100.') || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-                showSyncNotification('💡 Para transmitir a la TV, accede desde https://musicamix.majecruz.es (la tele no tiene Tailscale).');
+                showSyncNotification('💡 Para transmitir a la TV, accede desde https://musicamix.staygandia.es (la tele no tiene Tailscale).');
             }
 
             if (!currentPlayingSong && (!mainMusicAudio || !mainMusicAudio.src)) {
